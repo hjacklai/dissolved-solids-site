@@ -21,3 +21,6 @@ desktop.ini
 *.HEIC
 photos/new-DS/
 photos/new-SS/
+
+# Private notes (the original detailed README, kept locally only)
+NOTES-local.md
