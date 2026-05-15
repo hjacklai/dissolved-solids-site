@@ -1795,6 +1795,74 @@ a.label:hover { opacity: .8; }
   .cta-btn { justify-content: center; }
 }
 
+/* Cocktail pages · /cocktails/[slug]/ */
+
+.cocktail-figure {
+  margin: 0 0 40px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.cocktail-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.cocktail-spec {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding: 28px 28px 24px;
+  background: var(--bg-2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  margin: 0 0 40px;
+}
+.spec-block { display: block; }
+.spec-block .spec-h {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+.spec-block ul,
+.spec-block ol {
+  margin: 0;
+  padding-left: 1.2em;
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.55;
+}
+.spec-block li {
+  margin-bottom: .35em;
+}
+.spec-block ol li {
+  margin-bottom: .55em;
+}
+.spec-block .spec-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .02em;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 14px 0 0;
+  padding-top: 14px;
+  border-top: 1px dashed var(--rule);
+}
+
+@media (max-width: 639px) {
+  .cocktail-spec {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 22px 20px 20px;
+  }
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   body, .bar, .toggle, .toggle .knob, .toggle .label,
