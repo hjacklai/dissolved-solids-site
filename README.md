@@ -2,8 +2,8 @@
 
 Static site for two sister cocktail bars in Petaling Jaya, Malaysia. Each bar has its own URL so each can be linked from its own Instagram bio.
 
-- **Dissolved Solids** · 43-1 Jalan SS20/11, Damansara Kim, 47400 PJ · "Serving you all sorts in liquid form." Tatler Asia Top 20 Bars 2025/26. → `dissolvedsolids.co/dissolvedsolids`
-- **Soluble Solids** · 50-1 Jalan SS2/24, 47300 PJ · cocktail parlour, no fixed list, customised every pour. → `dissolvedsolids.co/solublesolids`
+- **Dissolved Solids** · 43-1 Jalan SS20/11, Damansara Kim, 47400 PJ · "Serving you all sorts in liquid form." Tatler Asia Top 20 Bars 2025/26. → `dissolvedsolids.com/dissolvedsolids`
+- **Soluble Solids** · 50-1 Jalan SS2/24, 47300 PJ · cocktail parlour, no fixed list, customised every pour. → `dissolvedsolids.com/solublesolids`
 - **Root `/`** → redirects to `/dissolvedsolids/` (Dissolved is the senior, Tatler-recognised bar)
 
 The lab-instrument toggle at the top of each page is a navigation tab. Clicking the inactive label takes you to the sister bar's page. Each page hardcodes its own `data-state` so the theme, copy, photos, and menu are right for that bar.
@@ -47,9 +47,9 @@ git push -u origin main
 
 **2. Enable Pages.** Repo · Settings · Pages · Build and deployment · Source: **Deploy from a branch** · Branch: `main` / `/ (root)` · Save.
 
-**3. Custom domain.** Same Pages screen, Custom domain: `dissolvedsolids.co` · Save. Tick **Enforce HTTPS** once the cert provisions (a few minutes after DNS resolves).
+**3. Custom domain.** Same Pages screen, Custom domain: `dissolvedsolids.com` · Save. Tick **Enforce HTTPS** once the cert provisions (a few minutes after DNS resolves).
 
-**4. DNS records at the domain registrar** (this is where the apex `dissolvedsolids.co` actually starts resolving to GitHub):
+**4. DNS records at the domain registrar** (this is where the apex `dissolvedsolids.com` actually starts resolving to GitHub):
 
 | Type  | Host        | Value                  |
 | ----- | ----------- | ---------------------- |
@@ -59,9 +59,9 @@ git push -u origin main
 | A     | `@`         | `185.199.111.153`      |
 | CNAME | `www`       | `<username>.github.io.` |
 
-(The four A records are GitHub Pages' apex IPs. The `www` CNAME lets `www.dissolvedsolids.co` redirect to apex.)
+(The four A records are GitHub Pages' apex IPs. The `www` CNAME lets `www.dissolvedsolids.com` redirect to apex.)
 
-Verify: `dig dissolvedsolids.co +short` should return the four IPs after the registrar propagates (usually 5-60 min).
+Verify: `dig dissolvedsolids.com +short` should return the four IPs after the registrar propagates (usually 5-60 min).
 
 **First-time push** (skip if the repo already has a remote):
 ```sh
@@ -89,7 +89,7 @@ This site is built to rank for beverage queries across Klang Valley (KL, PJ, Sel
 ### After deploying, do these once (15 minutes total)
 
 1. Verify ownership in **Google Search Console** (DNS TXT record or upload an HTML verification file).
-2. Submit `https://dissolvedsolids.co/sitemap.xml` in Search Console.
+2. Submit `https://dissolvedsolids.com/sitemap.xml` in Search Console.
 3. Create a **Google Business Profile** for each bar, separate from the website but enormous for local search ("cocktail bar Damansara Kim", "cocktail bar SS2"). Link the GBP listings to the website.
 4. Submit the site to **Bing Webmaster Tools** the same way.
 5. (Optional but easy) Add the live URL to each bar's **Instagram bio** + the **WhatsApp business profile**.

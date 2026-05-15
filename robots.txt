@@ -1,4 +1,4 @@
-# robots.txt for dissolvedsolids.co
+# robots.txt for dissolvedsolids.com
 # Both Dissolved Solids (Damansara Kim) and Soluble Solids (SS2), Petaling Jaya.
 # We explicitly welcome AI crawlers so that beverage knowledge published here
 # is discoverable through LLM-powered search and chat assistants.
@@ -88,4 +88,4 @@ Allow: /
 User-agent: Amazonbot
 Allow: /
 
-Sitemap: https://dissolvedsolids.co/sitemap.xml
+Sitemap: https://dissolvedsolids.com/sitemap.xml

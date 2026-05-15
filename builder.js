@@ -655,7 +655,7 @@
     const lines = [
       `*DRINK BUILDER*`,
       ``,
-      `Hi ${BAR_NAMES[bar]}! I used the drink builder on your website (dissolvedsolids.co/builder) and I'd like to come in and have you make this for me.`,
+      `Hi ${BAR_NAMES[bar]}! I used the drink builder on your website (dissolvedsolids.com/builder) and I'd like to come in and have you make this for me.`,
       ``,
       `Drink: ${plainName}`,
       ``,

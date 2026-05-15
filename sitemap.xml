@@ -3,220 +3,220 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-    <loc>https://dissolvedsolids.co/</loc>
+    <loc>https://dissolvedsolids.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://dissolvedsolids.co/dissolvedsolids/</loc>
+    <loc>https://dissolvedsolids.com/dissolvedsolids/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/dissolved-hero.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/dissolved-hero.jpg</image:loc>
       <image:title>Classic martini at Dissolved Solids, Damansara Kim</image:title>
       <image:caption>Classic martini with green olives set against fresh foliage, Dissolved Solids Petaling Jaya</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/dissolved-preview.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/dissolved-preview.jpg</image:loc>
       <image:title>Foam cocktail with pansy and dehydrated lime at Dissolved Solids</image:title>
       <image:caption>Cocktail with frothy white head, edible pansy and dehydrated lime garnish on dark, Dissolved Solids Damansara Kim</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-01.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-01.jpg</image:loc>
       <image:title>Backlit citrus slices in soda at Dissolved Solids</image:title>
       <image:caption>Macro detail of fresh citrus slices in sparkling soda water, Dissolved Solids Damansara Kim</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-04.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-04.jpg</image:loc>
       <image:title>Dirty martini with olives at Dissolved Solids</image:title>
       <image:caption>Classic dirty martini with green olives against garden foliage, Dissolved Solids Damansara Kim</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-05.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-05.jpg</image:loc>
       <image:title>Dissolved Solids bottled cocktails in low light</image:title>
       <image:caption>Two bottled cocktails - Matcha Sakura and Manhattan - from the Dissolved Solids bottling line</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-06.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-06.jpg</image:loc>
       <image:title>Lineup of Dissolved Solids bottled cocktails</image:title>
       <image:caption>Lineup of Dissolved Solids bottling - Manhattan, Corpse Reviver, Citrus Mix - reflected against sky</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-07.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-07.jpg</image:loc>
       <image:title>Dissolved Solids Matcha Sakura bottled cocktail</image:title>
       <image:caption>Matcha Sakura bottled cocktail with pixel-art label, take-home from Dissolved Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-08.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-08.jpg</image:loc>
       <image:title>Red cocktail macro detail at Dissolved Solids</image:title>
       <image:caption>Macro close-up of a deep red cocktail surface with marbled tones, Dissolved Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-09.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-09.jpg</image:loc>
       <image:title>Pandan-leaf green coupe at Dissolved Solids</image:title>
       <image:caption>Bright green coupe cocktail with dehydrated pineapple and pandan leaf, Dissolved Solids Damansara Kim</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-10.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-10.jpg</image:loc>
       <image:title>Pink smoke cocktail with dried orange at Dissolved Solids</image:title>
       <image:caption>Pink coupe with dried orange wheel, edible flower and rising smoke, Dissolved Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-11.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-11.jpg</image:loc>
       <image:title>Salt-rimmed rocks cocktail with orange peel at Dissolved Solids</image:title>
       <image:caption>Pink-orange rocks cocktail with salt rim and expressed orange peel, Dissolved Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-12.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-12.jpg</image:loc>
       <image:title>Tall green highball with mint and pansy at Dissolved Solids</image:title>
       <image:caption>Tall green highball cocktail with mint, edible pansy and dehydrated lime, Dissolved Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-13.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-13.jpg</image:loc>
       <image:title>Off-menu cocktail trio at Dissolved Solids</image:title>
       <image:caption>Three customised cocktails outdoors with turkish-delight cubes in pastel colours, Dissolved Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-14.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-14.jpg</image:loc>
       <image:title>Glass condensation macro at Dissolved Solids</image:title>
       <image:caption>Soft-lavender condensation on a chilled glass, Dissolved Solids Damansara Kim</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-15.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-15.jpg</image:loc>
       <image:title>Bartender at work, Dissolved Solids</image:title>
       <image:caption>Bartender pouring and shaking custom cocktails behind the Dissolved Solids bar</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-16.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-16.jpg</image:loc>
       <image:title>Dissolved Solids bar at night with neon signage</image:title>
       <image:caption>Pink cube neon and cursive 'dissolved solids' sign with friends at a table, Damansara Kim</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-17.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-17.jpg</image:loc>
       <image:title>Pink cube neon glowing at Dissolved Solids</image:title>
       <image:caption>Pink cube neon logo glowing on the bar countertop at night, Dissolved Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ds-18.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ds-18.jpg</image:loc>
       <image:title>Cursive dissolved solids neon at the doorway</image:title>
       <image:caption>The 'dissolved solids' cursive blue neon sign on the bar's glass doorway, Damansara Kim</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dissolvedsolids.co/solublesolids/</loc>
+    <loc>https://dissolvedsolids.com/solublesolids/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/soluble-hero.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/soluble-hero.jpg</image:loc>
       <image:title>Customised cocktail with hibiscus backdrop at Soluble Solids, SS2 Petaling Jaya</image:title>
       <image:caption>Yellow-green stemmed cocktail set against a vivid hibiscus floral backdrop, Soluble Solids SS2</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/soluble-preview.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/soluble-preview.jpg</image:loc>
       <image:title>Coupe cocktail in amber-green gradient at Soluble Solids</image:title>
       <image:caption>Stemmed coupe cocktail in amber-green tones against a soft gradient, Soluble Solids SS2</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-01.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-01.jpg</image:loc>
       <image:title>Soluble Solids interior with framed portrait</image:title>
       <image:caption>Moody interior with framed portrait and warm lamp light, Soluble Solids SS2</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-02.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-02.jpg</image:loc>
       <image:title>Soluble Solids infusion shelf with handwritten labels</image:title>
       <image:caption>Infusion shelf with handwritten labels at Soluble Solids - the source of every customised drink</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-03.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-03.jpg</image:loc>
       <image:title>Bartender expressing lemon peel at Soluble Solids</image:title>
       <image:caption>Tattooed hands expressing a lemon peel over a chilled coupe, Soluble Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-04.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-04.jpg</image:loc>
       <image:title>Soluble Solids interior with painted wall art</image:title>
       <image:caption>Interior with painted wall art, red pendant lamp and full back bar, Soluble Solids SS2</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-05.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-05.jpg</image:loc>
       <image:title>Soluble Solids window with red circles</image:title>
       <image:caption>Window with red glass decals overlooking SS2 Petaling Jaya street, Soluble Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-06.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-06.jpg</image:loc>
       <image:title>SS2 street view from Soluble Solids</image:title>
       <image:caption>Afternoon street view of SS2 Petaling Jaya from inside Soluble Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-08.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-08.jpg</image:loc>
       <image:title>Dried fruit infusion macro at Soluble Solids</image:title>
       <image:caption>Macro of dried fruit suspended in golden infusion, Soluble Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-09.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-09.jpg</image:loc>
       <image:title>Fig infusion macro at Soluble Solids</image:title>
       <image:caption>Macro close-up of figs in deep amber infusion, Soluble Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-10.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-10.jpg</image:loc>
       <image:title>Sunlit highball at Soluble Solids SS2</image:title>
       <image:caption>Sunlit highball cocktail held by a tattooed customer, Soluble Solids SS2 Petaling Jaya</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-11.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-11.jpg</image:loc>
       <image:title>Whole-fruit infusion at Soluble Solids</image:title>
       <image:caption>Whole preserved fruit submerged in brass-rimmed infusion vessel, Soluble Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-12.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-12.jpg</image:loc>
       <image:title>Green ferment macro at Soluble Solids</image:title>
       <image:caption>Vivid green preserved fruit infusion in macro detail, Soluble Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-13.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-13.jpg</image:loc>
       <image:title>Strawberry infusion macro at Soluble Solids</image:title>
       <image:caption>Macro of fresh strawberries submerged in dark infusion, Soluble Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-15.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-15.jpg</image:loc>
       <image:title>Daytime wine-glass cocktail at Soluble Solids</image:title>
       <image:caption>Wine-glass cocktail with citrus twist against sunlit tree canopy, Soluble Solids SS2</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-16.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-16.jpg</image:loc>
       <image:title>Amber rocks cocktail on lace at Soluble Solids</image:title>
       <image:caption>Amber rocks cocktail with carved wood garnish on patterned lace, harsh midday shadow, Soluble Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-17.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-17.jpg</image:loc>
       <image:title>Layered milky cocktail at Soluble Solids</image:title>
       <image:caption>Layered purple-and-white milky cocktail in a rocks glass on lace, Soluble Solids</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-18.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-18.jpg</image:loc>
       <image:title>Lace curtain with film projection at Soluble Solids</image:title>
       <image:caption>Lace curtain catching a film projection in the evening at Soluble Solids SS2</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-19.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-19.jpg</image:loc>
       <image:title>Bartender pouring into vintage glass at Soluble Solids</image:title>
       <image:caption>Tattooed bartender pouring a custom cocktail into a vintage etched glass, Soluble Solids SS2</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-20.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-20.jpg</image:loc>
       <image:title>Cocktail trio on a DJ mixer at Soluble Solids</image:title>
       <image:caption>Coupe, rocks and highball lined up on a DJ mixer, Soluble Solids SS2</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dissolvedsolids.co/photos/ss-21.jpg</image:loc>
+      <image:loc>https://dissolvedsolids.com/photos/ss-21.jpg</image:loc>
       <image:title>Longan Rum infusion jar at Soluble Solids</image:title>
       <image:caption>Glass jar labelled 'Longan Rum' filled with infused longan fruit, Soluble Solids</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dissolvedsolids.co/builder/</loc>
+    <loc>https://dissolvedsolids.com/builder/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
