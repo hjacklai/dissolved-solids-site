@@ -129,6 +129,9 @@
   'use strict';
 
   // Closed days use Sun=0, Mon=1, Tue=2, Wed=3, Thu=4, Fri=5, Sat=6 (JS convention)
+  // Hours stored as { open: 'HH:MM', close: 'HH:MM' }. close='00:00' means midnight
+  // end-of-day. close < open means overnight cross (e.g. 14:00 to 01:00 = open until 1 AM
+  // the next day).
   const BARS = {
     dissolved: {
       name: 'Dissolved Solids',
@@ -136,12 +139,12 @@
       closedDays: [1],                      // Closed Monday
       closedLabel: 'Closed Mondays',
       hours: {
-        0: '14:00 to 00:00',                 // Sun
-        2: '15:00 to 00:00',                 // Tue
-        3: '15:00 to 00:00',                 // Wed
-        4: '15:00 to 00:00',                 // Thu
-        5: '14:00 to 01:00',                 // Fri
-        6: '14:00 to 01:00',                 // Sat
+        0: { open: '14:00', close: '00:00' },  // Sun
+        2: { open: '15:00', close: '00:00' },  // Tue
+        3: { open: '15:00', close: '00:00' },  // Wed
+        4: { open: '15:00', close: '00:00' },  // Thu
+        5: { open: '14:00', close: '01:00' },  // Fri
+        6: { open: '14:00', close: '01:00' },  // Sat
       }
     },
     soluble: {
@@ -150,14 +153,34 @@
       closedDays: [1, 2],                   // Closed Monday and Tuesday
       closedLabel: 'Closed Mondays and Tuesdays',
       hours: {
-        0: '18:00 to 01:00',
-        3: '18:00 to 01:00',
-        4: '18:00 to 01:00',
-        5: '18:00 to 01:00',
-        6: '18:00 to 01:00',
+        0: { open: '18:00', close: '01:00' },
+        3: { open: '18:00', close: '01:00' },
+        4: { open: '18:00', close: '01:00' },
+        5: { open: '18:00', close: '01:00' },
+        6: { open: '18:00', close: '01:00' },
       }
     }
   };
+
+  function timeToMin(t) {
+    if (!t) return null;
+    const parts = t.split(':');
+    return Number(parts[0]) * 60 + Number(parts[1]);
+  }
+  function isTimeWithinHours(timeStr, hoursObj) {
+    if (!timeStr || !hoursObj) return false;
+    const t = timeToMin(timeStr);
+    const open = timeToMin(hoursObj.open);
+    let close = timeToMin(hoursObj.close);
+    if (close === 0) close = 24 * 60;
+    if (close > open) {
+      return t >= open && t < close;
+    }
+    return t >= open || t < close;
+  }
+  function fmtHourRange(hoursObj) {
+    return hoursObj.open + ' to ' + hoursObj.close;
+  }
 
   const today = new Date();
   const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
@@ -326,7 +349,11 @@
     const dow = state.selectedDate.getDay();
     const hours = BARS[state.bar].hours[dow];
     const dateStr = state.selectedDate.toLocaleDateString('en-MY', { weekday: 'long' });
-    hoursLabel.textContent = BARS[state.bar].name + ' is open ' + hours + ' on ' + dateStr + '.';
+    if (hours) {
+      hoursLabel.textContent = BARS[state.bar].name + ' is open ' + fmtHourRange(hours) + ' on ' + dateStr + '. Please pick a time within these hours.';
+    } else {
+      hoursLabel.textContent = BARS[state.bar].name + ' is closed on ' + dateStr + '.';
+    }
   }
 
   function showError(msg) { errorEl.textContent = msg; errorEl.hidden = false; }
@@ -336,6 +363,17 @@
   $('.reserve-prev').addEventListener('click', () => goToMonth(-1));
   $('.reserve-next').addEventListener('click', () => goToMonth(1));
   $$('.bar-chip').forEach(c => c.addEventListener('click', () => setBar(c.dataset.bar)));
+
+  // Live feedback when arrival time is picked
+  $('#reserve-time').addEventListener('change', () => {
+    clearError();
+    const time = $('#reserve-time').value;
+    if (!time || !state.selectedDate) return;
+    const hours = BARS[state.bar].hours[state.selectedDate.getDay()];
+    if (hours && !isTimeWithinHours(time, hours)) {
+      showError(BARS[state.bar].name + ' is only open ' + fmtHourRange(hours) + ' that day. ' + time + ' is outside those hours.');
+    }
+  });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -350,6 +388,11 @@
 
     if (!date) { showError('Please pick a date from the calendar above.'); return; }
     if (!time) { showError('Please choose an arrival time.'); return; }
+    const hours = BARS[state.bar].hours[date.getDay()];
+    if (hours && !isTimeWithinHours(time, hours)) {
+      showError(BARS[state.bar].name + ' is open ' + fmtHourRange(hours) + ' that day. Please pick a time within those hours.');
+      return;
+    }
     if (!pax || Number(pax) < 1) { showError('Please tell us how many of you are coming.'); return; }
     if (!name) { showError('Please add a name for the reservation.'); return; }
     if (!phone) { showError('Please add a WhatsApp number so we can confirm.'); return; }

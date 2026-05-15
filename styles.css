@@ -32,7 +32,8 @@
   --serif: 'Fraunces', 'Times New Roman', serif;
   --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 
-  --pad-x: clamp(20px, 4vw, 40px);
+  --pad-x: clamp(20px, 4vw, 80px);
+  --max-w: 1400px;
 }
 
 /* ---------- Theme variables driven by data-state ---------- */
@@ -178,13 +179,28 @@ button:focus-visible {
 /* ====================================================================
    Header: sticky toggle bar
    ==================================================================== */
+/* Wide-screen gutters: cap bar-page content width so it doesn't stretch
+   edge-to-edge on large monitors. Full-bg sections (.bar, .preview-other)
+   stay edge-to-edge but auto-gutter their inner content via padding. */
+.readout,
+.hero,
+.menu,
+.gallery,
+.custom-drinks,
+.foot {
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .bar {
   position: sticky; top: 0; z-index: 5;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 24px;
-  padding: 12px var(--pad-x);
+  /* Full-width bg + border, content auto-gutters on wide screens. */
+  padding: 12px max(var(--pad-x), calc((100vw - var(--max-w)) / 2));
   background: var(--bg);
   border-bottom: 1px solid var(--rule);
   transition: background .35s ease, border-color .35s ease;
@@ -563,9 +579,11 @@ a.label:hover { opacity: .8; }
 .preview-other {
   background: var(--bg);
   color: var(--fg);
-  padding: 72px var(--pad-x);
+  /* Full-width bg, content auto-gutters on wide screens. */
+  padding: 72px max(var(--pad-x), calc((100vw - var(--max-w)) / 2));
   display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
   align-items: center;
+  box-sizing: border-box;
   transition: background .35s ease, color .35s ease;
 }
 .po-copy { min-width: 0; }
