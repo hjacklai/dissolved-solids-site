@@ -791,9 +791,9 @@
     }
 
     function prettyValue(v) {
-      if (!v) return '—';
+      if (!v) return '…';
       if (Array.isArray(v)) {
-        if (!v.length) return '—';
+        if (!v.length) return '…';
         return v.map((x) => cap(x.replace(/-/g, ' '))).join(' + ');
       }
       return cap(v.replace(/-/g, ' '));
@@ -805,7 +805,7 @@
         const key = slot.dataset.strip;
         const text = prettyValue(state.answers[key]);
         slot.textContent = text;
-        slot.classList.toggle('is-filled', text !== '—');
+        slot.classList.toggle('is-filled', text !== '…');
       });
     }
 
