@@ -589,6 +589,13 @@
   html[data-state="soluble"]   .logo-dis { display: none; }
   html[data-state="dissolved"] .logo-sol { display: none; }
 
+  /* Mirror the Soluble Solids logo horizontally wherever it shows */
+  .logo-sol,
+  .outlet[data-brand="soluble"] .outlet-head .logo,
+  .bar-pill[data-bar="soluble"] img {
+    transform: scaleX(-1);
+  }
+
   /* Sub-row nav under the centered brand */
   nav {
     display: flex; align-items: center; justify-content: center;
@@ -3025,136 +3032,50 @@
   const _origPanel = document.getElementById('statePanel');
   if (_origPanel) _origPanel.addEventListener('click', () => setTimeout(updateSwitch, 50));
 
-  // ─ MUSIC TOGGLE — procedural ambient pad via Web Audio API
+  // ─ MUSIC TOGGLE — plays /photos/audio/ambient-loop.mp3 (Pixabay license)
   const mt = document.getElementById('musicToggle');
   const mtTip = document.getElementById('musicTip');
-  let audioCtx = null;
-  let nodes = null;
-  function buildAmbientPad() {
-    const ctx = audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const master = ctx.createGain();
-    master.gain.value = 0;
-    master.connect(ctx.destination);
-    const padBus = ctx.createGain();
-    padBus.gain.value = 0.55;
-    padBus.connect(master);
-    const filter = ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 800;
-    filter.Q.value = 0.6;
-    filter.connect(padBus);
-    function makeVoice(freq, type, detune) {
-      const o = ctx.createOscillator();
-      o.type = type || 'sine';
-      o.frequency.value = freq;
-      o.detune.value = detune || 0;
-      const g = ctx.createGain();
-      g.gain.value = 0.25;
-      o.connect(g); g.connect(filter);
-      o.start();
-      return { osc: o, gain: g };
-    }
-    const v1 = makeVoice(98, 'sine');
-    const v2 = makeVoice(146.8, 'sine', -4);
-    const v3 = makeVoice(196, 'triangle', 6);
-    v3.gain.gain.value = 0.12;
-    const lfo = ctx.createOscillator();
-    lfo.type = 'sine';
-    lfo.frequency.value = 0.05;
-    const lfoGain = ctx.createGain();
-    lfoGain.gain.value = 320;
-    lfo.connect(lfoGain); lfoGain.connect(filter.frequency);
-    lfo.start();
-    const beatBus = ctx.createGain();
-    beatBus.gain.value = 0.9;
-    beatBus.connect(master);
-    function kick(when) {
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
-      o.type = 'sine';
-      o.frequency.setValueAtTime(120, when);
-      o.frequency.exponentialRampToValueAtTime(45, when + 0.12);
-      g.gain.setValueAtTime(0, when);
-      g.gain.linearRampToValueAtTime(0.45, when + 0.005);
-      g.gain.exponentialRampToValueAtTime(0.001, when + 0.45);
-      o.connect(g); g.connect(beatBus);
-      o.start(when); o.stop(when + 0.5);
-    }
-    const noiseBuf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * 0.08), ctx.sampleRate);
-    const nd = noiseBuf.getChannelData(0);
-    for (let i = 0; i < nd.length; i++) nd[i] = (Math.random() - 0.5) * Math.exp(-i / (ctx.sampleRate * 0.02));
-    function shaker(when) {
-      const src = ctx.createBufferSource();
-      src.buffer = noiseBuf;
-      const f = ctx.createBiquadFilter();
-      f.type = 'highpass';
-      f.frequency.value = 5500;
-      const g = ctx.createGain();
-      g.gain.value = 0.10;
-      src.connect(f); f.connect(g); g.connect(beatBus);
-      src.start(when);
-    }
-    const stepTime = 60 / 76 / 4;
-    let step = 0, nextTime = 0, intervalId = null;
-    function tick() {
-      const ahead = ctx.currentTime + 0.18;
-      while (nextTime < ahead) {
-        if (step === 0 || step === 8) kick(nextTime);
-        if (step === 4 || step === 12) shaker(nextTime);
-        if (step % 2 === 1) shaker(nextTime);
-        nextTime += stepTime;
-        step = (step + 1) % 16;
-      }
-    }
-    function startBeat() {
-      if (intervalId) return;
-      step = 0; nextTime = ctx.currentTime + 0.12;
-      intervalId = setInterval(tick, 40);
-    }
-    function stopBeat() {
-      if (intervalId) clearInterval(intervalId);
-      intervalId = null;
-    }
-    return { ctx, master, filter, voices: [v1, v2, v3], lfo, padBus, beatBus, startBeat, stopBeat };
+  const TARGET_VOL = 0.35;
+  const FADE_MS = 1200;
+  let bgAudio = null;
+  let fadeTimer = null;
+  function setupAudio() {
+    bgAudio = new Audio('/photos/audio/ambient-loop.mp3');
+    bgAudio.loop = true;
+    bgAudio.preload = 'none';
+    bgAudio.volume = 0;
   }
-  function applyStateTone() {
-    if (!nodes) return;
-    const s = document.documentElement.dataset.state;
-    if (s === 'dissolved') {
-      nodes.filter.frequency.setTargetAtTime(1100, audioCtx.currentTime, 1.5);
-      nodes.voices[2].osc.frequency.setTargetAtTime(294, audioCtx.currentTime, 2);
-    } else {
-      nodes.filter.frequency.setTargetAtTime(700, audioCtx.currentTime, 1.5);
-      nodes.voices[2].osc.frequency.setTargetAtTime(196, audioCtx.currentTime, 2);
-    }
+  function fadeTo(target, duration) {
+    if (!bgAudio) return;
+    if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; }
+    const startVol = bgAudio.volume;
+    const startTime = Date.now();
+    fadeTimer = setInterval(() => {
+      const t = Math.min(1, (Date.now() - startTime) / duration);
+      bgAudio.volume = Math.max(0, Math.min(1, startVol + (target - startVol) * t));
+      if (t >= 1) {
+        clearInterval(fadeTimer);
+        fadeTimer = null;
+        if (target === 0 && !bgAudio.paused) bgAudio.pause();
+      }
+    }, 60);
   }
   async function startMusic() {
     try {
-      if (!nodes) nodes = buildAmbientPad();
-      if (audioCtx.state === 'suspended') await audioCtx.resume();
-      applyStateTone();
-      const now = audioCtx.currentTime;
-      const g = nodes.master.gain;
-      g.cancelScheduledValues(now);
-      g.setValueAtTime(g.value, now);
-      g.linearRampToValueAtTime(0.18, now + 1.2);
-      nodes.startBeat();
+      if (!bgAudio) setupAudio();
+      await bgAudio.play();
+      fadeTo(TARGET_VOL, FADE_MS);
       mt.classList.add('playing');
-      mtTip.textContent = 'ambient · tap to stop';
+      mtTip.textContent = 'lofi loop · tap to stop';
     } catch (e) {
       console.warn('music start failed', e);
       mtTip.textContent = 'audio unavailable';
     }
   }
   function stopMusic() {
-    if (!nodes) return;
+    if (!bgAudio) return;
     try {
-      const now = audioCtx.currentTime;
-      const g = nodes.master.gain;
-      g.cancelScheduledValues(now);
-      g.setValueAtTime(g.value, now);
-      g.linearRampToValueAtTime(0, now + 0.6);
-      setTimeout(function () { nodes.stopBeat(); }, 400);
+      fadeTo(0, FADE_MS * 0.6);
       mt.classList.remove('playing');
       mtTip.textContent = 'tap to play · ambient';
     } catch (e) {
@@ -3165,9 +3086,6 @@
     if (mt.classList.contains('playing')) stopMusic();
     else startMusic();
   });
-  new MutationObserver(applyStateTone).observe(
-    document.documentElement, { attributes: true, attributeFilter: ['data-state'] }
-  );
 
   // ─ OUTLETS — today highlight + live open/closed
   function todayDay() { return new Date().getDay(); }

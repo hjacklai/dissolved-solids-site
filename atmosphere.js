@@ -72,150 +72,51 @@
     const mt = document.querySelector('.atmo-music');
     if (!mt) return;
     const tip = mt.querySelector('.tip');
-    let audioCtx = null;
-    let nodes = null;
+    const TARGET = 0.35;            // resting volume (background ambient)
+    const FADE_MS = 1200;            // fade in / out duration
+    const FADE_STEP_MS = 60;
+    let audio = null;
+    let fadeTimer = null;
 
-    function buildMusic() {
-      const ctx = (audioCtx = new (window.AudioContext || window.webkitAudioContext)());
+    function setupAudio() {
+      audio = new Audio('/photos/audio/ambient-loop.mp3');
+      audio.loop = true;
+      audio.preload = 'none';
+      audio.volume = 0;
+    }
 
-      // Master out
-      const master = ctx.createGain();
-      master.gain.value = 0;
-      master.connect(ctx.destination);
-
-      // PAD BUS — low-pass filtered drone, slow LFO sweep
-      const padBus = ctx.createGain();
-      padBus.gain.value = 0.55;
-      padBus.connect(master);
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.value = 800;
-      filter.Q.value = 0.6;
-      filter.connect(padBus);
-      function voice(freq, type, detune) {
-        const o = ctx.createOscillator();
-        o.type = type || 'sine';
-        o.frequency.value = freq;
-        o.detune.value = detune || 0;
-        const g = ctx.createGain();
-        g.gain.value = 0.25;
-        o.connect(g); g.connect(filter);
-        o.start();
-        return { osc: o, gain: g };
-      }
-      voice(98, 'sine');         // G2
-      voice(146.8, 'sine', -4);  // D3
-      const v3 = voice(196, 'triangle', 6);
-      v3.gain.gain.value = 0.12;
-      const lfo = ctx.createOscillator();
-      lfo.type = 'sine';
-      lfo.frequency.value = 0.05;
-      const lfoGain = ctx.createGain();
-      lfoGain.gain.value = 320;
-      lfo.connect(lfoGain);
-      lfoGain.connect(filter.frequency);
-      lfo.start();
-
-      // BEAT BUS — soft kick on 1+3, shaker on offbeats
-      const beatBus = ctx.createGain();
-      beatBus.gain.value = 0.9;
-      beatBus.connect(master);
-
-      function kick(when) {
-        const o = ctx.createOscillator();
-        const g = ctx.createGain();
-        o.type = 'sine';
-        o.frequency.setValueAtTime(120, when);
-        o.frequency.exponentialRampToValueAtTime(45, when + 0.12);
-        g.gain.setValueAtTime(0, when);
-        g.gain.linearRampToValueAtTime(0.45, when + 0.005);
-        g.gain.exponentialRampToValueAtTime(0.001, when + 0.45);
-        o.connect(g); g.connect(beatBus);
-        o.start(when);
-        o.stop(when + 0.5);
-      }
-
-      // Pre-build a noise buffer once for shaker reuse
-      const noiseDur = 0.08;
-      const noiseBuf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * noiseDur), ctx.sampleRate);
-      const noiseData = noiseBuf.getChannelData(0);
-      for (let i = 0; i < noiseData.length; i++) {
-        noiseData[i] = (Math.random() - 0.5) * Math.exp(-i / (ctx.sampleRate * 0.02));
-      }
-      function shaker(when) {
-        const src = ctx.createBufferSource();
-        src.buffer = noiseBuf;
-        const f = ctx.createBiquadFilter();
-        f.type = 'highpass';
-        f.frequency.value = 5500;
-        const g = ctx.createGain();
-        g.gain.value = 0.10;
-        src.connect(f); f.connect(g); g.connect(beatBus);
-        src.start(when);
-      }
-
-      // 8-step scheduler at 16th notes
-      // Step pattern (4/4 at 76 BPM): K . S . K . S .   →   K on 0,4 + S on 2,6
-      // With a quieter hat-shake on every odd step for swing texture.
-      const BPM = 76;
-      const stepTime = 60 / BPM / 4; // 16th-note duration
-      let step = 0;
-      let nextTime = 0;
-      let intervalId = null;
-
-      function tick() {
-        const ahead = ctx.currentTime + 0.18;
-        while (nextTime < ahead) {
-          if (step === 0 || step === 8) kick(nextTime);            // downbeats 1 & 3
-          if (step === 4 || step === 12) shaker(nextTime);         // 2 & 4 (heavier shake)
-          if (step % 2 === 1) shaker(nextTime);                    // soft offbeat texture
-          nextTime += stepTime;
-          step = (step + 1) % 16;
+    function fadeTo(target, duration) {
+      if (!audio) return;
+      if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; }
+      const startVol = audio.volume;
+      const startTime = Date.now();
+      fadeTimer = setInterval(function () {
+        const t = Math.min(1, (Date.now() - startTime) / duration);
+        audio.volume = Math.max(0, Math.min(1, startVol + (target - startVol) * t));
+        if (t >= 1) {
+          clearInterval(fadeTimer);
+          fadeTimer = null;
+          if (target === 0 && !audio.paused) audio.pause();
         }
-      }
-
-      function startBeat() {
-        if (intervalId) return;
-        step = 0;
-        nextTime = ctx.currentTime + 0.12;
-        intervalId = setInterval(tick, 40);
-      }
-      function stopBeat() {
-        if (intervalId) clearInterval(intervalId);
-        intervalId = null;
-      }
-
-      return { ctx, master, padBus, beatBus, startBeat, stopBeat };
+      }, FADE_STEP_MS);
     }
 
     async function start() {
       try {
-        if (!nodes) nodes = buildMusic();
-        if (audioCtx.state === 'suspended') await audioCtx.resume();
-        const now = audioCtx.currentTime;
-        const g = nodes.master.gain;
-        g.cancelScheduledValues(now);
-        g.setValueAtTime(g.value, now);
-        g.linearRampToValueAtTime(0.18, now + 1.2);
-        nodes.startBeat();
+        if (!audio) setupAudio();
+        await audio.play();
+        fadeTo(TARGET, FADE_MS);
         mt.classList.add('playing');
-        if (tip) tip.textContent = 'ambient · tap to stop';
+        if (tip) tip.textContent = 'lofi loop · tap to stop';
       } catch (e) {
         console.warn('music start failed', e);
         if (tip) tip.textContent = 'audio unavailable';
       }
     }
     function stop() {
-      if (!nodes) return;
+      if (!audio) return;
       try {
-        const now = audioCtx.currentTime;
-        const g = nodes.master.gain;
-        g.cancelScheduledValues(now);
-        g.setValueAtTime(g.value, now);
-        g.linearRampToValueAtTime(0, now + 0.6);
-        // Stop scheduling new beats slightly before mute so the trailing
-        // kicks don't poke through silence
-        setTimeout(function () { nodes.stopBeat(); }, 400);
+        fadeTo(0, FADE_MS * 0.6);
         mt.classList.remove('playing');
         if (tip) tip.textContent = 'tap to play · ambient';
       } catch (e) {
