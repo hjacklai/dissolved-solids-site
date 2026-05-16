@@ -932,6 +932,91 @@ a.label:hover { opacity: .8; }
 .foot-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 .foot-links span[aria-hidden] { opacity: .4; }
 
+/* House picks block on bar pages, curated upsell from the menu */
+.house-picks {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px dashed var(--rule);
+}
+.house-picks-eyebrow {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 10px;
+}
+.house-picks-h {
+  font-family: var(--serif);
+  font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1;
+  font-weight: 500;
+  font-size: clamp(24px, 3.2vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  margin: 0 0 6px;
+}
+.house-picks-h i { color: var(--accent); font-style: italic; }
+.house-picks-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 0 24px;
+}
+.house-picks .menu-grid-cards { gap: 12px; }
+.house-picks .menu-card-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 8px;
+}
+.house-picks-foot {
+  margin-top: 22px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.house-picks-foot a {
+  color: var(--fg);
+  border-bottom: 1px solid var(--accent);
+  transition: color .2s, border-color .2s;
+}
+.house-picks-foot a:hover { color: var(--accent); }
+
+/* Similar-drinks cross-link block at the bottom of every cocktail page */
+.similar-drinks {
+  margin: 56px 0 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.similar-drinks-h {
+  font-family: var(--serif);
+  font-variation-settings: 'opsz' 80, 'SOFT' 60, 'WONK' 1;
+  font-weight: 500;
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  margin: 0 0 6px;
+}
+.similar-drinks-h i { color: var(--accent); font-style: italic; }
+.similar-drinks-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0 0 22px;
+  max-width: 580px;
+}
+
 /* ====================================================================
    Responsive
    ==================================================================== */
