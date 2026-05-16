@@ -1744,6 +1744,127 @@
   }
   .panel { position: relative; }
   .panel:hover::after { opacity: 1; }
+
+  /* ─────────────────────────────────────────────────────────────
+     RESPONSIVE PASS — tablet (1100/900) and mobile (640/420)
+     Coverage: header, hero, tatler seal, gallery tiles, builder
+     chips, floats stack, big-switch, music toggle, outlets, reserve
+     ───────────────────────────────────────────────────────────── */
+
+  /* Tablet: 901–1100 — tighten paddings, shrink panel and hero */
+  @media (max-width: 1100px) {
+    :root { --gutter: clamp(20px, 4vw, 56px); }
+    .panel { width: 300px; }
+    .panel-row { font-size: 11px; padding: 8px 14px; }
+    .panel-row .v em { font-size: 12px; }
+    .hero { padding: 200px var(--gutter) 80px; }
+    .seal { width: 140px; height: 140px; bottom: 60px; }
+    .grid { grid-template-columns: repeat(8, 1fr); }
+    .reserve, .outlets { padding: 100px var(--gutter); }
+  }
+
+  /* Mobile narrow viewport: collapse the panel + dense hero + stack floats */
+  @media (max-width: 900px) {
+    .hero { padding: 140px 20px 100px; gap: 24px; }
+    .hero-content .body { font-size: 15px !important; }
+    .seal { width: 110px; height: 110px; bottom: 28px; right: 20px; }
+    .seal text { font-size: 9.5px; letter-spacing: .18em; }
+    .scroll-hint { left: 20px; bottom: 14px; }
+    .scroll-hint::before { width: 24px; }
+    /* hide the corner instrument panel on mobile — big bottom switcher takes over */
+    .panel { display: none; }
+    header { padding: 16px 18px; grid-template-columns: 1fr auto; gap: 12px; }
+    .brand .stack { gap: 2px; }
+    .brand .wordmark { font-size: 22px; }
+    .brand .tagline { font-size: 9px; letter-spacing: .22em; }
+    .brand-logo { width: 42px; height: 42px; }
+    .gallery { padding: 90px 18px 40px; }
+    .grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 12px; }
+    .tile { aspect-ratio: 4 / 3; }
+    .tile .img { position: absolute; inset: 0; }
+    .marquee-row { display: none; }
+    .quote-tile p { font-size: 24px; line-height: 1.2; }
+    /* push the floating WhatsApp + IG cluster up so they don't sit behind the big switcher */
+    .floats { bottom: 96px; right: 16px; }
+    .float { width: 46px; height: 46px; }
+    .float svg { width: 18px; height: 18px; }
+    /* music toggle: smaller + above the switcher on mobile */
+    .music-toggle { left: 16px; bottom: 96px; width: 44px; height: 44px; }
+    .music-toggle .bars { height: 14px; }
+    .music-toggle .bars i { width: 2.5px; }
+    .music-toggle .tooltip { display: none; }
+    /* reserve / outlets paddings */
+    .reserve { padding: 80px 18px 110px; }
+    .reserve-head h2, .outlets-head h2 { font-size: clamp(40px, 10vw, 72px); }
+    .reserve-card { background: rgba(0,0,0,.35); }
+    .reserve-left, .reserve-right { padding: 28px 22px; }
+    .outlets { padding: 80px 18px 120px; }
+    .outlet { padding: 36px 22px; }
+    .outlet-name { font-size: clamp(40px, 9vw, 60px); }
+    .outlet-blurb { font-size: 17px; }
+    .outlet-rows { grid-template-columns: 80px 1fr; gap: 12px 14px; font-size: 12px; }
+    .outlet-rows .k { font-size: 9.5px; padding-top: 2px; }
+    .hours-grid { grid-template-columns: 44px 1fr; gap: 4px 12px; font-size: 11px; }
+    .outlet-cta { gap: 8px; }
+    .outlet-cta .b { padding: 12px 16px; font-size: 10.5px; letter-spacing: .18em; }
+    /* inline builder: stack and shrink */
+    .builder { padding: 40px 18px 100px; }
+    .builder-q { font-size: clamp(38px, 8vw, 64px) !important; }
+    .chips-row { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+    .chip { padding: 14px 14px !important; min-height: 88px; }
+    .chip .chip-name { font-size: 18px !important; }
+    .chip .chip-desc { font-size: 11px !important; }
+    .result-name { font-size: clamp(56px, 14vw, 96px) !important; line-height: .92; }
+  }
+
+  /* Small mobile (320–640px): tighten further */
+  @media (max-width: 640px) {
+    h1 { font-size: clamp(56px, 14vw, 84px); }
+    html[data-state="dissolved"] .hero h1 { font-size: clamp(80px, 22vw, 140px); }
+    .hero .tagline { font-size: clamp(22px, 5.5vw, 32px) !important; }
+    .hero-content .body { font-size: 14px !important; line-height: 1.65; }
+    .cta-row { gap: 10px; }
+    .btn { padding: 14px 18px; font-size: 10.5px; letter-spacing: .18em; }
+    .kicker { font-size: 10px !important; letter-spacing: .22em !important; }
+    .seal { width: 92px; height: 92px; bottom: 24px; right: 18px; }
+    .seal text { font-size: 8.5px; letter-spacing: .14em; }
+    .reserve-head h2, .outlets-head h2 { font-size: clamp(36px, 11vw, 60px); }
+    .reserve-head .meta, .outlets-head .meta { font-size: 11px; line-height: 1.7; }
+    .cal-month { font-size: 22px; }
+    .cal-day { font-size: 12px; }
+    .pax-row .val { font-size: 24px; }
+    .time-slots { grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); }
+    .field-label { font-size: 10px; }
+    .res-input { font-size: 13px; padding: 12px 14px; }
+    .send-res { padding: 16px; font-size: 12px; letter-spacing: .22em; }
+    .bar-pill { padding: 14px 14px; grid-template-columns: 30px 1fr; gap: 10px; }
+    .bar-pill img { width: 30px; height: 30px; }
+    .bar-pill .nm { font-size: 18px; }
+  }
+
+  /* Very small (≤420): big-switch tightens further */
+  @media (max-width: 420px) {
+    .big-switch { padding: 4px; }
+    .big-switch button { padding: 10px 14px; font-size: 10px; letter-spacing: .16em; gap: 6px; }
+    .big-switch button .dotled { width: 6px; height: 6px; }
+    .brand .wordmark { font-size: 19px; }
+    .brand-logo { width: 36px; height: 36px; }
+    .hero { padding: 120px 16px 90px; }
+    .reserve-left, .reserve-right { padding: 22px 16px; }
+    .outlet { padding: 28px 18px; }
+  }
+
+  /* Touch + reduced motion: reduce particle counts and disable ken-burns */
+  @media (hover: none) and (pointer: coarse) {
+    .hero-photo { animation: none; transform: scale(1.04); }
+    .light-leak, .lace, .ink-cloud, .steam-wisp { display: none; }
+    .ripple, .scan-lines { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    .hero-photo { animation: none; }
+    .seal { animation: none; }
+  }
 </style>
 </head>
 <body>
@@ -2445,9 +2566,16 @@
   tickClock();
   setInterval(tickClock, 1000);
 
+  // Particle scale: fewer on smaller / touch / reduced-motion devices for perf
+  const _isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  const _isSmall = window.innerWidth < 700;
+  const _reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PSCALE = _reduced ? 0 : (_isSmall || _isTouch ? 0.35 : 1);
+  const pcount = n => Math.max(0, Math.round(n * PSCALE));
+
   // Bubbles for Soluble state — more + bigger spread
   const bubbles = document.getElementById('bubbles');
-  for (let i = 0; i < 90; i++) {
+  for (let i = 0; i < pcount(90); i++) {
     const b = document.createElement('div');
     b.className = 'bubble';
     const size = 3 + Math.random() * 44;
@@ -2460,7 +2588,7 @@
 
   // Amber dust motes drifting upward
   const dust = document.getElementById('dust');
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < pcount(60); i++) {
     const d = document.createElement('div');
     d.className = 'dust';
     d.style.left = (Math.random() * 100) + '%';
@@ -2475,7 +2603,7 @@
   // Falling rose petals (slow, organic, rotating)
   const petals = document.getElementById('petals');
   const petalTints = ['', 'amber', 'cream'];
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < pcount(20); i++) {
     const p = document.createElement('div');
     p.className = 'petal ' + petalTints[i % 3];
     p.style.left = (Math.random() * 100) + '%';
@@ -2488,7 +2616,7 @@
 
   // Dissolved — falling droplets
   const droplets = document.getElementById('droplets');
-  for (let i = 0; i < 24; i++) {
+  for (let i = 0; i < pcount(24); i++) {
     const d = document.createElement('div');
     d.className = 'droplet';
     d.style.left = (Math.random() * 100) + '%';
@@ -2500,7 +2628,7 @@
 
   // Dissolved — neon sparkles rising
   const sparks = document.getElementById('sparks');
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < pcount(50); i++) {
     const s = document.createElement('div');
     s.className = 'spark' + (Math.random() < .5 ? ' cyan' : '');
     s.style.left = (Math.random() * 100) + '%';
@@ -2838,19 +2966,86 @@
   const _origPanel = document.getElementById('statePanel');
   if (_origPanel) _origPanel.addEventListener('click', () => setTimeout(updateSwitch, 50));
 
-  // ─ MUSIC TOGGLE
-  const music = document.getElementById('bgMusic');
+  // ─ MUSIC TOGGLE — procedural ambient pad via Web Audio API
+  // Two slow drones + LFO + low-pass filter. Timbre shifts per page state.
+  // No audio file needed: license-free, zero KB, works offline.
   const mt = document.getElementById('musicToggle');
   const mtTip = document.getElementById('musicTip');
-  mt.addEventListener('click', async () => {
-    if (!music.src) {
-      mtTip.textContent = 'add a stock track → brief';
-      mt.classList.toggle('playing');
-      return;
+  let audioCtx = null;
+  let nodes = null;
+  function buildAmbientPad() {
+    const ctx = audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const master = ctx.createGain();
+    master.gain.value = 0;          // start silent
+    master.connect(ctx.destination);
+    // Low-pass filter for warmth
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 800;
+    filter.Q.value = 0.6;
+    filter.connect(master);
+    // Two slow oscillators (a fifth apart) make a soft pad
+    function makeVoice(freq, type, detune) {
+      const o = ctx.createOscillator();
+      o.type = type || 'sine';
+      o.frequency.value = freq;
+      o.detune.value = detune || 0;
+      const g = ctx.createGain();
+      g.gain.value = 0.25;
+      o.connect(g); g.connect(filter);
+      o.start();
+      return { osc: o, gain: g };
     }
-    if (music.paused) { try { await music.play(); mt.classList.add('playing'); mtTip.textContent = 'now playing'; } catch(e) {} }
-    else { music.pause(); mt.classList.remove('playing'); mtTip.textContent = 'tap to play · ambient'; }
+    const v1 = makeVoice(98, 'sine');        // G2
+    const v2 = makeVoice(146.8, 'sine', -4); // D3 (a fifth above G2, faintly detuned)
+    const v3 = makeVoice(196, 'triangle', 6);// G3 (slightly bright)
+    v3.gain.gain.value = 0.12;
+    // Slow LFO sweeps the filter cutoff to give the drone movement
+    const lfo = ctx.createOscillator();
+    lfo.type = 'sine';
+    lfo.frequency.value = 0.05; // 20 second cycle
+    const lfoGain = ctx.createGain();
+    lfoGain.gain.value = 320;
+    lfo.connect(lfoGain); lfoGain.connect(filter.frequency);
+    lfo.start();
+    return { ctx, master, filter, voices: [v1, v2, v3], lfo };
+  }
+  function applyStateTone() {
+    if (!nodes) return;
+    const s = document.documentElement.dataset.state;
+    // Soluble: warmer, lower cutoff base. Dissolved: cooler, brighter overtone.
+    if (s === 'dissolved') {
+      nodes.filter.frequency.setTargetAtTime(1100, audioCtx.currentTime, 1.5);
+      nodes.voices[2].osc.frequency.setTargetAtTime(294, audioCtx.currentTime, 2);
+    } else {
+      nodes.filter.frequency.setTargetAtTime(700, audioCtx.currentTime, 1.5);
+      nodes.voices[2].osc.frequency.setTargetAtTime(196, audioCtx.currentTime, 2);
+    }
+  }
+  async function startMusic() {
+    if (!nodes) nodes = buildAmbientPad();
+    if (audioCtx.state === 'suspended') await audioCtx.resume();
+    applyStateTone();
+    nodes.master.gain.cancelScheduledValues(audioCtx.currentTime);
+    nodes.master.gain.setTargetAtTime(0.06, audioCtx.currentTime, 0.8);
+    mt.classList.add('playing');
+    mtTip.textContent = 'ambient · tap to stop';
+  }
+  function stopMusic() {
+    if (!nodes) return;
+    nodes.master.gain.cancelScheduledValues(audioCtx.currentTime);
+    nodes.master.gain.setTargetAtTime(0, audioCtx.currentTime, 0.6);
+    mt.classList.remove('playing');
+    mtTip.textContent = 'tap to play · ambient';
+  }
+  mt.addEventListener('click', () => {
+    if (mt.classList.contains('playing')) stopMusic();
+    else startMusic();
   });
+  // Update tone when page state flips
+  new MutationObserver(applyStateTone).observe(
+    document.documentElement, { attributes: true, attributeFilter: ['data-state'] }
+  );
 
   // ─ OUTLETS — today highlight + live open/closed
   function todayDay() { return new Date().getDay(); }
