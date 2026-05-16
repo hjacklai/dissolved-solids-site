@@ -114,6 +114,34 @@
   </url>
 
   <url>
+    <loc>https://dissolvedsolids.co/visit/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://dissolvedsolids.co/faq/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://dissolvedsolids.co/privacy/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://dissolvedsolids.co/terms/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
     <loc>https://dissolvedsolids.co/cocktails/pyrus-gimlet/</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>

@@ -908,6 +908,30 @@ a.label:hover { opacity: .8; }
 }
 .foot-hours { margin-top: 14px; color: var(--muted); }
 
+.foot-links {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.9;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+}
+.foot-links a {
+  color: var(--fg);
+  border-bottom: 1px solid var(--rule);
+  transition: color .2s, border-color .2s;
+}
+.foot-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.foot-links span[aria-hidden] { opacity: .4; }
+
 /* ====================================================================
    Responsive
    ==================================================================== */
