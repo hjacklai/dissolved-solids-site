@@ -4,8 +4,13 @@
 
   <url>
     <loc>https://dissolvedsolids.co/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://dissolvedsolids.co/photos/dissolved-hero.jpg</image:loc>
+      <image:title>Dissolved Solids and Soluble Solids — two cocktail bars in Petaling Jaya</image:title>
+    </image:image>
   </url>
 
   <url>

@@ -173,6 +173,7 @@
     transition: background var(--t-bg) cubic-bezier(.7,0,.3,1);
     overflow-x: hidden;
     min-height: 100vh;
+    min-height: 100dvh;
   }
 
   /* ─────────────────────────────────────────────────────────────
@@ -728,7 +729,9 @@
   main { position: relative; z-index: 10; }
 
   .hero {
-    min-height: 100vh; position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    position: relative;
     padding: 240px 40px 80px;
     display: flex; flex-direction: column; justify-content: flex-end;
     gap: 40px;
@@ -2194,6 +2197,8 @@
       <b>05 quick taps</b><br/>
       <span class="for-sol">→ sent to Soluble Solids · SS2</span>
       <span class="for-dis">→ sent to Dissolved Solids · DK</span>
+      <br/>
+      <a href="/builder/" style="color:var(--accent); border-bottom: 1px solid currentColor; padding-bottom: 1px; transition: opacity .2s;">full builder with shareable URLs →</a>
     </div>
   </div>
 
@@ -2788,15 +2793,27 @@
   document.getElementById('sendWA').addEventListener('click', () => {
     const state = document.documentElement.dataset.state;
     const num = state === 'soluble' ? '601116828651' : '601140087607';
-    const venue = state === 'soluble' ? 'Soluble Solids SS2' : 'Dissolved Solids Damansara Kim';
+    const venue = state === 'soluble' ? 'Soluble Solids' : 'Dissolved Solids';
+    const dash = '...';
     const lines = [
-      `Hi ${venue}! I designed a drink:`,
-      `• mood: ${picks.mood.join(' · ') || '—'}`,
-      `• spirit: ${picks.spirit[0] || '—'}`,
-      `• taste: ${picks.taste.join(' · ') || '—'}`,
-      `• strength: ${picks.strength[0] || '—'}`,
-      `• when: ${picks.occasion[0] || '—'}`,
-      `Excited to come by!`,
+      `*DRINK BUILDER · RESERVATION*`,
+      ``,
+      `Hi ${venue}! I designed a drink on dissolvedsolids.co and I'd like to book a table to have it made.`,
+      ``,
+      `*Booking*`,
+      `Date: `,
+      `Time: `,
+      `Party size: `,
+      `(or let me know what's free this week)`,
+      ``,
+      `*Drink brief*`,
+      `Mood: ${picks.mood.join(', ') || dash}`,
+      `Spirit: ${picks.spirit[0] || dash}`,
+      `Taste: ${picks.taste.join(', ') || dash}`,
+      `Strength: ${picks.strength[0] || dash}`,
+      `When: ${picks.occasion[0] || dash}`,
+      ``,
+      `Glass + build + garnish are your call. Substitute anything you don't have. Looking forward to it!`,
     ];
     const url = `https://wa.me/${num}?text=${encodeURIComponent(lines.join('\n'))}`;
     window.open(url, '_blank');
