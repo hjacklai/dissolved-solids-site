@@ -1790,7 +1790,11 @@
     .reserve, .outlets { padding: 100px var(--gutter); }
   }
   @media (max-width: 900px) {
-    .hero { padding: 140px 20px 100px; gap: 24px; }
+    .hero {
+      min-height: auto;
+      padding: 100px 20px 140px;
+      gap: 20px;
+    }
     .hero-content .body { font-size: 15px !important; }
     .seal { width: 110px; height: 110px; bottom: 28px; right: 20px; }
     .seal text { font-size: 9.5px; letter-spacing: .18em; }
@@ -1865,7 +1869,7 @@
     .big-switch button .dotled { width: 6px; height: 6px; }
     .brand .wordmark { font-size: 19px; }
     .brand-logo { width: 36px; height: 36px; }
-    .hero { padding: 120px 16px 90px; }
+    .hero { padding: 80px 16px 120px; gap: 18px; }
     .reserve-left, .reserve-right { padding: 22px 16px; }
     .outlet { padding: 28px 18px; }
   }
