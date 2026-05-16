@@ -653,13 +653,19 @@
   function buildWhatsAppUrl(bar, ans, recipe) {
     const plainName = recipe.name.replace(/<\/?i>/g, '');
     const lines = [
-      `*DRINK BUILDER*`,
+      `*DRINK BUILDER · RESERVATION*`,
       ``,
-      `Hi ${BAR_NAMES[bar]}! I used the drink builder on your website (dissolvedsolids.co/builder) and I'd like to come in and have you make this for me.`,
+      `Hi ${BAR_NAMES[bar]}! I used the drink builder on dissolvedsolids.co/builder and I'd like to book a table to have this made for me.`,
       ``,
-      `Drink: ${plainName}`,
+      `*Booking*`,
+      `Date: `,
+      `Time: `,
+      `Party size: `,
+      `(or let me know what's free this week)`,
       ``,
-      `Ingredients (no quantities - you decide the pour):`,
+      `*Drink: ${plainName}*`,
+      ``,
+      `Ingredients (no quantities, you decide the pour):`,
       ...recipe.ingredients.map(i => `- ${i}`),
       ``,
       `Method: ${recipe.method}`,
@@ -667,7 +673,7 @@
       ``,
       `(Mood: ${fmtAnswer(ans.mood)} · profile: ${fmtAnswer(ans.profile)} · strength: ${ans.strength} · occasion: ${ans.occasion})`,
       ``,
-      `Glass is your call. Substitute anything we don't have. Looking forward to it!`,
+      `Glass is your call. Substitute anything you don't have. Looking forward to it!`,
     ];
     return `https://wa.me/${NUMBERS[bar]}?text=` + encodeURIComponent(lines.join('\n'));
   }
