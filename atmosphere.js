@@ -37,17 +37,34 @@
     const isSmall = window.innerWidth < 700;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) return;
-    const count = isTouch || isSmall ? 8 : 22;
-    for (let i = 0; i < count; i++) {
+
+    // Drift dots — rising upward, varied amber/rose/cream
+    const dotCount = isTouch || isSmall ? 14 : 40;
+    const dotTints = ['', 'rose', 'cream'];
+    for (let i = 0; i < dotCount; i++) {
       const d = document.createElement('span');
-      d.className = 'atmo-dot';
+      d.className = 'atmo-dot ' + dotTints[i % 3];
       d.style.left = Math.random() * 100 + '%';
       d.style.bottom = -5 - Math.random() * 30 + 'vh';
-      d.style.animationDuration = 18 + Math.random() * 22 + 's';
+      d.style.animationDuration = 16 + Math.random() * 24 + 's';
       d.style.animationDelay = -Math.random() * 35 + 's';
-      const size = 2 + Math.random() * 3;
+      const size = 2 + Math.random() * 5;
       d.style.width = d.style.height = size + 'px';
       container.appendChild(d);
+    }
+
+    // Petal flakes — slower, falling downward, organic rotation
+    const flakeCount = isTouch || isSmall ? 5 : 12;
+    const flakeTints = ['', 'amber', 'cream'];
+    for (let i = 0; i < flakeCount; i++) {
+      const f = document.createElement('span');
+      f.className = 'atmo-flake ' + flakeTints[i % 3];
+      f.style.left = Math.random() * 100 + '%';
+      f.style.animationDuration = 22 + Math.random() * 20 + 's';
+      f.style.animationDelay = -Math.random() * 40 + 's';
+      const scale = 0.7 + Math.random() * 0.8;
+      f.style.transform = 'scale(' + scale + ')';
+      container.appendChild(f);
     }
   }
 

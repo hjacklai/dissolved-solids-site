@@ -104,7 +104,12 @@ html {
   text-size-adjust: 100%;
 }
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 1200px 900px at 78% 12%, rgba(209,139,58,.12) 0%, transparent 60%),
+    radial-gradient(ellipse 1000px 800px at 12% 88%, rgba(214,163,154,.10) 0%, transparent 60%),
+    radial-gradient(ellipse 700px 700px at 50% 50%, rgba(214,163,154,.04) 0%, transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--fg);
   font-family: var(--serif);
   font-variation-settings: 'opsz' 20, 'SOFT' 20, 'WONK' 0;
@@ -112,7 +117,16 @@ body {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
   transition: background .35s ease, color .35s ease;
+  position: relative;
 }
+/* Soft vignette frame for warmth on the edges */
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(42,19,48,.04) 0%, transparent 220px),
+    radial-gradient(ellipse 130% 100% at 50% 130%, rgba(42,19,48,.10) 0%, transparent 60%);
+}
+body > * { position: relative; z-index: 1; }
 img { max-width: 100%; height: auto; }
 
 /* Fraunces: dial up the playful axes for big display moments */
@@ -2284,17 +2298,50 @@ a.label:hover { opacity: .8; }
 .atmo-dot {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(209, 139, 58, .55) 0%, rgba(209, 139, 58, .12) 60%, transparent 80%);
-  box-shadow: 0 0 8px rgba(255, 200, 130, .25);
+  background: radial-gradient(circle, rgba(209, 139, 58, .70) 0%, rgba(209, 139, 58, .18) 60%, transparent 80%);
+  box-shadow: 0 0 10px rgba(255, 200, 130, .35);
   opacity: 0;
   animation: atmo-drift linear infinite;
 }
+.atmo-dot.rose {
+  background: radial-gradient(circle, rgba(214, 163, 154, .65) 0%, rgba(214, 163, 154, .15) 60%, transparent 80%);
+  box-shadow: 0 0 10px rgba(214, 163, 154, .3);
+}
+.atmo-dot.cream {
+  background: radial-gradient(circle, rgba(255, 235, 200, .55) 0%, rgba(255, 220, 170, .12) 60%, transparent 80%);
+  box-shadow: 0 0 12px rgba(255, 235, 200, .25);
+}
 @keyframes atmo-drift {
   0%   { transform: translate(0, 0) scale(.7); opacity: 0; }
-  10%  { opacity: .85; }
+  10%  { opacity: .90; }
   50%  { transform: translate(20px, -45vh) scale(1); opacity: .85; }
   90%  { opacity: .6; }
   100% { transform: translate(-15px, -110vh) scale(.4); opacity: 0; }
+}
+
+/* Petal flakes — bigger, slower, organic */
+.atmo-flake {
+  position: absolute; top: -30px;
+  width: 14px; height: 18px;
+  background: radial-gradient(ellipse at 40% 30%, #f0b6a6 0%, #d6837a 50%, #b85a55 100%);
+  border-radius: 60% 40% 50% 40% / 70% 50% 60% 30%;
+  opacity: 0;
+  box-shadow: inset -1px -2px 4px rgba(0,0,0,.15), inset 2px 1px 3px rgba(255,220,210,.3);
+  animation: atmo-flake-fall linear infinite;
+  transform-origin: center;
+}
+.atmo-flake.amber {
+  background: radial-gradient(ellipse at 40% 30%, #f5cf8a 0%, #d18b3a 60%, #8a5818 100%);
+}
+.atmo-flake.cream {
+  background: radial-gradient(ellipse at 40% 30%, #faf0d8 0%, #e8c378 60%, #b88d3a 100%);
+}
+@keyframes atmo-flake-fall {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10%  { opacity: .75; }
+  50%  { transform: translate(60px, 55vh) rotate(180deg); opacity: .65; }
+  90%  { opacity: .5; }
+  100% { transform: translate(-30px, 115vh) rotate(360deg); opacity: 0; }
 }
 
 .atmo-music {
