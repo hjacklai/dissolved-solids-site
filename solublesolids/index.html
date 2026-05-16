@@ -954,7 +954,7 @@
     color: rgba(255,255,255,.5);
   }
   @media (max-width: 720px) {
-    .big-switch button { padding: 12px 18px; font-size: 11px; letter-spacing: .2em; }
+    .big-switch button { padding: 14px 20px; font-size: 11px; letter-spacing: .2em; min-height: 44px; }
     .big-switch .hint { display: none; }
   }
 
@@ -1822,8 +1822,8 @@
     .brand .tagline { font-size: 9px; letter-spacing: .22em; }
     .brand-logo { width: 44px; height: 44px; }
     nav { font-size: 9.5px; gap: 2px 4px; }
-    nav a { padding: 7px 8px; }
-    nav .nav-cta { padding: 8px 13px; margin-left: 2px; }
+    nav a { padding: 11px 10px; min-height: 44px; display: inline-flex; align-items: center; }
+    nav .nav-cta { padding: 12px 16px; margin-left: 2px; min-height: 44px; }
     .gallery { padding: 90px 18px 40px; }
     .grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 12px; }
     .tile { aspect-ratio: 4 / 3; }
@@ -1896,9 +1896,9 @@
     .seal { width: 86px; height: 86px; bottom: 14px; right: 12px; }
     .reserve-left, .reserve-right { padding: 22px 16px; }
     .outlet { padding: 28px 18px; }
-    .music-toggle { left: 12px; bottom: 88px; width: 40px; height: 40px; }
-    .floats { right: 12px; bottom: 88px; gap: 8px; }
-    .float { width: 40px; height: 40px; }
+    .music-toggle { left: 12px; bottom: 96px; width: 44px; height: 44px; }
+    .floats { right: 12px; bottom: 96px; gap: 8px; }
+    .float { width: 44px; height: 44px; }
   }
   @media (hover: none) and (pointer: coarse) {
     .hero-photo { animation: none; transform: scale(1.04); }
@@ -3032,11 +3032,14 @@
     const master = ctx.createGain();
     master.gain.value = 0;
     master.connect(ctx.destination);
+    const padBus = ctx.createGain();
+    padBus.gain.value = 0.55;
+    padBus.connect(master);
     const filter = ctx.createBiquadFilter();
     filter.type = 'lowpass';
     filter.frequency.value = 800;
     filter.Q.value = 0.6;
-    filter.connect(master);
+    filter.connect(padBus);
     function makeVoice(freq, type, detune) {
       const o = ctx.createOscillator();
       o.type = type || 'sine';
@@ -3059,7 +3062,57 @@
     lfoGain.gain.value = 320;
     lfo.connect(lfoGain); lfoGain.connect(filter.frequency);
     lfo.start();
-    return { ctx, master, filter, voices: [v1, v2, v3], lfo };
+    const beatBus = ctx.createGain();
+    beatBus.gain.value = 0.9;
+    beatBus.connect(master);
+    function kick(when) {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(120, when);
+      o.frequency.exponentialRampToValueAtTime(45, when + 0.12);
+      g.gain.setValueAtTime(0, when);
+      g.gain.linearRampToValueAtTime(0.45, when + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.001, when + 0.45);
+      o.connect(g); g.connect(beatBus);
+      o.start(when); o.stop(when + 0.5);
+    }
+    const noiseBuf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * 0.08), ctx.sampleRate);
+    const nd = noiseBuf.getChannelData(0);
+    for (let i = 0; i < nd.length; i++) nd[i] = (Math.random() - 0.5) * Math.exp(-i / (ctx.sampleRate * 0.02));
+    function shaker(when) {
+      const src = ctx.createBufferSource();
+      src.buffer = noiseBuf;
+      const f = ctx.createBiquadFilter();
+      f.type = 'highpass';
+      f.frequency.value = 5500;
+      const g = ctx.createGain();
+      g.gain.value = 0.10;
+      src.connect(f); f.connect(g); g.connect(beatBus);
+      src.start(when);
+    }
+    const stepTime = 60 / 76 / 4;
+    let step = 0, nextTime = 0, intervalId = null;
+    function tick() {
+      const ahead = ctx.currentTime + 0.18;
+      while (nextTime < ahead) {
+        if (step === 0 || step === 8) kick(nextTime);
+        if (step === 4 || step === 12) shaker(nextTime);
+        if (step % 2 === 1) shaker(nextTime);
+        nextTime += stepTime;
+        step = (step + 1) % 16;
+      }
+    }
+    function startBeat() {
+      if (intervalId) return;
+      step = 0; nextTime = ctx.currentTime + 0.12;
+      intervalId = setInterval(tick, 40);
+    }
+    function stopBeat() {
+      if (intervalId) clearInterval(intervalId);
+      intervalId = null;
+    }
+    return { ctx, master, filter, voices: [v1, v2, v3], lfo, padBus, beatBus, startBeat, stopBeat };
   }
   function applyStateTone() {
     if (!nodes) return;
@@ -3081,7 +3134,8 @@
       const g = nodes.master.gain;
       g.cancelScheduledValues(now);
       g.setValueAtTime(g.value, now);
-      g.linearRampToValueAtTime(0.12, now + 1.2);
+      g.linearRampToValueAtTime(0.18, now + 1.2);
+      nodes.startBeat();
       mt.classList.add('playing');
       mtTip.textContent = 'ambient · tap to stop';
     } catch (e) {
@@ -3097,6 +3151,7 @@
       g.cancelScheduledValues(now);
       g.setValueAtTime(g.value, now);
       g.linearRampToValueAtTime(0, now + 0.6);
+      setTimeout(function () { nodes.stopBeat(); }, 400);
       mt.classList.remove('playing');
       mtTip.textContent = 'tap to play · ambient';
     } catch (e) {

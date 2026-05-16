@@ -2387,8 +2387,11 @@ a.label:hover { opacity: .8; }
 .atmo-music:hover .tip { opacity: 1; }
 
 @media (max-width: 640px) {
-  .atmo-music { width: 44px; height: 44px; left: 16px; bottom: 16px; }
+  .atmo-music { width: 48px; height: 48px; left: 16px; bottom: 16px; }
   .atmo-music .tip { display: none; }
+}
+@media (max-width: 420px) {
+  .atmo-music { width: 44px; height: 44px; left: 12px; bottom: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .atmo-dot { animation: none !important; opacity: 0 !important; }
