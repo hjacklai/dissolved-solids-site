@@ -542,20 +542,21 @@
   }
 
   .brand {
-    display: flex; align-items: center; gap: 18px;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
     color: var(--paper);
+    text-align: center;
   }
   .brand-logo {
-    width: 56px; height: 56px;
+    width: 64px; height: 64px;
     object-fit: contain;
-    filter: brightness(0) invert(1) drop-shadow(0 0 14px rgba(255,255,255,.25));
+    filter: drop-shadow(0 0 14px rgba(255,255,255,.18));
     animation: brandPulse 4s ease-in-out infinite alternate;
   }
   @keyframes brandPulse {
-    from { filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,.15)); }
-    to   { filter: brightness(0) invert(1) drop-shadow(0 0 18px rgba(255,255,255,.35)); }
+    from { filter: drop-shadow(0 0 8px rgba(255,255,255,.12)); }
+    to   { filter: drop-shadow(0 0 20px rgba(255,255,255,.30)); }
   }
-  .brand .stack { display: flex; flex-direction: column; gap: 4px; line-height: 1; }
+  .brand .stack { display: flex; flex-direction: column; gap: 4px; line-height: 1; align-items: center; }
   .brand .wordmark {
     font-family: var(--serif);
     font-size: 30px;
@@ -1047,7 +1048,7 @@
   }
   .bar-pill img {
     width: 36px; height: 36px; object-fit: contain;
-    filter: brightness(0) invert(1);
+    filter: drop-shadow(0 0 6px rgba(255,255,255,.12));
   }
   .bar-pill .nm {
     font-family: var(--serif); font-size: 22px; color: var(--paper); line-height: 1; letter-spacing: -.01em;
@@ -1276,7 +1277,7 @@
   .outlet-head .logo {
     width: 56px; height: 56px;
     object-fit: contain;
-    filter: brightness(0) invert(1);
+    filter: drop-shadow(0 0 10px rgba(255,255,255,.15));
   }
   .outlet-head .lbl {
     font-family: var(--mono); font-size: 10.5px;
@@ -1781,28 +1782,40 @@
     .panel { width: 300px; }
     .panel-row { font-size: 11px; padding: 8px 14px; }
     .panel-row .v em { font-size: 12px; }
-    .hero { padding: 200px var(--gutter) 80px; }
+    .hero { padding: 220px var(--gutter) 80px; }
     .seal { width: 140px; height: 140px; bottom: 60px; }
-    .grid { grid-template-columns: repeat(8, 1fr); }
+    .grid { grid-template-columns: repeat(8, 1fr); grid-auto-rows: 130px; }
+    .t-big-l { grid-column: span 8; grid-row: span 3; }
+    .t-tall  { grid-column: span 4; grid-row: span 3; }
+    .t-wide  { grid-column: span 8; grid-row: span 2; }
+    .t-half  { grid-column: span 8; grid-row: span 2; }
+    .t-third { grid-column: span 4; grid-row: span 2; }
+    .t-square{ grid-column: span 4; grid-row: span 2; }
+    .quote-tile { grid-column: span 8; grid-row: span 2; }
     .reserve, .outlets { padding: 100px var(--gutter); }
   }
   @media (max-width: 900px) {
     .hero {
       min-height: auto;
-      padding: 100px 20px 140px;
-      gap: 20px;
+      padding: 150px 20px 150px;
+      gap: 18px;
     }
     .hero-content .body { font-size: 15px !important; }
-    .seal { width: 110px; height: 110px; bottom: 28px; right: 20px; }
-    .seal text { font-size: 9.5px; letter-spacing: .18em; }
-    .scroll-hint { left: 20px; bottom: 14px; }
-    .scroll-hint::before { width: 24px; }
+    .seal { width: 100px; height: 100px; bottom: 16px; right: 16px; }
+    .seal text { font-size: 9px; letter-spacing: .16em; }
+    .scroll-hint { display: none; }
     .panel { display: none; }
-    header { padding: 16px 18px; grid-template-columns: 1fr auto; gap: 12px; }
+    header {
+      padding: 12px 16px 10px;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 0;
+    }
+    .brand { gap: 8px; }
     .brand .stack { gap: 2px; }
     .brand .wordmark { font-size: 22px; }
     .brand .tagline { font-size: 9px; letter-spacing: .22em; }
-    .brand-logo { width: 42px; height: 42px; }
+    .brand-logo { width: 44px; height: 44px; }
     .gallery { padding: 90px 18px 40px; }
     .grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 12px; }
     .tile { aspect-ratio: 4 / 3; }
@@ -1862,13 +1875,19 @@
   }
   @media (max-width: 420px) {
     .big-switch { padding: 4px; }
-    .big-switch button { padding: 10px 14px; font-size: 10px; letter-spacing: .16em; gap: 6px; }
+    .big-switch button { padding: 10px 12px; font-size: 9.5px; letter-spacing: .14em; gap: 6px; }
     .big-switch button .dotled { width: 6px; height: 6px; }
-    .brand .wordmark { font-size: 19px; }
-    .brand-logo { width: 36px; height: 36px; }
-    .hero { padding: 80px 16px 120px; gap: 18px; }
+    .brand .wordmark { font-size: 20px; }
+    .brand .tagline { font-size: 8.5px; letter-spacing: .2em; }
+    .brand-logo { width: 38px; height: 38px; }
+    header { padding: 10px 12px 8px; }
+    .hero { padding: 130px 16px 140px; gap: 16px; }
+    .seal { width: 86px; height: 86px; bottom: 14px; right: 12px; }
     .reserve-left, .reserve-right { padding: 22px 16px; }
     .outlet { padding: 28px 18px; }
+    .music-toggle { left: 12px; bottom: 88px; width: 40px; height: 40px; }
+    .floats { right: 12px; bottom: 88px; gap: 8px; }
+    .float { width: 40px; height: 40px; }
   }
   @media (hover: none) and (pointer: coarse) {
     .hero-photo { animation: none; transform: scale(1.04); }
