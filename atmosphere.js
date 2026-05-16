@@ -113,19 +113,36 @@
     }
 
     async function start() {
-      if (!nodes) nodes = buildPad();
-      if (audioCtx.state === 'suspended') await audioCtx.resume();
-      nodes.master.gain.cancelScheduledValues(audioCtx.currentTime);
-      nodes.master.gain.setTargetAtTime(0.06, audioCtx.currentTime, 0.8);
-      mt.classList.add('playing');
-      if (tip) tip.textContent = 'ambient · tap to stop';
+      try {
+        if (!nodes) nodes = buildPad();
+        if (audioCtx.state === 'suspended') await audioCtx.resume();
+        const now = audioCtx.currentTime;
+        const g = nodes.master.gain;
+        const startVal = g.value;
+        g.cancelScheduledValues(now);
+        g.setValueAtTime(startVal, now);
+        g.linearRampToValueAtTime(0.12, now + 1.2);
+        mt.classList.add('playing');
+        if (tip) tip.textContent = 'ambient · tap to stop';
+      } catch (e) {
+        console.warn('music start failed', e);
+        if (tip) tip.textContent = 'audio unavailable';
+      }
     }
     function stop() {
       if (!nodes) return;
-      nodes.master.gain.cancelScheduledValues(audioCtx.currentTime);
-      nodes.master.gain.setTargetAtTime(0, audioCtx.currentTime, 0.6);
-      mt.classList.remove('playing');
-      if (tip) tip.textContent = 'tap to play · ambient';
+      try {
+        const now = audioCtx.currentTime;
+        const g = nodes.master.gain;
+        const startVal = g.value;
+        g.cancelScheduledValues(now);
+        g.setValueAtTime(startVal, now);
+        g.linearRampToValueAtTime(0, now + 0.6);
+        mt.classList.remove('playing');
+        if (tip) tip.textContent = 'tap to play · ambient';
+      } catch (e) {
+        console.warn('music stop failed', e);
+      }
     }
     mt.addEventListener('click', function () {
       if (mt.classList.contains('playing')) stop();

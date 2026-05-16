@@ -1743,7 +1743,7 @@
     .scroll-hint { left: 24px; bottom: 24px; }
   }
 
-  /* small tooltip on the panel */
+  /* small tooltip on the panel — sits below it */
   .panel::after {
     content: '◷ tap to flip state';
     position: absolute; left: 50%; transform: translateX(-50%);
@@ -1753,7 +1753,6 @@
     opacity: 0; transition: opacity .3s;
     pointer-events: none;
   }
-  .panel { position: relative; }
   .panel:hover::after { opacity: 1; }
 
   /* ─────────────────────────────────────────────────────────────
@@ -3070,20 +3069,35 @@
     }
   }
   async function startMusic() {
-    if (!nodes) nodes = buildAmbientPad();
-    if (audioCtx.state === 'suspended') await audioCtx.resume();
-    applyStateTone();
-    nodes.master.gain.cancelScheduledValues(audioCtx.currentTime);
-    nodes.master.gain.setTargetAtTime(0.06, audioCtx.currentTime, 0.8);
-    mt.classList.add('playing');
-    mtTip.textContent = 'ambient · tap to stop';
+    try {
+      if (!nodes) nodes = buildAmbientPad();
+      if (audioCtx.state === 'suspended') await audioCtx.resume();
+      applyStateTone();
+      const now = audioCtx.currentTime;
+      const g = nodes.master.gain;
+      g.cancelScheduledValues(now);
+      g.setValueAtTime(g.value, now);
+      g.linearRampToValueAtTime(0.12, now + 1.2);
+      mt.classList.add('playing');
+      mtTip.textContent = 'ambient · tap to stop';
+    } catch (e) {
+      console.warn('music start failed', e);
+      mtTip.textContent = 'audio unavailable';
+    }
   }
   function stopMusic() {
     if (!nodes) return;
-    nodes.master.gain.cancelScheduledValues(audioCtx.currentTime);
-    nodes.master.gain.setTargetAtTime(0, audioCtx.currentTime, 0.6);
-    mt.classList.remove('playing');
-    mtTip.textContent = 'tap to play · ambient';
+    try {
+      const now = audioCtx.currentTime;
+      const g = nodes.master.gain;
+      g.cancelScheduledValues(now);
+      g.setValueAtTime(g.value, now);
+      g.linearRampToValueAtTime(0, now + 0.6);
+      mt.classList.remove('playing');
+      mtTip.textContent = 'tap to play · ambient';
+    } catch (e) {
+      console.warn('music stop failed', e);
+    }
   }
   mt.addEventListener('click', () => {
     if (mt.classList.contains('playing')) stopMusic();
