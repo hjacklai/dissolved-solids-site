@@ -589,6 +589,13 @@
   html[data-state="soluble"]   .logo-dis { display: none; }
   html[data-state="dissolved"] .logo-sol { display: none; }
 
+  /* Mirror the Dissolved Solids logo horizontally wherever it shows */
+  .logo-dis,
+  .outlet[data-brand="dissolved"] .outlet-head .logo,
+  .bar-pill[data-bar="dissolved"] img {
+    transform: scaleX(-1);
+  }
+
   /* Sub-row nav under the centered brand */
   nav {
     display: flex; align-items: center; justify-content: center;
