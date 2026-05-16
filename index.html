@@ -3020,7 +3020,7 @@
   const _origPanel = document.getElementById('statePanel');
   if (_origPanel) _origPanel.addEventListener('click', () => setTimeout(updateSwitch, 50));
 
-  // ─ MUSIC TOGGLE — plays /photos/audio/ambient-loop.mp3 (Pixabay license, free for commercial use)
+  // ─ MUSIC TOGGLE — plays /photos/audio/lofi-beat.mp3 (Pixabay license, free for commercial use)
   const mt = document.getElementById('musicToggle');
   const mtTip = document.getElementById('musicTip');
   const TARGET_VOL = 0.35;
@@ -3028,7 +3028,7 @@
   let bgAudio = null;
   let fadeTimer = null;
   function setupAudio() {
-    bgAudio = new Audio('/photos/audio/ambient-loop.mp3');
+    bgAudio = new Audio('/photos/audio/lofi-beat.mp3');
     bgAudio.loop = true;
     bgAudio.preload = 'none';
     bgAudio.volume = 0;

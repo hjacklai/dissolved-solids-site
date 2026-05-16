@@ -79,7 +79,7 @@
     let fadeTimer = null;
 
     function setupAudio() {
-      audio = new Audio('/photos/audio/ambient-loop.mp3');
+      audio = new Audio('/photos/audio/lofi-beat.mp3');
       audio.loop = true;
       audio.preload = 'none';
       audio.volume = 0;
