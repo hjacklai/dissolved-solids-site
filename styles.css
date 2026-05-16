@@ -196,7 +196,9 @@ button:focus-visible {
 .bar {
   position: sticky; top: 0; z-index: 5;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  /* 1fr auto 1fr keeps the toggle truly centered between brand and nav,
+     even when brand image and nav links have different widths. */
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 24px;
   /* Full-width bg + border, content auto-gutters on wide screens. */
@@ -209,6 +211,7 @@ button:focus-visible {
 /* Outlet brand logo (left of toggle) */
 .brand {
   display: inline-flex; align-items: center;
+  justify-self: start;
   transition: opacity .15s ease, transform .25s ease;
 }
 .brand img {
@@ -227,6 +230,7 @@ button:focus-visible {
 
 .nav {
   display: flex; gap: 22px;
+  justify-self: end;
   font-family: var(--mono); font-size: 11px;
   letter-spacing: .12em; text-transform: uppercase;
 }
@@ -1975,6 +1979,176 @@ a.label:hover { opacity: .8; }
     gap: 24px;
     padding: 22px 20px 20px;
   }
+}
+
+/* Categorised menu listing on /cocktails/ */
+
+.menu-cat-list {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.menu-cat-h {
+  font-family: var(--serif);
+  font-variation-settings: 'opsz' 96, 'SOFT' 90, 'WONK' 1;
+  font-weight: 500;
+  font-size: clamp(28px, 4.5vw, 48px);
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin: 0 0 14px;
+}
+.menu-cat-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0 0 28px;
+  max-width: 700px;
+}
+.menu-cat-note a {
+  color: var(--fg);
+  border-bottom: 1px solid var(--accent);
+  transition: color .2s, border-color .2s;
+}
+.menu-cat-note a:hover { color: var(--accent); }
+
+.menu-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+.menu-card {
+  display: block;
+  padding: 18px 20px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--bg-2);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  color: var(--fg);
+}
+.menu-card:hover:not(.menu-card-plain) {
+  transform: translateY(-2px);
+  border-color: var(--accent-2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .06);
+}
+.menu-card-plain {
+  cursor: default;
+}
+.menu-card h3 {
+  font-family: var(--serif);
+  font-variation-settings: 'opsz' 36, 'SOFT' 70, 'WONK' 1;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.15;
+  letter-spacing: -.005em;
+  margin: 0 0 6px;
+  color: var(--fg);
+}
+.menu-card a:hover h3 { color: var(--accent); }
+.menu-card p {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.55;
+  letter-spacing: .02em;
+  color: var(--muted);
+  margin: 0;
+}
+
+@media (max-width: 639px) {
+  .menu-grid-cards { grid-template-columns: 1fr; }
+  .menu-cat-list { margin-top: 40px; padding-top: 24px; }
+}
+
+/* Journal: topic strip + grouped sections + rabbit-hole link */
+
+.journal-topics {
+  margin: 28px 0 56px;
+  padding: 14px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--bg-2);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  line-height: 1.5;
+}
+.journal-topics-label { color: var(--accent-2); }
+.journal-topics a {
+  color: var(--fg);
+  border-bottom: 1px solid var(--rule);
+  transition: color .2s, border-color .2s;
+}
+.journal-topics a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.journal-topics span[aria-hidden] { opacity: .4; }
+
+.journal-section {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 24px;
+}
+.journal-section:first-of-type { margin-top: 32px; }
+.journal-section-h {
+  font-family: var(--serif);
+  font-variation-settings: 'opsz' 96, 'SOFT' 90, 'WONK' 1;
+  font-weight: 500;
+  font-size: clamp(28px, 4.5vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin: 0 0 14px;
+}
+.journal-section-h i { color: var(--accent); font-style: italic; }
+.journal-section-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0 0 24px;
+  max-width: 640px;
+}
+.journal-section .journal-card:first-of-type { border-top: 0; padding-top: 8px; }
+
+.journal-rabbit {
+  margin: 24px 0 0;
+  padding: 16px 18px;
+  border-left: 2px solid var(--accent);
+  background: var(--bg-2);
+  border-radius: 0 6px 6px 0;
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg);
+  max-width: 760px;
+}
+.journal-rabbit b {
+  display: block;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 6px;
+}
+.journal-rabbit a {
+  color: var(--fg);
+  border-bottom: 1px solid var(--accent);
+  transition: color .2s;
+}
+.journal-rabbit a:hover { color: var(--accent); }
+
+@media (max-width: 639px) {
+  .journal-section { margin-top: 48px; padding-top: 24px; }
+  .journal-topics { font-size: 10px; padding: 12px 14px; }
+  .journal-rabbit { font-size: 14px; padding: 14px 16px; }
 }
 
 /* Respect reduced motion */
