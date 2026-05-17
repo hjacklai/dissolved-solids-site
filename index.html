@@ -516,19 +516,24 @@
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
     padding: 10px var(--gutter) 8px;
-    display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 12px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
     color: var(--paper);
     transition: color var(--t-bg) cubic-bezier(.7,0,.3,1);
   }
 
   .brand {
-    display: flex; flex-direction: row; align-items: center; gap: 10px;
+    display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
     color: var(--paper);
-    text-align: left;
+    text-decoration: none;
+    text-align: center;
   }
   .brand-logo {
-    width: 36px; height: 36px;
+    /* Sized in em so the cube hugs the wordmark text height. */
+    display: inline-block;
+    width: 1.3em; height: 1.3em;
     object-fit: contain;
+    vertical-align: -0.2em;
+    margin: 0 .35em;
     filter: drop-shadow(0 0 10px rgba(255,255,255,.18));
     animation: brandPulse 4s ease-in-out infinite alternate;
   }
@@ -536,15 +541,22 @@
     from { filter: drop-shadow(0 0 6px rgba(255,255,255,.10)); }
     to   { filter: drop-shadow(0 0 14px rgba(255,255,255,.24)); }
   }
-  .brand .stack { display: flex; flex-direction: column; gap: 2px; line-height: 1; align-items: flex-start; }
   .brand .wordmark {
+    /* Single-line word · logo · word. Logo is inside the wordmark so
+       it always sits in between regardless of vw or font scaling. */
     font-family: var(--serif);
-    font-size: 22px;
+    font-size: clamp(20px, 3vw, 28px);
     letter-spacing: -.01em;
     color: var(--paper);
     text-transform: lowercase;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
     transition: font-family var(--t-bg);
   }
+  .brand .word-first, .brand .word-second { display: inline-block; }
   .brand .wordmark .dot-sep {
     display: inline-block; width: 5px; height: 5px;
     background: var(--accent);
@@ -2233,10 +2245,8 @@
       gap: 10px;
     }
     .brand { gap: 8px; }
-    .brand .stack { gap: 2px; }
-    .brand .wordmark { font-size: 22px; }
+    .brand .wordmark { font-size: clamp(18px, 5vw, 22px); }
     .brand .tagline { font-size: 9px; letter-spacing: .22em; }
-    .brand-logo { width: 44px; height: 44px; }
     nav { font-size: 9.5px; gap: 2px 4px; }
     nav a { padding: 11px 10px; min-height: 44px; display: inline-flex; align-items: center; }
     nav .nav-cta { padding: 12px 16px; margin-left: 2px; min-height: 44px; }
@@ -2326,9 +2336,8 @@
     body { padding-bottom: 104px; }
     .appbar-icon { padding: 5px 5px; }
     .appbar-icon span { font-size: 8px; letter-spacing: .1em; }
-    .brand .wordmark { font-size: 20px; }
+    .brand .wordmark { font-size: 18px; }
     .brand .tagline { font-size: 8.5px; letter-spacing: .2em; }
-    .brand-logo { width: 40px; height: 40px; }
     header { padding: 10px 12px 8px; gap: 8px; }
     nav { font-size: 9px; gap: 2px 3px; }
     nav a { padding: 6px 7px; }
@@ -2392,16 +2401,15 @@
 
 <!-- chrome -->
 <header>
-  <div class="brand">
-    <img class="brand-logo logo-sol" src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="Soluble Solids logo" />
-    <img class="brand-logo logo-dis" src="https://dissolvedsolids.co/photos/ds-logo.png" alt="Dissolved Solids logo" />
-    <div class="stack">
-      <span class="wordmark">
-        <span class="for-sol">Soluble</span><span class="for-dis">Dissolved</span><span class="dot-sep"></span>Solids
-      </span>
-      <span class="tagline">Two states <span>·</span> one chemistry</span>
-    </div>
-  </div>
+  <a class="brand" href="/" aria-label="Dissolved Solids and Soluble Solids — home">
+    <span class="wordmark">
+      <span class="word-first"><span class="for-sol">soluble</span><span class="for-dis">dissolved</span></span>
+      <img class="brand-logo logo-sol" src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="" aria-hidden="true" />
+      <img class="brand-logo logo-dis" src="https://dissolvedsolids.co/photos/ds-logo.png" alt="" aria-hidden="true" />
+      <span class="word-second">solids</span>
+    </span>
+    <span class="tagline">two states · one chemistry</span>
+  </a>
   <!-- Header is logo-only now. Nav + state toggle + live readout live in the bottom app bar. -->
 </header>
 
