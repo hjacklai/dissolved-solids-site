@@ -112,7 +112,7 @@
      ───────────────────────────────────────────────────────────── */
 
   :root {
-    /* SOLUBLE — aubergine + amber, infusion mood */
+    /* SOLUBLE - aubergine + amber, infusion mood */
     --sol-bg:       #2a1330;
     --sol-bg-deep:  #1a0a22;
     --sol-paper:    #f0e6cf;
@@ -120,7 +120,7 @@
     --sol-accent-2: #d6a39a;     /* faded rose */
     --sol-ink:      #f0e6cf;
 
-    /* DISSOLVED — ink + neon, late-night mood */
+    /* DISSOLVED - ink + neon, late-night mood */
     --dis-bg:       #08080a;
     --dis-bg-deep:  #000;
     --dis-paper:    #f3efe7;
@@ -128,7 +128,7 @@
     --dis-accent-2: #5ad7ff;     /* electric cyan */
     --dis-ink:      #f3efe7;
 
-    /* live tokens — switched by [data-state] below */
+    /* live tokens - switched by [data-state] below */
     --bg:        var(--sol-bg);
     --bg-deep:   var(--sol-bg-deep);
     --paper:     var(--sol-paper);
@@ -161,7 +161,7 @@
     font-weight: 400;
     letter-spacing: -.025em;
   }
-  /* Dissolved — cursive ONLY on the hero h1; everything else uses solid serif */
+  /* Dissolved - cursive ONLY on the hero h1; everything else uses solid serif */
   html[data-state="dissolved"] h1,
   html[data-state="dissolved"] h2,
   html[data-state="dissolved"] h3 {
@@ -208,7 +208,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     STATE LAYERS — both background photos exist, cross-fade
+     STATE LAYERS - both background photos exist, cross-fade
      ───────────────────────────────────────────────────────────── */
 
   .state-layer {
@@ -238,7 +238,7 @@
     to   { transform: scale(1.10) translate(2%, 1%);  }
   }
 
-  /* photo darkening scrim — different per state */
+  /* photo darkening scrim - different per state */
   .scrim {
     position: absolute; inset: 0;
     transition: background var(--t-bg) cubic-bezier(.7,0,.3,1);
@@ -255,7 +255,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     BACKGROUND PATTERNS — one per state
+     BACKGROUND PATTERNS - one per state
      SOLUBLE: rising bubbles (slow infusion)
      DISSOLVED: molecular schematic + drifting droplet ripple
      ───────────────────────────────────────────────────────────── */
@@ -267,7 +267,7 @@
     transition: opacity var(--t-bg) cubic-bezier(.7,0,.3,1);
   }
 
-  /* SOLUBLE — bubbles + drifting amber dust + steam */
+  /* SOLUBLE - bubbles + drifting amber dust + steam */
   .bubbles { overflow: hidden; }
   .bubble {
     position: absolute; bottom: -40px;
@@ -284,7 +284,7 @@
     90%  { opacity: .55; }
     100% { transform: translateY(-110vh) translateX(-20px) scale(.4); opacity: 0; }
   }
-  /* amber dust — small slow-drifting motes */
+  /* amber dust - small slow-drifting motes */
   .dust {
     position: absolute;
     width: 3px; height: 3px; border-radius: 50%;
@@ -300,7 +300,7 @@
     85%  { opacity: .8; }
     100% { transform: translate(-30px, -120vh); opacity: 0; }
   }
-  /* steam wisp — a tall soft column */
+  /* steam wisp - a tall soft column */
   .steam-wisp {
     position: absolute; bottom: -10%; width: 200px; height: 80vh;
     background: radial-gradient(ellipse at 50% 80%, rgba(255,220,200,.18), rgba(255,220,200,.05) 40%, transparent 70%);
@@ -315,7 +315,7 @@
     to   { transform: translateX(40px) scale(1.1, 1) skewX(3deg); }
   }
 
-  /* SOLUBLE — falling rose petals (slow, rotating, organic) */
+  /* SOLUBLE - falling rose petals (slow, rotating, organic) */
   .petal {
     position: absolute; top: -30px;
     width: 18px; height: 22px;
@@ -340,7 +340,7 @@
     100% { transform: translate(-40px, 120vh) rotate(360deg); opacity: 0; }
   }
 
-  /* SOLUBLE — warm light leak that drifts diagonally */
+  /* SOLUBLE - warm light leak that drifts diagonally */
   .light-leak {
     position: absolute; inset: 0;
     pointer-events: none;
@@ -355,7 +355,7 @@
     to   { transform: translate(40px, -30px); }
   }
 
-  /* SOLUBLE — lace silhouette overlay (slowly drifts) */
+  /* SOLUBLE - lace silhouette overlay (slowly drifts) */
   .lace {
     position: absolute; inset: 0;
     pointer-events: none;
@@ -383,7 +383,7 @@
     to   { background-position: 240px 240px; }
   }
 
-  /* SOLUBLE — ink-in-water cloud bloom */
+  /* SOLUBLE - ink-in-water cloud bloom */
   .ink-cloud {
     position: absolute;
     width: 480px; height: 480px;
@@ -401,7 +401,7 @@
     to   { transform: scale(1.3) translate(40px, -30px); }
   }
 
-  /* DISSOLVED — molecular schematic SVG + cyan droplet ripple */
+  /* DISSOLVED - molecular schematic SVG + cyan droplet ripple */
   .molecule {
     position: absolute; inset: 0;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'>\
@@ -428,7 +428,7 @@
     to   { background-position: 600px 600px; }
   }
 
-  /* cyan ripple — radial expanding rings (3 corners) */
+  /* cyan ripple - radial expanding rings (3 corners) */
   .ripple {
     position: absolute; width: 600px; height: 600px;
     pointer-events: none;
@@ -453,7 +453,7 @@
     100% { transform: scale(1); opacity: 0; }
   }
 
-  /* DISSOLVED — falling droplets */
+  /* DISSOLVED - falling droplets */
   .droplet {
     position: absolute; top: -20px;
     width: 4px; height: 16px;
@@ -470,7 +470,7 @@
     100% { transform: translateY(120vh) scaleY(.4); opacity: 0; }
   }
 
-  /* DISSOLVED — neon sparkles drifting upward */
+  /* DISSOLVED - neon sparkles drifting upward */
   .spark {
     position: absolute; bottom: -20px;
     width: 2px; height: 2px; border-radius: 50%;
@@ -491,7 +491,7 @@
     100% { transform: translateY(-110vh) translateX(-20px); opacity: 0; }
   }
 
-  /* DISSOLVED — horizontal neon scan-lines */
+  /* DISSOLVED - horizontal neon scan-lines */
   .scan-lines {
     position: absolute; inset: 0;
     pointer-events: none;
@@ -514,7 +514,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     DISSOLVE OVERLAY — pulses on state change
+     DISSOLVE OVERLAY - pulses on state change
      ───────────────────────────────────────────────────────────── */
   .dissolve-overlay {
     position: fixed; inset: 0; pointer-events: none; z-index: 40;
@@ -527,10 +527,10 @@
   body.dissolving .dissolve-overlay { opacity: .65; }
 
   /* ─────────────────────────────────────────────────────────────
-     CHROME — logo, nav, panel, seal — fixed above layers
+     CHROME - logo, nav, panel, seal - fixed above layers
      ───────────────────────────────────────────────────────────── */
 
-  /* Header background — blurred + opaque enough that scrolling content
+  /* Header background - blurred + opaque enough that scrolling content
      doesn't show through as readable text */
   header::before {
     content: ''; position: absolute; left: 0; right: 0; top: 0; bottom: 0;
@@ -635,7 +635,7 @@
   nav .nav-cta::after { display: none; }
   nav .nav-cta:hover { transform: translateY(-2px); color: var(--bg); }
 
-  /* INSTRUMENT PANEL — floats top-right, independent of the centered brand */
+  /* INSTRUMENT PANEL - floats top-right, independent of the centered brand */
   .panel {
     position: fixed;
     top: 20px;
@@ -891,7 +891,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     TATLER SEAL — rotating stamp top-right of hero
+     TATLER SEAL - rotating stamp top-right of hero
      ───────────────────────────────────────────────────────────── */
   .seal {
     position: absolute;
@@ -923,7 +923,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     BIG BOTTOM STATE SWITCHER — always visible
+     BIG BOTTOM STATE SWITCHER - always visible
      ───────────────────────────────────────────────────────────── */
   .big-switch {
     position: fixed;
@@ -972,7 +972,7 @@
     .big-switch .hint { display: none; }
   }
 
-  /* MUSIC TOGGLE — bottom left */
+  /* MUSIC TOGGLE - bottom left */
   .music-toggle {
     position: fixed; bottom: 28px; left: var(--gutter);
     z-index: 60;
@@ -1016,7 +1016,7 @@
   .music-toggle:hover .tooltip { opacity: 1; }
 
   /* ─────────────────────────────────────────────────────────────
-     RESERVE — inline reservation widget
+     RESERVE - inline reservation widget
      ───────────────────────────────────────────────────────────── */
   .reserve {
     position: relative; z-index: 5;
@@ -1412,7 +1412,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     FLOATING ACTIONS — IG + WhatsApp bottom right
+     FLOATING ACTIONS - IG + WhatsApp bottom right
      ───────────────────────────────────────────────────────────── */
   .floats {
     position: fixed; bottom: 24px; right: 24px;
@@ -1432,7 +1432,7 @@
   .float svg { width: 22px; height: 22px; }
 
   /* ─────────────────────────────────────────────────────────────
-     EDITORIAL GALLERY — "Some of what we make"
+     EDITORIAL GALLERY - "Some of what we make"
      ───────────────────────────────────────────────────────────── */
   .gallery {
     position: relative; z-index: 5;
@@ -1572,7 +1572,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     DRINK BUILDER — inline section on the page
+     DRINK BUILDER - inline section on the page
      ───────────────────────────────────────────────────────────── */
   .builder {
     position: relative; z-index: 5;
@@ -1803,7 +1803,7 @@
   .panel:hover::after { opacity: 1; }
 
   /* ─────────────────────────────────────────────────────────────
-     RESPONSIVE PASS — tablet (1100/900) and mobile (640/420)
+     RESPONSIVE PASS - tablet (1100/900) and mobile (640/420)
      ───────────────────────────────────────────────────────────── */
   @media (max-width: 1100px) {
     :root { --gutter: clamp(20px, 4vw, 56px); }
@@ -1930,7 +1930,7 @@
   }
 </style>
 <link rel="stylesheet" href="/builder.css" />
-<!-- Audio is part of the bar experience — start fetching ASAP so the
+<!-- Audio is part of the bar experience - start fetching ASAP so the
      music toggle is responsive the moment the user clicks it. -->
 <link rel="preload" as="audio" href="/photos/audio/lofi-beat.mp3" type="audio/mpeg" />
 <link rel="preload" as="audio" href="/photos/audio/fashion-house.mp3" type="audio/mpeg" />
@@ -2097,7 +2097,7 @@
     </div>
     <div class="panel-clock">
       <span>kuala lumpur</span>
-      <span class="time" id="panelClock">—<span class="colon">:</span>—<span class="colon">:</span>—</span>
+      <span class="time" id="panelClock">-<span class="colon">:</span>-<span class="colon">:</span>-</span>
     </div>
     <div class="panel-toggle">
       <span><span class="for-sol">→ flip to dissolved</span><span class="for-dis">← flip to soluble</span></span>
@@ -2301,7 +2301,7 @@
   </section>
 
   <!-- ─────────────────────────────────────────────────────────────
-       DRINK BUILDER — modular mount (shared with /builder/)
+       DRINK BUILDER - modular mount (shared with /builder/)
        ─────────────────────────────────────────────────────────── -->
   <section class="builder" id="builder">
   <div class="gallery-head" style="max-width:1400px;margin:0 auto 32px;padding:0;">
@@ -2322,7 +2322,7 @@
     <b>Build your own drink and we'll mix it.</b> The builder routes to classics like negroni sbagliato and whiskey smash, plus our local picks: pandan collins, gula melaka old fashioned, calamansi highball, kopi sour. WhatsApp the result to the bar and walk in.
   </p>
 
-  <!-- SVG icon sprite — referenced by every chip via <use href="#icon-xxx"> -->
+  <!-- SVG icon sprite - referenced by every chip via <use href="#icon-xxx"> -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
       <symbol id="icon-refreshed" viewBox="0 0 24 24"><path d="M12 3 C8 9 5 13 5 16 a7 7 0 0 0 14 0 C19 13 16 9 12 3 Z"/></symbol>
@@ -2671,7 +2671,7 @@
 </section>
 
 <!-- ─────────────────────────────────────────────────────────────
-     RESERVE — inline reservation widget
+     RESERVE - inline reservation widget
      ───────────────────────────────────────────────────────────── -->
 <section class="reserve" id="reserve">
   <div class="reserve-head">
@@ -2708,7 +2708,7 @@
       <div class="field">
         <div class="field-label">02 · pick a date</div>
         <div class="cal-head">
-          <div class="cal-month" id="calMonth">—</div>
+          <div class="cal-month" id="calMonth">-</div>
           <div class="cal-nav">
             <button type="button" id="calPrev" aria-label="previous month">←</button>
             <button type="button" id="calNext" aria-label="next month">→</button>
@@ -2765,7 +2765,7 @@
 </section>
 
 <!-- ─────────────────────────────────────────────────────────────
-     OUTLETS — both addresses, both phones, both hours
+     OUTLETS - both addresses, both phones, both hours
      ───────────────────────────────────────────────────────────── -->
 <section class="outlets" id="outlets">
   <div class="outlets-head">
@@ -2873,7 +2873,7 @@
 </section>
 </main>
 
-<!-- BIG BOTTOM SWITCHER — always visible -->
+<!-- BIG BOTTOM SWITCHER - always visible -->
 <div class="big-switch" id="bigSwitch" aria-label="flip state">
   <button data-target="dissolved">
     <span class="dotled"></span>Dissolved
@@ -2884,7 +2884,7 @@
   <span class="hint">← tap to switch →</span>
 </div>
 
-<!-- MUSIC TOGGLE — bottom left -->
+<!-- MUSIC TOGGLE - bottom left -->
 <button class="music-toggle" id="musicToggle" type="button" aria-label="toggle music">
   <span class="bars"><i></i><i></i><i></i><i></i></span>
   <span class="tooltip" id="musicTip">tap to play · ambient</span>
@@ -2916,7 +2916,7 @@
   const PSCALE = _reduced ? 0 : (_isSmall || _isTouch ? 0.35 : 1);
   const pcount = n => Math.max(0, Math.round(n * PSCALE));
 
-  // Bubbles for Soluble state — more + bigger spread
+  // Bubbles for Soluble state - more + bigger spread
   const bubbles = document.getElementById('bubbles');
   for (let i = 0; i < pcount(90); i++) {
     const b = document.createElement('div');
@@ -2957,7 +2957,7 @@
     petals.appendChild(p);
   }
 
-  // Dissolved — falling droplets
+  // Dissolved - falling droplets
   const droplets = document.getElementById('droplets');
   for (let i = 0; i < pcount(24); i++) {
     const d = document.createElement('div');
@@ -2969,7 +2969,7 @@
     droplets.appendChild(d);
   }
 
-  // Dissolved — neon sparkles rising
+  // Dissolved - neon sparkles rising
   const sparks = document.getElementById('sparks');
   for (let i = 0; i < pcount(50); i++) {
     const s = document.createElement('div');
@@ -2980,7 +2980,7 @@
     sparks.appendChild(s);
   }
 
-  // Radio-tuning SFX — flipping between stations
+  // Radio-tuning SFX - flipping between stations
   //   1) dial click (short square-wave tick)
   //   2) static burst (bandpassed white noise with wobbling envelope)
   //   3) inter-station whistle (sine pitch sweep, up-down-up)
@@ -3005,7 +3005,7 @@
       clickG.gain.exponentialRampToValueAtTime(0.001, now + 0.015);
       click.connect(clickG).connect(master);
       click.start(now); click.stop(now + 0.02);
-      // 2) Static — bandpassed white noise with wobbling envelope
+      // 2) Static - bandpassed white noise with wobbling envelope
       const len = Math.floor(ctx.sampleRate * dur);
       const buf = ctx.createBuffer(1, len, ctx.sampleRate);
       const data = buf.getChannelData(0);
@@ -3056,7 +3056,7 @@
     } catch (e) { /* SFX is non-critical */ }
   }
 
-  // State toggle. /dissolvedsolids/ represents the DS outlet — flipping
+  // State toggle. /dissolvedsolids/ represents the DS outlet - flipping
   // state has to NAVIGATE to /solublesolids/ so the URL always matches
   // what the user sees.
   const OTHER_URL = '/solublesolids/';
@@ -3229,7 +3229,7 @@
       renderBarPills(); renderCal(); renderTimes(); updateSend();
     }
   }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-state'] });
-  // ─ BIG BOTTOM SWITCHER — tap the OTHER bar to navigate there
+  // ─ BIG BOTTOM SWITCHER - tap the OTHER bar to navigate there
   const switchBtns = document.querySelectorAll('.big-switch button');
   function updateSwitch() {
     const state = document.documentElement.dataset.state;
@@ -3246,7 +3246,7 @@
   });
   updateSwitch();
 
-  // ─ MUSIC TOGGLE — dual-track, state-aware, crossfade on state flip
+  // ─ MUSIC TOGGLE - dual-track, state-aware, crossfade on state flip
   // soluble: lofi loop · dissolved: house cut. Switching states crossfades
   // and resumes the other track from where it left off.
   const mt = document.getElementById('musicToggle');
@@ -3276,7 +3276,7 @@
     }
     return audios[key];
   }
-  // Eagerly create BOTH tracks so they download in parallel — state
+  // Eagerly create BOTH tracks so they download in parallel - state
   // flips don't trigger a fresh download for the other bar's track.
   getAudio('soluble');
   getAudio('dissolved');
@@ -3361,7 +3361,7 @@
       if (document.visibilityState === 'visible') { syncIsPlaying(); tryStart(); armGesture(); }
     });
   })();
-  // Crossfade on state flip — old track fades out (and pauses, retaining
+  // Crossfade on state flip - old track fades out (and pauses, retaining
   // currentTime), new track resumes and fades in.
   new MutationObserver(() => {
     if (!isPlaying) return;
@@ -3377,7 +3377,7 @@
     }).catch(e => console.warn('crossfade play failed', e));
   }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-state'] });
 
-  // ─ OUTLETS — today highlight + live open/closed
+  // ─ OUTLETS - today highlight + live open/closed
   function todayDay() { return new Date().getDay(); }
   function nowMin() { const d = new Date(); return d.getHours()*60 + d.getMinutes(); }
   function parseT(t) { const [h, m] = t.split(':').map(Number); return h*60 + m; }

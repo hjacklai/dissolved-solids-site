@@ -1,7 +1,7 @@
 /* ====================================================================
-   APPBAR — shared fixed-bottom navigation
+   APPBAR - shared fixed-bottom navigation
    Used on every sub-page that wants the landing-style nav. The landing
-   index.html still has the inline copy (for now) — when this proves
+   index.html still has the inline copy (for now) - when this proves
    itself we'll switch the landing over too.
    ==================================================================== */
 

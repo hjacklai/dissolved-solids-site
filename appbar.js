@@ -26,7 +26,7 @@
     +     iconLink('/#visit', 'Visit', 'visit', svgPin())
     +     iconLink('/#reserve', 'Reserve', 'reserve', svgCal())
     +   '</div>'
-    +   '<button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet — switch between Dissolved and Soluble">'
+    +   '<button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet - switch between Dissolved and Soluble">'
     +     '<span class="seg" data-target="dissolved">Dis</span>'
     +     '<span class="seg" data-target="soluble">Sol</span>'
     +   '</button>'

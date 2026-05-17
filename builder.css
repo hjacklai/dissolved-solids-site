@@ -386,7 +386,7 @@
 }
 
 .builder-mount .result-tagline {
-  /* Clean readable serif, no italic — easy to skim. */
+  /* Clean readable serif, no italic - easy to skim. */
   font-family: 'DM Serif Display', 'Times New Roman', serif;
   font-style: normal;
   font-weight: 400;

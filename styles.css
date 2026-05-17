@@ -240,7 +240,7 @@ button:focus-visible {
    doesn't quite match the ink background. Screen blend drops the black
    and leaves only the white wireframe. */
 [data-state="soluble"] .brand img { mix-blend-mode: screen; }
-/* Mirror the Soluble Solids cube anywhere it shows up — sub-page
+/* Mirror the Soluble Solids cube anywhere it shows up - sub-page
    headers, decorative cube graphics, etc. */
 img[src*="ss-logo"] { transform: scaleX(-1); }
 .brand:hover img { transition: transform .35s ease; }
@@ -1213,7 +1213,7 @@ a.label:hover { opacity: .8; }
    ==================================================================== */
 
 .journal-body {
-  /* Journal pages share one cohesive theme — the same indigo +
+  /* Journal pages share one cohesive theme - the same indigo +
      amber palette as the wheel design on /journal/. All sub-pages
      re-resolve their theme vars locally so headings, cards and
      rules pick up the dark look. */
@@ -2338,7 +2338,7 @@ a.label:hover { opacity: .8; }
 }
 
 /* ====================================================================
-   Shared atmosphere (sub-pages) — music toggle + subtle drift dots.
+   Shared atmosphere (sub-pages) - music toggle + subtle drift dots.
    Self-injected by /atmosphere.js so all the page needs is the script.
    ==================================================================== */
 
@@ -2370,7 +2370,7 @@ a.label:hover { opacity: .8; }
   100% { transform: translate(-15px, -110vh) scale(.4); opacity: 0; }
 }
 
-/* Petal flakes — bigger, slower, organic */
+/* Petal flakes - bigger, slower, organic */
 .atmo-flake {
   position: absolute; top: -30px;
   width: 14px; height: 18px;

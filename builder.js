@@ -936,7 +936,7 @@
         $('.result-name').insertAdjacentElement('afterend', tag);
       }
 
-      // Menu cross-reference — if this template is already in our menu,
+      // Menu cross-reference - if this template is already in our menu,
       // surface a small link so the user knows they can just order it.
       const existingMenu = root.querySelector('.result-menu-match');
       if (existingMenu) existingMenu.remove();

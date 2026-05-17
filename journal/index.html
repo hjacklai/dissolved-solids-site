@@ -70,7 +70,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/appbar.css" />
-<!-- Music plays via the appbar button — start fetching ASAP. -->
+<!-- Music plays via the appbar button - start fetching ASAP. -->
 <link rel="preload" as="audio" href="/photos/audio/lofi-beat.mp3" type="audio/mpeg" />
 <link rel="preload" as="audio" href="/photos/audio/fashion-house.mp3" type="audio/mpeg" />
 <style>
@@ -491,6 +491,20 @@
   }
   .feat.big h3 { font-size: 32px; }
   .feat.big .feat-body { padding: 28px; }
+  /* Text-only featured card - no top photo area. Gives the body
+     more breathing room and lets the pill sit inline above the tag. */
+  .feat.no-img .feat-body { padding: 28px; }
+  .feat.no-img.big .feat-body { padding: 36px 32px; }
+  .pill-inline {
+    display: inline-block;
+    padding: 5px 10px; margin-bottom: 14px;
+    border-radius: 999px;
+    background: rgba(209,139,58,.12);
+    border: 1px solid rgba(209,139,58,.32);
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent);
+  }
 
   /* ─────────────────── footer ─────────────────── */
   footer.journal-footer {
@@ -697,14 +711,14 @@
 <body class="journal-body" data-layout="radial">
 
 <header class="journal-header">
-  <a class="brand" href="/" aria-label="Dissolved Solids and Soluble Solids — home">
+  <a class="brand" href="/" aria-label="Dissolved Solids and Soluble Solids - home">
     <span class="mark">D</span>
     <span class="stack">
       <span class="wordmark">Dissolved<span class="sep"></span>Solids</span>
       <span class="tagline">the journal · <b>vol. <span data-bind="volume">01</span></b></span>
     </span>
   </a>
-  <!-- Top text-nav removed — bottom appbar is the canonical nav, matching the landing. -->
+  <!-- Top text-nav removed - bottom appbar is the canonical nav, matching the landing. -->
   <span aria-hidden="true"></span>
   <div class="header-right">
     <div class="issue"><span class="led"></span>vol. <b data-bind="volume">01</b> · <b data-bind="season">spring 2026</b></div>
@@ -717,7 +731,7 @@
     <h1>The <em>Journal</em>.</h1>
   </div>
   <div class="hero-meta">
-    Field notes on what we're drinking in the Klang Valley — coffee, tea, kombucha, mocktails, cocktails. Mostly written between shifts in Petaling Jaya, by the people behind <a href="/dissolvedsolids/">Dissolved Solids</a> and <a href="/solublesolids/">Soluble Solids</a>.
+    Field notes on what we're drinking in the Klang Valley - coffee, tea, kombucha, mocktails, cocktails. Mostly written between shifts in Petaling Jaya, by the people behind <a href="/dissolvedsolids/">Dissolved Solids</a> and <a href="/solublesolids/">Soluble Solids</a>.
     <br/><br/>
     <b data-bind="totalEntries">10</b> entries · <b data-bind="categoryCount">7</b> categories · last update <b data-bind="lastUpdated">May 16, 2026</b>.
   </div>
@@ -757,7 +771,7 @@
       <div class="hub">
         <div class="hub-k">now reading</div>
         <div class="hub-name" id="hubName"><em>Cocktails</em></div>
-        <div class="hub-meta"><b id="hubCount">6</b> drinks · <b id="hubAvg">—</b></div>
+        <div class="hub-meta"><b id="hubCount">6</b> drinks · <b id="hubAvg">-</b></div>
       </div>
     </div>
 
@@ -793,7 +807,7 @@
                    var addr=encodeURIComponent(this.querySelector('input').value);
                    window.open('https://wa.me/601140087607?text='+encodeURIComponent('Hi! Add me to The Journal newsletter: ')+addr, '_blank');
                    this.querySelector('button').textContent='subscribed ✓';">
-      <input type="email" placeholder="your email — we won't tell" required />
+      <input type="email" placeholder="your email - we won't tell" required />
       <button type="submit">subscribe</button>
     </form>
   </div>
@@ -829,7 +843,7 @@ const JOURNAL = {
       headline: { lead: 'What we ', accent: 'pour', tail: '.' },
       icon: `<svg viewBox="0 0 24 24"><path d="M4 4h16l-8 9v6"/><path d="M9 19h6"/><path d="M6 7h12"/></svg>`,
       articles: [
-        { slug: 'pandan-collins',             href: '/cocktails/pandan-collins/',             title: { lead: 'Pandan ',   accent: 'Collins',         tail: ' ★' }, excerpt: 'Gin, fresh pandan syrup, lime, soda. The Malaysian Tom Collins, drinkable in 32-degree heat.',           author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 4, image: 'https://dissolvedsolids.co/photos/ds-09.jpg', featured: true,  pill: 'malaysian' },
+        { slug: 'pandan-collins',             href: '/cocktails/pandan-collins/',             title: { lead: 'Pandan ',   accent: 'Collins',         tail: ' ★' }, excerpt: 'Gin, fresh pandan syrup, lime, soda. The Malaysian Tom Collins, drinkable in 32-degree heat.',           author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 4, featured: true,  pill: 'malaysian' },
         { slug: 'gula-melaka-old-fashioned',  href: '/cocktails/gula-melaka-old-fashioned/',  title: { lead: 'Gula Melaka ', accent: 'Old Fashioned', tail: ' ★' }, excerpt: 'Whisky, gula melaka, aromatic bitters. Caramel and clove with the rough edges left in.',                 author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 5 },
         { slug: 'calamansi-highball',         href: '/cocktails/calamansi-highball/',         title: { lead: 'Calamansi ', accent: 'Highball',       tail: ' ★' }, excerpt: 'Vodka or soft gin, fresh calamansi, soda. Sharper than a g&t, made for sharing a plate.',              author: 'Soluble Solids',   date: '2026-05-16', readMinutes: 4 },
         { slug: 'kopi-sour',                  href: '/cocktails/kopi-sour/',                  title: { lead: 'Kopi ',     accent: 'Sour',             tail: ' ★' }, excerpt: 'Whisky, kopi-O, gula melaka, lemon, foamed. The Malaysian whisky sour. Wakes you up, calms you down.', author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 5 },
@@ -986,11 +1000,13 @@ function renderFeatured() {
   });
   if (!featured.length) { grid.parentElement.style.display = 'none'; return; }
   grid.innerHTML = featured.map((a, i) => `
-    <a class="feat ${i === 0 ? 'big' : ''}" href="${a.href}">
-      <div class="feat-img"${a.image ? ` style="background-image: url('${a.image}');"` : ''}>
+    <a class="feat ${i === 0 ? 'big' : ''}${a.image ? '' : ' no-img'}" href="${a.href}">
+      ${a.image ? `
+      <div class="feat-img" style="background-image: url('${a.image}');">
         ${a.pill ? `<span class="pill">${a.pill}</span>` : ''}
-      </div>
+      </div>` : ''}
       <div class="feat-body">
+        ${(!a.image && a.pill) ? `<span class="pill pill-inline">${a.pill}</span>` : ''}
         <div class="tag">${a.category.name.toLowerCase()}${a.readMinutes >= 9 ? ' · long read' : ''}</div>
         <h3>${tri(a.title)}</h3>
         <p class="dek">${a.excerpt}</p>
@@ -1071,7 +1087,7 @@ document.addEventListener('keydown', (e) => {
 window.addEventListener('hashchange', () => selectCategory(categoryFromHash()));
 </script>
 
-<!-- Journal page intentionally skips /atmosphere.js — no drifting particles,
+<!-- Journal page intentionally skips /atmosphere.js - no drifting particles,
      no music. The bottom appbar still mounts for consistent site-wide nav. -->
 <script src="/appbar.js" defer></script>
 </body>

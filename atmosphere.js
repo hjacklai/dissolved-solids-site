@@ -13,7 +13,7 @@
   function inject() {
     if (document.querySelector('.atmo-music')) return; // already there
 
-    // Subtle drift dots — visible but unobtrusive on any background
+    // Subtle drift dots - visible but unobtrusive on any background
     const dots = document.createElement('div');
     dots.className = 'atmo-dots';
     dots.setAttribute('aria-hidden', 'true');
@@ -38,7 +38,7 @@
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) return;
 
-    // Drift dots — rising upward, varied amber/rose/cream
+    // Drift dots - rising upward, varied amber/rose/cream
     const dotCount = isTouch || isSmall ? 14 : 40;
     const dotTints = ['', 'rose', 'cream'];
     for (let i = 0; i < dotCount; i++) {
@@ -53,7 +53,7 @@
       container.appendChild(d);
     }
 
-    // Petal flakes — slower, falling downward, organic rotation
+    // Petal flakes - slower, falling downward, organic rotation
     const flakeCount = isTouch || isSmall ? 5 : 12;
     const flakeTints = ['', 'amber', 'cream'];
     for (let i = 0; i < flakeCount; i++) {
@@ -74,7 +74,7 @@
     const tip = mt.querySelector('.tip');
     const TARGET = 0.35;
     const FADE_MS = 1200;
-    // Sub-pages have a fixed data-state — pick the matching track.
+    // Sub-pages have a fixed data-state - pick the matching track.
     const state = document.documentElement.dataset.state || 'soluble';
     const src = state === 'dissolved'
       ? '/photos/audio/fashion-house.mp3'
