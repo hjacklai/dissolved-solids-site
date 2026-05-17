@@ -137,7 +137,10 @@
     --accent:    var(--dis-accent);
     --accent-2:  var(--dis-accent-2);
     --ink:       var(--dis-ink);
-    --serif:     var(--serif-dis);
+    /* Do NOT override --serif here. Allura cursive is applied
+       explicitly to the brand hero h1 below (and to .brand .wordmark
+       in the header). Globally swapping --serif leaked cursive into
+       cal-month, pax-row value, bar-pills, etc. */
   }
 
   /* Per-brand typographic personalities */
@@ -160,6 +163,12 @@
     letter-spacing: -.005em;
     line-height: .95;
     font-size: clamp(112px, 16vw, 320px);
+  }
+  /* Brand wordmark in the top header keeps its cursive identity on
+     the dissolved state - this IS the brand wordmark. Everything
+     else picks up the default DM Serif Display. */
+  html[data-state="dissolved"] .brand .wordmark {
+    font-family: 'Allura', cursive;
   }
 
   /* desktop gutter helper */
@@ -1289,7 +1298,11 @@
   .res-nav-btn:disabled:hover { background: transparent; border-color: rgba(255,255,255,.22); color: var(--paper); }
   .res-nav-btn.res-next { background: var(--accent); color: var(--bg, #0b0b10); border-color: var(--accent); font-weight: 500; }
   .res-nav-btn.res-next:hover { transform: translateY(-2px); background: var(--accent); }
-  .res-step[data-step="5"] ~ .res-step-nav .res-next { display: none; }
+  /* Hide the Next button only when step 5 is the ACTIVE step. The
+     original selector lacked `.is-active`, so it matched on every
+     step (since step 5 is always a sibling of the nav in the DOM)
+     and the Next button never appeared anywhere. */
+  .res-step[data-step="5"].is-active ~ .res-step-nav .res-next { display: none; }
 
   /* Step 5 summary preview */
   .res-summary {
@@ -1326,7 +1339,11 @@
     filter: drop-shadow(0 0 6px rgba(255,255,255,.12));
   }
   .bar-pill .nm {
-    font-family: var(--serif); font-size: 22px; color: var(--paper); line-height: 1; letter-spacing: -.01em;
+    /* Hard-code DM Serif Display so the dissolved-state Allura cursive
+       doesn't leak into the bar-pill name. */
+    font-family: 'DM Serif Display', 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 22px; color: var(--paper); line-height: 1; letter-spacing: -.01em;
   }
   .bar-pill .ds { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 4px; }
   .bar-pill.active {
@@ -2517,6 +2534,29 @@
     .appbar-toggle .seg { font-size: 10px; padding: 0 12px; min-width: 40px; min-height: 28px; letter-spacing: .14em; }
     .appbar-ticker { padding: 5px 0; font-size: 9px; letter-spacing: .16em; }
     .ticker-group { gap: 24px; padding-right: 24px; }
+  }
+
+  /* Very small (≤480): bar-pills and step-nav stack vertically so the
+     stepper is fully usable at iPhone SE widths. Without this the
+     2-col bar-pills crammed "Dissolved" / "Soluble" + 4-line venue
+     subtitle, and the side-by-side Back/Next row got covered on the
+     right by the fixed WhatsApp/Instagram floats. */
+  @media (max-width: 480px) {
+    .reserve-card { padding: 28px 18px; }
+    .bar-pills { grid-template-columns: 1fr; gap: 8px; }
+    .bar-pill { padding: 14px 16px; grid-template-columns: 32px 1fr; gap: 12px; }
+    .bar-pill img { width: 32px; height: 32px; }
+    .bar-pill .nm { font-size: 20px; }
+    .bar-pill .ds { font-size: 9.5px; letter-spacing: .16em; margin-top: 6px; line-height: 1.4; }
+    /* Stack step nav: primary Next on top, ghost Back below, both full-width.
+       Keeps the Next button clear of the bottom-right floats. */
+    .res-step-nav { flex-direction: column-reverse; gap: 10px; align-items: stretch; }
+    .res-nav-btn { width: 100%; min-height: 48px; }
+    /* Send button: shorter / tighter on phones so the label fits one line. */
+    .send-res { padding: 16px; font-size: 11.5px; letter-spacing: .2em; }
+    /* Cal nav buttons need full touch target on phones */
+    .cal-day { font-size: 12px; }
+    .cal-month { font-size: 20px; }
   }
 
   /* Very small (≤420): big-switch tightens further */

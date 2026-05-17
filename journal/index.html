@@ -92,7 +92,7 @@
   }
 
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--paper); font-family: var(--mono); }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--paper); font-family: var(--mono); overflow-x: hidden; }
   html { scroll-behavior: smooth; scroll-padding-top: 88px; scroll-padding-bottom: 120px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   button { background: transparent; border: none; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer; -webkit-appearance: none; appearance: none; text-align: left; }
@@ -130,11 +130,10 @@
   }
   .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--paper); }
   .brand .mark {
-    width: 34px; height: 34px; border-radius: 50%;
-    border: 1px solid var(--paper);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--serif); font-size: 18px;
-    background: rgba(240,230,207,.04);
+    width: 36px; height: 36px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(240, 230, 207, .14));
   }
   .brand .stack { display: flex; flex-direction: column; gap: 4px; line-height: 1; }
   .brand .wordmark { font-family: var(--serif); font-size: 19px; letter-spacing: -.01em; }
@@ -561,16 +560,21 @@
   body[data-layout="carousel"] .wheel-stage { display: block; }
   body[data-layout="carousel"] .wheel-wrap { display: none; }
   body[data-layout="carousel"] .detail { min-height: auto; }
-  body[data-layout="carousel"] .car-strip {
-    display: flex; gap: 16px; overflow-x: auto; overflow-y: hidden;
-    padding: 0 0 20px; margin: 0 calc(-1 * var(--gutter)) 40px;
-    padding-left: var(--gutter); padding-right: var(--gutter);
+  /* Carousel container - the scroll/snap/padding behaviour applies whenever
+     the strip is visible (carousel layout at desktop, radial-collapses-to-carousel
+     at ≤880px). Without this the radial mobile fallback rendered the strip as a
+     non-scrolling flex row, pushing cards past the viewport edge and forcing a
+     horizontal page scroll. */
+  .car-strip {
+    display: none;
+    gap: 16px; overflow-x: auto; overflow-y: hidden;
+    padding: 0 var(--gutter) 20px;
+    margin: 0 calc(-1 * var(--gutter)) 40px;
     scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: var(--accent) transparent;
   }
-  .car-strip { display: none; }
   body[data-layout="carousel"] .car-strip { display: flex; }
   /* Always-visible thin scroll cue so it's obvious the strip is draggable */
   .car-strip::-webkit-scrollbar { height: 6px; }
@@ -712,17 +716,12 @@
 
 <header class="journal-header">
   <a class="brand" href="/" aria-label="Dissolved Solids and Soluble Solids - home">
-    <span class="mark">D</span>
+    <img class="mark" src="/photos/ds-logo.png" alt="" width="34" height="34" />
     <span class="stack">
       <span class="wordmark">Dissolved<span class="sep"></span>Solids</span>
-      <span class="tagline">the journal · <b>vol. <span data-bind="volume">01</span></b></span>
+      <span class="tagline">the journal</span>
     </span>
   </a>
-  <!-- Top text-nav removed - bottom appbar is the canonical nav, matching the landing. -->
-  <span aria-hidden="true"></span>
-  <div class="header-right">
-    <div class="issue"><span class="led"></span>vol. <b data-bind="volume">01</b> · <b data-bind="season">spring 2026</b></div>
-  </div>
 </header>
 
 <section class="hero">
@@ -764,7 +763,7 @@
           <path id="arc-top" d="M 300 300 m -245 0 a 245 245 0 0 1 490 0" />
         </defs>
         <text class="ring-label">
-          <textPath href="#arc-top" startOffset="50%" text-anchor="middle">· dissolved · solids · journal · vol. 01 ·</textPath>
+          <textPath href="#arc-top" startOffset="50%" text-anchor="middle">· dissolved · solids · journal ·</textPath>
         </text>
       </svg>
       <div id="nodes"></div>
@@ -789,28 +788,12 @@
 <section class="featured">
   <div class="featured-head">
     <h2>From the <em>current</em> issue.</h2>
-    <div class="label">vol. <span data-bind="volume">01</span> · cover stories</div>
+    <div class="label">cover stories</div>
   </div>
   <div class="featured-grid" id="featuredGrid"></div>
 </section>
 
 <footer class="journal-footer">
-  <div class="footer-inner">
-    <div>
-      <h3>Soaked thoughts, every <em>fortnight</em>.</h3>
-      <p>One letter every other week. Recipes that didn't make the menu, ingredients we're obsessing over, a Malaysian beverage worth chasing down. No spam, no upsell, leave whenever.</p>
-    </div>
-    <form class="sub-form"
-          action="https://wa.me/601140087607"
-          method="get"
-          onsubmit="event.preventDefault();
-                   var addr=encodeURIComponent(this.querySelector('input').value);
-                   window.open('https://wa.me/601140087607?text='+encodeURIComponent('Hi! Add me to The Journal newsletter: ')+addr, '_blank');
-                   this.querySelector('button').textContent='subscribed ✓';">
-      <input type="email" placeholder="your email - we won't tell" required />
-      <button type="submit">subscribe</button>
-    </form>
-  </div>
   <div class="footer-foot">
     <span>The Journal · <a href="/">dissolvedsolids.co</a></span>
     <span>
