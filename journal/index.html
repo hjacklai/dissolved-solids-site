@@ -70,6 +70,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/appbar.css" />
+<!-- Music plays via the appbar button — start fetching ASAP. -->
+<link rel="preload" as="audio" href="/photos/audio/lofi-beat.mp3" type="audio/mpeg" />
+<link rel="preload" as="audio" href="/photos/audio/fashion-house.mp3" type="audio/mpeg" />
 <style>
   :root {
     --bg:        #2a1330;
@@ -548,11 +551,24 @@
     display: flex; gap: 16px; overflow-x: auto; overflow-y: hidden;
     padding: 0 0 20px; margin: 0 calc(-1 * var(--gutter)) 40px;
     padding-left: var(--gutter); padding-right: var(--gutter);
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
   }
   .car-strip { display: none; }
   body[data-layout="carousel"] .car-strip { display: flex; }
+  /* Always-visible thin scroll cue so it's obvious the strip is draggable */
+  .car-strip::-webkit-scrollbar { height: 6px; }
+  .car-strip::-webkit-scrollbar-track { background: rgba(240,230,207,.05); border-radius: 6px; }
+  .car-strip::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 6px; }
+  /* Wrapper that fades the right edge so users see there's "more" */
+  .car-wrap { position: relative; }
+  .car-wrap::after {
+    content: ''; position: absolute; top: 0; right: 0; bottom: 22px; width: 48px;
+    background: linear-gradient(to left, var(--bg), transparent);
+    pointer-events: none; z-index: 2;
+  }
   .car-card {
     flex: 0 0 200px;
     scroll-snap-align: start;
@@ -628,7 +644,8 @@
       padding: 0 20px 18px;
       gap: 12px;
     }
-    .car-card { flex: 0 0 158px; padding: 18px; gap: 8px; }
+    /* Cards sized so the next one peeks → scroll-affordance is obvious */
+    .car-card { flex: 0 0 42vw; max-width: 180px; min-width: 138px; padding: 16px; gap: 8px; }
     .car-card .glyph { width: 32px; height: 32px; }
     .car-card .car-label { font-size: 18px; }
     .car-card .car-count { font-size: 9px; }
@@ -725,7 +742,9 @@
     </div>
   </div>
 
-  <div class="car-strip" id="carStrip"></div>
+  <div class="car-wrap">
+    <div class="car-strip" id="carStrip"></div>
+  </div>
 
   <div class="wheel-stage">
     <div class="wheel-wrap" id="wheelWrap">

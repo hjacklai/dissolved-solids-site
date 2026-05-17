@@ -829,11 +829,34 @@
     min-height: 52px;
   }
   .appbar-side {
+    /* Icons spread evenly inside each half so they don't hug the edges
+       (visit/reserve no longer kiss the screen edge on the left). */
     display: flex; align-items: center; gap: 4px;
+    justify-content: space-around;
     min-height: 40px;
   }
-  .appbar-side-left  { justify-content: flex-start; }
-  .appbar-side-right { justify-content: flex-end; }
+  .appbar-side-left, .appbar-side-right { /* sides identical now */ }
+  /* Center group: state toggle + music button side by side */
+  .appbar-center {
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  /* Embedded music play/stop button */
+  .appbar-music {
+    width: 40px; height: 40px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px;
+    color: rgba(255,255,255,.78);
+    cursor: pointer;
+    transition: background .2s, border-color .2s, color .2s;
+  }
+  .appbar-music:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.32); color: var(--paper); }
+  .appbar-music.is-playing { background: var(--accent); border-color: var(--accent); color: var(--bg, #0b0b10); }
+  .appbar-music svg { width: 18px; height: 18px; }
+  .appbar-music .ic-music-on  { display: none; }
+  .appbar-music.is-playing .ic-music-off { display: none; }
+  .appbar-music.is-playing .ic-music-on  { display: inline-block; }
   .appbar-icon {
     display: inline-flex; flex-direction: column; align-items: center;
     justify-content: center;
@@ -2517,17 +2540,8 @@
       <span class="word-second">solids</span>
     </span>
   </a>
-  <nav class="ribbon-nav" aria-label="Main">
-    <a href="/dissolvedsolids/">Dissolved Solids</a>
-    <span aria-hidden="true">·</span>
-    <a href="/solublesolids/">Soluble Solids</a>
-    <span aria-hidden="true">·</span>
-    <a href="#builder">Drink Builder</a>
-    <span aria-hidden="true">·</span>
-    <a href="/cocktails/">Cocktails</a>
-    <span aria-hidden="true">·</span>
-    <a href="/journal/">Journal</a>
-  </nav>
+  <!-- Top ribbon removed — the bottom appbar
+       (visit · reserve · DIS/SOL · build · journal + music) is the canonical nav now. -->
 </header>
 
 <!-- tatler seal moved inside hero -->
@@ -3155,10 +3169,16 @@
         <span>reserve</span>
       </a>
     </div>
-    <button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet — switch between Dissolved and Soluble">
-      <span class="seg" data-target="dissolved">Dis</span>
-      <span class="seg" data-target="soluble">Sol</span>
-    </button>
+    <div class="appbar-center">
+      <button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet — switch between Dissolved and Soluble">
+        <span class="seg" data-target="dissolved">Dis</span>
+        <span class="seg" data-target="soluble">Sol</span>
+      </button>
+      <button class="appbar-music" id="appbarMusic" type="button" aria-label="Toggle ambient music">
+        <svg class="ic-music-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17V5l11-2v12"/><circle cx="6" cy="17" r="3"/><circle cx="17" cy="15" r="3"/></svg>
+        <svg class="ic-music-on"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5"  y="5"  width="4" height="14" rx="1"/><rect x="11" y="9"  width="4" height="10" rx="1"/><rect x="17" y="3"  width="4" height="16" rx="1"/></svg>
+      </button>
+    </div>
     <div class="appbar-side appbar-side-right">
       <a class="appbar-icon appbar-icon-cta" href="#builder" aria-label="Build a drink">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -3704,6 +3724,20 @@
       }
     });
   })();
+  // ─ Appbar music button — delegates to the existing #musicToggle
+  //   (the floating bottom-left button owns the audio engine). The
+  //   appbar button just mirrors its state and forwards clicks.
+  (function () {
+    const am = document.getElementById('appbarMusic');
+    if (!am) return;
+    am.addEventListener('click', () => { mt && mt.click(); });
+    if (mt) {
+      const sync = () => am.classList.toggle('is-playing', mt.classList.contains('playing'));
+      sync();
+      new MutationObserver(sync).observe(mt, { attributes: true, attributeFilter: ['class'] });
+    }
+  })();
+
   // Crossfade on state flip if music is playing
   new MutationObserver(async () => {
     if (!isPlaying) return;
