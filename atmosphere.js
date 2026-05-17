@@ -72,19 +72,22 @@
     const mt = document.querySelector('.atmo-music');
     if (!mt) return;
     const tip = mt.querySelector('.tip');
-    const TARGET = 0.35;            // resting volume (background ambient)
-    const FADE_MS = 1200;            // fade in / out duration
-    const FADE_STEP_MS = 60;
+    const TARGET = 0.35;
+    const FADE_MS = 1200;
+    // Sub-pages have a fixed data-state — pick the matching track.
+    const state = document.documentElement.dataset.state || 'soluble';
+    const src = state === 'dissolved'
+      ? '/photos/audio/fashion-house.mp3'
+      : '/photos/audio/lofi-beat.mp3';
     let audio = null;
     let fadeTimer = null;
 
     function setupAudio() {
-      audio = new Audio('/photos/audio/lofi-beat.mp3');
+      audio = new Audio(src);
       audio.loop = true;
       audio.preload = 'none';
       audio.volume = 0;
     }
-
     function fadeTo(target, duration) {
       if (!audio) return;
       if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; }
@@ -98,16 +101,15 @@
           fadeTimer = null;
           if (target === 0 && !audio.paused) audio.pause();
         }
-      }, FADE_STEP_MS);
+      }, 60);
     }
-
     async function start() {
       try {
         if (!audio) setupAudio();
         await audio.play();
         fadeTo(TARGET, FADE_MS);
         mt.classList.add('playing');
-        if (tip) tip.textContent = 'lofi loop · tap to stop';
+        if (tip) tip.textContent = state === 'dissolved' ? 'house · tap to stop' : 'lofi · tap to stop';
       } catch (e) {
         console.warn('music start failed', e);
         if (tip) tip.textContent = 'audio unavailable';
@@ -118,7 +120,7 @@
       try {
         fadeTo(0, FADE_MS * 0.6);
         mt.classList.remove('playing');
-        if (tip) tip.textContent = 'tap to play · ambient';
+        if (tip) tip.textContent = 'tap to play · music';
       } catch (e) {
         console.warn('music stop failed', e);
       }
@@ -127,6 +129,18 @@
       if (mt.classList.contains('playing')) stop();
       else start();
     });
+    // Autoplay on load. Most browsers block until the user interacts, so
+    // we try immediately (silent fail if blocked) and arm one-shot listeners
+    // on the first user gesture. Skip gestures on the music toggle itself —
+    // the toggle handler covers that case.
+    start();
+    const evts = ['pointerdown', 'keydown', 'touchstart'];
+    function onGesture(e) {
+      const onToggle = e.target && e.target.closest && e.target.closest('.atmo-music');
+      if (!mt.classList.contains('playing') && !onToggle) start();
+      evts.forEach(function (ev) { document.removeEventListener(ev, onGesture, true); });
+    }
+    evts.forEach(function (ev) { document.addEventListener(ev, onGesture, { capture: true, passive: true }); });
   }
 
   function ready(fn) {

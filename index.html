@@ -738,6 +738,120 @@
   html[data-state="dissolved"] .panel-toggle .switch::after { left: 20px; }
 
   /* ─────────────────────────────────────────────────────────────
+     APPBAR — fixed bottom app-style nav bar (icons + toggle + ticker)
+     ───────────────────────────────────────────────────────────── */
+  .appbar {
+    /* explicit display wins over the global mobile `nav { display: none }` */
+    display: block;
+    position: fixed; left: 0; right: 0; bottom: 0;
+    z-index: 60;
+    background: rgba(8,8,12,.78);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border-top: 1px solid rgba(255,255,255,.10);
+    color: var(--paper);
+    font-family: var(--mono);
+    box-shadow: 0 -14px 44px rgba(0,0,0,.45);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  .appbar-top {
+    display: flex; align-items: center; justify-content: space-around;
+    gap: 4px;
+    padding: 8px 18px;
+    max-width: 1400px; margin: 0 auto;
+  }
+  .appbar-icon {
+    display: inline-flex; flex-direction: column; align-items: center;
+    gap: 4px;
+    padding: 8px 14px;
+    color: rgba(255,255,255,.62);
+    text-decoration: none;
+    border-radius: 12px;
+    border: 0;
+    transition: color .2s, background .2s, transform .15s;
+    font-family: var(--mono);
+    min-height: 48px;
+  }
+  .appbar-icon::after { display: none !important; }
+  .appbar-icon svg { width: 22px; height: 22px; flex: 0 0 22px; }
+  .appbar-icon span {
+    font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+  }
+  .appbar-icon:hover { color: var(--paper); background: rgba(255,255,255,.07); transform: translateY(-1px); }
+  .appbar-icon-cta { color: var(--accent); }
+  .appbar-icon-cta:hover { color: var(--bg); background: var(--accent); }
+  .appbar-toggle {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 14px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 999px;
+    color: var(--paper); cursor: pointer;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: .22em; text-transform: uppercase;
+    transition: background .2s, border-color .2s;
+    font-weight: 500;
+    min-height: 40px;
+  }
+  .appbar-toggle:hover { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.28); }
+  .appbar-toggle-name { display: none; }
+  html[data-state="dissolved"] .appbar-toggle-name.for-dis { display: inline; }
+  html[data-state="soluble"]   .appbar-toggle-name.for-sol { display: inline; }
+  .appbar-toggle-track {
+    position: relative; width: 36px; height: 18px;
+    background: rgba(255,255,255,.18);
+    border-radius: 999px;
+    flex: 0 0 36px;
+  }
+  .appbar-toggle-thumb {
+    position: absolute; top: 2px; left: 2px;
+    width: 14px; height: 14px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent);
+    transition: left .35s cubic-bezier(.7,0,.3,1), background var(--t-bg), box-shadow var(--t-bg);
+  }
+  html[data-state="dissolved"] .appbar-toggle-thumb { left: 20px; }
+  .appbar-ticker {
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.025);
+    padding: 7px 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+    position: relative;
+  }
+  .appbar-ticker::before, .appbar-ticker::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 60px;
+    pointer-events: none; z-index: 2;
+  }
+  .appbar-ticker::before { left: 0;  background: linear-gradient(to right, rgba(8,8,12,.95), transparent); }
+  .appbar-ticker::after  { right: 0; background: linear-gradient(to left,  rgba(8,8,12,.95), transparent); }
+  .appbar-ticker-track {
+    display: inline-flex; align-items: center;
+    white-space: nowrap;
+    animation: ticker-scroll 38s linear infinite;
+    will-change: transform;
+  }
+  .ticker-group {
+    display: inline-flex; align-items: center; gap: 36px;
+    padding-right: 36px;
+    flex-shrink: 0;
+  }
+  .ticker-group .ti { display: inline-flex; align-items: center; gap: 8px; }
+  .ticker-group .ti b { color: var(--accent); font-weight: 500; transition: color var(--t-bg); }
+  .ticker-group .ti i { font-style: normal; color: var(--paper); font-weight: 400; }
+  @keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  /* push page content above the fixed app bar */
+  body { padding-bottom: 96px; }
+
+  /* ─────────────────────────────────────────────────────────────
      HERO CONTENT
      ───────────────────────────────────────────────────────────── */
 
@@ -937,9 +1051,9 @@
     .big-switch .hint { display: none; }
   }
 
-  /* MUSIC TOGGLE — bottom left */
+  /* MUSIC TOGGLE — bottom left (clears the .appbar above the bottom) */
   .music-toggle {
-    position: fixed; bottom: 28px; left: var(--gutter);
+    position: fixed; bottom: 108px; left: var(--gutter);
     z-index: 60;
     width: 52px; height: 52px; border-radius: 50%;
     background: rgba(0,0,0,.55);
@@ -1373,10 +1487,218 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
+     VISIT — icon-heavy outlet cards
+     ───────────────────────────────────────────────────────────── */
+  .visit {
+    position: relative; z-index: 5;
+    padding: 100px var(--gutter) 100px;
+    color: var(--paper);
+    transition: color var(--t-bg);
+  }
+  .visit-head {
+    max-width: 1200px; margin: 0 auto 56px;
+    text-align: center;
+  }
+  .visit-head h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: .95;
+    letter-spacing: -.02em;
+    margin: 0 0 18px;
+  }
+  .visit-head h2 em { font-style: italic; color: var(--accent); transition: color var(--t-bg); }
+  .visit-sub {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.6);
+    margin: 0 0 6px;
+  }
+  .visit-sub b { color: var(--paper); font-weight: 500; }
+  .visit-live {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0;
+    transition: color var(--t-bg);
+  }
+  .visit-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .visit-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 20px;
+    padding: 32px 30px;
+    display: flex; flex-direction: column;
+    gap: 22px;
+    backdrop-filter: blur(8px);
+    transition: border-color .3s, transform .3s, background .3s;
+  }
+  .visit-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.06);
+  }
+  .visit-card-head {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    gap: 16px;
+  }
+  .visit-logo {
+    width: 56px; height: 56px;
+    object-fit: contain;
+    display: block;
+  }
+  .visit-card[data-brand="soluble"] .visit-logo { transform: scaleX(-1); }
+  .visit-name {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .visit-tag {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+  }
+  .visit-name h3 {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1;
+    letter-spacing: -.01em;
+    color: var(--paper);
+  }
+  .visit-name h3 em { font-style: italic; color: var(--accent); transition: color var(--t-bg); }
+  .visit-live-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.12);
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.75);
+    white-space: nowrap;
+  }
+  .visit-live-pill .led {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    transition: background var(--t-bg), box-shadow var(--t-bg), opacity .3s;
+  }
+  .visit-live-pill.closed .led { opacity: .25; box-shadow: none; }
+  .visit-meta {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column;
+    gap: 12px;
+  }
+  .visit-meta li {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .04em;
+    color: rgba(255,255,255,.72);
+    line-height: 1.45;
+  }
+  .visit-meta li b { color: var(--paper); font-weight: 500; }
+  .visit-meta .vmi {
+    width: 20px; height: 20px;
+    flex: 0 0 20px;
+    color: var(--accent);
+    transition: color var(--t-bg);
+  }
+  .visit-actions {
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .visit-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(255,255,255,.04);
+    color: var(--paper);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    transition: background .2s, border-color .2s, color .2s, transform .15s;
+    flex: 1 1 auto; min-width: 0;
+    justify-content: center;
+    min-height: 44px;
+  }
+  .visit-btn::after { display: none !important; }
+  .visit-btn svg { width: 14px; height: 14px; flex: 0 0 14px; }
+  .visit-btn:hover { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.30); transform: translateY(-2px); }
+  .visit-btn.primary {
+    background: #25D366; border-color: #25D366; color: #fff;
+  }
+  .visit-btn.primary:hover {
+    background: #1ebe5a; border-color: #1ebe5a; color: #fff;
+  }
+  .visit-week {
+    margin-top: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+  }
+  .visit-week summary {
+    cursor: pointer;
+    padding: 8px 0;
+    list-style: none;
+    color: rgba(255,255,255,.6);
+    border-top: 1px dashed rgba(255,255,255,.14);
+    padding-top: 14px;
+    transition: color .2s;
+  }
+  .visit-week summary::-webkit-details-marker { display: none; }
+  .visit-week summary:hover { color: var(--accent); }
+  .visit-week[open] summary { color: var(--accent); }
+  .visit-week .hours-grid {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 4px 18px;
+    padding: 12px 0 0;
+  }
+  .visit-week .hours-grid .day,
+  .visit-week .hours-grid .time { padding: 4px 0; }
+  .visit-week .hours-grid .day { color: rgba(255,255,255,.7); }
+  .visit-week .hours-grid .time { color: var(--paper); }
+  .visit-week .hours-grid .closed { opacity: .35; }
+  .visit-week .hours-grid .today { color: var(--accent); font-weight: 500; transition: color var(--t-bg); }
+  @media (max-width: 900px) {
+    .visit { padding: 60px 18px 80px; }
+    .visit-grid { grid-template-columns: 1fr; gap: 20px; }
+    .visit-card { padding: 24px 22px; gap: 18px; }
+    .visit-card-head { grid-template-columns: 48px 1fr auto; gap: 12px; }
+    .visit-logo { width: 48px; height: 48px; }
+    .visit-actions { gap: 8px; }
+    .visit-btn { padding: 11px 14px; font-size: 10.5px; letter-spacing: .12em; }
+  }
+  @media (max-width: 420px) {
+    .visit-actions { flex-direction: column; }
+    .visit-btn { width: 100%; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
      FLOATING ACTIONS — IG + WhatsApp bottom right
      ───────────────────────────────────────────────────────────── */
   .floats {
-    position: fixed; bottom: 24px; right: 24px;
+    position: fixed; bottom: 108px; right: 24px;
     z-index: 50; display: flex; flex-direction: column; gap: 10px;
   }
   .float {
@@ -1873,13 +2195,26 @@
     .bar-pill { padding: 14px 14px; grid-template-columns: 30px 1fr; gap: 10px; }
     .bar-pill img { width: 30px; height: 30px; }
     .bar-pill .nm { font-size: 18px; }
+    /* appbar: tighter on phones */
+    body { padding-bottom: 110px; }
+    .appbar-top { padding: 6px 8px; gap: 0; }
+    .appbar-icon { padding: 6px 8px; min-height: 44px; }
+    .appbar-icon svg { width: 20px; height: 20px; flex: 0 0 20px; }
+    .appbar-icon span { font-size: 8.5px; letter-spacing: .14em; }
+    .appbar-toggle { padding: 6px 8px; font-size: 9px; min-height: 38px; }
+    .appbar-toggle-name { display: none !important; }
+    .appbar-toggle-track { width: 30px; height: 16px; flex: 0 0 30px; }
+    .appbar-toggle-thumb { width: 12px; height: 12px; }
+    html[data-state="dissolved"] .appbar-toggle-thumb { left: 16px; }
+    .appbar-ticker { padding: 5px 0; font-size: 9px; letter-spacing: .16em; }
+    .ticker-group { gap: 24px; padding-right: 24px; }
   }
 
   /* Very small (≤420): big-switch tightens further */
   @media (max-width: 420px) {
-    .big-switch { padding: 4px; }
-    .big-switch button { padding: 10px 12px; font-size: 9.5px; letter-spacing: .14em; gap: 6px; }
-    .big-switch button .dotled { width: 6px; height: 6px; }
+    body { padding-bottom: 104px; }
+    .appbar-icon { padding: 5px 5px; }
+    .appbar-icon span { font-size: 8px; letter-spacing: .1em; }
     .brand .wordmark { font-size: 20px; }
     .brand .tagline { font-size: 8.5px; letter-spacing: .2em; }
     .brand-logo { width: 40px; height: 40px; }
@@ -1956,47 +2291,7 @@
       <span class="tagline">Two states <span>·</span> one chemistry</span>
     </div>
   </div>
-  <nav>
-    <a href="/journal/">journal</a>
-    <span class="nav-sep"></span><a href="/visit/">visit</a>
-    <span class="nav-sep"></span>
-    <a href="#reserve">reserve</a>
-    <a class="nav-cta" href="/builder/">build a drink →</a>
-  </nav>
-  <div class="panel" id="statePanel" role="button" aria-label="flip state">
-    <div class="panel-header">
-      <span class="hl"><span class="led"></span>chemistry · live readout</span>
-      <div class="panel-wave"><i></i><i></i><i></i><i></i><i></i></div>
-    </div>
-    <div class="panel-award">
-      <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.59 6.91L22 9.27l-5.5 4.73L18.18 22 12 18.27 5.82 22 7.5 14 2 9.27l7.41-.36L12 2z"/></svg>
-      <span>tatler asia · <b>top 20 bars</b> · 25/26</span>
-    </div>
-    <div class="panel-row">
-      <span class="k">state</span>
-      <span class="v"><em><span class="for-sol">soluble</span><span class="for-dis">dissolved</span></em> solids</span>
-    </div>
-    <div class="panel-row">
-      <span class="k">venue</span>
-      <span class="v"><span class="for-sol">02 · ss2 pj</span><span class="for-dis">01 · damansara kim pj</span></span>
-    </div>
-    <div class="panel-row">
-      <span class="k">method</span>
-      <span class="v"><span class="for-sol">infusion</span><span class="for-dis">dissolution</span></span>
-    </div>
-    <div class="panel-row">
-      <span class="k">hours</span>
-      <span class="v"><span class="for-sol">wed to sun · 18:00 to 01:00</span><span class="for-dis">tue to sun · 15:00 to 01:00</span></span>
-    </div>
-    <div class="panel-clock">
-      <span>kuala lumpur</span>
-      <span class="time" id="panelClock">—<span class="colon">:</span>—<span class="colon">:</span>—</span>
-    </div>
-    <div class="panel-toggle">
-      <span><span class="for-sol">→ flip to dissolved</span><span class="for-dis">← flip to soluble</span></span>
-      <span class="switch"></span>
-    </div>
-  </div>
+  <!-- Header is logo-only now. Nav + state toggle + live readout live in the bottom app bar. -->
 </header>
 
 <!-- tatler seal moved inside hero -->
@@ -2464,124 +2759,180 @@
 </section>
 
 <!-- ─────────────────────────────────────────────────────────────
-     OUTLETS — both addresses, both phones, both hours
+     VISIT — short, icon-heavy, two outlet cards
      ───────────────────────────────────────────────────────────── -->
-<section class="outlets" id="outlets">
-  <div class="outlets-head">
-    <h2>Both <em>outlets</em>.<br/>Petaling Jaya.</h2>
-    <div class="meta">
-      <b>two rooms · one chemistry</b><br/>
-      address · hours · whatsapp<br/>
-      <span id="liveNow">checking what's open now…</span>
-    </div>
+<section class="visit" id="visit">
+  <div class="visit-head">
+    <h2>Come <em>visit.</em></h2>
+    <p class="visit-sub"><b>two rooms · one chemistry.</b> walk in or whatsapp ahead.</p>
+    <p class="visit-live"><span id="liveNow">checking what's open now…</span></p>
   </div>
 
-  <div class="diptych">
+  <div class="visit-grid">
     <!-- DISSOLVED · DAMANSARA KIM · venue 01 -->
-    <div class="outlet" data-brand="dissolved" data-state-target="dissolved">
-      <div class="outlet-head">
-        <img class="logo" src="https://dissolvedsolids.co/photos/ds-logo.png" alt="Dissolved Solids logo" />
-        <div class="lbl">
-          <b>venue 01</b> · damansara kim pj<br/>
-          method · dissolution
+    <article class="visit-card" data-brand="dissolved" data-state-target="dissolved">
+      <div class="visit-card-head">
+        <img class="visit-logo" src="https://dissolvedsolids.co/photos/ds-logo.png" alt="Dissolved Solids logo" />
+        <div class="visit-name">
+          <span class="visit-tag">venue 01</span>
+          <h3>Dissolved <em>Solids</em></h3>
         </div>
+        <span class="visit-live-pill" id="liveDisWrap">
+          <span class="led"></span>
+          <span id="liveDis">checking…</span>
+        </span>
       </div>
-      <span class="outlet-live" id="liveDisWrap">
-        <span class="led"></span>
-        <span id="liveDis">checking…</span>
-      </span>
-      <h3 class="outlet-name">Dissolved <em>Solids.</em></h3>
-      <p class="outlet-blurb">Experimental bar. Coffee dissolved into liqueur, vermouth folded into something stranger.</p>
-      <div class="outlet-rows">
-        <div class="k">address</div>
-        <div class="v">43-1 Jalan SS20/11<br/>Damansara Kim, 47400 Petaling Jaya</div>
-
-        <div class="k">hours</div>
-        <div class="v">
-          <div class="hours-grid" data-hours="dissolved">
-            <span class="day closed" data-d="1">mon</span>     <span class="time closed">closed</span>
-            <span class="day"        data-d="2">tue</span>     <span class="time">15:00 to 00:00</span>
-            <span class="day"        data-d="3">wed</span>     <span class="time">15:00 to 00:00</span>
-            <span class="day"        data-d="4">thu</span>     <span class="time">15:00 to 00:00</span>
-            <span class="day"        data-d="5">fri</span>     <span class="time">14:00 to 01:00</span>
-            <span class="day"        data-d="6">sat</span>     <span class="time">14:00 to 01:00</span>
-            <span class="day"        data-d="0">sun</span>     <span class="time">14:00 to 00:00</span>
-          </div>
+      <ul class="visit-meta">
+        <li>
+          <svg class="vmi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span><b>Damansara Kim</b> · 43-1 Jalan SS20/11 · 47400 PJ</span>
+        </li>
+        <li>
+          <svg class="vmi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span>Tue to Sun · <b>15:00 to 01:00</b></span>
+        </li>
+        <li>
+          <svg class="vmi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6l-4 9a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-9V3"/></svg>
+          <span>method · <b>dissolution</b></span>
+        </li>
+      </ul>
+      <div class="visit-actions">
+        <a class="visit-btn primary" target="_blank" rel="noopener"
+           href="https://wa.me/601140087607?text=Hi%20Dissolved%20Solids!%20I%27d%20like%20to%20visit%20Damansara%20Kim.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
+          WhatsApp
+        </a>
+        <a class="visit-btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=Dissolved+Solids+Damansara+Kim+Petaling+Jaya">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Maps
+        </a>
+        <a class="visit-btn" href="tel:+601140087607" aria-label="Call Dissolved Solids">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call
+        </a>
+      </div>
+      <details class="visit-week">
+        <summary>full week →</summary>
+        <div class="hours-grid" data-hours="dissolved">
+          <span class="day closed" data-d="1">mon</span>     <span class="time closed">closed</span>
+          <span class="day"        data-d="2">tue</span>     <span class="time">15:00 to 00:00</span>
+          <span class="day"        data-d="3">wed</span>     <span class="time">15:00 to 00:00</span>
+          <span class="day"        data-d="4">thu</span>     <span class="time">15:00 to 00:00</span>
+          <span class="day"        data-d="5">fri</span>     <span class="time">14:00 to 01:00</span>
+          <span class="day"        data-d="6">sat</span>     <span class="time">14:00 to 01:00</span>
+          <span class="day"        data-d="0">sun</span>     <span class="time">14:00 to 00:00</span>
         </div>
-
-        <div class="k">phone</div>
-        <div class="v"><a href="tel:+601140087607">+60 11-4008 7607</a></div>
-
-        <div class="k">social</div>
-        <div class="v"><a href="https://instagram.com/dissolvedsolids" target="_blank" rel="noopener">@dissolvedsolids</a></div>
-      </div>
-      <div class="outlet-cta">
-        <a class="b primary" target="_blank" rel="noopener"
-           href="https://wa.me/601140087607?text=Hi%20Dissolved%20Solids!%20I%27d%20like%20to%20visit%20Damansara%20Kim.">WhatsApp →</a>
-        <a class="b ghost" target="_blank" rel="noopener"
-           href="https://www.google.com/maps/search/?api=1&query=Dissolved+Solids+Damansara+Kim+Petaling+Jaya">Google Maps →</a>
-      </div>
-    </div>
+      </details>
+    </article>
 
     <!-- SOLUBLE · SS2 · venue 02 -->
-    <div class="outlet" data-brand="soluble" data-state-target="soluble">
-      <div class="outlet-head">
-        <img class="logo" src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="Soluble Solids logo" />
-        <div class="lbl">
-          <b>venue 02</b> · ss2 pj<br/>
-          method · infusion
+    <article class="visit-card" data-brand="soluble" data-state-target="soluble">
+      <div class="visit-card-head">
+        <img class="visit-logo" src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="Soluble Solids logo" />
+        <div class="visit-name">
+          <span class="visit-tag">venue 02</span>
+          <h3>Soluble <em>Solids</em></h3>
         </div>
+        <span class="visit-live-pill" id="liveSolWrap">
+          <span class="led"></span>
+          <span id="liveSol">checking…</span>
+        </span>
       </div>
-      <span class="outlet-live" id="liveSolWrap">
-        <span class="led"></span>
-        <span id="liveSol">checking…</span>
-      </span>
-      <h3 class="outlet-name">Soluble <em>Solids.</em></h3>
-      <p class="outlet-blurb">A cocktail parlour. No fixed list. Tell us what you like. We'll build it.</p>
-      <div class="outlet-rows">
-        <div class="k">address</div>
-        <div class="v">50-1 Jalan SS2/24<br/>47300 Petaling Jaya, Selangor</div>
-
-        <div class="k">hours</div>
-        <div class="v">
-          <div class="hours-grid" data-hours="soluble">
-            <span class="day closed" data-d="1">mon</span>     <span class="time closed">closed</span>
-            <span class="day closed" data-d="2">tue</span>     <span class="time closed">closed</span>
-            <span class="day"        data-d="3">wed</span>     <span class="time">18:00 to 01:00</span>
-            <span class="day"        data-d="4">thu</span>     <span class="time">18:00 to 01:00</span>
-            <span class="day"        data-d="5">fri</span>     <span class="time">18:00 to 01:00</span>
-            <span class="day"        data-d="6">sat</span>     <span class="time">18:00 to 01:00</span>
-            <span class="day"        data-d="0">sun</span>     <span class="time">18:00 to 01:00</span>
-          </div>
+      <ul class="visit-meta">
+        <li>
+          <svg class="vmi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span><b>SS2</b> · 50-1 Jalan SS2/24 · 47300 PJ</span>
+        </li>
+        <li>
+          <svg class="vmi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span>Wed to Sun · <b>18:00 to 01:00</b></span>
+        </li>
+        <li>
+          <svg class="vmi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11h14M7 11V7a5 5 0 0 1 10 0v4M9 11v9M15 11v9"/></svg>
+          <span>method · <b>infusion</b></span>
+        </li>
+      </ul>
+      <div class="visit-actions">
+        <a class="visit-btn primary" target="_blank" rel="noopener"
+           href="https://wa.me/601116828651?text=Hi%20Soluble%20Solids!%20I%27d%20like%20to%20visit%20SS2.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
+          WhatsApp
+        </a>
+        <a class="visit-btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=Soluble+Solids+SS2+Petaling+Jaya">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Maps
+        </a>
+        <a class="visit-btn" href="tel:+601116828651" aria-label="Call Soluble Solids">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call
+        </a>
+      </div>
+      <details class="visit-week">
+        <summary>full week →</summary>
+        <div class="hours-grid" data-hours="soluble">
+          <span class="day closed" data-d="1">mon</span>     <span class="time closed">closed</span>
+          <span class="day closed" data-d="2">tue</span>     <span class="time closed">closed</span>
+          <span class="day"        data-d="3">wed</span>     <span class="time">18:00 to 01:00</span>
+          <span class="day"        data-d="4">thu</span>     <span class="time">18:00 to 01:00</span>
+          <span class="day"        data-d="5">fri</span>     <span class="time">18:00 to 01:00</span>
+          <span class="day"        data-d="6">sat</span>     <span class="time">18:00 to 01:00</span>
+          <span class="day"        data-d="0">sun</span>     <span class="time">18:00 to 01:00</span>
         </div>
+      </details>
+    </article>
 
-        <div class="k">phone</div>
-        <div class="v"><a href="tel:+601116828651">+60 11-1682 8651</a></div>
-
-        <div class="k">social</div>
-        <div class="v"><a href="https://instagram.com/solublesolids" target="_blank" rel="noopener">@solublesolids</a></div>
-      </div>
-      <div class="outlet-cta">
-        <a class="b primary" target="_blank" rel="noopener"
-           href="https://wa.me/601116828651?text=Hi%20Soluble%20Solids!%20I%27d%20like%20to%20visit%20SS2.">WhatsApp →</a>
-        <a class="b ghost" target="_blank" rel="noopener"
-           href="https://www.google.com/maps/search/?api=1&query=Soluble+Solids+SS2+Petaling+Jaya">Google Maps →</a>
-      </div>
-    </div>
   </div>
 </section>
 </main>
 
-<!-- BIG BOTTOM SWITCHER — always visible -->
-<div class="big-switch" id="bigSwitch" aria-label="flip state">
-  <button data-target="dissolved" class="active">
-    <span class="dotled"></span>Dissolved
-  </button>
-  <button data-target="soluble">
-    Soluble<span class="dotled"></span>
-  </button>
-  <span class="hint">← tap to switch →</span>
-</div>
+<!-- ─────────────────────────────────────────────────────────────
+     BOTTOM APP-NAV BAR — icons + state toggle + live ticker
+     Replaces the old corner panel and bottom big-switch.
+     ───────────────────────────────────────────────────────────── -->
+<nav class="appbar" aria-label="Primary">
+  <div class="appbar-top">
+    <a class="appbar-icon" href="/journal/" aria-label="Journal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
+        <path d="M9 8h6M9 12h6M9 16h4"/>
+      </svg>
+      <span>journal</span>
+    </a>
+    <a class="appbar-icon" href="#visit" aria-label="Visit">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+      <span>visit</span>
+    </a>
+    <a class="appbar-icon" href="#reserve" aria-label="Reserve">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="16" rx="2"/>
+        <path d="M3 10h18M8 3v4M16 3v4"/>
+      </svg>
+      <span>reserve</span>
+    </a>
+    <a class="appbar-icon appbar-icon-cta" href="/builder/" aria-label="Build a drink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 4h14M8 4l4 8 4-8M12 12v8M8 20h8"/>
+      </svg>
+      <span>build</span>
+    </a>
+    <button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet — switch between Dissolved and Soluble">
+      <span class="appbar-toggle-name for-dis">dissolved</span>
+      <span class="appbar-toggle-name for-sol">soluble</span>
+      <span class="appbar-toggle-track" aria-hidden="true"><span class="appbar-toggle-thumb"></span></span>
+    </button>
+  </div>
+  <div class="appbar-ticker" aria-hidden="true">
+    <div class="appbar-ticker-track" id="appbarTickerTrack">
+      <div class="ticker-group" id="tickerGroup1"></div>
+      <div class="ticker-group" id="tickerGroup2"></div>
+    </div>
+  </div>
+</nav>
 
 <!-- MUSIC TOGGLE — bottom left -->
 <button class="music-toggle" id="musicToggle" type="button" aria-label="toggle music">
@@ -2593,20 +2944,45 @@
 </audio>
 
 <script>
-  // Live KL clock in the panel
-  function tickClock() {
+  // ─ APPBAR TICKER — fills both copies + ticks KL time + re-renders on state flip
+  function klTime() {
     const klMinutes = -480;
     const now = new Date();
     const utc = now.getTime() + now.getTimezoneOffset() * 60_000;
     const kl = new Date(utc - klMinutes * 60_000);
-    const hh = String(kl.getHours()).padStart(2,'0');
-    const mm = String(kl.getMinutes()).padStart(2,'0');
-    const ss = String(kl.getSeconds()).padStart(2,'0');
-    const el = document.getElementById('panelClock');
-    if (el) el.innerHTML = `${hh}<span class="colon">:</span>${mm}<span class="colon">:</span>${ss}`;
+    const pad = n => String(n).padStart(2,'0');
+    return `${pad(kl.getHours())}:${pad(kl.getMinutes())}:${pad(kl.getSeconds())}`;
   }
-  tickClock();
-  setInterval(tickClock, 1000);
+  function tickerHTML() {
+    const isSol = document.documentElement.dataset.state === 'soluble';
+    const venue   = isSol ? '02 · SS2 PJ' : '01 · Damansara Kim PJ';
+    const hours   = isSol ? 'Wed to Sun · 18:00 to 01:00' : 'Tue to Sun · 15:00 to 01:00';
+    const method  = isSol ? 'Infusion' : 'Dissolution';
+    const stateNm = isSol ? 'Soluble Solids' : 'Dissolved Solids';
+    return ''
+      + `<span class="ti"><b>state</b> <i>${stateNm}</i></span>`
+      + `<span class="ti"><b>venue</b> <i>${venue}</i></span>`
+      + `<span class="ti"><b>method</b> <i>${method}</i></span>`
+      + `<span class="ti"><b>hours</b> <i>${hours}</i></span>`
+      + `<span class="ti"><b>kuala lumpur</b> <i class="ti-time">${klTime()}</i></span>`
+      + `<span class="ti"><b>tatler asia</b> <i>top 20 bars · 25/26</i></span>`;
+  }
+  function renderTicker() {
+    const html = tickerHTML();
+    const g1 = document.getElementById('tickerGroup1');
+    const g2 = document.getElementById('tickerGroup2');
+    if (g1) g1.innerHTML = html;
+    if (g2) g2.innerHTML = html;
+  }
+  function tickClocks() {
+    const t = klTime();
+    document.querySelectorAll('#appbarTickerTrack .ti-time').forEach(el => el.textContent = t);
+  }
+  renderTicker();
+  setInterval(tickClocks, 1000);
+  new MutationObserver(renderTicker).observe(
+    document.documentElement, { attributes: true, attributeFilter: ['data-state'] }
+  );
 
   // Particle scale: fewer on smaller / touch / reduced-motion devices for perf
   const _isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
@@ -2679,20 +3055,63 @@
     sparks.appendChild(s);
   }
 
-  // State toggle with dissolve overlay flash
-  const panel = document.getElementById('statePanel');
-  panel.addEventListener('click', () => {
-    document.body.classList.add('dissolving');
-    requestAnimationFrame(() => {
-      const html = document.documentElement;
-      html.dataset.state = html.dataset.state === 'soluble' ? 'dissolved' : 'soluble';
+  // Record-scratch SFX (WebAudio synth — no extra asset)
+  function playScratch() {
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      const ctx = new AC();
+      const now = ctx.currentTime;
+      const dur = 0.32;
+      // 1) Sawtooth swept down — the wreee-ooom
+      const osc = ctx.createOscillator();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(1400, now);
+      osc.frequency.exponentialRampToValueAtTime(60, now + dur);
+      const oscGain = ctx.createGain();
+      oscGain.gain.setValueAtTime(0, now);
+      oscGain.gain.linearRampToValueAtTime(0.16, now + 0.015);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, now + dur);
+      osc.connect(oscGain).connect(ctx.destination);
+      osc.start(now); osc.stop(now + dur + 0.02);
+      // 2) Bandpass-filtered noise for the needle texture
+      const len = Math.floor(ctx.sampleRate * dur);
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+      const noise = ctx.createBufferSource(); noise.buffer = buf;
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(2800, now);
+      filter.frequency.exponentialRampToValueAtTime(280, now + dur);
+      filter.Q.value = 6;
+      const noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(0, now);
+      noiseGain.gain.linearRampToValueAtTime(0.20, now + 0.012);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, now + dur);
+      noise.connect(filter).connect(noiseGain).connect(ctx.destination);
+      noise.start(now); noise.stop(now + dur + 0.02);
+      setTimeout(() => { try { ctx.close(); } catch(e){} }, 600);
+    } catch (e) { /* SFX is non-critical */ }
+  }
+
+  // State toggle (now in the bottom appbar) with dissolve overlay flash + scratch SFX
+  const panel = document.getElementById('appbarToggle');
+  if (panel) {
+    panel.addEventListener('click', () => {
+      playScratch();
+      document.body.classList.add('dissolving');
+      requestAnimationFrame(() => {
+        const html = document.documentElement;
+        html.dataset.state = html.dataset.state === 'soluble' ? 'dissolved' : 'soluble';
+      });
+      setTimeout(() => document.body.classList.remove('dissolving'), 700);
     });
-    setTimeout(() => document.body.classList.remove('dissolving'), 700);
-  });
+  }
 
   // Keyboard shortcut: spacebar to flip
   document.addEventListener('keydown', (e) => {
-    if (e.code === 'Space') { e.preventDefault(); panel.click(); }
+    if (e.code === 'Space' && panel) { e.preventDefault(); panel.click(); }
   });
   // Drink Builder state machine
   const STEPS = ['mood','spirit','taste','strength','occasion'];
@@ -2996,84 +3415,114 @@
       renderBarPills(); renderCal(); renderTimes(); updateSend();
     }
   }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-state'] });
-  // ─ BIG BOTTOM SWITCHER (mirrors the corner panel)
-  const switchBtns = document.querySelectorAll('.big-switch button');
-  function updateSwitch() {
-    const state = document.documentElement.dataset.state;
-    switchBtns.forEach(b => b.classList.toggle('active', b.dataset.target === state));
-  }
-  switchBtns.forEach(b => {
-    b.addEventListener('click', () => {
-      const target = b.dataset.target;
-      if (document.documentElement.dataset.state === target) return;
-      document.body.classList.add('dissolving');
-      requestAnimationFrame(() => {
-        document.documentElement.dataset.state = target;
-        updateSwitch();
-      });
-      setTimeout(() => document.body.classList.remove('dissolving'), 700);
-    });
-  });
-  updateSwitch();
+  // (Old .big-switch buttons removed — appbar toggle is the only state switcher now.)
+  // Keep a no-op updateSwitch for any legacy call sites still referencing it.
+  function updateSwitch() { /* noop — appbar uses CSS for visual state */ }
 
-  // also keep big-switch in sync when corner panel is clicked
-  const _origPanel = document.getElementById('statePanel');
-  if (_origPanel) _origPanel.addEventListener('click', () => setTimeout(updateSwitch, 50));
-
-  // ─ MUSIC TOGGLE — plays /photos/audio/lofi-beat.mp3 (Pixabay license, free for commercial use)
+  // ─ MUSIC TOGGLE — state-aware: lofi-beat for Soluble, fashion-house for Dissolved.
+  //   When you flip state mid-song, the two tracks crossfade smoothly. The track
+  //   that fades out is paused at its current position, so flipping back later
+  //   resumes from exactly where it left off.
   const mt = document.getElementById('musicToggle');
   const mtTip = document.getElementById('musicTip');
   const TARGET_VOL = 0.35;
   const FADE_MS = 1200;
-  let bgAudio = null;
-  let fadeTimer = null;
-  function setupAudio() {
-    bgAudio = new Audio('/photos/audio/lofi-beat.mp3');
-    bgAudio.loop = true;
-    bgAudio.preload = 'none';
-    bgAudio.volume = 0;
+  const XFADE_MS = 1400;
+  const SRC = {
+    soluble:   '/photos/audio/lofi-beat.mp3',
+    dissolved: '/photos/audio/fashion-house.mp3',
+  };
+  const audios = { soluble: null, dissolved: null };
+  let isPlaying = false;
+  let currentKey = null;
+  function getAudio(key) {
+    if (!audios[key]) {
+      const a = new Audio(SRC[key]);
+      a.loop = true;
+      a.preload = 'none';
+      a.volume = 0;
+      audios[key] = a;
+    }
+    return audios[key];
   }
-  function fadeTo(target, duration) {
-    if (!bgAudio) return;
-    if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; }
-    const startVol = bgAudio.volume;
+  function fadeTo(audio, target, duration) {
+    if (!audio) return;
+    if (audio._fadeTimer) clearInterval(audio._fadeTimer);
+    const startVol = audio.volume;
     const startTime = Date.now();
-    fadeTimer = setInterval(() => {
+    audio._fadeTimer = setInterval(() => {
       const t = Math.min(1, (Date.now() - startTime) / duration);
-      bgAudio.volume = Math.max(0, Math.min(1, startVol + (target - startVol) * t));
+      audio.volume = Math.max(0, Math.min(1, startVol + (target - startVol) * t));
       if (t >= 1) {
-        clearInterval(fadeTimer);
-        fadeTimer = null;
-        if (target === 0 && !bgAudio.paused) bgAudio.pause();
+        clearInterval(audio._fadeTimer);
+        audio._fadeTimer = null;
+        if (target === 0 && !audio.paused) audio.pause();
       }
     }, 60);
   }
+  function currentStateKey() {
+    return document.documentElement.dataset.state === 'dissolved' ? 'dissolved' : 'soluble';
+  }
+  function tipFor(key, playing) {
+    if (!playing) return 'tap to play · music';
+    return key === 'dissolved' ? 'house · tap to stop' : 'lofi · tap to stop';
+  }
   async function startMusic() {
+    const key = currentStateKey();
+    const audio = getAudio(key);
     try {
-      if (!bgAudio) setupAudio();
-      await bgAudio.play();
-      fadeTo(TARGET_VOL, FADE_MS);
+      await audio.play();
+      fadeTo(audio, TARGET_VOL, FADE_MS);
+      isPlaying = true;
+      currentKey = key;
       mt.classList.add('playing');
-      mtTip.textContent = 'lofi loop · tap to stop';
+      mtTip.textContent = tipFor(key, true);
     } catch (e) {
       console.warn('music start failed', e);
       mtTip.textContent = 'audio unavailable';
     }
   }
   function stopMusic() {
-    if (!bgAudio) return;
-    try {
-      fadeTo(0, FADE_MS * 0.6);
-      mt.classList.remove('playing');
-      mtTip.textContent = 'tap to play · ambient';
-    } catch (e) {
-      console.warn('music stop failed', e);
-    }
+    isPlaying = false;
+    Object.values(audios).forEach(a => a && fadeTo(a, 0, FADE_MS * 0.6));
+    mt.classList.remove('playing');
+    mtTip.textContent = tipFor(currentKey || 'soluble', false);
   }
   mt.addEventListener('click', () => {
     if (mt.classList.contains('playing')) stopMusic();
     else startMusic();
   });
+  // Autoplay on load. Most browsers block until the user interacts, so
+  // we try immediately (will silently fail if blocked) and arm one-shot
+  // listeners on the very first user gesture. Gestures on the music
+  // toggle itself are skipped — the toggle handler covers that case.
+  (function () {
+    startMusic();
+    const evts = ['pointerdown', 'keydown', 'touchstart'];
+    function onGesture(e) {
+      const onToggle = e.target && e.target.closest && e.target.closest('.music-toggle');
+      if (!isPlaying && !onToggle) startMusic();
+      evts.forEach(ev => document.removeEventListener(ev, onGesture, true));
+    }
+    evts.forEach(ev => document.addEventListener(ev, onGesture, { capture: true, passive: true }));
+  })();
+  // Crossfade on state flip if music is playing
+  new MutationObserver(async () => {
+    if (!isPlaying) return;
+    const newKey = currentStateKey();
+    if (newKey === currentKey) return;
+    const oldAudio = audios[currentKey];
+    const newAudio = getAudio(newKey);
+    if (oldAudio) fadeTo(oldAudio, 0, XFADE_MS);
+    try {
+      await newAudio.play();
+      fadeTo(newAudio, TARGET_VOL, XFADE_MS);
+      currentKey = newKey;
+      mtTip.textContent = tipFor(newKey, true);
+    } catch (e) {
+      console.warn('crossfade failed', e);
+    }
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-state'] });
 
   // ─ OUTLETS — today highlight + live open/closed
   function todayDay() { return new Date().getDay(); }

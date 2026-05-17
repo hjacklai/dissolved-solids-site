@@ -417,6 +417,28 @@
     'smoky+sweet': 'smoky_margarita',
   };
 
+  // Template-key → /cocktails/{slug}/ URL slug.
+  // When the builder routes to a template that's already on our menu, we surface
+  // a small "On our menu" link so the user knows the bartender can pour it as-is.
+  const MENU_SLUGS = {
+    jungle_bird: 'jungle-bird',
+    old_fashioned: 'old-fashioned',
+    negroni_sbagliato: 'negroni-sbagliato',
+    pandan_collins: 'pandan-collins',
+    gula_melaka_old_fashioned: 'gula-melaka-old-fashioned',
+    calamansi_highball: 'calamansi-highball',
+    kopi_sour: 'kopi-sour',
+  };
+  const MENU_NAMES = {
+    jungle_bird: 'Jungle Bird',
+    old_fashioned: 'Old Fashioned',
+    negroni_sbagliato: 'Negroni Sbagliato',
+    pandan_collins: 'Pandan Collins',
+    gula_melaka_old_fashioned: 'Gula Melaka Old Fashioned',
+    calamansi_highball: 'Calamansi Highball',
+    kopi_sour: 'Kopi Sour',
+  };
+
   /* ----- Routing ----- */
 
   function pickTemplate(ans) {
@@ -912,6 +934,23 @@
         tag.className = 'result-tag';
         tag.textContent = 'Malaysian local';
         $('.result-name').insertAdjacentElement('afterend', tag);
+      }
+
+      // Menu cross-reference — if this template is already in our menu,
+      // surface a small link so the user knows they can just order it.
+      const existingMenu = root.querySelector('.result-menu-match');
+      if (existingMenu) existingMenu.remove();
+      const slug = MENU_SLUGS[recipe.templateKey];
+      if (slug) {
+        const menuLink = document.createElement('a');
+        menuLink.className = 'result-menu-match';
+        menuLink.href = '/cocktails/' + slug + '/';
+        menuLink.innerHTML = '<span class="menu-eyebrow">On our menu</span> '
+          + '<span class="menu-name">' + MENU_NAMES[recipe.templateKey] + '</span> '
+          + '<span class="menu-arrow">→</span>';
+        // Insert after the result-tag if present, else after the name
+        const anchor = root.querySelector('.result-tag') || $('.result-name');
+        anchor.insertAdjacentElement('afterend', menuLink);
       }
 
       $('.result-method').textContent = recipe.method;
