@@ -3177,43 +3177,89 @@
     sparks.appendChild(s);
   }
 
-  // Record-scratch SFX (WebAudio synth — no extra asset)
+  // Record-scratch SFX — heavier remix:
+  //   1) sub-bass kick (sine 150 → 35 Hz) with sharp 5 ms attack for the THUMP
+  //   2) click transient (short 1.2 kHz sine burst) for the snap on the attack
+  //   3) pitched scratch (sawtooth wobble: 900 → 1800 → 220 → 70 Hz)
+  //   4) bandpass-filtered noise for the vinyl-needle texture
+  //   5) waveshaper saturator on the master bus for grit
   function playScratch() {
     try {
       const AC = window.AudioContext || window.webkitAudioContext;
       if (!AC) return;
       const ctx = new AC();
       const now = ctx.currentTime;
-      const dur = 0.32;
-      // 1) Sawtooth swept down — the wreee-ooom
-      const osc = ctx.createOscillator();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(1400, now);
-      osc.frequency.exponentialRampToValueAtTime(60, now + dur);
-      const oscGain = ctx.createGain();
-      oscGain.gain.setValueAtTime(0, now);
-      oscGain.gain.linearRampToValueAtTime(0.16, now + 0.015);
-      oscGain.gain.exponentialRampToValueAtTime(0.001, now + dur);
-      osc.connect(oscGain).connect(ctx.destination);
-      osc.start(now); osc.stop(now + dur + 0.02);
-      // 2) Bandpass-filtered noise for the needle texture
+      const dur = 0.42;
+
+      // Master bus + soft-clip saturator
+      const master = ctx.createGain();
+      master.gain.value = 0.95;
+      const shaper = ctx.createWaveShaper();
+      const k = 5, n = 1024, curve = new Float32Array(n);
+      for (let i = 0; i < n; i++) {
+        const x = i * 2 / n - 1;
+        curve[i] = (Math.PI + k) * x / (Math.PI + k * Math.abs(x));
+      }
+      shaper.curve = curve;
+      shaper.oversample = '2x';
+      master.connect(shaper).connect(ctx.destination);
+
+      // 1) Sub-bass kick — body of the thump
+      const kick = ctx.createOscillator();
+      kick.type = 'sine';
+      kick.frequency.setValueAtTime(150, now);
+      kick.frequency.exponentialRampToValueAtTime(35, now + 0.10);
+      const kickGain = ctx.createGain();
+      kickGain.gain.setValueAtTime(0, now);
+      kickGain.gain.linearRampToValueAtTime(0.95, now + 0.005);
+      kickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+      kick.connect(kickGain).connect(master);
+      kick.start(now); kick.stop(now + 0.26);
+
+      // 2) Click transient — the snap on the leading edge
+      const click = ctx.createOscillator();
+      click.type = 'sine';
+      click.frequency.value = 1200;
+      const clickGain = ctx.createGain();
+      clickGain.gain.setValueAtTime(0, now);
+      clickGain.gain.linearRampToValueAtTime(0.4, now + 0.001);
+      clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+      click.connect(clickGain).connect(master);
+      click.start(now); click.stop(now + 0.05);
+
+      // 3) Pitched scratch — DJ wobble (up, down, plummet)
+      const scr = ctx.createOscillator();
+      scr.type = 'sawtooth';
+      scr.frequency.setValueAtTime(900, now);
+      scr.frequency.linearRampToValueAtTime(1800, now + 0.04);
+      scr.frequency.exponentialRampToValueAtTime(220, now + 0.14);
+      scr.frequency.exponentialRampToValueAtTime(70, now + dur);
+      const scrGain = ctx.createGain();
+      scrGain.gain.setValueAtTime(0, now);
+      scrGain.gain.linearRampToValueAtTime(0.22, now + 0.015);
+      scrGain.gain.exponentialRampToValueAtTime(0.001, now + dur);
+      scr.connect(scrGain).connect(master);
+      scr.start(now); scr.stop(now + dur + 0.02);
+
+      // 4) Vinyl-needle noise
       const len = Math.floor(ctx.sampleRate * dur);
       const buf = ctx.createBuffer(1, len, ctx.sampleRate);
       const data = buf.getChannelData(0);
       for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
       const noise = ctx.createBufferSource(); noise.buffer = buf;
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'bandpass';
-      filter.frequency.setValueAtTime(2800, now);
-      filter.frequency.exponentialRampToValueAtTime(280, now + dur);
-      filter.Q.value = 6;
+      const flt = ctx.createBiquadFilter();
+      flt.type = 'bandpass';
+      flt.frequency.setValueAtTime(2800, now);
+      flt.frequency.exponentialRampToValueAtTime(280, now + dur);
+      flt.Q.value = 6;
       const noiseGain = ctx.createGain();
       noiseGain.gain.setValueAtTime(0, now);
       noiseGain.gain.linearRampToValueAtTime(0.20, now + 0.012);
       noiseGain.gain.exponentialRampToValueAtTime(0.001, now + dur);
-      noise.connect(filter).connect(noiseGain).connect(ctx.destination);
+      noise.connect(flt).connect(noiseGain).connect(master);
       noise.start(now); noise.stop(now + dur + 0.02);
-      setTimeout(() => { try { ctx.close(); } catch(e){} }, 600);
+
+      setTimeout(() => { try { ctx.close(); } catch(e){} }, 800);
     } catch (e) { /* SFX is non-critical */ }
   }
 
