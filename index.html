@@ -559,7 +559,9 @@
   html[data-state="soluble"]   .logo-dis { display: none; }
   html[data-state="dissolved"] .logo-sol { display: none; }
 
-  /* Mirror the Soluble Solids logo horizontally wherever it shows */
+  /* Mirror the Soluble Solids cube anywhere ss-logo shows up. The
+     attribute selector covers any IMG we add later without revisiting. */
+  img[src*="ss-logo"],
   .logo-sol,
   .outlet[data-brand="soluble"] .outlet-head .logo,
   .bar-pill[data-bar="soluble"] img {
@@ -1714,6 +1716,38 @@
     .visit-actions { flex-direction: column; }
     .visit-btn { width: 100%; }
   }
+
+  /* ─────────────────────────────────────────────────────────────
+     CURSIVE-FONT POLICY
+     Cursive (Allura) is reserved for the "dissolved solids" brand
+     wordmark + the hero h1. Every other heading, body and label uses
+     the non-cursive modern serif (DM Serif Display) so the page stays
+     readable on the dissolved-state palette.
+     ───────────────────────────────────────────────────────────── */
+  .gallery-head h2,
+  .reserve-head h2,
+  .outlets-head h2,
+  .visit-head h2,
+  .visit-head .visit-sub,
+  .visit-head .visit-live,
+  .builder-intro,
+  #builder .builder-q-title,
+  #builder .result-name,
+  #builder .result-tagline,
+  #builder .result-ingredients li,
+  #builder .result-method,
+  #builder .result-garnish,
+  #builder .result-eyebrow,
+  #builder .builder-intro {
+    font-family: var(--serif-sol) !important;
+    font-style: normal !important;
+  }
+  /* Each visit card keeps its OWN brand typeface (matches the bar-pill rule). */
+  .visit-card[data-brand="dissolved"] .visit-name h3 { font-family: var(--serif-dis); }
+  .visit-card[data-brand="soluble"]   .visit-name h3 { font-family: var(--serif-sol); font-style: normal; }
+  /* The inline-styled "Build your drink" gallery heading came from the
+     legacy markup. Force its serif to the modern face too. */
+  #builder .gallery-head h2 { font-family: var(--serif-sol) !important; font-style: normal !important; }
 
   /* ─────────────────────────────────────────────────────────────
      DRINK BUILDER — dark-bar integration (mounts /builder.css)

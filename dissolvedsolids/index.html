@@ -589,7 +589,9 @@
   html[data-state="soluble"]   .logo-dis { display: none; }
   html[data-state="dissolved"] .logo-sol { display: none; }
 
-  /* Mirror the Soluble Solids logo horizontally wherever it shows */
+  /* Mirror the Soluble Solids cube anywhere ss-logo shows up. The
+     attribute selector covers any IMG we add later without revisiting. */
+  img[src*="ss-logo"],
   .logo-sol,
   .outlet[data-brand="soluble"] .outlet-head .logo,
   .bar-pill[data-bar="soluble"] img {
@@ -1928,6 +1930,24 @@
 <link rel="stylesheet" href="/builder.css" />
 <style>
   /* Drink-builder integration on dark bar pages */
+  /* Cursive policy: keep "dissolved solids" wordmark + hero h1 in Allura.
+     Everything else uses the non-cursive modern serif so it reads cleanly
+     on the dissolved-state palette. */
+  .gallery-head h2,
+  .reserve-head h2,
+  .outlets-head h2,
+  .visit-head h2,
+  #builder .builder-q-title,
+  #builder .result-name,
+  #builder .result-tagline,
+  #builder .result-ingredients li,
+  #builder .result-method,
+  #builder .result-garnish,
+  #builder .result-eyebrow,
+  #builder .gallery-head h2 {
+    font-family: var(--serif-sol) !important;
+    font-style: normal !important;
+  }
   #builder .builder-intro {
     max-width: 760px;
     margin: 0 auto 32px;

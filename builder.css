@@ -14,20 +14,23 @@
 }
 
 .builder-mount .builder-hero h1 {
-  font-family: var(--serif);
-  font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;
+  /* Modern non-cursive serif so the hero reads clearly even when the
+     host page binds --serif to a script font like Allura. */
+  font-family: 'DM Serif Display', 'Times New Roman', serif;
+  font-style: normal;
   font-weight: 500;
   font-size: clamp(48px, 9vw, 96px);
-  line-height: .9;
+  line-height: .95;
   letter-spacing: -.02em;
   margin: 16px 0 0;
 }
 .builder-mount .builder-hero h1 i { color: var(--accent); }
 
 .builder-mount .builder-hero .lede {
-  font-family: var(--serif);
+  font-family: 'DM Serif Display', 'Times New Roman', serif;
+  font-style: normal;
   font-size: clamp(18px, 2vw, 24px);
-  line-height: 1.35;
+  line-height: 1.4;
   margin: 28px 0 36px;
   max-width: 560px;
 }
@@ -68,8 +71,10 @@
 }
 
 .builder-q-title {
-  font-family: var(--serif);
-  font-variation-settings: 'opsz' 80, 'SOFT' 40, 'WONK' 1;
+  /* Force a modern (non-cursive) serif so the heading stays readable
+     even when the host page has --serif resolving to Allura. */
+  font-family: 'DM Serif Display', 'Times New Roman', serif;
+  font-style: normal;
   font-size: clamp(32px, 5.5vw, 56px);
   line-height: 1;
   letter-spacing: -.02em;
@@ -313,11 +318,12 @@
 }
 
 .builder-mount .result-name {
-  font-family: var(--serif);
-  font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;
+  /* Modern non-cursive serif so the drink name reads clearly. */
+  font-family: 'DM Serif Display', 'Times New Roman', serif;
+  font-style: normal;
   font-weight: 500;
   font-size: clamp(44px, 8vw, 84px);
-  line-height: .9;
+  line-height: .95;
   letter-spacing: -.02em;
   margin: 0 0 12px;
 }
@@ -380,13 +386,15 @@
 }
 
 .builder-mount .result-tagline {
-  font-family: var(--serif);
+  /* Clean readable serif, no italic — easy to skim. */
+  font-family: 'DM Serif Display', 'Times New Roman', serif;
+  font-style: normal;
+  font-weight: 400;
   font-size: clamp(17px, 1.7vw, 22px);
-  line-height: 1.35;
+  line-height: 1.4;
   color: var(--muted);
   margin: 0 0 40px;
   max-width: 520px;
-  font-style: italic;
 }
 
 .builder-mount .result-block {
@@ -412,9 +420,10 @@
   gap: 10px;
 }
 .builder-mount .result-ingredients li {
-  font-family: var(--serif);
+  font-family: 'DM Serif Display', 'Times New Roman', serif;
+  font-style: normal;
   font-size: clamp(17px, 1.8vw, 20px);
-  line-height: 1.4;
+  line-height: 1.45;
   opacity: 0;
   transform: translateY(6px);
   animation: ingredient-fade .5s ease-out both;
@@ -425,9 +434,10 @@
 
 .builder-mount .result-method,
 .builder-mount .result-garnish {
-  font-family: var(--serif);
+  font-family: 'DM Serif Display', 'Times New Roman', serif;
+  font-style: normal;
   font-size: clamp(16px, 1.6vw, 19px);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .builder-mount .result-sub-note {
