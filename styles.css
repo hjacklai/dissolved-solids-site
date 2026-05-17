@@ -1213,39 +1213,66 @@ a.label:hover { opacity: .8; }
    ==================================================================== */
 
 .journal-body {
-  /* Journal is a reading page — use a fixed dark palette regardless
-     of the page's data-state, so prose stays comfortable on the eyes
-     and matches the landing's nocturnal aesthetic. Override the theme
-     vars locally so every child (headings, cards, rules) re-resolves
-     against the dark palette. */
-  --bg:        #07070d;
-  --bg-2:      #11111d;
-  --fg:        #f3ecdf;
-  --accent:    #ff3b81;
-  --accent-2:  #c8862e;
-  --rule:      rgba(243, 236, 223, .14);
-  --rule-soft: rgba(243, 236, 223, .07);
-  --muted:     rgba(243, 236, 223, .55);
-  --ph-bg:     #11111d;
-  --btn-fg:    #07070d;
+  /* Journal pages share one cohesive theme — the same indigo +
+     amber palette as the wheel design on /journal/. All sub-pages
+     re-resolve their theme vars locally so headings, cards and
+     rules pick up the dark look. */
+  --bg:        #2a1330;
+  --bg-2:      #1a0a22;
+  --fg:        #f0e6cf;
+  --accent:    #d18b3a;
+  --accent-2:  #d6a39a;
+  --rule:      rgba(240, 230, 207, .14);
+  --rule-soft: rgba(240, 230, 207, .06);
+  --muted:     rgba(240, 230, 207, .55);
+  --ph-bg:     #1a0a22;
+  --btn-fg:    #1a0a22;
+  --serif:     'DM Serif Display', 'Times New Roman', serif;
 
   color: var(--fg);
   background:
-    radial-gradient(ellipse 80% 60% at 100% -10%,
-      rgba(255, 59, 129, .08) 0%,
-      transparent 60%),
-    radial-gradient(ellipse 70% 55% at -10% 110%,
-      rgba(200, 134, 46, .07) 0%,
-      transparent 55%),
+    radial-gradient(1200px 800px at 80% -10%, rgba(209,139,58,.10), transparent 60%),
+    radial-gradient(800px 600px at -10% 110%, rgba(214,163,154,.08), transparent 55%),
     var(--bg);
   background-attachment: fixed;
   min-height: 100vh;
+}
+
+/* Cohesive top header for every sub-page (matches the centred
+   wordmark approach used on the landing + journal index). */
+.journal-body .journal-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px clamp(20px, 4vw, 80px);
+  border-bottom: 1px solid var(--rule);
+  background: linear-gradient(180deg, rgba(26,10,34,.94) 0%, rgba(26,10,34,.55) 70%, transparent 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: sticky; top: 0; z-index: 50;
+}
+.journal-body .journal-wordmark {
+  display: inline-flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 4px;
+}
+.journal-body .journal-wordmark span {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.4vw, 22px);
+  letter-spacing: -.01em;
+  color: var(--fg);
+}
+.journal-body .journal-wordmark em {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 /* Defensive: if atmosphere.js was loaded (e.g. by a stale browser
    cache) hide the floating particles + music toggle on journal. */
 .journal-body .atmo-dots,
 .journal-body .atmo-music { display: none !important; }
-
 .journal-eyebrow {
   display: inline-block;
   font-family: var(--mono);
