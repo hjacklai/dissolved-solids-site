@@ -1925,6 +1925,10 @@
   }
 </style>
 <link rel="stylesheet" href="/builder.css" />
+<!-- Audio is part of the bar experience — start fetching ASAP so the
+     music toggle is responsive the moment the user clicks it. -->
+<link rel="preload" as="audio" href="/photos/audio/lofi-beat.mp3" type="audio/mpeg" />
+<link rel="preload" as="audio" href="/photos/audio/fashion-house.mp3" type="audio/mpeg" />
 <style>
   /* Drink-builder integration on dark bar pages */
   /* Cursive policy: keep "dissolved solids" wordmark + hero h1 in Allura.
@@ -3229,12 +3233,17 @@
     if (!audios[key]) {
       const a = new Audio(SRC[key]);
       a.loop = true;
-      a.preload = 'none';
+      // Start buffering immediately so the toggle is responsive.
+      a.preload = 'auto';
       a.volume = 0;
       audios[key] = a;
     }
     return audios[key];
   }
+  // Eagerly create BOTH tracks so they download in parallel — state
+  // flips don't trigger a fresh download for the other bar's track.
+  getAudio('soluble');
+  getAudio('dissolved');
   function fadeTo(audio, target, duration) {
     if (!audio) return;
     if (audio._fadeTimer) { clearInterval(audio._fadeTimer); audio._fadeTimer = null; }

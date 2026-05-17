@@ -85,9 +85,25 @@
     function setupAudio() {
       audio = new Audio(src);
       audio.loop = true;
-      audio.preload = 'none';
+      // preload=auto starts buffering immediately so the toggle is
+      // responsive the moment the user (or autoplay) tries to play.
+      audio.preload = 'auto';
       audio.volume = 0;
     }
+    // Eagerly create the audio object so the download starts ASAP,
+    // not at first click. Also inject a <link rel="preload"> hint so
+    // the browser starts fetching even before this script runs.
+    (function preloadHint() {
+      try {
+        const l = document.createElement('link');
+        l.rel = 'preload';
+        l.as = 'audio';
+        l.href = src;
+        l.type = 'audio/mpeg';
+        document.head.appendChild(l);
+      } catch (e) {}
+    })();
+    setupAudio();
     function fadeTo(target, duration) {
       if (!audio) return;
       if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; }

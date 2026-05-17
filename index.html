@@ -76,6 +76,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Allura&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/builder.css" />
+<!-- Audio is part of the landing experience — start fetching ASAP so the
+     toggle is responsive the moment the user clicks it. -->
+<link rel="preload" as="audio" href="/photos/audio/lofi-beat.mp3" type="audio/mpeg" />
+<link rel="preload" as="audio" href="/photos/audio/fashion-house.mp3" type="audio/mpeg" />
 <style>
   /* ─────────────────────────────────────────────────────────────
      Two visual worlds, one shell. CSS variables flip on data-state.
@@ -3406,12 +3410,20 @@
     if (!audios[key]) {
       const a = new Audio(SRC[key]);
       a.loop = true;
-      a.preload = 'none';
+      // preload=auto starts buffering immediately. Combined with the
+      // <link rel="preload"> hints in <head>, the track is usually
+      // already cached by the time the user clicks the toggle, so the
+      // play() call is instant instead of waiting for a fresh fetch.
+      a.preload = 'auto';
       a.volume = 0;
       audios[key] = a;
     }
     return audios[key];
   }
+  // Eagerly instantiate BOTH tracks so they download in parallel. State
+  // flips become instant (no fresh download for the other bar's track).
+  getAudio('soluble');
+  getAudio('dissolved');
   function fadeTo(audio, target, duration) {
     if (!audio) return;
     if (audio._fadeTimer) clearInterval(audio._fadeTimer);
