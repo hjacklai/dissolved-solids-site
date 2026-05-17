@@ -2135,6 +2135,12 @@
     nav .nav-cta { padding: 12px 16px; margin-left: 2px; min-height: 44px; }
     .gallery { padding: 90px 18px 40px; }
     .grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 12px; }
+    /* Reset every tile to a single column at this breakpoint. The earlier
+       @media (max-width: 1100px) block forces .t-big-l (and friends) to
+       span 8 columns, and CSS source order means that rule wins over the
+       earlier ≤900px tile overrides. Re-asserting span/row: auto here. */
+    .gallery .tile,
+    .gallery .quote-tile { grid-column: auto / span 1; grid-row: auto; }
     .tile { aspect-ratio: 4 / 3; }
     .tile .img { position: absolute; inset: 0; }
     .marquee-row { display: none; }
