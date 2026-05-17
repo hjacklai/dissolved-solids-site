@@ -2053,8 +2053,8 @@
 <!-- chrome -->
 <header>
   <div class="brand">
-    <img class="brand-logo logo-sol" src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="Soluble Solids logo" />
-    <img class="brand-logo logo-dis" src="https://dissolvedsolids.co/photos/ds-logo.png" alt="Dissolved Solids logo" />
+    <img class="brand-logo logo-sol" src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="Soluble Solids logo" decoding="async"/>
+    <img class="brand-logo logo-dis" src="https://dissolvedsolids.co/photos/ds-logo.png" alt="Dissolved Solids logo" decoding="async"/>
     <div class="stack">
       <span class="wordmark">
         <span class="for-sol">Soluble</span><span class="for-dis">Dissolved</span><span class="dot-sep"></span>Solids
@@ -2688,14 +2688,14 @@
         <div class="field-label">01 · which bar?</div>
         <div class="bar-pills" id="barPills">
           <button class="bar-pill" type="button" data-bar="dissolved">
-            <img src="https://dissolvedsolids.co/photos/ds-logo.png" alt=""/>
+            <img src="https://dissolvedsolids.co/photos/ds-logo.png" alt="" loading="lazy" decoding="async"/>
             <div>
               <div class="nm">Dissolved</div>
               <div class="ds">venue 01 · damansara kim · tue–sun</div>
             </div>
           </button>
           <button class="bar-pill" type="button" data-bar="soluble">
-            <img src="https://dissolvedsolids.co/photos/ss-logo.svg" alt=""/>
+            <img src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="" loading="lazy" decoding="async"/>
             <div>
               <div class="nm">Soluble</div>
               <div class="ds">venue 02 · ss2 pj · wed–sun</div>
@@ -2780,7 +2780,7 @@
     <!-- DISSOLVED · DAMANSARA KIM · venue 01 -->
     <div class="outlet" data-brand="dissolved" data-state-target="dissolved">
       <div class="outlet-head">
-        <img class="logo" src="https://dissolvedsolids.co/photos/ds-logo.png" alt="Dissolved Solids logo" />
+        <img class="logo" src="https://dissolvedsolids.co/photos/ds-logo.png" alt="Dissolved Solids logo" loading="lazy" decoding="async"/>
         <div class="lbl">
           <b>venue 01</b> · damansara kim pj<br/>
           method · dissolution
@@ -2826,7 +2826,7 @@
     <!-- SOLUBLE · SS2 · venue 02 -->
     <div class="outlet" data-brand="soluble" data-state-target="soluble">
       <div class="outlet-head">
-        <img class="logo" src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="Soluble Solids logo" />
+        <img class="logo" src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="Soluble Solids logo" loading="lazy" decoding="async"/>
         <div class="lbl">
           <b>venue 02</b> · ss2 pj<br/>
           method · infusion
@@ -3055,16 +3055,15 @@
     } catch (e) { /* SFX is non-critical */ }
   }
 
-  // State toggle with dissolve overlay flash + scratch SFX
+  // State toggle. /dissolvedsolids/ represents the DS outlet — flipping
+  // state has to NAVIGATE to /solublesolids/ so the URL always matches
+  // what the user sees.
+  const OTHER_URL = '/solublesolids/';
   const panel = document.getElementById('statePanel');
   panel.addEventListener('click', () => {
     playScratch();
     document.body.classList.add('dissolving');
-    requestAnimationFrame(() => {
-      const html = document.documentElement;
-      html.dataset.state = html.dataset.state === 'soluble' ? 'dissolved' : 'soluble';
-    });
-    setTimeout(() => document.body.classList.remove('dissolving'), 700);
+    setTimeout(() => { location.href = OTHER_URL; }, 220);
   });
 
   // Keyboard shortcut: spacebar to flip
@@ -3229,7 +3228,7 @@
       renderBarPills(); renderCal(); renderTimes(); updateSend();
     }
   }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-state'] });
-  // ─ BIG BOTTOM SWITCHER (mirrors the corner panel)
+  // ─ BIG BOTTOM SWITCHER — tap the OTHER bar to navigate there
   const switchBtns = document.querySelectorAll('.big-switch button');
   function updateSwitch() {
     const state = document.documentElement.dataset.state;
@@ -3238,20 +3237,13 @@
   switchBtns.forEach(b => {
     b.addEventListener('click', () => {
       const target = b.dataset.target;
-      if (document.documentElement.dataset.state === target) return;
+      if (document.documentElement.dataset.state === target) return; // already here
+      playScratch();
       document.body.classList.add('dissolving');
-      requestAnimationFrame(() => {
-        document.documentElement.dataset.state = target;
-        updateSwitch();
-      });
-      setTimeout(() => document.body.classList.remove('dissolving'), 700);
+      setTimeout(() => { location.href = '/' + target + 'solids/'; }, 220);
     });
   });
   updateSwitch();
-
-  // also keep big-switch in sync when corner panel is clicked
-  const _origPanel = document.getElementById('statePanel');
-  if (_origPanel) _origPanel.addEventListener('click', () => setTimeout(updateSwitch, 50));
 
   // ─ MUSIC TOGGLE — dual-track, state-aware, crossfade on state flip
   // soluble: lofi loop · dissolved: house cut. Switching states crossfades
