@@ -2011,8 +2011,17 @@
     text-shadow: 0 1px 8px rgba(0,0,0,.7);
   }
   .tile .cap .name {
-    font-family: var(--serif); font-style: italic; font-size: 16px;
-    letter-spacing: 0; text-transform: none;
+    /* Was cursive var(--serif) → unreadable on the dissolved (Allura)
+       state. Switched to mono lowercase to match the .tag style and
+       keep the feeling-phrases easy to read. */
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: none;
+    line-height: 1.35;
+    color: var(--paper);
   }
   .tile .cap .tag { color: var(--accent); transition: color var(--t-bg); }
   .tile::after {
@@ -2740,10 +2749,7 @@
     </h2>
     <div class="meta">
       <b>05 quick taps</b><br/>
-      <span class="for-sol">→ sent to Soluble Solids · SS2</span>
-      <span class="for-dis">→ sent to Dissolved Solids · DK</span>
-      <br/>
-      <a href="/builder/" style="color:var(--accent); border-bottom: 1px solid currentColor; padding-bottom: 1px; transition: opacity .2s;">open full builder · shareable URL →</a>
+      five questions, one cocktail brief.
     </div>
   </div>
 
