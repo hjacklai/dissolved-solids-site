@@ -528,7 +528,8 @@
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
     padding: 10px var(--gutter) 10px;
-    display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 18px;
+    /* Brand is the only thing in the header now — centre it horizontally. */
+    display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 18px;
     color: var(--paper);
     transition: color var(--t-bg) cubic-bezier(.7,0,.3,1);
     flex-wrap: wrap;
@@ -538,7 +539,7 @@
     display: inline-flex; flex-direction: row; align-items: center; gap: 8px;
     color: var(--paper);
     text-decoration: none;
-    text-align: left;
+    text-align: center;
   }
   .ribbon-nav {
     display: inline-flex; align-items: center; gap: 10px;
@@ -842,27 +843,6 @@
     min-height: 40px;
   }
   .appbar-side-left, .appbar-side-right { /* sides identical now */ }
-  /* Center group: state toggle + music button side by side */
-  .appbar-center {
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  /* Embedded music play/stop button */
-  .appbar-music {
-    width: 40px; height: 40px;
-    display: inline-flex; align-items: center; justify-content: center;
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 999px;
-    color: rgba(255,255,255,.78);
-    cursor: pointer;
-    transition: background .2s, border-color .2s, color .2s;
-  }
-  .appbar-music:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.32); color: var(--paper); }
-  .appbar-music.is-playing { background: var(--accent); border-color: var(--accent); color: var(--bg, #0b0b10); }
-  .appbar-music svg { width: 18px; height: 18px; }
-  .appbar-music .ic-music-on  { display: none; }
-  .appbar-music.is-playing .ic-music-off { display: none; }
-  .appbar-music.is-playing .ic-music-on  { display: inline-block; }
   .appbar-icon {
     display: inline-flex; flex-direction: column; align-items: center;
     justify-content: center;
@@ -2627,11 +2607,11 @@
     <div class="grid for-sol">
       <div class="tile t-big-l">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ss-19.jpg');"></div>
-        <div class="cap"><span class="name">longing</span><span class="tag">· slow</span></div>
+        <div class="cap"><span class="name">missing someone, gently</span><span class="tag">· slow</span></div>
       </div>
       <div class="tile t-tall">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ss-17.jpg');"></div>
-        <div class="cap"><span class="name">lullaby</span><span class="tag">· soft</span></div>
+        <div class="cap"><span class="name">wants to be tucked in</span><span class="tag">· soft</span></div>
       </div>
 
       <div class="quote-tile">
@@ -2640,7 +2620,7 @@
       </div>
       <div class="tile t-third">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ss-03.jpg');"></div>
-        <div class="cap"><span class="name">wide awake</span><span class="tag">· sharp</span></div>
+        <div class="cap"><span class="name">snapped open at sunrise</span><span class="tag">· sharp</span></div>
       </div>
 
       <div class="marquee-row">
@@ -2658,28 +2638,28 @@
 
       <div class="tile t-square">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ss-13.jpg');"></div>
-        <div class="cap"><span class="name">smitten</span><span class="tag">· still</span></div>
+        <div class="cap"><span class="name">can't stop looking over</span><span class="tag">· still</span></div>
       </div>
       <div class="tile t-square">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ss-08.jpg');"></div>
-        <div class="cap"><span class="name">linger</span><span class="tag">· warm</span></div>
+        <div class="cap"><span class="name">don't want it to end</span><span class="tag">· warm</span></div>
       </div>
       <div class="tile t-square">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ss-09.jpg');"></div>
-        <div class="cap"><span class="name">older, wiser</span><span class="tag">· slow</span></div>
+        <div class="cap"><span class="name">knows what's coming</span><span class="tag">· slow</span></div>
       </div>
       <div class="tile t-square">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ss-12.jpg');"></div>
-        <div class="cap"><span class="name">alive</span><span class="tag">· loud</span></div>
+        <div class="cap"><span class="name">ready to argue politely</span><span class="tag">· loud</span></div>
       </div>
 
       <div class="tile t-half">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ss-02.jpg');"></div>
-        <div class="cap"><span class="name">ours</span><span class="tag">· remembered</span></div>
+        <div class="cap"><span class="name">no need to explain</span><span class="tag">· home</span></div>
       </div>
       <div class="tile t-third">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ss-15.jpg');"></div>
-        <div class="cap"><span class="name">long Saturday</span><span class="tag">· light</span></div>
+        <div class="cap"><span class="name">nothing on the calendar</span><span class="tag">· light</span></div>
       </div>
     </div>
 
@@ -2687,11 +2667,11 @@
     <div class="grid for-dis">
       <div class="tile t-big-l">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ds-09.jpg');"></div>
-        <div class="cap"><span class="name">monsoon hush</span><span class="tag">· green</span></div>
+        <div class="cap"><span class="name">the rain is doing the talking</span><span class="tag">· green</span></div>
       </div>
       <div class="tile t-tall">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ds-10.jpg');"></div>
-        <div class="cap"><span class="name">after the fire</span><span class="tag">· low</span></div>
+        <div class="cap"><span class="name">warmth without the heat</span><span class="tag">· low</span></div>
       </div>
 
       <div class="quote-tile">
@@ -2700,7 +2680,7 @@
       </div>
       <div class="tile t-third">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ds-12.jpg');"></div>
-        <div class="cap"><span class="name">cool head</span><span class="tag">· breeze</span></div>
+        <div class="cap"><span class="name">thinking clearly again</span><span class="tag">· breeze</span></div>
       </div>
 
       <div class="marquee-row">
@@ -2718,28 +2698,28 @@
 
       <div class="tile t-square">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ds-11.jpg');"></div>
-        <div class="cap"><span class="name">edge of summer</span><span class="tag">· cut</span></div>
+        <div class="cap"><span class="name">last warm night, probably</span><span class="tag">· cut</span></div>
       </div>
       <div class="tile t-square">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ds-02.jpg');"></div>
-        <div class="cap"><span class="name">soft landing</span><span class="tag">· hush</span></div>
+        <div class="cap"><span class="name">okay to fall apart here</span><span class="tag">· hush</span></div>
       </div>
       <div class="tile t-square">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ds-04.jpg');"></div>
-        <div class="cap"><span class="name">unwound</span><span class="tag">· briny</span></div>
+        <div class="cap"><span class="name">shoulders finally dropped</span><span class="tag">· briny</span></div>
       </div>
       <div class="tile t-square">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ds-08.jpg');"></div>
-        <div class="cap"><span class="name">heartbeat</span><span class="tag">· close</span></div>
+        <div class="cap"><span class="name">felt it before you saw it</span><span class="tag">· close</span></div>
       </div>
 
       <div class="tile t-half">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ds-15.jpg');"></div>
-        <div class="cap"><span class="name">muscle memory</span><span class="tag">· shift</span></div>
+        <div class="cap"><span class="name">hands know without asking</span><span class="tag">· shift</span></div>
       </div>
       <div class="tile t-third">
         <div class="img" style="background-image: url('https://dissolvedsolids.co/photos/ds-16.jpg');"></div>
-        <div class="cap"><span class="name">Saturday at ours</span><span class="tag">· neon</span></div>
+        <div class="cap"><span class="name">everyone showed up tonight</span><span class="tag">· neon</span></div>
       </div>
     </div>
   </section>
@@ -3175,16 +3155,10 @@
         <span>reserve</span>
       </a>
     </div>
-    <div class="appbar-center">
-      <button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet — switch between Dissolved and Soluble">
-        <span class="seg" data-target="dissolved">Dis</span>
-        <span class="seg" data-target="soluble">Sol</span>
-      </button>
-      <button class="appbar-music" id="appbarMusic" type="button" aria-label="Toggle ambient music">
-        <svg class="ic-music-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17V5l11-2v12"/><circle cx="6" cy="17" r="3"/><circle cx="17" cy="15" r="3"/></svg>
-        <svg class="ic-music-on"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5"  y="5"  width="4" height="14" rx="1"/><rect x="11" y="9"  width="4" height="10" rx="1"/><rect x="17" y="3"  width="4" height="16" rx="1"/></svg>
-      </button>
-    </div>
+    <button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet — switch between Dissolved and Soluble">
+      <span class="seg" data-target="dissolved">Dis</span>
+      <span class="seg" data-target="soluble">Sol</span>
+    </button>
     <div class="appbar-side appbar-side-right">
       <a class="appbar-icon appbar-icon-cta" href="#builder" aria-label="Build a drink">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -3730,20 +3704,6 @@
       }
     });
   })();
-  // ─ Appbar music button — delegates to the existing #musicToggle
-  //   (the floating bottom-left button owns the audio engine). The
-  //   appbar button just mirrors its state and forwards clicks.
-  (function () {
-    const am = document.getElementById('appbarMusic');
-    if (!am) return;
-    am.addEventListener('click', () => { mt && mt.click(); });
-    if (mt) {
-      const sync = () => am.classList.toggle('is-playing', mt.classList.contains('playing'));
-      sync();
-      new MutationObserver(sync).observe(mt, { attributes: true, attributeFilter: ['class'] });
-    }
-  })();
-
   // Crossfade on state flip if music is playing
   new MutationObserver(async () => {
     if (!isPlaying) return;

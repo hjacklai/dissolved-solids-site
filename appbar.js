@@ -26,16 +26,10 @@
     +     iconLink('/#visit', 'Visit', 'visit', svgPin())
     +     iconLink('/#reserve', 'Reserve', 'reserve', svgCal())
     +   '</div>'
-    +   '<div class="appbar-center">'
-    +     '<button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet — switch between Dissolved and Soluble">'
-    +       '<span class="seg" data-target="dissolved">Dis</span>'
-    +       '<span class="seg" data-target="soluble">Sol</span>'
-    +     '</button>'
-    +     '<button class="appbar-music" id="appbarMusic" type="button" aria-label="Toggle ambient music">'
-    +       '<svg class="ic-music-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17V5l11-2v12"/><circle cx="6" cy="17" r="3"/><circle cx="17" cy="15" r="3"/></svg>'
-    +       '<svg class="ic-music-on"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="4" height="14" rx="1"/><rect x="11" y="9" width="4" height="10" rx="1"/><rect x="17" y="3" width="4" height="16" rx="1"/></svg>'
-    +     '</button>'
-    +   '</div>'
+    +   '<button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet — switch between Dissolved and Soluble">'
+    +     '<span class="seg" data-target="dissolved">Dis</span>'
+    +     '<span class="seg" data-target="soluble">Sol</span>'
+    +   '</button>'
     +   '<div class="appbar-side appbar-side-right">'
     +     iconLink('/#builder', 'Build a drink', 'build', svgFlask(), 'appbar-icon-cta')
     +     iconLink('/journal/', 'Journal', 'journal', svgBook())
@@ -66,100 +60,11 @@
     document.body.appendChild(nav);
     initTicker();
     initToggle();
-    initMusic();
     // Smooth scroll for #anchor links if the page doesn't already set it
     if (!getComputedStyle(document.documentElement).scrollBehavior ||
         getComputedStyle(document.documentElement).scrollBehavior === 'auto') {
       document.documentElement.style.scrollBehavior = 'smooth';
     }
-  }
-
-  // ─── Music engine ──────────────────────────────────────────────
-  // Picks the track based on data-state (lofi for soluble, fashion-
-  // house for dissolved). Plays/pauses on click. Tries autoplay (may
-  // be blocked) and retries on pageshow (BFCache) + first user gesture.
-  function initMusic() {
-    const btn = document.getElementById('appbarMusic');
-    if (!btn) return;
-
-    // If the host page already has its own audio engine (e.g. the
-    // landing's inline #musicToggle), delegate to that and mirror its
-    // visual state — don't create a second audio stream.
-    const existing = document.getElementById('musicToggle');
-    if (existing) {
-      btn.addEventListener('click', function () { existing.click(); });
-      const sync = function () {
-        btn.classList.toggle('is-playing', existing.classList.contains('playing'));
-      };
-      sync();
-      new MutationObserver(sync).observe(existing, { attributes: true, attributeFilter: ['class'] });
-      return;
-    }
-
-    const SRC = {
-      soluble:   '/photos/audio/lofi-beat.mp3',
-      dissolved: '/photos/audio/fashion-house.mp3'
-    };
-    const audios = { soluble: null, dissolved: null };
-    let currentKey = null;
-    let isPlaying = false;
-
-    function key() { return document.documentElement.dataset.state === 'soluble' ? 'soluble' : 'dissolved'; }
-    function get(k) {
-      if (!audios[k]) {
-        const a = new Audio(SRC[k]);
-        a.loop = true; a.preload = 'auto'; a.volume = .35;
-        audios[k] = a;
-      }
-      return audios[k];
-    }
-    function start() {
-      const k = key();
-      const a = get(k);
-      const other = audios[k === 'soluble' ? 'dissolved' : 'soluble'];
-      if (other && !other.paused) other.pause();
-      a.play().then(function () {
-        currentKey = k;
-        isPlaying = true;
-        btn.classList.add('is-playing');
-      }).catch(function () { /* autoplay blocked — silent */ });
-    }
-    function stop() {
-      Object.values(audios).forEach(function (a) { if (a && !a.paused) a.pause(); });
-      isPlaying = false;
-      btn.classList.remove('is-playing');
-    }
-    function syncFlag() {
-      if (currentKey && audios[currentKey] && audios[currentKey].paused) isPlaying = false;
-    }
-
-    btn.addEventListener('click', function () {
-      syncFlag();
-      if (isPlaying) stop(); else start();
-    });
-
-    // State flip — switch the track if music is playing
-    new MutationObserver(function () {
-      if (!isPlaying) return;
-      const k = key();
-      if (k === currentKey) return;
-      stop(); start();
-    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-state'] });
-
-    // Try autoplay (often blocked); retry on user gesture + lifecycle
-    start();
-    const evts = ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel'];
-    function onGesture(e) {
-      syncFlag();
-      if (!isPlaying && !(e.target && e.target.closest && e.target.closest('.appbar-music'))) start();
-      evts.forEach(function (ev) { document.removeEventListener(ev, onGesture, true); });
-    }
-    function arm() { evts.forEach(function (ev) { document.addEventListener(ev, onGesture, { capture: true, passive: true }); }); }
-    arm();
-    window.addEventListener('pageshow', function (e) { if (e.persisted) syncFlag(); start(); arm(); });
-    document.addEventListener('visibilitychange', function () {
-      if (document.visibilityState === 'visible') { syncFlag(); start(); arm(); }
-    });
   }
 
   // ─── Ticker ────────────────────────────────────────────────────

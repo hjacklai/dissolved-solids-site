@@ -466,7 +466,8 @@
   gap: 10px;
   padding: 16px 24px;
   border-radius: 999px;
-  background: #25D366;
+  /* Default fill = accent. Per-bar accent below. */
+  background: var(--accent, #ff3b81);
   color: #ffffff;
   font-family: var(--mono);
   font-size: 12px;
@@ -474,14 +475,19 @@
   text-transform: uppercase;
   text-decoration: none;
   min-height: 48px;
-  transition: filter .2s ease, transform .15s ease, box-shadow .2s ease;
-  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  transition: filter .2s ease, transform .15s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
 }
+/* Each reserve CTA takes its destination bar's accent colour so the
+   button is on-theme but still striking. DS → pink, SS → amber. */
+.btn-wa-build.wa-dissolved { background: #ff3b81; box-shadow: 0 10px 28px rgba(255,59,129,.35); }
+.btn-wa-build.wa-soluble   { background: #c8862e; box-shadow: 0 10px 28px rgba(200,134,46,.35); }
 .btn-wa-build:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.08);
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(0,0,0,.18);
 }
+.btn-wa-build.wa-dissolved:hover { box-shadow: 0 14px 36px rgba(255,59,129,.50); }
+.btn-wa-build.wa-soluble:hover   { box-shadow: 0 14px 36px rgba(200,134,46,.50); }
 .btn-wa-build svg { flex: 0 0 auto; }
 
 .btn-retry {
