@@ -13,7 +13,7 @@
 <meta property="og:locale" content="en_MY" />
 <meta name="twitter:card" content="summary_large_image" />
 
-<meta name="theme-color" content="#faf3df" />
+<meta name="theme-color" content="#1a0a22" />
 <meta name="geo.region" content="MY-10" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 
@@ -68,236 +68,1001 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-<link rel="stylesheet" href="/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/appbar.css" />
-</head>
-<body class="journal-body">
+<style>
+  :root {
+    --bg:        #2a1330;
+    --bg-deep:   #1a0a22;
+    --bg-mid:    #371840;
+    --paper:     #f0e6cf;
+    --paper-dim: #cbb89c;
+    --accent:    #d18b3a;
+    --accent-2:  #d6a39a;
+    --line:      rgba(240,230,207,.14);
+    --line-2:    rgba(240,230,207,.06);
 
-<header class="journal-bar">
-  <a class="journal-wordmark" href="/journal/">
-    <span>The Journal</span>
-    <em>Notes on beverages</em>
+    --serif: 'DM Serif Display', 'Times New Roman', serif;
+    --mono:  'JetBrains Mono', ui-monospace, Menlo, monospace;
+    --gutter: clamp(28px, 5vw, 96px);
+    --maxw: 1440px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--paper); font-family: var(--mono); }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; scroll-padding-bottom: 120px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  button { background: transparent; border: none; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer; -webkit-appearance: none; appearance: none; text-align: left; }
+
+  body {
+    font-size: 15px;
+    background:
+      radial-gradient(1200px 800px at 80% -10%, rgba(209,139,58,.10), transparent 60%),
+      radial-gradient(800px 600px at -10% 110%, rgba(214,163,154,.08), transparent 55%),
+      var(--bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* film grain overlay */
+  body::after {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 100;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.94 0 0 0 0 0.9 0 0 0 0 0.81 0 0 0 .18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: .35; mix-blend-mode: overlay;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; letter-spacing: -.025em; }
+  em { font-style: italic; color: var(--accent); }
+
+  /* ─────────────────────────── header ─────────────────────────── */
+  header.journal-header {
+    position: sticky; top: 0; z-index: 50;
+    padding: 18px var(--gutter);
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; gap: 24px;
+    background: linear-gradient(180deg, rgba(26,10,34,.94) 0%, rgba(26,10,34,.55) 70%, transparent 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--paper); }
+  .brand .mark {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 18px;
+    background: rgba(240,230,207,.04);
+  }
+  .brand .stack { display: flex; flex-direction: column; gap: 4px; line-height: 1; }
+  .brand .wordmark { font-family: var(--serif); font-size: 19px; letter-spacing: -.01em; }
+  .brand .wordmark .sep {
+    display: inline-block; width: 4px; height: 4px; background: var(--accent);
+    border-radius: 50%; vertical-align: middle; margin: 0 8px 3px;
+  }
+  .brand .tagline {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: .26em; text-transform: uppercase;
+    color: rgba(240,230,207,.55);
+  }
+  .brand .tagline b { color: var(--accent); font-weight: 400; }
+
+  nav.journal-nav-row { display: flex; align-items: center; gap: 4px;
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: .24em; text-transform: uppercase;
+    justify-content: center;
+  }
+  nav.journal-nav-row a {
+    padding: 8px 14px; color: rgba(240,230,207,.72);
+    position: relative; transition: color .2s;
+  }
+  nav.journal-nav-row a:hover { color: var(--paper); }
+  nav.journal-nav-row a.current { color: var(--accent); }
+  nav.journal-nav-row .sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(240,230,207,.25); }
+
+  .header-right { display: flex; justify-content: flex-end; align-items: center; gap: 14px; }
+  .issue {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(240,230,207,.55);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .issue b { color: var(--paper); font-weight: 500; }
+  .issue .led {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    animation: ledPulse 2s ease-in-out infinite;
+  }
+  @keyframes ledPulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+
+  /* ─────────────────────────── hero ─────────────────────────── */
+  .hero {
+    padding: 80px var(--gutter) 0;
+    max-width: var(--maxw); margin: 0 auto;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px;
+    align-items: end;
+  }
+  .hero .kicker {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .26em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 18px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero .kicker::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+  .hero h1 {
+    font-size: clamp(64px, 8.5vw, 160px);
+    line-height: .88; letter-spacing: -.03em;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-meta {
+    font-family: var(--mono); font-size: 13px; line-height: 1.7;
+    color: rgba(240,230,207,.78); max-width: 460px;
+    padding-bottom: 14px;
+  }
+  .hero-meta b { color: var(--paper); font-weight: 500; }
+  .hero-meta a { color: var(--accent); border-bottom: 1px solid currentColor; }
+
+  /* ─────────────────────────── wheel ─────────────────────────── */
+  .wheel-section {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 110px var(--gutter) 60px;
+    position: relative;
+  }
+  .wheel-head {
+    display: grid; grid-template-columns: 1fr auto; gap: 40px;
+    align-items: end; margin-bottom: 60px;
+  }
+  .wheel-head h2 {
+    font-size: clamp(40px, 5vw, 72px); line-height: .95;
+    max-width: 720px;
+  }
+  .wheel-head .legend {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: .26em; text-transform: uppercase;
+    color: rgba(240,230,207,.5);
+    text-align: right; line-height: 1.8;
+  }
+  .wheel-head .legend b { color: var(--accent); font-weight: 500; }
+
+  .wheel-stage {
+    display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px;
+    align-items: center;
+  }
+  .wheel-wrap {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 620px; width: 100%;
+    justify-self: center;
+    margin: 0 auto;
+  }
+  .wheel-svg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    overflow: visible;
+  }
+  .ring-bg { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 6; }
+  .ring-bg.r2 { stroke: var(--line-2); stroke-dasharray: 1 4; }
+  .ring-tick { stroke: rgba(240,230,207,.18); stroke-width: 1; }
+  .ring-label {
+    font-family: var(--mono); font-size: 9px; letter-spacing: .26em;
+    fill: rgba(240,230,207,.4); text-transform: uppercase;
+  }
+  .needle {
+    stroke: var(--accent); stroke-width: 1; opacity: .7;
+    transition: transform .8s cubic-bezier(.7,0,.3,1);
+    transform-origin: center;
+  }
+  .needle-head {
+    fill: var(--accent);
+    transition: transform .8s cubic-bezier(.7,0,.3,1);
+    transform-origin: center;
+  }
+
+  .node-wrap {
+    position: absolute; left: 50%; top: 50%;
+    width: 130px; height: 130px;
+    transform-origin: center;
+    cursor: pointer;
+    transition: transform .35s cubic-bezier(.7,0,.3,1);
+  }
+  .node {
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    background: var(--bg-deep);
+    border: 1px solid var(--line);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 6px;
+    transition: all .35s cubic-bezier(.7,0,.3,1);
+    box-shadow: 0 0 0 0 var(--accent);
+  }
+  .node .glyph {
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--paper-dim);
+    transition: color .35s, transform .35s;
+  }
+  .node .glyph svg { width: 100%; height: 100%; stroke-width: 1.2; fill: none; stroke: currentColor; }
+  .node .count {
+    font-family: var(--mono); font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(240,230,207,.45);
+    transition: color .35s;
+  }
+  .node .count b { font-weight: 500; color: rgba(240,230,207,.7); }
+  .node-label {
+    position: absolute;
+    left: 50%; top: calc(100% + 10px);
+    transform: translateX(-50%);
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--paper);
+    white-space: nowrap;
+    letter-spacing: -.01em;
+    transition: color .35s, transform .35s;
+    pointer-events: none;
+  }
+
+  .node-wrap:hover .node {
+    border-color: var(--accent-2);
+    background: var(--bg-mid);
+  }
+  .node-wrap:hover .glyph { color: var(--paper); transform: scale(1.08); }
+
+  .node-wrap.active { transform: var(--node-tx) scale(1.18); z-index: 5; }
+  .node-wrap.active .node {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(209,139,58,.18), 0 0 40px rgba(209,139,58,.45);
+  }
+  .node-wrap.active .glyph { color: var(--bg); }
+  .node-wrap.active .count { color: var(--bg); }
+  .node-wrap.active .count b { color: var(--bg); }
+  .node-wrap.active .node-label { color: var(--accent); }
+
+  .hub {
+    position: absolute; left: 50%; top: 50%;
+    width: 38%; aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--bg-mid), var(--bg-deep) 70%);
+    border: 1px solid var(--line);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 8% 6%;
+    text-align: center;
+    pointer-events: none;
+  }
+  .hub::before {
+    content: ''; position: absolute; inset: 8px; border-radius: 50%;
+    border: 1px dashed var(--line);
+  }
+  .hub .hub-k {
+    font-family: var(--mono); font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px;
+  }
+  .hub .hub-name {
+    font-family: var(--serif); font-size: clamp(20px, 2.4vw, 36px);
+    line-height: .95; letter-spacing: -.02em;
+    color: var(--paper);
+  }
+  .hub .hub-name em { color: var(--accent); font-style: italic; }
+  .hub .hub-meta {
+    margin-top: 14px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    color: rgba(240,230,207,.5);
+  }
+  .hub .hub-meta b { color: var(--paper); font-weight: 500; }
+
+  /* ─────────────────── detail panel ─────────────────── */
+  .detail { position: relative; min-height: 540px; }
+  .detail-head {
+    margin-bottom: 28px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .detail-tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .detail-tag::before { content: ''; width: 18px; height: 1px; background: var(--accent); }
+  .detail-title {
+    font-family: var(--serif); font-size: clamp(32px, 3.6vw, 52px);
+    line-height: 1; letter-spacing: -.025em;
+    margin-bottom: 18px;
+  }
+  .detail-title em { font-style: italic; color: var(--accent); }
+  .detail-desc {
+    font-family: var(--mono); font-size: 13px; line-height: 1.7;
+    color: rgba(240,230,207,.78);
+    max-width: 560px;
+  }
+
+  .articles { display: flex; flex-direction: column; gap: 0; transition: opacity .25s; }
+  .articles.fading { opacity: 0; }
+  .article {
+    display: grid; grid-template-columns: 64px 1fr auto;
+    gap: 22px; align-items: start;
+    padding: 22px 4px;
+    border-bottom: 1px solid var(--line-2);
+    cursor: pointer;
+    transition: padding .25s, background .25s;
+    color: inherit;
+    text-decoration: none;
+  }
+  .article:last-child { border-bottom: none; }
+  .article:hover { padding-left: 14px; background: linear-gradient(90deg, rgba(209,139,58,.06), transparent 70%); }
+  .article .num {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .2em;
+    color: var(--accent); padding-top: 5px;
+  }
+  .article .num b { color: var(--paper); font-weight: 500; }
+  .article .body { min-width: 0; }
+  .article h3 {
+    font-family: var(--serif); font-size: 22px; line-height: 1.1;
+    letter-spacing: -.015em;
+    margin-bottom: 8px;
+  }
+  .article h3 em { font-style: italic; color: var(--accent); }
+  .article .dek {
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.6;
+    color: rgba(240,230,207,.68);
+    margin-bottom: 10px;
+  }
+  .article .meta {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(240,230,207,.45);
+    display: flex; gap: 18px; flex-wrap: wrap;
+  }
+  .article .meta b { color: var(--paper-dim); font-weight: 400; }
+  .article .read {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(240,230,207,.5);
+    text-align: right; padding-top: 5px; white-space: nowrap;
+  }
+  .article .read b { color: var(--accent); font-weight: 500; }
+  .article .arrow { display: inline-block; margin-left: 6px; transition: transform .25s; }
+  .article:hover .arrow { transform: translateX(4px); }
+
+  /* ─────────────────── featured spread ─────────────────── */
+  .featured {
+    max-width: var(--maxw); margin: 60px auto 0;
+    padding: 0 var(--gutter) 120px;
+  }
+  .featured-head {
+    display: flex; justify-content: space-between; align-items: end; gap: 40px;
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .featured-head h2 { font-size: clamp(34px, 4vw, 60px); line-height: .95; }
+  .featured-head .label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .26em; text-transform: uppercase;
+    color: rgba(240,230,207,.5);
+  }
+  .featured-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px;
+  }
+  .feat {
+    background: var(--bg-deep);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform .25s, border-color .25s;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+  }
+  .feat:hover { transform: translateY(-4px); border-color: var(--accent-2); }
+  .feat-img {
+    aspect-ratio: 4 / 3;
+    background-color: var(--bg-mid);
+    background-image: linear-gradient(135deg, rgba(209,139,58,.2), transparent 60%);
+    background-size: cover; background-position: center;
+    position: relative; overflow: hidden;
+  }
+  .feat-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.6) 100%);
+  }
+  .feat-img .pill {
+    position: absolute; top: 14px; left: 14px;
+    padding: 5px 10px; border-radius: 999px;
+    background: rgba(0,0,0,.55); backdrop-filter: blur(8px);
+    font-family: var(--mono); font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent);
+    z-index: 2;
+  }
+  .feat-body { padding: 22px; }
+  .feat-body .tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px;
+  }
+  .feat-body h3 {
+    font-family: var(--serif); font-size: 22px; line-height: 1.15;
+    letter-spacing: -.015em; margin-bottom: 12px;
+  }
+  .feat-body h3 em { font-style: italic; color: var(--accent); }
+  .feat-body .dek {
+    font-family: var(--mono); font-size: 12px; line-height: 1.6;
+    color: rgba(240,230,207,.68); margin-bottom: 14px;
+  }
+  .feat-body .meta {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    color: rgba(240,230,207,.45);
+  }
+  .feat.big h3 { font-size: 32px; }
+  .feat.big .feat-body { padding: 28px; }
+
+  /* ─────────────────── footer ─────────────────── */
+  footer.journal-footer {
+    padding: 80px var(--gutter) 140px; /* extra bottom for the appbar */
+    border-top: 1px solid var(--line);
+    background: var(--bg-deep);
+  }
+  .footer-inner {
+    max-width: var(--maxw); margin: 0 auto;
+    display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px;
+    align-items: end;
+  }
+  .footer-inner h3 {
+    font-family: var(--serif); font-size: clamp(28px, 3vw, 44px); line-height: 1;
+    margin-bottom: 20px;
+  }
+  .footer-inner p {
+    font-family: var(--mono); font-size: 13px; line-height: 1.7;
+    color: rgba(240,230,207,.68); max-width: 480px;
+  }
+  .sub-form {
+    display: flex; gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(0,0,0,.25);
+  }
+  .sub-form input {
+    flex: 1; background: transparent; border: none; outline: none;
+    padding: 18px 22px; color: var(--paper);
+    font-family: var(--mono); font-size: 16px; letter-spacing: .04em;
+  }
+  .sub-form input::placeholder { color: rgba(240,230,207,.4); }
+  .sub-form button {
+    background: var(--accent); color: var(--bg-deep);
+    border: none; padding: 0 28px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    cursor: pointer; font-weight: 500;
+    transition: background .25s;
+    min-height: 48px;
+  }
+  .sub-form button:hover { background: var(--paper); }
+  .footer-foot {
+    max-width: var(--maxw); margin: 60px auto 0;
+    padding-top: 28px; border-top: 1px solid var(--line);
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    color: rgba(240,230,207,.4);
+    display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between;
+  }
+  .footer-foot a { color: rgba(240,230,207,.65); border-bottom: 1px solid transparent; }
+  .footer-foot a:hover { color: var(--paper); border-bottom-color: var(--accent); }
+
+  /* ─────────────────── layout: carousel ─────────────────── */
+  body[data-layout="carousel"] .wheel-stage { display: block; }
+  body[data-layout="carousel"] .wheel-wrap { display: none; }
+  body[data-layout="carousel"] .detail { min-height: auto; }
+  body[data-layout="carousel"] .car-strip {
+    display: flex; gap: 16px; overflow-x: auto; overflow-y: hidden;
+    padding: 0 0 20px; margin: 0 calc(-1 * var(--gutter)) 40px;
+    padding-left: var(--gutter); padding-right: var(--gutter);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .car-strip { display: none; }
+  body[data-layout="carousel"] .car-strip { display: flex; }
+  .car-card {
+    flex: 0 0 200px;
+    scroll-snap-align: start;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--bg-deep);
+    cursor: pointer;
+    transition: all .25s;
+    display: flex; flex-direction: column; gap: 10px;
+    color: inherit;
+  }
+  .car-card:hover { border-color: var(--accent-2); transform: translateY(-3px); }
+  .car-card.active {
+    background: var(--accent); border-color: var(--accent);
+    color: var(--bg);
+  }
+  .car-card .glyph { width: 38px; height: 38px; color: var(--paper-dim); }
+  .car-card.active .glyph { color: var(--bg); }
+  .car-card .glyph svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.2; }
+  .car-card .car-label {
+    font-family: var(--serif); font-size: 22px; letter-spacing: -.015em; line-height: 1;
+  }
+  .car-card.active .car-label { color: var(--bg); }
+  .car-card .car-count {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(240,230,207,.5);
+    margin-top: auto;
+  }
+  .car-card.active .car-count { color: rgba(0,0,0,.6); }
+
+  /* ─────────────────── responsive: tablet ─────────────────── */
+  @media (max-width: 1080px) {
+    .wheel-stage { grid-template-columns: 1fr; gap: 50px; }
+    .wheel-wrap { max-width: 480px; }
+    .hero { grid-template-columns: 1fr; gap: 26px; }
+    .featured-grid { grid-template-columns: 1fr 1fr; }
+    .feat:first-child { grid-column: 1 / -1; }
+  }
+
+  /* ─────────────────── responsive: mobile → flip wheel to carousel ─────────────────── */
+  @media (max-width: 880px) {
+    /* Below 880px the radial nodes overlap the hub. Force carousel. */
+    body[data-layout="radial"] .wheel-wrap { display: none; }
+    body[data-layout="radial"] .car-strip { display: flex; }
+    body[data-layout="radial"] .wheel-stage { display: block; }
+    .detail { min-height: auto; }
+  }
+
+  /* ─────────────────── responsive: small mobile ─────────────────── */
+  @media (max-width: 720px) {
+    header.journal-header {
+      grid-template-columns: 1fr auto;
+      gap: 14px; padding: 14px 20px;
+    }
+    .header-right, nav.journal-nav-row { display: none; }
+    .brand .tagline { display: none; }
+    .brand .wordmark { font-size: 17px; }
+    .brand .mark { width: 30px; height: 30px; font-size: 16px; }
+
+    .hero { padding: 32px 20px 0; }
+    .hero .kicker { font-size: 10px; margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(54px, 14vw, 110px); }
+    .hero-meta { font-size: 12px; padding-bottom: 0; }
+
+    .wheel-section { padding: 56px 20px 30px; }
+    .wheel-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 36px; }
+    .wheel-head h2 { font-size: clamp(30px, 8vw, 60px); }
+    .wheel-head .legend { text-align: left; font-size: 9px; }
+
+    .car-strip {
+      margin: 0 -20px 36px;
+      padding: 0 20px 18px;
+      gap: 12px;
+    }
+    .car-card { flex: 0 0 158px; padding: 18px; gap: 8px; }
+    .car-card .glyph { width: 32px; height: 32px; }
+    .car-card .car-label { font-size: 18px; }
+    .car-card .car-count { font-size: 9px; }
+
+    .detail-head { margin-bottom: 22px; padding-bottom: 18px; }
+    .detail-tag { font-size: 9px; margin-bottom: 12px; }
+    .detail-title { font-size: clamp(28px, 7.5vw, 44px); }
+    .detail-desc { font-size: 12px; }
+
+    .article {
+      grid-template-columns: 1fr; gap: 6px;
+      padding: 20px 4px;
+    }
+    .article .num, .article .read { display: none; }
+    .article h3 { font-size: 20px; }
+    .article .dek { font-size: 12.5px; }
+    .article .meta { font-size: 9px; gap: 12px; }
+
+    .featured { padding: 0 20px 100px; }
+    .featured-head {
+      flex-direction: column; align-items: flex-start; gap: 14px;
+      margin-bottom: 28px;
+    }
+    .featured-head h2 { font-size: clamp(28px, 8vw, 48px); }
+    .featured-grid { grid-template-columns: 1fr; gap: 18px; }
+    .feat-body { padding: 20px; }
+    .feat-body h3 { font-size: 20px; }
+    .feat.big h3 { font-size: 24px; }
+    .feat-body .dek { font-size: 12px; }
+
+    footer.journal-footer { padding: 60px 20px 140px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+    .footer-inner h3 { font-size: 26px; }
+    .footer-inner p { font-size: 12px; }
+    .sub-form { flex-direction: column; border-radius: 16px; }
+    .sub-form input { padding: 16px 20px; text-align: left; font-size: 16px; }
+    .sub-form button { padding: 16px; border-radius: 0; border-top: 1px solid rgba(0,0,0,.15); }
+  }
+
+  @media (max-width: 420px) {
+    .hero h1 { font-size: clamp(46px, 15vw, 90px); }
+    .car-card { flex: 0 0 144px; }
+  }
+
+  /* Journal body still wants atmosphere.js + music gone, just in case */
+  body .atmo-dots, body .atmo-music { display: none !important; }
+</style>
+</head>
+<body class="journal-body" data-layout="radial">
+
+<header class="journal-header">
+  <a class="brand" href="/" aria-label="Dissolved Solids and Soluble Solids — home">
+    <span class="mark">D</span>
+    <span class="stack">
+      <span class="wordmark">Dissolved<span class="sep"></span>Solids</span>
+      <span class="tagline">the journal · <b>vol. <span data-bind="volume">01</span></b></span>
+    </span>
   </a>
-  <nav class="journal-nav" aria-label="Main">
-    <a href="/dissolvedsolids/">Dissolved Solids</a>
-    <span aria-hidden="true">·</span>
-    <a href="/solublesolids/">Soluble Solids</a>
-    <span aria-hidden="true">·</span>
-    <a href="/builder/">Drink builder</a>
-    <span aria-hidden="true">·</span>
+  <nav class="journal-nav-row" aria-label="Main">
+    <a href="/dissolvedsolids/">Dissolved</a>
+    <span class="sep"></span>
+    <a href="/solublesolids/">Soluble</a>
+    <span class="sep"></span>
+    <a href="/builder/">Build</a>
+    <span class="sep"></span>
     <a href="/cocktails/">Cocktails</a>
-    <span aria-hidden="true">·</span>
-    <a href="/reserve/">Reserve</a>
+    <span class="sep"></span>
+    <a href="/journal/" class="current">Journal</a>
   </nav>
+  <div class="header-right">
+    <div class="issue"><span class="led"></span>vol. <b data-bind="volume">01</b> · <b data-bind="season">spring 2026</b></div>
+  </div>
 </header>
 
-<main class="journal-mount">
+<section class="hero">
+  <div>
+    <p class="kicker">notebooks from the back bar</p>
+    <h1>The <em>Journal</em>.</h1>
+  </div>
+  <div class="hero-meta">
+    Field notes on what we're drinking in the Klang Valley — coffee, tea, kombucha, mocktails, cocktails. Mostly written between shifts in Petaling Jaya, by the people behind <a href="/dissolvedsolids/">Dissolved Solids</a> and <a href="/solublesolids/">Soluble Solids</a>.
+    <br/><br/>
+    <b data-bind="totalEntries">10</b> entries · <b data-bind="categoryCount">7</b> categories · last update <b data-bind="lastUpdated">May 16, 2026</b>.
+  </div>
+</section>
 
-  <section class="journal-hero">
-    <span class="journal-eyebrow">Beverages, examined · Klang Valley</span>
-    <h1>The Journal.</h1>
-    <p class="journal-manifesto">
-      Notes on what we're drinking in the Klang Valley, why it works, and where it comes from. <b>From kopi-O to kombucha, tea to tequila, kuih to cocktails.</b> Mostly written in Petaling Jaya, by the people behind <a href="/dissolvedsolids/">Dissolved Solids</a> and <a href="/solublesolids/">Soluble Solids</a>. We're sharing what we've learned, not lecturing. If a piece is useful, come visit and we'll pour you the drink it talks about.
-    </p>
-  </section>
+<section class="wheel-section">
+  <div class="wheel-head">
+    <h2>Pick a <em>flavour</em>,<br/>we'll pour the reading.</h2>
+    <div class="legend">
+      <b><span data-bind="categoryCount">7</span> categories</b><br/>
+      <b><span data-bind="totalEntries">10</span> entries</b><br/>
+      tap any beaker
+    </div>
+  </div>
 
-  <nav class="journal-topics" aria-label="Browse by topic">
-    <span class="journal-topics-label">Browse</span>
-    <a href="#drinks">Drinks</a>
-    <span aria-hidden="true">·</span>
-    <a href="#coffee">Coffee</a>
-    <span aria-hidden="true">·</span>
-    <a href="#tea">Tea</a>
-    <span aria-hidden="true">·</span>
-    <a href="#ingredients">Local ingredients</a>
-    <span aria-hidden="true">·</span>
-    <a href="#fermentation">Fermentation</a>
-    <span aria-hidden="true">·</span>
-    <a href="#mocktails">Mocktails</a>
-    <span aria-hidden="true">·</span>
-    <a href="#the-bar">The bar</a>
-  </nav>
+  <div class="car-strip" id="carStrip"></div>
 
-  <section class="journal-section" id="drinks" aria-labelledby="drinks-h">
-    <h2 class="journal-section-h" id="drinks-h">What we <i>pour</i>.</h2>
-    <p class="journal-section-note">Every drink we make, with the back story for the ones we love most. Start anywhere. Follow the thread.</p>
-
-    <div class="menu-grid-cards" style="margin-bottom: 28px;">
-      <a class="menu-card" href="/cocktails/pandan-collins/"><h3>Pandan Collins ⭐</h3><p>gin, fresh pandan syrup, lime, soda · the Malaysian Tom Collins</p></a>
-      <a class="menu-card" href="/cocktails/gula-melaka-old-fashioned/"><h3>Gula Melaka Old Fashioned ⭐</h3><p>whisky, gula melaka, aromatic bitters · the Malaysian Old Fashioned</p></a>
-      <a class="menu-card" href="/cocktails/calamansi-highball/"><h3>Calamansi Highball ⭐</h3><p>vodka or soft gin, fresh calamansi, soda · sharper than a g&amp;t</p></a>
-      <a class="menu-card" href="/cocktails/kopi-sour/"><h3>Kopi Sour ⭐</h3><p>whisky, kopi-O, gula melaka, lemon, foamed · the Malaysian whisky sour</p></a>
-      <a class="menu-card" href="/cocktails/jungle-bird/"><h3>Jungle Bird</h3><p>dark rum, Campari, pineapple, lime · the 1978 KL Hilton classic</p></a>
-      <a class="menu-card" href="/cocktails/black-honey/"><h3>Black Honey 🌿</h3><p>pink grapefruit, smoked herbs, honey, mango, espresso · zero-alcohol</p></a>
+  <div class="wheel-stage">
+    <div class="wheel-wrap" id="wheelWrap">
+      <svg class="wheel-svg" viewBox="0 0 600 600" aria-hidden="true">
+        <circle class="ring-bg" cx="300" cy="300" r="265"/>
+        <circle class="ring-bg r2" cx="300" cy="300" r="295"/>
+        <circle class="ring-bg r2" cx="300" cy="300" r="180"/>
+        <g id="ticks"></g>
+        <line class="needle" id="needle" x1="300" y1="300" x2="300" y2="80" />
+        <polygon class="needle-head" id="needleHead" points="300,72 294,84 306,84" />
+        <defs>
+          <path id="arc-top" d="M 300 300 m -245 0 a 245 245 0 0 1 490 0" />
+        </defs>
+        <text class="ring-label">
+          <textPath href="#arc-top" startOffset="50%" text-anchor="middle">· dissolved · solids · journal · vol. 01 ·</textPath>
+        </text>
+      </svg>
+      <div id="nodes"></div>
+      <div class="hub">
+        <div class="hub-k">now reading</div>
+        <div class="hub-name" id="hubName"><em>Cocktails</em></div>
+        <div class="hub-meta"><b id="hubCount">6</b> drinks · <b id="hubAvg">—</b></div>
+      </div>
     </div>
 
-    <p class="journal-rabbit">
-      <b>Browse by shape</b>
-      Sit down with the whole list: <a href="/cocktails/">all 32 drinks</a> categorised by stirred, shaken, built, vermouth, coffee, mocktail, seasonal. Or design one from scratch with the <a href="/builder/">drink builder</a>.
-    </p>
-  </section>
-
-  <section class="journal-section" id="coffee" aria-labelledby="coffee-h">
-    <h2 class="journal-section-h" id="coffee-h">Coffee, the <i>Malaysian way</i></h2>
-    <p class="journal-section-note">How Malaysians take their coffee, and what we do with it once it gets to the bar. Robusta, sock-brew, condensed milk, and the leap from kopitiam to coupe.</p>
-
-    <article class="journal-card">
-      <a class="card-link" href="/journal/malaysian-kopi-explained/">
-        <span class="card-eyebrow">Coffee · Field Guide</span>
-        <h2 class="card-title">Kopi-O, Kopi-C, Kopi Peng: <i>a field guide to Malaysian coffee</i></h2>
-        <p class="card-dek">A practical glossary of the five-word kopi vocabulary, plus why robusta and sock-brew and condensed milk make a coffee unlike any Western style, and how it translates into cocktails.</p>
-        <div class="card-meta"><span>9 min read</span></div>
-      </a>
-    </article>
-
-    <article class="journal-card">
-      <a class="card-link" href="/journal/robusta-for-coffee-cocktails/">
-        <span class="card-eyebrow">Coffee · Opinion</span>
-        <h2 class="card-title">Robusta or Arabica: <i>which coffee actually belongs in a cocktail</i></h2>
-        <p class="card-dek">Robusta gets dismissed in specialty coffee circles. It's also the right call for coffee-led cocktails. Notes on why bitterness and body matter more than nuance once spirit and ice show up.</p>
-        <div class="card-meta"><span>8 min read</span></div>
-      </a>
-    </article>
-
-    <p class="journal-rabbit">
-      <b>Drink the article</b>
-      The coffee mocktails on our menu use the same logic: a robusta base for something layered. Try <a href="/cocktails/black-honey/">Black Honey</a>, <a href="/cocktails/floral-mango/">Floral Mango</a>, or <a href="/cocktails/peach-blossom/">Peach Blossom</a> at <a href="/dissolvedsolids/">Dissolved Solids</a>. For the alcoholic version, the <a href="/cocktails/kopi-sour/">Kopi Sour</a> is the one to start with.
-    </p>
-  </section>
-
-  <section class="journal-section" id="tea" aria-labelledby="tea-h">
-    <h2 class="journal-section-h" id="tea-h">Tea, four <i>cultures deep</i></h2>
-    <p class="journal-section-note">Teh tarik, kopitiam teh, Chinese yum cha, Tamil-Malaysian tea, Cameron Highlands Boh. Four tea cultures sharing one country, with notes on how each translates to the bar.</p>
-
-    <article class="journal-card">
-      <a class="card-link" href="/journal/malaysian-tea-culture/">
-        <span class="card-eyebrow">Tea · Cultural</span>
-        <h2 class="card-title">How Malaysians <i>actually drink tea</i></h2>
-        <p class="card-dek">Teh tarik, kopitiam teh, Chinese yum cha, Tamil-Malaysian tea, Cameron Highlands Boh. Four tea cultures sharing one country, with notes on each.</p>
-        <div class="card-meta"><span>8 min read</span></div>
-      </a>
-    </article>
-
-    <p class="journal-rabbit">
-      <b>Drink the article</b>
-      Tea anchors a few of our drinks too. <a href="/cocktails/peach-blossom/">Peach Blossom</a> uses cold-brewed earl grey for the long finish. The <em>Tea</em> section of <a href="/cocktails/">our menu</a> has more.
-    </p>
-  </section>
-
-  <section class="journal-section" id="ingredients" aria-labelledby="ingredients-h">
-    <h2 class="journal-section-h" id="ingredients-h">The local <i>pantry</i></h2>
-    <p class="journal-section-note">The Malaysian ingredients we keep coming back to. What they actually are, how they behave in liquid, and how we choose between grades.</p>
-
-    <article class="journal-card">
-      <a class="card-link" href="/journal/pandan-in-beverages/">
-        <span class="card-eyebrow">Ingredients · Pandan</span>
-        <h2 class="card-title">Pandan in beverages: <i>from kuih to cocktails</i></h2>
-        <p class="card-dek">Three extraction methods we use, what pandan pairs well with, and a simple pandan collins recipe that's been our entry point for years.</p>
-        <div class="card-meta"><span>8 min read</span></div>
-      </a>
-    </article>
-
-    <article class="journal-card">
-      <a class="card-link" href="/journal/gula-melaka-palm-sugar/">
-        <span class="card-eyebrow">Ingredients · Sugar</span>
-        <h2 class="card-title">Gula melaka and <i>the palm sugar spectrum</i></h2>
-        <p class="card-dek">What gula melaka actually is, how it differs from gula apong, jaggery and muscovado, and how we choose between dark, medium and light grades for drinks.</p>
-        <div class="card-meta"><span>7 min read</span></div>
-      </a>
-    </article>
-
-    <article class="journal-card">
-      <a class="card-link" href="/journal/calamansi-bar-ingredient/">
-        <span class="card-eyebrow">Ingredients · Citrus</span>
-        <h2 class="card-title">Calamansi: <i>the Malaysian citrus we keep behind the bar</i></h2>
-        <p class="card-dek">Limau kasturi to your auntie. The small green-orange fruit that reads as lime, orange, and a faint floral note. Notes on what it is, how it tastes, and three ways we use it on the bar.</p>
-        <div class="card-meta"><span>7 min read</span></div>
-      </a>
-    </article>
-
-    <p class="journal-rabbit">
-      <b>Drink the article</b>
-      Pandan, gula melaka, and calamansi each anchor one of our Malaysian-local cocktails: <a href="/cocktails/pandan-collins/">Pandan Collins</a>, <a href="/cocktails/gula-melaka-old-fashioned/">Gula Melaka Old Fashioned</a>, <a href="/cocktails/calamansi-highball/">Calamansi Highball</a>. Easiest way to taste any of them is to <a href="/reserve/">reserve a table</a>.
-    </p>
-  </section>
-
-  <section class="journal-section" id="fermentation" aria-labelledby="fermentation-h">
-    <h2 class="journal-section-h" id="fermentation-h">Fermentation, in <i>tropical heat</i></h2>
-    <p class="journal-section-note">What happens when you let things sit in a 30-degree room. The bacteria moves faster, the timelines shrink, and the rules from temperate-climate books stop applying. Notes from our own brews.</p>
-
-    <article class="journal-card">
-      <a class="card-link" href="/journal/tropical-kombucha-brewing/">
-        <span class="card-eyebrow">Fermentation · Field Guide</span>
-        <h2 class="card-title">Brewing kombucha <i>in tropical climates</i></h2>
-        <p class="card-dek">What changes when you brew at 28 to 32 degrees ambient. Sweetness curves, F2 bottle bombs, SCOBY behaviour in Malaysian heat, and a timeline that's worked for us.</p>
-        <div class="card-meta"><span>9 min read</span></div>
-      </a>
-    </article>
-
-    <p class="journal-rabbit">
-      <b>Drink the article</b>
-      We pour our own kombuchas at the bar when a batch is ready. Walk into <a href="/dissolvedsolids/">Dissolved Solids</a> or <a href="/solublesolids/">Soluble Solids</a> and ask what's in the bottle this week.
-    </p>
-  </section>
-
-  <section class="journal-section" id="mocktails" aria-labelledby="mocktails-h">
-    <h2 class="journal-section-h" id="mocktails-h">Non-alcoholic, <i>taken seriously</i></h2>
-    <p class="journal-section-note">Most mocktails fail because they solve for sugar instead of complexity. Here's how we think about the non-alcoholic side of the menu, and what we put on it.</p>
-
-    <article class="journal-card">
-      <a class="card-link" href="/journal/the-savoury-mocktail/">
-        <span class="card-eyebrow">Mocktails · Opinion</span>
-        <h2 class="card-title">The savoury mocktail <i>manifesto</i></h2>
-        <p class="card-dek">Most mocktails fail because they're solving for sugar instead of complexity. An argument, with two drinks we're proud of and one we got wrong.</p>
-        <div class="card-meta"><span>7 min read</span></div>
-      </a>
-    </article>
-
-    <p class="journal-rabbit">
-      <b>Drink the article</b>
-      Three of our coffee mocktails put the manifesto into practice: <a href="/cocktails/black-honey/">Black Honey</a> (bitter, smoky), <a href="/cocktails/floral-mango/">Floral Mango</a> (soft, floral), and <a href="/cocktails/peach-blossom/">Peach Blossom</a> (peach and earl grey). Zero alcohol, full body.
-    </p>
-  </section>
-
-  <section class="journal-section" id="the-bar" aria-labelledby="the-bar-h">
-    <h2 class="journal-section-h" id="the-bar-h">The bar, <i>examined</i></h2>
-    <p class="journal-section-note">Notes on how we run the rooms, why our menus are short on purpose, and what we've learned watching guests order in their own way.</p>
-
-    <article class="journal-card">
-      <a class="card-link" href="/journal/why-our-menu-is-short/">
-        <span class="card-eyebrow">Opinion · The bar</span>
-        <h2 class="card-title">Why our menu is <i>short on purpose</i></h2>
-        <p class="card-dek">Soluble Solids has no printed list. Dissolved Solids keeps a short one. Notes on why fewer drinks done better is a better experience for the bartender, the bar, and the guest.</p>
-        <div class="card-meta"><span>6 min read</span></div>
-      </a>
-    </article>
-
-    <p class="journal-rabbit">
-      <b>Try the no-list approach</b>
-      The easiest way is to walk in, sit down, and tell the bartender what you usually drink. The second easiest is the <a href="/builder/">drink builder</a>: five taps and we'll prep a brief you can hand the bartender on arrival. Or just <a href="/reserve/">reserve a table</a> and we'll have a recommendation ready.
-    </p>
-  </section>
-
-  <aside class="journal-cta">
-    <h3>Want to drink with <i>us?</i></h3>
-    <p>The journal is free. The drinks are at the bar. Build a custom one in five taps, or reserve a table at one of our two Petaling Jaya outlets.</p>
-    <div class="journal-cta-actions">
-      <a class="cta-btn" href="/builder/">Build a drink →</a>
-      <a class="cta-btn cta-btn-primary" href="/reserve/">Reserve a table →</a>
+    <div class="detail">
+      <div class="detail-head">
+        <div class="detail-tag" id="detailTag">category · cocktails</div>
+        <h2 class="detail-title" id="detailTitle">What we <em>pour</em>.</h2>
+        <p class="detail-desc" id="detailDesc">Every drink we make, with the back story for the ones we love most. Start anywhere. Follow the thread.</p>
+      </div>
+      <div class="articles" id="articles"></div>
     </div>
-  </aside>
+  </div>
+</section>
 
-  <p class="journal-foot">
-    More on the way. If there's a beverage topic you'd like us to write about, or a Malaysian drink we should be paying more attention to, WhatsApp <a href="https://wa.me/601140087607" target="_blank" rel="noopener">Dissolved Solids</a> or <a href="https://wa.me/601116828651" target="_blank" rel="noopener">Soluble Solids</a>. We read every message.
-  </p>
+<section class="featured">
+  <div class="featured-head">
+    <h2>From the <em>current</em> issue.</h2>
+    <div class="label">vol. <span data-bind="volume">01</span> · cover stories</div>
+  </div>
+  <div class="featured-grid" id="featuredGrid"></div>
+</section>
 
-</main>
+<footer class="journal-footer">
+  <div class="footer-inner">
+    <div>
+      <h3>Soaked thoughts, every <em>fortnight</em>.</h3>
+      <p>One letter every other week. Recipes that didn't make the menu, ingredients we're obsessing over, a Malaysian beverage worth chasing down. No spam, no upsell, leave whenever.</p>
+    </div>
+    <form class="sub-form"
+          action="https://wa.me/601140087607"
+          method="get"
+          onsubmit="event.preventDefault();
+                   var addr=encodeURIComponent(this.querySelector('input').value);
+                   window.open('https://wa.me/601140087607?text='+encodeURIComponent('Hi! Add me to The Journal newsletter: ')+addr, '_blank');
+                   this.querySelector('button').textContent='subscribed ✓';">
+      <input type="email" placeholder="your email — we won't tell" required />
+      <button type="submit">subscribe</button>
+    </form>
+  </div>
+  <div class="footer-foot">
+    <span>The Journal · <a href="/">dissolvedsolids.co</a></span>
+    <span>
+      WhatsApp
+      <a href="https://wa.me/601140087607" target="_blank" rel="noopener">Dissolved Solids</a>
+      ·
+      <a href="https://wa.me/601116828651" target="_blank" rel="noopener">Soluble Solids</a>
+    </span>
+  </div>
+</footer>
 
-<!-- Journal page intentionally skips /atmosphere.js — no drifting particles
-     and no music here. The page is for reading; the appbar still has the
-     state toggle + ticker for navigation continuity. -->
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   DSSS · The Journal
+   Wheel-of-categories nav with three layouts (radial / carousel auto).
+   Content lives in JOURNAL. Article slugs point at /journal/{slug}/ for
+   real long-form pieces and /cocktails/{slug}/ for the cocktail entries.
+   ═══════════════════════════════════════════════════════════════════════ */
+const JOURNAL = {
+  meta: {
+    volume:      '01',
+    season:      'spring 2026',
+    lastUpdated: '2026-05-16',
+  },
+  categories: [
+    {
+      id: 'cocktails',
+      name: 'Cocktails',
+      description: "Every drink we pour, with the back story for the ones we love most. Malaysian-local picks, classics done our way, and the occasional experiment that earned its place on the bar.",
+      headline: { lead: 'What we ', accent: 'pour', tail: '.' },
+      icon: `<svg viewBox="0 0 24 24"><path d="M4 4h16l-8 9v6"/><path d="M9 19h6"/><path d="M6 7h12"/></svg>`,
+      articles: [
+        { slug: 'pandan-collins',             href: '/cocktails/pandan-collins/',             title: { lead: 'Pandan ',   accent: 'Collins',         tail: ' ★' }, excerpt: 'Gin, fresh pandan syrup, lime, soda. The Malaysian Tom Collins, drinkable in 32-degree heat.',           author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 4, image: 'https://dissolvedsolids.co/photos/ds-04.jpg', featured: true,  pill: 'malaysian' },
+        { slug: 'gula-melaka-old-fashioned',  href: '/cocktails/gula-melaka-old-fashioned/',  title: { lead: 'Gula Melaka ', accent: 'Old Fashioned', tail: ' ★' }, excerpt: 'Whisky, gula melaka, aromatic bitters. Caramel and clove with the rough edges left in.',                 author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 5 },
+        { slug: 'calamansi-highball',         href: '/cocktails/calamansi-highball/',         title: { lead: 'Calamansi ', accent: 'Highball',       tail: ' ★' }, excerpt: 'Vodka or soft gin, fresh calamansi, soda. Sharper than a g&t, made for sharing a plate.',              author: 'Soluble Solids',   date: '2026-05-16', readMinutes: 4 },
+        { slug: 'kopi-sour',                  href: '/cocktails/kopi-sour/',                  title: { lead: 'Kopi ',     accent: 'Sour',             tail: ' ★' }, excerpt: 'Whisky, kopi-O, gula melaka, lemon, foamed. The Malaysian whisky sour. Wakes you up, calms you down.', author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 5 },
+        { slug: 'jungle-bird',                href: '/cocktails/jungle-bird/',                title: { lead: 'Jungle ',   accent: 'Bird',             tail: '.'   }, excerpt: 'Dark rum, Campari, pineapple, lime. The 1978 KL Hilton classic. Bitter, tropical, adult.',             author: 'Dissolved Solids', date: '2026-05-14', readMinutes: 4 },
+        { slug: 'black-honey',                href: '/cocktails/black-honey/',                title: { lead: 'Black ',    accent: 'Honey',            tail: ' 🌿' }, excerpt: 'Pink grapefruit, smoked herbs, honey, mango, espresso. Zero-alcohol, full body, not apologetic.',     author: 'Dissolved Solids', date: '2026-05-14', readMinutes: 4 },
+      ],
+    },
+    {
+      id: 'coffee',
+      name: 'Coffee',
+      description: 'How Malaysians take their coffee, and what we do with it once it gets to the bar. Robusta, sock-brew, condensed milk, and the leap from kopitiam to coupe.',
+      headline: { lead: 'Coffee, the ', accent: 'Malaysian way', tail: '.' },
+      icon: `<svg viewBox="0 0 24 24"><path d="M4 8h14v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M18 10h2a2 2 0 0 1 0 4h-2"/><path d="M8 3v3"/><path d="M12 3v3"/></svg>`,
+      articles: [
+        { slug: 'malaysian-kopi-explained',   href: '/journal/malaysian-kopi-explained/',   title: { lead: 'Kopi-O, Kopi-C, Kopi Peng: a ', accent: 'field guide', tail: ' to Malaysian coffee.' }, excerpt: 'A practical glossary of the five-word kopi vocabulary, plus why robusta + sock-brew + condensed milk make a coffee unlike any Western style.', author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 9, image: 'https://dissolvedsolids.co/photos/ds-09.jpg', featured: true, pill: 'cover' },
+        { slug: 'robusta-for-coffee-cocktails', href: '/journal/robusta-for-coffee-cocktails/', title: { lead: 'Robusta or arabica: which coffee actually belongs in a ', accent: 'cocktail', tail: '.' }, excerpt: 'Robusta gets dismissed in specialty circles. It is also the right call for coffee-led cocktails. Bitterness, body, and why nuance loses to spirit and ice.', author: 'Dissolved Solids', date: '2026-05-16', readMinutes: 8 },
+      ],
+    },
+    {
+      id: 'tea',
+      name: 'Tea',
+      description: 'Teh tarik, kopitiam teh, Chinese yum cha, Tamil-Malaysian tea, Cameron Highlands Boh. Four tea cultures sharing one country, with notes on how each translates to the bar.',
+      headline: { lead: 'Tea, four ', accent: 'cultures deep', tail: '.' },
+      icon: `<svg viewBox="0 0 24 24"><path d="M5 8h11v8a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V8z"/><path d="M16 10h2a3 3 0 0 1 0 6h-1.5"/><path d="M9 4c0 1.5 1.5 1.5 1.5 3"/><path d="M12 4c0 1.5 1.5 1.5 1.5 3"/></svg>`,
+      articles: [
+        { slug: 'malaysian-tea-culture', href: '/journal/malaysian-tea-culture/', title: { lead: 'How Malaysians ', accent: 'actually drink tea', tail: '.' }, excerpt: 'Teh tarik, kopitiam teh, Chinese yum cha, Tamil-Malaysian tea, Cameron Highlands Boh. Four tea cultures, one country, with notes on each.', author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 8 },
+      ],
+    },
+    {
+      id: 'ingredients',
+      name: 'Ingredients',
+      description: 'The Malaysian ingredients we keep coming back to. What they actually are, how they behave in liquid, and how we choose between grades.',
+      headline: { lead: 'The local ', accent: 'pantry', tail: '.' },
+      icon: `<svg viewBox="0 0 24 24"><path d="M12 3l3 5-3 2-3-2 3-5z"/><path d="M9 10v10"/><path d="M15 10v10"/><path d="M5 14h14"/></svg>`,
+      articles: [
+        { slug: 'pandan-in-beverages',     href: '/journal/pandan-in-beverages/',     title: { lead: 'Pandan in beverages: from ', accent: 'kuih to cocktails', tail: '.' },     excerpt: 'Three extraction methods we use, what pandan pairs well with, and the simple pandan collins recipe that has been our entry point for years.', author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 8, image: 'https://dissolvedsolids.co/photos/ds-10.jpg', featured: true, pill: 'field notes' },
+        { slug: 'gula-melaka-palm-sugar',  href: '/journal/gula-melaka-palm-sugar/',  title: { lead: 'Gula melaka and the ', accent: 'palm sugar spectrum', tail: '.' },         excerpt: 'What gula melaka actually is, how it differs from gula apong, jaggery and muscovado, and how we choose between dark, medium and light grades.', author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 7 },
+        { slug: 'calamansi-bar-ingredient', href: '/journal/calamansi-bar-ingredient/', title: { lead: 'Calamansi: the Malaysian citrus we keep ', accent: 'behind the bar', tail: '.' }, excerpt: 'Limau kasturi to your auntie. The small green-orange fruit that reads as lime, orange, and a faint floral note. Three ways we use it on the bar.', author: 'Soluble Solids',   date: '2026-05-16', readMinutes: 7 },
+      ],
+    },
+    {
+      id: 'fermentation',
+      name: 'Fermentation',
+      description: 'What happens when you let things sit in a 30-degree room. The bacteria moves faster, the timelines shrink, and the rules from temperate-climate books stop applying. Notes from our own brews.',
+      headline: { lead: 'Time, in a ', accent: 'tropical jar', tail: '.' },
+      icon: `<svg viewBox="0 0 24 24"><path d="M8 3h8v3l-1 2h-6L8 6V3z"/><path d="M7 8h10v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V8z"/><circle cx="11" cy="13" r=".7" fill="currentColor"/><circle cx="14" cy="16" r=".7" fill="currentColor"/></svg>`,
+      articles: [
+        { slug: 'tropical-kombucha-brewing', href: '/journal/tropical-kombucha-brewing/', title: { lead: 'Brewing kombucha in ', accent: 'tropical climates', tail: '.' }, excerpt: 'What changes when you brew at 28-32 degrees ambient. Sweetness curves, F2 bottle bombs, SCOBY behaviour in Malaysian heat, and a timeline that has worked for us.', author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 9 },
+      ],
+    },
+    {
+      id: 'mocktails',
+      name: 'Zero-Proof',
+      description: "Most mocktails fail because they solve for sugar instead of complexity. Here's how we think about the non-alcoholic side of the menu, and what we put on it.",
+      headline: { lead: 'Loud drinks, ', accent: 'no proof', tail: '.' },
+      icon: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M4 12c4 2 12 2 16 0"/><path d="M12 3c2 4 2 14 0 18"/></svg>`,
+      articles: [
+        { slug: 'the-savoury-mocktail', href: '/journal/the-savoury-mocktail/', title: { lead: 'The savoury mocktail ', accent: 'manifesto', tail: '.' }, excerpt: 'Most mocktails fail because they are solving for sugar instead of complexity. An argument, with two drinks we are proud of and one we got wrong.', author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 7 },
+      ],
+    },
+    {
+      id: 'bar',
+      name: 'The Bar',
+      description: 'The room itself. Service, music, the small fights we have over playlists, and the rare nights we go home happy. Notes on how we run the place.',
+      headline: { lead: 'Notes from ', accent: 'inside', tail: '.' },
+      icon: `<svg viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M5 6l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/><path d="M9 3h6v3H9z"/></svg>`,
+      articles: [
+        { slug: 'why-our-menu-is-short', href: '/journal/why-our-menu-is-short/', title: { lead: 'Why our menu is ', accent: 'short on purpose', tail: '.' }, excerpt: 'Soluble Solids has no printed list. Dissolved Solids keeps a short one. Why fewer drinks done better is a better experience for everyone in the room.', author: 'Soluble Solids', date: '2026-05-16', readMinutes: 6 },
+      ],
+    },
+  ],
+};
+
+const $  = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+const totalArticles = JOURNAL.categories.reduce((s, c) => s + c.articles.length, 0);
+const formatDateShort = (iso) => new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+const formatDateLong  = (iso) => new Date(iso).toLocaleDateString('en-US', { month: 'long',  day: 'numeric', year: 'numeric' });
+const tri = (t) => `${t.lead}<em>${t.accent}</em>${t.tail}`;
+
+const WHEEL = {
+  count: JOURNAL.categories.length,
+  radiusPct: 39,
+  startAngle: -90,
+};
+const angleAt = (i) => WHEEL.startAngle + (360 / WHEEL.count) * i;
+
+function renderMeta() {
+  $$('[data-bind="volume"]').forEach(el => el.textContent = JOURNAL.meta.volume);
+  $$('[data-bind="season"]').forEach(el => el.textContent = JOURNAL.meta.season);
+  $$('[data-bind="totalEntries"]').forEach(el => el.textContent = totalArticles);
+  $$('[data-bind="categoryCount"]').forEach(el => el.textContent = JOURNAL.categories.length);
+  $$('[data-bind="lastUpdated"]').forEach(el => el.textContent = formatDateLong(JOURNAL.meta.lastUpdated));
+}
+
+function renderNavigation() {
+  const nodes    = $('#nodes');
+  const carStrip = $('#carStrip');
+  const ticks    = $('#ticks');
+
+  JOURNAL.categories.forEach((cat, i) => {
+    const angle = angleAt(i);
+    const rad   = (angle * Math.PI) / 180;
+
+    // wheel node
+    const node = document.createElement('button');
+    node.className = 'node-wrap';
+    node.dataset.id = cat.id;
+    node.style.left = (50 + WHEEL.radiusPct * Math.cos(rad)) + '%';
+    node.style.top  = (50 + WHEEL.radiusPct * Math.sin(rad)) + '%';
+    node.style.setProperty('--node-tx', 'translate(-50%, -50%)');
+    node.style.transform = 'translate(-50%, -50%)';
+    node.setAttribute('aria-label', cat.name);
+    node.innerHTML = `
+      <div class="node">
+        <div class="glyph">${cat.icon}</div>
+        <div class="count"><b>${cat.articles.length}</b> entries</div>
+      </div>
+      <div class="node-label">${cat.name}</div>
+    `;
+    node.addEventListener('click', () => selectCategory(i));
+    nodes.appendChild(node);
+
+    // ring tick
+    const cx = 300, cy = 300;
+    const tick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    tick.setAttribute('x1', cx + 265 * Math.cos(rad));
+    tick.setAttribute('y1', cy + 265 * Math.sin(rad));
+    tick.setAttribute('x2', cx + 280 * Math.cos(rad));
+    tick.setAttribute('y2', cy + 280 * Math.sin(rad));
+    tick.setAttribute('class', 'ring-tick');
+    ticks.appendChild(tick);
+
+    // carousel card (mobile fallback)
+    const car = document.createElement('button');
+    car.className = 'car-card';
+    car.dataset.id = cat.id;
+    car.innerHTML = `
+      <div class="glyph">${cat.icon}</div>
+      <div class="car-label">${cat.name}</div>
+      <div class="car-count"><b>${cat.articles.length}</b> entries</div>
+    `;
+    car.addEventListener('click', () => selectCategory(i));
+    carStrip.appendChild(car);
+  });
+}
+
+function renderFeatured() {
+  const grid = $('#featuredGrid');
+  const featured = [];
+  JOURNAL.categories.forEach((cat) => {
+    cat.articles.forEach((a) => { if (a.featured) featured.push({ ...a, category: cat }); });
+  });
+  if (!featured.length) { grid.parentElement.style.display = 'none'; return; }
+  grid.innerHTML = featured.map((a, i) => `
+    <a class="feat ${i === 0 ? 'big' : ''}" href="${a.href}">
+      <div class="feat-img"${a.image ? ` style="background-image: url('${a.image}');"` : ''}>
+        ${a.pill ? `<span class="pill">${a.pill}</span>` : ''}
+      </div>
+      <div class="feat-body">
+        <div class="tag">${a.category.name.toLowerCase()}${a.readMinutes >= 9 ? ' · long read' : ''}</div>
+        <h3>${tri(a.title)}</h3>
+        <p class="dek">${a.excerpt}</p>
+        <div class="meta">${formatDateShort(a.date)} · ${a.readMinutes} min · ${a.author}</div>
+      </div>
+    </a>
+  `).join('');
+}
+
+function renderArticleList(cat) {
+  return cat.articles.map((a, i) => `
+    <a class="article" href="${a.href}">
+      <div class="num">№ <b>${String(i + 1).padStart(2, '0')}</b></div>
+      <div class="body">
+        <h3>${tri(a.title)}</h3>
+        <p class="dek">${a.excerpt}</p>
+        <div class="meta">
+          <span>${formatDateShort(a.date)}</span>
+          <span><b>${a.author}</b></span>
+        </div>
+      </div>
+      <div class="read"><b>${a.readMinutes}</b>min<span class="arrow">→</span></div>
+    </a>
+  `).join('');
+}
+
+let activeIdx = 0;
+function selectCategory(idx, { instant = false } = {}) {
+  activeIdx = idx;
+  const cat = JOURNAL.categories[idx];
+
+  const rotate = angleAt(idx) + 90;
+  $('#needle').style.transform     = `rotate(${rotate}deg)`;
+  $('#needleHead').style.transform = `rotate(${rotate}deg)`;
+
+  $$('.node-wrap').forEach((n, i) => n.classList.toggle('active', i === idx));
+  $$('.car-card').forEach((n, i)  => n.classList.toggle('active', i === idx));
+
+  const avgMin = Math.round(cat.articles.reduce((s, a) => s + (a.readMinutes || 0), 0) / cat.articles.length);
+  $('#hubName').innerHTML  = `<em>${cat.name}</em>`;
+  $('#hubCount').textContent = cat.articles.length;
+  $('#hubAvg').textContent   = `${avgMin}min avg`;
+
+  const articles = $('#articles');
+  const apply = () => {
+    $('#detailTag').textContent  = `category · ${cat.name.toLowerCase()}`;
+    $('#detailTitle').innerHTML  = tri(cat.headline);
+    $('#detailDesc').textContent = cat.description;
+    articles.innerHTML = renderArticleList(cat);
+    articles.classList.remove('fading');
+  };
+  if (instant) apply();
+  else { articles.classList.add('fading'); setTimeout(apply, 250); }
+
+  // Reflect category in URL hash without scrolling (for shareable links)
+  try { history.replaceState(null, '', '#' + cat.id); } catch (e) {}
+}
+
+renderMeta();
+renderNavigation();
+renderFeatured();
+
+// Pick up category from hash on initial load + when hash changes
+function categoryFromHash() {
+  const slug = location.hash.replace(/^#/, '');
+  const i = JOURNAL.categories.findIndex(c => c.id === slug);
+  return i >= 0 ? i : 0;
+}
+selectCategory(categoryFromHash(), { instant: true });
+
+document.addEventListener('keydown', (e) => {
+  // Don't hijack arrows inside form inputs
+  const t = document.activeElement;
+  if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
+  if (e.key === 'ArrowRight') selectCategory((activeIdx + 1) % WHEEL.count);
+  else if (e.key === 'ArrowLeft') selectCategory((activeIdx - 1 + WHEEL.count) % WHEEL.count);
+});
+window.addEventListener('hashchange', () => selectCategory(categoryFromHash()));
+</script>
+
+<!-- Journal page intentionally skips /atmosphere.js — no drifting particles,
+     no music. The bottom appbar still mounts for consistent site-wide nav. -->
 <script src="/appbar.js" defer></script>
 </body>
 </html>
