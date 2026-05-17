@@ -3329,9 +3329,13 @@
   (function () {
     const gestureEvts = ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel'];
     let armed = false;
-    function tryStart() { if (!isPlaying) startMusic(); }
+    function syncIsPlaying() {
+      if (currentKey && audios[currentKey] && audios[currentKey].paused) isPlaying = false;
+    }
+    function tryStart() { syncIsPlaying(); if (!isPlaying) startMusic(); }
     function onGesture(e) {
       const onToggle = e.target && e.target.closest && e.target.closest('.music-toggle');
+      syncIsPlaying();
       if (!isPlaying && !onToggle) startMusic();
       disarmGesture();
     }
@@ -3347,9 +3351,13 @@
     }
     tryStart();
     armGesture();
-    window.addEventListener('pageshow', () => { tryStart(); armGesture(); });
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) syncIsPlaying();
+      tryStart();
+      armGesture();
+    });
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') { tryStart(); armGesture(); }
+      if (document.visibilityState === 'visible') { syncIsPlaying(); tryStart(); armGesture(); }
     });
   })();
   // Crossfade on state flip — old track fades out (and pauses, retaining

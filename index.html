@@ -527,17 +527,47 @@
   }
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-    padding: 10px var(--gutter) 8px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    padding: 10px var(--gutter) 10px;
+    display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 18px;
     color: var(--paper);
     transition: color var(--t-bg) cubic-bezier(.7,0,.3,1);
+    flex-wrap: wrap;
   }
 
   .brand {
-    display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
+    display: inline-flex; flex-direction: row; align-items: center; gap: 8px;
     color: var(--paper);
     text-decoration: none;
-    text-align: center;
+    text-align: left;
+  }
+  .ribbon-nav {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.62);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .ribbon-nav a {
+    color: rgba(255,255,255,.78);
+    text-decoration: none;
+    padding: 6px 4px;
+    border-bottom: 1px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  .ribbon-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .ribbon-nav span { color: rgba(255,255,255,.30); }
+  @media (max-width: 720px) {
+    header { gap: 8px; padding: 8px var(--gutter); }
+    .ribbon-nav { font-size: 9px; letter-spacing: .12em; gap: 4px; }
+    .ribbon-nav a { padding: 4px 2px; }
+  }
+  @media (max-width: 480px) {
+    /* On phones the ribbon would crowd the wordmark — collapse it
+       to a hidden state and rely on the bottom appbar for nav. */
+    .ribbon-nav { display: none; }
   }
   .brand-logo {
     /* Sized in em so the cube hugs the wordmark text height. */
@@ -1797,6 +1827,53 @@
   #builder .gallery-head h2 { font-family: var(--serif-sol) !important; font-style: normal !important; }
 
   /* ─────────────────────────────────────────────────────────────
+     READING WIDTH on wide desktops — cap any prose so a 1600px+
+     viewport doesn't render 200-character lines that are unreadable.
+     ───────────────────────────────────────────────────────────── */
+  .hero-content { max-width: 880px; }
+  .hero .body, .hero .tagline { max-width: 720px; }
+  .gallery-head, .reserve-head, .outlets-head, .visit-head { max-width: 1200px; }
+  .gallery-head .meta, .visit-head .meta, .reserve-head .meta { max-width: 460px; }
+  .builder-intro { max-width: 720px; }
+
+  /* ─────────────────────────────────────────────────────────────
+     BUILDER EYEBROW — pulsing accent pill above the embedded
+     builder so the section is impossible to miss when scrolling past.
+     ───────────────────────────────────────────────────────────── */
+  .builder-eyebrow-wrap { max-width: 1200px; margin: 0 auto 18px; text-align: center; }
+  .builder-eyebrow-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 18px;
+    background: var(--accent);
+    color: var(--bg, #0b0b10);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 8px 30px rgba(255, 59, 129, .25);
+    animation: builderPulse 2.4s ease-in-out infinite;
+  }
+  .builder-eyebrow-pill .pulse-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--bg, #0b0b10);
+    opacity: .55;
+    animation: pulseDot 1.4s ease-in-out infinite;
+  }
+  @keyframes builderPulse {
+    0%, 100% { box-shadow: 0 8px 30px rgba(255, 59, 129, .22); transform: translateY(0); }
+    50%      { box-shadow: 0 12px 44px rgba(255, 59, 129, .45); transform: translateY(-3px); }
+  }
+  @keyframes pulseDot {
+    0%, 100% { opacity: .35; transform: scale(.9); }
+    50%      { opacity: 1;   transform: scale(1.2); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .builder-eyebrow-pill, .builder-eyebrow-pill .pulse-dot { animation: none; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
      DRINK BUILDER — dark-bar integration (mounts /builder.css)
      ───────────────────────────────────────────────────────────── */
   #builder.builder { padding: 80px var(--gutter) 80px; position: relative; z-index: 5; color: var(--paper); transition: color var(--t-bg); }
@@ -2440,7 +2517,17 @@
       <span class="word-second">solids</span>
     </span>
   </a>
-  <!-- Header is logo-only now. Nav + state toggle + live readout live in the bottom app bar. -->
+  <nav class="ribbon-nav" aria-label="Main">
+    <a href="/dissolvedsolids/">Dissolved Solids</a>
+    <span aria-hidden="true">·</span>
+    <a href="/solublesolids/">Soluble Solids</a>
+    <span aria-hidden="true">·</span>
+    <a href="#builder">Drink Builder</a>
+    <span aria-hidden="true">·</span>
+    <a href="/cocktails/">Cocktails</a>
+    <span aria-hidden="true">·</span>
+    <a href="/journal/">Journal</a>
+  </nav>
 </header>
 
 <!-- tatler seal moved inside hero -->
@@ -2641,6 +2728,12 @@
        DRINK BUILDER — modular mount (same engine as /builder/)
        ─────────────────────────────────────────────────────────── -->
   <section class="builder" id="builder">
+  <div class="builder-eyebrow-wrap">
+    <span class="builder-eyebrow-pill">
+      <span class="pulse-dot" aria-hidden="true"></span>
+      Start here · Build your own drink
+    </span>
+  </div>
   <div class="gallery-head" style="max-width:1400px;margin:0 auto 32px;padding:0;">
     <h2 style="margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(56px,8vw,140px);line-height:.92;letter-spacing:-.025em;">
       <span>Build your <em>drink</em>.</span>
@@ -3566,12 +3659,21 @@
   (function () {
     const gestureEvts = ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel'];
     let armed = false;
+    // BFCache / tab-hide can pause the audio while leaving the
+    // isPlaying flag stale. Resync before deciding to retry.
+    function syncIsPlaying() {
+      if (currentKey && audios[currentKey] && audios[currentKey].paused) {
+        isPlaying = false;
+      }
+    }
     function tryStart() {
+      syncIsPlaying();
       if (isPlaying) return;
       startMusic();
     }
     function onGesture(e) {
       const onToggle = e.target && e.target.closest && e.target.closest('.music-toggle');
+      syncIsPlaying();
       if (!isPlaying && !onToggle) startMusic();
       disarmGesture();
     }
@@ -3585,14 +3687,21 @@
       armed = false;
       gestureEvts.forEach(ev => document.removeEventListener(ev, onGesture, true));
     }
-    // Initial attempt + arm fallback
     tryStart();
     armGesture();
-    // Back / forward navigation (incl. BFCache restore) — retry + re-arm
-    window.addEventListener('pageshow', () => { tryStart(); armGesture(); });
-    // Tab refocus — try again if we lost autoplay while hidden
+    // Back/forward (incl. BFCache restore). e.persisted=true means we
+    // came back via BFCache and the audio was paused mid-flight.
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) syncIsPlaying();
+      tryStart();
+      armGesture();
+    });
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') { tryStart(); armGesture(); }
+      if (document.visibilityState === 'visible') {
+        syncIsPlaying();
+        tryStart();
+        armGesture();
+      }
     });
   })();
   // Crossfade on state flip if music is playing
