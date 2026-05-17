@@ -238,8 +238,10 @@ button:focus-visible {
 [data-state="dissolved"] .brand img { mix-blend-mode: multiply; }
 /* On the dark Soluble theme, the ss-logo.jpg has a black square bg that
    doesn't quite match the ink background. Screen blend drops the black
-   and leaves only the white wireframe. */
-[data-state="soluble"] .brand img { mix-blend-mode: screen; }
+   and leaves only the white wireframe. The cube also flips horizontally
+   to match the Soluble brand mark used on the main pages. */
+[data-state="soluble"] .brand img { mix-blend-mode: screen; transform: scaleX(-1); }
+.brand:hover img { transition: transform .35s ease; }
 .brand:hover { opacity: .82; transform: rotate(-3deg); }
 
 .nav {

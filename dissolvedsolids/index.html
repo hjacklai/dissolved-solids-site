@@ -1074,6 +1074,10 @@
   .bar-pill .nm {
     font-family: var(--serif); font-size: 22px; color: var(--paper); line-height: 1; letter-spacing: -.01em;
   }
+  /* Each bar-pill keeps its OWN brand typeface, regardless of which page
+     (or state) we're on. Dissolved → Allura (script). Soluble → DM Serif. */
+  .bar-pill[data-bar="dissolved"] .nm { font-family: var(--serif-dis); }
+  .bar-pill[data-bar="soluble"]   .nm { font-family: var(--serif-sol); font-style: normal; letter-spacing: 0; }
   .bar-pill .ds { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 4px; }
   .bar-pill.active {
     border-color: var(--accent);
