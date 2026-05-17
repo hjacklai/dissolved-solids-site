@@ -1240,13 +1240,17 @@
   .reserve-head .meta b { color: var(--accent); transition: color var(--t-bg); font-weight: 500; }
 
   .reserve-card {
-    max-width: 720px; margin: 0 auto;
+    /* Narrowed from 720px → 520px so the stepper card stays a
+       comfortable form-card width instead of taking over the
+       screen. Calendar cells inside fall to ~52px at desktop
+       (was ~75px). */
+    max-width: 520px; margin: 0 auto;
     border: 1px solid rgba(255,255,255,.14);
     border-radius: 16px;
     background: rgba(0,0,0,.45);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    padding: 36px clamp(24px, 4vw, 48px);
+    padding: 32px clamp(20px, 4vw, 40px);
   }
   .reserve-left, .reserve-right { padding: 0; }
 
@@ -1355,7 +1359,7 @@
 
   .cal-head {
     display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 14px;
+    max-width: 360px; margin: 0 auto 14px;
   }
   .cal-month {
     font-family: var(--serif); font-size: 28px; color: var(--paper);
@@ -1376,6 +1380,11 @@
   .cal-nav button:hover { border-color: var(--paper); }
   .cal-grid {
     display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+    /* Cap calendar width so cells stay ~48px max even on wide
+       reserve cards / large viewports. Without this the calendar
+       used to fill the full 720px card at desktop and felt like
+       a wall calendar pasted onto the page. */
+    max-width: 360px; margin: 0 auto;
   }
   .cal-dow {
     text-align: center; padding: 6px 0;

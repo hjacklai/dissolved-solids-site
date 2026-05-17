@@ -560,22 +560,37 @@
   body[data-layout="carousel"] .wheel-stage { display: block; }
   body[data-layout="carousel"] .wheel-wrap { display: none; }
   body[data-layout="carousel"] .detail { min-height: auto; }
-  /* Carousel container - the scroll/snap/padding behaviour applies whenever
-     the strip is visible (carousel layout at desktop, radial-collapses-to-carousel
-     at ≤880px). Without this the radial mobile fallback rendered the strip as a
-     non-scrolling flex row, pushing cards past the viewport edge and forcing a
-     horizontal page scroll. */
+  /* Auto-scrolling marquee carousel. The .car-strip is the viewport
+     (clips overflow), .car-track is the moving rail that holds the
+     cards. JS duplicates the card set into the track, then the
+     animation moves the track from 0 → -50% which is one full set;
+     because the second half is a clone of the first the visual is
+     unbroken when the animation loops. */
   .car-strip {
     display: none;
-    gap: 16px; overflow-x: auto; overflow-y: hidden;
-    padding: 0 var(--gutter) 20px;
+    overflow: hidden;
     margin: 0 calc(-1 * var(--gutter)) 40px;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent) transparent;
+    padding: 0 0 20px;
+    mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
   }
-  body[data-layout="carousel"] .car-strip { display: flex; }
+  body[data-layout="carousel"] .car-strip { display: block; }
+  .car-track {
+    display: flex; gap: 16px;
+    width: max-content;
+    padding: 0 var(--gutter);
+    animation: car-marquee 36s linear infinite;
+    will-change: transform;
+  }
+  .car-strip:hover .car-track,
+  .car-strip:focus-within .car-track { animation-play-state: paused; }
+  @keyframes car-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .car-track { animation: none; }
+  }
   /* Always-visible thin scroll cue so it's obvious the strip is draggable */
   .car-strip::-webkit-scrollbar { height: 6px; }
   .car-strip::-webkit-scrollbar-track { background: rgba(240,230,207,.05); border-radius: 6px; }
@@ -973,6 +988,31 @@ function renderNavigation() {
     car.addEventListener('click', () => selectCategory(i));
     carStrip.appendChild(car);
   });
+
+  /* Marquee scroll: wrap the cards in a .car-track rail and duplicate
+     the set. CSS animates the track from translateX(0) → translateX(-50%);
+     the duplicated half makes the loop visually seamless. Pause on hover /
+     focus is handled by CSS (`.car-strip:hover .car-track { animation-play-state: paused }`). */
+  const originals = [...carStrip.children];
+  const track = document.createElement('div');
+  track.className = 'car-track';
+  originals.forEach(node => track.appendChild(node));
+  originals.forEach((node) => {
+    const dup = node.cloneNode(true);
+    dup.setAttribute('aria-hidden', 'true');
+    dup.tabIndex = -1;
+    dup.classList.add('car-card-clone');
+    track.appendChild(dup);
+  });
+  // Re-attach click handlers to the cloned cards so tapping a clone
+  // selects its category too. Original handlers (set above) survive
+  // because we moved the originals into the track, not cloned them.
+  track.querySelectorAll('.car-card-clone').forEach((dup) => {
+    const id = dup.dataset.id;
+    const i  = JOURNAL.categories.findIndex(c => c.id === id);
+    if (i >= 0) dup.addEventListener('click', () => selectCategory(i));
+  });
+  carStrip.appendChild(track);
 }
 
 function renderFeatured() {
@@ -1026,7 +1066,9 @@ function selectCategory(idx, { instant = false } = {}) {
   $('#needleHead').style.transform = `rotate(${rotate}deg)`;
 
   $$('.node-wrap').forEach((n, i) => n.classList.toggle('active', i === idx));
-  $$('.car-card').forEach((n, i)  => n.classList.toggle('active', i === idx));
+  /* Use data-id so the cloned cards (added for seamless auto-scroll
+     loop) also pick up the active state, not just the originals. */
+  $$('.car-card').forEach((n) => n.classList.toggle('active', n.dataset.id === cat.id));
 
   const avgMin = Math.round(cat.articles.reduce((s, a) => s + (a.readMinutes || 0), 0) / cat.articles.length);
   $('#hubName').innerHTML  = `<em>${cat.name}</em>`;
