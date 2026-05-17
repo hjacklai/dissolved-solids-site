@@ -1231,17 +1231,79 @@
   .reserve-head .meta b { color: var(--accent); transition: color var(--t-bg); font-weight: 500; }
 
   .reserve-card {
-    max-width: var(--maxw); margin: 0 auto;
-    display: grid; grid-template-columns: 1.05fr 1fr; gap: 0;
+    max-width: 720px; margin: 0 auto;
     border: 1px solid rgba(255,255,255,.14);
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 16px;
     background: rgba(0,0,0,.45);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+    padding: 36px clamp(24px, 4vw, 48px);
   }
-  .reserve-left, .reserve-right { padding: 48px 52px; }
-  .reserve-left { border-right: 1px solid rgba(255,255,255,.14); }
+  .reserve-left, .reserve-right { padding: 0; }
+
+  /* ─ Stepper chrome ─ */
+  .res-stepper-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding-bottom: 18px;
+    border-bottom: 1px dashed rgba(255,255,255,.14);
+  }
+  .res-progress { display: flex; gap: 6px; }
+  .res-progress span {
+    width: 24px; height: 4px; border-radius: 2px;
+    background: rgba(255,255,255,.14);
+    transition: background .25s ease, width .25s ease;
+  }
+  .res-progress span.is-done    { background: var(--accent); }
+  .res-progress span.is-current { background: var(--accent); width: 36px; }
+  .res-stepper-count {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+  }
+  .res-stepper-count b { color: var(--paper); font-weight: 500; }
+
+  .reserve-flow { display: block; }
+  .res-step { display: none; animation: resStepFade .35s ease-out; }
+  .res-step.is-active { display: block; }
+  @keyframes resStepFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .res-step-nav {
+    display: flex; justify-content: space-between; gap: 12px;
+    margin-top: 32px; padding-top: 22px;
+    border-top: 1px dashed rgba(255,255,255,.14);
+  }
+  .res-nav-btn {
+    padding: 12px 22px; border-radius: 999px;
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: .18em; text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,.22);
+    background: transparent; color: var(--paper);
+    cursor: pointer; min-height: 44px;
+    transition: background .2s, border-color .2s, transform .15s, opacity .2s;
+  }
+  .res-nav-btn:hover { background: rgba(255,255,255,.06); border-color: var(--accent); color: var(--accent); }
+  .res-nav-btn:disabled { opacity: .35; cursor: not-allowed; }
+  .res-nav-btn:disabled:hover { background: transparent; border-color: rgba(255,255,255,.22); color: var(--paper); }
+  .res-nav-btn.res-next { background: var(--accent); color: var(--bg, #0b0b10); border-color: var(--accent); font-weight: 500; }
+  .res-nav-btn.res-next:hover { transform: translateY(-2px); background: var(--accent); }
+  .res-step[data-step="5"] ~ .res-step-nav .res-next { display: none; }
+
+  /* Step 5 summary preview */
+  .res-summary {
+    margin: 22px 0 16px;
+    padding: 18px;
+    border: 1px dashed rgba(255,255,255,.14);
+    border-radius: 12px;
+    font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .04em; line-height: 1.7;
+    color: rgba(255,255,255,.72);
+  }
+  .res-summary .k { color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .2em; font-size: 9.5px; }
+  .res-summary .v { color: var(--paper); }
+  .res-summary div + div { margin-top: 6px; }
   .field-label {
     font-family: var(--mono); font-size: 11px;
     letter-spacing: .22em; text-transform: uppercase;
@@ -2929,29 +2991,43 @@
     </div>
   </div>
 
-  <div class="reserve-card">
-    <div class="reserve-left">
-      <div class="field">
+  <div class="reserve-card" data-mode="stepper">
+    <!-- Stepper header: progress dots + step label -->
+    <div class="res-stepper-head">
+      <div class="res-progress">
+        <span data-rp="1" class="is-current"></span>
+        <span data-rp="2"></span>
+        <span data-rp="3"></span>
+        <span data-rp="4"></span>
+        <span data-rp="5"></span>
+      </div>
+      <div class="res-stepper-count">step <b id="resStepNo">01</b> of 05</div>
+    </div>
+
+    <!-- All fields live in a single column now; only the active step shows -->
+    <div class="reserve-flow">
+
+      <div class="res-step is-active" data-step="1">
         <div class="field-label">01 · which bar?</div>
         <div class="bar-pills" id="barPills">
           <button class="bar-pill" type="button" data-bar="dissolved">
             <img src="https://dissolvedsolids.co/photos/ds-logo.png" alt="" loading="lazy" decoding="async"/>
             <div>
               <div class="nm">Dissolved</div>
-              <div class="ds">venue 01 · damansara kim · tue–sun</div>
+              <div class="ds">venue 01 · damansara kim · tue-sun</div>
             </div>
           </button>
           <button class="bar-pill" type="button" data-bar="soluble">
             <img src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="" loading="lazy" decoding="async"/>
             <div>
               <div class="nm">Soluble</div>
-              <div class="ds">venue 02 · ss2 pj · wed–sun</div>
+              <div class="ds">venue 02 · ss2 pj · wed-sun</div>
             </div>
           </button>
         </div>
       </div>
 
-      <div class="field">
+      <div class="res-step" data-step="2">
         <div class="field-label">02 · pick a date</div>
         <div class="cal-head">
           <div class="cal-month" id="calMonth">-</div>
@@ -2965,18 +3041,13 @@
           Closed days are dimmed. Past dates can't be selected.
         </div>
       </div>
-    </div>
 
-    <div class="reserve-right">
-      <div class="field">
+      <div class="res-step" data-step="3">
         <div class="field-label">03 · arrival time</div>
         <div class="time-slots" id="timeSlots">
           <div class="time-empty">pick a bar &amp; date first</div>
         </div>
-      </div>
-
-      <div class="field">
-        <div class="field-label">04 · how many pax?</div>
+        <div class="field-label" style="margin-top: 28px;">how many pax?</div>
         <div class="pax-row">
           <button type="button" id="paxMinus">−</button>
           <div class="val"><span id="paxVal">2</span><small>guests</small></div>
@@ -2984,28 +3055,31 @@
         </div>
       </div>
 
-      <div class="field">
-        <div class="field-label">05 · name on the reservation</div>
+      <div class="res-step" data-step="4">
+        <div class="field-label">04 · who's reserving?</div>
         <input class="res-input" id="resName" type="text" placeholder="your name" autocomplete="name"/>
-      </div>
-
-      <div class="field">
-        <div class="field-label">06 · whatsapp number</div>
+        <div class="field-label" style="margin-top: 22px;">whatsapp number</div>
         <input class="res-input" id="resPhone" type="tel" placeholder="+60 12 345 6789" autocomplete="tel"/>
       </div>
 
-      <div class="field">
-        <div class="field-label">07 · anything else? (optional)</div>
+      <div class="res-step" data-step="5">
+        <div class="field-label">05 · anything else?</div>
         <input class="res-input" id="resNote" type="text" placeholder="birthday, allergies, seat preference…"/>
+        <div class="res-summary" id="resSummary"></div>
+        <button class="send-res" id="sendRes" type="button" disabled>
+          → Send reservation via WhatsApp
+        </button>
+        <p class="res-fineprint" style="margin-top: 16px;">
+          Submitting opens WhatsApp with your details pre-filled. <b>We confirm by reply, usually within the hour during open hours.</b> Walk-ins welcome too. Tables just easier if you reserve.
+        </p>
       </div>
 
-      <button class="send-res" id="sendRes" type="button" disabled>
-        → Send reservation via WhatsApp
-      </button>
+      <!-- Step navigation -->
+      <div class="res-step-nav">
+        <button type="button" class="res-nav-btn res-back" id="resBack" disabled>← back</button>
+        <button type="button" class="res-nav-btn res-next" id="resNext">next →</button>
+      </div>
 
-      <p class="res-fineprint">
-        Submitting opens WhatsApp with your details pre-filled. <b>We confirm by reply, usually within the hour during open hours.</b> Walk-ins welcome too. Tables just easier if you reserve.
-      </p>
     </div>
   </div>
 </section>
@@ -3571,6 +3645,83 @@
       renderBarPills(); renderCal(); renderTimes(); updateSend();
     }
   }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-state'] });
+
+  /* ─ Reservation stepper navigation ─
+     5 steps: bar → date → time+pax → name+phone → notes+submit.
+     Next is gated per step on the data we need to advance. */
+  (function () {
+    const TOTAL = 5;
+    let cur = 1;
+    const stepEls = [...document.querySelectorAll('.res-step')];
+    const backBtn = document.getElementById('resBack');
+    const nextBtn = document.getElementById('resNext');
+    const progSpans = [...document.querySelectorAll('.res-progress span')];
+    const stepNoEl = document.getElementById('resStepNo');
+    const sendBtn = document.getElementById('sendRes');
+    if (!stepEls.length || !backBtn || !nextBtn) return;
+
+    function canAdvance(n) {
+      if (n === 1) return !!resv.bar;
+      if (n === 2) return !!resv.date;
+      if (n === 3) return !!resv.time;
+      if (n === 4) return !!(resv.name && resv.phone);
+      return true;
+    }
+    function pretty2(d) {
+      const days = ['sun','mon','tue','wed','thu','fri','sat'];
+      const mons = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      return days[d.getDay()] + ' · ' + d.getDate() + ' ' + mons[d.getMonth()];
+    }
+    function renderSummary() {
+      const el = document.getElementById('resSummary');
+      if (!el) return;
+      const bar = resv.bar ? (VENUE[resv.bar] && VENUE[resv.bar].name) : '-';
+      const dateStr = resv.date ? pretty2(new Date(resv.date + 'T00:00:00')) : '-';
+      el.innerHTML =
+        '<div><span class="k">venue</span> <span class="v">' + (bar || '-') + '</span></div>' +
+        '<div><span class="k">date</span>  <span class="v">' + dateStr + '</span></div>' +
+        '<div><span class="k">time</span>  <span class="v">' + (resv.time || '-') + '</span></div>' +
+        '<div><span class="k">pax</span>   <span class="v">' + resv.pax + '</span></div>' +
+        '<div><span class="k">name</span>  <span class="v">' + (resv.name || '-') + '</span></div>' +
+        '<div><span class="k">phone</span> <span class="v">' + (resv.phone || '-') + '</span></div>';
+    }
+    function showStep(n) {
+      cur = Math.max(1, Math.min(TOTAL, n));
+      stepEls.forEach(s => s.classList.toggle('is-active', Number(s.dataset.step) === cur));
+      progSpans.forEach((sp, i) => {
+        const idx = i + 1;
+        sp.classList.toggle('is-done',    idx < cur);
+        sp.classList.toggle('is-current', idx === cur);
+      });
+      if (stepNoEl) stepNoEl.textContent = String(cur).padStart(2, '0');
+      backBtn.disabled = cur === 1;
+      nextBtn.style.display = cur === TOTAL ? 'none' : '';
+      nextBtn.textContent = cur === TOTAL - 1 ? 'review →' : 'next →';
+      if (cur === TOTAL) renderSummary();
+      const card = document.querySelector('.reserve-card');
+      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    nextBtn.addEventListener('click', () => {
+      if (!canAdvance(cur)) {
+        nextBtn.animate(
+          [{ transform: 'translateX(0)' }, { transform: 'translateX(-6px)' }, { transform: 'translateX(6px)' }, { transform: 'translateX(0)' }],
+          { duration: 280 }
+        );
+        return;
+      }
+      showStep(cur + 1);
+    });
+    backBtn.addEventListener('click', () => showStep(cur - 1));
+    // Re-check Next-gating on every input so the button feels alive
+    ['#barPills', '#calGrid', '#timeSlots', '#resName', '#resPhone', '#resNote'].forEach(sel => {
+      const el = document.querySelector(sel);
+      if (!el) return;
+      el.addEventListener('click', () => { if (cur === TOTAL) renderSummary(); });
+      el.addEventListener('input', () => { if (cur === TOTAL) renderSummary(); });
+    });
+    // First render
+    showStep(1);
+  })();
   // (Old .big-switch buttons removed - appbar toggle is the only state switcher now.)
   // Keep a no-op updateSwitch for any legacy call sites still referencing it.
   function updateSwitch() { /* noop - appbar uses CSS for visual state */ }
