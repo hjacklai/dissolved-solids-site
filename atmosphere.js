@@ -129,18 +129,36 @@
       if (mt.classList.contains('playing')) stop();
       else start();
     });
-    // Autoplay on load. Most browsers block until the user interacts, so
-    // we try immediately (silent fail if blocked) and arm one-shot listeners
-    // on the first user gesture. Skip gestures on the music toggle itself —
-    // the toggle handler covers that case.
-    start();
-    const evts = ['pointerdown', 'keydown', 'touchstart'];
+    // Autoplay engine. Browsers block audio without a user gesture and the
+    // gesture allowance does NOT carry across navigations, so we retry on
+    // every visible lifecycle event (load, pageshow incl. BFCache, tab
+    // refocus) AND keep a gesture-fallback armed for any pointer / key /
+    // scroll / wheel input. Re-armed after every retry so a back-navigation
+    // followed by any scroll/click is enough to start music.
+    var gestureEvts = ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel'];
+    var armed = false;
+    function tryStart() { if (!mt.classList.contains('playing')) start(); }
     function onGesture(e) {
-      const onToggle = e.target && e.target.closest && e.target.closest('.atmo-music');
+      var onToggle = e.target && e.target.closest && e.target.closest('.atmo-music');
       if (!mt.classList.contains('playing') && !onToggle) start();
-      evts.forEach(function (ev) { document.removeEventListener(ev, onGesture, true); });
+      disarmGesture();
     }
-    evts.forEach(function (ev) { document.addEventListener(ev, onGesture, { capture: true, passive: true }); });
+    function armGesture() {
+      if (armed) return;
+      armed = true;
+      gestureEvts.forEach(function (ev) { document.addEventListener(ev, onGesture, { capture: true, passive: true }); });
+    }
+    function disarmGesture() {
+      if (!armed) return;
+      armed = false;
+      gestureEvts.forEach(function (ev) { document.removeEventListener(ev, onGesture, true); });
+    }
+    tryStart();
+    armGesture();
+    window.addEventListener('pageshow', function () { tryStart(); armGesture(); });
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'visible') { tryStart(); armGesture(); }
+    });
   }
 
   function ready(fn) {

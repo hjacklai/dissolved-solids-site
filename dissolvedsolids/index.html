@@ -3260,19 +3260,37 @@
     if (isPlaying) stopMusic();
     else startMusic();
   });
-  // Autoplay on load. Most browsers block until the user interacts, so
-  // we try immediately (will silently fail if blocked) and arm one-shot
-  // listeners on the very first user gesture. Gestures on the music
-  // toggle itself are skipped — the toggle handler covers that case.
+  // Autoplay engine. Browsers block audio without a user gesture and the
+  // gesture allowance does NOT carry across navigations, so we retry on
+  // every visible lifecycle event (load, pageshow incl. BFCache, tab
+  // refocus) AND keep a gesture-fallback armed for any pointer / key /
+  // scroll / wheel input. The fallback re-arms after every retry so a
+  // back-navigation followed by a scroll is enough to start music.
   (function () {
-    startMusic();
-    const evts = ['pointerdown', 'keydown', 'touchstart'];
+    const gestureEvts = ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel'];
+    let armed = false;
+    function tryStart() { if (!isPlaying) startMusic(); }
     function onGesture(e) {
       const onToggle = e.target && e.target.closest && e.target.closest('.music-toggle');
       if (!isPlaying && !onToggle) startMusic();
-      evts.forEach(ev => document.removeEventListener(ev, onGesture, true));
+      disarmGesture();
     }
-    evts.forEach(ev => document.addEventListener(ev, onGesture, { capture: true, passive: true }));
+    function armGesture() {
+      if (armed) return;
+      armed = true;
+      gestureEvts.forEach(ev => document.addEventListener(ev, onGesture, { capture: true, passive: true }));
+    }
+    function disarmGesture() {
+      if (!armed) return;
+      armed = false;
+      gestureEvts.forEach(ev => document.removeEventListener(ev, onGesture, true));
+    }
+    tryStart();
+    armGesture();
+    window.addEventListener('pageshow', () => { tryStart(); armGesture(); });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') { tryStart(); armGesture(); }
+    });
   })();
   // Crossfade on state flip — old track fades out (and pauses, retaining
   // currentTime), new track resumes and fades in.
