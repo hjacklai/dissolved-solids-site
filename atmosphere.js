@@ -145,18 +145,22 @@
       if (mt.classList.contains('playing')) stop();
       else start();
     });
-    // Autoplay engine. Browsers block audio without a user gesture and the
-    // gesture allowance does NOT carry across navigations, so we retry on
-    // every visible lifecycle event (load, pageshow incl. BFCache, tab
-    // refocus) AND keep a gesture-fallback armed for any pointer / key /
-    // scroll / wheel input. Re-armed after every retry so a back-navigation
-    // followed by any scroll/click is enough to start music.
+    // Autoplay engine + pause-on-tab-hidden. Browsers block audio
+    // without a user gesture and the gesture allowance does NOT carry
+    // across navigations, so we retry on every visible lifecycle event
+    // (load, pageshow incl. BFCache, tab refocus) AND keep a
+    // gesture-fallback armed for any pointer / key / scroll / wheel
+    // input. Re-armed after every retry. The hide branch pauses the
+    // audio when the tab/app loses focus and resumes when it returns,
+    // unless the user had explicitly stopped via the toggle.
     var gestureEvts = ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel'];
     var armed = false;
-    function tryStart() { if (!mt.classList.contains('playing')) start(); }
+    var wasPlayingBeforeHide = false;
+    var userStopped = false;
+    function tryStart() { if (!mt.classList.contains('playing') && !userStopped) start(); }
     function onGesture(e) {
       var onToggle = e.target && e.target.closest && e.target.closest('.atmo-music');
-      if (!mt.classList.contains('playing') && !onToggle) start();
+      if (!mt.classList.contains('playing') && !onToggle && !userStopped) start();
       disarmGesture();
     }
     function armGesture() {
@@ -169,12 +173,38 @@
       armed = false;
       gestureEvts.forEach(function (ev) { document.removeEventListener(ev, onGesture, true); });
     }
+    new MutationObserver(function () {
+      if (!mt.classList.contains('playing') && !document.hidden) userStopped = true;
+      if (mt.classList.contains('playing')) userStopped = false;
+    }).observe(mt, { attributes: true, attributeFilter: ['class'] });
+    function pauseForHide() {
+      if (audio && !audio.paused) {
+        wasPlayingBeforeHide = true;
+        audio.pause();
+        mt.classList.remove('playing');
+      }
+    }
+    function resumeAfterShow() {
+      if (wasPlayingBeforeHide && !userStopped) {
+        wasPlayingBeforeHide = false;
+        start();
+      }
+    }
     tryStart();
     armGesture();
     window.addEventListener('pageshow', function () { tryStart(); armGesture(); });
     document.addEventListener('visibilitychange', function () {
-      if (document.visibilityState === 'visible') { tryStart(); armGesture(); }
+      if (document.visibilityState === 'hidden') {
+        pauseForHide();
+      } else if (wasPlayingBeforeHide) {
+        resumeAfterShow();
+      } else {
+        tryStart();
+        armGesture();
+      }
     });
+    window.addEventListener('blur', pauseForHide);
+    window.addEventListener('focus', function () { if (wasPlayingBeforeHide) resumeAfterShow(); });
   }
 
   function ready(fn) {

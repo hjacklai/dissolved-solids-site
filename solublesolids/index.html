@@ -3328,23 +3328,21 @@
     if (isPlaying) stopMusic();
     else startMusic();
   });
-  // Autoplay engine. Browsers block audio without a user gesture and the
-  // gesture allowance does NOT carry across navigations, so we retry on
-  // every visible lifecycle event (load, pageshow incl. BFCache, tab
-  // refocus) AND keep a gesture-fallback armed for any pointer / key /
-  // scroll / wheel input. The fallback re-arms after every retry so a
-  // back-navigation followed by a scroll is enough to start music.
+  // Autoplay engine + pause-on-tab-hidden. See landing/index.html for
+  // the full reasoning.
   (function () {
     const gestureEvts = ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel'];
     let armed = false;
+    let wasPlayingBeforeHide = false;
+    let userStopped = false;
     function syncIsPlaying() {
       if (currentKey && audios[currentKey] && audios[currentKey].paused) isPlaying = false;
     }
-    function tryStart() { syncIsPlaying(); if (!isPlaying) startMusic(); }
+    function tryStart() { syncIsPlaying(); if (!isPlaying && !userStopped) startMusic(); }
     function onGesture(e) {
       const onToggle = e.target && e.target.closest && e.target.closest('.music-toggle');
       syncIsPlaying();
-      if (!isPlaying && !onToggle) startMusic();
+      if (!isPlaying && !onToggle && !userStopped) startMusic();
       disarmGesture();
     }
     function armGesture() {
@@ -3357,6 +3355,25 @@
       armed = false;
       gestureEvts.forEach(ev => document.removeEventListener(ev, onGesture, true));
     }
+    new MutationObserver(() => {
+      if (!mt.classList.contains('playing') && !document.hidden) userStopped = true;
+      if (mt.classList.contains('playing')) userStopped = false;
+    }).observe(mt, { attributes: true, attributeFilter: ['class'] });
+    function pauseForHide() {
+      const a = currentKey ? audios[currentKey] : null;
+      if (a && !a.paused) {
+        wasPlayingBeforeHide = true;
+        a.pause();
+        isPlaying = false;
+        mt.classList.remove('playing');
+      }
+    }
+    function resumeAfterShow() {
+      if (wasPlayingBeforeHide && !userStopped) {
+        wasPlayingBeforeHide = false;
+        startMusic();
+      }
+    }
     tryStart();
     armGesture();
     window.addEventListener('pageshow', (e) => {
@@ -3365,8 +3382,16 @@
       armGesture();
     });
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') { syncIsPlaying(); tryStart(); armGesture(); }
+      if (document.visibilityState === 'hidden') {
+        pauseForHide();
+      } else {
+        syncIsPlaying();
+        if (wasPlayingBeforeHide) resumeAfterShow();
+        else { tryStart(); armGesture(); }
+      }
     });
+    window.addEventListener('blur', pauseForHide);
+    window.addEventListener('focus', () => { if (wasPlayingBeforeHide) resumeAfterShow(); });
   })();
   // Crossfade on state flip - old track fades out (and pauses, retaining
   // currentTime), new track resumes and fades in.
