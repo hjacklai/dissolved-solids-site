@@ -46,60 +46,62 @@
 }
 .builder-mount .builder-start {
   display: inline-flex; align-items: center; justify-content: center; gap: 14px;
-  padding: 28px 44px;
-  background: var(--accent);
-  color: var(--bg, #0b0b10);
-  border: 3px solid var(--accent);
-  /* Squarer than the previous pill, but still slightly softened
-     so it does not read as a stock html button. */
+  padding: 24px 40px;
+  /* Ghost style: transparent fill + pink border. The shimmer ::before
+     overlay and pulsing glow still carry the "live" feel without the
+     button looking like a neon billboard. */
+  background: transparent;
+  color: var(--accent);
+  border: 2.5px solid var(--accent);
   border-radius: 8px;
   font-family: var(--mono);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: .22em;
   text-transform: uppercase;
   cursor: pointer;
-  min-height: 72px;
-  min-width: 320px;
+  min-height: 64px;
+  min-width: 300px;
   position: relative;
   overflow: hidden;
   box-shadow:
-    0 12px 32px color-mix(in srgb, var(--accent) 45%, transparent),
-    inset 0 0 0 1px rgba(255,255,255,.18);
+    0 8px 28px color-mix(in srgb, var(--accent) 28%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent);
   transition: transform .2s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
   animation: builder-start-pulse 2.4s ease-in-out infinite;
 }
 .builder-mount .builder-start::before {
-  /* Sweeping shimmer that scans across the button to draw the eye. */
+  /* Sweeping shimmer in the accent colour so it reads on the
+     transparent ghost button. Tinted pink rather than white. */
   content: '';
   position: absolute;
   top: 0; left: -120%;
   width: 70%; height: 100%;
-  background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.35) 50%, transparent 100%);
+  background: linear-gradient(110deg, transparent 0%, color-mix(in srgb, var(--accent) 28%, transparent) 50%, transparent 100%);
   transform: skewX(-18deg);
   animation: builder-start-shimmer 3.6s ease-in-out infinite;
   pointer-events: none;
 }
 .builder-mount .builder-start:hover {
   transform: translateY(-3px) scale(1.02);
-  background: var(--paper);
-  color: var(--accent);
-  border-color: var(--paper);
+  background: var(--accent);
+  color: var(--bg, #0b0b10);
+  border-color: var(--accent);
   box-shadow:
-    0 18px 44px color-mix(in srgb, var(--accent) 60%, transparent),
-    inset 0 0 0 1px rgba(255,255,255,.4);
+    0 14px 38px color-mix(in srgb, var(--accent) 50%, transparent),
+    inset 0 0 0 1px rgba(255,255,255,.25);
   animation-play-state: paused;
 }
 .builder-mount .builder-start:active {
   transform: translateY(-1px) scale(.99);
 }
 .builder-mount .builder-start:focus-visible {
-  outline: 3px solid var(--paper);
+  outline: 3px solid var(--accent);
   outline-offset: 4px;
 }
 @keyframes builder-start-pulse {
-  0%, 100% { box-shadow: 0 12px 32px color-mix(in srgb, var(--accent) 45%, transparent), inset 0 0 0 1px rgba(255,255,255,.18); }
-  50%      { box-shadow: 0 18px 50px color-mix(in srgb, var(--accent) 70%, transparent), inset 0 0 0 1px rgba(255,255,255,.30); }
+  0%, 100% { box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 28%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent); }
+  50%      { box-shadow: 0 12px 42px color-mix(in srgb, var(--accent) 55%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--accent) 32%, transparent); }
 }
 @keyframes builder-start-shimmer {
   0%   { left: -120%; }
