@@ -13,6 +13,40 @@
   function inject() {
     if (document.querySelector('.atmo-music')) return; // already there
 
+    // Inject the WA/IG float CSS inline so it applies even on pages
+    // that don't load styles.css (e.g. journal/, which is self-contained).
+    if (!document.getElementById('atmoFloatsCSS')) {
+      const css = document.createElement('style');
+      css.id = 'atmoFloatsCSS';
+      css.textContent =
+        /* Music bubble (bottom-left). Self-contained CSS so pages
+           that don't load /styles.css still render it correctly. */
+        '.atmo-music{position:fixed;bottom:96px;left:16px;z-index:60;width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.65);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border:1px solid rgba(255,255,255,.22);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:transform .25s,background .25s,border-color .25s;}' +
+        '.atmo-music:hover{transform:translateY(-2px) scale(1.05);border-color:rgba(255,255,255,.5);}' +
+        '.atmo-music.playing{background:#ff3d8a;border-color:#ff3d8a;color:#fff;}' +
+        '.atmo-music .bars{display:flex;align-items:end;gap:2px;height:14px;}' +
+        '.atmo-music .bars i{display:block;width:2.5px;background:currentColor;border-radius:1px;animation-play-state:paused;}' +
+        '.atmo-music .bars i:nth-child(1){height:40%;animation:atmoBarA .9s ease-in-out infinite alternate;}' +
+        '.atmo-music .bars i:nth-child(2){height:80%;animation:atmoBarB .7s ease-in-out infinite alternate;}' +
+        '.atmo-music .bars i:nth-child(3){height:60%;animation:atmoBarA 1.1s ease-in-out infinite alternate;}' +
+        '.atmo-music .bars i:nth-child(4){height:90%;animation:atmoBarB .8s ease-in-out infinite alternate;}' +
+        '.atmo-music.playing .bars i{animation-play-state:running;}' +
+        '@keyframes atmoBarA{from{height:30%;}to{height:95%;}}' +
+        '@keyframes atmoBarB{from{height:85%;}to{height:25%;}}' +
+        '.atmo-music .tip{display:none;}' +
+        /* WA/IG floats (bottom-right) */
+        '.atmo-floats{position:fixed;bottom:96px;right:16px;z-index:60;display:flex;flex-direction:column;gap:10px;}' +
+        '.atmo-float{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;background:rgba(0,0,0,.65);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border:1px solid rgba(255,255,255,.22);color:#fff;transition:transform .25s,background .25s,border-color .25s;}' +
+        '.atmo-float svg{width:20px;height:20px;}' +
+        '.atmo-float:hover{transform:translateY(-2px) scale(1.05);}' +
+        '.atmo-float.atmo-wa:hover{background:#25d366;border-color:#25d366;}' +
+        '.atmo-float.atmo-ig:hover{background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);border-color:transparent;}' +
+        '.atmo-float:focus-visible{outline:2px solid #ff3d8a;outline-offset:3px;}' +
+        '@media (max-width:640px){.atmo-music,.atmo-floats{bottom:100px;}.atmo-music{left:12px;width:44px;height:44px;}.atmo-floats{right:12px;gap:8px;}.atmo-float{width:44px;height:44px;}}' +
+        '@media (prefers-reduced-motion:reduce){.atmo-music,.atmo-music:hover,.atmo-float,.atmo-float:hover{transform:none;transition:none;}.atmo-music .bars i{animation:none !important;}}';
+      document.head.appendChild(css);
+    }
+
     // Subtle drift dots - visible but unobtrusive on any background
     const dots = document.createElement('div');
     dots.className = 'atmo-dots';
@@ -28,6 +62,32 @@
       '<span class="bars"><i></i><i></i><i></i><i></i></span>' +
       '<span class="tip">tap to play · ambient</span>';
     document.body.appendChild(mt);
+
+    // WhatsApp + Instagram floats, bottom-right. State-aware: on a
+    // soluble-state page they link to Soluble Solids' WhatsApp; on
+    // dissolved-state pages to Dissolved Solids'. Sub-pages set
+    // data-state once and don't flip mid-session, so we just read it.
+    const state = document.documentElement.dataset.state || 'soluble';
+    const waNumber = state === 'dissolved' ? '601140087607' : '601116828651';
+    const igHandle = state === 'dissolved' ? 'dissolvedsolids.kl' : 'solublesolids.kl';
+    const floats = document.createElement('div');
+    floats.className = 'atmo-floats';
+    floats.setAttribute('aria-hidden', 'false');
+    floats.innerHTML =
+      '<a class="atmo-float atmo-wa" href="https://wa.me/' + waNumber + '" target="_blank" rel="noopener" aria-label="WhatsApp us">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+          '<path d="M3 21l1.65-4.95A8 8 0 1 1 12 20a8.06 8.06 0 0 1-3.94-1.03L3 21z"/>' +
+          '<path d="M8.5 9c0 4 3 6 6 6-.3 1-1 1.5-1.7 1.5-3.3 0-6-2.7-6-6 0-.7.5-1.4 1.5-1.7l.5 1.2-.3.5z" fill="currentColor" stroke="none"/>' +
+        '</svg>' +
+      '</a>' +
+      '<a class="atmo-float atmo-ig" href="https://instagram.com/' + igHandle + '" target="_blank" rel="noopener" aria-label="Instagram">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+          '<rect x="3" y="3" width="18" height="18" rx="5"/>' +
+          '<circle cx="12" cy="12" r="4"/>' +
+          '<circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>' +
+        '</svg>' +
+      '</a>';
+    document.body.appendChild(floats);
   }
 
   function initParticles() {

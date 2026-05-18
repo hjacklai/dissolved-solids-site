@@ -726,8 +726,10 @@
     .car-card { flex: 0 0 144px; }
   }
 
-  /* Journal body still wants atmosphere.js + music gone, just in case */
-  body .atmo-dots, body .atmo-music { display: none !important; }
+  /* Hide just the drifting particle dots - they fight the wheel.
+     Music bubble + WA/IG floats stay (user wants them on every
+     sub-page including journal). */
+  body .atmo-dots { display: none !important; }
 </style>
 </head>
 <body class="journal-body" data-layout="radial">
@@ -1191,8 +1193,10 @@ document.addEventListener('keydown', (e) => {
 window.addEventListener('hashchange', () => selectCategory(categoryFromHash()));
 </script>
 
-<!-- Journal page intentionally skips /atmosphere.js - no drifting particles,
-     no music. The bottom appbar still mounts for consistent site-wide nav. -->
+<!-- atmosphere.js injects the music bubble + WA/IG floats. The
+     drifting particle dots it also adds are hidden by the CSS rule
+     above. Music tracks to the soluble state by default. -->
+<script src="/atmosphere.js" defer></script>
 <script src="/appbar.js" defer></script>
 </body>
 </html>
