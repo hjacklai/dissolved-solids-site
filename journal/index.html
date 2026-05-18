@@ -992,22 +992,29 @@ function renderNavigation() {
     carStrip.appendChild(car);
   });
 
-  /* Swipeable carousel + idle auto-scroll. Cards go inside a
-     .car-track rail. The set is duplicated so JS can loop scrollLeft
-     seamlessly when auto-scroll passes the end. .car-strip's native
-     overflow-x: auto handles touch-swipe and wheel without any extra
-     wiring; we just need the rail wide enough to overflow. */
+  /* Swipeable carousel + idle infinite auto-scroll. Cards go inside a
+     .car-track rail and are triplicated (originals + 2 clone sets)
+     so the loop-reset point can sit deep in the middle. When the JS
+     auto-pan crosses one set's width we jump scrollLeft back by that
+     same width - the next set is identical so the visual is unbroken,
+     and there's always at least one full set on either side of the
+     reset point so partial cards never flicker.
+     .car-strip's native overflow-x: auto handles touch-swipe and wheel
+     without extra wiring. */
   const originals = [...carStrip.children];
+  const NUM_CLONE_SETS = 2;
   const track = document.createElement('div');
   track.className = 'car-track';
   originals.forEach(node => track.appendChild(node));
-  originals.forEach((node) => {
-    const dup = node.cloneNode(true);
-    dup.setAttribute('aria-hidden', 'true');
-    dup.tabIndex = -1;
-    dup.classList.add('car-card-clone');
-    track.appendChild(dup);
-  });
+  for (let s = 0; s < NUM_CLONE_SETS; s++) {
+    originals.forEach((node) => {
+      const dup = node.cloneNode(true);
+      dup.setAttribute('aria-hidden', 'true');
+      dup.tabIndex = -1;
+      dup.classList.add('car-card-clone');
+      track.appendChild(dup);
+    });
+  }
   track.querySelectorAll('.car-card-clone').forEach((dup) => {
     const id = dup.dataset.id;
     const i  = JOURNAL.categories.findIndex(c => c.id === id);
@@ -1015,10 +1022,10 @@ function renderNavigation() {
   });
   carStrip.appendChild(track);
 
-  initCarouselAutoScroll(carStrip, track);
+  initCarouselAutoScroll(carStrip, track, originals.length);
 }
 
-function initCarouselAutoScroll(strip, track) {
+function initCarouselAutoScroll(strip, track, numOriginals) {
   if (!strip || !track) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -1031,7 +1038,19 @@ function initCarouselAutoScroll(strip, track) {
   let loopWidth   = 0;
   let suppressScrollPause = false; // ignore scroll events that the auto-pan triggers
 
-  function measureLoop() { loopWidth = track.scrollWidth / 2; }
+  function measureLoop() {
+    // EXACT cycle length = the horizontal distance from the start of
+    // the first original to the start of the first clone of the same
+    // card. Using `scrollWidth / N` would be off by half a gap because
+    // scrollWidth includes the gap between the last and first card
+    // unevenly. offsetLeft is unaffected by scroll position.
+    const cards = track.children;
+    if (cards.length > numOriginals) {
+      loopWidth = cards[numOriginals].offsetLeft - cards[0].offsetLeft;
+    } else {
+      loopWidth = track.scrollWidth / (1 + (cards.length / numOriginals - 1));
+    }
+  }
   measureLoop();
   // Re-measure after fonts settle / images load
   setTimeout(measureLoop, 200);
