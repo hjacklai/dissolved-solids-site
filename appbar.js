@@ -23,16 +23,16 @@
   nav.innerHTML = ''
     + '<div class="appbar-top">'
     +   '<div class="appbar-side appbar-side-left">'
-    +     iconLink('/#visit', 'Visit', 'visit', svgPin())
-    +     iconLink('/#reserve', 'Reserve', 'reserve', svgCal())
+    +     iconLink('/journal/', 'Journal', 'journal', svgBook())
+    +     iconLink('/#builder', 'Build a drink', 'build', svgFlask(), 'appbar-icon-cta')
     +   '</div>'
     +   '<button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet - switch between Dissolved and Soluble">'
     +     '<span class="seg" data-target="dissolved">Dis</span>'
     +     '<span class="seg" data-target="soluble">Sol</span>'
     +   '</button>'
     +   '<div class="appbar-side appbar-side-right">'
-    +     iconLink('/#builder', 'Build a drink', 'build', svgFlask(), 'appbar-icon-cta')
-    +     iconLink('/journal/', 'Journal', 'journal', svgBook())
+    +     iconLink('/#visit', 'Visit', 'visit', svgPin())
+    +     iconLink('/#reserve', 'Reserve', 'reserve', svgCal())
     +   '</div>'
     + '</div>'
     + '<div class="appbar-ticker" aria-hidden="true">'

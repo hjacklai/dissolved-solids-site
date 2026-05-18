@@ -521,23 +521,31 @@
 .builder-foot a:hover { border-bottom-color: currentColor; }
 
 @media (max-width: 639px) {
-  .builder-mount.is-standalone { padding: 32px var(--pad-x) 140px; }
+  /* Tightened mobile spacing so the builder quiz fits comfortably
+     in one screen on phones. */
+  .builder-mount.is-standalone { padding: 24px var(--pad-x) 120px; }
+  .builder-q-eyebrow { font-size: 10px; margin-bottom: 8px; }
+  .builder-q-title { font-size: clamp(24px, 6.5vw, 36px); line-height: 1.05; margin: 0 0 14px; }
   .builder-chips { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .builder-chip {
     font-size: 11px;
-    padding: 14px 14px 16px;
+    /* Was 14/14/16 padding + 118px tall - too big for one-screen fit.
+       Tighter padding and a smaller min-height get all six occasion
+       chips visible above the fold on iPhone SE-class screens. */
+    padding: 11px 12px 13px;
     letter-spacing: .12em;
-    min-height: 118px;
+    min-height: 96px;
   }
-  .builder-chip .chip-sub { font-size: 12px; line-height: 1.25; }
+  .builder-chip .chip-label { font-size: 14px; }
+  .builder-chip .chip-sub { font-size: 11px; line-height: 1.22; }
   .builder-chip .chip-icon { width: 20px; height: 20px; }
   .builder-progress-strip {
     position: sticky;
     top: 0;
     z-index: 5;
     background: var(--bg);
-    padding: 10px 0 10px;
-    margin: 0 calc(-1 * var(--pad-x, 20px)) 14px;
+    padding: 8px 0;
+    margin: 0 calc(-1 * var(--pad-x, 20px)) 12px;
     padding-left: var(--pad-x, 20px);
     padding-right: var(--pad-x, 20px);
     border-bottom: 1px solid var(--rule);
@@ -548,9 +556,36 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    min-height: 52px;
+    min-height: 48px;
+    margin-top: 14px;
   }
   .builder-continue[hidden] { display: none; }
-  .builder-mount .result-cta { flex-direction: column; align-items: stretch; }
-  .btn-wa-build, .btn-retry, .btn-reroll { justify-content: center; }
+  .builder-back { margin-top: 10px; font-size: 11px; }
+
+  /* Result view - compact so it fits one phone screen at a time
+     (was: name + tag + tagline + INGREDIENTS + METHOD all running
+     long, requiring multiple scrolls to read on a 375x812 viewport). */
+  .builder-mount .result-eyebrow { margin-bottom: 8px; font-size: 10px; }
+  .builder-mount .result-name {
+    font-size: clamp(36px, 11vw, 56px);
+    line-height: .96;
+    margin: 0 0 8px;
+  }
+  .builder-mount .result-tag { font-size: 9.5px; padding: 3px 8px; margin: 0 0 12px; }
+  .builder-mount .result-menu-match { padding: 8px 14px; margin: 0 0 14px; font-size: 10.5px; }
+  .builder-mount .result-menu-match .menu-name { font-size: 13px; }
+  .builder-mount .result-tagline {
+    font-size: 15px;
+    line-height: 1.35;
+    margin: 0 0 18px;
+  }
+  .builder-mount .result-block { padding: 14px 0; }
+  .builder-mount .result-block-label { font-size: 9.5px; margin-bottom: 8px; }
+  .builder-mount .result-ingredients { gap: 6px; }
+  .builder-mount .result-ingredients li { font-size: 15px; line-height: 1.35; }
+  .builder-mount .result-method,
+  .builder-mount .result-garnish { font-size: 14.5px; line-height: 1.4; }
+  .builder-mount .result-sub-note { margin-top: 18px; padding: 12px 14px; font-size: 11px; }
+  .builder-mount .result-cta { flex-direction: column; align-items: stretch; gap: 10px; margin-top: 20px; }
+  .btn-wa-build, .btn-retry, .btn-reroll { justify-content: center; padding: 13px 18px; font-size: 12px; }
 }

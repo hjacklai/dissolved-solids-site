@@ -2557,21 +2557,46 @@
      subtitle, and the side-by-side Back/Next row got covered on the
      right by the fixed WhatsApp/Instagram floats. */
   @media (max-width: 480px) {
-    .reserve-card { padding: 28px 18px; }
+    /* Compact reservation stepper - tighter padding + smaller chrome
+       so each step fits one phone screen without scrolling. */
+    .reserve { padding: 48px 20px 80px; }
+    .reserve-head h2, .outlets-head h2 { font-size: clamp(32px, 8vw, 56px); margin-bottom: 14px; }
+    .reserve-card { padding: 20px 16px; }
+    .res-stepper-head { margin-bottom: 18px; padding-bottom: 14px; }
+    .res-progress span { width: 18px; height: 3px; }
+    .res-progress span.is-current { width: 28px; }
+    .res-stepper-count { font-size: 9.5px; letter-spacing: .18em; }
+    .res-step { animation-duration: .25s; }
+    .field-label { font-size: 10px; margin-bottom: 8px; letter-spacing: .18em; }
     .bar-pills { grid-template-columns: 1fr; gap: 8px; }
-    .bar-pill { padding: 14px 16px; grid-template-columns: 32px 1fr; gap: 12px; }
-    .bar-pill img { width: 32px; height: 32px; }
-    .bar-pill .nm { font-size: 20px; }
-    .bar-pill .ds { font-size: 9.5px; letter-spacing: .16em; margin-top: 6px; line-height: 1.4; }
+    .bar-pill { padding: 12px 14px; grid-template-columns: 28px 1fr; gap: 10px; }
+    .bar-pill img { width: 28px; height: 28px; }
+    .bar-pill .nm { font-size: 18px; }
+    .bar-pill .ds { font-size: 9px; letter-spacing: .14em; margin-top: 4px; line-height: 1.35; }
+    /* Calendar tighter on phones */
+    .cal-head { margin: 0 auto 10px; }
+    .cal-month { font-size: 18px; }
+    .cal-nav button { width: 30px; height: 30px; font-size: 12px; }
+    .cal-grid { gap: 3px; }
+    .cal-day { font-size: 11.5px; }
+    .cal-dow { font-size: 9px; }
+    .cal-legend { font-size: 10px; margin-top: 8px; }
+    /* Time + pax + inputs */
+    .time-slots { gap: 6px; }
+    .time-slot { padding: 9px 6px; font-size: 11.5px; min-height: 38px; }
+    .pax-row { padding: 8px 14px; }
+    .pax-row .val { font-size: 22px; }
+    .pax-row .pax-btn { width: 32px; height: 32px; font-size: 16px; }
+    .res-input { padding: 11px 14px; font-size: 14px; min-height: 42px; }
+    .res-note { min-height: 56px; padding: 11px 14px; font-size: 13px; }
+    .res-summary { padding: 12px 14px; font-size: 11px; line-height: 1.55; margin: 14px 0 10px; }
+    .res-summary div + div { margin-top: 4px; }
     /* Stack step nav: primary Next on top, ghost Back below, both full-width.
        Keeps the Next button clear of the bottom-right floats. */
-    .res-step-nav { flex-direction: column-reverse; gap: 10px; align-items: stretch; }
-    .res-nav-btn { width: 100%; min-height: 48px; }
+    .res-step-nav { flex-direction: column-reverse; gap: 8px; align-items: stretch; margin-top: 16px; padding-top: 14px; }
+    .res-nav-btn { width: 100%; min-height: 44px; padding: 11px 16px; font-size: 11px; }
     /* Send button: shorter / tighter on phones so the label fits one line. */
-    .send-res { padding: 16px; font-size: 11.5px; letter-spacing: .2em; }
-    /* Cal nav buttons need full touch target on phones */
-    .cal-day { font-size: 12px; }
-    .cal-month { font-size: 20px; }
+    .send-res { padding: 14px; font-size: 11px; letter-spacing: .18em; }
   }
 
   /* Very small (≤420): big-switch tightens further */
@@ -2966,6 +2991,7 @@
           <button class="builder-chip" data-val="brandy" aria-pressed="false"><svg class="chip-icon" aria-hidden="true"><use href="#icon-brandy"/></svg><span class="chip-label">Brandy</span><span class="chip-sub">the grown-up's grown-up choice</span><span class="chip-tick" aria-hidden="true">✓</span></button>
           <button class="builder-chip" data-val="surprise" aria-pressed="false"><svg class="chip-icon" aria-hidden="true"><use href="#icon-surprise"/></svg><span class="chip-label">Surprise me</span><span class="chip-sub">we pick, you trust us</span><span class="chip-tick" aria-hidden="true">✓</span></button>
         </div>
+        <button type="button" class="builder-continue" data-for="spirit" hidden>Continue →</button>
         <button class="builder-back">← back</button>
       </div>
 
@@ -2994,6 +3020,7 @@
           <button class="builder-chip" data-val="medium" aria-pressed="false"><svg class="chip-icon" aria-hidden="true"><use href="#icon-medium"/></svg><span class="chip-label">Medium</span><span class="chip-sub">the classic Goldilocks zone</span><span class="chip-tick" aria-hidden="true">✓</span></button>
           <button class="builder-chip" data-val="strong" aria-pressed="false"><svg class="chip-icon" aria-hidden="true"><use href="#icon-strong"/></svg><span class="chip-label">Strong</span><span class="chip-sub">spirit forward, served short</span><span class="chip-tick" aria-hidden="true">✓</span></button>
         </div>
+        <button type="button" class="builder-continue" data-for="strength" hidden>Continue →</button>
         <button class="builder-back">← back</button>
       </div>
 
@@ -3008,6 +3035,7 @@
           <button class="builder-chip" data-val="session" aria-pressed="false"><svg class="chip-icon" aria-hidden="true"><use href="#icon-session"/></svg><span class="chip-label">Long session</span><span class="chip-sub">we are settling in</span><span class="chip-tick" aria-hidden="true">✓</span></button>
           <button class="builder-chip" data-val="anytime" aria-pressed="false"><svg class="chip-icon" aria-hidden="true"><use href="#icon-anytime"/></svg><span class="chip-label">Anytime</span><span class="chip-sub">no occasion, just thirst</span><span class="chip-tick" aria-hidden="true">✓</span></button>
         </div>
+        <button type="button" class="builder-continue" data-for="occasion" hidden>See your drink →</button>
         <button class="builder-back">← back</button>
       </div>
 
@@ -3275,6 +3303,25 @@
 <nav class="appbar" aria-label="Primary">
   <div class="appbar-top">
     <div class="appbar-side appbar-side-left">
+      <a class="appbar-icon" href="/journal/" aria-label="Journal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
+          <path d="M9 8h6M9 12h6M9 16h4"/>
+        </svg>
+        <span>journal</span>
+      </a>
+      <a class="appbar-icon appbar-icon-cta" href="#builder" aria-label="Build a drink">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 4h14M8 4l4 8 4-8M12 12v8M8 20h8"/>
+        </svg>
+        <span>build</span>
+      </a>
+    </div>
+    <button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet - switch between Dissolved and Soluble">
+      <span class="seg" data-target="dissolved">Dis</span>
+      <span class="seg" data-target="soluble">Sol</span>
+    </button>
+    <div class="appbar-side appbar-side-right">
       <a class="appbar-icon" href="#visit" aria-label="Visit">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/>
@@ -3288,25 +3335,6 @@
           <path d="M3 10h18M8 3v4M16 3v4"/>
         </svg>
         <span>reserve</span>
-      </a>
-    </div>
-    <button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet - switch between Dissolved and Soluble">
-      <span class="seg" data-target="dissolved">Dis</span>
-      <span class="seg" data-target="soluble">Sol</span>
-    </button>
-    <div class="appbar-side appbar-side-right">
-      <a class="appbar-icon appbar-icon-cta" href="#builder" aria-label="Build a drink">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M5 4h14M8 4l4 8 4-8M12 12v8M8 20h8"/>
-        </svg>
-        <span>build</span>
-      </a>
-      <a class="appbar-icon" href="/journal/" aria-label="Journal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
-          <path d="M9 8h6M9 12h6M9 16h4"/>
-        </svg>
-        <span>journal</span>
       </a>
     </div>
   </div>
@@ -3740,7 +3768,8 @@
         '<div><span class="k">name</span>  <span class="v">' + (resv.name || '-') + '</span></div>' +
         '<div><span class="k">phone</span> <span class="v">' + (resv.phone || '-') + '</span></div>';
     }
-    function showStep(n) {
+    function showStep(n, opts) {
+      const o = opts || {};
       cur = Math.max(1, Math.min(TOTAL, n));
       stepEls.forEach(s => s.classList.toggle('is-active', Number(s.dataset.step) === cur));
       progSpans.forEach((sp, i) => {
@@ -3753,8 +3782,12 @@
       nextBtn.style.display = cur === TOTAL ? 'none' : '';
       nextBtn.textContent = cur === TOTAL - 1 ? 'review →' : 'next →';
       if (cur === TOTAL) renderSummary();
-      const card = document.querySelector('.reserve-card');
-      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Only scroll on user-driven step changes - the initial render
+      // would otherwise yank the page from hero down to reserve.
+      if (o.scroll) {
+        const card = document.querySelector('.reserve-card');
+        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
     nextBtn.addEventListener('click', () => {
       if (!canAdvance(cur)) {
@@ -3764,9 +3797,9 @@
         );
         return;
       }
-      showStep(cur + 1);
+      showStep(cur + 1, { scroll: true });
     });
-    backBtn.addEventListener('click', () => showStep(cur - 1));
+    backBtn.addEventListener('click', () => showStep(cur - 1, { scroll: true }));
     // Re-check Next-gating on every input so the button feels alive
     ['#barPills', '#calGrid', '#timeSlots', '#resName', '#resPhone', '#resNote'].forEach(sel => {
       const el = document.querySelector(sel);
@@ -3774,7 +3807,7 @@
       el.addEventListener('click', () => { if (cur === TOTAL) renderSummary(); });
       el.addEventListener('input', () => { if (cur === TOTAL) renderSummary(); });
     });
-    // First render
+    // First render (no scroll - page should land on the hero, not jump to reserve).
     showStep(1);
   })();
   // (Old .big-switch buttons removed - appbar toggle is the only state switcher now.)

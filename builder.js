@@ -813,6 +813,8 @@
         cont.hidden = true;
       } else {
         cont.hidden = false;
+        // Multi-select groups have a `.continue-count` span and use the "1 of 2" hint.
+        // Single-select groups just show the static label (Continue → / See your drink →).
         const countEl = cont.querySelector('.continue-count');
         if (countEl) countEl.textContent = `${arr.length} of 2`;
       }
@@ -890,23 +892,23 @@
           arr.push(val);
         }
         state.answers[key] = arr;
-        syncChipsForKey(key);
-        pulseChip(chipEl);
-        updateContinueButton(key);
-        updateProgressStrip();
       } else {
+        // Single-select: store as a string, but treat the array form
+        // ['val'] for the Continue gating logic so all groups behave the
+        // same way (show Continue when something is chosen, click to advance).
         state.answers[key] = val;
-        syncChipsForKey(key);
-        pulseChip(chipEl);
-        updateProgressStrip();
-        if (state.step < TOTAL_STEPS) {
-          setTimeout(() => showStep(state.step + 1), 220);
-        } else {
-          setTimeout(showResult, 280);
-        }
       }
+      syncChipsForKey(key);
+      pulseChip(chipEl);
+      updateContinueButton(key);
+      updateProgressStrip();
+      // No more auto-advance: every group now requires the Continue
+      // button click to move to the next step (user request - prevents
+      // accidental advance, makes the flow consistent).
     }
 
+    // Continue button handler - works for both single-select and
+    // multi-select groups. Gated on at least one selection.
     function continueFromMulti(key) {
       const arr = asArray(state.answers[key]);
       if (arr.length === 0) return;
@@ -1049,7 +1051,10 @@
         if (!chip.hasAttribute('aria-pressed')) chip.setAttribute('aria-pressed', 'false');
         chip.addEventListener('click', () => recordAnswer(group, key, chip.dataset.val, chip));
         chip.addEventListener('keydown', (ev) => {
-          if (ev.key === 'Enter' && isMulti) {
+          // Enter on any focused chip advances if at least one chip is
+          // selected (used to only work in multi-select; now consistent
+          // with the Continue-everywhere model).
+          if (ev.key === 'Enter') {
             ev.preventDefault();
             const arr = asArray(state.answers[key]);
             if (arr.length > 0) continueFromMulti(key);
