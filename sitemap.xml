@@ -10,6 +10,22 @@
     <image:image>
       <image:loc>https://dissolvedsolids.co/photos/dissolved-hero.jpg</image:loc>
       <image:title>Dissolved Solids and Soluble Solids — two cocktail bars in Petaling Jaya</image:title>
+      <image:caption>Hero shot for the umbrella brand of two PJ cocktail bars, Tatler Asia Top 20 Bars 2025/26</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://dissolvedsolids.co/photos/banner.jpg</image:loc>
+      <image:title>Site banner — cocktail bars in Petaling Jaya</image:title>
+      <image:caption>Header banner image for dissolvedsolids.co, the umbrella site for two PJ cocktail bars</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://dissolvedsolids.co/photos/ds-logo.png</image:loc>
+      <image:title>Dissolved Solids logo</image:title>
+      <image:caption>Pink cube logo for Dissolved Solids cocktail bar in Damansara Kim</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://dissolvedsolids.co/photos/ss-logo.jpg</image:loc>
+      <image:title>Soluble Solids logo</image:title>
+      <image:caption>Logo mark for Soluble Solids cocktail parlour in SS2 Petaling Jaya</image:caption>
     </image:image>
   </url>
 
@@ -305,6 +321,11 @@
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dissolvedsolids.co/photos/snacks-menu.jpg</image:loc>
+      <image:title>Snacks menu at Dissolved Solids and Soluble Solids</image:title>
+      <image:caption>Printed snacks menu showing bar bites and food pairings, Dissolved Solids and Soluble Solids Petaling Jaya</image:caption>
+    </image:image>
   </url>
 
   <url>
@@ -567,6 +588,11 @@
       <image:loc>https://dissolvedsolids.co/photos/ds-01.jpg</image:loc>
       <image:title>Backlit citrus slices in soda at Dissolved Solids</image:title>
       <image:caption>Macro detail of fresh citrus slices in sparkling soda water, Dissolved Solids Damansara Kim</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://dissolvedsolids.co/photos/ds-02.jpg</image:loc>
+      <image:title>Dissolved Solids interior detail</image:title>
+      <image:caption>Interior detail at Dissolved Solids cocktail bar, Damansara Kim Petaling Jaya</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://dissolvedsolids.co/photos/ds-04.jpg</image:loc>

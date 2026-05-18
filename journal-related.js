@@ -31,7 +31,10 @@
     { url: '/cocktail-bars-cheras/',                              title: 'Cocktail bar near Cheras',                     cat: 'local' },
     { url: '/cocktail-bars-shah-alam/',                           title: 'Cocktail bar near Shah Alam',                  cat: 'local' },
     { url: '/cocktail-bars-cyberjaya/',                           title: 'Cocktail bar near Cyberjaya',                  cat: 'local' },
+    { url: '/cocktail-bars-putrajaya/',                           title: 'Cocktail bar near Putrajaya',                  cat: 'local' },
     { url: '/cocktail-bars-kl/',                                  title: 'Cocktail bars in KL',                          cat: 'local' },
+    { url: '/venue-hire/',                                        title: 'Private venue hire (buy-out)',                 cat: 'local' },
+    { url: '/cocktails/guide/',                                   title: 'Complete cocktail recipes guide',              cat: 'practical' },
     { url: '/cocktail-bars-klang-valley/',                        title: 'Cocktail bars in the Klang Valley',            cat: 'local' },
     { url: '/find-a-cocktail-bar/',                               title: 'Find a cocktail bar (hub)',                    cat: 'local' },
 
