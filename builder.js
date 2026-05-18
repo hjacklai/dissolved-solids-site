@@ -34,11 +34,11 @@
   };
 
   const ALL_VALUES = {
-    mood: ['refreshed','adventurous','comforting','celebratory','mellow','awake'],
+    mood: ['refreshed','adventurous','comforting','celebratory','mellow','awake','cosy','playful'],
     spirit: ['gin','whiskey','vodka','rum','tequila','mezcal','brandy','surprise'],
-    profile: ['citrusy','sweet','bitter','herbal','smoky','floral','spicy','tropical'],
+    profile: ['citrusy','sweet','bitter','herbal','smoky','floral','spicy','tropical','creamy','nutty'],
     strength: ['light','medium','strong'],
-    occasion: ['aperitif','with-food','nightcap','celebration','session','anytime'],
+    occasion: ['aperitif','with-food','nightcap','celebration','session','anytime','brunch','late-night'],
   };
 
   /* ----- Helpers ----- */
@@ -732,6 +732,138 @@
       garnish: pick(['Two raspberries and a rose petal','Lemon coin and three small berries','Edible flower and a lemon zest']),
       signature: 'floral+sweet'
     }),
+
+    /* ----- Expansion: creamy + nutty profiles ----- */
+
+    alexander: (ans) => {
+      const base = ['brandy','gin'].includes(ans.spirit) ? SPIRITS[ans.spirit] : 'Brandy';
+      return {
+        ingredients: [
+          base,
+          'Crème de cacao (dark for brandy, white for gin)',
+          'Fresh cream',
+          'A grate of nutmeg',
+        ],
+        method: 'Shake hard with ice so the cream emulsifies. Double-strain into a chilled coupe.',
+        garnish: pick(['Grated nutmeg','Three coffee beans','Cocoa nibs on the rim']),
+        signature: 'creamy'
+      };
+    },
+    white_russian: () => ({
+      ingredients: [
+        'Vodka', 'Coffee liqueur',
+        cap(pick(['fresh cream','oat cream','full-cream milk'])),
+      ],
+      method: 'Build vodka and coffee liqueur over ice. Slowly float the cream over the back of a spoon.',
+      garnish: pick(['Three coffee beans','A dusting of cocoa','Grated chocolate']),
+      signature: 'creamy'
+    }),
+    golden_milk_punch: () => ({
+      ingredients: [
+        'Aged rum (or bourbon)',
+        'Turmeric-ginger syrup (warm-infused)',
+        'Coconut cream',
+        'A pinch of black pepper',
+        'A pinch of sea salt',
+      ],
+      method: 'Shake very hard with ice. Double-strain over fresh ice in a rocks glass.',
+      garnish: pick(['Toasted coconut chip and a turmeric thread','Cracked black pepper','A coconut shaving and a pinch of cardamom']),
+      signature: 'creamy'
+    }),
+    orgeat_swizzle: (ans) => {
+      const base = ['rum','brandy','whiskey'].includes(ans.spirit) ? SPIRITS[ans.spirit] : 'Rum';
+      return {
+        ingredients: [
+          base,
+          'Orgeat (almond syrup)',
+          'Fresh lime juice',
+          'Angostura bitters',
+        ],
+        method: 'Swizzle with crushed ice in a tall glass until the outside frosts.',
+        garnish: pick(['Mint bouquet and a lime wheel','Toasted almond and a mint sprig','Three star anise on a pick']),
+        signature: 'nutty'
+      };
+    },
+    nutty_old_fashioned: (ans) => {
+      const base = ['whiskey','rum','brandy'].includes(ans.spirit) ? SPIRITS[ans.spirit] : 'Whisk(e)y';
+      return {
+        ingredients: [
+          base,
+          cap(pick(['hazelnut syrup','toasted-pecan syrup','walnut bitters dose'])),
+          'Angostura bitters',
+          cap(pick(['orange bitters','black walnut bitters','chocolate bitters'])),
+        ],
+        method: 'Stir over a large ice cube until cold and softened.',
+        garnish: pick(['Expressed orange peel and a toasted hazelnut','Lemon twist and a walnut half','Smoked orange peel']),
+        signature: 'nutty'
+      };
+    },
+
+    /* ----- Expansion: brunch + late-night occasions ----- */
+
+    mimosa: () => ({
+      ingredients: [
+        cap(pick(['fresh orange juice','fresh grapefruit juice','a 50/50 of orange and grapefruit'])),
+        'Top with chilled prosecco (or champagne)',
+        pick(['A small dash of triple sec','A drop of orange bitters','A pinch of saline solution']),
+      ],
+      method: 'Pour the juice into a chilled flute. Top with the sparkling. Stir once, gently.',
+      garnish: pick(['Long orange spiral','Single orange wheel on the rim','Sprig of fresh mint']),
+      signature: 'sparkle'
+    }),
+    bloody_mary: (ans) => {
+      const base = ['vodka','tequila','gin'].includes(ans.spirit) ? SPIRITS[ans.spirit] : 'Vodka';
+      return {
+        ingredients: [
+          base,
+          'Tomato juice (proper, not from concentrate)',
+          'Fresh lemon juice',
+          'Worcestershire sauce, Tabasco, fresh black pepper',
+          'A pinch of celery salt',
+          pick(['A small dose of sambal for local heat','A spoon of horseradish for a sharper finish','A drop of saline']),
+        ],
+        method: 'Roll back and forth between two tins with ice (do not shake hard - keeps texture clean). Strain over fresh ice.',
+        garnish: pick(['Celery stick and a lemon wedge','Pickled long bean and a cherry tomato','Crispy bacon and a green olive']),
+        signature: 'savoury'
+      };
+    },
+    hot_toddy: (ans) => {
+      const base = ['whiskey','brandy','rum'].includes(ans.spirit) ? SPIRITS[ans.spirit] : 'Whisk(e)y';
+      return {
+        ingredients: [
+          base,
+          'Hot water (just off the boil)',
+          'Fresh lemon juice',
+          cap(pick(['honey','demerara syrup','maple syrup'])),
+          pick(['A whole clove or two','A short cinnamon stick','A slice of fresh ginger']),
+        ],
+        method: 'Build in a warmed mug. Stir gently. Steep two minutes so the spice opens up.',
+        garnish: pick(['Long lemon twist','Cinnamon stick and a clove','Star anise floated']),
+        signature: 'comforting'
+      };
+    },
+    irish_coffee: () => ({
+      ingredients: [
+        'Irish whiskey',
+        'Hot freshly-brewed coffee (or a strong kopi-O)',
+        cap(pick(['demerara sugar','brown sugar syrup','gula melaka syrup'])),
+        'Lightly-whipped fresh cream (float)',
+      ],
+      method: 'Warm a stemmed glass. Stir whiskey, sugar, and coffee together. Float the cream over the back of a spoon so it sits.',
+      garnish: pick(['Grated nutmeg on the cream','A dusting of cocoa','Three coffee beans']),
+      signature: 'creamy'
+    }),
+    sgroppino: () => ({
+      ingredients: [
+        'Vodka (or limoncello for a softer take)',
+        'Lemon sorbet',
+        'Top with chilled prosecco',
+      ],
+      method: 'Spoon a scoop of sorbet into a chilled flute or coupe. Pour the vodka and prosecco over it. Stir once, very gently.',
+      garnish: pick(['Long lemon zest','Sprig of mint','Single basil leaf']),
+      signature: 'sparkle'
+    }),
+
   };
 
   // Multi-select profile pairs (keys alphabetically sorted).
@@ -764,6 +896,25 @@
     'spicy+smoky': 'cili_padi_margarita',
     'spicy+bitter': 'highball_spice',
     'sweet+smoky': 'smoky_margarita',
+    // New: creamy combos
+    'creamy+sweet': 'alexander',
+    'citrusy+creamy': 'golden_milk_punch',
+    'creamy+nutty': 'alexander',
+    'bitter+creamy': 'white_russian',
+    'creamy+spicy': 'golden_milk_punch',
+    'creamy+tropical': 'pina_colada',
+    'creamy+floral': 'alexander',
+    'creamy+herbal': 'golden_milk_punch',
+    'creamy+smoky': 'white_russian',
+    // New: nutty combos
+    'nutty+sweet': 'nutty_old_fashioned',
+    'citrusy+nutty': 'orgeat_swizzle',
+    'nutty+tropical': 'mai_tai',
+    'bitter+nutty': 'nutty_old_fashioned',
+    'nutty+smoky': 'nutty_old_fashioned',
+    'herbal+nutty': 'orgeat_swizzle',
+    'floral+nutty': 'orgeat_swizzle',
+    'nutty+spicy': 'orgeat_swizzle',
   };
 
   // Template-key → /cocktails/{slug}/ URL slug.
@@ -810,6 +961,55 @@
     if (profiles.length === 2) {
       const duoKey = profiles.join('+');
       if (DUO_TEMPLATES[duoKey]) return DUO_TEMPLATES[duoKey];
+    }
+
+    // Brunch + late-night occasion routes (new)
+    if (occasion === 'brunch') {
+      if (profile === 'bitter' || mood === 'comforting') return 'bloody_mary';
+      if (profile === 'citrusy' || mood === 'celebratory') return 'mimosa';
+      if (profile === 'sweet') return Math.random() < 0.5 ? 'mimosa' : 'bee_knees';
+      if (profile === 'tropical') return 'pina_colada';
+      if (profile === 'creamy') return 'irish_coffee';
+      if (profile === 'spicy') return 'bloody_mary';
+      return 'mimosa';
+    }
+    if (occasion === 'late-night') {
+      if (mood === 'awake' || profile === 'creamy') return 'irish_coffee';
+      if (profile === 'sweet' || profile === 'nutty') return 'nutty_old_fashioned';
+      if (profile === 'bitter') return spirit === 'whiskey' ? 'manhattan' : 'boulevardier';
+      if (profile === 'smoky') return 'oaxaca_old_fashioned';
+      return 'old_fashioned';
+    }
+
+    // Cosy + playful mood routes (new)
+    if (mood === 'cosy') {
+      if (profile === 'sweet' || profile === 'creamy') return 'hot_toddy';
+      if (profile === 'citrusy') return 'hot_toddy';
+      if (profile === 'nutty' || profile === 'smoky') return 'nutty_old_fashioned';
+      if (profile === 'herbal') return 'whiskey_smash';
+      if (profile === 'spicy') return 'hot_toddy';
+      // fallthrough handled below
+    }
+    if (mood === 'playful') {
+      if (profile === 'citrusy' || profile === 'sweet') return 'sgroppino';
+      if (profile === 'tropical') return 'pina_colada';
+      if (profile === 'floral') return 'bandung_spritz';
+      if (profile === 'creamy') return 'alexander';
+      if (profile === 'spicy') return 'cili_padi_margarita';
+      // fallthrough handled below
+    }
+
+    // Creamy + nutty profile routes (new)
+    if (profile === 'creamy') {
+      if (occasion === 'nightcap') return 'white_russian';
+      if (mood === 'awake') return 'irish_coffee';
+      if (spirit === 'brandy' || spirit === 'gin') return 'alexander';
+      return 'golden_milk_punch';
+    }
+    if (profile === 'nutty') {
+      if (strength === 'strong' || occasion === 'nightcap') return 'nutty_old_fashioned';
+      if (spirit === 'rum') return 'orgeat_swizzle';
+      return 'orgeat_swizzle';
     }
 
     // Malaysia-local routes (priority - signature of the house)
@@ -920,6 +1120,8 @@
     celebratory: ['Gilded','High','Festival','Crystal','Confetti','Toast','Encore','Spotlight','Champagne','Holiday','Marquee','Garland','Threshold','Standing-Ovation','Carousel','Curtain-Call','Sequin','Velvet-Rope','Premiere','Fete','Gala','Headline','Banquet','Beacon','Crown','Centrefold','Crescendo','Top-Tier','Brassy','Headlights','Magnum','Stage','Limelight','Royal','Triumphal'],
     mellow: ['Soft','Idle','Hush','Dusk','Lullaby','Drowse','Slow','Coast','Linger','Glide','Tide','Whisper','Sunday','Easy','Slope','Slow-Lane','Sailing','Hammock','Drift','Quiet','Veiled','Lazy-Day','Long-Note','Loose','Open-Window','Park-Bench','Mellow','Side-Eye','Slow-Tide','Dampened','Footnote','Long-Light','Honey-Hour','Loose-Thread'],
     awake: ['Awake','Espresso','Daybreak','Sharp','Caffeinated','Sunrise','Alert','Bright-Eyed','Reset','Pulse','First-Train','Newsroom','Wide-Open','Sharp-Eyed','Filament','Wired','Cold-Plunge','Static','Adrenaline','Quartz','Snap','Wakeup','Notice','Volt','Surge','Switch-On','Currents','Static-Cling','Live-Wire','Polished','Galvanic','Caffeine','First-Light','Sharp-Edge','Catalyst'],
+    cosy: ['Cosy','Snug','Fireplace','Wool','Mug','Warm-Socks','Knit','Flannel','Soft-Light','Steamed','Pajama','Cocoa-Hour','Brown-Sugar','Toaster','Bundle','Quilted','Hearth','Pocketed','Indoor-Day','Window-Seat','Tea-Hour','Crumpet','Cardigan-Day','Slow-Sunday','Reading-Lamp','Patchwork','Warm-Loaf','Stockpot','Heat-Lamp','Slipperhood','Hot-Steam','Plaid','Stillroom','Side-Lamp','Wool-Sweater'],
+    playful: ['Playful','Confetti','Pop','Carousel','Tinsel','Mischief','Wink','Tickle','Sherbet','Whim','Doodle','Loose-Tooth','Skipped','Twirl','Sparkler','Pinball','Pinwheel','Trampoline','Bubble','Hopscotch','Sprinkles','Glitter','Funhouse','Catwalk','Disco','Pop-Up','Doodle-Hour','Marshmallow','Carnival','Whirligig','Cartwheel','Bubblegum','Polka','Skipping','Spangle'],
   };
 
   const PROFILE_NOUNS = {
@@ -931,6 +1133,8 @@
     floral: ['Bloom','Petal','Rosebed','Garland','Greenhouse','Orchid','Bouquet','Hothouse','Florist','Festival','Peony','Camellia','Veranda','Sonnet','Posy','Buttercup','Jasmine','Peonyfield','Hibiscus','Orchidhouse','Lily-of-Valley','Magnolia','Dahlia','Anemone','Hydrangea','Lupin','Sweetpea','Wallflower','Snowdrop','Cottage Garden','Gardenia','Iris Hour','Pansy','Floraform'],
     spicy: ['Pepper','Storm','Mule','Ginger Walk','Heatwave','Spark','Friction','Brushfire','Chase','Wick','Cayenne','Catapult','Tide','Match','Coal','Five-Spice','Sambal','Heatwave','Chili-Stripe','Crackle','Smoke-Stack','Pepperhouse','Backfire','Cardamom','Capsaicin','Bird\'s-Eye','Match-Head','Pop','Hot-Wire','Wildfire','Hot-Day','Stinger','Cili Padi','Live-Wire'],
     tropical: ['Coconut','Trade Wind','Equator','Lagoon','Hibiscus','Calypso','Mango','Vacation','Atoll','Reef','Banyan','Verandah','Pineapple','Monsoon','Frangipani','Polynesia','Wayanad','Bougainvillea','Palm Shade','Saltwater','Tiki','Long Sail','Coral','Mangrove','Hammock','Sandcastle','Bird-of-Paradise','Lychee','Soursop','Bali Hour','Boat-Day','Reef-Walk','Outrigger','Coconut Grove','Open Sea'],
+    creamy: ['Velvet','Pillow','Cream Hour','Silk','Cashmere','Butterhouse','Custard','Cradle','Soft-Pour','Crème','Tres-Leches','Mascarpone','Crema','Eider','Powder Room','White Bear','Plush','Whipped','Spoonful','Hush-Pillow','Snowdrop','Marshmallow Hour','Soft-Suede','Bone-China','Pale-Linen','Quiet Cream','Vanilla Fog','Talcum','Buttermilk','Soft-Foam','Heavy Pour','Hush','Cloud-Bed','Soufflé','Whip'],
+    nutty: ['Almond','Hazel','Walnut Hour','Praline','Marzipan','Pecan','Frangipane','Brown Butter','Toasted','Nut House','Pistachio','Nougat','Burnt-Almond','Roastery','Macaroon','Marcona','Confiserie','Acorn','Brazil-Nut','Chestnut','Hazelnut Hour','Almond Tree','Pine-Nut','Cashew','Coconut-Husk','Toasted Grain','Brown-Crust','Sesame','Nut-Brittle','Praline Hour','Filbert','Caramel-Nut','Roasted-Skin','Almond Milk','Toffee-Nut'],
   };
 
   const OCCASION_FLAVOUR = {
@@ -940,6 +1144,8 @@
     celebration: ['Toast','Confetti','Spotlight','Encore','Standing'],
     session: ['Long Pour','Saturday','Open Tab','Marathon','Slow Lane'],
     anytime: [],
+    brunch: ['Brunch','Sunday','Late Morning','Eggs Bench','Yolk Hour'],
+    'late-night': ['Late Set','After Hours','Final Round','Last Train','Closing Time'],
   };
 
   function formatName(name) {
@@ -1033,6 +1239,18 @@
       boulevardier_rich: `Bourbon, campari, sweet vermouth, a touch of maple. Deeper boulevardier.`,
       garden_botanic: `Gin, elderflower, lemon, garden syrup, tonic top. Floral and green at once.`,
       blossom_bramble: `Gin, lemon, rose, blackberry drizzle. Rose-coloured everything.`,
+      // New: creamy + nutty
+      alexander: `A short, silky cream cocktail. Drink it cold, drink it slowly.`,
+      white_russian: `Vodka, coffee liqueur, cream on top. Easy and indulgent.`,
+      golden_milk_punch: `Turmeric, coconut, palm sugar, rum. Warming without being hot.`,
+      orgeat_swizzle: `Almond syrup, lime, spirit. Swizzled long over crushed ice.`,
+      nutty_old_fashioned: `Whisky stirred on a nut-led syrup. Toasted, deep, slow.`,
+      // New: brunch + late-night
+      mimosa: `Citrus and sparkling. Best made with good juice, not a carton.`,
+      bloody_mary: `Tomato, spice, vodka. Built for the morning after.`,
+      hot_toddy: `Whisky, lemon, honey, hot water. For the room that needs warming.`,
+      irish_coffee: `Whiskey, coffee, sugar, cream float. The original after-dinner pick-me-up.`,
+      sgroppino: `Sorbet, vodka, prosecco. A drink-dessert hybrid. Disappears fast.`,
     };
     let line = taglines[templateKey] || 'Built for your mood and palate.';
     if (profiles.length === 2) {
@@ -1076,7 +1294,7 @@
     if (moods.length === 2) {
       candidates.push(Object.assign({}, ans, { mood: [moods[1]] }));
     }
-    const profileChain = ['citrusy','sweet','bitter','herbal','smoky','floral','spicy','tropical'];
+    const profileChain = ['citrusy','sweet','bitter','herbal','smoky','floral','spicy','tropical','creamy','nutty'];
     const startIdx = profileChain.indexOf(profiles[0]);
     if (startIdx >= 0) {
       for (let i = 1; i < profileChain.length; i++) {

@@ -604,24 +604,35 @@
 .builder-foot a:hover { border-bottom-color: currentColor; }
 
 @media (max-width: 639px) {
-  /* Tightened mobile spacing so the builder quiz fits comfortably
-     in one screen on phones. */
-  .builder-mount.is-standalone { padding: 24px var(--pad-x) 120px; }
-  .builder-q-eyebrow { font-size: 10px; margin-bottom: 8px; }
-  .builder-q-title { font-size: clamp(24px, 6.5vw, 36px); line-height: 1.05; margin: 0 0 14px; }
-  .builder-chips { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  /* Compact mobile chips. Sub-label hidden on phones - the label + icon
+     carry enough meaning, and dropping the descriptor halves the chip
+     height so the whole quiz fits one phone screen. */
+  .builder-mount.is-standalone { padding: 20px var(--pad-x) 120px; }
+  .builder-q-eyebrow { font-size: 10px; margin-bottom: 6px; }
+  .builder-q-title { font-size: clamp(22px, 6vw, 32px); line-height: 1.05; margin: 0 0 12px; }
+  .builder-chips { grid-template-columns: repeat(3, 1fr); gap: 6px; }
   .builder-chip {
-    font-size: 11px;
-    /* Was 14/14/16 padding + 118px tall - too big for one-screen fit.
-       Tighter padding and a smaller min-height get all six occasion
-       chips visible above the fold on iPhone SE-class screens. */
-    padding: 11px 12px 13px;
-    letter-spacing: .12em;
-    min-height: 96px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 10.5px;
+    padding: 9px 8px 9px 10px;
+    letter-spacing: .08em;
+    min-height: 48px;
+    border-radius: 10px;
+    border-width: 1px;
   }
-  .builder-chip .chip-label { font-size: 14px; }
-  .builder-chip .chip-sub { font-size: 11px; line-height: 1.22; }
-  .builder-chip .chip-icon { width: 20px; height: 20px; }
+  .builder-chip .chip-label { font-size: 11px; letter-spacing: .08em; }
+  .builder-chip .chip-sub { display: none; }
+  .builder-chip .chip-icon { width: 16px; height: 16px; }
+  .builder-chip .chip-tick {
+    position: static;
+    width: 14px;
+    height: 14px;
+    font-size: 8px;
+    border-width: 1px;
+    margin-left: auto;
+  }
   .builder-progress-strip {
     position: sticky;
     top: 0;
@@ -639,11 +650,19 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    min-height: 48px;
-    margin-top: 14px;
+    min-height: 42px;
+    margin-top: 12px;
+    padding: 10px 18px;
+    font-size: 11px;
   }
   .builder-continue[hidden] { display: none; }
   .builder-back { margin-top: 10px; font-size: 11px; }
+
+  /* Extra-narrow phones (≤360px) - drop to 2-col so labels don't truncate */
+  @media (max-width: 360px) {
+    .builder-chips { grid-template-columns: repeat(2, 1fr); }
+    .builder-chip { min-height: 44px; }
+  }
 
   /* Result view - compact so it fits one phone screen at a time
      (was: name + tag + tagline + INGREDIENTS + METHOD all running

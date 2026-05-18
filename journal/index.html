@@ -251,16 +251,17 @@
 
   .wheel-stage {
     display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px;
-    align-items: center;
+    align-items: start;
   }
   .wheel-wrap {
-    position: relative;
+    position: sticky;
+    top: 40px;
     aspect-ratio: 1;
     /* min-height safeguard - aspect-ratio sometimes collapses to zero
        inside flex/grid parents that don't have a defined cross-axis size,
        which caused the wheel to disappear on some desktop widths. */
     min-height: 480px;
-    max-width: 620px; width: 100%;
+    max-width: 560px; width: 100%;
     justify-self: center;
     margin: 0 auto;
   }
