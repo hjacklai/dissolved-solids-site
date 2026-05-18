@@ -1931,8 +1931,7 @@
 <link rel="stylesheet" href="/builder.css" />
 <!-- Audio is part of the bar experience - start fetching ASAP so the
      music toggle is responsive the moment the user clicks it. -->
-<link rel="preload" as="audio" href="/photos/audio/lofi-beat.mp3" type="audio/mpeg" />
-<link rel="preload" as="audio" href="/photos/audio/fashion-house.mp3" type="audio/mpeg" />
+<!-- Audio preload hints removed - they fetched ~4MB on every page load before the user tapped music. Audio uses preload="metadata" now. -->
 <style>
   /* Drink-builder integration on dark bar pages */
   /* Cursive policy: keep "dissolved solids" wordmark + hero h1 in Allura.
@@ -3288,7 +3287,7 @@
       const a = new Audio(SRC[key]);
       a.loop = true;
       // Start buffering immediately so the toggle is responsive.
-      a.preload = 'auto';
+      a.preload = 'metadata';
       a.volume = 0;
       audios[key] = a;
     }

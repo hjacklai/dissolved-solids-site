@@ -85,24 +85,15 @@
     function setupAudio() {
       audio = new Audio(src);
       audio.loop = true;
-      // preload=auto starts buffering immediately so the toggle is
-      // responsive the moment the user (or autoplay) tries to play.
-      audio.preload = 'auto';
+      // preload=metadata loads ~few KB only - full bytes fetch on
+      // play(). Saves ~2MB per page load for users who never start
+      // the music. (The aggressive <link rel="preload"> hint that
+      // used to inject here is also gone - it was forcing the full
+      // track onto every visitor's connection even before the script
+      // ran.)
+      audio.preload = 'metadata';
       audio.volume = 0;
     }
-    // Eagerly create the audio object so the download starts ASAP,
-    // not at first click. Also inject a <link rel="preload"> hint so
-    // the browser starts fetching even before this script runs.
-    (function preloadHint() {
-      try {
-        const l = document.createElement('link');
-        l.rel = 'preload';
-        l.as = 'audio';
-        l.href = src;
-        l.type = 'audio/mpeg';
-        document.head.appendChild(l);
-      } catch (e) {}
-    })();
     setupAudio();
     function fadeTo(target, duration) {
       if (!audio) return;

@@ -68,8 +68,18 @@
   line-height: 1;
 }
 .appbar-icon:hover { color: #f3ecdf; background: rgba(255, 255, 255, .07); transform: translateY(-1px); }
+.appbar-icon:focus-visible { outline: 2px solid #ff3b81; outline-offset: 2px; }
 .appbar-icon-cta { color: #ff3b81; }
 .appbar-icon-cta:hover { color: #0b0b10; background: #ff3b81; }
+/* Bigger tap target on touch devices - the visible glyph stays the
+   same size but the hit area grows to the WCAG-recommended 44×44. */
+@media (hover: none) and (pointer: coarse) {
+  .appbar-icon { min-width: 44px; min-height: 44px; }
+}
+/* Respect users who've opted out of motion - no nudge animation. */
+@media (prefers-reduced-motion: reduce) {
+  .appbar-icon, .appbar-icon:hover { transform: none; transition: none; }
+}
 
 /* Segmented Dis/Sol toggle */
 .appbar-toggle {
@@ -87,6 +97,7 @@
   isolation: isolate;
 }
 .appbar-toggle:hover { border-color: rgba(255, 255, 255, .32); }
+.appbar-toggle:focus-visible { outline: 2px solid #ff3b81; outline-offset: 3px; }
 .appbar-toggle::before {
   content: '';
   position: absolute;
@@ -161,11 +172,13 @@ html[data-state="soluble"] .appbar-ticker .ticker-group .ti b { color: #c8862e; 
   to   { transform: translateX(-50%); }
 }
 
-/* Body padding so content clears the fixed bar. */
-body { padding-bottom: 96px; }
+/* Body padding so content clears the fixed bar. calc() adds the
+   home-indicator safe-area on notched iPhones / Androids on top of
+   the base appbar height. */
+body { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
 
 @media (max-width: 640px) {
-  body { padding-bottom: 110px; }
+  body { padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)); }
   .appbar-top { padding: 6px 8px; gap: 0; }
   .appbar-icon { padding: 6px 8px; }
   .appbar-icon svg { width: 20px; height: 20px; flex: 0 0 20px; }
@@ -176,7 +189,7 @@ body { padding-bottom: 96px; }
   .appbar-ticker .ticker-group { gap: 24px; padding-right: 24px; }
 }
 @media (max-width: 420px) {
-  body { padding-bottom: 104px; }
+  body { padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)); }
   .appbar-icon { padding: 5px 5px; }
   .appbar-icon span { font-size: 8px; letter-spacing: .1em; }
 }
