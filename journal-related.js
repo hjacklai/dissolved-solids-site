@@ -78,6 +78,12 @@
     { url: '/journal/vermouth-explained/',                        title: 'Vermouth explained',                           cat: 'spirits' },
     { url: '/journal/amaro-explained/',                           title: 'Amaro explained',                              cat: 'spirits' },
     { url: '/journal/bitters-explained/',                         title: 'Bitters explained',                            cat: 'spirits' },
+    { url: '/journal/japanese-whisky-guide/',                     title: 'Japanese whisky guide for Malaysian drinkers', cat: 'spirits' },
+    { url: '/journal/scotch-regions-explained/',                  title: 'Scotch whisky regions explained',              cat: 'spirits' },
+    { url: '/journal/rye-whiskey-explained/',                     title: 'Rye whiskey, explained',                       cat: 'spirits' },
+    { url: '/journal/tequila-aging-spectrum/',                    title: 'Tequila aging spectrum',                       cat: 'spirits' },
+    { url: '/journal/sake-in-cocktails/',                         title: 'Sake in cocktails',                            cat: 'spirits' },
+    { url: '/journal/champagne-prosecco-cava/',                   title: 'Champagne vs prosecco vs cava',                cat: 'spirits' },
 
     // Technique
     { url: '/journal/how-to-taste-spirit/',                       title: 'How to taste a spirit',                        cat: 'technique' },
