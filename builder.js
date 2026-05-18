@@ -864,6 +864,265 @@
       signature: 'sparkle'
     }),
 
+    /* ============================================================
+       Mega-expansion - 30 more templates so the same answer set
+       can route to a fresher drink each visit, and so newly-added
+       chips (cosy, playful, brunch, late-night, creamy, nutty) get
+       deeper coverage.
+       ============================================================ */
+
+    /* --- Classics & near-classics --- */
+
+    vieux_carre: () => ({
+      ingredients: ['Rye whisky', 'Cognac', 'Sweet vermouth', 'Bénédictine (barspoon)', 'Peychaud\'s bitters', 'Angostura bitters'],
+      method: 'Stir all ingredients over ice until very cold. Strain over a single large cube.',
+      garnish: pick(['Lemon twist','Brandied cherry','Expressed orange peel']),
+      signature: 'spirit-forward'
+    }),
+    paper_plane: () => ({
+      ingredients: ['Bourbon', 'Amaro Nonino (or Montenegro)', 'Aperol', 'Fresh lemon juice'],
+      method: 'Equal parts. Shake hard with ice. Double-strain into a chilled coupe.',
+      garnish: pick(['Lemon coin','Brandied cherry','None - the colour is the garnish']),
+      signature: 'bitter'
+    }),
+    trinidad_sour: () => ({
+      ingredients: ['Angostura bitters 45ml (yes - 45ml)', 'Orgeat 30ml', 'Rye whisky 15ml', 'Fresh lemon juice 25ml'],
+      method: 'Shake hard with ice. Double-strain. The bitters are the base spirit here.',
+      garnish: pick(['Lemon coin','Star anise','Dehydrated lemon wheel']),
+      signature: 'bitter'
+    }),
+    hanky_panky: () => ({
+      ingredients: ['Gin', 'Sweet vermouth', 'Fernet-Branca (barspoon)'],
+      method: 'Stir very cold. Strain into a chilled coupe.',
+      garnish: pick(['Orange peel','Expressed grapefruit peel','Lemon twist']),
+      signature: 'bitter'
+    }),
+    aperol_spritz: () => ({
+      ingredients: ['Aperol 60ml', 'Prosecco 90ml', 'Soda water splash'],
+      method: 'Build over ice in a large wine glass. Stir once gently.',
+      garnish: pick(['Half orange slice','Two olives','Orange wheel and a sprig of thyme']),
+      signature: 'spritz'
+    }),
+    americano: () => ({
+      ingredients: ['Campari', 'Sweet vermouth', 'Top with soda'],
+      method: 'Build over ice in a highball. Stir gently.',
+      garnish: pick(['Orange slice','Lemon wheel','Orange peel and an olive']),
+      signature: 'bitter'
+    }),
+    bicicletta: () => ({
+      ingredients: ['Campari', 'Dry white wine (Pinot Grigio or similar)', 'Top with soda'],
+      method: 'Build over ice in a wine glass. Stir once.',
+      garnish: pick(['Half orange slice','Lemon wheel','Sprig of basil']),
+      signature: 'bitter'
+    }),
+    pimms_cup: () => ({
+      ingredients: ['Pimm\'s No. 1', 'Top with chilled lemonade (or ginger beer)', 'Cucumber ribbon, strawberry, orange wheel, mint sprig'],
+      method: 'Build over ice in a tall glass. Stir, garnish generously.',
+      garnish: pick(['Big cucumber ribbon and mint','Strawberry on a pick','Orange wheel and three mint tops']),
+      signature: 'spritz'
+    }),
+
+    /* --- Tropical / tiki --- */
+
+    painkiller: () => ({
+      ingredients: ['Dark rum (Pusser\'s if you have it) 60ml', 'Pineapple juice 90ml', 'Orange juice 30ml', 'Coconut cream 30ml'],
+      method: 'Shake hard with ice. Pour, unstrained, into a tiki vessel or tall glass.',
+      garnish: pick(['Grated nutmeg and pineapple frond','Orange wheel and toasted coconut','Pineapple wedge and a maraschino cherry']),
+      signature: 'tropical'
+    }),
+    zombie: () => ({
+      ingredients: ['Light rum', 'Dark rum', 'Overproof rum (float)', 'Lime juice', 'Pineapple juice', 'Falernum', 'Grenadine', 'Angostura'],
+      method: 'Shake hard with crushed ice. Pour, unstrained, into a tall tiki glass. Float the overproof on top.',
+      garnish: pick(['Mint bouquet and a flaming lime shell','Pineapple frond and a speared cherry','Orchid and a pineapple wedge']),
+      signature: 'tropical'
+    }),
+    hurricane: () => ({
+      ingredients: ['Light rum', 'Dark rum', 'Passion fruit puree', 'Fresh lime juice', 'Grenadine', 'Simple syrup'],
+      method: 'Shake hard with ice. Pour over fresh ice in a hurricane glass.',
+      garnish: pick(['Orange wheel and a cherry','Lime wheel and a passion-fruit half','Pineapple frond and three cherries']),
+      signature: 'tropical'
+    }),
+    doctor_funk: () => ({
+      ingredients: ['Dark rum', 'Fresh lime juice', 'Grenadine', 'Absinthe rinse', 'Top with soda'],
+      method: 'Rinse a chilled glass with absinthe, discard. Shake the rest with ice. Strain into the rinsed glass over fresh ice. Top with soda.',
+      garnish: pick(['Lime wheel and a mint sprig','Dehydrated lime','Mint top']),
+      signature: 'tropical'
+    }),
+
+    /* --- Creamy & dessert --- */
+
+    brandy_alexander: () => ({
+      ingredients: ['Brandy (or cognac) 30ml', 'Dark crème de cacao 30ml', 'Fresh cream 30ml'],
+      method: 'Shake hard with ice so the cream emulsifies. Double-strain into a chilled coupe.',
+      garnish: pick(['Grated nutmeg','Three coffee beans','Light cocoa dusting']),
+      signature: 'creamy'
+    }),
+    grasshopper: () => ({
+      ingredients: ['Green crème de menthe 30ml', 'White crème de cacao 30ml', 'Fresh cream 30ml'],
+      method: 'Shake hard with ice. Double-strain into a chilled coupe.',
+      garnish: pick(['Mint leaf','Light cocoa dusting','Sugar-coated mint sprig']),
+      signature: 'creamy'
+    }),
+    pink_squirrel: () => ({
+      ingredients: ['Crème de noyaux (or amaretto) 30ml', 'White crème de cacao 30ml', 'Fresh cream 30ml'],
+      method: 'Shake hard with ice. Double-strain.',
+      garnish: pick(['Three toasted almonds','Light cocoa dusting','Maraschino cherry']),
+      signature: 'creamy'
+    }),
+
+    /* --- Modern gin classics --- */
+
+    gin_basil_smash: () => ({
+      ingredients: ['Gin 50ml', 'Fresh basil leaves (8-10)', 'Fresh lemon juice 25ml', 'Simple syrup 15ml'],
+      method: 'Muddle basil with syrup. Add gin and lemon, shake hard with ice. Double-strain over fresh ice.',
+      garnish: pick(['Big basil top','Three basil leaves','Lemon coin and a basil sprig']),
+      signature: 'herb'
+    }),
+    lavender_collins: () => ({
+      ingredients: ['Gin 45ml', 'Lavender syrup 20ml', 'Fresh lemon juice 25ml', 'Top with soda'],
+      method: 'Shake gin, syrup, and lemon with ice. Strain over fresh ice. Top with soda.',
+      garnish: pick(['Sprig of lavender','Lemon wheel and edible flower','Three lemon coins']),
+      signature: 'floral'
+    }),
+    elderflower_gimlet: (ans) => ({
+      ingredients: [ans.spirit === 'vodka' ? 'Vodka' : 'Gin', 'Elderflower liqueur', 'Fresh lime juice', 'Simple syrup (barspoon)'],
+      method: 'Shake hard with ice. Double-strain into a chilled coupe.',
+      garnish: pick(['Lime coin','Edible flower','Three cucumber ribbons']),
+      signature: 'floral'
+    }),
+
+    /* --- Tequila & mezcal --- */
+
+    tommy_margarita: () => ({
+      ingredients: ['Tequila blanco 50ml', 'Fresh lime juice 25ml', 'Agave syrup 15ml'],
+      method: 'Shake hard with ice. Strain over fresh ice (rocks) or into a chilled coupe.',
+      garnish: pick(['Lime wheel and salted rim','Lime cheek','Dehydrated lime']),
+      signature: 'citrus'
+    }),
+    mexican_mule: () => ({
+      ingredients: ['Tequila 50ml', 'Fresh lime juice 20ml', 'Top with ginger beer'],
+      method: 'Build over ice in a copper mug. Stir gently.',
+      garnish: pick(['Lime wedge','Mint sprig','Candied ginger']),
+      signature: 'spicy'
+    }),
+    mezcal_negroni: () => ({
+      ingredients: ['Mezcal 30ml', 'Campari 30ml', 'Sweet vermouth 30ml'],
+      method: 'Stir over ice until cold. Strain over a large cube.',
+      garnish: pick(['Expressed orange peel','Charred orange wheel','Lemon twist and an olive']),
+      signature: 'smoke'
+    }),
+
+    /* --- Whiskey / bourbon --- */
+
+    mint_julep: () => ({
+      ingredients: ['Bourbon 60ml', 'Fresh mint (8-10 leaves)', 'Demerara syrup 15ml'],
+      method: 'Muddle mint with syrup in a julep cup. Fill with crushed ice, add bourbon, stir until cup frosts.',
+      garnish: pick(['Big mint bouquet','Mint sprig and powdered sugar','Three mint tops']),
+      signature: 'herb'
+    }),
+    john_collins: () => ({
+      ingredients: ['Bourbon 50ml', 'Fresh lemon juice 25ml', 'Simple syrup 15ml', 'Top with soda'],
+      method: 'Shake bourbon, lemon, and syrup with ice. Strain over fresh ice in a tall glass. Top.',
+      garnish: pick(['Lemon wheel and a cherry','Three lemon coins','Lemon twist']),
+      signature: 'citrus'
+    }),
+    whiskey_sour_classic: () => ({
+      ingredients: ['Bourbon 50ml', 'Fresh lemon juice 25ml', 'Simple syrup 15ml', 'Egg white 15ml', 'Angostura'],
+      method: 'Dry shake. Add ice, shake hard. Double-strain into a chilled coupe. Drop 3 dashes of angostura on the foam.',
+      garnish: pick(['Lemon coin','Three angostura dots in a line','Brandied cherry']),
+      signature: 'citrus'
+    }),
+
+    /* --- Spritzes --- */
+
+    hugo_spritz: () => ({
+      ingredients: ['Elderflower liqueur (St-Germain) 45ml', 'Prosecco 90ml', 'Soda water splash', '8 fresh mint leaves'],
+      method: 'Build in a wine glass over ice with the mint. Stir once gently.',
+      garnish: pick(['Mint sprig and lime wheel','Lemon coin and edible flower','Three mint tops']),
+      signature: 'spritz'
+    }),
+    st_germain_spritz: () => ({
+      ingredients: ['St-Germain elderflower 60ml', 'Top with prosecco', 'Splash of soda'],
+      method: 'Build in a wine glass over ice. Stir once.',
+      garnish: pick(['Lemon coin','Edible flower','Cucumber ribbon']),
+      signature: 'floral'
+    }),
+    pirlo: () => ({
+      ingredients: ['Aperol 60ml', 'Top with chilled dry white wine', 'Soda splash'],
+      method: 'Build over ice. Stir once gently.',
+      garnish: pick(['Orange wheel','Olive on a pick','Lemon coin']),
+      signature: 'spritz'
+    }),
+
+    /* --- Malaysian-local creative builds --- */
+
+    asam_boi_sour: (ans) => ({
+      ingredients: [
+        ['whiskey','vodka','rum','gin'].includes(ans.spirit) ? SPIRITS[ans.spirit] : 'Whisk(e)y',
+        'Asam boi syrup (sour preserved-plum syrup)',
+        'Fresh lime juice',
+        'Demerara syrup (small amount)',
+        'Egg white (or aquafaba)',
+      ],
+      method: 'Dry shake. Add ice, shake hard. Double-strain into a chilled coupe.',
+      garnish: pick(['Single asam boi on a pick','Lime coin and asam boi dust','Three drops of plum bitters']),
+      signature: 'malaysian-local'
+    }),
+    calamansi_mojito: () => ({
+      ingredients: [
+        'White rum', '8 fresh mint leaves',
+        'Fresh calamansi juice (about 5 fruit)',
+        'Palm sugar syrup',
+        'Top with soda',
+      ],
+      method: 'Muddle mint with syrup. Add rum and calamansi, fill with crushed ice, stir. Top.',
+      garnish: pick(['Big mint bouquet','Calamansi wheels','Mint sprig and a pandan ribbon']),
+      signature: 'malaysian-local'
+    }),
+    bunga_kantan_gimlet: () => ({
+      ingredients: [
+        'Gin',
+        'Fresh torch ginger flower (bunga kantan), thinly sliced',
+        'Lime cordial',
+        'Splash of fresh lime juice',
+      ],
+      method: 'Muddle the bunga kantan with cordial gently. Shake with the rest, double-strain into a chilled coupe.',
+      garnish: pick(['A single bunga kantan petal','Lime coin and a small lemongrass stalk','Three drops of celery bitters']),
+      signature: 'malaysian-local'
+    }),
+    sambal_margarita: () => ({
+      ingredients: [
+        'Tequila blanco',
+        'Fresh lime juice', 'Agave syrup',
+        'A pinch of sambal belacan muddled in (or sambal salt rim)',
+      ],
+      method: 'Shake with ice. Strain into a glass with a sambal-salt rim.',
+      garnish: pick(['Lime wheel and chilli salt','Slit cili padi','Charred lime cheek']),
+      signature: 'malaysian-local'
+    }),
+    pandan_milk_punch: () => ({
+      ingredients: [
+        'Aged rum or bourbon',
+        'Pandan-infused milk (warm-steeped)',
+        'Demerara syrup',
+        'A pinch of salt',
+      ],
+      method: 'Shake very hard with ice so the texture lands silky. Double-strain over fresh ice.',
+      garnish: pick(['Pandan leaf knot','Toasted coconut','Light grating of nutmeg']),
+      signature: 'malaysian-local'
+    }),
+    kopi_negroni: () => ({
+      ingredients: [
+        'Gin (or bourbon)',
+        'Campari',
+        'Sweet vermouth',
+        'Cold-brew kopi-O (barspoon)',
+      ],
+      method: 'Stir over ice until cold. Strain over a large cube.',
+      garnish: pick(['Expressed orange peel and three coffee beans','Charred orange peel','Lemon twist']),
+      signature: 'malaysian-local'
+    }),
+
   };
 
   // Multi-select profile pairs (keys alphabetically sorted).
@@ -896,6 +1155,8 @@
     'spicy+smoky': 'cili_padi_margarita',
     'spicy+bitter': 'highball_spice',
     'sweet+smoky': 'smoky_margarita',
+    // Paper Plane / Trinidad Sour territory
+    'bitter+nutty': 'trinidad_sour',
     // New: creamy combos
     'creamy+sweet': 'alexander',
     'citrusy+creamy': 'golden_milk_punch',
@@ -966,50 +1227,59 @@
     // Brunch + late-night occasion routes (new)
     if (occasion === 'brunch') {
       if (profile === 'bitter' || mood === 'comforting') return 'bloody_mary';
-      if (profile === 'citrusy' || mood === 'celebratory') return 'mimosa';
-      if (profile === 'sweet') return Math.random() < 0.5 ? 'mimosa' : 'bee_knees';
+      if (profile === 'citrusy' || mood === 'celebratory') return Math.random() < 0.5 ? 'mimosa' : 'aperol_spritz';
+      if (profile === 'sweet') return pick(['mimosa','bee_knees','hugo_spritz']);
       if (profile === 'tropical') return 'pina_colada';
       if (profile === 'creamy') return 'irish_coffee';
       if (profile === 'spicy') return 'bloody_mary';
-      return 'mimosa';
+      if (profile === 'floral') return 'st_germain_spritz';
+      return pick(['mimosa','aperol_spritz','pimms_cup']);
     }
     if (occasion === 'late-night') {
-      if (mood === 'awake' || profile === 'creamy') return 'irish_coffee';
-      if (profile === 'sweet' || profile === 'nutty') return 'nutty_old_fashioned';
-      if (profile === 'bitter') return spirit === 'whiskey' ? 'manhattan' : 'boulevardier';
-      if (profile === 'smoky') return 'oaxaca_old_fashioned';
-      return 'old_fashioned';
+      if (mood === 'awake' || profile === 'creamy') return Math.random() < 0.5 ? 'irish_coffee' : 'brandy_alexander';
+      if (profile === 'sweet' || profile === 'nutty') return Math.random() < 0.5 ? 'nutty_old_fashioned' : 'vieux_carre';
+      if (profile === 'bitter') return spirit === 'whiskey' ? 'manhattan' : 'hanky_panky';
+      if (profile === 'smoky') return Math.random() < 0.5 ? 'oaxaca_old_fashioned' : 'mezcal_negroni';
+      if (profile === 'herbal') return 'mint_julep';
+      return pick(['old_fashioned','vieux_carre','hanky_panky']);
     }
 
-    // Cosy + playful mood routes (new)
+    // Cosy + playful mood routes (new + expanded)
     if (mood === 'cosy') {
-      if (profile === 'sweet' || profile === 'creamy') return 'hot_toddy';
+      if (profile === 'sweet' || profile === 'creamy') return Math.random() < 0.5 ? 'hot_toddy' : 'brandy_alexander';
       if (profile === 'citrusy') return 'hot_toddy';
-      if (profile === 'nutty' || profile === 'smoky') return 'nutty_old_fashioned';
-      if (profile === 'herbal') return 'whiskey_smash';
+      if (profile === 'nutty') return Math.random() < 0.5 ? 'nutty_old_fashioned' : 'pink_squirrel';
+      if (profile === 'smoky') return 'mezcal_negroni';
+      if (profile === 'herbal') return Math.random() < 0.5 ? 'whiskey_smash' : 'gin_basil_smash';
       if (profile === 'spicy') return 'hot_toddy';
+      if (profile === 'floral') return 'lavender_collins';
       // fallthrough handled below
     }
     if (mood === 'playful') {
-      if (profile === 'citrusy' || profile === 'sweet') return 'sgroppino';
-      if (profile === 'tropical') return 'pina_colada';
-      if (profile === 'floral') return 'bandung_spritz';
-      if (profile === 'creamy') return 'alexander';
-      if (profile === 'spicy') return 'cili_padi_margarita';
+      if (profile === 'citrusy' || profile === 'sweet') return pick(['sgroppino','paper_plane','hugo_spritz']);
+      if (profile === 'tropical') return pick(['pina_colada','painkiller','hurricane','doctor_funk']);
+      if (profile === 'floral') return Math.random() < 0.5 ? 'bandung_spritz' : 'lavender_collins';
+      if (profile === 'creamy') return Math.random() < 0.5 ? 'alexander' : 'grasshopper';
+      if (profile === 'spicy') return Math.random() < 0.5 ? 'cili_padi_margarita' : 'mexican_mule';
+      if (profile === 'herbal') return 'gin_basil_smash';
       // fallthrough handled below
     }
 
-    // Creamy + nutty profile routes (new)
+    // Creamy + nutty profile routes (expanded)
     if (profile === 'creamy') {
-      if (occasion === 'nightcap') return 'white_russian';
+      if (occasion === 'nightcap') return Math.random() < 0.5 ? 'white_russian' : 'brandy_alexander';
       if (mood === 'awake') return 'irish_coffee';
-      if (spirit === 'brandy' || spirit === 'gin') return 'alexander';
-      return 'golden_milk_punch';
+      if (spirit === 'brandy') return 'brandy_alexander';
+      if (spirit === 'gin') return Math.random() < 0.5 ? 'alexander' : 'grasshopper';
+      if (mood === 'playful') return 'grasshopper';
+      return pick(['golden_milk_punch','pandan_milk_punch','alexander']);
     }
     if (profile === 'nutty') {
-      if (strength === 'strong' || occasion === 'nightcap') return 'nutty_old_fashioned';
+      if (strength === 'strong' || occasion === 'nightcap') return Math.random() < 0.5 ? 'nutty_old_fashioned' : 'vieux_carre';
+      if (mood === 'playful') return 'pink_squirrel';
       if (spirit === 'rum') return 'orgeat_swizzle';
-      return 'orgeat_swizzle';
+      if (spirit === 'whiskey' && profile === 'bitter') return 'trinidad_sour';
+      return Math.random() < 0.5 ? 'orgeat_swizzle' : 'pink_squirrel';
     }
 
     // Malaysia-local routes (priority - signature of the house)
@@ -1024,33 +1294,38 @@
     if (occasion === 'nightcap' && profile === 'sweet') return 'gula_melaka_old_fashioned';
     if (profile === 'citrusy' && (occasion === 'session' || occasion === 'with-food')) return 'calamansi_highball';
 
-    // Strength routes - "strong" picks the spirit-forward classics first
+    // Strength routes - "strong" picks the spirit-forward classics first (expanded)
     if (strength === 'strong') {
       if (spirit === 'gin') {
-        if (profile === 'herbal' || profile === 'bitter') return Math.random() < 0.5 ? 'last_word' : 'martini_dry';
+        if (profile === 'herbal' || profile === 'bitter') return pick(['last_word','martini_dry','hanky_panky']);
         if (profile === 'floral') return 'aviation';
         if (profile === 'citrusy') return 'corpse_reviver_2';
         if (mood === 'adventurous') return 'vesper';
       }
       if (spirit === 'whiskey') {
-        if (profile === 'sweet' || profile === 'bitter') return Math.random() < 0.4 ? 'manhattan' : 'old_fashioned';
+        if (profile === 'sweet' || profile === 'bitter') return pick(['manhattan','old_fashioned','vieux_carre']);
         if (profile === 'herbal' || profile === 'smoky') return 'sazerac';
-        return 'old_fashioned';
+        if (profile === 'nutty') return 'trinidad_sour';
+        return Math.random() < 0.5 ? 'old_fashioned' : 'vieux_carre';
       }
       if (spirit === 'mezcal' || spirit === 'tequila') {
-        if (profile === 'smoky' || profile === 'spirit-forward') return 'oaxaca_old_fashioned';
-        if (profile === 'bitter') return 'naked_famous';
+        if (profile === 'smoky' || profile === 'spirit-forward') return Math.random() < 0.5 ? 'oaxaca_old_fashioned' : 'mezcal_negroni';
+        if (profile === 'bitter') return Math.random() < 0.5 ? 'naked_famous' : 'mezcal_negroni';
+        if (profile === 'citrusy') return 'tommy_margarita';
       }
-      if (spirit === 'rum' || spirit === 'brandy') return 'old_fashioned';
+      if (spirit === 'rum' || spirit === 'brandy') return Math.random() < 0.5 ? 'old_fashioned' : 'vieux_carre';
     }
 
-    // Tropical short-circuit
+    // Tropical short-circuit (expanded with tiki classics)
     if (profile === 'tropical') {
-      if (spirit === 'rum' && (mood === 'celebratory' || mood === 'mellow')) return 'pina_colada';
-      if (spirit === 'rum') return 'mai_tai';
+      if (spirit === 'rum' && (mood === 'celebratory' || mood === 'mellow')) return pick(['pina_colada','painkiller','hurricane']);
+      if (spirit === 'rum' && strength === 'strong') return 'zombie';
+      if (spirit === 'rum' && mood === 'adventurous') return pick(['zombie','hurricane','doctor_funk']);
+      if (spirit === 'rum') return Math.random() < 0.4 ? 'mai_tai' : 'painkiller';
+      if (mood === 'playful') return pick(['hurricane','painkiller','tropical_shake']);
       return 'tropical_shake';
     }
-    if (mood === 'adventurous' && ['sweet','citrusy','spicy'].includes(profile)) return 'tropical_shake';
+    if (mood === 'adventurous' && ['sweet','citrusy','spicy'].includes(profile)) return Math.random() < 0.5 ? 'tropical_shake' : 'paper_plane';
 
     // Occasion routes
     if (occasion === 'celebration') {
@@ -1070,10 +1345,12 @@
     }
     if (occasion === 'aperitif') {
       if (profile === 'smoky') return 'smoke_sour';
-      if (profile === 'citrusy' && spirit === 'tequila') return 'paloma';
-      if (profile === 'bitter') return spirit === 'whiskey' ? 'boulevardier' : 'low_abv_spritz';
+      if (profile === 'citrusy' && spirit === 'tequila') return Math.random() < 0.5 ? 'paloma' : 'tommy_margarita';
+      if (profile === 'bitter') return pick(['boulevardier','americano','bicicletta','aperol_spritz']);
       if (profile === 'sweet') return 'bee_knees';
-      return 'low_abv_spritz';
+      if (profile === 'floral') return Math.random() < 0.5 ? 'hugo_spritz' : 'st_germain_spritz';
+      if (profile === 'herbal') return 'gin_basil_smash';
+      return pick(['low_abv_spritz','aperol_spritz','americano','pirlo']);
     }
     if (occasion === 'with-food') {
       if (profile === 'smoky') return 'smoke_sour';
@@ -1083,13 +1360,13 @@
       return 'low_abv_spritz';
     }
     if (occasion === 'session') {
-      if (profile === 'spicy') return spirit === 'vodka' ? 'moscow_mule' : 'dark_n_stormy';
-      if (profile === 'floral') return 'flora_fizz';
+      if (profile === 'spicy') return spirit === 'vodka' ? 'moscow_mule' : (spirit === 'tequila' ? 'mexican_mule' : 'dark_n_stormy');
+      if (profile === 'floral') return Math.random() < 0.5 ? 'flora_fizz' : 'hugo_spritz';
       if (profile === 'smoky') return 'smoke_sour';
-      if (profile === 'herbal') return Math.random() < 0.5 ? 'mojito' : 'southside';
-      if (profile === 'citrusy') return Math.random() < 0.5 ? 'tom_collins' : 'gimlet_classic';
+      if (profile === 'herbal') return pick(['mojito','southside','gin_basil_smash','mint_julep']);
+      if (profile === 'citrusy') return pick(['tom_collins','gimlet_classic','john_collins','tommy_margarita']);
       if (profile === 'sweet') return 'bramble';
-      return 'low_abv_spritz';
+      return pick(['low_abv_spritz','pimms_cup','americano']);
     }
 
     // Anytime / mood-spirit-profile fallthrough
@@ -1251,6 +1528,40 @@
       hot_toddy: `Whisky, lemon, honey, hot water. For the room that needs warming.`,
       irish_coffee: `Whiskey, coffee, sugar, cream float. The original after-dinner pick-me-up.`,
       sgroppino: `Sorbet, vodka, prosecco. A drink-dessert hybrid. Disappears fast.`,
+      // Mega-expansion
+      vieux_carre: `Rye, cognac, vermouth, bénédictine, two bitters. A New Orleans nightcap.`,
+      paper_plane: `Bourbon, amaro, aperol, lemon. Equal parts. A modern classic.`,
+      trinidad_sour: `45ml of angostura as the base. Yes. Built to surprise.`,
+      hanky_panky: `Gin, vermouth, a touch of fernet. Spirit-forward and bitter.`,
+      aperol_spritz: `Aperol, prosecco, soda. Easy in any weather.`,
+      americano: `Campari, sweet vermouth, soda. Low-ABV, conversation-friendly.`,
+      bicicletta: `Campari, white wine, soda. Italian afternoon shape.`,
+      pimms_cup: `Pimm's with lemonade and a salad's worth of garnish.`,
+      painkiller: `Dark rum, pineapple, orange, coconut cream. Tiki, BVI style.`,
+      zombie: `Three rums and tropical fruit. Treat with respect.`,
+      hurricane: `Two rums, passion fruit, lime. New Orleans tiki.`,
+      doctor_funk: `Dark rum, lime, grenadine, absinthe rinse, soda. Tiki original.`,
+      brandy_alexander: `Brandy, dark cacao, cream. A short silky dessert drink.`,
+      grasshopper: `Mint and chocolate cream. Vintage, polarising, fun.`,
+      pink_squirrel: `Almond and chocolate cream. Forgotten and worth bringing back.`,
+      gin_basil_smash: `Gin, basil, lemon. Modern German classic, brisk and green.`,
+      lavender_collins: `Gin, lavender, lemon, soda. Floral and easy.`,
+      elderflower_gimlet: `Gin or vodka, elderflower, lime. A softer Gimlet.`,
+      tommy_margarita: `Tequila, lime, agave. The clean Margarita.`,
+      mexican_mule: `Tequila, lime, ginger beer. Spicy long drink.`,
+      mezcal_negroni: `Negroni with smoke. The kind of thing you order at our bar by accident and remember for years.`,
+      mint_julep: `Bourbon, mint, sugar, crushed ice. The Kentucky classic.`,
+      john_collins: `Bourbon Tom Collins. Long, simple, sessionable.`,
+      whiskey_sour_classic: `Bourbon, lemon, sugar, egg white. Three angostura dots on the foam.`,
+      hugo_spritz: `Elderflower, prosecco, mint. The Italian alpine spritz.`,
+      st_germain_spritz: `St-Germain, prosecco, soda. Floral, light, photogenic.`,
+      pirlo: `Aperol, white wine, soda. Lighter than the Spritz.`,
+      asam_boi_sour: `Asam boi syrup, spirit, lime, egg white. Malaysian preserved-plum sour.`,
+      calamansi_mojito: `White rum, calamansi, mint, palm sugar. Mojito with a Malaysian citrus accent.`,
+      bunga_kantan_gimlet: `Gin, torch ginger flower, lime cordial. Local botanical gimlet.`,
+      sambal_margarita: `Tequila, lime, sambal-belacan twist. Polarising but excellent.`,
+      pandan_milk_punch: `Pandan-infused milk, rum, demerara. Silky tropical milk punch.`,
+      kopi_negroni: `Gin or bourbon, Campari, vermouth, a barspoon of cold-brewed kopi-O. The local Negroni twist.`,
     };
     let line = taglines[templateKey] || 'Built for your mood and palate.';
     if (profiles.length === 2) {
