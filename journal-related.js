@@ -121,6 +121,16 @@
     { url: '/journal/tropical-kombucha-brewing/',                 title: 'Brewing kombucha in tropical climates',        cat: 'ferment' },
     { url: '/journal/shrubs-and-switchels/',                      title: 'Shrubs and switchels',                         cat: 'ferment' },
     { url: '/journal/lacto-fermentation-cocktails/',              title: 'Lacto-fermentation in cocktails',              cat: 'ferment' },
+    { url: '/journal/tepache-cocktails/',                         title: 'Tepache for cocktails',                        cat: 'ferment' },
+    { url: '/journal/vinegar-mother-at-home/',                    title: 'Making a vinegar mother at home',              cat: 'ferment' },
+    { url: '/journal/wild-fermentation-safety/',                  title: 'Wild fermentation safety',                     cat: 'ferment' },
+    { url: '/journal/cold-brew-tea-cocktails/',                   title: 'Cold-brew tea for cocktails',                  cat: 'malaysian' },
+    { url: '/journal/matcha-cocktails/',                          title: 'Matcha in cocktails',                          cat: 'malaysian' },
+    { url: '/journal/butterfly-pea-flower-cocktails/',            title: 'Butterfly pea flower in cocktails',            cat: 'malaysian' },
+    { url: '/journal/earl-grey-cocktails/',                       title: 'Earl Grey in cocktails',                       cat: 'malaysian' },
+    { url: '/journal/non-alcoholic-spirit-substitutes/',          title: 'Non-alcoholic spirit substitutes',             cat: 'zero' },
+    { url: '/journal/zero-proof-spritz-formats/',                 title: 'Zero-proof spritz formats',                    cat: 'zero' },
+    { url: '/journal/non-alcoholic-negroni/',                     title: 'Non-alcoholic Negroni',                        cat: 'zero' },
 
     // Deep dives
     { url: '/journal/martini-deep-dive/',                         title: 'The Martini deep dive',                        cat: 'deepdive' },
