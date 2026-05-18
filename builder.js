@@ -407,6 +407,331 @@
       garnish: pick(['Dehydrated lime wheel and a pinch of chilli salt','Lime cheek and a pasilla chilli dust','Charred grapefruit twist']),
       signature: 'smoke+sweet'
     }),
+
+    /* ----- Expansion: classic strong sips ----- */
+
+    manhattan: () => ({
+      ingredients: [
+        'Rye whisk(e)y (or bourbon for a softer pour)',
+        cap(pick(['sweet vermouth','rosso vermouth','vermouth con vaniglia'])),
+        'Angostura bitters', cap(pick(['orange bitters','aromatic bitters'])),
+      ],
+      method: 'Stir long and cold with ice. Strain into a chilled coupe.',
+      garnish: pick(['Brandied cherry on a pick','Expressed orange peel','Lemon twist and a single cherry']),
+      signature: 'spirit-forward'
+    }),
+    sazerac: () => ({
+      ingredients: [
+        'Rye whisk(e)y (or cognac for a softer take)',
+        'Demerara syrup', "Peychaud's bitters", 'Dash of Angostura',
+        'Absinthe rinse on the glass',
+      ],
+      method: 'Stir the rye, syrup, and bitters cold. Rinse a chilled rocks glass with absinthe, discard. Strain in.',
+      garnish: pick(['Expressed lemon peel (discard the peel)','Long lemon twist','Lemon coin']),
+      signature: 'spirit-forward'
+    }),
+    last_word: () => ({
+      ingredients: [
+        'Gin', 'Green chartreuse', 'Maraschino liqueur', 'Fresh lime juice',
+      ],
+      method: 'Equal parts. Shake hard with ice. Double-strain into a chilled coupe.',
+      garnish: pick(['Brandied cherry','Lime peel','Three drops of green chartreuse on top']),
+      signature: 'herb'
+    }),
+    vesper: () => ({
+      ingredients: [
+        'Gin', 'Vodka', 'Lillet Blanc (or Cocchi Americano)',
+      ],
+      method: 'Shake until very cold, double-strain into a frozen coupe. (Bond was wrong about stirring.)',
+      garnish: pick(['Long lemon peel','Expressed orange peel','Olive on a pick']),
+      signature: 'spirit-forward'
+    }),
+    aviation: () => ({
+      ingredients: [
+        'Gin', 'Maraschino liqueur', 'Crème de violette', 'Fresh lemon juice',
+      ],
+      method: 'Shake hard with ice. Double-strain into a chilled coupe.',
+      garnish: pick(['Brandied cherry on the bottom','Lemon coin','A single violet petal']),
+      signature: 'flower'
+    }),
+    corpse_reviver_2: () => ({
+      ingredients: [
+        'Gin', 'Cointreau', 'Lillet Blanc (or dry vermouth)', 'Fresh lemon juice',
+        'Absinthe rinse on the glass',
+      ],
+      method: 'Rinse a chilled coupe with absinthe and discard. Shake the rest hard with ice and strain in.',
+      garnish: pick(['Expressed lemon peel','Lemon coin','Brandied cherry on a pick']),
+      signature: 'citrus'
+    }),
+    boulevardier: () => ({
+      ingredients: [
+        'Bourbon (or rye for more bite)',
+        'Campari',
+        cap(pick(['sweet vermouth','vermouth con vaniglia','rosso vermouth'])),
+      ],
+      method: 'Stir over ice until cold. Strain over a single large ice cube in a rocks glass.',
+      garnish: pick(['Expressed orange peel','Lemon twist','Orange wheel and an olive']),
+      signature: 'bitter'
+    }),
+
+    /* ----- Expansion: long + sessionable ----- */
+
+    mojito: () => ({
+      ingredients: [
+        'White rum', 'Six to eight fresh mint leaves',
+        'Fresh lime juice',
+        cap(pick(['cane sugar','simple syrup','demerara syrup'])),
+        'Top with chilled soda',
+      ],
+      method: 'Muddle mint gently with sugar and lime. Add rum, fill with crushed ice, stir. Top with soda.',
+      garnish: pick(['Big mint bouquet','Mint sprig and a lime wheel','Mint top and three lime coins']),
+      signature: 'herb'
+    }),
+    tom_collins: () => ({
+      ingredients: [
+        'Gin', 'Fresh lemon juice',
+        cap(pick(['simple syrup','rich syrup'])),
+        'Top with chilled soda',
+      ],
+      method: 'Shake the gin, lemon, and syrup with ice. Strain into a tall glass over fresh ice. Top.',
+      garnish: pick(['Lemon wheel and a maraschino cherry','Three lemon coins','Lemon twist and a fresh mint top']),
+      signature: 'citrus'
+    }),
+    moscow_mule: () => ({
+      ingredients: [
+        'Vodka', 'Fresh lime juice',
+        'Top with chilled ginger beer',
+      ],
+      method: 'Build over ice in a copper mug (or any tall glass). Stir gently.',
+      garnish: pick(['Lime wedge and crystallised ginger','Mint sprig and a lime cheek','Cucumber ribbon']),
+      signature: 'ginger'
+    }),
+    dark_n_stormy: () => ({
+      ingredients: [
+        'Dark rum (Gosling\'s if we have it)',
+        'Fresh lime juice',
+        'Top with chilled ginger beer',
+      ],
+      method: 'Build over ice. Float the dark rum on top so it streaks down through the ginger beer.',
+      garnish: pick(['Lime wedge','Candied ginger on a pick','Mint sprig and a lime wheel']),
+      signature: 'ginger'
+    }),
+    southside: () => ({
+      ingredients: [
+        'Gin', 'Six to eight fresh mint leaves', 'Fresh lime juice',
+        cap(pick(['simple syrup','mint-infused syrup'])),
+      ],
+      method: 'Muddle mint with syrup gently. Shake with the gin and lime, ice-cold. Double-strain into a chilled coupe.',
+      garnish: pick(['Three small mint tops','Lime coin and a mint sprig','Slap of mint']),
+      signature: 'herb'
+    }),
+
+    /* ----- Expansion: sweet + brunch + dessert ----- */
+
+    bee_knees: () => ({
+      ingredients: [
+        'Gin', 'Honey syrup (1:1 honey to warm water)',
+        'Fresh lemon juice',
+      ],
+      method: 'Shake hard with ice. Double-strain into a chilled coupe.',
+      garnish: pick(['Lemon coin','Honeycomb shard on the rim','Expressed orange peel']),
+      signature: 'sweet'
+    }),
+    gold_rush: () => ({
+      ingredients: [
+        'Bourbon', 'Honey syrup (1:1 honey to warm water)', 'Fresh lemon juice',
+      ],
+      method: 'Shake hard with ice. Strain over a single large ice cube.',
+      garnish: pick(['Lemon twist','Honeycomb shard','Sugared lemon coin']),
+      signature: 'sweet'
+    }),
+    bramble: () => ({
+      ingredients: [
+        'Gin', 'Fresh lemon juice',
+        cap(pick(['simple syrup','rich syrup'])),
+        'Crème de mûre (or blackberry liqueur), drizzled on top',
+      ],
+      method: 'Shake the gin, lemon, and syrup. Strain over crushed ice. Drizzle the mûre over the top so it bleeds down.',
+      garnish: pick(['Two fresh blackberries','Lemon wheel and a blackberry on a pick','Mint top and a single blackberry']),
+      signature: 'sweet'
+    }),
+    clover_club: () => ({
+      ingredients: [
+        'Gin', 'Fresh lemon juice', 'Raspberry syrup (or muddled fresh raspberries with simple)',
+        'Egg white (or aquafaba)',
+      ],
+      method: 'Dry shake first, then shake hard with ice. Double-strain into a chilled coupe so the head sits clean.',
+      garnish: pick(['Two raspberries on a pick','Single raspberry floated','Lemon coin and a rose petal']),
+      signature: 'sweet'
+    }),
+    french_75: () => ({
+      ingredients: [
+        'Gin (or cognac for a French 76)',
+        'Fresh lemon juice',
+        cap(pick(['simple syrup','rich syrup'])),
+        'Top with chilled champagne (or prosecco)',
+      ],
+      method: 'Shake the gin, lemon, and syrup with ice. Strain into a chilled flute. Top with the sparkling.',
+      garnish: pick(['Long lemon spiral','Lemon coin and an edible flower','Lemon twist']),
+      signature: 'sparkle'
+    }),
+    pina_colada: () => ({
+      ingredients: [
+        'Aged white rum (with an overproof float if you like)',
+        'Fresh pineapple juice',
+        'Coconut cream',
+        'Fresh lime juice',
+      ],
+      method: 'Blend with crushed ice until silky. Pour into a hurricane (or any tall glass).',
+      garnish: pick(['Pineapple wedge and a maraschino cherry','Toasted coconut flake rim','Pineapple frond and an orchid']),
+      signature: 'tropical'
+    }),
+
+    /* ----- Expansion: smoky + agave ----- */
+
+    naked_famous: () => ({
+      ingredients: [
+        'Mezcal', 'Yellow chartreuse', 'Aperol', 'Fresh lime juice',
+      ],
+      method: 'Equal parts. Shake hard with ice. Double-strain into a chilled coupe.',
+      garnish: pick(['Lime coin','Expressed grapefruit peel','Single charred lime wheel']),
+      signature: 'smoke'
+    }),
+    oaxaca_old_fashioned: () => ({
+      ingredients: [
+        'Reposado tequila', 'Mezcal (a barspoon)',
+        'Agave syrup', 'Mole bitters (or angostura with a chocolate dash)',
+      ],
+      method: 'Stir over a large ice cube until cold and softened.',
+      garnish: pick(['Flamed orange peel','Charred orange wheel','Orange peel and a pinch of smoked salt']),
+      signature: 'spirit-forward'
+    }),
+
+    /* ----- Expansion: Malaysian local ----- */
+
+    teh_tarik_old_fashioned: () => ({
+      ingredients: [
+        'Bourbon (or aged rum)',
+        'Teh tarik reduction (strong black tea, condensed milk, reduced to a syrup)',
+        'A dash of cardamom bitters',
+        'A pinch of sea salt',
+      ],
+      method: 'Stir over a large ice cube until cold. Salt brings the milk-tea aroma forward.',
+      garnish: pick(['Expressed orange peel and a star anise','Three cardamom pods on a pick','A cinnamon stick burned to scent']),
+      signature: 'malaysian-local'
+    }),
+    cili_padi_margarita: () => ({
+      ingredients: [
+        'Tequila blanco', 'Fresh lime juice', 'Agave syrup',
+        'Half a cili padi, muddled (seeds in for heat)',
+        'Smoked salt or chilli-salt for the rim',
+      ],
+      method: 'Muddle the cili padi with agave. Shake everything hard with ice. Double-strain into a salt-rimmed coupe.',
+      garnish: pick(['Lime wheel and a slit cili padi','Whole cili padi floated','Lime coin with chilli salt dusted on'    ]),
+      signature: 'malaysian-local'
+    }),
+    cendol_milk_punch: () => ({
+      ingredients: [
+        'Aged rum',
+        'Coconut milk (or coconut cream cut with whole milk)',
+        'Gula melaka syrup',
+        'Pandan tincture (or a few drops of pandan extract)',
+        'A pinch of salt',
+      ],
+      method: 'Shake very hard with ice so the texture lands silky. Double-strain over fresh ice.',
+      garnish: pick(['A pandan leaf knot and a curl of gula melaka','Toasted coconut flakes','Three green cendol noodles floated on top']),
+      signature: 'malaysian-local'
+    }),
+    bandung_spritz: (ans) => ({
+      ingredients: [
+        ans.spirit === 'gin' ? 'Gin' : 'Vodka',
+        'Rose syrup (Bandung-style, the pink one)',
+        'A short pour of full-cream milk (or oat for vegan)',
+        'Top with chilled prosecco',
+      ],
+      method: 'Build the base, rose syrup, and milk over ice in a wine glass. Stir gently. Top with prosecco.',
+      garnish: pick(['Three rose petals','A long lemon zest','Dried hibiscus flower on the rim']),
+      signature: 'malaysian-local'
+    }),
+    nasi_lemak_old_fashioned: () => ({
+      ingredients: [
+        'Bourbon (or aged rum)',
+        'Pandan-coconut syrup (pandan steeped in warm coconut sugar water)',
+        'A pinch of sea salt',
+        'Angostura bitters',
+      ],
+      method: 'Stir over a large ice cube until cold. The salt + coconut + pandan does the nasi lemak nod.',
+      garnish: pick(['Toasted coconut chip on the rim','A pandan leaf ribbon and a coconut shaving','Charred lime peel and a coconut flake']),
+      signature: 'malaysian-local'
+    }),
+
+    /* ----- Expansion: duo combos ----- */
+
+    spicy_paloma: () => ({
+      ingredients: [
+        'Tequila blanco (or mezcal for smoke)', 'Fresh pink grapefruit juice',
+        'Fresh lime juice', 'Half a cili padi, muddled', 'Agave syrup',
+        'A pinch of salt', 'Top with chilled grapefruit soda',
+      ],
+      method: 'Muddle the cili padi with agave. Shake the rest with ice. Strain over fresh ice. Top.',
+      garnish: pick(['Pink grapefruit wedge with chilli salt rim','Slit cili padi floated','Charred grapefruit twist']),
+      signature: 'spicy+citrus'
+    }),
+    tropical_mojito: () => ({
+      ingredients: [
+        'White rum (with an aged float)',
+        'Fresh pineapple juice (or muddled fresh pineapple)',
+        'Fresh lime juice', 'Six to eight fresh mint leaves',
+        cap(pick(['cane sugar','demerara syrup'])),
+        'Top with chilled soda',
+      ],
+      method: 'Muddle mint with sugar. Shake the rest. Pour over crushed ice. Top.',
+      garnish: pick(['Pineapple wedge and a mint bouquet','Lime wheel and a pineapple frond','Toasted coconut and a mint top']),
+      signature: 'citrus+tropical'
+    }),
+    herbal_negroni: (ans) => ({
+      ingredients: [
+        ans.spirit === 'whiskey' ? 'Bourbon' : 'Gin',
+        'Campari',
+        'Cynar (artichoke amaro)',
+        'Sweet vermouth',
+        'A dash of celery bitters',
+      ],
+      method: 'Stir over ice until cold. Strain over a large ice cube.',
+      garnish: pick(['Expressed grapefruit peel','Olive and an orange wheel','Celery leaf and an orange peel']),
+      signature: 'bitter+herb'
+    }),
+    boulevardier_rich: () => ({
+      ingredients: [
+        'Bourbon (or rye)',
+        'Campari',
+        'Sweet vermouth (with a dash of vermouth con vaniglia)',
+        'A barspoon of maple syrup',
+      ],
+      method: 'Stir over ice until cold. Strain over a large rock.',
+      garnish: pick(['Expressed orange peel','Lemon twist','Brandied cherry']),
+      signature: 'bitter+sweet'
+    }),
+    garden_botanic: () => ({
+      ingredients: [
+        'Gin', 'Elderflower liqueur',
+        'Fresh lemon juice',
+        cap(pick(['basil syrup','rosemary syrup','thyme honey syrup'])),
+        'Top with chilled tonic',
+      ],
+      method: 'Shake the base, citrus, and syrups with ice. Strain over fresh ice. Top with tonic.',
+      garnish: pick(['Rosemary sprig and a lemon coin','Basil leaf clap and an edible flower','Thyme sprig and a sliced cucumber wheel']),
+      signature: 'floral+herb'
+    }),
+    blossom_bramble: () => ({
+      ingredients: [
+        'Gin', 'Fresh lemon juice', 'Rose syrup',
+        'Crème de mûre, drizzled on top',
+      ],
+      method: 'Shake the gin, lemon, and rose with ice. Strain over crushed ice. Drizzle the mûre over the top so it bleeds down.',
+      garnish: pick(['Two raspberries and a rose petal','Lemon coin and three small berries','Edible flower and a lemon zest']),
+      signature: 'floral+sweet'
+    }),
   };
 
   // Multi-select profile pairs (keys alphabetically sorted).
@@ -415,6 +740,30 @@
     'bitter+citrusy': 'jungle_bird',
     'citrusy+floral': 'flora_fizz_xl',
     'smoky+sweet': 'smoky_margarita',
+    'bitter+herbal': 'herbal_negroni',
+    'bitter+sweet': 'boulevardier_rich',
+    'floral+herbal': 'garden_botanic',
+    'floral+sweet': 'blossom_bramble',
+    'citrusy+spicy': 'spicy_paloma',
+    'citrusy+tropical': 'tropical_mojito',
+    'citrusy+sweet': 'bee_knees',
+    'smoky+citrusy': 'naked_famous',
+    'herbal+sweet': 'whiskey_smash',
+    'floral+tropical': 'flora_fizz_xl',
+    'smoky+spicy': 'smoke_sour',
+    'bitter+smoky': 'oaxaca_old_fashioned',
+    'sweet+tropical': 'pina_colada',
+    'herbal+tropical': 'mojito',
+    'herbal+smoky': 'naked_famous',
+    'bitter+floral': 'aviation',
+    'bitter+tropical': 'jungle_bird',
+    'spicy+sweet': 'dark_n_stormy',
+    'spicy+tropical': 'jungle_bird',
+    'spicy+herbal': 'highball_spice',
+    'spicy+floral': 'flora_fizz_xl',
+    'spicy+smoky': 'cili_padi_margarita',
+    'spicy+bitter': 'highball_spice',
+    'sweet+smoky': 'smoky_margarita',
   };
 
   // Template-key → /cocktails/{slug}/ URL slug.
@@ -428,6 +777,9 @@
     gula_melaka_old_fashioned: 'gula-melaka-old-fashioned',
     calamansi_highball: 'calamansi-highball',
     kopi_sour: 'kopi-sour',
+    manhattan: 'manhattan',
+    boulevardier: 'boulevardier',
+    boulevardier_rich: 'boulevardier',
   };
   const MENU_NAMES = {
     jungle_bird: 'Jungle Bird',
@@ -437,6 +789,9 @@
     gula_melaka_old_fashioned: 'Gula Melaka Old Fashioned',
     calamansi_highball: 'Calamansi Highball',
     kopi_sour: 'Kopi Sour',
+    manhattan: 'Manhattan',
+    boulevardier: 'Boulevardier',
+    boulevardier_rich: 'Boulevardier (richer)',
   };
 
   /* ----- Routing ----- */
@@ -450,21 +805,51 @@
     const occasion = ans.occasion;
     const spirit = ans.spirit;
 
-    // Duo lookup first
+    // Duo lookup first - if user picked two profiles, prefer the duo
+    // template that captures the combo.
     if (profiles.length === 2) {
       const duoKey = profiles.join('+');
       if (DUO_TEMPLATES[duoKey]) return DUO_TEMPLATES[duoKey];
     }
 
-    // Malaysia-local routes
+    // Malaysia-local routes (priority - signature of the house)
     if (mood === 'awake' && profile === 'citrusy') return 'kopi_sour';
     if (mood === 'awake') return 'espresso_awake';
+    if (mood === 'comforting' && profile === 'sweet' && (spirit === 'whiskey' || spirit === 'rum')) return 'teh_tarik_old_fashioned';
+    if (profile === 'spicy' && spirit === 'tequila') return 'cili_padi_margarita';
+    if (mood === 'adventurous' && profile === 'tropical' && spirit === 'rum') return 'cendol_milk_punch';
+    if (profile === 'floral' && occasion === 'celebration' && (spirit === 'gin' || spirit === 'vodka')) return 'bandung_spritz';
+    if (profile === 'sweet' && occasion === 'nightcap' && (spirit === 'whiskey' || spirit === 'rum')) return Math.random() < 0.5 ? 'gula_melaka_old_fashioned' : 'nasi_lemak_old_fashioned';
     if (profile === 'herbal' && strength === 'light') return 'pandan_collins';
     if (occasion === 'nightcap' && profile === 'sweet') return 'gula_melaka_old_fashioned';
     if (profile === 'citrusy' && (occasion === 'session' || occasion === 'with-food')) return 'calamansi_highball';
 
+    // Strength routes - "strong" picks the spirit-forward classics first
+    if (strength === 'strong') {
+      if (spirit === 'gin') {
+        if (profile === 'herbal' || profile === 'bitter') return Math.random() < 0.5 ? 'last_word' : 'martini_dry';
+        if (profile === 'floral') return 'aviation';
+        if (profile === 'citrusy') return 'corpse_reviver_2';
+        if (mood === 'adventurous') return 'vesper';
+      }
+      if (spirit === 'whiskey') {
+        if (profile === 'sweet' || profile === 'bitter') return Math.random() < 0.4 ? 'manhattan' : 'old_fashioned';
+        if (profile === 'herbal' || profile === 'smoky') return 'sazerac';
+        return 'old_fashioned';
+      }
+      if (spirit === 'mezcal' || spirit === 'tequila') {
+        if (profile === 'smoky' || profile === 'spirit-forward') return 'oaxaca_old_fashioned';
+        if (profile === 'bitter') return 'naked_famous';
+      }
+      if (spirit === 'rum' || spirit === 'brandy') return 'old_fashioned';
+    }
+
     // Tropical short-circuit
-    if (profile === 'tropical') return 'tropical_shake';
+    if (profile === 'tropical') {
+      if (spirit === 'rum' && (mood === 'celebratory' || mood === 'mellow')) return 'pina_colada';
+      if (spirit === 'rum') return 'mai_tai';
+      return 'tropical_shake';
+    }
     if (mood === 'adventurous' && ['sweet','citrusy','spicy'].includes(profile)) return 'tropical_shake';
 
     // Occasion routes
@@ -472,37 +857,51 @@
       if (profile === 'smoky') return 'smoke_sour';
       if (profile === 'bitter') return 'negroni_sbagliato';
       if (profile === 'herbal') return 'garden_stirred';
+      if (profile === 'sweet') return 'french_75';
+      if (profile === 'floral') return Math.random() < 0.5 ? 'french_75' : 'aviation';
       return 'champagne_fizz';
     }
     if (occasion === 'nightcap') {
-      if (profile === 'sweet') return 'milk_punch';
+      if (profile === 'sweet') return Math.random() < 0.5 ? 'milk_punch' : 'gold_rush';
       if (profile === 'smoky') return 'smoke_sour';
-      if (profile === 'herbal') return 'garden_stirred';
+      if (profile === 'herbal') return Math.random() < 0.4 ? 'garden_stirred' : 'sazerac';
+      if (profile === 'bitter') return spirit === 'whiskey' ? 'manhattan' : 'boulevardier';
       return 'old_fashioned';
     }
     if (occasion === 'aperitif') {
       if (profile === 'smoky') return 'smoke_sour';
       if (profile === 'citrusy' && spirit === 'tequila') return 'paloma';
+      if (profile === 'bitter') return spirit === 'whiskey' ? 'boulevardier' : 'low_abv_spritz';
+      if (profile === 'sweet') return 'bee_knees';
       return 'low_abv_spritz';
     }
     if (occasion === 'with-food') {
       if (profile === 'smoky') return 'smoke_sour';
       if (profile === 'floral') return 'flora_fizz';
+      if (profile === 'spicy') return 'highball_spice';
+      if (profile === 'bitter') return 'boulevardier';
       return 'low_abv_spritz';
     }
     if (occasion === 'session') {
-      if (profile === 'spicy') return 'highball_spice';
+      if (profile === 'spicy') return spirit === 'vodka' ? 'moscow_mule' : 'dark_n_stormy';
       if (profile === 'floral') return 'flora_fizz';
       if (profile === 'smoky') return 'smoke_sour';
+      if (profile === 'herbal') return Math.random() < 0.5 ? 'mojito' : 'southside';
+      if (profile === 'citrusy') return Math.random() < 0.5 ? 'tom_collins' : 'gimlet_classic';
+      if (profile === 'sweet') return 'bramble';
       return 'low_abv_spritz';
     }
 
-    // Anytime / fallthrough mood-spirit-profile combos
-    if (profile === 'herbal' && (mood === 'mellow' || mood === 'comforting')) return 'whiskey_smash';
-    if (profile === 'citrusy' && (spirit === 'gin' || spirit === 'vodka')) return 'gimlet_classic';
+    // Anytime / mood-spirit-profile fallthrough
+    if (profile === 'herbal' && (mood === 'mellow' || mood === 'comforting')) return Math.random() < 0.5 ? 'whiskey_smash' : 'southside';
+    if (profile === 'citrusy' && (spirit === 'gin' || spirit === 'vodka')) return Math.random() < 0.5 ? 'gimlet_classic' : 'tom_collins';
     if (profile === 'tropical' && spirit === 'rum') return 'mai_tai';
     if (spirit === 'tequila' && profile === 'citrusy') return 'paloma';
-    if (spirit === 'gin' && strength === 'strong' && (profile === 'bitter' || profile === 'herbal')) return 'martini_dry';
+    if (spirit === 'gin' && profile === 'sweet') return Math.random() < 0.5 ? 'bee_knees' : 'clover_club';
+    if (spirit === 'whiskey' && profile === 'sweet') return 'gold_rush';
+    if (profile === 'sweet' && mood === 'celebratory') return 'french_75';
+    if (profile === 'spicy' && spirit === 'vodka') return 'moscow_mule';
+    if (profile === 'spicy' && spirit === 'rum') return 'dark_n_stormy';
 
     const byProfile = {
       citrusy: 'sour', sweet: 'sour', bitter: 'bitter_stirred',
@@ -515,23 +914,23 @@
   /* ----- Name generator ----- */
 
   const MOOD_WORDS = {
-    refreshed: ['Bright','Clear','First','Bluebell','Daybreak','Crystal','Morning','Fresh-Cut','Lifted','Pivot','Mineral','Linen','Plein-Air','Vesper','Reset'],
-    adventurous: ['Wild','Untamed','Roaming','Lost','Trespass','Outlaw','Drift','Compass','Frontier','Wayward','Vagrant','Driftwood','Ramble','Switchback','Northbound'],
-    comforting: ['Slow','Hearth','Lantern','Late','Velvet','Quilt','Tender','Warm','Settle','Easy','Cardigan','Library','Fireside','Kindred','Domestic'],
-    celebratory: ['Gilded','High','Festival','Crystal','Confetti','Toast','Encore','Spotlight','Champagne','Holiday','Marquee','Garland','Threshold','Standing-Ovation','Carousel'],
-    mellow: ['Soft','Idle','Hush','Dusk','Lullaby','Drowse','Slow','Coast','Linger','Glide','Tide','Whisper','Sunday','Easy','Slope'],
-    awake: ['Awake','Espresso','Daybreak','Sharp','Caffeinated','Sunrise','Alert','Bright-Eyed','Reset','Pulse','First-Train','Newsroom','Wide-Open','Sharp-Eyed','Filament'],
+    refreshed: ['Bright','Clear','First','Bluebell','Daybreak','Crystal','Morning','Fresh-Cut','Lifted','Pivot','Mineral','Linen','Plein-Air','Vesper','Reset','Snowmelt','Mountain','Spring','Cold-Brew','Window-Open','Tonic','Glacier','Quartz','Cool','Spritz-Hour','Clear-Cut','Clean-Slate','Brisk','Tidewater','Cucumber','Wellspring','Trail-Head','Snowdrop','Outdoor','Sunlit'],
+    adventurous: ['Wild','Untamed','Roaming','Lost','Trespass','Outlaw','Drift','Compass','Frontier','Wayward','Vagrant','Driftwood','Ramble','Switchback','Northbound','Smoke-Stack','Border','Highland','Brave','Off-Map','Rover','Voyager','Storyboard','Field-Notes','Caravan','Mapped','Detour','Lost-Highway','Migrant','Equator','Open-Road','Crosswind','Sundown','Marauder','Plot-Twist'],
+    comforting: ['Slow','Hearth','Lantern','Late','Velvet','Quilt','Tender','Warm','Settle','Easy','Cardigan','Library','Fireside','Kindred','Domestic','Pillow','Slipper','Bookend','Embers','Long-Bath','Cocoa','Cashmere','Sweater','Stovetop','Soup-Pot','Mother-Tongue','Drowsy','Soft-Wool','Mantle','Threadbare','Stoneware','Warm-Cradle','Bath-House','Old-Letter','Lamplight'],
+    celebratory: ['Gilded','High','Festival','Crystal','Confetti','Toast','Encore','Spotlight','Champagne','Holiday','Marquee','Garland','Threshold','Standing-Ovation','Carousel','Curtain-Call','Sequin','Velvet-Rope','Premiere','Fete','Gala','Headline','Banquet','Beacon','Crown','Centrefold','Crescendo','Top-Tier','Brassy','Headlights','Magnum','Stage','Limelight','Royal','Triumphal'],
+    mellow: ['Soft','Idle','Hush','Dusk','Lullaby','Drowse','Slow','Coast','Linger','Glide','Tide','Whisper','Sunday','Easy','Slope','Slow-Lane','Sailing','Hammock','Drift','Quiet','Veiled','Lazy-Day','Long-Note','Loose','Open-Window','Park-Bench','Mellow','Side-Eye','Slow-Tide','Dampened','Footnote','Long-Light','Honey-Hour','Loose-Thread'],
+    awake: ['Awake','Espresso','Daybreak','Sharp','Caffeinated','Sunrise','Alert','Bright-Eyed','Reset','Pulse','First-Train','Newsroom','Wide-Open','Sharp-Eyed','Filament','Wired','Cold-Plunge','Static','Adrenaline','Quartz','Snap','Wakeup','Notice','Volt','Surge','Switch-On','Currents','Static-Cling','Live-Wire','Polished','Galvanic','Caffeine','First-Light','Sharp-Edge','Catalyst'],
   };
 
   const PROFILE_NOUNS = {
-    citrusy: ['Citrus','Lemon Tide','Yellow Hour','Daydream','Reset','Sunburst','Zest','Acid Test','Daylight','Sour Note','Tangerine','Lima','Verbena','Quarrel','Hour'],
-    sweet: ['Honey','Sugar Coast','Sweet Talk','Caramel','Easy','Confection','Patisserie','Vanilla','Praline','Drift','Treacle','Marzipan','Custard','Sweetbrier','Plush'],
-    bitter: ['Counsel','Aperitivo','Red Quarter','Negroni','Stitch','Argument','Verdict','Carmine','Bitter Half','Crimson','Apothecary','Cinder','Stricture','Italics','Rouge'],
-    herbal: ['Garden','Field','Greenhouse','Thicket','Botanic','Hedgerow','Apothecary','Underbrush','Meadow','Cordial','Herbarium','Allotment','Forager','Sprig','Tincture'],
-    smoky: ['Ember','Smoke Walker','Wildfire','Cinder','Forge','Ash Hour','Foundry','Bonfire','Brushfire','Furnace','Soot','Iron','Pit','Phoenix','Charcoal'],
-    floral: ['Bloom','Petal','Rosebed','Garland','Greenhouse','Orchid','Bouquet','Hothouse','Florist','Festival','Peony','Camellia','Veranda','Sonnet','Posy'],
-    spicy: ['Pepper','Storm','Mule','Ginger Walk','Heatwave','Spark','Friction','Brushfire','Chase','Wick','Cayenne','Catapult','Tide','Match','Coal'],
-    tropical: ['Coconut','Trade Wind','Equator','Lagoon','Hibiscus','Calypso','Mango','Vacation','Atoll','Reef','Banyan','Verandah','Pineapple','Monsoon','Frangipani'],
+    citrusy: ['Citrus','Lemon Tide','Yellow Hour','Daydream','Reset','Sunburst','Zest','Acid Test','Daylight','Sour Note','Tangerine','Lima','Verbena','Quarrel','Hour','Highball','Sherbet','Pith','Marmalade','Calamansi','Yuzu','Acid Cup','Limewash','Sodium','Brightside','Squeeze','Citroen','Bergamot','Yellow Card','Pithwork','Limelight','Daysplit','Open Window','Glass-Box','Lemonade'],
+    sweet: ['Honey','Sugar Coast','Sweet Talk','Caramel','Easy','Confection','Patisserie','Vanilla','Praline','Drift','Treacle','Marzipan','Custard','Sweetbrier','Plush','Toffee','Brown Sugar','Maraschino','Bonbon','Mille-Feuille','Eclair','Honeycomb','Demerara','Caramelo','Cotton Cloud','Pillow','Brown Butter','Glace','Frosting','Cardamom Bun','Bakery','Lullaby','Half-Cake','Spoonful'],
+    bitter: ['Counsel','Aperitivo','Red Quarter','Negroni','Stitch','Argument','Verdict','Carmine','Bitter Half','Crimson','Apothecary','Cinder','Stricture','Italics','Rouge','Edge','Margin','Sandpaper','Halfshell','Cynara','Wormwood','Quinine','Coffee Hour','Walnut','Burnt Caramel','Black Tea','Eraser','Saltpetre','Hard Note','Footnote','Olive Hour','Bittermost','Citrine','Hellebore'],
+    herbal: ['Garden','Field','Greenhouse','Thicket','Botanic','Hedgerow','Apothecary','Underbrush','Meadow','Cordial','Herbarium','Allotment','Forager','Sprig','Tincture','Field Notes','Allium','Wild Thyme','Pasture','Marigold','Verbena','Chervil','Briar','Tussock','Wormwood','Hothouse','Glasshouse','Window-Box','Sapling','Plot','Veranda Pot','Coriander','Lemongrass','Greenroom'],
+    smoky: ['Ember','Smoke Walker','Wildfire','Cinder','Forge','Ash Hour','Foundry','Bonfire','Brushfire','Furnace','Soot','Iron','Pit','Phoenix','Charcoal','Tinder','Wood-Smoke','Cast-Iron','Bone-Fire','Salt-Smoke','Backdraft','Charrette','Burned Honey','Filament','Kerosene','Brushwood','Hayfire','Mesquite','Magnesium','Brimstone','Banked Coal','Slow Burn','Black Wax','Outpost'],
+    floral: ['Bloom','Petal','Rosebed','Garland','Greenhouse','Orchid','Bouquet','Hothouse','Florist','Festival','Peony','Camellia','Veranda','Sonnet','Posy','Buttercup','Jasmine','Peonyfield','Hibiscus','Orchidhouse','Lily-of-Valley','Magnolia','Dahlia','Anemone','Hydrangea','Lupin','Sweetpea','Wallflower','Snowdrop','Cottage Garden','Gardenia','Iris Hour','Pansy','Floraform'],
+    spicy: ['Pepper','Storm','Mule','Ginger Walk','Heatwave','Spark','Friction','Brushfire','Chase','Wick','Cayenne','Catapult','Tide','Match','Coal','Five-Spice','Sambal','Heatwave','Chili-Stripe','Crackle','Smoke-Stack','Pepperhouse','Backfire','Cardamom','Capsaicin','Bird\'s-Eye','Match-Head','Pop','Hot-Wire','Wildfire','Hot-Day','Stinger','Cili Padi','Live-Wire'],
+    tropical: ['Coconut','Trade Wind','Equator','Lagoon','Hibiscus','Calypso','Mango','Vacation','Atoll','Reef','Banyan','Verandah','Pineapple','Monsoon','Frangipani','Polynesia','Wayanad','Bougainvillea','Palm Shade','Saltwater','Tiki','Long Sail','Coral','Mangrove','Hammock','Sandcastle','Bird-of-Paradise','Lychee','Soursop','Bali Hour','Boat-Day','Reef-Walk','Outrigger','Coconut Grove','Open Sea'],
   };
 
   const OCCASION_FLAVOUR = {
@@ -597,6 +996,43 @@
       jungle_bird: `Bitter, tropical, dark rum. Tiki shape, adult intent.`,
       flora_fizz_xl: `Lifted floral, extra lemon, lots of bubbles.`,
       smoky_margarita: `Mezcal forward, lime and agave, smoked salt rim.`,
+      // Classics
+      manhattan: `Rye, sweet vermouth, bitters. Stirred long, served very cold.`,
+      sazerac: `Rye, sugar, peychaud, absinthe rinse. New Orleans, old room.`,
+      last_word: `Equal parts gin, chartreuse, maraschino, lime. Soft on the tongue, big on the finish.`,
+      vesper: `Gin, vodka, lillet. Big and cold. Built for one slow round.`,
+      aviation: `Gin, maraschino, violette, lemon. Floral and dry.`,
+      corpse_reviver_2: `Gin, cointreau, lillet, lemon, absinthe rinse. Lifts almost anything.`,
+      boulevardier: `Bourbon, campari, sweet vermouth. The whiskey negroni.`,
+      // Long + session
+      mojito: `Rum, mint, lime, sugar, soda. Cold and easy.`,
+      tom_collins: `Gin, lemon, sugar, soda. A clean classic. Built tall.`,
+      moscow_mule: `Vodka, ginger beer, lime. In copper if we have it.`,
+      dark_n_stormy: `Dark rum floated over ginger beer and lime.`,
+      southside: `Gin, mint, lime, sugar. Mojito's stricter cousin.`,
+      // Sweet + brunch + dessert
+      bee_knees: `Gin, honey, lemon. The prettiest sour.`,
+      gold_rush: `Bourbon, honey, lemon. A whiskey sour in a winter coat.`,
+      bramble: `Gin sour with a blackberry drizzle. Looks like a postcard.`,
+      clover_club: `Gin, lemon, raspberry, egg white. A pink head and a clean lift.`,
+      french_75: `Gin, lemon, sugar, top with champagne. Made for a toast.`,
+      pina_colada: `Aged rum, pineapple, coconut. Blended, unhurried.`,
+      // Smoky + agave
+      naked_famous: `Mezcal, chartreuse, aperol, lime. Equal parts. Endlessly drinkable.`,
+      oaxaca_old_fashioned: `Reposado and mezcal stirred on agave. Smoke under the sweetness.`,
+      // Malaysian
+      teh_tarik_old_fashioned: `Bourbon stirred on milk-tea reduction. A KL nightcap.`,
+      cili_padi_margarita: `Tequila, lime, agave, a kick of cili padi. Hot and bright.`,
+      cendol_milk_punch: `Rum, coconut, pandan, gula melaka. Cendol in a glass.`,
+      bandung_spritz: `Rose, milk, prosecco. Bandung with a Sunday afternoon dressed up.`,
+      nasi_lemak_old_fashioned: `Bourbon on pandan-coconut sugar with a pinch of salt. A nod, not a parody.`,
+      // Duos
+      spicy_paloma: `Tequila, grapefruit, lime, cili padi. Tropical with a punch.`,
+      tropical_mojito: `Rum, pineapple, mint, lime. Mojito on holiday.`,
+      herbal_negroni: `Gin or bourbon, campari, cynar, vermouth. Bitter and herbal in the same sip.`,
+      boulevardier_rich: `Bourbon, campari, sweet vermouth, a touch of maple. Deeper boulevardier.`,
+      garden_botanic: `Gin, elderflower, lemon, garden syrup, tonic top. Floral and green at once.`,
+      blossom_bramble: `Gin, lemon, rose, blackberry drizzle. Rose-coloured everything.`,
     };
     let line = taglines[templateKey] || 'Built for your mood and palate.';
     if (profiles.length === 2) {
