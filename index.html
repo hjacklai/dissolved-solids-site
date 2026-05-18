@@ -1887,9 +1887,15 @@
   @media (max-width: 900px) {
     .visit { padding: 60px 20px 80px; }
     .visit-grid { grid-template-columns: 1fr; gap: 20px; }
-    .visit-card { padding: 24px 22px; gap: 18px; }
-    .visit-card-head { grid-template-columns: 48px 1fr auto; gap: 12px; }
+    .visit-card { padding: 22px 20px; gap: 18px; }
+    /* Drop the status pill onto a new row on mobile - the previous
+       `48px 1fr auto` grid let the pill steal ~120px on the right
+       and squeezed the venue name into a 99px middle column, which
+       made the whole card read as right-shifted. Now: logo + name
+       on row 1, pill on row 2 left-aligned, name gets full width. */
+    .visit-card-head { grid-template-columns: 48px 1fr; gap: 12px; }
     .visit-logo { width: 48px; height: 48px; }
+    .visit-live-pill { grid-column: 1 / -1; justify-self: start; margin-top: 4px; }
     .visit-actions { gap: 8px; }
     .visit-btn { padding: 11px 14px; font-size: 10.5px; letter-spacing: .12em; }
   }
