@@ -677,18 +677,12 @@
     const lines = [
       `*DRINK BUILDER · RESERVATION*`,
       ``,
-      `Hi ${BAR_NAMES[bar]}! I used the drink builder on dissolvedsolids.co/builder and I'd like to book a table to have this made for me.`,
-      ``,
-      `*Booking*`,
-      `Date: `,
-      `Time: `,
-      `Party size: `,
-      `(or let me know what's free this week)`,
+      `Hi ${BAR_NAMES[bar]}! I used the drink builder and I'd like to book a table to have this made for me.`,
       ``,
       `*Drink: ${plainName}*`,
       ``,
       `Ingredients (no quantities, you decide the pour):`,
-      ...recipe.ingredients.map(i => `- ${i}`),
+      ...recipe.ingredients.map(i => `* ${i}`),
       ``,
       `Method: ${recipe.method}`,
       `Garnish: ${recipe.garnish}`,
@@ -696,6 +690,8 @@
       `(Mood: ${fmtAnswer(ans.mood)} · profile: ${fmtAnswer(ans.profile)} · strength: ${ans.strength} · occasion: ${ans.occasion})`,
       ``,
       `Glass is your call. Substitute anything you don't have. Looking forward to it!`,
+      ``,
+      `Please let me know how shall i proceed for a reservation`,
     ];
     return `https://wa.me/${NUMBERS[bar]}?text=` + encodeURIComponent(lines.join('\n'));
   }
