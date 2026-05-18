@@ -407,10 +407,12 @@
 
   .articles { display: flex; flex-direction: column; gap: 0; transition: opacity .25s; }
   .articles.fading { opacity: 0; }
+  /* Compact listing - was 22px padding + 22px h3 + 3-line excerpts which
+     pushed long lists over 1500px tall. Tightened to ~half that height. */
   .article {
-    display: grid; grid-template-columns: 64px 1fr auto;
-    gap: 22px; align-items: start;
-    padding: 22px 4px;
+    display: grid; grid-template-columns: 44px 1fr auto;
+    gap: 16px; align-items: start;
+    padding: 12px 4px;
     border-bottom: 1px solid var(--line-2);
     cursor: pointer;
     transition: padding .25s, background .25s;
@@ -418,37 +420,42 @@
     text-decoration: none;
   }
   .article:last-child { border-bottom: none; }
-  .article:hover { padding-left: 14px; background: linear-gradient(90deg, rgba(209,139,58,.06), transparent 70%); }
+  .article:hover { padding-left: 12px; background: linear-gradient(90deg, rgba(209,139,58,.06), transparent 70%); }
   .article .num {
-    font-family: var(--mono); font-size: 10px; letter-spacing: .2em;
-    color: var(--accent); padding-top: 5px;
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: .18em;
+    color: var(--accent); padding-top: 4px;
   }
   .article .num b { color: var(--paper); font-weight: 500; }
   .article .body { min-width: 0; }
   .article h3 {
-    font-family: var(--serif); font-size: 22px; line-height: 1.1;
-    letter-spacing: -.015em;
-    margin-bottom: 8px;
+    font-family: var(--serif); font-size: 17px; line-height: 1.15;
+    letter-spacing: -.012em;
+    margin-bottom: 4px;
   }
   .article h3 em { font-style: italic; color: var(--accent); }
   .article .dek {
-    font-family: var(--mono); font-size: 12.5px; line-height: 1.6;
-    color: rgba(240,230,207,.68);
-    margin-bottom: 10px;
+    font-family: var(--mono); font-size: 11.5px; line-height: 1.45;
+    color: rgba(240,230,207,.62);
+    margin-bottom: 4px;
+    /* Clamp to 2 lines so very-long excerpts don't stretch the card */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .article .meta {
-    font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
-    color: rgba(240,230,207,.45);
-    display: flex; gap: 18px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
+    color: rgba(240,230,207,.42);
+    display: flex; gap: 14px; flex-wrap: wrap;
   }
   .article .meta b { color: var(--paper-dim); font-weight: 400; }
   .article .read {
-    font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
     color: rgba(240,230,207,.5);
-    text-align: right; padding-top: 5px; white-space: nowrap;
+    text-align: right; padding-top: 4px; white-space: nowrap;
   }
   .article .read b { color: var(--accent); font-weight: 500; }
-  .article .arrow { display: inline-block; margin-left: 6px; transition: transform .25s; }
+  .article .arrow { display: inline-block; margin-left: 4px; transition: transform .25s; }
   .article:hover .arrow { transform: translateX(4px); }
 
   /* ─────────────────── featured spread ─────────────────── */

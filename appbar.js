@@ -201,4 +201,17 @@
   } else {
     mount();
   }
+
+  // Auto-load journal-related.js on article pages. Saves editing every
+  // article file just to add a <script> tag. The loaded script self-
+  // detects whether it has work to do (looks for main.article-mount).
+  (function loadJournalRelated() {
+    if (!document.querySelector('main.article-mount')) return;
+    if (document.querySelector('script[data-jr-loaded]')) return;
+    const s = document.createElement('script');
+    s.src = '/journal-related.js';
+    s.defer = true;
+    s.dataset.jrLoaded = '1';
+    document.head.appendChild(s);
+  })();
 })();
