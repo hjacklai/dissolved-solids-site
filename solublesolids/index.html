@@ -30,10 +30,12 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BarOrPub",
+  "@type": ["BarOrPub", "Restaurant", "FoodEstablishment"],
   "@id": "https://dissolvedsolids.co/solublesolids/#bar",
   "name": "Soluble Solids",
-  "alternateName": "Soluble Solids SS2",
+  "alternateName": ["Soluble Solids SS2", "Soluble Solids Cocktail Bar", "Soluble Solids Cocktail Parlour"],
+  "hasMenu": "https://dissolvedsolids.co/cocktails/",
+  "servesCuisine": ["Cocktails", "Customised Cocktails", "Bespoke Drinks", "Bar Snacks", "Malaysian-influenced Cocktails"],
   "description": "Cocktail parlour in SS2, Petaling Jaya. No fixed list. Every drink is customised to taste based on your preferred strength, base spirit and flavour profile. Sister bar of Dissolved Solids in Damansara Kim.",
   "url": "https://dissolvedsolids.co/solublesolids/",
   "image": [
@@ -62,7 +64,6 @@
   "openingHoursSpecification": [
     {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "18:00", "closes": "01:00"}
   ],
-  "servesCuisine": ["Cocktails", "Customised Cocktails", "Bespoke Drinks"],
   "acceptsReservations": true,
   "areaServed": [
     {"@type": "City", "name": "Petaling Jaya"},

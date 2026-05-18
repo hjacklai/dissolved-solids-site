@@ -781,5 +781,28 @@
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
+  <url>
+    <loc>https://dissolvedsolids.co/cocktail-bars-ss2/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/cocktail-bars-ttdi/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/cocktail-bars-mont-kiara/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Local-intent journal articles -->
+  <url><loc>https://dissolvedsolids.co/journal/late-night-drinks-damansara-kim/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/cocktail-bar-with-parking-pj/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/cocktail-bars-near-1utama/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 
 </urlset>

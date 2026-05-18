@@ -30,10 +30,12 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BarOrPub",
+  "@type": ["BarOrPub", "Restaurant", "FoodEstablishment"],
   "@id": "https://dissolvedsolids.co/dissolvedsolids/#bar",
   "name": "Dissolved Solids",
-  "alternateName": "Dissolved Solids Damansara Kim",
+  "alternateName": ["Dissolved Solids Damansara Kim", "Dissolved Solids PJ", "Dissolved Solids Cocktail Bar"],
+  "hasMenu": "https://dissolvedsolids.co/cocktails/",
+  "servesCuisine": ["Cocktails", "Coffee Cocktails", "Vermouth", "Espresso", "Bar Snacks", "Malaysian-influenced Cocktails"],
   "description": "Experimental cocktail bar in Damansara Kim, Petaling Jaya. Coffee cocktails, vermouth, classics. Drinks customised to taste. Sister bar of Soluble Solids in SS2.",
   "url": "https://dissolvedsolids.co/dissolvedsolids/",
   "image": [
@@ -64,7 +66,6 @@
     {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "14:00", "closes": "01:00"},
     {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "14:00", "closes": "00:00"}
   ],
-  "servesCuisine": ["Cocktails", "Coffee Cocktails", "Vermouth", "Espresso"],
   "acceptsReservations": true,
   "award": "Tatler Asia Top 20 Bars 2025/26",
   "areaServed": [
