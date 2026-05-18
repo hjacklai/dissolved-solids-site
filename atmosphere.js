@@ -134,11 +134,12 @@
     const tip = mt.querySelector('.tip');
     const TARGET = 0.35;
     const FADE_MS = 1200;
-    // Sub-pages have a fixed data-state - pick the matching track.
-    const state = document.documentElement.dataset.state || 'soluble';
-    const src = state === 'dissolved'
-      ? '/photos/audio/fashion-house.mp3'
-      : '/photos/audio/lofi-beat.mp3';
+    const SRC = {
+      dissolved: '/photos/audio/fashion-house.mp3',
+      soluble:   '/photos/audio/lofi-beat.mp3',
+    };
+    let currentKey = document.documentElement.dataset.state || 'soluble';
+    let src = SRC[currentKey];
     let audio = null;
     let fadeTimer = null;
 
@@ -176,12 +177,39 @@
         await audio.play();
         fadeTo(TARGET, FADE_MS);
         mt.classList.add('playing');
-        if (tip) tip.textContent = state === 'dissolved' ? 'house · tap to stop' : 'lofi · tap to stop';
+        if (tip) tip.textContent = currentKey === 'dissolved' ? 'house · tap to stop' : 'lofi · tap to stop';
       } catch (e) {
         console.warn('music start failed', e);
         if (tip) tip.textContent = 'audio unavailable';
       }
     }
+    // Watch for data-state flips (the appbar toggle) and crossfade
+    // to the matching track on sub-pages. fashion-house plays on
+    // dissolved, lofi-beat on soluble.
+    new MutationObserver(async function () {
+      const nextKey = document.documentElement.dataset.state || 'soluble';
+      if (nextKey === currentKey) return;
+      currentKey = nextKey;
+      src = SRC[currentKey];
+      const wasPlaying = audio && !audio.paused;
+      if (audio) {
+        fadeTo(0, FADE_MS * 0.5);
+        // After fade-out completes, swap to the new track.
+        setTimeout(function () {
+          try { audio.pause(); } catch (e) {}
+          audio = new Audio(src);
+          audio.loop = true;
+          audio.preload = 'metadata';
+          audio.volume = 0;
+          if (wasPlaying) {
+            audio.play().then(function () {
+              fadeTo(TARGET, FADE_MS);
+              if (tip) tip.textContent = currentKey === 'dissolved' ? 'house · tap to stop' : 'lofi · tap to stop';
+            }).catch(function (e) { console.warn('track swap failed', e); });
+          }
+        }, FADE_MS * 0.5 + 50);
+      }
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-state'] });
     function stop() {
       if (!audio) return;
       try {

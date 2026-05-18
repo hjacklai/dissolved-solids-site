@@ -1236,6 +1236,34 @@ a.label:hover { opacity: .8; }
     var(--bg);
   background-attachment: fixed;
   min-height: 100vh;
+  position: relative;
+}
+/* Animated aurora layer behind the journal article pages. Slow,
+   ambient, low-opacity drift that gives the page a living feel
+   without competing with the prose. */
+.journal-body::before {
+  content: ''; position: fixed; inset: -10vh -10vw; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(600px 400px at 20% 30%, rgba(209,139,58,.16), transparent 60%),
+    radial-gradient(700px 500px at 80% 70%, rgba(214,163,154,.13), transparent 60%),
+    radial-gradient(500px 400px at 50% 50%, rgba(212,154,202,.08), transparent 70%);
+  animation: journal-aurora 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes journal-aurora {
+  0%   { transform: translate3d(-4%, -2%, 0) scale(1.00) rotate(0deg); }
+  50%  { transform: translate3d( 4%,  3%, 0) scale(1.06) rotate(1deg); }
+  100% { transform: translate3d( 2%, -3%, 0) scale(1.03) rotate(-1deg); }
+}
+/* Subtle film-grain overlay for texture. */
+.journal-body > * { position: relative; z-index: 1; }
+.journal-body::after {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 100;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.94 0 0 0 0 0.9 0 0 0 0 0.81 0 0 0 .12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: .25; mix-blend-mode: overlay;
+}
+@media (prefers-reduced-motion: reduce) {
+  .journal-body::before { animation: none; }
 }
 
 /* Cohesive top header for every sub-page (matches the centred
@@ -1271,10 +1299,10 @@ a.label:hover { opacity: .8; }
 }
 /* Defensive: if atmosphere.js was loaded (e.g. by a stale browser
    cache) hide the floating particles + music toggle on journal. */
-/* Hide just the particle dots on journal-body. The music bubble
-   and the WA/IG floats stay - the user wants them on every sub-page
-   including journal. */
-.journal-body .atmo-dots { display: none !important; }
+/* Particle dots ENABLED on journal-body now (user wants the
+   animated background vibe on every journal page). z-index 1 keeps
+   them above the body::before aurora layer but below content. */
+.journal-body .atmo-dots { display: block !important; z-index: 1; }
 .journal-eyebrow {
   display: inline-block;
   font-family: var(--mono);
