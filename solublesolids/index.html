@@ -103,6 +103,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Allura&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/appbar.css" />
 <style>
   /* ─────────────────────────────────────────────────────────────
      Two visual worlds, one shell. CSS variables flip on data-state.
@@ -3059,6 +3060,20 @@
     document.body.classList.add('dissolving');
     setTimeout(() => { location.href = OTHER_URL; }, 220);
   });
+
+  // Same interception as on /dissolvedsolids/ - the appbar's default
+  // Dis/Sol toggle would just flip state, which on a bar page creates a
+  // URL/content mismatch. Capture the click before appbar's handler and
+  // navigate to the other outlet instead.
+  document.addEventListener('click', (e) => {
+    const t = e.target && e.target.closest && e.target.closest('.appbar-toggle, #appbarToggle');
+    if (!t) return;
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    playScratch();
+    document.body.classList.add('dissolving');
+    setTimeout(() => { location.href = OTHER_URL; }, 220);
+  }, true);
   document.addEventListener('keydown', (e) => {
     if (e.code === 'Space') { e.preventDefault(); panel.click(); }
   });
@@ -3468,5 +3483,6 @@
 </script>
 
 <script src="/builder.js" defer></script>
+<script src="/appbar.js" defer></script>
 </body>
 </html>

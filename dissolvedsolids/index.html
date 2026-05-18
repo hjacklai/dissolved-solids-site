@@ -106,6 +106,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Allura&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/appbar.css" />
 <style>
   /* ─────────────────────────────────────────────────────────────
      Two visual worlds, one shell. CSS variables flip on data-state.
@@ -3067,6 +3068,22 @@
     setTimeout(() => { location.href = OTHER_URL; }, 220);
   });
 
+  // The shared bottom appbar (appbar.js) injects its own Dis/Sol toggle
+  // which by default just flips html.dataset.state. On bar pages that's
+  // wrong - flipping state would create a URL/content mismatch. So we
+  // intercept appbar-toggle clicks in the capture phase BEFORE appbar's
+  // own handler fires, and route them through the same navigate-to-other
+  // flow that #statePanel uses.
+  document.addEventListener('click', (e) => {
+    const t = e.target && e.target.closest && e.target.closest('.appbar-toggle, #appbarToggle');
+    if (!t) return;
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    playScratch();
+    document.body.classList.add('dissolving');
+    setTimeout(() => { location.href = OTHER_URL; }, 220);
+  }, true);
+
   // Keyboard shortcut: spacebar to flip
   document.addEventListener('keydown', (e) => {
     if (e.code === 'Space') { e.preventDefault(); panel.click(); }
@@ -3477,5 +3494,6 @@
 </script>
 
 <script src="/builder.js" defer></script>
+<script src="/appbar.js" defer></script>
 </body>
 </html>
