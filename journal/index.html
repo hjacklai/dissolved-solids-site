@@ -560,36 +560,39 @@
   body[data-layout="carousel"] .wheel-stage { display: block; }
   body[data-layout="carousel"] .wheel-wrap { display: none; }
   body[data-layout="carousel"] .detail { min-height: auto; }
-  /* Auto-scrolling marquee carousel. The .car-strip is the viewport
-     (clips overflow), .car-track is the moving rail that holds the
-     cards. JS duplicates the card set into the track, then the
-     animation moves the track from 0 → -50% which is one full set;
-     because the second half is a clone of the first the visual is
-     unbroken when the animation loops. */
+  /* Swipeable carousel with idle auto-scroll. The .car-strip is a
+     native horizontal scroll container so touch-drag and trackpad/
+     wheel scroll work out of the box. JS gently pans scrollLeft when
+     the user isn't interacting, and a duplicated card set inside
+     .car-track makes the loop visually seamless when auto-scroll
+     reaches the end. NOTE: scroll-snap is deliberately omitted -
+     it snaps fractional scroll deltas back to the nearest card and
+     kills the auto-pan. */
   .car-strip {
     display: none;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     margin: 0 calc(-1 * var(--gutter)) 40px;
     padding: 0 0 20px;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
     mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
   }
   body[data-layout="carousel"] .car-strip { display: block; }
+  .car-strip::-webkit-scrollbar { height: 6px; }
+  .car-strip::-webkit-scrollbar-track { background: rgba(240,230,207,.05); border-radius: 6px; }
+  .car-strip::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 6px; }
   .car-track {
     display: flex; gap: 16px;
     width: max-content;
-    padding: 0 var(--gutter);
-    animation: car-marquee 36s linear infinite;
-    will-change: transform;
-  }
-  .car-strip:hover .car-track,
-  .car-strip:focus-within .car-track { animation-play-state: paused; }
-  @keyframes car-marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .car-track { animation: none; }
+    /* No inline padding - the strip's own padding handles the
+       inset, and stacking another --gutter here pushes the first
+       card right of the section text by 8-12px depending on
+       viewport. */
   }
   /* Always-visible thin scroll cue so it's obvious the strip is draggable */
   .car-strip::-webkit-scrollbar { height: 6px; }
@@ -989,10 +992,11 @@ function renderNavigation() {
     carStrip.appendChild(car);
   });
 
-  /* Marquee scroll: wrap the cards in a .car-track rail and duplicate
-     the set. CSS animates the track from translateX(0) → translateX(-50%);
-     the duplicated half makes the loop visually seamless. Pause on hover /
-     focus is handled by CSS (`.car-strip:hover .car-track { animation-play-state: paused }`). */
+  /* Swipeable carousel + idle auto-scroll. Cards go inside a
+     .car-track rail. The set is duplicated so JS can loop scrollLeft
+     seamlessly when auto-scroll passes the end. .car-strip's native
+     overflow-x: auto handles touch-swipe and wheel without any extra
+     wiring; we just need the rail wide enough to overflow. */
   const originals = [...carStrip.children];
   const track = document.createElement('div');
   track.className = 'car-track';
@@ -1004,15 +1008,71 @@ function renderNavigation() {
     dup.classList.add('car-card-clone');
     track.appendChild(dup);
   });
-  // Re-attach click handlers to the cloned cards so tapping a clone
-  // selects its category too. Original handlers (set above) survive
-  // because we moved the originals into the track, not cloned them.
   track.querySelectorAll('.car-card-clone').forEach((dup) => {
     const id = dup.dataset.id;
     const i  = JOURNAL.categories.findIndex(c => c.id === id);
     if (i >= 0) dup.addEventListener('click', () => selectCategory(i));
   });
   carStrip.appendChild(track);
+
+  initCarouselAutoScroll(carStrip, track);
+}
+
+function initCarouselAutoScroll(strip, track) {
+  if (!strip || !track) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const SPEED_PX_PER_TICK = 0.9;   // ~30px/sec at 30ms
+  const TICK_MS           = 30;
+  const RESUME_DELAY_MS   = 2200;
+
+  let paused      = false;
+  let resumeTimer = null;
+  let loopWidth   = 0;
+  let suppressScrollPause = false; // ignore scroll events that the auto-pan triggers
+
+  function measureLoop() { loopWidth = track.scrollWidth / 2; }
+  measureLoop();
+  // Re-measure after fonts settle / images load
+  setTimeout(measureLoop, 200);
+  setTimeout(measureLoop, 1000);
+  window.addEventListener('resize', measureLoop, { passive: true });
+
+  function tick() {
+    if (paused || !loopWidth) return;
+    suppressScrollPause = true;
+    strip.scrollLeft += SPEED_PX_PER_TICK;
+    if (strip.scrollLeft >= loopWidth) strip.scrollLeft -= loopWidth;
+    // Release the flag on the next frame, after the scroll event fires.
+    requestAnimationFrame(() => { suppressScrollPause = false; });
+  }
+  setInterval(tick, TICK_MS);
+
+  function pause() {
+    paused = true;
+    if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
+  }
+  function scheduleResume() {
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => { paused = false; resumeTimer = null; }, RESUME_DELAY_MS);
+  }
+  // Manual interaction pauses the auto-scroll. Tapping or swiping the
+  // strip, wheeling over it, focusing a card via keyboard - all pause.
+  // Resume kicks in RESUME_DELAY_MS after the interaction ends.
+  ['pointerdown', 'touchstart', 'wheel', 'focusin'].forEach(ev => {
+    strip.addEventListener(ev, pause, { passive: true });
+  });
+  ['pointerup', 'pointercancel', 'touchend', 'touchcancel', 'focusout'].forEach(ev => {
+    strip.addEventListener(ev, scheduleResume, { passive: true });
+  });
+  // User-initiated scroll (e.g. trackpad fling that keeps gliding
+  // after touchend) should also keep the auto-pan paused. Filter out
+  // our own programmatic scrolls via the suppress flag.
+  strip.addEventListener('scroll', () => {
+    if (suppressScrollPause) return;
+    pause();
+    scheduleResume();
+  }, { passive: true });
 }
 
 function renderFeatured() {

@@ -774,8 +774,7 @@
 
   main { position: relative; z-index: 10; }
 
-  .hero {
-    min-height: 100vh;
+  .hero {    min-height: 100vh;
     min-height: 100dvh;
     position: relative;
     /* Hero gets a wider gutter than the rest so the display heading
@@ -1819,9 +1818,8 @@
     .reserve, .outlets { padding: 100px var(--gutter); }
   }
   @media (max-width: 900px) {
-    .hero {
-      min-height: auto;
-      padding: 200px clamp(32px, 7vw, 80px) 150px;
+    .hero {      min-height: auto;
+      padding: 200px 20px 150px;
       gap: 18px;
     }
     .hero-content .body { font-size: 15px !important; }
@@ -1840,7 +1838,7 @@
     nav { font-size: 9.5px; gap: 2px 4px; }
     nav a { padding: 11px 10px; min-height: 44px; display: inline-flex; align-items: center; }
     nav .nav-cta { padding: 12px 16px; margin-left: 2px; min-height: 44px; }
-    .gallery { padding: 90px 18px 40px; }
+    .gallery { padding: 90px 20px 40px; }
     .grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 12px; }
     .tile { aspect-ratio: 4 / 3; }
     .tile .img { position: absolute; inset: 0; }
@@ -1853,11 +1851,11 @@
     .music-toggle .bars { height: 14px; }
     .music-toggle .bars i { width: 2.5px; }
     .music-toggle .tooltip { display: none; }
-    .reserve { padding: 80px 18px 110px; }
+    .reserve { padding: 80px 20px 110px; }
     .reserve-head h2, .outlets-head h2 { font-size: clamp(40px, 10vw, 72px); }
     .reserve-card { background: rgba(0,0,0,.35); }
     .reserve-left, .reserve-right { padding: 28px 22px; }
-    .outlets { padding: 80px 18px 120px; }
+    .outlets { padding: 80px 20px 120px; }
     .outlet { padding: 36px 22px; }
     .outlet-name { font-size: clamp(40px, 9vw, 60px); }
     .outlet-blurb { font-size: 17px; }
@@ -1866,7 +1864,7 @@
     .hours-grid { grid-template-columns: 44px 1fr; gap: 4px 12px; font-size: 11px; }
     .outlet-cta { gap: 8px; }
     .outlet-cta .b { padding: 12px 16px; font-size: 10.5px; letter-spacing: .18em; }
-    .builder { padding: 40px 18px 100px; }
+    .builder { padding: 40px 20px 100px; }
     .builder-q { font-size: clamp(38px, 8vw, 64px) !important; }
     .chips-row { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
     .chip { padding: 14px 14px !important; min-height: 88px; }
@@ -1908,10 +1906,10 @@
     nav { font-size: 9px; gap: 2px 3px; }
     nav a { padding: 6px 7px; }
     nav .nav-cta { padding: 7px 11px; }
-    .hero { padding: 180px clamp(28px, 7vw, 56px) 140px; gap: 16px; }
+    .hero { padding: 180px 20px 140px; gap: 16px; }
     .seal { width: 86px; height: 86px; bottom: 14px; right: 12px; }
     .reserve-left, .reserve-right { padding: 22px 16px; }
-    .outlet { padding: 28px 18px; }
+    .outlet { padding: 28px 20px; }
     .music-toggle { left: 12px; bottom: 96px; width: 44px; height: 44px; }
     .floats { right: 12px; bottom: 96px; gap: 8px; }
     .float { width: 44px; height: 44px; }
