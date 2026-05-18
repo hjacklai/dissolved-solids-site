@@ -524,6 +524,19 @@
     <priority>0.8</priority>
   </url>
 
+  <url><loc>https://dissolvedsolids.co/journal/martini-deep-dive/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/rum-types-explained/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/whisky-vs-whiskey/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/ice-in-cocktails/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/how-to-shake-cocktail/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/groups-celebrations-cocktail-bar-pj/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/non-alcoholic-bars-kl/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/bunga-kantan-cocktails/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/batching-cocktails-parties/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/coconut-water-cocktails/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/amaro-explained/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://dissolvedsolids.co/journal/sambal-in-cocktails/</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+
   <url>
     <loc>https://dissolvedsolids.co/dissolvedsolids/</loc>
     <changefreq>weekly</changefreq>
