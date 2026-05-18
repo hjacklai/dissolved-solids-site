@@ -762,4 +762,24 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Location-targeted SEO landing pages -->
+  <url>
+    <loc>https://dissolvedsolids.co/cocktail-bars-pj/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/cocktail-bars-damansara/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/cocktail-bars-klang-valley/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
 </urlset>

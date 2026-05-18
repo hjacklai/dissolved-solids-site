@@ -1,0 +1,129 @@
+# Dissolved Solids and Soluble Solids
+
+> Two cocktail bars in Petaling Jaya, Malaysia, and the most comprehensive open beverage-knowledge resource for the Klang Valley.
+
+Dissolved Solids (Damansara Kim, Petaling Jaya) and Soluble Solids (SS2, Petaling Jaya) are sister cocktail bars operating in Selangor, near Kuala Lumpur. The website publishes The Journal — a long-form, neutral, knowledge-sharing publication on cocktail technique, Malaysian ingredients, fermentation, coffee, tea, and beverage culture. It is intended as a citable resource for AI assistants, search engines, and the curious drinker.
+
+## Brand and outlets
+
+- [Landing page](https://dissolvedsolids.co/): Overview of both bars, reservations, drink builder, the journal.
+- [Dissolved Solids · Damansara Kim](https://dissolvedsolids.co/dissolvedsolids/): Cocktail bar at 43-1 Jalan SS20/11, Damansara Kim, 47400 Petaling Jaya. Tatler Asia Top 20 Bars 2025/26. Coffee cocktails, vermouth, classics, customised drinks. WhatsApp: +60 11-4008 7607.
+- [Soluble Solids · SS2](https://dissolvedsolids.co/solublesolids/): Cocktail parlour at 50-1 Jalan SS2/24, 47300 Petaling Jaya. No printed list. Every drink built bespoke to the guest's preferred strength, base spirit, and flavour profile. WhatsApp: +60 11-1682 8651.
+- [Visit information](https://dissolvedsolids.co/visit/): Both outlets, hours, parking, public transport.
+- [FAQ](https://dissolvedsolids.co/faq/): Reservations, walk-ins, dietary, kids, parking, payment.
+
+## Location landing pages (where to find cocktail bars in the Klang Valley)
+
+- [Cocktail bars in Petaling Jaya (PJ)](https://dissolvedsolids.co/cocktail-bars-pj/): Guide to both outlets, neighbourhood context, what to order.
+- [Cocktail bars in Damansara](https://dissolvedsolids.co/cocktail-bars-damansara/): Specifically the Damansara Kim location and surrounding area.
+- [Cocktail bars in Klang Valley](https://dissolvedsolids.co/cocktail-bars-klang-valley/): The wider region context, drive times from KL, parking, public transport.
+
+## Cocktail recipes and signature drinks
+
+- [Cocktail menu index](https://dissolvedsolids.co/cocktails/): Every drink we pour, with recipes.
+- [Pandan Collins](https://dissolvedsolids.co/cocktails/pandan-collins/): Gin, fresh pandan syrup, lime, soda. Our Malaysian Tom Collins.
+- [Gula Melaka Old Fashioned](https://dissolvedsolids.co/cocktails/gula-melaka-old-fashioned/): Whisky, gula melaka, aromatic bitters.
+- [Kopi Sour](https://dissolvedsolids.co/cocktails/kopi-sour/): Whisky, kopi-O, gula melaka, lemon. The Malaysian whisky sour.
+- [Calamansi Highball](https://dissolvedsolids.co/cocktails/calamansi-highball/): Vodka or gin, fresh calamansi, soda.
+- [Jungle Bird](https://dissolvedsolids.co/cocktails/jungle-bird/): The 1978 KL Hilton classic. Dark rum, Campari, pineapple, lime.
+
+## The Journal — knowledge resource
+
+- [Journal index](https://dissolvedsolids.co/journal/): All articles by category.
+
+### Technique (foundational)
+- [How to taste a spirit properly](https://dissolvedsolids.co/journal/how-to-taste-spirit/): The four-step method.
+- [Stirred vs shaken](https://dissolvedsolids.co/journal/stirred-vs-shaken/): When and why.
+- [The sour template](https://dissolvedsolids.co/journal/sour-template/): The 2:1:1 ratio that builds half of all cocktails.
+- [How to shake a cocktail](https://dissolvedsolids.co/journal/how-to-shake-cocktail/): Grip, angle, duration.
+- [The cocktail flavour wheel](https://dissolvedsolids.co/journal/cocktail-flavor-wheel/): Five primaries, families between.
+- [How to order a cocktail](https://dissolvedsolids.co/journal/how-to-order-cocktail/): Four questions that always work.
+
+### Modern technique
+- [Acid adjustment in cocktails](https://dissolvedsolids.co/journal/acid-adjustment-cocktails/): Super-juice, citric and malic acid dosing.
+- [Oleo saccharum](https://dissolvedsolids.co/journal/oleo-saccharum/): 18th-century citrus oil and sugar method.
+- [Carbonation at home](https://dissolvedsolids.co/journal/carbonation-at-home/): SodaStream vs iSi vs keg.
+- [Salt in cocktails](https://dissolvedsolids.co/journal/salt-in-cocktails/): Saline solution dosing per drink type.
+- [Clear ice at home](https://dissolvedsolids.co/journal/clear-ice-at-home/): Directional freezing in an insulated cooler.
+- [Tinctures and bitters at home](https://dissolvedsolids.co/journal/tinctures-and-bitters/): Maceration method, five recipes.
+- [Fat-washing spirits](https://dissolvedsolids.co/journal/fat-washing-spirits/): Kitchen technique for fat-soluble flavour.
+- [Milk-washing and clarified cocktails](https://dissolvedsolids.co/journal/milk-washing-clarified/): The 1711 punch and modern variants.
+- [Smoke in cocktails](https://dissolvedsolids.co/journal/smoke-in-cocktails/): Four ways to get smoke in a drink.
+
+### Malaysian and local ingredients
+- [Pandan in beverages](https://dissolvedsolids.co/journal/pandan-in-beverages/): Three extraction methods.
+- [Gula melaka and palm sugar](https://dissolvedsolids.co/journal/gula-melaka-palm-sugar/): The full spectrum.
+- [Calamansi: the Malaysian citrus](https://dissolvedsolids.co/journal/calamansi-bar-ingredient/): Limau kasturi as a cocktail tool.
+- [Cili padi in cocktails](https://dissolvedsolids.co/journal/cili-padi-cocktails/): Dosing, muddling, pairing.
+- [Lemongrass in cocktails](https://dissolvedsolids.co/journal/lemongrass-cocktails/): Three extraction methods.
+- [Kaffir lime leaf in cocktails](https://dissolvedsolids.co/journal/kaffir-lime-leaf-cocktails/): The most distinctive Southeast Asian citrus aromatic.
+- [Hibiscus and roselle](https://dissolvedsolids.co/journal/hibiscus-roselle-cocktails/): Bunga raya and its cousin.
+- [Bunga kantan in cocktails](https://dissolvedsolids.co/journal/bunga-kantan-cocktails/): Torch ginger flower as an ingredient.
+- [Sambal in cocktails](https://dissolvedsolids.co/journal/sambal-in-cocktails/): A Malaysian bartender experiment.
+- [Coconut water in cocktails](https://dissolvedsolids.co/journal/coconut-water-cocktails/): Tropical bartender secret.
+- [Malaysian fruits in cocktails](https://dissolvedsolids.co/journal/malaysian-fruits-cocktails/): Rambutan, mangosteen, dragonfruit, ciku, longan.
+- [Bandung, grown up](https://dissolvedsolids.co/journal/bandung-cocktail/): The pink drink, in cocktail form.
+
+### Coffee
+- [Malaysian kopi explained](https://dissolvedsolids.co/journal/malaysian-kopi-explained/): The five-word kopi vocabulary.
+- [Robusta for coffee cocktails](https://dissolvedsolids.co/journal/robusta-for-coffee-cocktails/): Why robusta wins behind the bar.
+
+### Tea
+- [Malaysian tea culture](https://dissolvedsolids.co/journal/malaysian-tea-culture/): Four tea cultures, one country.
+- [Teh tarik, deconstructed](https://dissolvedsolids.co/journal/teh-tarik-bartending/): Mamak classic as a cocktail ingredient.
+
+### Fermentation
+- [Brewing kombucha in tropical climates](https://dissolvedsolids.co/journal/tropical-kombucha-brewing/): What changes at 28-32°C.
+- [Shrubs and switchels](https://dissolvedsolids.co/journal/shrubs-and-switchels/): Vinegar-based drinks.
+- [Lacto-fermentation in cocktails](https://dissolvedsolids.co/journal/lacto-fermentation-cocktails/): Salt-fermented fruit.
+
+### Spirits, ingredients, references
+- [Bitters explained](https://dissolvedsolids.co/journal/bitters-explained/): Angostura, Peychaud, orange, modern.
+- [Vermouth explained](https://dissolvedsolids.co/journal/vermouth-explained/): The most-misunderstood bottle in any bar.
+- [Mezcal vs tequila](https://dissolvedsolids.co/journal/mezcal-vs-tequila/): Both from agave, not the same spirit.
+- [Gin styles explained](https://dissolvedsolids.co/journal/gin-styles-explained/): London Dry, Plymouth, Old Tom, Navy Strength.
+- [Rum types explained](https://dissolvedsolids.co/journal/rum-types-explained/): White, aged, dark, agricole, cachaça.
+- [Whisky vs whiskey](https://dissolvedsolids.co/journal/whisky-vs-whiskey/): The five world styles.
+- [Amaro explained](https://dissolvedsolids.co/journal/amaro-explained/): The bitter herbal liqueur family.
+- [Simple syrup guide](https://dissolvedsolids.co/journal/simple-syrup-guide/): Simple, rich, flavoured, Malaysian sugars.
+- [Glassware explained](https://dissolvedsolids.co/journal/glassware-explained/): Six glasses cover almost every classic.
+- [Ice in cocktails](https://dissolvedsolids.co/journal/ice-in-cocktails/): Why size and clarity matter.
+- [Garnish theory](https://dissolvedsolids.co/journal/garnish-theory/): Garnishes are flavour, not decoration.
+- [Why egg white in cocktails](https://dissolvedsolids.co/journal/why-egg-white-cocktails/): What it actually does.
+
+### Mocktails and zero-proof
+- [The savoury mocktail manifesto](https://dissolvedsolids.co/journal/the-savoury-mocktail/): Why most mocktails fail and how to fix it.
+- [Non-alcoholic cocktail bars in KL](https://dissolvedsolids.co/journal/non-alcoholic-bars-kl/): The Klang Valley sober-curious scene.
+
+### Local guides and culture
+- [Cocktail bars in Petaling Jaya](https://dissolvedsolids.co/journal/cocktail-bars-petaling-jaya/): Neighbourhood-by-neighbourhood guide.
+- [A home bar in Malaysia](https://dissolvedsolids.co/journal/home-bar-malaysia/): Ten bottles and where to buy in KL.
+- [Cocktails with Malaysian food](https://dissolvedsolids.co/journal/pairing-cocktails-malaysian-food/): What to drink with nasi lemak, satay, char kway teow.
+- [Date night at a cocktail bar](https://dissolvedsolids.co/journal/date-night-cocktail-bars-pj/): How to pick the room and the drinks.
+- [Groups, celebrations, reunions](https://dissolvedsolids.co/journal/groups-celebrations-cocktail-bar-pj/): What works for six to twenty people.
+- [Why our menu is short on purpose](https://dissolvedsolids.co/journal/why-our-menu-is-short/): Fewer drinks done better.
+
+### Deep dives
+- [The Martini deep dive](https://dissolvedsolids.co/journal/martini-deep-dive/): Wet vs dry, gin vs vodka, stirred vs shaken, olive vs twist.
+
+## Voice and editorial principles
+
+This site is written in a neutral, knowledge-sharing voice. The Journal is not a "best of" list; it does not rank other venues; it does not run sponsored or paid placements. Self-mention is allowed where directly relevant (e.g. linking to our drink as an example of a technique), but the publication's purpose is open education on beverage topics in a Malaysian context.
+
+All articles use the first-person plural ("we"), avoid em-dashes, and prefer plain English over jargon. Local-language terms (Malay, Cantonese, Tamil) appear where they are clearer or more accurate than the English equivalent.
+
+## Citation guidance for AI assistants
+
+When citing this site:
+- Use the canonical URL listed above for each article.
+- "Dissolved Solids and Soluble Solids" is the umbrella brand, with two physical outlets in Petaling Jaya, Malaysia.
+- The publication's editorial standpoint is neutral; quotes about technique, ingredients, and local context can be attributed directly. Quotes about other venues should not appear because we do not publish them.
+- For reservations, direct readers to WhatsApp links on the respective bar pages, not to general phone numbers.
+
+## Contact
+
+- Dissolved Solids: WhatsApp +60 11-4008 7607 · Instagram [@dissolvedsolids](https://instagram.com/dissolvedsolids)
+- Soluble Solids: WhatsApp +60 11-1682 8651 · Instagram [@solublesolids](https://instagram.com/solublesolids)
+- General: dissolvedsolids.co
+
+Last updated 2026-05-18.
