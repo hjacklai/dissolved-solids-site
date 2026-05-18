@@ -552,7 +552,13 @@
     display: flex; flex-direction: column; align-items: center; gap: 10px;
     color: var(--paper);
     text-align: center;
+    /* Brand is now a <button> (click → scroll to top). Reset the
+       default button chrome so it still looks like the wordmark. */
+    background: none; border: 0; padding: 0; font: inherit; cursor: pointer;
+    transition: transform .2s ease;
   }
+  .brand:hover { transform: translateY(-2px); }
+  .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 4px; }
   .brand-logo {
     width: 64px; height: 64px;
     object-fit: contain;
@@ -2051,7 +2057,7 @@
 
 <!-- chrome -->
 <header>
-  <div class="brand">
+  <button type="button" class="brand" id="brandToTop" aria-label="Back to top">
     <img class="brand-logo logo-sol" src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="Soluble Solids logo" decoding="async"/>
     <img class="brand-logo logo-dis" src="https://dissolvedsolids.co/photos/ds-logo.png" alt="Dissolved Solids logo" decoding="async"/>
     <div class="stack">
@@ -2060,7 +2066,7 @@
       </span>
       <span class="tagline">Two states <span>·</span> one chemistry</span>
     </div>
-  </div>
+  </button>
   <nav>
     <a href="/journal/">journal</a>
     <span class="nav-sep"></span><a href="/visit/">visit</a>
@@ -3066,6 +3072,12 @@
     playScratch();
     document.body.classList.add('dissolving');
     setTimeout(() => { location.href = OTHER_URL; }, 220);
+  });
+
+  // Brand wordmark click → scroll page to top.
+  const brandBtn = document.getElementById('brandToTop');
+  if (brandBtn) brandBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   // The shared bottom appbar (appbar.js) injects its own Dis/Sol toggle
