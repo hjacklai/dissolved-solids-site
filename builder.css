@@ -37,8 +37,13 @@
 .builder-mount .builder-hero .lede b { color: var(--accent); font-weight: 400; font-style: italic; }
 
 /* Big "Start" CTA used on host pages that show a teaser before the
-   quiz (currently the landing). builder.js hides .builder-hero +
-   shows .builder-flow when this is clicked. */
+   quiz (currently the landing). Sits directly under the explanation
+   text above the mount. builder.js hides .builder-hero + shows
+   .builder-flow when this is clicked. */
+.builder-mount .builder-hero {
+  margin-top: -8px; /* pull the button up tight against the lede above */
+  padding: 0;
+}
 .builder-mount .builder-start {
   display: inline-flex; align-items: center; justify-content: center;
   padding: 18px 32px;
