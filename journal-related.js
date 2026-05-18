@@ -131,6 +131,12 @@
     { url: '/journal/non-alcoholic-spirit-substitutes/',          title: 'Non-alcoholic spirit substitutes',             cat: 'zero' },
     { url: '/journal/zero-proof-spritz-formats/',                 title: 'Zero-proof spritz formats',                    cat: 'zero' },
     { url: '/journal/non-alcoholic-negroni/',                     title: 'Non-alcoholic Negroni',                        cat: 'zero' },
+    { url: '/journal/asam-boi-cocktails/',                        title: 'Asam boi in cocktails',                        cat: 'malaysian' },
+    { url: '/journal/tamarind-cocktails/',                        title: 'Tamarind in cocktails',                        cat: 'malaysian' },
+    { url: '/journal/negroni-family-tree/',                       title: 'The Negroni family tree',                      cat: 'deepdive' },
+    { url: '/journal/daiquiri-deep-dive/',                        title: 'Why the Daiquiri is the maker\'s test',        cat: 'deepdive' },
+    { url: '/journal/how-we-batch-infusions/',                    title: 'Behind the back shelf - how we batch',         cat: 'deepdive' },
+    { url: '/journal/music-at-cocktail-bar/',                     title: 'Music at a cocktail bar',                      cat: 'deepdive' },
 
     // Deep dives
     { url: '/journal/martini-deep-dive/',                         title: 'The Martini deep dive',                        cat: 'deepdive' },
