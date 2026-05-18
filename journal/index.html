@@ -405,58 +405,83 @@
     max-width: 560px;
   }
 
-  .articles { display: flex; flex-direction: column; gap: 0; transition: opacity .25s; }
+  /* Two-column grid on desktop, single column on phones. Excerpts
+     hidden by default; the title + meta carry the scan, the excerpt
+     reveals on hover (desktop) or via expanded class (mobile tap).
+     A category with 20 entries now fits ~10 visible rows tall. */
+  .articles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 32px;
+    transition: opacity .25s;
+  }
   .articles.fading { opacity: 0; }
-  /* Compact listing - was 22px padding + 22px h3 + 3-line excerpts which
-     pushed long lists over 1500px tall. Tightened to ~half that height. */
   .article {
-    display: grid; grid-template-columns: 44px 1fr auto;
-    gap: 16px; align-items: start;
-    padding: 12px 4px;
+    display: grid; grid-template-columns: 30px 1fr auto;
+    gap: 12px; align-items: center;
+    padding: 9px 6px 9px 2px;
     border-bottom: 1px solid var(--line-2);
     cursor: pointer;
-    transition: padding .25s, background .25s;
+    transition: padding .2s, background .2s;
     color: inherit;
     text-decoration: none;
+    min-height: 44px;
   }
-  .article:last-child { border-bottom: none; }
-  .article:hover { padding-left: 12px; background: linear-gradient(90deg, rgba(209,139,58,.06), transparent 70%); }
+  .article:hover { padding-left: 10px; background: linear-gradient(90deg, rgba(209,139,58,.06), transparent 70%); }
   .article .num {
-    font-family: var(--mono); font-size: 9.5px; letter-spacing: .18em;
-    color: var(--accent); padding-top: 4px;
+    font-family: var(--mono); font-size: 9px; letter-spacing: .16em;
+    color: var(--accent);
+    align-self: center;
   }
   .article .num b { color: var(--paper); font-weight: 500; }
   .article .body { min-width: 0; }
   .article h3 {
-    font-family: var(--serif); font-size: 17px; line-height: 1.15;
-    letter-spacing: -.012em;
-    margin-bottom: 4px;
+    font-family: var(--serif); font-size: 15.5px; line-height: 1.2;
+    letter-spacing: -.01em;
+    margin: 0;
+    /* Clip the title at one line so cards stay uniform height */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .article h3 em { font-style: italic; color: var(--accent); }
+  /* Excerpt: hidden by default, revealed on hover (desktop) */
   .article .dek {
-    font-family: var(--mono); font-size: 11.5px; line-height: 1.45;
-    color: rgba(240,230,207,.62);
-    margin-bottom: 4px;
-    /* Clamp to 2 lines so very-long excerpts don't stretch the card */
+    font-family: var(--mono); font-size: 11px; line-height: 1.4;
+    color: rgba(240,230,207,.58);
+    margin: 4px 0 0;
+    display: none;
+  }
+  .article:hover .dek {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  /* Meta: collapsed into a compact line, only date + author when needed */
   .article .meta {
-    font-family: var(--mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
-    color: rgba(240,230,207,.42);
-    display: flex; gap: 14px; flex-wrap: wrap;
+    display: none; /* Date+author hidden in compact view; available via tap to article */
   }
-  .article .meta b { color: var(--paper-dim); font-weight: 400; }
   .article .read {
-    font-family: var(--mono); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
-    color: rgba(240,230,207,.5);
-    text-align: right; padding-top: 4px; white-space: nowrap;
+    font-family: var(--mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(240,230,207,.45);
+    text-align: right; white-space: nowrap;
+    align-self: center;
   }
   .article .read b { color: var(--accent); font-weight: 500; }
-  .article .arrow { display: inline-block; margin-left: 4px; transition: transform .25s; }
-  .article:hover .arrow { transform: translateX(4px); }
+  .article .arrow { display: inline-block; margin-left: 3px; transition: transform .25s; opacity: .6; }
+  .article:hover .arrow { transform: translateX(4px); opacity: 1; }
+
+  /* Single column on phones and narrow tablets */
+  @media (max-width: 900px) {
+    .articles { grid-template-columns: 1fr; gap: 0; }
+    .article h3 { font-size: 14.5px; }
+  }
+  /* Auto-hide last item border in 2-col grid so it doesn't look uneven */
+  @media (min-width: 901px) {
+    .article:nth-last-child(-n+2) { border-bottom: 1px solid var(--line-2); }
+    .article:last-child:nth-child(odd) { border-bottom: 1px solid var(--line-2); }
+  }
 
   /* ─────────────────── featured spread ─────────────────── */
   .featured {
