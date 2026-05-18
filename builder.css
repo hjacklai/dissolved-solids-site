@@ -608,6 +608,49 @@
      carry enough meaning, and dropping the descriptor halves the chip
      height so the whole quiz fits one phone screen. */
   .builder-mount.is-standalone { padding: 20px var(--pad-x) 120px; }
+
+  /* Hero block - tighter spacing so the START button is not the last
+     thing visible before the fold. */
+  .builder-mount .builder-hero h1 {
+    font-size: clamp(38px, 11vw, 58px);
+    line-height: .98;
+  }
+  .builder-mount .builder-hero .lede {
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 16px 0 18px;
+  }
+  .builder-mount .builder-hero-note { font-size: 10px; }
+
+  /* Compact START CTA - the desktop bulk (320px min-width, 72px tall,
+     heavy shadow, big pulse) dominates a 375px viewport. Slim it down
+     to a normal in-flow button with a softer pulse. */
+  .builder-mount .builder-start {
+    padding: 13px 20px;
+    min-height: 48px;
+    min-width: 0;
+    width: auto;
+    max-width: 100%;
+    font-size: 12px;
+    letter-spacing: .16em;
+    border-width: 2px;
+    border-radius: 6px;
+    gap: 8px;
+    box-shadow:
+      0 4px 14px color-mix(in srgb, var(--accent) 28%, transparent),
+      inset 0 0 0 1px rgba(255,255,255,.18);
+  }
+  .builder-mount .builder-start:hover {
+    transform: translateY(-1px) scale(1.01);
+    box-shadow:
+      0 6px 20px color-mix(in srgb, var(--accent) 38%, transparent),
+      inset 0 0 0 1px rgba(255,255,255,.28);
+  }
+  @keyframes builder-start-pulse {
+    0%, 100% { box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 28%, transparent), inset 0 0 0 1px rgba(255,255,255,.18); }
+    50%      { box-shadow: 0 6px 22px color-mix(in srgb, var(--accent) 45%, transparent), inset 0 0 0 1px rgba(255,255,255,.28); }
+  }
+
   .builder-q-eyebrow { font-size: 10px; margin-bottom: 6px; }
   .builder-q-title { font-size: clamp(22px, 6vw, 32px); line-height: 1.05; margin: 0 0 12px; }
   .builder-chips { grid-template-columns: repeat(3, 1fr); gap: 6px; }
