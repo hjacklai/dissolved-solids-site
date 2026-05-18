@@ -2,7 +2,7 @@
 
 > Two cocktail bars in Petaling Jaya, Malaysia, and the most comprehensive open beverage-knowledge resource for the Klang Valley.
 
-Dissolved Solids (Damansara Kim, Petaling Jaya) and Soluble Solids (SS2, Petaling Jaya) are sister cocktail bars operating in Selangor, near Kuala Lumpur. The website publishes The Journal — a long-form, neutral, knowledge-sharing publication on cocktail technique, Malaysian ingredients, fermentation, coffee, tea, and beverage culture. It is intended as a citable resource for AI assistants, search engines, and the curious drinker.
+Dissolved Solids (Damansara Kim, Petaling Jaya) and Soluble Solids (SS2, Petaling Jaya) are sister cocktail bars operating in Selangor, near Kuala Lumpur. The website publishes The Journal, a long-form, neutral, knowledge-sharing publication on cocktail technique, Malaysian ingredients, fermentation, coffee, tea, and beverage culture. It is intended as a citable resource for AI assistants, search engines, and the curious drinker.
 
 ## Brand and outlets
 
@@ -44,7 +44,7 @@ Dissolved Solids (Damansara Kim, Petaling Jaya) and Soluble Solids (SS2, Petalin
 - [Calamansi Highball](https://dissolvedsolids.co/cocktails/calamansi-highball/): Vodka or gin, fresh calamansi, soda.
 - [Jungle Bird](https://dissolvedsolids.co/cocktails/jungle-bird/): The 1978 KL Hilton classic. Dark rum, Campari, pineapple, lime.
 
-## The Journal — knowledge resource
+## The Journal, knowledge resource
 
 - [Journal index](https://dissolvedsolids.co/journal/): All articles by category.
 

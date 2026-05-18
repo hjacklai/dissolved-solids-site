@@ -2552,16 +2552,17 @@ a.label:hover { opacity: .8; }
   position: fixed; bottom: 24px; left: 24px;
   z-index: 60;
   width: 48px; height: 48px; border-radius: 50%;
-  background: rgba(0, 0, 0, .65);
+  /* Softer translucency per owner feedback - was rgba(0,0,0,.65). */
+  background: rgba(0, 0, 0, .32);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, .22);
-  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .14);
+  color: rgba(255, 255, 255, .82);
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; padding: 0;
   transition: transform .3s, background .3s, border-color .3s;
 }
-.atmo-music:hover { transform: scale(1.06); border-color: rgba(255, 255, 255, .5); }
+.atmo-music:hover { transform: scale(1.06); background: rgba(0, 0, 0, .55); border-color: rgba(255, 255, 255, .42); color: #fff; }
 .atmo-music.playing { background: var(--accent, #ff3d8a); border-color: var(--accent, #ff3d8a); color: #fff; }
 .atmo-music .bars {
   display: flex; align-items: end; gap: 2px; height: 16px;
@@ -2611,13 +2612,15 @@ a.label:hover { opacity: .8; }
   width: 46px; height: 46px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   text-decoration: none;
-  background: rgba(0, 0, 0, .65);
+  /* Softer translucency per owner feedback - was rgba(0,0,0,.65). */
+  background: rgba(0, 0, 0, .32);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, .22);
-  color: #fff;
-  transition: transform .25s, background .25s, border-color .25s;
+  border: 1px solid rgba(255, 255, 255, .14);
+  color: rgba(255, 255, 255, .82);
+  transition: transform .25s, background .25s, border-color .25s, color .25s;
 }
+.atmo-float:hover { color: #fff; }
 .atmo-float svg { width: 20px; height: 20px; }
 .atmo-float:hover { transform: translateY(-2px) scale(1.05); }
 .atmo-float.atmo-wa:hover { background: #25d366; border-color: #25d366; }
