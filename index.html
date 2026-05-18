@@ -3065,7 +3065,7 @@
       <div class="result-block"><div class="result-block-label">Ingredients</div><ul class="result-ingredients"></ul></div>
       <div class="result-block"><div class="result-block-label">Method</div><p class="result-method"></p></div>
       <div class="result-block"><div class="result-block-label">Garnish</div><p class="result-garnish"></p></div>
-      <div class="result-sub-note"><b>Our bartender finalises everything.</b> Pour, build, glass, garnish - all theirs to decide on the night. The ingredients above are the brief, not the recipe.</div>
+      <div class="result-sub-note"><b>Measurements are a guide.</b> Our bartender finalises everything at service. Pour, build, glass, garnish - all theirs to decide on the night. Ratios get adjusted constantly for the best balance, because natural ingredients (citrus, herbs, syrups, fresh fruit) shift in intensity through the season.</div>
       <div class="result-cta">
         <a class="btn-wa-build wa-dissolved" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Reserve at Dissolved Solids</span></a>
         <a class="btn-wa-build wa-soluble" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Reserve at Soluble Solids</span></a>
@@ -4005,6 +4005,12 @@
     // desktop browsers when switching to another app.
     window.addEventListener('blur', pauseForHide);
     window.addEventListener('focus', () => { if (wasPlayingBeforeHide) resumeAfterShow(); });
+    // Tab close / window close - tear the audio down explicitly so it can't outlive the page.
+    function teardown() {
+      Object.values(audios).forEach(a => { if (a) { try { a.pause(); a.src = ''; a.load(); } catch (e) {} } });
+    }
+    window.addEventListener('pagehide', teardown);
+    window.addEventListener('beforeunload', teardown);
   })();
   // Crossfade on state flip if music is playing
   new MutationObserver(async () => {

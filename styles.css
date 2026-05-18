@@ -1501,6 +1501,23 @@ a.label:hover { opacity: .8; }
 }
 .meta-dot { opacity: .5; }
 
+/* Recipe disclaimer - tiny italic note sitting between the
+   ingredients/method block and the long-form body on cocktail pages. */
+.recipe-disclaimer {
+  max-width: 720px;
+  margin: 18px auto 28px;
+  padding: 14px 18px;
+  border-left: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .02em;
+  line-height: 1.55;
+  color: var(--accent-2);
+}
+.recipe-disclaimer em { font-style: italic; }
+
 .article-body {
   font-family: var(--serif);
   font-variation-settings: 'opsz' 24, 'SOFT' 40, 'WONK' 0;

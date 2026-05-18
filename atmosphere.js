@@ -256,6 +256,21 @@
     });
     window.addEventListener('blur', pauseForHide);
     window.addEventListener('focus', function () { if (wasPlayingBeforeHide) resumeAfterShow(); });
+    // Tab close / window close / navigation away. Browsers normally
+    // tear down audio when a tab dies, but on some desktops the audio
+    // can briefly outlive the page (especially when the tab was in
+    // a background process that gets reaped slowly). Explicitly pause
+    // and rip out the src so the browser releases the buffer.
+    function teardown() {
+      if (!audio) return;
+      try {
+        audio.pause();
+        audio.src = '';
+        audio.load();
+      } catch (e) {}
+    }
+    window.addEventListener('pagehide', teardown);
+    window.addEventListener('beforeunload', teardown);
   }
 
   function ready(fn) {

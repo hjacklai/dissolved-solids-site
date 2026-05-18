@@ -2645,7 +2645,7 @@
       </div>
 
       <div class="result-sub-note">
-        <b>Our bartender finalises everything.</b> Pour amounts, the build, the glass, and the garnish are all theirs to decide on the night. The ingredients above are the brief, not the recipe. If we're out of something, we'll substitute with the closest thing we have.
+        <b>Measurements are a guide.</b> Our bartender finalises everything at service - pour amounts, build, glass, garnish. Ratios get adjusted constantly for the best balance, because natural ingredients (citrus, herbs, syrups, fresh fruit) shift in intensity through the season. If we are out of something we will substitute with the closest thing we have.
       </div>
 
       <div class="result-sub-note" style="margin-top:14px;">
@@ -3403,6 +3403,12 @@
     });
     window.addEventListener('blur', pauseForHide);
     window.addEventListener('focus', () => { if (wasPlayingBeforeHide) resumeAfterShow(); });
+    // Tab close / window close - tear the audio down explicitly so it can't outlive the page.
+    function teardown() {
+      Object.values(audios).forEach(a => { if (a) { try { a.pause(); a.src = ''; a.load(); } catch (e) {} } });
+    }
+    window.addEventListener('pagehide', teardown);
+    window.addEventListener('beforeunload', teardown);
   })();
   // Crossfade on state flip - old track fades out (and pauses, retaining
   // currentTime), new track resumes and fades in.

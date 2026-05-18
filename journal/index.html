@@ -1086,6 +1086,48 @@ function initCarouselAutoScroll(strip, track, numOriginals) {
   ['pointerup', 'pointercancel', 'touchend', 'touchcancel', 'focusout'].forEach(ev => {
     strip.addEventListener(ev, scheduleResume, { passive: true });
   });
+
+  // Mouse drag-to-scroll. Touch already works via overflow-x: auto
+  // + touch-action: pan-x, but desktop users with a mouse expect to
+  // click + drag the strip to push it - and that's not a default
+  // browser behavior. Implement it manually.
+  let dragging = false;
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+  let dragMoved = false;
+  strip.style.cursor = 'grab';
+  strip.addEventListener('mousedown', (e) => {
+    // Only the primary button, and only when starting on the strip
+    // itself (not on a card-card whose click should still fire).
+    if (e.button !== 0) return;
+    dragging = true;
+    dragMoved = false;
+    dragStartX = e.pageX;
+    dragStartScroll = strip.scrollLeft;
+    strip.style.cursor = 'grabbing';
+    pause();
+  });
+  document.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const dx = e.pageX - dragStartX;
+    if (Math.abs(dx) > 4) dragMoved = true;
+    strip.scrollLeft = dragStartScroll - dx;
+  });
+  document.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false;
+    strip.style.cursor = 'grab';
+    scheduleResume();
+  });
+  // If a card was clicked but the user actually dragged, swallow the
+  // click so they don't accidentally select a new category mid-drag.
+  strip.addEventListener('click', (e) => {
+    if (dragMoved) {
+      e.stopPropagation();
+      e.preventDefault();
+      dragMoved = false;
+    }
+  }, true);
   // User-initiated scroll (e.g. trackpad fling that keeps gliding
   // after touchend) should also keep the auto-pan paused. Filter out
   // our own programmatic scrolls via the suppress flag.
