@@ -8,12 +8,25 @@
  *     Dis/Sol segmented state toggle
  *   - Scrolling live-readout ticker (state, venue, method, hours, KL time)
  *   - Synthesised radio-tuning SFX on toggle flip
+ *   - SEO-rich site footer with the full internal-link graph (mounted
+ *     before the appbar; skipped if the page already inlines one). This
+ *     gives every sub-page outbound links to all the location landing
+ *     pages, the bar pages, the journal, and the cocktail index. It is
+ *     the single biggest SEO lever for the whole site, see
+ *     SEO_CHECKLIST.md.
  *
- * The landing page index.html currently has the appbar inlined. This
- * script is for sub-pages so navigation stays consistent across the site.
+ * The landing page index.html currently has the appbar AND footer
+ * inlined. This script is for sub-pages so navigation stays
+ * consistent across the site.
  */
 (function () {
   'use strict';
+
+  // Footer mount runs even when the appbar is inlined (e.g. on the DS/SS
+  // bar pages, which inline their own appbar markup but still want the
+  // SEO footer). The appbar mount itself early-returns if one already exists.
+  mountFooter();
+
   if (document.querySelector('.appbar')) return; // already there (e.g. landing)
 
   // ─── Markup ────────────────────────────────────────────────────
@@ -214,4 +227,171 @@
     s.dataset.jrLoaded = '1';
     document.head.appendChild(s);
   })();
+
+  // ─── Site footer (SEO internal-link graph) ─────────────────────
+  // Injects the same comprehensive footer as the homepage onto every
+  // sub-page so PageRank flows from the most-authoritative page down
+  // to all 80+ pages. Skipped if a page already inlines its own
+  // .site-foot (e.g. the homepage).
+  function mountFooter() {
+    try {
+      if (!document.body) return;
+      if (document.querySelector('.site-foot')) return;
+
+      // Self-contained styles. Uses var(--bg-deep) etc when defined
+      // (DS/SS bar pages) and falls back to a dark dock on article and
+      // location pages that don't define those tokens.
+      if (!document.getElementById('site-foot-styles')) {
+        const css = ''
+          + '.site-foot{padding:80px clamp(28px,6.5vw,180px) 160px;'
+          + 'background:var(--bg-deep,#08080a);color:var(--ink,#f0e6cf);'
+          + 'font-family:var(--mono,"JetBrains Mono",ui-monospace,monospace);'
+          + 'border-top:1px solid rgba(240,230,207,0.12);}'
+          + '.site-foot *{box-sizing:border-box;}'
+          + '.site-foot-inner{max-width:var(--maxw,1440px);margin:0 auto;}'
+          + '.site-foot-kicker{font-size:11px;letter-spacing:.26em;'
+          + 'text-transform:uppercase;color:rgba(240,230,207,.6);margin:0 0 8px;}'
+          + '.site-foot-lede{font-family:var(--serif,"DM Serif Display","Times New Roman",serif);'
+          + 'font-size:clamp(32px,4.5vw,56px);line-height:1.02;letter-spacing:-.02em;'
+          + 'margin:0 0 56px;color:var(--ink,#f0e6cf);max-width:780px;font-weight:400;}'
+          + '.site-foot-lede em{color:var(--accent,#d18b3a);font-style:normal;}'
+          + '.site-foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:36px 28px;}'
+          + '.site-foot-col h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;'
+          + 'font-weight:600;color:var(--accent,#d18b3a);margin:0 0 14px;'
+          + 'font-family:var(--mono,"JetBrains Mono",ui-monospace,monospace);}'
+          + '.site-foot-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}'
+          + '.site-foot-col a{color:rgba(240,230,207,.82);text-decoration:none;font-size:14px;'
+          + 'line-height:1.45;border-bottom:1px solid transparent;transition:color 160ms,border-color 160ms;}'
+          + '.site-foot-col a:hover,.site-foot-col a:focus-visible{color:var(--ink,#f0e6cf);'
+          + 'border-bottom-color:rgba(209,139,58,.7);}'
+          + '.site-foot-meta{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:56px;'
+          + 'padding-top:28px;border-top:1px solid rgba(240,230,207,.1);font-size:11px;'
+          + 'letter-spacing:.12em;text-transform:uppercase;color:rgba(240,230,207,.55);}'
+          + '.site-foot-meta a{color:inherit;text-decoration:none;'
+          + 'border-bottom:1px dotted rgba(240,230,207,.3);}'
+          + '.site-foot-meta a:hover{color:var(--ink,#f0e6cf);}';
+        const style = document.createElement('style');
+        style.id = 'site-foot-styles';
+        style.textContent = css;
+        document.head.appendChild(style);
+      }
+
+      // Link clusters. Mirror what the homepage already inlines so AI
+      // crawlers see a consistent internal-link graph.
+      const cols = [
+        ['Our bars', [
+          ['/dissolvedsolids/', 'Dissolved Solids · Damansara Kim'],
+          ['/solublesolids/',   'Soluble Solids · SS2'],
+          ['/visit/',           'Visit · hours, parking, transit'],
+          ['/reserve/',         'Reserve a table'],
+          ['/venue-hire/',      'Private venue hire'],
+          ['/snacks/',          'Snacks & bar food'],
+          ['/faq/',             'FAQ']
+        ]],
+        ['Find us in', [
+          ['/find-a-cocktail-bar/',       'All neighbourhoods (hub)'],
+          ['/cocktail-bars-pj/',          'Cocktail bars in PJ'],
+          ['/cocktail-bars-damansara/',   'Damansara'],
+          ['/cocktail-bars-ss2/',         'SS2'],
+          ['/cocktail-bars-ttdi/',        'TTDI'],
+          ['/cocktail-bars-mont-kiara/',  'Mont Kiara'],
+          ['/cocktail-bars-bangsar/',     'Bangsar'],
+          ['/cocktail-bars-subang/',      'Subang Jaya'],
+          ['/cocktail-bars-puchong/',     'Puchong'],
+          ['/cocktail-bars-kl/',          'Kuala Lumpur'],
+          ['/cocktail-bars-klang-valley/', 'Klang Valley (overview)']
+        ]],
+        ['More of Selangor', [
+          ['/cocktail-bars-cheras/',     'Cheras'],
+          ['/cocktail-bars-shah-alam/',  'Shah Alam'],
+          ['/cocktail-bars-cyberjaya/',  'Cyberjaya'],
+          ['/cocktail-bars-putrajaya/',  'Putrajaya'],
+          ['/cocktail-bars-kepong/',     'Kepong'],
+          ['/cocktail-bars-setapak/',    'Setapak'],
+          ['/cocktail-bars-selayang/',   'Selayang'],
+          ['/cocktail-bars-ampang/',     'Ampang']
+        ]],
+        ['Drinks & recipes', [
+          ['/cocktails/',                       'All cocktails'],
+          ['/cocktails/guide/',                 'Complete recipe guide'],
+          ['/cocktail-glossary/',               'Cocktail glossary (A–Z)'],
+          ['/cocktails/pandan-collins/',        'Pandan Collins'],
+          ['/cocktails/gula-melaka-old-fashioned/', 'Gula Melaka Old Fashioned'],
+          ['/cocktails/kopi-sour/',             'Kopi Sour'],
+          ['/cocktails/calamansi-highball/',    'Calamansi Highball'],
+          ['/cocktails/jungle-bird/',           'Jungle Bird'],
+          ['/cocktails/martini/',               'Martini'],
+          ['/cocktails/negroni/',               'Negroni']
+        ]],
+        ['The Journal', [
+          ['/journal/',                                   'Journal index'],
+          ['/journal/cocktail-bars-petaling-jaya/',       'PJ cocktail bars guide'],
+          ['/journal/best-malaysian-cocktails-2026/',     'Best Malaysian cocktails 2026'],
+          ['/journal/home-bar-malaysia/',                 'A home bar in Malaysia'],
+          ['/journal/malaysian-kopi-explained/',          'Malaysian kopi explained'],
+          ['/journal/pandan-in-beverages/',               'Pandan in beverages'],
+          ['/journal/martini-deep-dive/',                 'The Martini deep dive'],
+          ['/journal/how-to-order-cocktail/',             'How to order a cocktail'],
+          ['/journal/non-alcoholic-bars-kl/',             'Non-alcoholic bars in KL']
+        ]],
+        ['By the evening', [
+          ['/journal/date-night-cocktail-bars-pj/',       'Date night in PJ'],
+          ['/journal/cocktail-bar-first-date-pj/',        'First date in PJ'],
+          ['/journal/anniversary-cocktail-bar-pj/',       'Anniversary in PJ'],
+          ['/journal/groups-celebrations-cocktail-bar-pj/', 'Groups & celebrations'],
+          ['/journal/business-dinner-drinks-pj/',         'Business dinner drinks'],
+          ['/journal/cocktail-bar-solo-pj/',              'Drinking alone'],
+          ['/journal/cocktail-bar-non-drinkers/',         'For non-drinkers'],
+          ['/journal/late-night-drinks-damansara-kim/',   'Late-night Damansara Kim'],
+          ['/journal/cocktail-bar-tourists-kl-pj/',       'For tourists'],
+          ['/journal/cocktail-bar-pricing-pj/',           'Cocktail prices in PJ']
+        ]]
+      ];
+
+      function esc(s) {
+        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+      function colHTML(title, links) {
+        let html = '<div class="site-foot-col"><h4>' + esc(title) + '</h4><ul>';
+        for (let i = 0; i < links.length; i++) {
+          html += '<li><a href="' + links[i][0] + '">' + links[i][1] + '</a></li>';
+        }
+        return html + '</ul></div>';
+      }
+
+      let inner = ''
+        + '<div class="site-foot-inner">'
+        +   '<p class="site-foot-kicker">Two states · one chemistry</p>'
+        +   '<p class="site-foot-lede">Cocktail bars in <em>Petaling Jaya</em>. '
+        +     'A library for the rest of the Klang&nbsp;Valley.</p>'
+        +   '<div class="site-foot-grid">';
+      for (let i = 0; i < cols.length; i++) inner += colHTML(cols[i][0], cols[i][1]);
+      inner += '</div>'
+        +   '<div class="site-foot-meta">'
+        +     '<span>Dissolved Solids &amp; Soluble Solids · Petaling Jaya, Malaysia</span>'
+        +     '<span>Tatler Asia Top 20 Bars 2025/26</span>'
+        +     '<a href="/privacy/">Privacy</a>'
+        +     '<a href="/terms/">Terms</a>'
+        +     '<a href="https://instagram.com/dissolvedsolids" target="_blank" rel="noopener">Instagram · DS</a>'
+        +     '<a href="https://instagram.com/solublesolids" target="_blank" rel="noopener">Instagram · SS</a>'
+        +   '</div>'
+        + '</div>';
+
+      const footer = document.createElement('footer');
+      footer.className = 'site-foot';
+      footer.setAttribute('role', 'contentinfo');
+      footer.setAttribute('aria-label', 'Site links');
+      footer.innerHTML = inner;
+
+      // Insert before the appbar if it exists; otherwise append.
+      const appbar = document.querySelector('.appbar');
+      if (appbar && appbar.parentNode) {
+        appbar.parentNode.insertBefore(footer, appbar);
+      } else {
+        document.body.appendChild(footer);
+      }
+    } catch (e) {
+      // Footer is non-critical; never let an injection bug break the page.
+    }
+  }
 })();

@@ -3250,6 +3250,10 @@
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
           WhatsApp
         </a>
+        <a class="visit-btn" href="/dissolvedsolids/" aria-label="Full Dissolved Solids bar page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h12"/></svg>
+          Bar page
+        </a>
         <a class="visit-btn" target="_blank" rel="noopener"
            href="https://dissolvedsolids.beepit.com/">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13l-1 11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2L3 7z"/><path d="M8 7V5a3 3 0 0 1 6 0v2"/><path d="M17 11h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2"/></svg>
@@ -3312,6 +3316,10 @@
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
           WhatsApp
         </a>
+        <a class="visit-btn" href="/solublesolids/" aria-label="Full Soluble Solids bar page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h12"/></svg>
+          Bar page
+        </a>
         <a class="visit-btn" target="_blank" rel="noopener"
            href="https://maps.app.goo.gl/s4ErcoEyFyNQ9Nby7">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
@@ -3339,6 +3347,206 @@
   </div>
 </section>
 </main>
+
+<!-- ─────────────────────────────────────────────────────────────
+     SITE FOOTER - SEO-rich internal links.
+     The homepage previously dead-ended PageRank into /journal/ and
+     /builder/ only. This footer surfaces every meaningful page on
+     the site so Google (and AI crawlers) can follow the full
+     internal-link graph from the most-authoritative page.
+     Tucked above the floating app-nav, designed to feel like a
+     calm sitemap rather than a heavy site-wide footer.
+     ───────────────────────────────────────────────────────────── -->
+<footer class="site-foot" role="contentinfo" aria-label="Site links">
+  <style>
+    .site-foot {
+      padding: 80px var(--gutter) 160px;
+      background: var(--bg-deep);
+      color: var(--ink);
+      font-family: var(--mono);
+      border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+    }
+    .site-foot-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+    .site-foot-kicker {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--ink) 60%, transparent);
+      margin: 0 0 8px;
+    }
+    .site-foot-lede {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4.5vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -.02em;
+      margin: 0 0 56px;
+      color: var(--ink);
+      max-width: 780px;
+    }
+    .site-foot-lede em { color: var(--accent); font-style: normal; }
+    .site-foot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 36px 28px;
+    }
+    .site-foot-col h4 {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 14px;
+    }
+    .site-foot-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .site-foot-col a {
+      color: color-mix(in srgb, var(--ink) 82%, transparent);
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 1.45;
+      border-bottom: 1px solid transparent;
+      transition: color 160ms, border-color 160ms;
+    }
+    .site-foot-col a:hover,
+    .site-foot-col a:focus-visible {
+      color: var(--ink);
+      border-bottom-color: color-mix(in srgb, var(--accent) 70%, transparent);
+    }
+    .site-foot-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--ink) 55%, transparent);
+    }
+    .site-foot-meta a { color: inherit; text-decoration: none; border-bottom: 1px dotted color-mix(in srgb, var(--ink) 30%, transparent); }
+    .site-foot-meta a:hover { color: var(--ink); }
+  </style>
+  <div class="site-foot-inner">
+    <p class="site-foot-kicker">Two states · one chemistry</p>
+    <p class="site-foot-lede">Cocktail bars in <em>Petaling Jaya</em>. A library for the rest of the Klang&nbsp;Valley.</p>
+
+    <div class="site-foot-grid">
+
+      <div class="site-foot-col">
+        <h4>Our bars</h4>
+        <ul>
+          <li><a href="/dissolvedsolids/">Dissolved Solids · Damansara Kim</a></li>
+          <li><a href="/solublesolids/">Soluble Solids · SS2</a></li>
+          <li><a href="/visit/">Visit · hours, parking, transit</a></li>
+          <li><a href="/reserve/">Reserve a table</a></li>
+          <li><a href="/venue-hire/">Private venue hire</a></li>
+          <li><a href="/snacks/">Snacks &amp; bar food</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="site-foot-col">
+        <h4>Find us in</h4>
+        <ul>
+          <li><a href="/find-a-cocktail-bar/">All neighbourhoods (hub)</a></li>
+          <li><a href="/cocktail-bars-pj/">Cocktail bars in PJ</a></li>
+          <li><a href="/cocktail-bars-damansara/">Damansara</a></li>
+          <li><a href="/cocktail-bars-ss2/">SS2</a></li>
+          <li><a href="/cocktail-bars-ttdi/">TTDI</a></li>
+          <li><a href="/cocktail-bars-mont-kiara/">Mont Kiara</a></li>
+          <li><a href="/cocktail-bars-bangsar/">Bangsar</a></li>
+          <li><a href="/cocktail-bars-subang/">Subang Jaya</a></li>
+          <li><a href="/cocktail-bars-puchong/">Puchong</a></li>
+          <li><a href="/cocktail-bars-kl/">Kuala Lumpur</a></li>
+          <li><a href="/cocktail-bars-klang-valley/">Klang Valley (overview)</a></li>
+        </ul>
+      </div>
+
+      <div class="site-foot-col">
+        <h4>More of Selangor</h4>
+        <ul>
+          <li><a href="/cocktail-bars-cheras/">Cheras</a></li>
+          <li><a href="/cocktail-bars-shah-alam/">Shah Alam</a></li>
+          <li><a href="/cocktail-bars-cyberjaya/">Cyberjaya</a></li>
+          <li><a href="/cocktail-bars-putrajaya/">Putrajaya</a></li>
+          <li><a href="/cocktail-bars-kepong/">Kepong</a></li>
+          <li><a href="/cocktail-bars-setapak/">Setapak</a></li>
+          <li><a href="/cocktail-bars-selayang/">Selayang</a></li>
+          <li><a href="/cocktail-bars-ampang/">Ampang</a></li>
+        </ul>
+      </div>
+
+      <div class="site-foot-col">
+        <h4>Drinks &amp; recipes</h4>
+        <ul>
+          <li><a href="/cocktails/">All cocktails</a></li>
+          <li><a href="/cocktails/guide/">Complete recipe guide</a></li>
+          <li><a href="/cocktail-glossary/">Cocktail glossary (A&ndash;Z)</a></li>
+          <li><a href="/cocktails/pandan-collins/">Pandan Collins</a></li>
+          <li><a href="/cocktails/gula-melaka-old-fashioned/">Gula Melaka Old Fashioned</a></li>
+          <li><a href="/cocktails/kopi-sour/">Kopi Sour</a></li>
+          <li><a href="/cocktails/calamansi-highball/">Calamansi Highball</a></li>
+          <li><a href="/cocktails/jungle-bird/">Jungle Bird</a></li>
+          <li><a href="/cocktails/martini/">Martini</a></li>
+          <li><a href="/cocktails/negroni/">Negroni</a></li>
+        </ul>
+      </div>
+
+      <div class="site-foot-col">
+        <h4>The Journal</h4>
+        <ul>
+          <li><a href="/journal/">Journal index</a></li>
+          <li><a href="/journal/cocktail-bars-petaling-jaya/">PJ cocktail bars guide</a></li>
+          <li><a href="/journal/best-malaysian-cocktails-2026/">Best Malaysian cocktails 2026</a></li>
+          <li><a href="/journal/home-bar-malaysia/">A home bar in Malaysia</a></li>
+          <li><a href="/journal/malaysian-kopi-explained/">Malaysian kopi explained</a></li>
+          <li><a href="/journal/pandan-in-beverages/">Pandan in beverages</a></li>
+          <li><a href="/journal/martini-deep-dive/">The Martini deep dive</a></li>
+          <li><a href="/journal/how-to-order-cocktail/">How to order a cocktail</a></li>
+          <li><a href="/journal/non-alcoholic-bars-kl/">Non-alcoholic bars in KL</a></li>
+        </ul>
+      </div>
+
+      <div class="site-foot-col">
+        <h4>By the evening</h4>
+        <ul>
+          <li><a href="/journal/date-night-cocktail-bars-pj/">Date night in PJ</a></li>
+          <li><a href="/journal/cocktail-bar-first-date-pj/">First date in PJ</a></li>
+          <li><a href="/journal/anniversary-cocktail-bar-pj/">Anniversary in PJ</a></li>
+          <li><a href="/journal/groups-celebrations-cocktail-bar-pj/">Groups &amp; celebrations</a></li>
+          <li><a href="/journal/business-dinner-drinks-pj/">Business dinner drinks</a></li>
+          <li><a href="/journal/cocktail-bar-solo-pj/">Drinking alone</a></li>
+          <li><a href="/journal/cocktail-bar-non-drinkers/">For non-drinkers</a></li>
+          <li><a href="/journal/late-night-drinks-damansara-kim/">Late-night Damansara Kim</a></li>
+          <li><a href="/journal/cocktail-bar-tourists-kl-pj/">For tourists</a></li>
+          <li><a href="/journal/cocktail-bar-pricing-pj/">Cocktail prices in PJ</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-foot-meta">
+      <span>Dissolved Solids &amp; Soluble Solids · Petaling Jaya, Malaysia</span>
+      <span>Tatler Asia Top 20 Bars 2025/26</span>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="https://instagram.com/dissolvedsolids" target="_blank" rel="noopener">Instagram · DS</a>
+      <a href="https://instagram.com/solublesolids" target="_blank" rel="noopener">Instagram · SS</a>
+    </div>
+  </div>
+</footer>
 
 <!-- ─────────────────────────────────────────────────────────────
      BOTTOM APP-NAV BAR - icons + state toggle + live ticker
