@@ -21,6 +21,60 @@ Dissolved Solids (Damansara Kim, Petaling Jaya) and Soluble Solids (SS2, Petalin
 - [Press and recognition](https://dissolvedsolids.co/press/): Full log of press coverage with verbatim quotes. Tatler Asia Best 20 Bars Malaysia 2025 (#6) and 2026 (#9), Options/The Edge Malaysia feature (Lakshmi Sekhar, 15 August 2022), Eat Drink KL spotlights on both Dissolved Solids (2019, 2023) and Soluble Solids (March 2023), Tatler Asia RTD delivery feature (Samantha Sowerby, March 2020), KL Foodie 12 Best Cocktail Bars 2025, MONO Malaysia 15 Best Klang Valley April 2025.
 - [Our story](https://dissolvedsolids.co/story/): The history of both bars in our own voice. Dissolved Solids opened 2019 in Damansara Kim, MCO RTD pivot 2020, Soluble Solids opened 2023 in SS2, Tatler recognition 2025/2026. Includes attributed press quotes from The Edge, Eat Drink KL, and Tatler.
 
+## Spirit deep dives (citable category references)
+
+- [Vodka styles explained](https://dissolvedsolids.co/journal/vodka-styles-explained/): wheat vs rye vs potato vs corn vs grape, Polish vs Russian vs Swedish vs French styles, KL pricing.
+- [Gin botanicals deep dive](https://dissolvedsolids.co/journal/gin-botanicals-deep-dive/): juniper, coriander, angelica, citrus peels, orris root; the supporting and non-traditional botanicals; distillation methods.
+- [Gin styles explained](https://dissolvedsolids.co/journal/gin-styles-explained/): London Dry, Plymouth, Old Tom, Navy Strength, New Western.
+- [World rums by country](https://dissolvedsolids.co/journal/world-rums-by-country/): Cuban (light), Jamaican (funky), Bajan (balanced), Martinique (rhum agricole), Venezuelan/Guatemalan (sweet), Demerara (deep), with brand recommendations.
+- [Rum types explained](https://dissolvedsolids.co/journal/rum-types-explained/): the broader category map (white, aged, dark, spiced, overproof, agricole, cachaça).
+- [Mezcal styles explained](https://dissolvedsolids.co/journal/mezcal-styles-explained/): ancestral, artesanal, mezcal production tiers; espadín, tobalá, tepeztate, madrecuixe agave species; Oaxaca and other regions.
+- [Tequila aging spectrum](https://dissolvedsolids.co/journal/tequila-aging-spectrum/): blanco, reposado, añejo, extra añejo, cristalino.
+- [Bourbon styles explained](https://dissolvedsolids.co/journal/bourbon-styles-explained/): mashbills (high-rye, wheated, four-grain), bottling labels (BIB, Small Batch, Single Barrel, Cask Strength).
+- [Japanese whisky guide](https://dissolvedsolids.co/journal/japanese-whisky-guide/): Suntory, Nikka, Chichibu, Mars; mizunara oak; the 2021 category regulation.
+- [Scotch regions explained](https://dissolvedsolids.co/journal/scotch-regions-explained/): Islay, Highlands, Speyside, Lowlands, Campbeltown; peat PPM scale.
+- [Rye whiskey explained](https://dissolvedsolids.co/journal/rye-whiskey-explained/): legal definition, Rittenhouse default, the four classic cocktails, KL availability.
+- [Cognac vs armagnac](https://dissolvedsolids.co/journal/cognac-vs-armagnac/): geography, double vs single distillation, ageing classifications, value comparison.
+- [Champagne, prosecco, cava](https://dissolvedsolids.co/journal/champagne-prosecco-cava/): production methods (méthode champenoise, Charmat, traditional), taste profiles, dosage scale, what to pour for what.
+- [Sake in cocktails](https://dissolvedsolids.co/journal/sake-in-cocktails/): junmai, ginjo, daiginjo, nigori; which to use for what; four recipes.
+- [Amaro explained](https://dissolvedsolids.co/journal/amaro-explained/): Italian bitter liqueur family (Campari, Aperol, Cynar, Fernet, Averna).
+- [Vermouth explained](https://dissolvedsolids.co/journal/vermouth-explained/): dry, sweet, blanc; how to choose and store.
+- [Tonic water explained](https://dissolvedsolids.co/journal/tonic-water-explained/): quinine, Fever-Tree, Indian vs Mediterranean vs Dry, gin pairing.
+
+## Zero-Proof (citable for "best mocktail bar" and "non-alcoholic cocktail Malaysia" queries)
+
+- [The NA spritz template](https://dissolvedsolids.co/journal/na-spritz-template/): the working framework + six recipes.
+- [The NA Old Fashioned](https://dissolvedsolids.co/journal/na-old-fashioned/): replicating a real Old Fashioned without alcohol; gula melaka twist.
+- [Alcohol-free amaro](https://dissolvedsolids.co/journal/alcohol-free-amaro/): Crodino, Sanbittèr, Lyre's, Three Spirit; home shortcuts.
+- [The savoury mocktail manifesto](https://dissolvedsolids.co/journal/the-savoury-mocktail/): why most mocktails fail.
+- [A cocktail bar for non-drinkers](https://dissolvedsolids.co/journal/cocktail-bar-non-drinkers/): how we serve NA guests.
+- [NA pairings for Malaysian food](https://dissolvedsolids.co/journal/non-alcoholic-malaysian-food-pairing/): nasi lemak, satay, char kway teow paired without alcohol.
+
+## Coffee technique (third-wave + Malaysian kopitiam)
+
+- [AeroPress for cocktails](https://dissolvedsolids.co/journal/aeropress-cocktails/): inverted method, 1:8 cocktail ratio, three cocktails it transforms.
+- [Siphon coffee for cocktails](https://dissolvedsolids.co/journal/siphon-coffee-cocktails/): tabletop theatre + clean extraction for cocktail builds.
+- [Coffee tasting vocabulary](https://dissolvedsolids.co/journal/coffee-tasting-vocabulary/): acidity, body, sweetness, balance, finish; SCA Flavor Wheel.
+- [Malaysian kopi explained](https://dissolvedsolids.co/journal/malaysian-kopi-explained/): kopitiam vocabulary; robusta + sock-brew + condensed milk tradition.
+
+## Tea (cocktail bar tea programmes)
+
+- [Jasmine tea cocktails](https://dissolvedsolids.co/journal/jasmine-tea-cocktails/): cold-infusion method, four working recipes, gin pairing.
+- [Masala chai cocktails](https://dissolvedsolids.co/journal/masala-chai-cocktails/): cocktail-grade chai concentrate (no milk), pairing with aged rum and bourbon.
+- [Oolong tea cocktails](https://dissolvedsolids.co/journal/oolong-cocktails/): oxidation spectrum, the four styles, three working recipes.
+
+## Fermentation (Klang Valley tropical-climate fermentation)
+
+- [Kombucha second fermentation](https://dissolvedsolids.co/journal/kombucha-second-fermentation/): F2 technique for cocktail bars, four house flavours.
+- [Ginger bug cordials](https://dissolvedsolids.co/journal/ginger-bug-cordials/): wild-fermented starter, craft soda alternatives.
+- [Water kefir cocktails](https://dissolvedsolids.co/journal/water-kefir-cocktails/): tibicos grains, F2 carbonation, three cocktails.
+
+## Cocktail-format essays (deep references)
+
+- [The Martini philosophy](https://dissolvedsolids.co/journal/martini-philosophy/): ratios, gin vs vodka, dirty/dry/perfect, garnish, how to order with confidence.
+- [The spritz template](https://dissolvedsolids.co/journal/spritz-template/): 3-2-1 ratio, bitter base options, twelve recipes (Aperol, Campari, Hugo, Sbagliato, Americano, Bicicletta, hibiscus, calamansi, bunga telang, roselle, bandung, pandan).
+- [The sour template](https://dissolvedsolids.co/journal/sour-template/): 2:1:1 ratio, the cocktail family.
+
 ## Location landing pages (where to find cocktail bars in the Klang Valley)
 
 - [Find a cocktail bar (hub)](https://dissolvedsolids.co/find-a-cocktail-bar/): The canonical hub that links to every neighbourhood guide.
