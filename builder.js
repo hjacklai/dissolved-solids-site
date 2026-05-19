@@ -2276,6 +2276,25 @@
       garnish: 'Yuzu zest or lemon zest',
       signature: 'modern'
     }),
+
+    // OUR HOUSE SIGNATURE: The Tesseract.
+    // Four flavour dimensions in simple presentation: smoky (mezcal), fruity
+    // (maraschino), savoury (saline), velvet (texture from long stir + citric).
+    // Built to evolve as it dilutes.
+    tesseract: () => ({
+      ingredients: [
+        'Gin (London Dry, juniper-led)',
+        'Mezcal espadín (a small measure)',
+        'Maraschino liqueur (Luxardo)',
+        'Cointreau',
+        'Saline solution (2-3 drops)',
+        'Citric acid solution (2-3 drops)',
+        'A splash of tonic to finish',
+      ],
+      method: 'Combine all spirits in a chilled mixing glass. Add the saline and citric drops. Add ice and stir long and cold (longer than a Negroni; the saline and citric need to integrate). Strain up into a frozen coupe. Finish with a small splash of tonic on the surface.',
+      garnish: 'None on top of the drink. The tonic splash is the aromatic lift.',
+      signature: 'house-signature'
+    }),
   };
 
   // Multi-select profile pairs (keys alphabetically sorted).
@@ -2398,6 +2417,7 @@
     pandan_mojito: 'pandan-mojito',
     lemongrass_gimlet: 'lemongrass-gimlet',
     smoked_old_fashioned: 'smoked-old-fashioned',
+    tesseract: 'tesseract',
   };
   const MENU_NAMES = {
     jungle_bird: 'Jungle Bird',
@@ -2434,6 +2454,7 @@
     pandan_mojito: 'Pandan Mojito',
     lemongrass_gimlet: 'Lemongrass Gimlet',
     smoked_old_fashioned: 'Smoked Old Fashioned',
+    tesseract: 'The Tesseract (our signature)',
   };
 
   /* ----- Spirit guard (Round 17 fix) -----
@@ -2587,6 +2608,7 @@
     horses_neck: ['whiskey','brandy'], breakfast_martini: 'gin',
     porn_star_martini: 'vodka', spicy_margarita_classic: 'tequila',
     south_side: 'gin', yuzu_collins: 'gin',
+    tesseract: 'gin', // signature; small mezcal but gin-led
   };
 
   function templateMatchesSpirit(key, spirit) {
@@ -2708,6 +2730,26 @@
     if (profiles.length === 2) {
       const duoKey = profiles.join('+');
       if (DUO_TEMPLATES[duoKey]) return DUO_TEMPLATES[duoKey];
+    }
+
+    // House signature route: the Tesseract is built for guests asking for
+    // something distinctive. Surface it when the answers line up:
+    // - adventurous mood
+    // - gin as base spirit
+    // - profile leans smoky, savoury, umami, or any-spirit-forward combination
+    // - or when both smoky AND fruity profiles are picked (the Tesseract's
+    //   exact intersection)
+    if (mood === 'adventurous' && (spirit === 'gin' || spirit === 'surprise')) {
+      if (profile === 'smoky' || profile === 'umami') return 'tesseract';
+      if (profiles.length === 2 && profiles.includes('smoky') && profiles.includes('fruity')) return 'tesseract';
+      if (profiles.length === 2 && profiles.includes('smoky') && profiles.includes('floral')) return 'tesseract';
+      if (mood === 'adventurous' && strength === 'strong' && spirit === 'gin') return Math.random() < 0.5 ? 'tesseract' : 'martini_dry';
+    }
+    // Also: when the user explicitly hits the "surprise me" spirit, the
+    // Tesseract is one of the strongest "I want something I have not had"
+    // answers we can give.
+    if (spirit === 'surprise' && mood === 'adventurous' && (profile === 'bitter' || profile === 'smoky' || profile === 'umami')) {
+      return 'tesseract';
     }
 
     // ----- Round 17 routing for new chips -----

@@ -105,6 +105,7 @@
     { url: '/journal/water-kefir-cocktails/',                     title: 'Water kefir cocktails',                        cat: 'ferment' },
     { url: '/journal/martini-philosophy/',                        title: 'The Martini philosophy',                       cat: 'deepdive' },
     { url: '/journal/spritz-template/',                           title: 'The spritz template',                          cat: 'technique' },
+    { url: '/journal/the-tesseract-philosophy/',                  title: 'The Tesseract philosophy (our signature)',     cat: 'deepdive' },
 
     // Technique
     { url: '/journal/how-to-taste-spirit/',                       title: 'How to taste a spirit',                        cat: 'technique' },
