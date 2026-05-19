@@ -553,14 +553,14 @@
   }
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-    padding: 20px var(--gutter) 16px;
-    display: flex; flex-direction: column; align-items: center; gap: 14px;
+    padding: 10px var(--gutter) 8px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
     color: var(--paper);
     transition: color var(--t-bg) cubic-bezier(.7,0,.3,1);
   }
 
   .brand {
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
     color: var(--paper);
     text-align: center;
     /* Brand is now a <button> (click → scroll to top). Reset the
@@ -571,19 +571,19 @@
   .brand:hover { transform: translateY(-2px); }
   .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 4px; }
   .brand-logo {
-    width: 64px; height: 64px;
+    width: 40px; height: 40px;
     object-fit: contain;
-    filter: drop-shadow(0 0 14px rgba(255,255,255,.18));
+    filter: drop-shadow(0 0 10px rgba(255,255,255,.18));
     animation: brandPulse 4s ease-in-out infinite alternate;
   }
   @keyframes brandPulse {
-    from { filter: drop-shadow(0 0 8px rgba(255,255,255,.12)); }
-    to   { filter: drop-shadow(0 0 20px rgba(255,255,255,.30)); }
+    from { filter: drop-shadow(0 0 6px rgba(255,255,255,.12)); }
+    to   { filter: drop-shadow(0 0 14px rgba(255,255,255,.30)); }
   }
-  .brand .stack { display: flex; flex-direction: column; gap: 4px; line-height: 1; align-items: center; }
+  .brand .stack { display: flex; flex-direction: column; gap: 2px; line-height: 1; align-items: center; }
   .brand .wordmark {
     font-family: var(--serif);
-    font-size: 38px;
+    font-size: 26px;
     letter-spacing: -.015em;
     color: var(--paper);
     text-transform: lowercase;
