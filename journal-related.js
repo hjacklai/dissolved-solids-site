@@ -84,6 +84,8 @@
     { url: '/journal/tequila-aging-spectrum/',                    title: 'Tequila aging spectrum',                       cat: 'spirits' },
     { url: '/journal/sake-in-cocktails/',                         title: 'Sake in cocktails',                            cat: 'spirits' },
     { url: '/journal/champagne-prosecco-cava/',                   title: 'Champagne vs prosecco vs cava',                cat: 'spirits' },
+    { url: '/journal/bourbon-styles-explained/',                  title: 'Bourbon styles explained',                     cat: 'spirits' },
+    { url: '/journal/cognac-vs-armagnac/',                        title: 'Cognac vs armagnac',                           cat: 'spirits' },
 
     // Technique
     { url: '/journal/how-to-taste-spirit/',                       title: 'How to taste a spirit',                        cat: 'technique' },
