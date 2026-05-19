@@ -31,14 +31,18 @@
     tequila: 'Tequila',
     mezcal: 'Mezcal',
     brandy: 'Brandy',
+    sake: 'Junmai sake',
+    champagne: 'Cava (or champagne)',
+    'low-abv': 'Aromatised wine (vermouth or amaro base)',
+    na: 'NA spirit (Lyre\'s or Seedlip)',
   };
 
   const ALL_VALUES = {
-    mood: ['refreshed','adventurous','comforting','celebratory','mellow','awake','cosy','playful'],
-    spirit: ['gin','whiskey','vodka','rum','tequila','mezcal','brandy','surprise'],
-    profile: ['citrusy','sweet','bitter','herbal','smoky','floral','spicy','tropical','creamy','nutty'],
-    strength: ['light','medium','strong'],
-    occasion: ['aperitif','with-food','nightcap','celebration','session','anytime','brunch','late-night'],
+    mood: ['refreshed','adventurous','comforting','celebratory','mellow','awake','cosy','playful','contemplative','romantic','social','focused'],
+    spirit: ['gin','whiskey','vodka','rum','tequila','mezcal','brandy','sake','champagne','low-abv','na','surprise'],
+    profile: ['citrusy','sweet','bitter','herbal','smoky','floral','spicy','tropical','creamy','nutty','umami','fruity','earthy','salty'],
+    strength: ['zero-proof','light','medium','strong'],
+    occasion: ['aperitif','with-food','nightcap','celebration','session','anytime','brunch','late-night','business','dessert','picnic'],
   };
 
   /* ----- Helpers ----- */
@@ -1123,6 +1127,257 @@
       signature: 'malaysian-local'
     }),
 
+    /* ----- Round 17 additions: new mood / profile / occasion / spirit / strength chips ----- */
+
+    negroni: (ans) => {
+      const base = resolveBase(ans.spirit) || 'Gin';
+      return {
+        ingredients: [base, 'Campari', 'Sweet vermouth'],
+        method: 'Stir long and cold with ice. Strain over a large cube.',
+        garnish: 'Expressed orange peel',
+        signature: 'bitter'
+      };
+    },
+
+    // SAKE-led
+    saketini: () => ({
+      ingredients: ['Gin', 'Junmai sake', 'Dry vermouth (whisper)'],
+      method: 'Stir cold, strain into a chilled coupe.',
+      garnish: 'Expressed lemon peel',
+      signature: 'sake'
+    }),
+    sake_highball: () => ({
+      ingredients: ['Junmai sake (45ml)', 'Cold soda (120ml)'],
+      method: 'Build over a large ice cube. No stir.',
+      garnish: 'Thin cucumber slice or yuzu peel',
+      signature: 'sake'
+    }),
+    yuzu_sake_sour: () => ({
+      ingredients: ['Junmai sake', 'Yuzu juice', 'Simple syrup', 'Egg white (or aquafaba)'],
+      method: 'Dry shake then shake hard with ice. Double-strain.',
+      garnish: 'Lemon peel and a dot of yuzu kosho',
+      signature: 'sake'
+    }),
+
+    // CHAMPAGNE / sparkling-led
+    champagne_cocktail: () => ({
+      ingredients: ['Sugar cube soaked with Angostura', 'A teaspoon of cognac', 'Cold champagne or cava (top)'],
+      method: 'Drop the cube in, add the cognac, top with chilled sparkling.',
+      garnish: 'Expressed lemon peel',
+      signature: 'celebration'
+    }),
+    kir_royale: () => ({
+      ingredients: ['Crème de cassis (15ml)', 'Cold champagne or cava (top)'],
+      method: 'Pour cassis in flute, top with sparkling.',
+      garnish: 'Optional fresh blackcurrant',
+      signature: 'celebration'
+    }),
+    bellini: () => ({
+      ingredients: ['White peach purée (30ml)', 'Cold prosecco (90ml)'],
+      method: 'Spoon peach purée into a flute, top with prosecco. Gentle stir.',
+      garnish: 'A thin slice of peach',
+      signature: 'celebration'
+    }),
+
+    // LOW-ABV led
+    garibaldi: () => ({
+      ingredients: ['Campari (45ml)', 'Fresh orange juice, fluffy (90ml)'],
+      method: 'Whip the orange in a high-speed blender for 6 seconds before pouring. Build over ice.',
+      garnish: 'Orange wheel',
+      signature: 'bitter'
+    }),
+    milano_torino: () => ({
+      ingredients: ['Campari', 'Sweet vermouth'],
+      method: 'Stir with ice in a rocks glass.',
+      garnish: 'Expressed orange peel',
+      signature: 'bitter'
+    }),
+    vermouth_tonic: () => ({
+      ingredients: ['Bianco vermouth (60ml)', 'Cold tonic (90ml)'],
+      method: 'Build over ice in a wine glass.',
+      garnish: 'Olive and lemon peel',
+      signature: 'low-abv'
+    }),
+
+    // NA (zero-proof) builds
+    na_negroni: () => ({
+      ingredients: ['Lyre\'s Italian Orange', 'Lyre\'s Aperitif Rosso (NA red vermouth)', 'NA sparkling (top)'],
+      method: 'Build in a rocks glass over a large cube.',
+      garnish: 'Expressed orange peel',
+      signature: 'zero-proof'
+    }),
+    na_spritz: () => ({
+      ingredients: ['Hibiscus-gentian concentrate (60ml)', 'Fresh lemon (15ml)', 'Soda (90ml)'],
+      method: 'Build in a wine glass over plenty of ice.',
+      garnish: 'Dehydrated orange wheel',
+      signature: 'zero-proof'
+    }),
+    na_old_fashioned_build: () => ({
+      ingredients: ['Lyre\'s American Malt (50ml)', 'Gula melaka syrup (5ml)', 'Angostura bitters (2 dashes)', 'Cold-brewed black tea (5ml for body)'],
+      method: 'Stir 30 seconds over ice. Strain over a large cube.',
+      garnish: 'Expressed orange peel',
+      signature: 'zero-proof'
+    }),
+    virgin_mary: () => ({
+      ingredients: ['Tomato juice (proper)', 'Fresh lemon', 'Worcestershire, Tabasco, black pepper', 'Pinch of celery salt'],
+      method: 'Roll between tins with ice. Strain over fresh ice.',
+      garnish: 'Celery stick and a lime wedge',
+      signature: 'zero-proof'
+    }),
+    seedlip_garden_tonic: () => ({
+      ingredients: ['Seedlip Garden 108 (50ml)', 'Mediterranean tonic (cold, 120ml)'],
+      method: 'Build over a large cube in a wine glass.',
+      garnish: 'Snap of fresh basil and cucumber',
+      signature: 'zero-proof'
+    }),
+
+    // UMAMI-led
+    umami_martini: () => ({
+      ingredients: ['Junmai sake', 'Gin', 'Dashi tincture (or olive brine, 5ml)'],
+      method: 'Stir cold over ice. Strain into a chilled coupe.',
+      garnish: 'Castelvetrano olive and lemon peel',
+      signature: 'umami'
+    }),
+    savoury_negroni: () => ({
+      ingredients: ['Gin', 'Cynar (artichoke amaro)', 'Sweet vermouth', 'A pinch of saline'],
+      method: 'Stir over ice. Strain over a large cube.',
+      garnish: 'Roasted tomato slice and orange peel',
+      signature: 'umami'
+    }),
+
+    // FRUITY-led
+    lychee_martini: () => ({
+      ingredients: ['Vodka (or gin)', 'Lychee liqueur', 'Fresh lychee juice', 'A few drops of lime'],
+      method: 'Shake with ice. Double-strain into a chilled coupe.',
+      garnish: 'A single fresh lychee on a skewer',
+      signature: 'fruity'
+    }),
+    fruity_collins: (ans) => {
+      const base = resolveBase(ans.spirit);
+      return {
+        ingredients: [base, 'Fresh seasonal fruit purée (mango, peach, raspberry)', 'Fresh lemon', 'Simple syrup', 'Top with soda'],
+        method: 'Shake the base, fruit, lemon and syrup. Strain over ice in a Collins glass. Top.',
+        garnish: 'Fresh fruit on a pick',
+        signature: 'fruity'
+      };
+    },
+
+    // EARTHY-led
+    tamarind_old_fashioned: (ans) => {
+      const base = ['whiskey','rum','brandy'].includes(ans.spirit) ? SPIRITS[ans.spirit] : 'Bourbon';
+      return {
+        ingredients: [base, 'Tamarind syrup (5ml)', 'Aromatic bitters (2 dashes)'],
+        method: 'Stir over ice. Strain over a large cube.',
+        garnish: 'Expressed orange peel',
+        signature: 'earthy'
+      };
+    },
+    earthy_milk_punch: (ans) => {
+      const base = resolveBase(ans.spirit);
+      return {
+        ingredients: [base, 'Cold gula melaka syrup', 'Cold black tea (strong)', 'Whole milk (clarified)'],
+        method: 'Combine, allow to curdle for 1 hour in fridge, strain through coffee filter into a chilled glass.',
+        garnish: 'Grated nutmeg and a dehydrated lime wheel',
+        signature: 'earthy'
+      };
+    },
+
+    // SALTY-led
+    salted_dog_paloma: () => ({
+      ingredients: ['Blanco tequila', 'Fresh grapefruit juice', 'A heavy pinch of sea salt', 'Top with soda'],
+      method: 'Shake the base, grapefruit and salt briefly with ice. Strain over fresh ice. Top.',
+      garnish: 'Salt-rimmed glass and a grapefruit wedge',
+      signature: 'salty'
+    }),
+    salted_caramel_old_fashioned: () => ({
+      ingredients: ['Bourbon', 'Salted caramel syrup (5ml)', 'Aromatic bitters', 'A pinch of sea salt'],
+      method: 'Stir over ice. Strain over a large cube.',
+      garnish: 'Expressed orange peel and a sliver of sea salt',
+      signature: 'salty'
+    }),
+
+    // CONTEMPLATIVE mood
+    japanese_highball: () => ({
+      ingredients: ['Japanese whisky (45ml)', 'Cold sparkling water (120ml)'],
+      method: 'Build over two large clear ice cubes. Stir exactly 13.5 times.',
+      garnish: 'None',
+      signature: 'sipping'
+    }),
+    scotch_neat: () => ({
+      ingredients: ['Single malt Scotch (60ml)', 'Glass of room-temperature still water'],
+      method: 'Pour neat into a Glencairn or copita. Sip slowly. Add a drop of water if desired.',
+      garnish: 'None',
+      signature: 'sipping'
+    }),
+
+    // ROMANTIC mood
+    rose_french_75: () => ({
+      ingredients: ['Gin', 'Fresh lemon', 'Rose syrup (5ml)', 'Cold champagne or cava (top)'],
+      method: 'Shake gin, lemon and rose syrup. Strain into a flute. Top with sparkling.',
+      garnish: 'A single rose petal',
+      signature: 'romance'
+    }),
+    hibiscus_paloma: () => ({
+      ingredients: ['Blanco tequila', 'Fresh grapefruit', 'Hibiscus syrup (10ml)', 'Top with soda'],
+      method: 'Shake the first three with ice. Strain over fresh ice. Top with soda.',
+      garnish: 'Hibiscus flower and grapefruit peel',
+      signature: 'romance'
+    }),
+
+    // SOCIAL mood: punch / format
+    house_punch: (ans) => {
+      const base = resolveBase(ans.spirit);
+      return {
+        ingredients: [base + ' (400ml for 8 servings)', 'Fresh citrus juice (200ml)', 'Strong tea (200ml)', 'Sugar syrup (100ml)', 'Top with soda or sparkling wine'],
+        method: 'Mix in a punch bowl 2 hours ahead, refrigerate. Add top right before serving. Self-serve.',
+        garnish: 'Citrus wheels, fresh herbs, mint sprigs, optional fresh flowers',
+        signature: 'social'
+      };
+    },
+
+    // FOCUSED mood
+    espresso_negroni: () => ({
+      ingredients: ['Gin', 'Campari', 'Sweet vermouth', 'Cold espresso (15ml)'],
+      method: 'Stir cold over ice. Strain over a large cube.',
+      garnish: 'Three coffee beans on a coin of orange peel',
+      signature: 'coffee'
+    }),
+
+    // DESSERT occasion
+    chocolate_martini: () => ({
+      ingredients: ['Vodka', 'Crème de cacao', 'Dark chocolate liqueur', 'A drop of cream'],
+      method: 'Shake hard with ice. Double-strain into a chilled coupe rimmed with cocoa.',
+      garnish: 'Cocoa rim and a fresh raspberry',
+      signature: 'dessert'
+    }),
+    affogato_cocktail: () => ({
+      ingredients: ['A small scoop of vanilla gelato', 'Hot espresso (30ml)', 'Frangelico or Amaretto (15ml)'],
+      method: 'Scoop gelato into a small cup. Pour hot espresso then liqueur over.',
+      garnish: 'Cocoa nibs',
+      signature: 'dessert'
+    }),
+
+    // PICNIC occasion
+    aperol_white_sangria: () => ({
+      ingredients: ['Dry white wine (1 bottle)', 'Aperol (200ml)', 'Fresh orange and peach slices', 'Fresh mint'],
+      method: 'Mix ahead, refrigerate 4 hours. Serve over ice in wine glasses.',
+      garnish: 'A few of the macerated fruit slices',
+      signature: 'social'
+    }),
+    pimms_tall: () => ({
+      ingredients: ['Pimm\'s No. 1 (50ml)', 'Lemonade (120ml)', 'Sliced cucumber, strawberry, orange, mint'],
+      method: 'Build in a tall glass over ice with all the fruit.',
+      garnish: 'A cucumber spear and a mint sprig',
+      signature: 'social'
+    }),
+
+    // BUSINESS occasion
+    business_martini: () => ({
+      ingredients: ['Gin or vodka (60ml)', 'Dry vermouth (10ml)'],
+      method: 'Stir 25 seconds over ice. Strain into a chilled Nick & Nora.',
+      garnish: 'Single olive or expressed lemon peel',
+      signature: 'classic'
+    }),
   };
 
   // Multi-select profile pairs (keys alphabetically sorted).
@@ -1176,6 +1431,35 @@
     'herbal+nutty': 'orgeat_swizzle',
     'floral+nutty': 'orgeat_swizzle',
     'nutty+spicy': 'orgeat_swizzle',
+    // Round 17: new profile combos
+    'citrusy+umami': 'savoury_negroni',
+    'bitter+umami': 'umami_martini',
+    'umami+sweet': 'umami_martini',
+    'herbal+umami': 'savoury_negroni',
+    'umami+smoky': 'savoury_negroni',
+    'citrusy+fruity': 'fruity_collins',
+    'fruity+sweet': 'bellini',
+    'floral+fruity': 'fruity_collins',
+    'fruity+tropical': 'pina_colada',
+    'fruity+herbal': 'fruity_collins',
+    'bitter+fruity': 'garibaldi',
+    'creamy+fruity': 'lychee_martini',
+    'earthy+sweet': 'tamarind_old_fashioned',
+    'earthy+smoky': 'tamarind_old_fashioned',
+    'bitter+earthy': 'earthy_milk_punch',
+    'earthy+nutty': 'earthy_milk_punch',
+    'earthy+herbal': 'earthy_milk_punch',
+    'earthy+spicy': 'tamarind_old_fashioned',
+    'citrusy+salty': 'salted_dog_paloma',
+    'salty+sweet': 'salted_caramel_old_fashioned',
+    'salty+smoky': 'salted_caramel_old_fashioned',
+    'bitter+salty': 'savoury_negroni',
+    'salty+spicy': 'salted_dog_paloma',
+    'salty+umami': 'umami_martini',
+    'creamy+umami': 'earthy_milk_punch',
+    'creamy+earthy': 'earthy_milk_punch',
+    'fruity+spicy': 'fruity_collins',
+    'fruity+nutty': 'fruity_collins',
   };
 
   // Template-key → /cocktails/{slug}/ URL slug.
@@ -1206,9 +1490,191 @@
     boulevardier_rich: 'Boulevardier (richer)',
   };
 
+  /* ----- Spirit guard (Round 17 fix) -----
+   * If the user explicitly picked a spirit and pickTemplate routes them
+   * to a template that hard-codes a different spirit, swap to a
+   * spirit-faithful fallback. Templates that adapt via resolveBase() are
+   * marked 'any' and pass through unchanged.
+   */
+  const TEMPLATE_SPIRITS = {
+    // Adaptive templates that already use resolveBase(ans.spirit)
+    espresso_awake: 'any', sour: 'any', bitter_stirred: 'any',
+    highball_spice: 'any', garden_stirred: 'any', flora_fizz: 'any',
+    tropical_shake: 'any', old_fashioned: 'any', low_abv_spritz: 'any',
+    milk_punch: 'any', calamansi_highball: 'any', kopi_sour: 'any',
+    flora_fizz_xl: 'any', herbal_negroni: 'any', golden_milk_punch: 'any',
+    orgeat_swizzle: 'any', nutty_old_fashioned: 'any', asam_boi_sour: 'any',
+    bandung_spritz: 'any', smoky_margarita: 'any', alexander: 'any',
+    negroni: 'any', fruity_collins: 'any', earthy_milk_punch: 'any',
+    house_punch: 'any', tamarind_old_fashioned: ['whiskey','rum','brandy'],
+
+    // Fixed-spirit templates
+    pandan_collins: 'gin', gula_melaka_old_fashioned: 'whiskey',
+    teh_tarik_old_fashioned: ['whiskey','rum'], cendol_milk_punch: 'rum',
+    nasi_lemak_old_fashioned: 'whiskey', mai_tai: 'rum',
+    whiskey_smash: 'whiskey', paloma: 'tequila', mojito: 'rum',
+    tom_collins: 'gin', moscow_mule: 'vodka', dark_n_stormy: 'rum',
+    southside: 'gin', bee_knees: 'gin', gold_rush: 'whiskey',
+    bramble: 'gin', blossom_bramble: 'gin', clover_club: 'gin',
+    french_75: ['gin','brandy'], rose_french_75: 'gin',
+    pina_colada: 'rum', tropical_mojito: 'rum',
+    naked_famous: 'mezcal', oaxaca_old_fashioned: ['mezcal','tequila'],
+    mezcal_negroni: 'mezcal', smoke_sour: 'mezcal',
+    martini_dry: ['gin','vodka'], gimlet_classic: ['gin','vodka'],
+    vesper: ['gin','vodka'], aviation: 'gin', last_word: 'gin',
+    corpse_reviver_2: 'gin', hanky_panky: 'gin',
+    manhattan: 'whiskey', sazerac: 'whiskey', mint_julep: 'whiskey',
+    john_collins: 'whiskey', whiskey_sour_classic: 'whiskey',
+    boulevardier: 'whiskey', boulevardier_rich: 'whiskey',
+    paper_plane: 'whiskey', trinidad_sour: 'whiskey',
+    vieux_carre: ['whiskey','brandy'], brandy_alexander: 'brandy',
+    mexican_mule: 'tequila', tommy_margarita: 'tequila',
+    cili_padi_margarita: 'tequila', sambal_margarita: 'tequila',
+    spicy_paloma: 'tequila', hibiscus_paloma: 'tequila',
+    salted_dog_paloma: 'tequila', salted_caramel_old_fashioned: 'whiskey',
+    gin_basil_smash: 'gin', lavender_collins: 'gin', elderflower_gimlet: 'gin',
+    garden_botanic: 'gin', garden_sour: 'gin', calamansi_mojito: 'rum',
+    bunga_kantan_gimlet: 'gin', pandan_milk_punch: 'rum',
+    kopi_negroni: ['gin','whiskey'], espresso_negroni: 'gin',
+    business_martini: ['gin','vodka'], lychee_martini: ['gin','vodka'],
+    chocolate_martini: 'vodka', white_russian: 'vodka',
+    jungle_bird: 'rum', painkiller: 'rum', zombie: 'rum',
+    hurricane: 'rum', doctor_funk: 'rum',
+    irish_coffee: 'whiskey', sgroppino: 'vodka',
+    grasshopper: 'any', pink_squirrel: 'any',
+    bloody_mary: ['vodka','tequila','gin'],
+    hot_toddy: ['whiskey','rum','brandy'],
+
+    // Sake-led
+    saketini: 'sake', sake_highball: 'sake', yuzu_sake_sour: 'sake',
+    umami_martini: ['sake','gin'], savoury_negroni: 'gin',
+    japanese_highball: 'whiskey', scotch_neat: 'whiskey',
+
+    // Champagne / sparkling
+    champagne_fizz: 'champagne', champagne_cocktail: 'champagne',
+    kir_royale: 'champagne', bellini: 'champagne', mimosa: 'champagne',
+    sgroppino: ['champagne','vodka'],
+    aperol_spritz: 'champagne', americano: 'low-abv',
+    bicicletta: 'low-abv', pimms_cup: 'low-abv',
+    hugo_spritz: 'champagne', st_germain_spritz: 'champagne',
+    pirlo: 'champagne', negroni_sbagliato: 'champagne',
+    garibaldi: 'low-abv', milano_torino: 'low-abv', vermouth_tonic: 'low-abv',
+    aperol_white_sangria: 'champagne', pimms_tall: 'low-abv',
+
+    // NA / zero-proof
+    na_negroni: 'na', na_spritz: 'na', na_old_fashioned_build: 'na',
+    virgin_mary: 'na', seedlip_garden_tonic: 'na',
+
+    // Dessert / picnic
+    affogato_cocktail: ['whiskey','brandy'],
+  };
+
+  function templateMatchesSpirit(key, spirit) {
+    if (!spirit || spirit === 'surprise') return true;
+    const ts = TEMPLATE_SPIRITS[key];
+    if (!ts || ts === 'any') return true;
+    if (Array.isArray(ts)) return ts.includes(spirit);
+    return ts === spirit;
+  }
+
+  function spiritFallback(spirit, ans) {
+    const profile = asArray(ans.profile)[0];
+    const strength = ans.strength;
+    const occasion = ans.occasion;
+    const mood = asArray(ans.mood)[0];
+    if (spirit === 'gin') {
+      if (occasion === 'celebration' || mood === 'celebratory') return Math.random() < 0.5 ? 'french_75' : 'aviation';
+      if (strength === 'strong' && profile === 'bitter') return 'negroni';
+      if (strength === 'strong') return Math.random() < 0.5 ? 'martini_dry' : 'last_word';
+      if (profile === 'citrusy') return pick(['tom_collins','gimlet_classic','aviation']);
+      if (profile === 'bitter') return Math.random() < 0.5 ? 'negroni' : 'hanky_panky';
+      if (profile === 'herbal') return pick(['gin_basil_smash','southside','garden_botanic']);
+      if (profile === 'floral') return pick(['aviation','lavender_collins','st_germain_spritz']);
+      if (profile === 'sweet') return Math.random() < 0.5 ? 'bee_knees' : 'clover_club';
+      if (profile === 'tropical') return 'tropical_shake';
+      if (profile === 'spicy') return 'highball_spice';
+      if (profile === 'umami') return 'savoury_negroni';
+      if (profile === 'fruity') return 'fruity_collins';
+      return 'gimlet_classic';
+    }
+    if (spirit === 'whiskey') {
+      if (occasion === 'celebration') return 'whiskey_sour_classic';
+      if (strength === 'strong' || profile === 'bitter') return Math.random() < 0.5 ? 'manhattan' : 'boulevardier';
+      if (profile === 'citrusy') return 'whiskey_sour_classic';
+      if (profile === 'sweet') return Math.random() < 0.5 ? 'gold_rush' : 'old_fashioned';
+      if (profile === 'smoky') return 'sazerac';
+      if (profile === 'herbal') return 'whiskey_smash';
+      if (profile === 'nutty') return 'nutty_old_fashioned';
+      if (profile === 'earthy') return 'tamarind_old_fashioned';
+      if (profile === 'salty') return 'salted_caramel_old_fashioned';
+      return 'old_fashioned';
+    }
+    if (spirit === 'vodka') {
+      if (profile === 'spicy') return 'moscow_mule';
+      if (profile === 'creamy') return 'white_russian';
+      if (profile === 'citrusy') return 'gimlet_classic';
+      if (profile === 'fruity') return 'lychee_martini';
+      if (profile === 'umami') return 'bloody_mary';
+      return 'martini_dry';
+    }
+    if (spirit === 'rum') {
+      if (profile === 'tropical') return pick(['mai_tai','painkiller','pina_colada']);
+      if (profile === 'bitter') return 'jungle_bird';
+      if (profile === 'citrusy' || profile === 'herbal') return 'mojito';
+      if (profile === 'sweet' || profile === 'creamy') return 'pina_colada';
+      if (profile === 'spicy') return 'dark_n_stormy';
+      if (profile === 'fruity') return 'fruity_collins';
+      return 'old_fashioned';
+    }
+    if (spirit === 'tequila') {
+      if (profile === 'citrusy') return 'tommy_margarita';
+      if (profile === 'spicy') return 'cili_padi_margarita';
+      if (profile === 'bitter') return 'mexican_mule';
+      if (profile === 'salty') return 'salted_dog_paloma';
+      if (profile === 'floral') return 'hibiscus_paloma';
+      return 'paloma';
+    }
+    if (spirit === 'mezcal') {
+      if (profile === 'bitter') return 'mezcal_negroni';
+      if (profile === 'smoky' || profile === 'spirit-forward') return 'oaxaca_old_fashioned';
+      return 'naked_famous';
+    }
+    if (spirit === 'brandy') {
+      if (profile === 'creamy') return 'brandy_alexander';
+      if (profile === 'sweet' || profile === 'bitter') return 'vieux_carre';
+      return 'old_fashioned';
+    }
+    if (spirit === 'sake') {
+      if (profile === 'umami') return 'umami_martini';
+      if (profile === 'citrusy') return 'yuzu_sake_sour';
+      return Math.random() < 0.5 ? 'saketini' : 'sake_highball';
+    }
+    if (spirit === 'champagne') {
+      if (occasion === 'celebration') return pick(['french_75','champagne_cocktail','kir_royale']);
+      if (profile === 'fruity') return 'bellini';
+      if (profile === 'bitter') return 'aperol_spritz';
+      if (profile === 'floral') return 'st_germain_spritz';
+      return Math.random() < 0.5 ? 'champagne_fizz' : 'champagne_cocktail';
+    }
+    if (spirit === 'low-abv') {
+      if (profile === 'bitter') return pick(['americano','garibaldi','milano_torino']);
+      if (profile === 'citrusy') return 'vermouth_tonic';
+      return pick(['americano','vermouth_tonic','pimms_tall']);
+    }
+    if (spirit === 'na') {
+      if (profile === 'bitter') return 'na_negroni';
+      if (profile === 'umami') return 'virgin_mary';
+      if (profile === 'sweet' || profile === 'fruity') return 'na_spritz';
+      return pick(['na_spritz','seedlip_garden_tonic','na_old_fashioned_build']);
+    }
+    return 'sour';
+  }
+
   /* ----- Routing ----- */
 
-  function pickTemplate(ans) {
+  // The actual routing logic. Returns a template key based on answers.
+  // Wrapped by pickTemplate below which applies the spirit guard.
+  function pickTemplateRaw(ans) {
     const moods = asArray(ans.mood);
     const profiles = asArray(ans.profile).slice().sort();
     const mood = moods.includes('awake') ? 'awake' : moods[0];
@@ -1222,6 +1688,71 @@
     if (profiles.length === 2) {
       const duoKey = profiles.join('+');
       if (DUO_TEMPLATES[duoKey]) return DUO_TEMPLATES[duoKey];
+    }
+
+    // ----- Round 17 routing for new chips -----
+
+    // New mood routes
+    if (mood === 'contemplative') {
+      if (spirit === 'whiskey' || profile === 'smoky' || strength === 'strong') return Math.random() < 0.5 ? 'japanese_highball' : 'scotch_neat';
+      if (profile === 'bitter') return 'negroni';
+      if (profile === 'herbal') return 'garden_stirred';
+      // fall through
+    }
+    if (mood === 'romantic') {
+      if (spirit === 'champagne' || occasion === 'celebration') return 'rose_french_75';
+      if (profile === 'floral') return Math.random() < 0.5 ? 'rose_french_75' : 'hibiscus_paloma';
+      if (profile === 'fruity' || profile === 'sweet') return 'lychee_martini';
+      if (profile === 'tropical') return 'pina_colada';
+      // fall through
+    }
+    if (mood === 'social') {
+      if (occasion === 'picnic') return Math.random() < 0.5 ? 'aperol_white_sangria' : 'pimms_tall';
+      if (occasion === 'celebration') return 'champagne_cocktail';
+      // Default: punch bowl format
+      return 'house_punch';
+    }
+    if (mood === 'focused') {
+      if (spirit === 'whiskey' || profile === 'bitter') return 'manhattan';
+      if (profile === 'coffee' || mood === 'awake') return 'espresso_negroni';
+      return Math.random() < 0.5 ? 'business_martini' : 'espresso_negroni';
+    }
+
+    // New profile routes
+    if (profile === 'umami') {
+      if (spirit === 'sake' || spirit === 'vodka') return 'umami_martini';
+      if (profile === 'spicy') return 'bloody_mary';
+      return 'savoury_negroni';
+    }
+    if (profile === 'fruity') {
+      if (spirit === 'champagne' || occasion === 'celebration') return 'bellini';
+      if (mood === 'celebratory') return 'bellini';
+      if (spirit === 'vodka' || spirit === 'gin') return 'lychee_martini';
+      return 'fruity_collins';
+    }
+    if (profile === 'earthy') {
+      if (spirit === 'whiskey' || spirit === 'rum' || spirit === 'brandy') return 'tamarind_old_fashioned';
+      return 'earthy_milk_punch';
+    }
+    if (profile === 'salty') {
+      if (spirit === 'tequila' || profile === 'citrusy') return 'salted_dog_paloma';
+      return 'salted_caramel_old_fashioned';
+    }
+
+    // New occasion routes
+    if (occasion === 'business') {
+      if (profile === 'bitter') return 'negroni';
+      if (profile === 'sweet') return 'old_fashioned';
+      return 'business_martini';
+    }
+    if (occasion === 'dessert') {
+      if (profile === 'creamy' || profile === 'sweet') return Math.random() < 0.5 ? 'chocolate_martini' : 'brandy_alexander';
+      if (mood === 'awake') return 'affogato_cocktail';
+      return Math.random() < 0.5 ? 'affogato_cocktail' : 'chocolate_martini';
+    }
+    if (occasion === 'picnic') {
+      if (profile === 'fruity') return 'aperol_white_sangria';
+      return Math.random() < 0.5 ? 'pimms_tall' : 'aperol_white_sangria';
     }
 
     // Brunch + late-night occasion routes (new)
@@ -1384,8 +1915,37 @@
       citrusy: 'sour', sweet: 'sour', bitter: 'bitter_stirred',
       herbal: 'garden_stirred', smoky: 'smoke_sour', floral: 'flora_fizz',
       spicy: 'highball_spice', tropical: 'tropical_shake',
+      // New profiles (Round 17)
+      creamy: 'alexander', nutty: 'orgeat_swizzle',
+      umami: 'savoury_negroni', fruity: 'fruity_collins',
+      earthy: 'earthy_milk_punch', salty: 'salted_caramel_old_fashioned',
     };
     return byProfile[profile] || 'sour';
+  }
+
+  // Spirit-guarded wrapper. Round 17 fix: if pickTemplateRaw routes to a
+  // template that hard-codes a different spirit than the user picked,
+  // swap to a spirit-faithful fallback so "I picked gin" actually shows
+  // gin in the recipe.
+  function pickTemplate(ans) {
+    // Special-case routing for new chip values BEFORE the main logic.
+    // Spirit-led shortcuts ensure the new spirit choices land on a
+    // spirit-faithful template.
+    if (ans.spirit === 'sake') return spiritFallback('sake', ans);
+    if (ans.spirit === 'champagne') return spiritFallback('champagne', ans);
+    if (ans.spirit === 'low-abv') return spiritFallback('low-abv', ans);
+    if (ans.spirit === 'na') return spiritFallback('na', ans);
+    // Strength-led shortcut: zero-proof always uses NA route.
+    if (ans.strength === 'zero-proof') return spiritFallback('na', ans);
+
+    // Run the main routing.
+    const raw = pickTemplateRaw(ans);
+
+    // Spirit guard: if the result hard-codes a wrong spirit, swap.
+    if (ans.spirit && ans.spirit !== 'surprise' && !templateMatchesSpirit(raw, ans.spirit)) {
+      return spiritFallback(ans.spirit, ans);
+    }
+    return raw;
   }
 
   /* ----- Name generator ----- */
@@ -1399,6 +1959,10 @@
     awake: ['Awake','Espresso','Daybreak','Sharp','Caffeinated','Sunrise','Alert','Bright-Eyed','Reset','Pulse','First-Train','Newsroom','Wide-Open','Sharp-Eyed','Filament','Wired','Cold-Plunge','Static','Adrenaline','Quartz','Snap','Wakeup','Notice','Volt','Surge','Switch-On','Currents','Static-Cling','Live-Wire','Polished','Galvanic','Caffeine','First-Light','Sharp-Edge','Catalyst'],
     cosy: ['Cosy','Snug','Fireplace','Wool','Mug','Warm-Socks','Knit','Flannel','Soft-Light','Steamed','Pajama','Cocoa-Hour','Brown-Sugar','Toaster','Bundle','Quilted','Hearth','Pocketed','Indoor-Day','Window-Seat','Tea-Hour','Crumpet','Cardigan-Day','Slow-Sunday','Reading-Lamp','Patchwork','Warm-Loaf','Stockpot','Heat-Lamp','Slipperhood','Hot-Steam','Plaid','Stillroom','Side-Lamp','Wool-Sweater'],
     playful: ['Playful','Confetti','Pop','Carousel','Tinsel','Mischief','Wink','Tickle','Sherbet','Whim','Doodle','Loose-Tooth','Skipped','Twirl','Sparkler','Pinball','Pinwheel','Trampoline','Bubble','Hopscotch','Sprinkles','Glitter','Funhouse','Catwalk','Disco','Pop-Up','Doodle-Hour','Marshmallow','Carnival','Whirligig','Cartwheel','Bubblegum','Polka','Skipping','Spangle'],
+    contemplative: ['Slow-Read','Library','Annotated','Pensive','Margin-Note','Long-Light','Quietude','Footnote','Wandering','Side-Glance','Reverie','Drawn-Curtain','Indoor-Voice','Quiet-Hour','Long-Sentence','Tea-Hour','Lamplit','Bookended','Endnote','Inkwell','Studio','Studious','Marker','Bookmark','Long-Look','Stillness','Open-Page','Reading-Lamp','Slow-Read','Margin','Annotation','Quietly','Watchful','Pause','Hush'],
+    romantic: ['Candle','Twilight','Sonnet','Ribbon','Velvet','Lacework','Loveletter','Stargaze','Slow-Dance','Whispered','Roselit','Crimson','Heartbeat','Dinner-for-Two','Champagne-Toast','Kiss-Curl','Petal','Rosegold','Cinnamon-Whisper','Half-Moon','Date-Night','Crinoline','Linenfold','Brushed','Slow-Waltz','Pearl','Sapphire','Cashmere','Long-Look','Window-Seat','Veiled','Soft-Focus','Crystal','Confidante','Boudoir'],
+    social: ['Roundtable','Gathering','Convivial','Open-Tab','Long-Table','Toasted','Cohort','Carousel','Highball-Hour','Reunion','Block-Party','House-Warming','Round-One','Open-Door','Group-Chat','Boisterous','Outrigger','Caravan','Banquet','Communal','Speakeasy','Throng','Pavilion','Open-House','Round-Two','After-Show','Loud-Table','Hosted','All-In','Communiqué','Roundup','Boardroom','Plus-One','Sharing','Buffet'],
+    focused: ['Sharp','Quartz','Lapis','Filed','Pinpoint','Lockstep','Crosshair','Sharp-Eye','Disciplined','Calibrated','Tight-Pour','Spotlight','Knife-Edge','Compass','Index','Bullet-Point','Decisive','Edge-Case','Cut-Glass','Steady-Hand','Pulse-Check','Plumb-Line','Aligned','Set-Square','Marker-Pen','Trim','Single-Note','Edge','Plot','Slip-Knot','Anchored','Punctual','Pin-Drop','Filed-Down','True-North'],
   };
 
   const PROFILE_NOUNS = {
@@ -1412,6 +1976,10 @@
     tropical: ['Coconut','Trade Wind','Equator','Lagoon','Hibiscus','Calypso','Mango','Vacation','Atoll','Reef','Banyan','Verandah','Pineapple','Monsoon','Frangipani','Polynesia','Wayanad','Bougainvillea','Palm Shade','Saltwater','Tiki','Long Sail','Coral','Mangrove','Hammock','Sandcastle','Bird-of-Paradise','Lychee','Soursop','Bali Hour','Boat-Day','Reef-Walk','Outrigger','Coconut Grove','Open Sea'],
     creamy: ['Velvet','Pillow','Cream Hour','Silk','Cashmere','Butterhouse','Custard','Cradle','Soft-Pour','Crème','Tres-Leches','Mascarpone','Crema','Eider','Powder Room','White Bear','Plush','Whipped','Spoonful','Hush-Pillow','Snowdrop','Marshmallow Hour','Soft-Suede','Bone-China','Pale-Linen','Quiet Cream','Vanilla Fog','Talcum','Buttermilk','Soft-Foam','Heavy Pour','Hush','Cloud-Bed','Soufflé','Whip'],
     nutty: ['Almond','Hazel','Walnut Hour','Praline','Marzipan','Pecan','Frangipane','Brown Butter','Toasted','Nut House','Pistachio','Nougat','Burnt-Almond','Roastery','Macaroon','Marcona','Confiserie','Acorn','Brazil-Nut','Chestnut','Hazelnut Hour','Almond Tree','Pine-Nut','Cashew','Coconut-Husk','Toasted Grain','Brown-Crust','Sesame','Nut-Brittle','Praline Hour','Filbert','Caramel-Nut','Roasted-Skin','Almond Milk','Toffee-Nut'],
+    umami: ['Dashi','Broth','Savoury','Mushroom','Soy-Note','Olive Hour','Sea-Salt','Tomato Skin','Anchovy','Parmesan','Black-Garlic','Bonito','Truffle','Miso','Fish-Sauce','Brine','Aged','Crusted','Slow-Roasted','Cured','Fermented','Marbled','Velvet-Stock','Reduced','Glazed','Sake-Note','Konbu','Charred','Caramelised','Bone-Stock','Hot-Pot','Slow-Sim','Stockpot','Tom-Yum','Mother-Sauce'],
+    fruity: ['Orchard','Grove','Stone-Fruit','Pulp','Peach Hour','Melon','Lychee','Mango','Pluot','Plum','Berry-Patch','Currants','Damson','Quince','Strawberry-Field','Apricot','Greengage','Tangelo','Persimmon','Tropic Sun','Soursop','Cherrylight','Berryhouse','Sugar-Apple','Loquat','Mangosteen','Rambutan','Lychee Grove','Berryway','Open-Orchard','Stone-Pit','Punnet','Compote','Preserves','Jam-Hour'],
+    earthy: ['Loam','Petrichor','Roots','Mossy','Bark','Forest-Floor','Truffle Hour','Cellar','Mushroom Walk','Underbrush','Wet-Soil','Bog','Furrow','Beetroot','Carrot-Top','Wild-Yam','Tubers','Acorn-Floor','Iron-Earth','Clay','Damp-Wood','Decanter','Sediment','Ancient','Rooted','Pine-Floor','Tamarind','Gula','Palm-Sugar','Loaf-of-Earth','Topsoil','Field-After-Rain','Slow-Dirt','Trail','Hollow'],
+    salty: ['Tide-Pool','Brine','Sea-Spray','Saltbed','Anchor','Surf','Olive Hour','Mineral','Saline','Margarita Coast','Pretzel','Soyglaze','Capers','Furikake','Smoke-Salt','Estuary','Marsh','Halite','Rim-Salt','Wave-Spray','Shore','Tidewater','Coastline','Brackish','Pickled','Brined','Saltbox','Saltwater','Salt-Air','Saltpan','Saltgrass','Saltwave','Saltbow','Saltfoot','Saltburn'],
   };
 
   const OCCASION_FLAVOUR = {
@@ -1423,6 +1991,9 @@
     anytime: [],
     brunch: ['Brunch','Sunday','Late Morning','Eggs Bench','Yolk Hour'],
     'late-night': ['Late Set','After Hours','Final Round','Last Train','Closing Time'],
+    business: ['Board','Briefing','Off-Site','Quarterly','Top-Floor','Boardroom'],
+    dessert: ['Sweet Close','After-Course','Petit Four','Plated','Dessert Hour','Confit'],
+    picnic: ['Picnic','Open-Air','Grass','Blanket','Park','Sun-Cloth'],
   };
 
   function formatName(name) {
