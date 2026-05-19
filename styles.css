@@ -791,6 +791,129 @@ a.label:hover { opacity: .8; }
 }
 
 /* ====================================================================
+   Signature feature - The Tesseract card on bar pages
+   ==================================================================== */
+.signature-feature {
+  padding: 56px var(--pad-x) 48px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  background: color-mix(in srgb, var(--bg) 88%, var(--fg) 12%);
+  transition: background .35s ease, border-color .35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.signature-feature::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--accent) 12%, transparent) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, color-mix(in srgb, var(--accent) 8%, transparent) 0%, transparent 55%);
+  pointer-events: none;
+  opacity: .8;
+}
+.signature-feature-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.signature-feature-eyebrow {
+  display: inline-block;
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  opacity: .65;
+  margin-bottom: 14px;
+  color: var(--accent);
+}
+.signature-feature-h {
+  font-family: var(--serif, 'DM Serif Display', serif);
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -.02em;
+  margin: 0 0 16px;
+}
+.signature-feature-h i { font-style: italic; color: var(--accent); }
+.signature-feature-dek {
+  font-family: var(--serif, 'DM Serif Display', serif);
+  font-size: clamp(16px, 1.7vw, 19px);
+  line-height: 1.6;
+  opacity: .85;
+  margin: 0 auto 22px;
+  max-width: 62ch;
+}
+.signature-feature-meta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.signature-feature-tag {
+  padding: 4px 12px;
+  border: 1px solid color-mix(in srgb, var(--fg) 30%, transparent);
+  border-radius: 999px;
+  opacity: .8;
+}
+.signature-feature-sep { opacity: .35; }
+.signature-feature-quote {
+  font-family: var(--serif, 'DM Serif Display', serif);
+  font-style: italic;
+  font-size: clamp(15px, 1.5vw, 17px);
+  line-height: 1.5;
+  opacity: .7;
+  margin: 0 auto 28px;
+  max-width: 50ch;
+  padding: 0 0 0 16px;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  text-align: left;
+  display: inline-block;
+}
+.signature-feature-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.signature-feature-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid color-mix(in srgb, var(--fg) 35%, transparent);
+  border-radius: 2px;
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg);
+  transition: all .18s ease;
+}
+.signature-feature-btn:hover {
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  border-color: var(--fg);
+}
+.signature-feature-btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper, #fff);
+}
+.signature-feature-btn-primary:hover {
+  opacity: .9;
+  background: var(--accent);
+}
+@media (max-width: 639px) {
+  .signature-feature { padding: 42px var(--pad-x) 36px; }
+  .signature-feature-quote { font-size: 14px; max-width: none; }
+  .signature-feature-actions { flex-direction: column; }
+  .signature-feature-btn { width: 100%; text-align: center; }
+}
+
+/* ====================================================================
    Press strip - "as featured in" between hero and gallery
    ==================================================================== */
 .press-strip {
