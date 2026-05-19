@@ -373,10 +373,11 @@
         ['Our bars', [
           ['/dissolvedsolids/', 'Dissolved Solids · Damansara Kim'],
           ['/solublesolids/',   'Soluble Solids · SS2'],
+          ['/coffee/',          'Coffee cocktail bar &amp; cafe'],
           ['/visit/',           'Visit · hours, parking, transit'],
           ['/reserve/',         'Reserve a table'],
           ['/venue-hire/',      'Private venue hire'],
-          ['/snacks/',          'Snacks & bar food'],
+          ['/snacks/',          'Snacks &amp; bar food'],
           ['/faq/',             'FAQ']
         ]],
         ['Find us in', [
