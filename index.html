@@ -3218,7 +3218,7 @@
 
   <div class="visit-grid">
     <!-- DISSOLVED · DAMANSARA KIM · venue 01 -->
-    <article class="visit-card" id="dissolvedsolids" data-brand="dissolved" data-state-target="dissolved">
+    <article class="visit-card" data-brand="dissolved" data-state-target="dissolved">
       <div class="visit-card-head">
         <img class="visit-logo" src="https://dissolvedsolids.co/photos/ds-logo.png" alt="Dissolved Solids logo" loading="lazy" decoding="async"/>
         <div class="visit-name">
@@ -3284,7 +3284,7 @@
     </article>
 
     <!-- SOLUBLE · SS2 · venue 02 -->
-    <article class="visit-card" id="solublesolids" data-brand="soluble" data-state-target="soluble">
+    <article class="visit-card" data-brand="soluble" data-state-target="soluble">
       <div class="visit-card-head">
         <img class="visit-logo" src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="Soluble Solids logo" loading="lazy" decoding="async"/>
         <div class="visit-name">
@@ -3826,11 +3826,12 @@
 
   // ─── HASH ROUTER ─────────────────────────────────────────────
   // Casual share links like dissolvedsolids.co/#solublesolids and
-  // /#dissolvedsolids land on the homepage, scroll smoothly to the
-  // matching Visit card, and flip the dis/sol state to match so the
-  // whole page colour-shifts to the right room. The canonical
-  // /solublesolids/ and /dissolvedsolids/ URLs remain the SEO truth.
-  function applyHashState(hash) {
+  // /#dissolvedsolids land on the homepage with the page already
+  // flipped to the right state (Sol = amber room, Dis = neon-pink room)
+  // and scrolled to the top so the hero is what the visitor sees first.
+  // The canonical /solublesolids/ and /dissolvedsolids/ URLs remain
+  // the SEO truth for crawlers.
+  function applyHashState(hash, opts) {
     const h = (hash || '').toLowerCase().replace(/^#/, '');
     if (h !== 'dissolvedsolids' && h !== 'solublesolids') return;
     const want = (h === 'solublesolids') ? 'soluble' : 'dissolved';
@@ -3838,17 +3839,21 @@
     if (html.dataset.state !== want) {
       html.dataset.state = want;
     }
-    // Slight delay so smooth-scroll runs after the state flip's
-    // background transition kicks off - feels intentional rather than jarring.
-    const el = document.getElementById(h);
-    if (el) {
-      requestAnimationFrame(() => {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    }
+    // Land at the top so the hero shows for the right bar.
+    // On initial page load the browser may have already attempted to
+    // jump to the anchor element - override that by scrolling to top.
+    const initial = opts && opts.initial;
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: initial ? 'auto' : 'smooth' });
+    });
   }
-  // On initial load
-  if (location.hash) applyHashState(location.hash);
+  // On initial load - suppress the browser's default anchor jump so
+  // we always land at the hero rather than at the matching visit card.
+  if (location.hash) {
+    // Pre-empt the browser scroll-to-anchor on history.scrollRestoration:
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    applyHashState(location.hash, { initial: true });
+  }
   // On hash change (back/forward, in-page link)
   window.addEventListener('hashchange', () => applyHashState(location.hash));
 
