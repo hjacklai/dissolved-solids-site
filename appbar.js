@@ -27,6 +27,10 @@
   // SEO footer). The appbar mount itself early-returns if one already exists.
   mountFooter();
 
+  // Floating animated Home button - top-left of every sub-page.
+  // Skipped on the homepage itself.
+  mountHomeButton();
+
   if (document.querySelector('.appbar')) return; // already there (e.g. landing)
 
   // ─── Markup ────────────────────────────────────────────────────
@@ -227,6 +231,93 @@
     s.dataset.jrLoaded = '1';
     document.head.appendChild(s);
   })();
+
+  // ─── Floating animated Home button ─────────────────────────────
+  // Auto-injected on every sub-page that loads appbar.js. Skips the
+  // homepage so we never duplicate. The breathing scale and pulse
+  // glow are subtle but noticeable enough to invite the tap.
+  function mountHomeButton() {
+    try {
+      if (!document.body) return;
+      if (document.querySelector('.home-fab')) return;
+
+      // Don't show on the homepage itself.
+      const p = (location.pathname || '/').replace(/\/index\.html?$/i, '/');
+      if (p === '/' || p === '') return;
+
+      if (!document.getElementById('home-fab-styles')) {
+        const css = ''
+          + '.home-fab{position:fixed;top:max(16px,env(safe-area-inset-top,16px));'
+          + 'left:max(16px,env(safe-area-inset-left,16px));z-index:2147483000;'
+          + 'width:54px;height:54px;border-radius:50%;display:flex;'
+          + 'align-items:center;justify-content:center;text-decoration:none;'
+          + 'background:var(--accent,#d18b3a);color:#fff;'
+          + 'box-shadow:0 4px 18px rgba(0,0,0,.28),0 0 0 0 rgba(209,139,58,.55);'
+          + 'animation:home-fab-breathe 2.6s ease-in-out infinite,'
+          +           'home-fab-pulse 2.6s ease-out infinite;'
+          + 'transition:transform 200ms ease,box-shadow 200ms ease;'
+          + 'will-change:transform,box-shadow;}'
+          + '.home-fab svg{width:24px;height:24px;display:block;'
+          + 'transition:transform 200ms ease;}'
+          + '.home-fab:hover,.home-fab:focus-visible{outline:none;'
+          + 'transform:scale(1.12) translateZ(0);'
+          + 'box-shadow:0 8px 28px rgba(0,0,0,.36),0 0 0 8px rgba(209,139,58,.18);}'
+          + '.home-fab:hover svg,.home-fab:focus-visible svg{'
+          + 'transform:translateY(-1px) scale(1.04);}'
+          + '.home-fab:active{transform:scale(.94);}'
+          + '.home-fab-tip{position:absolute;left:64px;top:50%;'
+          + 'transform:translateY(-50%) translateX(-6px);'
+          + 'background:rgba(0,0,0,.78);color:#f0e6cf;'
+          + 'font-family:var(--mono,"JetBrains Mono",ui-monospace,monospace);'
+          + 'font-size:11px;letter-spacing:.22em;text-transform:uppercase;'
+          + 'padding:6px 10px;border-radius:6px;white-space:nowrap;'
+          + 'opacity:0;pointer-events:none;'
+          + 'transition:opacity 180ms ease,transform 180ms ease;}'
+          + '.home-fab:hover .home-fab-tip,'
+          + '.home-fab:focus-visible .home-fab-tip{'
+          + 'opacity:1;transform:translateY(-50%) translateX(0);}'
+          + '@keyframes home-fab-breathe{'
+          + '0%,100%{transform:scale(1) translateZ(0);}'
+          + '50%{transform:scale(1.08) translateZ(0);}}'
+          + '@keyframes home-fab-pulse{'
+          + '0%{box-shadow:0 4px 18px rgba(0,0,0,.28),'
+          +     '0 0 0 0 rgba(209,139,58,.55);}'
+          + '70%{box-shadow:0 4px 18px rgba(0,0,0,.28),'
+          +     '0 0 0 16px rgba(209,139,58,0);}'
+          + '100%{box-shadow:0 4px 18px rgba(0,0,0,.28),'
+          +     '0 0 0 0 rgba(209,139,58,0);}}'
+          + '@media (prefers-reduced-motion: reduce){'
+          + '.home-fab{animation:none;}'
+          + '.home-fab:hover{transform:scale(1.06);}}'
+          // Don't fight the bottom appbar - sit clear of the music toggle
+          // and any inline ← Home article links.
+          + '@media (max-width:520px){.home-fab{width:48px;height:48px;}'
+          + '.home-fab svg{width:22px;height:22px;}'
+          + '.home-fab-tip{display:none;}}';
+        const style = document.createElement('style');
+        style.id = 'home-fab-styles';
+        style.textContent = css;
+        document.head.appendChild(style);
+      }
+
+      const a = document.createElement('a');
+      a.className = 'home-fab';
+      a.href = '/';
+      a.setAttribute('aria-label', 'Back to home');
+      a.setAttribute('title', 'Home');
+      a.innerHTML = ''
+        + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+        +      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '
+        +      'aria-hidden="true">'
+        +   '<path d="M3 11.5 12 4l9 7.5"/>'
+        +   '<path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/>'
+        + '</svg>'
+        + '<span class="home-fab-tip">Home</span>';
+      document.body.appendChild(a);
+    } catch (e) {
+      // Home button is non-critical; never let an injection bug break the page.
+    }
+  }
 
   // ─── Site footer (SEO internal-link graph) ─────────────────────
   // Injects the same comprehensive footer as the homepage onto every
