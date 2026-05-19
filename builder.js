@@ -1378,6 +1378,254 @@
       garnish: 'Single olive or expressed lemon peel',
       signature: 'classic'
     }),
+
+    /* ----- Round 18: 30+ more named recipes ----- */
+
+    // Classic untouched canon
+    daiquiri: () => ({
+      ingredients: ['White rum (60ml)', 'Fresh lime juice (30ml)', 'Simple syrup (15ml)'],
+      method: 'Shake hard with ice 10 seconds. Double-strain into a chilled coupe.',
+      garnish: 'Lime wheel',
+      signature: 'classic'
+    }),
+    caipirinha: () => ({
+      ingredients: ['Cachaça (60ml)', 'Half a lime, cut in wedges', 'White sugar (2 teaspoons)'],
+      method: 'Muddle lime with sugar in a rocks glass. Fill with crushed ice. Add cachaça. Stir.',
+      garnish: 'Lime wedge',
+      signature: 'classic'
+    }),
+    ramos_gin_fizz: () => ({
+      ingredients: ['Old Tom gin (45ml)', 'Fresh lemon (15ml)', 'Fresh lime (15ml)', 'Heavy cream (30ml)', 'Egg white', 'Orange flower water (3 drops)', 'Simple syrup (15ml)', 'Soda water (top)'],
+      method: 'Dry shake 60 seconds. Wet shake 90 seconds (no joke). Strain into a tall narrow glass. Wait for the head to form. Top with soda very slowly.',
+      garnish: 'None. The head is the show.',
+      signature: 'classic'
+    }),
+    bijou: () => ({
+      ingredients: ['Gin (30ml)', 'Green Chartreuse (30ml)', 'Sweet vermouth (30ml)', 'Orange bitters (dash)'],
+      method: 'Stir over ice 25 seconds. Strain into a chilled coupe.',
+      garnish: 'Maraschino cherry and expressed lemon peel',
+      signature: 'classic'
+    }),
+    alaska: () => ({
+      ingredients: ['Gin (60ml)', 'Yellow Chartreuse (20ml)', 'Orange bitters (2 dashes)'],
+      method: 'Stir over ice. Strain into a chilled coupe.',
+      garnish: 'Expressed lemon peel',
+      signature: 'classic'
+    }),
+    bronx: () => ({
+      ingredients: ['Gin (45ml)', 'Dry vermouth (15ml)', 'Sweet vermouth (15ml)', 'Fresh orange juice (15ml)'],
+      method: 'Shake briefly with ice. Double-strain into a chilled coupe.',
+      garnish: 'Orange peel',
+      signature: 'classic'
+    }),
+    suffering_bastard: () => ({
+      ingredients: ['Gin (30ml)', 'Bourbon (30ml)', 'Fresh lime juice (15ml)', 'Angostura bitters (2 dashes)', 'Top with ginger beer'],
+      method: 'Build in a tall glass over ice. Top with cold ginger beer. Stir gently.',
+      garnish: 'Mint sprig and orange wheel',
+      signature: 'classic'
+    }),
+    brown_derby: () => ({
+      ingredients: ['Bourbon (50ml)', 'Fresh grapefruit juice (25ml)', 'Honey syrup (15ml)'],
+      method: 'Shake hard with ice. Double-strain into a chilled coupe.',
+      garnish: 'Expressed grapefruit peel',
+      signature: 'classic'
+    }),
+
+    // Vodka classics
+    screwdriver: () => ({
+      ingredients: ['Vodka (45ml)', 'Fresh orange juice (120ml)'],
+      method: 'Build over ice in a highball. Stir.',
+      garnish: 'Orange wheel',
+      signature: 'classic'
+    }),
+    harvey_wallbanger: () => ({
+      ingredients: ['Vodka (45ml)', 'Fresh orange juice (120ml)', 'Galliano (15ml, floated)'],
+      method: 'Build vodka and OJ over ice in a tall glass. Float Galliano on top.',
+      garnish: 'Orange slice and cocktail cherry',
+      signature: 'retro'
+    }),
+    greyhound: () => ({
+      ingredients: ['Vodka (45ml)', 'Fresh grapefruit juice (120ml)'],
+      method: 'Build over ice in a highball.',
+      garnish: 'Grapefruit wedge',
+      signature: 'classic'
+    }),
+    caipiroska: () => ({
+      ingredients: ['Vodka (60ml)', 'Half a lime in wedges', 'Sugar (2 teaspoons)'],
+      method: 'Muddle lime with sugar. Fill with crushed ice. Add vodka. Stir.',
+      garnish: 'Lime wedge',
+      signature: 'classic'
+    }),
+
+    // Sour family
+    amaretto_sour: () => ({
+      ingredients: ['Amaretto (60ml)', 'Bourbon (15ml)', 'Fresh lemon (25ml)', 'Simple syrup (10ml)', 'Egg white'],
+      method: 'Dry shake then shake with ice. Double-strain into a rocks glass over fresh ice.',
+      garnish: 'Brandied cherry and expressed lemon peel',
+      signature: 'sour'
+    }),
+    pisco_punch: () => ({
+      ingredients: ['Pisco (50ml)', 'Pineapple gum syrup (20ml)', 'Fresh lemon (20ml)', 'Distilled water (10ml)'],
+      method: 'Shake with ice. Double-strain into a chilled coupe.',
+      garnish: 'A small chunk of fresh pineapple',
+      signature: 'classic'
+    }),
+    new_york_sour: () => ({
+      ingredients: ['Bourbon or rye (60ml)', 'Fresh lemon (25ml)', 'Simple syrup (15ml)', 'Egg white (optional)', 'Red wine float (15ml dry red)'],
+      method: 'Shake (dry if egg white). Strain over fresh ice. Float red wine over the back of a spoon for a colour split.',
+      garnish: 'Expressed lemon peel',
+      signature: 'modern'
+    }),
+
+    // Tequila / agave family
+    el_diablo: () => ({
+      ingredients: ['Blanco tequila (45ml)', 'Crème de cassis (15ml)', 'Fresh lime juice (15ml)', 'Top with ginger beer'],
+      method: 'Shake tequila, cassis and lime. Strain over ice in a Collins. Top with ginger beer.',
+      garnish: 'Lime wedge',
+      signature: 'classic'
+    }),
+    matador: () => ({
+      ingredients: ['Blanco tequila (50ml)', 'Fresh pineapple juice (60ml)', 'Fresh lime juice (15ml)'],
+      method: 'Shake hard with ice. Strain over fresh ice in a rocks glass.',
+      garnish: 'Pineapple wedge',
+      signature: 'classic'
+    }),
+    vampiro: () => ({
+      ingredients: ['Blanco tequila (45ml)', 'Tomato juice (60ml)', 'Fresh orange juice (30ml)', 'Fresh lime juice (15ml)', 'Honey syrup (10ml)', 'A pinch of salt', 'Hot sauce (3 dashes)'],
+      method: 'Shake briefly with ice. Strain over fresh ice in a salt-rimmed tall glass.',
+      garnish: 'Lime wedge and a slice of onion',
+      signature: 'savoury'
+    }),
+    michelada: () => ({
+      ingredients: ['Cold Mexican lager (1 bottle)', 'Fresh lime juice (30ml)', 'Worcestershire (1 teaspoon)', 'Tabasco (3 dashes)', 'Tajín or chilli-salt rim'],
+      method: 'Build lime, sauces in a salt-rimmed pint glass with ice. Top slowly with beer.',
+      garnish: 'Lime wedge',
+      signature: 'savoury'
+    }),
+
+    // Fizz family
+    gin_fizz: () => ({
+      ingredients: ['Gin (50ml)', 'Fresh lemon juice (25ml)', 'Simple syrup (15ml)', 'Soda water (top)'],
+      method: 'Shake gin, lemon and syrup with ice. Strain into a chilled fizz glass. Top with cold soda.',
+      garnish: 'Lemon wheel',
+      signature: 'classic'
+    }),
+    silver_fizz: () => ({
+      ingredients: ['Gin (50ml)', 'Fresh lemon (25ml)', 'Simple syrup (15ml)', 'Egg white', 'Soda water (top)'],
+      method: 'Dry shake, then shake hard with ice. Strain into a tall narrow glass. Top with soda very slowly.',
+      garnish: 'None',
+      signature: 'classic'
+    }),
+    diamond_fizz: () => ({
+      ingredients: ['Gin (50ml)', 'Fresh lemon (20ml)', 'Simple syrup (10ml)', 'Chilled champagne or cava (top)'],
+      method: 'Shake gin, lemon and syrup with ice. Strain into a flute. Top with sparkling.',
+      garnish: 'Expressed lemon peel',
+      signature: 'celebration'
+    }),
+
+    // Cobbler / older classics
+    sherry_cobbler: () => ({
+      ingredients: ['Dry or amontillado sherry (90ml)', 'Orange slices (2)', 'Sugar (1 teaspoon)', 'Plenty of crushed ice'],
+      method: 'Muddle orange with sugar. Add sherry. Pack with crushed ice. Swizzle until frosty.',
+      garnish: 'Fresh mint, fresh seasonal berries',
+      signature: 'classic'
+    }),
+
+    // Modern classics
+    black_manhattan: () => ({
+      ingredients: ['Rye whiskey (60ml)', 'Averna amaro (30ml)', 'Angostura (1 dash)', 'Orange bitters (1 dash)'],
+      method: 'Stir long over ice. Strain into a chilled coupe.',
+      garnish: 'Brandied cherry',
+      signature: 'modern'
+    }),
+    jasmine_cocktail: () => ({
+      ingredients: ['Gin (45ml)', 'Cointreau (15ml)', 'Campari (7ml)', 'Fresh lemon (15ml)'],
+      method: 'Shake with ice. Double-strain into a chilled coupe.',
+      garnish: 'Expressed lemon peel',
+      signature: 'modern'
+    }),
+    eastside: () => ({
+      ingredients: ['Gin (50ml)', 'Fresh lime (20ml)', 'Simple syrup (15ml)', '8-10 fresh mint leaves', '3 cucumber slices'],
+      method: 'Muddle cucumber and mint with syrup. Add gin and lime. Shake with ice. Double-strain into a chilled coupe.',
+      garnish: 'Mint sprig and a cucumber slice',
+      signature: 'modern'
+    }),
+    industry_sour: () => ({
+      ingredients: ['Fernet Branca (30ml)', 'Green Chartreuse (30ml)', 'Fresh lime juice (25ml)', 'Simple syrup (15ml)'],
+      method: 'Shake hard with ice. Double-strain into a chilled coupe.',
+      garnish: 'Expressed lime peel',
+      signature: 'modern'
+    }),
+
+    // Hot drinks
+    hot_buttered_rum: () => ({
+      ingredients: ['Dark rum (45ml)', 'Brown sugar (1 teaspoon)', 'Unsalted butter (5g, soft)', 'Cinnamon stick', 'Whole clove', 'Hot water or hot milk (120ml)'],
+      method: 'Stir sugar, butter and spices in a heatproof mug. Add rum. Top with hot water. Stir until butter melts.',
+      garnish: 'Grated nutmeg',
+      signature: 'hot'
+    }),
+    tom_and_jerry: () => ({
+      ingredients: ['1 whole egg, separated', 'Caster sugar (2 teaspoons)', 'Aged rum (30ml)', 'Cognac (30ml)', 'Hot milk (150ml)', 'A pinch of cinnamon, nutmeg, allspice'],
+      method: 'Whip egg white to soft peaks. Beat egg yolk with sugar and spices. Fold together. Add to mug with rum and cognac. Top with hot milk. Stir.',
+      garnish: 'Grated nutmeg on top',
+      signature: 'hot'
+    }),
+
+    // Malaysian-local additions
+    roselle_spritz: () => ({
+      ingredients: ['Roselle (hibiscus) syrup (30ml)', 'Fresh lime (15ml)', 'Gin or vodka (30ml)', 'Top with cava or prosecco (90ml)'],
+      method: 'Build syrup, lime, spirit in a wine glass over ice. Top with sparkling. Stir gently.',
+      garnish: 'Dried roselle flower and lime peel',
+      signature: 'malaysian-local'
+    }),
+    asam_boi_margarita: () => ({
+      ingredients: ['Blanco tequila (50ml)', 'Asam boi syrup (15ml)', 'Fresh lime juice (25ml)', 'Triple sec (10ml)', 'Pinch of salt'],
+      method: 'Shake hard with ice. Strain over fresh ice in a salt-rimmed rocks glass.',
+      garnish: 'A single asam boi and lime peel',
+      signature: 'malaysian-local'
+    }),
+    ipoh_white_martini: () => ({
+      ingredients: ['Vodka (45ml)', 'Cold Ipoh white coffee concentrate (30ml)', 'Coffee liqueur (15ml)', 'Condensed milk (10ml)'],
+      method: 'Shake hard with ice. Double-strain into a chilled coupe.',
+      garnish: 'Three coffee beans',
+      signature: 'malaysian-local'
+    }),
+    teh_tarik_espresso: () => ({
+      ingredients: ['Vodka (30ml)', 'Strong teh tarik (cold, 30ml)', 'Espresso (cold, 30ml)', 'Condensed milk (10ml)', 'Coffee liqueur (15ml)'],
+      method: 'Shake very hard with ice for a thick foam. Double-strain into a chilled coupe.',
+      garnish: 'Cocoa-tea dust and three coffee beans',
+      signature: 'malaysian-local'
+    }),
+    mangosteen_martini: () => ({
+      ingredients: ['Gin (45ml)', 'Fresh mangosteen pulp (3 mangosteens)', 'Lychee liqueur (15ml)', 'Lime juice (10ml)', 'Simple syrup (5ml)'],
+      method: 'Muddle mangosteen with syrup. Add other liquids. Shake hard. Double-strain into a chilled coupe.',
+      garnish: 'Fresh mangosteen segment on the rim',
+      signature: 'malaysian-local'
+    }),
+    soursop_daiquiri: () => ({
+      ingredients: ['White rum (60ml)', 'Fresh soursop pulp (30g)', 'Fresh lime juice (20ml)', 'Simple syrup (10ml)'],
+      method: 'Shake hard with ice. Double-strain into a chilled coupe.',
+      garnish: 'A small soursop chunk',
+      signature: 'malaysian-local'
+    }),
+    cendol_pina_colada: () => ({
+      ingredients: ['Aged rum (45ml)', 'Coconut cream (30ml)', 'Pandan syrup (15ml)', 'Pineapple juice (45ml)', 'A spoon of green cendol jelly (for the bottom)'],
+      method: 'Blend rum, coconut, pandan, pineapple with ice until smooth. Drop cendol jelly into the glass, pour blend over.',
+      garnish: 'Drizzle of gula melaka syrup on top',
+      signature: 'malaysian-local'
+    }),
+    bunga_telang_spritz: () => ({
+      ingredients: ['Strong butterfly pea cold brew (30ml)', 'Fresh lime juice (15ml)', 'Simple syrup (5ml)', 'Gin (30ml)', 'Top with prosecco (75ml)'],
+      method: 'Build over ice in a wine glass. The lime turns the blue to purple as it hits.',
+      garnish: 'Lime peel coil and an edible flower',
+      signature: 'malaysian-local'
+    }),
+    longan_cinnamon_spritz: () => ({
+      ingredients: ['Longan-cinnamon syrup (30ml)', 'Fresh lemon (15ml)', 'Gin or vodka (30ml)', 'Top with soda (75ml)'],
+      method: 'Build over ice in a wine glass.',
+      garnish: 'Star anise and a longan on a pick',
+      signature: 'malaysian-local'
+    }),
   };
 
   // Multi-select profile pairs (keys alphabetically sorted).
@@ -1476,6 +1724,21 @@
     manhattan: 'manhattan',
     boulevardier: 'boulevardier',
     boulevardier_rich: 'boulevardier',
+    daiquiri: 'daiquiri',
+    caipirinha: 'caipirinha',
+    ramos_gin_fizz: 'ramos-gin-fizz',
+    eastside: 'eastside',
+    black_manhattan: 'black-manhattan',
+    new_york_sour: 'new-york-sour',
+    roselle_spritz: 'roselle-spritz',
+    asam_boi_margarita: 'asam-boi-margarita',
+    negroni: 'negroni',
+    bee_knees: 'bees-knees',
+    hanky_panky: 'hanky-panky',
+    pegu_club: 'pegu-club',
+    tommy_margarita: 'tommys-margarita',
+    white_negroni: 'white-negroni',
+    french_connection: 'french-connection',
   };
   const MENU_NAMES = {
     jungle_bird: 'Jungle Bird',
@@ -1488,6 +1751,21 @@
     manhattan: 'Manhattan',
     boulevardier: 'Boulevardier',
     boulevardier_rich: 'Boulevardier (richer)',
+    daiquiri: 'Daiquiri',
+    caipirinha: 'Caipirinha',
+    ramos_gin_fizz: 'Ramos Gin Fizz',
+    eastside: 'Eastside',
+    black_manhattan: 'Black Manhattan',
+    new_york_sour: 'New York Sour',
+    roselle_spritz: 'Roselle Spritz',
+    asam_boi_margarita: 'Asam Boi Margarita',
+    negroni: 'Negroni',
+    bee_knees: 'Bee\'s Knees',
+    hanky_panky: 'Hanky Panky',
+    pegu_club: 'Pegu Club',
+    tommy_margarita: 'Tommy\'s Margarita',
+    white_negroni: 'White Negroni',
+    french_connection: 'French Connection',
   };
 
   /* ----- Spirit guard (Round 17 fix) -----
@@ -1567,6 +1845,29 @@
 
     // Dessert / picnic
     affogato_cocktail: ['whiskey','brandy'],
+
+    // Round 18: new templates
+    daiquiri: 'rum', caipirinha: 'rum', soursop_daiquiri: 'rum',
+    ramos_gin_fizz: 'gin', bijou: 'gin', alaska: 'gin', bronx: 'gin',
+    suffering_bastard: ['gin','whiskey'], brown_derby: 'whiskey',
+    screwdriver: 'vodka', harvey_wallbanger: 'vodka',
+    greyhound: 'vodka', caipiroska: 'vodka',
+    amaretto_sour: ['whiskey','brandy'],
+    pisco_punch: 'brandy', new_york_sour: 'whiskey',
+    el_diablo: 'tequila', matador: 'tequila', vampiro: 'tequila',
+    michelada: 'any', // beer-based, but allow as Bloody-adjacent
+    asam_boi_margarita: 'tequila',
+    gin_fizz: 'gin', silver_fizz: 'gin', diamond_fizz: 'gin',
+    sherry_cobbler: 'low-abv', black_manhattan: 'whiskey',
+    jasmine_cocktail: 'gin', eastside: 'gin',
+    industry_sour: 'low-abv',
+    hot_buttered_rum: 'rum', tom_and_jerry: ['rum','brandy'],
+    roselle_spritz: ['gin','vodka','champagne'],
+    ipoh_white_martini: 'vodka', teh_tarik_espresso: 'vodka',
+    mangosteen_martini: ['gin','vodka'],
+    cendol_pina_colada: 'rum',
+    bunga_telang_spritz: ['gin','champagne'],
+    longan_cinnamon_spritz: ['gin','vodka'],
   };
 
   function templateMatchesSpirit(key, spirit) {
