@@ -241,9 +241,12 @@
       if (!document.body) return;
       if (document.querySelector('.home-fab')) return;
 
-      // Don't show on the homepage itself.
+      // Don't show on the homepage itself, or on the two bar pages
+      // (DS / SS) which are themselves landing-level pages styled to
+      // match the homepage and have the bottom appbar for navigation.
       const p = (location.pathname || '/').replace(/\/index\.html?$/i, '/');
       if (p === '/' || p === '') return;
+      if (p === '/dissolvedsolids/' || p === '/solublesolids/') return;
 
       if (!document.getElementById('home-fab-styles')) {
         const css = ''

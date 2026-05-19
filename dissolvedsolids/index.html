@@ -2081,47 +2081,10 @@
       <span class="tagline">Two states <span>·</span> one chemistry</span>
     </div>
   </button>
-  <nav>
-    <a href="/journal/">journal</a>
-    <span class="nav-sep"></span><a href="/visit/">visit</a>
-    <span class="nav-sep"></span>
-    <a href="#reserve">reserve</a>
-    <a class="nav-cta" href="#builder">build a drink →</a>
-  </nav>
-  <div class="panel" id="statePanel" role="button" aria-label="flip state">
-    <div class="panel-header">
-      <span class="hl"><span class="led"></span>chemistry · live readout</span>
-      <div class="panel-wave"><i></i><i></i><i></i><i></i><i></i></div>
-    </div>
-    <div class="panel-award">
-      <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.59 6.91L22 9.27l-5.5 4.73L18.18 22 12 18.27 5.82 22 7.5 14 2 9.27l7.41-.36L12 2z"/></svg>
-      <span>tatler asia · <b>top 20 bars</b> · 25/26</span>
-    </div>
-    <div class="panel-row">
-      <span class="k">state</span>
-      <span class="v"><em><span class="for-sol">soluble</span><span class="for-dis">dissolved</span></em> solids</span>
-    </div>
-    <div class="panel-row">
-      <span class="k">venue</span>
-      <span class="v"><span class="for-sol">02 · ss2 pj</span><span class="for-dis">01 · damansara kim pj</span></span>
-    </div>
-    <div class="panel-row">
-      <span class="k">method</span>
-      <span class="v"><span class="for-sol">infusion</span><span class="for-dis">dissolution</span></span>
-    </div>
-    <div class="panel-row">
-      <span class="k">hours</span>
-      <span class="v"><span class="for-sol">wed to sun · 18:00 to 01:00</span><span class="for-dis">tue to sun · 15:00 to 01:00</span></span>
-    </div>
-    <div class="panel-clock">
-      <span>kuala lumpur</span>
-      <span class="time" id="panelClock">-<span class="colon">:</span>-<span class="colon">:</span>-</span>
-    </div>
-    <div class="panel-toggle">
-      <span><span class="for-sol">→ flip to dissolved</span><span class="for-dis">← flip to soluble</span></span>
-      <span class="switch"></span>
-    </div>
-  </div>
+  <!-- Top-right instrument panel + nav removed to match the homepage
+       layout. The Dis/Sol toggle still lives in the bottom appbar and
+       the rest of the header info (hours, state) is already inside the
+       hero/visit blocks below. -->
 </header>
 
 <!-- tatler seal moved inside hero -->
@@ -3123,14 +3086,19 @@
 
   // State toggle. /dissolvedsolids/ represents the DS outlet - flipping
   // state has to NAVIGATE to /solublesolids/ so the URL always matches
-  // what the user sees.
+  // what the user sees. The instrument panel that used to host the
+  // click target has been removed to match the homepage layout; the
+  // appbar Dis/Sol toggle now drives this behaviour, so the listener
+  // here is optional and only binds if the panel still exists.
   const OTHER_URL = '/solublesolids/';
   const panel = document.getElementById('statePanel');
-  panel.addEventListener('click', () => {
-    playScratch();
-    document.body.classList.add('dissolving');
-    setTimeout(() => { location.href = OTHER_URL; }, 220);
-  });
+  if (panel) {
+    panel.addEventListener('click', () => {
+      playScratch();
+      document.body.classList.add('dissolving');
+      setTimeout(() => { location.href = OTHER_URL; }, 220);
+    });
+  }
 
   // Brand wordmark click → scroll page to top.
   const brandBtn = document.getElementById('brandToTop');
