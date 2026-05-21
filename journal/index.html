@@ -132,10 +132,11 @@
   }
   /* Bring page content above the aurora layer. */
   body > header, body > main, body > footer, body > section { position: relative; z-index: 1; }
-  /* Re-enable atmosphere particles on the journal (we previously
-     suppressed them with display:none; now they're part of the vibe). */
-  body .atmo-dots { display: block !important; }
-  .atmo-dots { z-index: 1; }
+  /* Atmosphere particles suppressed on the journal index. The
+     aurora gradient layer behind body::before still drifts for
+     atmosphere; the dotted falling particles read as noise on a
+     reading-heavy page. */
+  body .atmo-dots { display: none !important; }
   @media (prefers-reduced-motion: reduce) {
     body::before { animation: none; }
   }
