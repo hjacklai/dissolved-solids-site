@@ -43,7 +43,14 @@
         '.atmo-float.atmo-ig:hover{background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);border-color:transparent;}' +
         '.atmo-float:focus-visible{outline:2px solid #ff3d8a;outline-offset:3px;}' +
         '@media (max-width:640px){.atmo-music,.atmo-floats{bottom:100px;}.atmo-music{left:12px;width:44px;height:44px;}.atmo-floats{right:12px;gap:8px;}.atmo-float{width:44px;height:44px;}}' +
-        '@media (prefers-reduced-motion:reduce){.atmo-music,.atmo-music:hover,.atmo-float,.atmo-float:hover{transform:none;transition:none;}.atmo-music .bars i{animation:none !important;}}';
+        '@media (prefers-reduced-motion:reduce){.atmo-music,.atmo-music:hover,.atmo-float,.atmo-float:hover{transform:none;transition:none;}.atmo-music .bars i{animation:none !important;}}' +
+        /* Rising bubbles (journal-body only) - mirrors the homepage
+           "soluble state" amber/rose pattern. Scoped to .journal-body
+           so non-journal sub-pages do not get them. */
+        '.journal-body .atmo-bubbles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;mix-blend-mode:screen;}' +
+        '.journal-body .atmo-bubble{position:absolute;bottom:-40px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(214,163,154,.5),rgba(209,139,58,.1) 60%,transparent 70%);border:1px solid rgba(214,163,154,.2);animation:atmoRise linear infinite;opacity:0;}' +
+        '@keyframes atmoRise{0%{transform:translateY(0) translateX(0) scale(.6);opacity:0;}10%{opacity:.5;}50%{transform:translateY(-50vh) translateX(20px) scale(1);}90%{opacity:.5;}100%{transform:translateY(-110vh) translateX(-20px) scale(.4);opacity:0;}}' +
+        '@media (prefers-reduced-motion:reduce){.journal-body .atmo-bubble{animation:none;display:none;}}';
       document.head.appendChild(css);
     }
 
@@ -306,9 +313,41 @@
       document.addEventListener('DOMContentLoaded', fn);
     else fn();
   }
+  // Rising bubbles, journal pages only. Mirrors the homepage's
+  // "soluble state" pattern (amber/rose gradient circles drifting
+  // upward) so the journal carries the same atmosphere as the landing.
+  function initBubbles() {
+    if (!document.body || !document.body.classList.contains('journal-body')) return;
+    if (document.querySelector('.atmo-bubbles')) return; // already mounted
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const isSmall = window.innerWidth < 700;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+
+    const PSCALE = (isTouch || isSmall) ? 0.35 : 1;
+    const count = Math.max(0, Math.round(90 * PSCALE));
+
+    const container = document.createElement('div');
+    container.className = 'atmo-bubbles';
+    container.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(container);
+
+    for (let i = 0; i < count; i++) {
+      const b = document.createElement('div');
+      b.className = 'atmo-bubble';
+      const size = 3 + Math.random() * 44;
+      b.style.width = b.style.height = size + 'px';
+      b.style.left = (Math.random() * 100) + '%';
+      b.style.animationDuration = (8 + Math.random() * 26) + 's';
+      b.style.animationDelay = (-Math.random() * 35) + 's';
+      container.appendChild(b);
+    }
+  }
+
   ready(function () {
     inject();
     initParticles();
+    initBubbles();
     initMusic();
   });
 })();
