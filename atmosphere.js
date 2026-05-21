@@ -48,8 +48,8 @@
            "soluble state" amber/rose pattern. Scoped to .journal-body
            so non-journal sub-pages do not get them. */
         '.journal-body .atmo-bubbles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;mix-blend-mode:screen;}' +
-        '.journal-body .atmo-bubble{position:absolute;bottom:-20px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(214,163,154,.42),rgba(209,139,58,.06) 60%,transparent 75%);border:1px solid rgba(214,163,154,.14);animation:atmoRise linear infinite;opacity:0;}' +
-        '@keyframes atmoRise{0%{transform:translateY(0) translateX(0) scale(.7);opacity:0;}12%{opacity:.42;}50%{transform:translateY(-50vh) translateX(10px) scale(1);}88%{opacity:.42;}100%{transform:translateY(-110vh) translateX(-10px) scale(.45);opacity:0;}}' +
+        '.journal-body .atmo-bubble{position:absolute;bottom:-10px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(232,210,180,.55),rgba(209,139,58,.04) 55%,transparent 75%);border:none;animation:atmoRise linear infinite;opacity:0;}' +
+        '@keyframes atmoRise{0%{transform:translateY(0) translateX(0) scale(.8);opacity:0;}14%{opacity:.34;}50%{transform:translateY(-55vh) translateX(6px) scale(1);}86%{opacity:.34;}100%{transform:translateY(-115vh) translateX(-6px) scale(.55);opacity:0;}}' +
         '@media (prefers-reduced-motion:reduce){.journal-body .atmo-bubble{animation:none;display:none;}}';
       document.head.appendChild(css);
     }
@@ -324,10 +324,10 @@
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) return;
 
-    const PSCALE = (isTouch || isSmall) ? 0.35 : 1;
-    // Finer-bubble pass: smaller sizes need higher count to keep the
-    // density feeling alive without any single bubble dominating.
-    const count = Math.max(0, Math.round(140 * PSCALE));
+    const PSCALE = (isTouch || isSmall) ? 0.40 : 1;
+    // Super-fine pass: bubbles are now in carbonation-mote territory.
+    // Tiny size demands much higher density so the room feels alive.
+    const count = Math.max(0, Math.round(220 * PSCALE));
 
     const container = document.createElement('div');
     container.className = 'atmo-bubbles';
@@ -337,16 +337,15 @@
     for (let i = 0; i < count; i++) {
       const b = document.createElement('div');
       b.className = 'atmo-bubble';
-      // Size range 2-13px (was 3-47). Skewed small via Math.random()^2
-      // so the population is mostly tiny motes with the occasional
-      // slightly-larger drifter, like champagne fines rather than
-      // soap bubbles.
-      const size = 2 + Math.pow(Math.random(), 2) * 11;
+      // Size range 1-6px, heavily skewed small via cube of random
+      // (most bubbles ~1-2px, rare ones up to 6px). Reads as the
+      // very fine carbonation just-poured-water leaves on the glass.
+      const size = 1 + Math.pow(Math.random(), 3) * 5;
       b.style.width = b.style.height = size + 'px';
       b.style.left = (Math.random() * 100) + '%';
-      // Slower range 12-36s for a more graceful drift.
-      b.style.animationDuration = (12 + Math.random() * 24) + 's';
-      b.style.animationDelay = (-Math.random() * 40) + 's';
+      // Slower drift, 16-44s, so each mote rises like a slow infusion.
+      b.style.animationDuration = (16 + Math.random() * 28) + 's';
+      b.style.animationDelay = (-Math.random() * 50) + 's';
       container.appendChild(b);
     }
   }
