@@ -23,19 +23,121 @@
   const MULTI_KEYS = new Set(['mood', 'profile']);
   const TOTAL_STEPS = QUESTIONS.length;
 
-  const SPIRITS = {
-    gin: 'Gin',
-    whiskey: 'Whisk(e)y',
-    vodka: 'Vodka',
-    rum: 'Rum',
-    tequila: 'Tequila',
-    mezcal: 'Mezcal',
-    brandy: 'Brandy',
-    sake: 'Junmai sake',
-    champagne: 'Cava (or champagne)',
-    'low-abv': 'Aromatised wine (vermouth or amaro base)',
-    na: 'NA spirit (Lyre\'s or Seedlip)',
+  // SPIRIT_VARIANTS: each category exposes a pool of sub-styles. The bar
+  // builder picks a random one each time SPIRITS[key] is accessed, so a
+  // "rum" pick can come back as Jamaican rum, cachaça, rhum agricole, etc.
+  // depending on the seeded RNG. This makes generated drinks feel more
+  // specific and gives drinkers a starting style if they want to source
+  // the bottle themselves.
+  const SPIRIT_VARIANTS = {
+    gin: [
+      'London Dry gin (Tanqueray, Beefeater, or Bombay Sapphire)',
+      'Plymouth gin',
+      'Old Tom gin (Hayman\'s or Ransom)',
+      'Navy Strength gin (Plymouth Navy or Perry\'s Tot, ~57% ABV)',
+      'New Western gin (Hendrick\'s or Monkey 47)',
+      'Japanese gin (Roku or Ki No Bi)',
+      'Local craft gin (any Malaysian, Australian, or SEA-distilled gin)',
+    ],
+    whiskey: [
+      'Bourbon (Buffalo Trace, Wild Turkey 101, or Maker\'s Mark)',
+      'Rye whisky (Rittenhouse, Sazerac, or Bulleit Rye)',
+      'Blended Scotch (Famous Grouse, Monkey Shoulder, or Johnnie Walker Black)',
+      'Single malt Scotch (Highland or Speyside)',
+      'Islay single malt (Laphroaig, Ardbeg, or Bowmore, for smoky builds)',
+      'Japanese whisky (Suntory Toki, Nikka From The Barrel, or Hibiki Harmony)',
+      'Irish whiskey (Jameson, Bushmills, or Redbreast)',
+    ],
+    vodka: [
+      'Vodka (Belvedere, Grey Goose, or Absolut Elyx)',
+      'Polish wheat vodka (Belvedere or Wyborowa)',
+      'Rye vodka (Belvedere Rye or Sobieski)',
+      'Potato vodka (Chopin or Karlsson\'s)',
+      'Corn vodka (Tito\'s or Cathead)',
+      'Single-grain neutral vodka',
+    ],
+    rum: [
+      'White rum (Havana Club 3 or Bacardi Carta Blanca)',
+      'Dark rum (Myers\'s, Gosling\'s Black Seal, or Hamilton Demerara)',
+      'Aged rum (Diplomatico Reserva, Zacapa 23, or Ron del Barrilito)',
+      'Jamaican rum (Smith & Cross or Appleton 12)',
+      'Rhum agricole (Rhum JM, Clement, or Neisson, French Caribbean)',
+      'Cachaça (Avua or Novo Fogo, the Brazilian sugarcane spirit)',
+      'Overproof rum (Wray & Nephew or Lemon Hart 151, use sparingly)',
+      'Spiced rum (Sailor Jerry or The Kraken)',
+    ],
+    tequila: [
+      'Tequila blanco (Patron Silver, Cazadores Blanco, or Olmeca Altos Plata)',
+      'Tequila reposado (Don Julio Reposado or Cazadores Reposado)',
+      'Tequila añejo (Don Julio Añejo or Patron Añejo, for sipping-builds)',
+      'Tequila cristalino (Maestro Dobel or Don Julio 70)',
+      '100% agave blanco (any Highland or Lowland producer)',
+    ],
+    mezcal: [
+      'Mezcal espadín (Del Maguey Vida or Ilegal Joven, the standard)',
+      'Mezcal tobalá (Del Maguey Tobalá or Real Minero, wild agave)',
+      'Mezcal madrecuixe (Del Maguey or Real Minero, deep-earth profile)',
+      'Mezcal tepeztate (Del Maguey, herbaceous-bright wild agave)',
+      'Mezcal ensamble (blended agave varietals)',
+      'Mezcal pechuga (seasonally distilled with fruit and meat, for the curious)',
+    ],
+    brandy: [
+      'VSOP cognac (Hennessy VSOP, Remy Martin VSOP, or Pierre Ferrand 1840)',
+      'XO cognac (for sipping builds)',
+      'Armagnac (Castarede or Delord, more rustic than cognac)',
+      'Calvados (Boulard or Christian Drouin, French apple brandy)',
+      'Pisco (Capel or Macchu Pisco, Peruvian or Chilean)',
+      'Spanish brandy (Cardenal Mendoza or Lepanto)',
+    ],
+    sake: [
+      'Junmai sake (Dassai 50 or Hakkaisan)',
+      'Junmai daiginjo sake (Dassai 23 or Kubota Manju, for premium pours)',
+      'Junmai ginjo sake (Hakkaisan Ginjo)',
+      'Nigori sake (cloudy, unfiltered)',
+      'Sparkling sake (Mio or Hou Hou Shu)',
+      'Aged koshu sake (rare, for stirred builds)',
+    ],
+    champagne: [
+      'Cava (Freixenet, Codorniu, or Recaredo, Spanish dry sparkling)',
+      'Prosecco (La Marca, Mionetto, or Bisol, Italian off-dry sparkling)',
+      'Champagne (Veuve Clicquot, Pol Roger, or Bollinger, French)',
+      'Crémant (any French sparkling outside Champagne region)',
+      'English sparkling wine (Nyetimber or Chapel Down)',
+      'Franciacorta (Ca\' del Bosco, Italian méthode traditionnelle)',
+    ],
+    'low-abv': [
+      'Sweet vermouth (Carpano Antica or Cocchi di Torino)',
+      'Dry vermouth (Dolin Dry or Noilly Prat)',
+      'Bianco vermouth (Cocchi Americano Bianco or Dolin Blanc)',
+      'Amaro (Averna, Montenegro, or Nonino, Italian herbal liqueur)',
+      'Aperitivo bitter (Aperol, Campari, or Select)',
+      'Fino sherry (Lustau Fino Jarana or Tio Pepe)',
+      'Manzanilla sherry (Hidalgo La Gitana)',
+      'Lillet Blanc (French aperitif wine)',
+    ],
+    na: [
+      'NA gin substitute (Seedlip Garden 108 or Lyre\'s Dry London)',
+      'NA aperitif (Lyre\'s Italian Spritz or Martini Vibrante)',
+      'NA whisky substitute (Lyre\'s American Malt or Ritual Whiskey Alternative)',
+      'NA rum substitute (Lyre\'s Spiced Cane or Ritual Rum Alternative)',
+      'NA agave substitute (Lyre\'s Agave Blanco or Ritual Tequila Alternative)',
+      'NA aromatic (Seedlip Spice 94, herbal-spice base)',
+    ],
   };
+  // Proxy: SPIRITS[key] returns a random variant each access, respecting
+  // the seeded Math.random override that powers deterministic share URLs.
+  const SPIRITS = new Proxy(SPIRIT_VARIANTS, {
+    get: function (target, key) {
+      var arr = target[key];
+      if (!Array.isArray(arr)) return undefined;
+      return arr[Math.floor(Math.random() * arr.length)];
+    },
+    has: function (target, key) { return key in target; },
+    ownKeys: function (target) { return Object.keys(target); },
+    getOwnPropertyDescriptor: function (target, key) {
+      if (key in target) return { enumerable: true, configurable: true, value: target[key][0] };
+    }
+  });
 
   const ALL_VALUES = {
     mood: ['refreshed','adventurous','comforting','celebratory','mellow','awake','cosy','playful','contemplative','romantic','social','focused'],

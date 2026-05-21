@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-MY" data-state="dissolved">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>The Dispatch · 鸡尾酒月报 · Dissolved Solids 与 Soluble Solids</title>
+<meta name="description" content="The Dispatch 是我们每月一封的鸡尾酒邮报。当月鸡尾酒、技术深度解读、两家酒吧的当季动态，以及偶尔附上的免费 PDF。无营销废话，无每日骚扰。" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The Dispatch · 每月鸡尾酒邮报" />
+<meta property="og:description" content="来自 Dissolved Solids 与 Soluble Solids 的每月鸡尾酒动态。当月鸡尾酒、技术、当季选品、免费 PDF。" />
+<meta property="og:image" content="https://dissolvedsolids.co/photos/banner.jpg" />
+<meta property="og:locale" content="zh_MY" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#faf3df" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://dissolvedsolids.co/zh/newsletter/" />
+<link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/newsletter/" />
+<link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/newsletter/" />
+<link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/newsletter/" />
+<link rel="icon" type="image/png" href="/photos/ds-logo.png" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"The Dispatch 月报","url":"https://dissolvedsolids.co/zh/newsletter/","inLanguage":"zh-Hans-MY","description":"来自 Dissolved Solids 与 Soluble Solids 的每月鸡尾酒邮报。"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://dissolvedsolids.co/zh/"},{"@type":"ListItem","position":2,"name":"邮报","item":"https://dissolvedsolids.co/zh/newsletter/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<link rel="stylesheet" href="/appbar.css" />
+<script src="/analytics.js" defer></script>
+<style>
+  .nl-wrap { max-width: 720px; margin: 0 auto; padding: 0 var(--gutter); }
+  .nl-form {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 14px;
+    padding: 30px 28px;
+    margin: 40px 0;
+  }
+  .nl-form h2 {
+    font-family: var(--serif); font-weight: 400; font-size: 28px;
+    margin: 0 0 6px; color: var(--paper);
+  }
+  .nl-form h2 em { color: var(--accent); font-style: italic; }
+  .nl-sub {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+    margin: 0 0 18px;
+  }
+  .nl-input-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  .nl-input {
+    flex: 1 1 240px; min-width: 200px;
+    padding: 14px 18px;
+    background: rgba(0,0,0,.35);
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 26px;
+    font-family: var(--mono); font-size: 14px;
+    color: var(--paper);
+    outline: none;
+  }
+  .nl-input::placeholder { color: rgba(255,255,255,.45); }
+  .nl-input:focus { border-color: var(--accent); }
+  .nl-submit {
+    padding: 14px 22px; border-radius: 26px;
+    background: var(--accent); border: 1px solid var(--accent);
+    color: #000;
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; cursor: pointer;
+    transition: all .2s ease; font-weight: 600;
+  }
+  .nl-submit:hover { background: var(--paper); border-color: var(--paper); }
+  .nl-meta {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    color: rgba(255,255,255,.5); text-transform: uppercase;
+    margin: 8px 0 0;
+  }
+  .nl-perks {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0;
+  }
+  @media (max-width: 600px) { .nl-perks { grid-template-columns: 1fr; } }
+  .nl-perk {
+    padding: 18px 18px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 10px;
+  }
+  .nl-perk h3 {
+    font-family: var(--serif); font-weight: 400; font-size: 18px;
+    margin: 0 0 4px; color: var(--paper);
+  }
+  .nl-perk h3 em { color: var(--accent); font-style: italic; }
+  .nl-perk p { font-family: var(--serif); font-style: italic; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.7); margin: 0; }
+  .nl-success {
+    display: none;
+    margin: 16px 0 0;
+    padding: 14px 18px;
+    border-radius: 10px;
+    background: rgba(255, 200, 50, .12);
+    border: 1px solid rgba(255, 200, 50, .35);
+    font-family: var(--mono); font-size: 12px; color: var(--paper);
+  }
+  .nl-success.is-shown { display: block; }
+</style>
+</head>
+<body class="journal-body">
+<header class="journal-bar"><a class="journal-wordmark" href="/zh/"><span>Dissolved Solids</span><em>The Dispatch</em></a></header>
+<main class="journal-mount article-mount">
+  <article class="article">
+    <header class="article-head">
+      <a class="article-up" href="/zh/">← 首页</a>
+      <span class="article-eyebrow">邮报 · The Dispatch</span>
+      <h1 class="article-title">The <i>Dispatch</i>。</h1>
+      <p class="article-dek">来自 Dissolved Solids 与 Soluble Solids 的每月鸡尾酒邮报。一杯当月鸡尾酒、一篇技术深度解读、两家酒吧的当季动态，以及偶尔附上的免费 PDF。一年十二封邮件。一键退订。不每天骚扰，不营销追单。</p>
+    </header>
+    <div class="nl-wrap">
+
+      <div class="nl-form">
+        <h2>订阅 <em>Dispatch</em>。</h2>
+        <p class="nl-sub">一年 12 封 · 一直免费 · 一键退订</p>
+        <!--
+          Form action: replace the URL below with your own Buttondown / Mailerlite /
+          ConvertKit / Tally form endpoint. Default is a mailto fallback that opens
+          the user's email client so the form never silently fails.
+        -->
+        <form id="nlForm" class="nl-form-inner"
+              action="mailto:hi@dissolvedsolids.co"
+              method="POST"
+              enctype="text/plain">
+          <div class="nl-input-row">
+            <input type="email" name="email" class="nl-input" placeholder="你的电邮" required autocomplete="email" />
+            <button type="submit" class="nl-submit">订阅 →</button>
+          </div>
+          <p class="nl-meta">我们只会用你的电邮发送 Dispatch。不转交第三方营销。<a href="/zh/privacy/" style="color: var(--accent); text-decoration: underline;">隐私政策</a>。</p>
+        </form>
+        <div class="nl-success" id="nlSuccess">
+          <b>谢谢。</b>请到收件箱查收确认邮件。如五分钟内未到，请查看垃圾邮件，或 WhatsApp 联络酒吧。
+        </div>
+      </div>
+
+      <h2>你会收到什么</h2>
+
+      <div class="nl-perks">
+        <div class="nl-perk">
+          <h3><em>当月</em>鸡尾酒</h3>
+          <p>那个月我们在意的一杯酒。配方、技法，以及它为什么成立。</p>
+        </div>
+        <div class="nl-perk">
+          <h3>技术<em>深度解读</em></h3>
+          <p>一项技术拆解到底。脂洗、油糖、发酵、烟熏、澄清、预调批次。饮品背后的「怎么做」。</p>
+        </div>
+        <div class="nl-perk">
+          <h3>酒吧<em>当季动态</em></h3>
+          <p>本月在 Dissolved Solids 与 Soluble Solids 轮上的酒款。我们这一个月主打的马来西亚本地食材。</p>
+        </div>
+        <div class="nl-perk">
+          <h3>免费 <em>PDF</em></h3>
+          <p>偶尔发出的一页式速查表，订阅者先收到。可打印、可贴墙、可转发。永久免费。</p>
+        </div>
+      </div>
+
+      <div class="article-body">
+
+        <h2>Dispatch 不是什么</h2>
+
+        <p><b>不是预订提醒。</b>如果你跟我们预订了座位，我们会另外用 WhatsApp 通知你。Dispatch 是鸡尾酒内容，不是交易提醒。</p>
+
+        <p><b>不是折扣机器。</b>我们不通过邮件做促销。我们没有「订阅者专属价」。</p>
+
+        <p><b>不是销售漏斗。</b>多数期数甚至不提预订。它就是鸡尾酒书写。如果你顺道来访，那是额外的礼物。</p>
+
+        <p><b>不是日更。</b>一年十二期，每月一期，周五早上吉隆坡时间 10 点左右发出。</p>
+
+        <h2>为什么订阅</h2>
+
+        <p>如果你真心喜欢读鸡尾酒文字、想拓展家中酒柜的知识、希望每月只收到一封用心的邮件而不是一堆，又想知道 PJ 几家小型精酿鸡尾酒吧正在发生什么，这份适合你。</p>
+
+        <p>如果你要的是日更内容或促销优惠，这份不适合你。</p>
+
+        <h2>我们怎么处理你的电邮地址</h2>
+
+        <p>只保留用来发 Dispatch。绝不出售、转交或出租。每一期底部都有一键退订。退订后 30 天内地址被删除。详情见<a href="/zh/privacy/" style="color: var(--accent); text-decoration: underline;">隐私政策</a>。</p>
+
+        <h2>相关</h2>
+
+        <ul>
+          <li><a href="/zh/cheatsheets/">免费可打印速查表</a>（不订阅也免费）</li>
+          <li><a href="/zh/journal/">笔记</a></li>
+          <li><a href="/zh/cocktails/">鸡尾酒配方数据库</a></li>
+          <li><a href="/zh/what-can-i-make/">「我今晚能调什么？」工具</a></li>
+        </ul>
+
+      </div>
+    </div>
+    <footer class="article-foot"><p class="article-up-foot"><a href="/zh/">← 首页</a></p></footer>
+  </article>
+</main>
+<script>
+// If the form action stays as mailto: (the default fallback), still show a
+// success state when the user clicks. If you switch to a real form service
+// (Buttondown / Tally / Mailerlite / ConvertKit) that submits via fetch,
+// replace this handler with the relevant POST and remove the form action.
+document.getElementById("nlForm").addEventListener("submit", function (e) {
+  // mailto: fallback opens user's email client. Show success state.
+  setTimeout(function () {
+    var ok = document.getElementById("nlSuccess");
+    if (ok) ok.classList.add("is-shown");
+  }, 600);
+});
+</script>
+<script src="/atmosphere.js" defer></script>
+<script src="/appbar.js" defer></script>
+</body>
+</html>

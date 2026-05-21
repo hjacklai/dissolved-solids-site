@@ -28,14 +28,10 @@
     { url: '/cocktail-bars-bangsar/',                             title: 'Cocktail bar near Bangsar',                    cat: 'local' },
     { url: '/cocktail-bars-subang/',                              title: 'Cocktail bar near Subang Jaya',                cat: 'local' },
     { url: '/cocktail-bars-puchong/',                             title: 'Cocktail bar near Puchong',                    cat: 'local' },
-    { url: '/cocktail-bars-cheras/',                              title: 'Cocktail bar near Cheras',                     cat: 'local' },
-    { url: '/cocktail-bars-shah-alam/',                           title: 'Cocktail bar near Shah Alam',                  cat: 'local' },
-    { url: '/cocktail-bars-cyberjaya/',                           title: 'Cocktail bar near Cyberjaya',                  cat: 'local' },
-    { url: '/cocktail-bars-putrajaya/',                           title: 'Cocktail bar near Putrajaya',                  cat: 'local' },
-    { url: '/cocktail-bars-kepong/',                              title: 'Cocktail bar near Kepong',                     cat: 'local' },
-    { url: '/cocktail-bars-setapak/',                             title: 'Cocktail bar near Setapak',                    cat: 'local' },
-    { url: '/cocktail-bars-selayang/',                            title: 'Cocktail bar near Selayang',                   cat: 'local' },
-    { url: '/cocktail-bars-ampang/',                              title: 'Cocktail bar near Ampang',                     cat: 'local' },
+    // Outer-Selangor and outer-KL neighbourhood pages live in /sitemap.xml
+    // for indexability but are deliberately omitted from the cross-link pool.
+    // They are low-priority back-links and clutter every article footer when
+    // mixed with high-value content. Direct navigation via the hub still works.
     { url: '/cocktail-glossary/',                                 title: 'Cocktail glossary (A-Z)',                      cat: 'practical' },
     { url: '/cocktail-bars-kl/',                                  title: 'Cocktail bars in KL',                          cat: 'local' },
     { url: '/venue-hire/',                                        title: 'Private venue hire (buy-out)',                 cat: 'local' },

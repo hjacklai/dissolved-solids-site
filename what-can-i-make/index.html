@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" data-state="dissolved">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>What Can I Make Tonight? · Home Bar Inventory Cocktail Finder · Dissolved Solids</title>
+<meta name="description" content="Tick the bottles in your home bar. We show you every cocktail you can make with what you have, ranked by completeness. The cocktail-inventory tool for home bartenders." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="What Can I Make Tonight?" />
+<meta property="og:description" content="Cocktail inventory finder. Tick your home bar, see every drink you can mix." />
+<meta property="og:image" content="https://dissolvedsolids.co/photos/banner.jpg" />
+<meta property="og:locale" content="en_MY" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://dissolvedsolids.co/photos/banner.jpg" />
+<meta name="theme-color" content="#faf3df" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://dissolvedsolids.co/what-can-i-make/" />
+<link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/what-can-i-make/" />
+<link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/what-can-i-make/" />
+<link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/what-can-i-make/" />
+<link rel="icon" type="image/png" href="/photos/ds-logo.png" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"What Can I Make Tonight? Cocktail Finder","url":"https://dissolvedsolids.co/what-can-i-make/","applicationCategory":"LifestyleApplication","operatingSystem":"Web","description":"Tick the bottles in your home bar; see every cocktail you can make with what you have."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dissolvedsolids.co/"},{"@type":"ListItem","position":2,"name":"What Can I Make","item":"https://dissolvedsolids.co/what-can-i-make/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<link rel="stylesheet" href="/appbar.css" />
+<script src="/analytics.js" defer></script>
+<style>
+  .wci-wrap { max-width: 1100px; margin: 0 auto; padding: 0 var(--gutter); }
+  .wci-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 36px; }
+  @media (max-width: 820px) { .wci-grid { grid-template-columns: 1fr; gap: 28px; } }
+  .wci-panel {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 14px;
+    padding: 24px 22px;
+  }
+  .wci-panel h2 {
+    font-family: var(--serif); font-size: 28px; font-weight: 400;
+    margin: 0 0 14px; color: var(--paper);
+  }
+  .wci-panel h2 em { color: var(--accent); font-style: italic; }
+  .wci-sub {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+    margin: 0 0 18px;
+  }
+  .wci-category-h {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .22em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+    margin: 18px 0 8px;
+  }
+  .wci-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .wci-chip {
+    font-family: var(--mono); font-size: 12px;
+    padding: 6px 12px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 18px;
+    color: rgba(255,255,255,.75);
+    cursor: pointer;
+    transition: all .18s ease;
+    text-transform: lowercase;
+  }
+  .wci-chip:hover { border-color: rgba(255,255,255,.4); }
+  .wci-chip.is-on {
+    background: var(--accent); border-color: var(--accent);
+    color: #000; font-weight: 600;
+  }
+  .wci-actions { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+  .wci-btn {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 10px 18px; border-radius: 22px;
+    border: 1px solid rgba(255,255,255,.25);
+    background: transparent; color: var(--paper);
+    cursor: pointer; transition: all .2s ease;
+  }
+  .wci-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .wci-btn.primary { background: var(--accent); border-color: var(--accent); color: #000; }
+  .wci-btn.primary:hover { color: #000; background: #fff; border-color: #fff; }
+  .wci-status {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .16em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+    margin: 24px 0 12px;
+  }
+  .wci-status b { color: var(--accent); }
+  .wci-result {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 10px;
+    padding: 18px 18px;
+    margin-bottom: 10px;
+    transition: border-color .2s ease;
+  }
+  .wci-result:hover { border-color: var(--accent); }
+  .wci-result .r-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 12px; margin-bottom: 6px;
+  }
+  .wci-result .r-name {
+    font-family: var(--serif); font-size: 22px; line-height: 1.1;
+    color: var(--paper); margin: 0;
+  }
+  .wci-result .r-pct {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    color: var(--accent); white-space: nowrap;
+  }
+  .wci-result .r-ing {
+    font-family: var(--mono); font-size: 12px; line-height: 1.5;
+    color: rgba(255,255,255,.7);
+    margin: 0;
+  }
+  .wci-result .r-have { color: var(--paper); font-weight: 500; }
+  .wci-result .r-missing { color: rgba(255,100,100,.85); }
+  .wci-result .r-link {
+    display: inline-block;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em;
+    color: var(--accent); margin-top: 8px;
+    text-transform: uppercase;
+  }
+  .wci-no-results {
+    background: rgba(255,255,255,.03); border: 1px dashed rgba(255,255,255,.18);
+    border-radius: 10px; padding: 26px;
+    text-align: center; color: rgba(255,255,255,.6);
+    font-family: var(--serif); font-style: italic; font-size: 17px;
+  }
+  .wci-pick-some {
+    background: rgba(255,255,255,.03); border: 1px dashed rgba(255,255,255,.18);
+    border-radius: 10px; padding: 30px 22px;
+    text-align: center; color: rgba(255,255,255,.55);
+    font-family: var(--serif); font-style: italic; font-size: 16px;
+  }
+</style>
+</head>
+<body class="journal-body">
+<header class="journal-bar"><a class="journal-wordmark" href="/"><span>Dissolved Solids</span><em>Cocktail tools</em></a></header>
+<main class="journal-mount article-mount">
+  <article class="article">
+    <header class="article-head">
+      <a class="article-up" href="/">← Home</a>
+      <span class="article-eyebrow">Tool · Inventory cocktail finder</span>
+      <h1 class="article-title">What can I <i>make tonight</i>?</h1>
+      <p class="article-dek">Tick the bottles you have. We show you every cocktail you can make with that inventory, ranked by how many ingredients you have for each one. Save the ones you like; come back tomorrow when you have more bottles.</p>
+    </header>
+    <div class="wci-wrap">
+      <div class="wci-grid">
+        <section class="wci-panel">
+          <h2>Your <em>home bar</em>.</h2>
+          <p class="wci-sub">Tick what you have. Tap again to remove.</p>
+
+          <h3 class="wci-category-h">Base spirits</h3>
+          <div class="wci-chips" data-cat="spirits">
+            <button class="wci-chip" data-ing="gin">Gin</button>
+            <button class="wci-chip" data-ing="vodka">Vodka</button>
+            <button class="wci-chip" data-ing="white rum">White rum</button>
+            <button class="wci-chip" data-ing="dark rum">Dark rum</button>
+            <button class="wci-chip" data-ing="tequila">Tequila</button>
+            <button class="wci-chip" data-ing="mezcal">Mezcal</button>
+            <button class="wci-chip" data-ing="bourbon">Bourbon</button>
+            <button class="wci-chip" data-ing="rye">Rye</button>
+            <button class="wci-chip" data-ing="scotch">Scotch</button>
+            <button class="wci-chip" data-ing="japanese whisky">Japanese whisky</button>
+            <button class="wci-chip" data-ing="cognac">Cognac</button>
+            <button class="wci-chip" data-ing="brandy">Brandy</button>
+            <button class="wci-chip" data-ing="sake">Sake</button>
+          </div>
+
+          <h3 class="wci-category-h">Modifiers (vermouth, amaro, liqueur)</h3>
+          <div class="wci-chips" data-cat="modifiers">
+            <button class="wci-chip" data-ing="sweet vermouth">Sweet vermouth</button>
+            <button class="wci-chip" data-ing="dry vermouth">Dry vermouth</button>
+            <button class="wci-chip" data-ing="campari">Campari</button>
+            <button class="wci-chip" data-ing="aperol">Aperol</button>
+            <button class="wci-chip" data-ing="cointreau">Cointreau / triple sec</button>
+            <button class="wci-chip" data-ing="maraschino">Maraschino liqueur</button>
+            <button class="wci-chip" data-ing="kahlua">Kahlua / coffee liqueur</button>
+            <button class="wci-chip" data-ing="elderflower liqueur">Elderflower liqueur</button>
+            <button class="wci-chip" data-ing="creme de cassis">Creme de cassis</button>
+            <button class="wci-chip" data-ing="creme de violette">Creme de violette</button>
+            <button class="wci-chip" data-ing="fernet">Fernet-Branca</button>
+          </div>
+
+          <h3 class="wci-category-h">Citrus and juice</h3>
+          <div class="wci-chips" data-cat="citrus">
+            <button class="wci-chip" data-ing="fresh lime">Fresh lime</button>
+            <button class="wci-chip" data-ing="fresh lemon">Fresh lemon</button>
+            <button class="wci-chip" data-ing="calamansi">Calamansi</button>
+            <button class="wci-chip" data-ing="orange juice">Orange juice</button>
+            <button class="wci-chip" data-ing="grapefruit">Grapefruit</button>
+            <button class="wci-chip" data-ing="pineapple juice">Pineapple juice</button>
+            <button class="wci-chip" data-ing="cranberry juice">Cranberry juice</button>
+            <button class="wci-chip" data-ing="tomato juice">Tomato juice</button>
+          </div>
+
+          <h3 class="wci-category-h">Syrups, sugars, bitters</h3>
+          <div class="wci-chips" data-cat="sweet">
+            <button class="wci-chip" data-ing="simple syrup">Simple syrup (or sugar)</button>
+            <button class="wci-chip" data-ing="honey">Honey</button>
+            <button class="wci-chip" data-ing="gula melaka">Gula melaka</button>
+            <button class="wci-chip" data-ing="grenadine">Grenadine</button>
+            <button class="wci-chip" data-ing="orgeat">Orgeat</button>
+            <button class="wci-chip" data-ing="pandan syrup">Pandan syrup</button>
+            <button class="wci-chip" data-ing="ginger syrup">Ginger syrup</button>
+            <button class="wci-chip" data-ing="aromatic bitters">Aromatic bitters</button>
+            <button class="wci-chip" data-ing="orange bitters">Orange bitters</button>
+          </div>
+
+          <h3 class="wci-category-h">Mixers and fresh</h3>
+          <div class="wci-chips" data-cat="mixers">
+            <button class="wci-chip" data-ing="soda water">Soda water</button>
+            <button class="wci-chip" data-ing="tonic">Tonic</button>
+            <button class="wci-chip" data-ing="ginger beer">Ginger beer</button>
+            <button class="wci-chip" data-ing="champagne">Champagne / prosecco / cava</button>
+            <button class="wci-chip" data-ing="egg white">Egg white</button>
+            <button class="wci-chip" data-ing="cream">Cream</button>
+            <button class="wci-chip" data-ing="milk">Milk</button>
+            <button class="wci-chip" data-ing="coconut cream">Coconut cream</button>
+            <button class="wci-chip" data-ing="mint">Mint</button>
+            <button class="wci-chip" data-ing="basil">Basil</button>
+            <button class="wci-chip" data-ing="cucumber">Cucumber</button>
+            <button class="wci-chip" data-ing="espresso">Espresso / kopi-O</button>
+            <button class="wci-chip" data-ing="cucumber">Cucumber</button>
+          </div>
+
+          <div class="wci-actions">
+            <button class="wci-btn primary" id="wciClear">Clear all</button>
+            <button class="wci-btn" id="wciStarter">Starter home bar</button>
+            <button class="wci-btn" id="wciFull">Tick everything</button>
+          </div>
+        </section>
+
+        <section class="wci-panel">
+          <h2>Drinks you <em>can make</em>.</h2>
+          <p class="wci-sub">Sorted by completeness. Drinks marked "have all" = ready now.</p>
+          <div id="wciStatus" class="wci-status">Pick some bottles on the left.</div>
+          <div id="wciResults">
+            <div class="wci-pick-some">Tick your inventory on the left. We'll show you what you can pour.</div>
+          </div>
+        </section>
+      </div>
+
+      <div class="article-body" style="margin-top:60px;">
+        <h2>How this works</h2>
+        <p>The tool checks each cocktail in our database against your ticked inventory. A drink is "fully buildable" if every ingredient (other than garnishes) is in your home bar. A drink is "almost there" if you are missing one or two ingredients. The tool also matches close substitutes (e.g. "any rum" works for "white rum"; "any base spirit" works for surprise builds).</p>
+
+        <h2>The starter home bar</h2>
+        <p>If you are new to home cocktail-making, the starter home bar shortcut ticks 12 ingredients that unlock about 40 named classic cocktails. We recommend building toward this set first, then expanding by ingredient as you find drinks you want to make.</p>
+        <p>Starter set: gin, vodka, bourbon, white rum, sweet vermouth, dry vermouth, Campari, Cointreau, fresh lime, fresh lemon, simple syrup, aromatic bitters. Plus soda, tonic, and any espresso-coffee. With this kit you can pour: Negroni, Martini, Manhattan, Old Fashioned, Gimlet, Daiquiri, Whisky Sour, Tom Collins, Margarita variants, French 75, Aperol Spritz, Espresso Martini, and many more.</p>
+
+        <h2>Related</h2>
+        <ul>
+          <li><a href="/cocktails/">Browse all cocktails (full database)</a></li>
+          <li><a href="/ingredients/">Cocktail ingredients encyclopedia</a></li>
+          <li><a href="/#builder">The drink builder (preference-based)</a></li>
+          <li><a href="/cheatsheets/">Cheat sheets and printable PDFs</a></li>
+          <li><a href="/calculators/">Cocktail calculators</a></li>
+        </ul>
+      </div>
+    </div>
+    <footer class="article-foot"><p class="article-up-foot"><a href="/">← Home</a></p></footer>
+  </article>
+</main>
+
+<script>
+// Inventory cocktail finder. Self-contained: recipes embedded, matching logic inline.
+// All ingredients normalised to lowercase keywords for substring-style matching.
+
+const RECIPES = [
+  // Classics
+  { name: "Negroni", slug: "negroni", ing: ["gin","sweet vermouth","campari"] },
+  { name: "Martini", slug: "martini", ing: ["gin","dry vermouth"] },
+  { name: "Vodka Martini", slug: "vodka-martini", ing: ["vodka","dry vermouth"] },
+  { name: "Manhattan", slug: "manhattan", ing: ["rye","sweet vermouth","aromatic bitters"] },
+  { name: "Old Fashioned", slug: "old-fashioned", ing: ["bourbon","simple syrup","aromatic bitters"] },
+  { name: "Whisky Sour", slug: "whisky-sour", ing: ["bourbon","fresh lemon","simple syrup","egg white"] },
+  { name: "Daiquiri", slug: "daiquiri", ing: ["white rum","fresh lime","simple syrup"] },
+  { name: "Hemingway Daiquiri", slug: "hemingway-daiquiri", ing: ["white rum","fresh lime","grapefruit","maraschino"] },
+  { name: "Gimlet", slug: "gimlet", ing: ["gin","fresh lime","simple syrup"] },
+  { name: "Margarita", slug: "margarita", ing: ["tequila","fresh lime","cointreau"] },
+  { name: "Mojito", slug: "mojito", ing: ["white rum","fresh lime","simple syrup","mint","soda water"] },
+  { name: "Tom Collins", slug: "tom-collins", ing: ["gin","fresh lemon","simple syrup","soda water"] },
+  { name: "Aperol Spritz", slug: "aperol-spritz", ing: ["aperol","champagne","soda water"] },
+  { name: "French 75", slug: "french-75", ing: ["gin","fresh lemon","simple syrup","champagne"] },
+  { name: "Bee's Knees", slug: "bees-knees", ing: ["gin","fresh lemon","honey"] },
+  { name: "Aviation", slug: "aviation", ing: ["gin","fresh lemon","maraschino","creme de violette"] },
+  { name: "Last Word", slug: "last-word", ing: ["gin","fresh lime","maraschino"] },
+  { name: "Corpse Reviver No. 2", slug: "corpse-reviver-2", ing: ["gin","fresh lemon","cointreau","dry vermouth"] },
+  { name: "Espresso Martini", slug: "espresso-martini", ing: ["vodka","kahlua","espresso","simple syrup"] },
+  { name: "White Russian", slug: "white-russian", ing: ["vodka","kahlua","cream"] },
+  { name: "Black Russian", slug: "black-russian", ing: ["vodka","kahlua"] },
+  { name: "Cosmopolitan", slug: "cosmopolitan", ing: ["vodka","cointreau","cranberry juice","fresh lime"] },
+  { name: "Moscow Mule", slug: "moscow-mule", ing: ["vodka","fresh lime","ginger beer"] },
+  { name: "Dark and Stormy", slug: "dark-and-stormy", ing: ["dark rum","fresh lime","ginger beer"] },
+  { name: "Paloma", slug: "paloma", ing: ["tequila","grapefruit","fresh lime","soda water"] },
+  { name: "Boulevardier", slug: "boulevardier", ing: ["bourbon","sweet vermouth","campari"] },
+  { name: "Sazerac", slug: "sazerac", ing: ["rye","simple syrup","aromatic bitters"] },
+  { name: "Mint Julep", slug: "mint-julep", ing: ["bourbon","mint","simple syrup"] },
+  { name: "Whiskey Smash", slug: "whiskey-smash", ing: ["bourbon","fresh lemon","simple syrup","mint"] },
+  { name: "Penicillin", slug: "penicillin", ing: ["scotch","fresh lemon","honey","ginger syrup"] },
+  { name: "Bramble", slug: "bramble", ing: ["gin","fresh lemon","simple syrup","creme de cassis"] },
+  { name: "Hanky Panky", slug: "hanky-panky", ing: ["gin","sweet vermouth","fernet"] },
+  { name: "Caipirinha", slug: "caipirinha", ing: ["white rum","fresh lime","simple syrup"] },
+  { name: "Cuba Libre", slug: "cuba-libre", ing: ["white rum","fresh lime","soda water"] },
+  { name: "Pina Colada", slug: "pina-colada", ing: ["white rum","coconut cream","pineapple juice"] },
+  { name: "Pisco Sour", slug: "pisco-sour", ing: ["brandy","fresh lime","simple syrup","egg white","aromatic bitters"] },
+  { name: "Sidecar", slug: "sidecar", ing: ["cognac","cointreau","fresh lemon"] },
+  { name: "Brandy Alexander", slug: "brandy-alexander", ing: ["cognac","kahlua","cream"] },
+  { name: "Black Manhattan", slug: "black-manhattan", ing: ["rye","fernet","aromatic bitters"] },
+  { name: "Vesper", slug: "vesper", ing: ["gin","vodka","dry vermouth"] },
+  { name: "Bloody Mary", slug: "bloody-mary", ing: ["vodka","tomato juice","fresh lemon"] },
+  { name: "Negroni Sbagliato", slug: "negroni-sbagliato", ing: ["campari","sweet vermouth","champagne"] },
+  { name: "Americano", slug: "americano", ing: ["campari","sweet vermouth","soda water"] },
+  { name: "Bellini", slug: "bellini", ing: ["champagne"] },
+  { name: "Mimosa", slug: "mimosa", ing: ["champagne","orange juice"] },
+  { name: "Garibaldi", slug: "garibaldi", ing: ["campari","orange juice"] },
+  { name: "Eastside", slug: "eastside", ing: ["gin","fresh lime","simple syrup","cucumber","mint"] },
+  { name: "Italian Job", slug: "italian-job", ing: ["campari","espresso","dry vermouth","kahlua"] },
+  { name: "Blood and Sand", slug: "blood-and-sand", ing: ["scotch","sweet vermouth","cherry","orange juice"] },
+  { name: "Irish Godfather", slug: "irish-godfather", ing: ["scotch","kahlua"] },
+
+  // Malaysian-local
+  { name: "Pandan Collins", slug: "pandan-collins", ing: ["gin","pandan syrup","fresh lime","soda water"] },
+  { name: "Gula Melaka Old Fashioned", slug: "gula-melaka-old-fashioned", ing: ["bourbon","gula melaka","aromatic bitters"] },
+  { name: "Calamansi Highball", slug: "calamansi-highball", ing: ["vodka","calamansi","soda water"] },
+  { name: "Kopi Sour", slug: "kopi-sour", ing: ["bourbon","espresso","gula melaka","fresh lemon","egg white"] },
+  { name: "Roselle Spritz", slug: "roselle-spritz", ing: ["gin","fresh lime","champagne"] },
+  { name: "Asam Boi Margarita", slug: "asam-boi-margarita", ing: ["tequila","fresh lime","cointreau"] },
+
+  // House signatures
+  { name: "The Tesseract", slug: "tesseract", ing: ["gin","mezcal","maraschino","cointreau","tonic"] },
+  { name: "Scented Negroni", slug: "scented-negroni", ing: ["gin","campari","sweet vermouth"] },
+  { name: "Junos Sour", slug: "junos-sour", ing: ["japanese whisky","fresh lemon","honey","egg white","aromatic bitters"] },
+  { name: "Pyrus Gimlet", slug: "pyrus-gimlet", ing: ["gin","fresh lime","elderflower liqueur"] },
+  { name: "Matcha Sakura", slug: "matcha-sakura", ing: ["gin","fresh lime","simple syrup"] },
+  { name: "Too Gouda To Be True", slug: "too-gouda-to-be-true", ing: ["kahlua","espresso","simple syrup"] }
+];
+
+const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+const $ = (sel, ctx=document) => ctx.querySelector(sel);
+
+const inventory = new Set();
+
+function normalize(s) { return (s||"").toString().toLowerCase().trim(); }
+
+function hasIng(ingName) {
+  const n = normalize(ingName);
+  if (inventory.has(n)) return true;
+  // Generic matches
+  if (n === "rye" && inventory.has("bourbon")) return true;
+  if (n === "bourbon" && inventory.has("rye")) return true;
+  if (n === "scotch" && (inventory.has("japanese whisky") || inventory.has("bourbon"))) return true;
+  if (n === "japanese whisky" && (inventory.has("scotch") || inventory.has("bourbon"))) return true;
+  if (n === "white rum" && inventory.has("dark rum")) return true;
+  if (n === "dark rum" && inventory.has("white rum")) return true;
+  if (n === "cognac" && inventory.has("brandy")) return true;
+  if (n === "brandy" && inventory.has("cognac")) return true;
+  if (n === "simple syrup" && (inventory.has("honey") || inventory.has("gula melaka"))) return true;
+  if (n === "soda water" && inventory.has("tonic")) return true;
+  return false;
+}
+
+function rankRecipes() {
+  return RECIPES.map(r => {
+    const total = r.ing.length;
+    const have = r.ing.filter(i => hasIng(i)).length;
+    const missing = r.ing.filter(i => !hasIng(i));
+    return { ...r, total, have, missing, pct: have/total };
+  })
+  .filter(r => r.have > 0 || inventory.size === 0)
+  .sort((a,b) => {
+    if (b.pct !== a.pct) return b.pct - a.pct;
+    if (b.have !== a.have) return b.have - a.have;
+    return a.name.localeCompare(b.name);
+  });
+}
+
+function render() {
+  const status = $("#wciStatus");
+  const out = $("#wciResults");
+  if (inventory.size === 0) {
+    status.innerHTML = "Pick some bottles on the left.";
+    out.innerHTML = '<div class="wci-pick-some">Tick your inventory on the left. We\'ll show you what you can pour.</div>';
+    return;
+  }
+  const ranked = rankRecipes();
+  const fullyBuildable = ranked.filter(r => r.pct === 1);
+  const almost = ranked.filter(r => r.pct < 1 && r.pct >= 0.5).slice(0, 12);
+  status.innerHTML = `<b>${fullyBuildable.length}</b> drinks ready · <b>${almost.length}</b> almost there (with what you have, plus 1-2 more)`;
+  let html = "";
+  if (fullyBuildable.length === 0 && almost.length === 0) {
+    html = '<div class="wci-no-results">Nothing matches yet. Try adding a couple of base spirits and a citrus.</div>';
+  }
+  fullyBuildable.forEach(r => { html += renderCard(r, "READY"); });
+  if (almost.length > 0) {
+    html += `<div class="wci-status" style="margin-top:30px;">Almost there (add 1-2 ingredients to unlock)</div>`;
+    almost.forEach(r => { html += renderCard(r, ""); });
+  }
+  out.innerHTML = html;
+}
+
+function renderCard(r, badge) {
+  const haveList = r.ing.filter(i => hasIng(i)).map(i => `<span class="r-have">${escapeHtml(i)}</span>`).join(", ");
+  const missList = r.missing.map(i => `<span class="r-missing">${escapeHtml(i)}</span>`).join(", ");
+  const ingHtml = [haveList, missList].filter(Boolean).join(", ");
+  const pctText = badge || `${r.have} of ${r.total}`;
+  return `<div class="wci-result">
+    <div class="r-head"><h3 class="r-name">${escapeHtml(r.name)}</h3><div class="r-pct">${pctText}</div></div>
+    <p class="r-ing">${ingHtml}</p>
+    <a class="r-link" href="/cocktails/${r.slug}/">View recipe →</a>
+  </div>`;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+}
+
+// Wire up chip clicks
+$$(".wci-chip").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const ing = normalize(btn.dataset.ing);
+    if (inventory.has(ing)) {
+      inventory.delete(ing); btn.classList.remove("is-on");
+    } else {
+      inventory.add(ing); btn.classList.add("is-on");
+    }
+    saveInventory();
+    render();
+  });
+});
+
+// Clear / starter / full bar buttons
+$("#wciClear").addEventListener("click", () => {
+  inventory.clear();
+  $$(".wci-chip").forEach(c => c.classList.remove("is-on"));
+  saveInventory();
+  render();
+});
+
+const STARTER = ["gin","vodka","bourbon","white rum","sweet vermouth","dry vermouth","campari","cointreau","fresh lime","fresh lemon","simple syrup","aromatic bitters","soda water","tonic","espresso","mint"];
+$("#wciStarter").addEventListener("click", () => {
+  inventory.clear();
+  STARTER.forEach(i => inventory.add(normalize(i)));
+  $$(".wci-chip").forEach(c => {
+    c.classList.toggle("is-on", inventory.has(normalize(c.dataset.ing)));
+  });
+  saveInventory();
+  render();
+});
+$("#wciFull").addEventListener("click", () => {
+  $$(".wci-chip").forEach(c => {
+    const ing = normalize(c.dataset.ing);
+    inventory.add(ing);
+    c.classList.add("is-on");
+  });
+  saveInventory();
+  render();
+});
+
+// Persistence (localStorage)
+function saveInventory() {
+  try { localStorage.setItem("dsHomeBar", JSON.stringify([...inventory])); } catch(e) {}
+}
+function loadInventory() {
+  try {
+    const raw = localStorage.getItem("dsHomeBar");
+    if (!raw) return;
+    JSON.parse(raw).forEach(i => inventory.add(i));
+    $$(".wci-chip").forEach(c => {
+      if (inventory.has(normalize(c.dataset.ing))) c.classList.add("is-on");
+    });
+  } catch(e) {}
+}
+loadInventory();
+render();
+</script>
+
+<script src="/atmosphere.js" defer></script>
+<script src="/appbar.js" defer></script>
+</body>
+</html>

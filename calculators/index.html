@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" data-state="dissolved">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Cocktail Calculators · ABV, Batch Scaling, Dilution, Sugar-Acid Balance · Dissolved Solids</title>
+<meta name="description" content="Four interactive cocktail calculators. Compute final ABV of any drink, scale a single cocktail to 10/20/50 servings for a party, estimate dilution from ice melt, and rebalance sugar-acid ratios for sours." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Cocktail Calculators" />
+<meta property="og:description" content="Compute ABV, scale recipes, estimate dilution, balance sugar-acid. Four free tools for bartenders and home mixers." />
+<meta property="og:image" content="https://dissolvedsolids.co/photos/banner.jpg" />
+<meta property="og:locale" content="en_MY" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://dissolvedsolids.co/photos/banner.jpg" />
+<meta name="theme-color" content="#faf3df" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://dissolvedsolids.co/calculators/" />
+<link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/calculators/" />
+<link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/calculators/" />
+<link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/calculators/" />
+<link rel="icon" type="image/png" href="/photos/ds-logo.png" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Cocktail Calculators","url":"https://dissolvedsolids.co/calculators/","applicationCategory":"LifestyleApplication","operatingSystem":"Web","description":"Four cocktail calculators: ABV, batch scaling, dilution, sugar-acid balance."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dissolvedsolids.co/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://dissolvedsolids.co/calculators/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<link rel="stylesheet" href="/appbar.css" />
+<script src="/analytics.js" defer></script>
+<style>
+  .calc-wrap { max-width: 980px; margin: 0 auto; padding: 0 var(--gutter); }
+  .calc-tabs {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin: 36px 0 18px;
+  }
+  .calc-tab {
+    padding: 10px 18px; border-radius: 22px;
+    background: transparent; border: 1px solid rgba(255,255,255,.22);
+    color: var(--paper);
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; cursor: pointer;
+    transition: all .18s ease;
+  }
+  .calc-tab:hover { border-color: rgba(255,255,255,.5); }
+  .calc-tab.is-on { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
+  .calc-panel {
+    display: none;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 14px;
+    padding: 28px 26px;
+  }
+  .calc-panel.is-active { display: block; }
+  .calc-h {
+    font-family: var(--serif); font-size: 28px; font-weight: 400;
+    margin: 0 0 6px; color: var(--paper);
+  }
+  .calc-h em { color: var(--accent); font-style: italic; }
+  .calc-sub {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+    margin: 0 0 22px;
+  }
+  .calc-row { display: grid; grid-template-columns: 1fr 100px 100px; gap: 10px; margin-bottom: 8px; align-items: center; }
+  @media (max-width: 600px) { .calc-row { grid-template-columns: 1fr 80px 80px; gap: 6px; } }
+  .calc-row input, .calc-row select {
+    padding: 9px 12px;
+    background: rgba(0,0,0,.35);
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 8px;
+    font-family: var(--mono); font-size: 13px;
+    color: var(--paper);
+    outline: none;
+  }
+  .calc-row input:focus, .calc-row select:focus { border-color: var(--accent); }
+  .calc-row label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .12em;
+    color: rgba(255,255,255,.7); text-transform: uppercase;
+  }
+  .calc-row-h {
+    display: grid; grid-template-columns: 1fr 100px 100px; gap: 10px;
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: .18em;
+    text-transform: uppercase; color: rgba(255,255,255,.45);
+    margin-bottom: 6px;
+  }
+  @media (max-width: 600px) { .calc-row-h { grid-template-columns: 1fr 80px 80px; gap: 6px; } }
+  .calc-btn-row { display: flex; gap: 8px; margin-top: 14px; }
+  .calc-btn {
+    padding: 9px 16px; border-radius: 18px;
+    background: transparent; border: 1px solid rgba(255,255,255,.25);
+    color: var(--paper);
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; cursor: pointer;
+    transition: all .18s ease;
+  }
+  .calc-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .calc-btn.primary { background: var(--accent); border-color: var(--accent); color: #000; }
+  .calc-out {
+    margin-top: 24px;
+    padding: 18px 20px;
+    background: rgba(0,0,0,.35);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 10px;
+  }
+  .calc-out-h {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .22em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+    margin: 0 0 8px;
+  }
+  .calc-out-v {
+    font-family: var(--serif); font-size: 38px; line-height: 1;
+    color: var(--accent); margin: 0 0 6px;
+  }
+  .calc-out-note {
+    font-family: var(--serif); font-style: italic; font-size: 14px;
+    color: rgba(255,255,255,.7); margin: 6px 0 0;
+  }
+  .calc-explain {
+    font-family: var(--serif); font-size: 15px; line-height: 1.55;
+    color: rgba(255,255,255,.7);
+    margin-top: 24px;
+  }
+  .calc-explain h3 {
+    font-family: var(--serif); font-size: 18px; color: var(--paper);
+    margin: 16px 0 6px;
+  }
+  .calc-explain p { margin: 6px 0 12px; }
+</style>
+</head>
+<body class="journal-body">
+<header class="journal-bar"><a class="journal-wordmark" href="/"><span>Dissolved Solids</span><em>Calculators</em></a></header>
+<main class="journal-mount article-mount">
+  <article class="article">
+    <header class="article-head">
+      <a class="article-up" href="/">← Home</a>
+      <span class="article-eyebrow">Tools · Cocktail calculators</span>
+      <h1 class="article-title">Cocktail <i>calculators</i>.</h1>
+      <p class="article-dek">Four tools for serious home bartenders and working bartenders. Compute final ABV from your build, scale a single drink to a party batch, estimate dilution from ice melt, and rebalance a sour to your preferred sugar-acid ratio.</p>
+    </header>
+    <div class="calc-wrap">
+
+      <div class="calc-tabs" role="tablist">
+        <button class="calc-tab is-on" data-tab="abv">ABV</button>
+        <button class="calc-tab" data-tab="batch">Batch scaler</button>
+        <button class="calc-tab" data-tab="dilution">Dilution</button>
+        <button class="calc-tab" data-tab="balance">Sugar-acid balance</button>
+      </div>
+
+      <!-- ABV CALCULATOR -->
+      <section class="calc-panel is-active" data-panel="abv">
+        <h2 class="calc-h">ABV <em>calculator</em>.</h2>
+        <p class="calc-sub">Compute final % alcohol from your ingredient list.</p>
+        <div class="calc-row-h">
+          <span>Ingredient</span><span>Volume (ml)</span><span>ABV (%)</span>
+        </div>
+        <div id="abvRows">
+          <div class="calc-row">
+            <input type="text" placeholder="Gin" value="Gin" />
+            <input type="number" placeholder="60" value="60" min="0" step="1" />
+            <input type="number" placeholder="42" value="42" min="0" max="96" step="0.1" />
+          </div>
+          <div class="calc-row">
+            <input type="text" placeholder="Sweet vermouth" value="Sweet vermouth" />
+            <input type="number" placeholder="30" value="30" min="0" step="1" />
+            <input type="number" placeholder="17" value="17" min="0" max="96" step="0.1" />
+          </div>
+          <div class="calc-row">
+            <input type="text" placeholder="Campari" value="Campari" />
+            <input type="number" placeholder="30" value="30" min="0" step="1" />
+            <input type="number" placeholder="24" value="24" min="0" max="96" step="0.1" />
+          </div>
+        </div>
+        <div class="calc-btn-row">
+          <button type="button" class="calc-btn primary" id="abvAdd">+ Add ingredient</button>
+          <button type="button" class="calc-btn" id="abvDilute">Add 30% ice dilution</button>
+          <button type="button" class="calc-btn" id="abvCompute">Calculate</button>
+        </div>
+        <div class="calc-out">
+          <p class="calc-out-h">Final ABV</p>
+          <p class="calc-out-v" id="abvResult">28.0%</p>
+          <p class="calc-out-note" id="abvNote">120ml total volume. Around a standard Negroni.</p>
+        </div>
+        <div class="calc-explain">
+          <h3>How this works</h3>
+          <p>ABV is alcohol by volume. To compute the final ABV of a mixed drink, sum the absolute alcohol contributed by each ingredient (volume × ABV/100), then divide by the total volume.</p>
+          <p>Ice melt adds 25 to 35% volume of pure water (depending on shake or stir, ice quality, and shake duration). The "add 30% dilution" button gives a typical shaken or hard-stirred result. Skip it for built drinks served over a single large rock.</p>
+          <p>Reference ABVs: gin 40-47, vodka 40, vermouth 15-19, Campari 24, Aperol 11, sherry 15-22, prosecco 11, soda 0, citrus juice 0.</p>
+        </div>
+      </section>
+
+      <!-- BATCH SCALER -->
+      <section class="calc-panel" data-panel="batch">
+        <h2 class="calc-h">Batch <em>scaler</em>.</h2>
+        <p class="calc-sub">Scale a single-drink recipe up to 10, 20, or 50 servings for a party.</p>
+        <div class="calc-row-h">
+          <span>Ingredient</span><span>Per drink (ml)</span><span>Servings</span>
+        </div>
+        <div id="batchRows">
+          <div class="calc-row">
+            <input type="text" placeholder="Gin" value="Gin" />
+            <input type="number" placeholder="60" value="60" min="0" step="1" />
+            <input type="number" placeholder="10" value="20" min="1" step="1" class="batch-servings" />
+          </div>
+          <div class="calc-row">
+            <input type="text" placeholder="Sweet vermouth" value="Sweet vermouth" />
+            <input type="number" placeholder="30" value="30" min="0" step="1" />
+            <input type="number" placeholder="10" value="20" min="1" step="1" class="batch-servings" />
+          </div>
+          <div class="calc-row">
+            <input type="text" placeholder="Campari" value="Campari" />
+            <input type="number" placeholder="30" value="30" min="0" step="1" />
+            <input type="number" placeholder="10" value="20" min="1" step="1" class="batch-servings" />
+          </div>
+        </div>
+        <div class="calc-btn-row">
+          <button type="button" class="calc-btn primary" id="batchAdd">+ Add ingredient</button>
+          <button type="button" class="calc-btn" id="batchCompute">Calculate batch</button>
+        </div>
+        <div class="calc-out">
+          <p class="calc-out-h">Total batch</p>
+          <p class="calc-out-v" id="batchResult">2400ml</p>
+          <p class="calc-out-note" id="batchNote">Use a 3L glass jug or 3x 1L bottles. Pre-dilute with 720ml water for ready-to-pour batches.</p>
+        </div>
+        <div class="calc-explain">
+          <h3>How to batch properly</h3>
+          <p>Multiply each per-drink measure by the number of servings. For pre-batched drinks served from a jug, add 25 to 30% water to account for the dilution that would normally come from shaking or stirring with ice. Refrigerate for 2 hours before service so the batch pours at the right temperature.</p>
+          <p>For batches with citrus, add the citrus and sweetener separately within 30 minutes of service. Citrus juice oxidises within 2 hours; pre-batching with citrus more than 2 hours ahead changes the flavour.</p>
+        </div>
+      </section>
+
+      <!-- DILUTION -->
+      <section class="calc-panel" data-panel="dilution">
+        <h2 class="calc-h">Dilution <em>estimator</em>.</h2>
+        <p class="calc-sub">Estimate how much water enters the drink from ice melt.</p>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>Method</label>
+          <select id="dilMethod">
+            <option value="0.18">Stirred, 25 seconds (≈18%)</option>
+            <option value="0.30" selected>Shaken hard, 12-15 seconds (≈30%)</option>
+            <option value="0.40">Shaken extra-hard, 18-20 seconds (≈40%)</option>
+            <option value="0.15">Built over rocks (≈15% in 5 min)</option>
+            <option value="0.10">Stirred briefly with big rock (≈10%)</option>
+          </select>
+        </div>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>Pre-dilution volume (ml)</label>
+          <input type="number" id="dilVolume" value="90" min="0" step="1" />
+        </div>
+        <div class="calc-btn-row">
+          <button type="button" class="calc-btn primary" id="dilCompute">Calculate</button>
+        </div>
+        <div class="calc-out">
+          <p class="calc-out-h">Water added by ice</p>
+          <p class="calc-out-v" id="dilResult">27ml</p>
+          <p class="calc-out-note" id="dilNote">Final drink volume: 117ml. Dilution: 23%.</p>
+        </div>
+        <div class="calc-explain">
+          <h3>Why dilution matters</h3>
+          <p>Ice melt isn't a flaw, it's the design. Cocktails are calibrated to a specific dilution level. Under-diluted drinks taste hot and harsh; over-diluted drinks taste flat. Bartenders aim for a specific target window depending on the build.</p>
+          <p>Stirred drinks (Old Fashioned, Manhattan, Negroni) want around 15-25% dilution. Shaken drinks (sours, daiquiris) want 25-35%. Built long drinks (highballs, mojitos) self-regulate via fresh ice top-ups.</p>
+          <p>Larger ice cubes melt slower. A single 5cm cube in a rocks glass adds about 10% water over 5 minutes; crushed ice adds 30% in the same time.</p>
+        </div>
+      </section>
+
+      <!-- SUGAR-ACID BALANCE -->
+      <section class="calc-panel" data-panel="balance">
+        <h2 class="calc-h">Sugar-acid <em>balance</em>.</h2>
+        <p class="calc-sub">Rebalance a sour to your preferred sweetness or sharpness.</p>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>Spirit (ml)</label>
+          <input type="number" id="balSpirit" value="60" min="0" step="1" />
+        </div>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>Citrus (ml)</label>
+          <input type="number" id="balCitrus" value="22" min="0" step="0.5" />
+        </div>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>Sweetener (ml, 1:1 syrup or equivalent)</label>
+          <input type="number" id="balSugar" value="22" min="0" step="0.5" />
+        </div>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>Preferred profile</label>
+          <select id="balProfile">
+            <option value="balanced">Balanced sour (classic, equal citrus + sweet)</option>
+            <option value="dry">Dry sour (more citrus, less sweet)</option>
+            <option value="sweet">Sweet sour (less citrus, more sweet)</option>
+            <option value="strong">Strong sour (more spirit, classic ratio)</option>
+          </select>
+        </div>
+        <div class="calc-btn-row">
+          <button type="button" class="calc-btn primary" id="balCompute">Compute recommended ratio</button>
+        </div>
+        <div class="calc-out">
+          <p class="calc-out-h">Recommended adjustment</p>
+          <p class="calc-out-v" id="balResult">Balanced</p>
+          <p class="calc-out-note" id="balNote">Your current build is close to the classic 3:1:1 ratio (spirit:citrus:sweet). No adjustment needed.</p>
+        </div>
+        <div class="calc-explain">
+          <h3>The sour template</h3>
+          <p>Almost every sour cocktail is variations on the same template: 3 parts spirit + 1 part citrus + 1 part sweetener. Daiquiri, Whisky Sour, Margarita, Bee's Knees, Gimlet all run on this ratio.</p>
+          <p><b>Balanced (3:1:1):</b> the canonical sour. Bright, integrated, no dominant note.<br>
+          <b>Dry (3:1.2:0.8):</b> more citrus, less sugar. For drinkers who find classics too sweet.<br>
+          <b>Sweet (3:0.8:1.2):</b> more sugar, less citrus. For dessert-leaning cocktails.<br>
+          <b>Strong (4:1:1):</b> more spirit, classic ratio. For when you want the spirit to lead more obviously.</p>
+        </div>
+      </section>
+
+      <div class="article-body" style="margin-top:60px;">
+        <h2>About these calculators</h2>
+        <p>These are quick tools for working bartenders and serious home mixers. They use standard reference values and the cocktail templates that most working bars rely on. If you find a calculation that doesn't match your house style, the values are starting points; adjust to taste.</p>
+
+        <h2>Related</h2>
+        <ul>
+          <li><a href="/what-can-i-make/">"What can I make tonight?" home bar tool</a></li>
+          <li><a href="/cocktails/">Cocktail recipe database</a></li>
+          <li><a href="/ingredients/">Ingredient encyclopedia</a></li>
+          <li><a href="/cheatsheets/">Cheat sheets and printable PDFs</a></li>
+          <li><a href="/journal/batching-cocktails-parties/">Batching cocktails for parties (long-form)</a></li>
+          <li><a href="/journal/acid-adjustment-cocktails/">Acid adjustment in cocktails</a></li>
+        </ul>
+      </div>
+    </div>
+    <footer class="article-foot"><p class="article-up-foot"><a href="/">← Home</a></p></footer>
+  </article>
+</main>
+
+<script>
+// Tab switching
+document.querySelectorAll(".calc-tab").forEach(function (t) {
+  t.addEventListener("click", function () {
+    var name = t.dataset.tab;
+    document.querySelectorAll(".calc-tab").forEach(function (x) { x.classList.toggle("is-on", x === t); });
+    document.querySelectorAll(".calc-panel").forEach(function (p) { p.classList.toggle("is-active", p.dataset.panel === name); });
+  });
+});
+
+// ABV Calculator
+function getAbvRows() {
+  return Array.from(document.querySelectorAll("#abvRows .calc-row")).map(function (row) {
+    var inputs = row.querySelectorAll("input");
+    return {
+      name: inputs[0].value || "Ingredient",
+      ml: parseFloat(inputs[1].value) || 0,
+      abv: parseFloat(inputs[2].value) || 0
+    };
+  });
+}
+function computeAbv() {
+  var rows = getAbvRows();
+  var totalMl = rows.reduce(function (s, r) { return s + r.ml; }, 0);
+  var totalAlcoholMl = rows.reduce(function (s, r) { return s + (r.ml * r.abv / 100); }, 0);
+  var finalAbv = totalMl > 0 ? (totalAlcoholMl / totalMl * 100) : 0;
+  document.getElementById("abvResult").textContent = finalAbv.toFixed(1) + "%";
+  var note = totalMl.toFixed(0) + "ml total volume. ";
+  if (finalAbv < 8) note += "Low-ABV; spritz / session territory.";
+  else if (finalAbv < 18) note += "Light-medium; a long highball or low-ABV stirred.";
+  else if (finalAbv < 28) note += "Medium; spritz, sour, or moderate stirred.";
+  else if (finalAbv < 38) note += "Strong; classic stirred or sour territory (Negroni, Old Fashioned, sours).";
+  else note += "Very strong; spirit-forward or unbalanced. Most stirred classics land 28-35%.";
+  document.getElementById("abvNote").textContent = note;
+}
+document.getElementById("abvAdd").addEventListener("click", function () {
+  var row = document.createElement("div"); row.className = "calc-row";
+  row.innerHTML = '<input type="text" placeholder="Ingredient"/><input type="number" placeholder="30" min="0" step="1"/><input type="number" placeholder="40" min="0" max="96" step="0.1"/>';
+  document.getElementById("abvRows").appendChild(row);
+});
+document.getElementById("abvDilute").addEventListener("click", function () {
+  var rows = getAbvRows();
+  var totalMl = rows.reduce(function (s, r) { return s + r.ml; }, 0);
+  var dilution = totalMl * 0.3;
+  var row = document.createElement("div"); row.className = "calc-row";
+  row.innerHTML = '<input type="text" value="Ice dilution (30%)"/><input type="number" value="' + dilution.toFixed(0) + '" min="0" step="1"/><input type="number" value="0" min="0" max="96" step="0.1"/>';
+  document.getElementById("abvRows").appendChild(row);
+  computeAbv();
+});
+document.getElementById("abvCompute").addEventListener("click", computeAbv);
+computeAbv();
+
+// Batch Scaler
+function computeBatch() {
+  var rows = Array.from(document.querySelectorAll("#batchRows .calc-row"));
+  var servings = parseInt(rows[0].querySelectorAll(".batch-servings")[0].value) || 1;
+  var totalBatch = 0;
+  rows.forEach(function (row) {
+    var inputs = row.querySelectorAll("input");
+    var per = parseFloat(inputs[1].value) || 0;
+    inputs[2].value = servings;
+    totalBatch += per * servings;
+  });
+  document.getElementById("batchResult").textContent = totalBatch.toFixed(0) + "ml";
+  var dilute = totalBatch * 0.3;
+  var note = "For pre-batched serving, add " + dilute.toFixed(0) + "ml water to simulate stirred-dilution. Bottle size: ";
+  if (totalBatch < 750) note += "1 standard 750ml bottle.";
+  else if (totalBatch < 1500) note += "1 magnum (1.5L) or 2 wine bottles.";
+  else if (totalBatch < 3000) note += "1x 3L jug.";
+  else note += Math.ceil(totalBatch/3000) + "x 3L jugs.";
+  document.getElementById("batchNote").textContent = note;
+}
+document.getElementById("batchAdd").addEventListener("click", function () {
+  var servings = parseInt(document.querySelector(".batch-servings").value) || 20;
+  var row = document.createElement("div"); row.className = "calc-row";
+  row.innerHTML = '<input type="text" placeholder="Ingredient"/><input type="number" placeholder="30" min="0" step="1"/><input type="number" value="' + servings + '" min="1" step="1" class="batch-servings"/>';
+  document.getElementById("batchRows").appendChild(row);
+});
+document.getElementById("batchCompute").addEventListener("click", computeBatch);
+document.querySelectorAll(".batch-servings").forEach(function (i) {
+  i.addEventListener("input", function () {
+    document.querySelectorAll(".batch-servings").forEach(function (x) { x.value = i.value; });
+  });
+});
+computeBatch();
+
+// Dilution
+function computeDil() {
+  var method = parseFloat(document.getElementById("dilMethod").value);
+  var vol = parseFloat(document.getElementById("dilVolume").value) || 0;
+  var water = vol * method;
+  document.getElementById("dilResult").textContent = water.toFixed(0) + "ml";
+  var final = vol + water;
+  document.getElementById("dilNote").textContent = "Final drink volume: " + final.toFixed(0) + "ml. Dilution: " + (water / final * 100).toFixed(0) + "%.";
+}
+document.getElementById("dilCompute").addEventListener("click", computeDil);
+document.getElementById("dilMethod").addEventListener("change", computeDil);
+document.getElementById("dilVolume").addEventListener("input", computeDil);
+computeDil();
+
+// Sugar-Acid Balance
+function computeBal() {
+  var spirit = parseFloat(document.getElementById("balSpirit").value) || 0;
+  var citrus = parseFloat(document.getElementById("balCitrus").value) || 0;
+  var sugar = parseFloat(document.getElementById("balSugar").value) || 0;
+  var profile = document.getElementById("balProfile").value;
+  var targets = {
+    balanced: { c: 1/3, s: 1/3 },
+    dry:      { c: 0.40, s: 0.27 },
+    sweet:    { c: 0.27, s: 0.40 },
+    strong:   { c: 0.25, s: 0.25 }
+  };
+  var t = targets[profile];
+  var targetCitrus = spirit * t.c;
+  var targetSugar = spirit * t.s;
+  var msg, label;
+  if (profile === "strong") {
+    label = "Strong sour";
+    msg = "Target ratio for a strong sour: " + spirit + "ml spirit : " + targetCitrus.toFixed(1) + "ml citrus : " + targetSugar.toFixed(1) + "ml sweet (4:1:1). Adjust to taste from your current build.";
+  } else if (profile === "dry") {
+    label = "Dry sour";
+    msg = "Target: increase citrus to about " + targetCitrus.toFixed(1) + "ml; reduce sweetener to about " + targetSugar.toFixed(1) + "ml.";
+  } else if (profile === "sweet") {
+    label = "Sweet sour";
+    msg = "Target: reduce citrus to about " + targetCitrus.toFixed(1) + "ml; increase sweetener to about " + targetSugar.toFixed(1) + "ml.";
+  } else {
+    label = "Balanced sour";
+    msg = "Target: " + targetCitrus.toFixed(1) + "ml citrus and " + targetSugar.toFixed(1) + "ml sweetener (classic 3:1:1). ";
+    var citrusDelta = citrus - targetCitrus;
+    var sugarDelta = sugar - targetSugar;
+    if (Math.abs(citrusDelta) < 2 && Math.abs(sugarDelta) < 2) msg += "Your build is already balanced.";
+    else msg += "Adjust your build by " + (citrusDelta > 0 ? "removing " : "adding ") + Math.abs(citrusDelta).toFixed(1) + "ml citrus and " + (sugarDelta > 0 ? "removing " : "adding ") + Math.abs(sugarDelta).toFixed(1) + "ml sweetener.";
+  }
+  document.getElementById("balResult").textContent = label;
+  document.getElementById("balNote").textContent = msg;
+}
+document.getElementById("balCompute").addEventListener("click", computeBal);
+computeBal();
+</script>
+
+<script src="/atmosphere.js" defer></script>
+<script src="/appbar.js" defer></script>
+</body>
+</html>

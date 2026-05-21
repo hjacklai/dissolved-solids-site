@@ -12,6 +12,19 @@
  * The landing page index.html currently has the appbar inlined. This
  * script is for sub-pages so navigation stays consistent across the site.
  */
+// ─── Language toggle loader ────────────────────────────────────
+// Loads BEFORE the early-return guard below so it runs on every page,
+// including the landing (which has its own inline appbar). The toggle
+// itself lives in /lang-toggle.js.
+(function loadLangToggle() {
+  if (document.querySelector('script[data-lt-loaded]')) return;
+  var s = document.createElement('script');
+  s.src = '/lang-toggle.js';
+  s.defer = true;
+  s.dataset.ltLoaded = '1';
+  document.head.appendChild(s);
+})();
+
 (function () {
   'use strict';
   if (document.querySelector('.appbar')) return; // already there (e.g. landing)
@@ -202,6 +215,8 @@
     mount();
   }
 
+  // Language toggle is loaded at module top, outside this IIFE.
+
   // Auto-load journal-related.js on article pages. Saves editing every
   // article file just to add a <script> tag. The loaded script self-
   // detects whether it has work to do (looks for main.article-mount).
@@ -213,5 +228,60 @@
     s.defer = true;
     s.dataset.jrLoaded = '1';
     document.head.appendChild(s);
+  })();
+
+  // Auto-load cocktail-tools.js on cocktail recipe pages. Self-detects
+  // by looking for a Recipe schema; injects Print + Embed snippet.
+  (function loadCocktailTools() {
+    if (!/^\/cocktails\/[^/]+\/?/.test(location.pathname)) return;
+    if (document.querySelector('script[data-ct-loaded]')) return;
+    const s = document.createElement('script');
+    s.src = '/cocktail-tools.js';
+    s.defer = true;
+    s.dataset.ctLoaded = '1';
+    document.head.appendChild(s);
+  })();
+
+  // ─── Sticky WhatsApp + Reserve floating buttons ────────────────
+  // State-aware. Inject on any sub-page that does not already define
+  // .floats (the landing page does). Mirrors the landing page floats
+  // visually; tracks the current data-state to pick the right bar.
+  (function injectStickyCtas() {
+    if (document.querySelector('.floats')) return; // landing already has them
+    var floats = document.createElement('div');
+    floats.className = 'floats';
+    floats.innerHTML = ''
+      + '<a class="float float-injected" id="injWA" href="https://wa.me/601116828651" target="_blank" rel="noopener" aria-label="WhatsApp the bar">'
+      +   '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>'
+      + '</a>'
+      + '<a class="float float-injected alt" id="injReserve" href="/#reserve" aria-label="Reserve a table">'
+      +   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>'
+      + '</a>';
+    document.body.appendChild(floats);
+    // Inject minimal styles if styles.css's .floats rules are not in scope
+    if (!document.querySelector('style[data-floats-injected]')) {
+      var st = document.createElement('style');
+      st.dataset.floatsInjected = '1';
+      st.textContent = ''
+        + '.floats { position: fixed; right: 18px; bottom: 110px; display: flex; flex-direction: column; gap: 12px; z-index: 50; }'
+        + '@media (max-width: 640px) { .floats { right: 12px; bottom: 100px; gap: 10px; } }'
+        + '.float-injected { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: #25d366; color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.35); transition: transform .18s ease, box-shadow .18s ease; }'
+        + '.float-injected:hover { transform: scale(1.08); box-shadow: 0 10px 26px rgba(0,0,0,.5); }'
+        + '.float-injected.alt { background: #ff3b81; }'
+        + '.float-injected svg { width: 26px; height: 26px; }'
+        + '@media (max-width: 640px) { .float-injected { width: 46px; height: 46px; } .float-injected svg { width: 22px; height: 22px; } }';
+      document.head.appendChild(st);
+    }
+    function syncWaHref() {
+      var sol = 'https://wa.me/601116828651?text=Hi%20Soluble%20Solids!%20I%27d%20like%20to%20visit%20SS2.';
+      var dis = 'https://wa.me/601140087607?text=Hi%20Dissolved%20Solids!%20I%27d%20like%20to%20visit%20Damansara%20Kim.';
+      var state = document.documentElement.dataset.state;
+      var wa = document.getElementById('injWA');
+      if (wa) wa.href = (state === 'dissolved' ? dis : sol);
+    }
+    syncWaHref();
+    new MutationObserver(syncWaHref).observe(
+      document.documentElement, { attributes: true, attributeFilter: ['data-state'] }
+    );
   })();
 })();

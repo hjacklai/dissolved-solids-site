@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" data-state="dissolved">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Cocktail Ingredients Encyclopedia · Malaysian + Global · Dissolved Solids</title>
+<meta name="description" content="A working encyclopedia of cocktail ingredients. Malaysian botanicals (pandan, gula melaka, calamansi, kopi-O, kaffir lime leaf, asam boi, hibiscus, bunga kantan, lemongrass) plus global classics (juniper, mint, cardamom, ginger, rose). What each is, how to source it in Malaysia, how to use it." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Cocktail Ingredients Encyclopedia" />
+<meta property="og:description" content="Cocktail ingredients encyclopedia covering Malaysian botanicals and global classics. Sourcing, technique, recipes." />
+<meta property="og:image" content="https://dissolvedsolids.co/photos/banner.jpg" />
+<meta property="og:image:alt" content="Cocktail ingredients encyclopedia" />
+<meta property="og:locale" content="en_MY" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://dissolvedsolids.co/photos/banner.jpg" />
+<meta name="theme-color" content="#faf3df" />
+<meta name="robots" content="index, follow" />
+<meta name="geo.region" content="MY-10" />
+<link rel="canonical" href="https://dissolvedsolids.co/ingredients/" />
+<link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/ingredients/" />
+<link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/ingredients/" />
+<link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/ingredients/" />
+<link rel="icon" type="image/png" href="/photos/ds-logo.png" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CollectionPage","name":"Cocktail Ingredients Encyclopedia","url":"https://dissolvedsolids.co/ingredients/","inLanguage":"en-MY","description":"A working encyclopedia of cocktail ingredients used in Malaysian and global cocktail-making.","isPartOf":{"@type":"WebSite","name":"Dissolved Solids","url":"https://dissolvedsolids.co/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dissolvedsolids.co/"},{"@type":"ListItem","position":2,"name":"Ingredients","item":"https://dissolvedsolids.co/ingredients/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<link rel="stylesheet" href="/appbar.css" />
+<script src="/analytics.js" defer></script>
+<style>
+  .ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 36px 0;
+  }
+  .ingredient-card {
+    display: block;
+    padding: 22px 20px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    color: var(--paper);
+    text-decoration: none;
+    transition: border-color .25s, transform .25s, background .25s;
+  }
+  .ingredient-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.06);
+  }
+  .ingredient-card .ic-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.1;
+    margin: 0 0 6px;
+  }
+  .ingredient-card .ic-name em { color: var(--accent); font-style: italic; }
+  .ingredient-card .ic-region {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+    margin: 0 0 10px;
+  }
+  .ingredient-card .ic-flavour {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(255,255,255,.75);
+    font-style: italic;
+    margin: 0;
+  }
+  .ingredient-section-h {
+    font-family: var(--serif);
+    font-size: clamp(28px,4vw,42px);
+    margin: 60px 0 12px;
+    color: var(--paper);
+  }
+  .ingredient-section-h em { color: var(--accent); font-style: italic; }
+  .ingredient-section-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+    margin: 0 0 24px;
+  }
+</style>
+</head>
+<body class="journal-body">
+<header class="journal-bar"><a class="journal-wordmark" href="/"><span>Dissolved Solids</span><em>Ingredients</em></a></header>
+<main class="journal-mount article-mount">
+  <article class="article">
+    <header class="article-head">
+      <a class="article-up" href="/">← Home</a>
+      <span class="article-eyebrow">Reference · Ingredients</span>
+      <h1 class="article-title">Cocktail <i>ingredients</i>.</h1>
+      <p class="article-dek">A working encyclopedia of the ingredients we use behind the bar, with focus on Malaysian botanicals you will not find on Western cocktail sites. Each entry covers what it is, where to source it locally, how to prep it, and which cocktails it builds.</p>
+      <div class="article-meta"><span>Updated May 2026</span><span aria-hidden="true">·</span><span>50 ingredients and growing</span></div>
+    </header>
+    <div class="article-body">
+
+      <p class="article-lede">Most cocktail-ingredient references are Western-default. Juniper, mint, lemon, lime. The Malaysian palate carries pandan, gula melaka, calamansi, kopi-O, kaffir lime leaf, asam boi, bunga kantan, hibiscus, lemongrass, butterfly pea, cili padi, tamarind. These ingredients do real work in cocktails; most international cocktail sites barely cover them. This encyclopedia is our attempt to fill that gap, alongside the global classics every bar relies on.</p>
+
+      <h2 class="ingredient-section-h">Malaysian <em>botanicals</em>.</h2>
+      <p class="ingredient-section-sub">Local sourcing, climate-appropriate, distinctive in the glass.</p>
+
+      <div class="ingredients-grid">
+        <a class="ingredient-card" href="/ingredients/pandan/">
+          <div class="ic-name">Pandan</div>
+          <div class="ic-region">MY · SEA · pandanus amaryllifolius</div>
+          <p class="ic-flavour">grassy, vanilla-adjacent, vegetal-sweet</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/gula-melaka/">
+          <div class="ic-name">Gula <em>melaka</em></div>
+          <div class="ic-region">MY · palm sugar</div>
+          <p class="ic-flavour">deep caramel, smoky-molasses, low GI</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/calamansi/">
+          <div class="ic-name">Calamansi</div>
+          <div class="ic-region">MY · PH · citrofortunella</div>
+          <p class="ic-flavour">tart-aromatic, between lime and orange</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/kopi-o/">
+          <div class="ic-name">Kopi-O</div>
+          <div class="ic-region">MY · SG · robusta</div>
+          <p class="ic-flavour">bittersweet, dark-roasted, butter-finished</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/kaffir-lime-leaf/">
+          <div class="ic-name">Kaffir lime <em>leaf</em></div>
+          <div class="ic-region">MY · SEA · daun limau purut</div>
+          <p class="ic-flavour">camphor-citrus, aromatic, garden-fresh</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/asam-boi/">
+          <div class="ic-name">Asam <em>boi</em></div>
+          <div class="ic-region">MY · preserved sour plum</div>
+          <p class="ic-flavour">salty-sour, umami-deep, candy-tart</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/hibiscus/">
+          <div class="ic-name">Hibiscus <em>(roselle)</em></div>
+          <div class="ic-region">MY · global tropics</div>
+          <p class="ic-flavour">tart-floral, cranberry-adjacent, deep red</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/lemongrass/">
+          <div class="ic-name">Lemongrass</div>
+          <div class="ic-region">MY · SEA · cymbopogon</div>
+          <p class="ic-flavour">citrus-grass, gingery edge, clean</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/bunga-kantan/">
+          <div class="ic-name">Bunga <em>kantan</em></div>
+          <div class="ic-region">MY · torch ginger flower</div>
+          <p class="ic-flavour">spicy-floral, rose-meets-ginger, distinctive</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/butterfly-pea/">
+          <div class="ic-name">Butterfly <em>pea</em></div>
+          <div class="ic-region">MY · SEA · clitoria ternatea</div>
+          <p class="ic-flavour">subtle earthy, vivid blue, pH-reactive</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/cili-padi/">
+          <div class="ic-name">Cili <em>padi</em></div>
+          <div class="ic-region">MY · bird's eye chilli</div>
+          <p class="ic-flavour">clean heat, citrus-grass edge</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/tamarind/">
+          <div class="ic-name">Tamarind <em>(asam jawa)</em></div>
+          <div class="ic-region">MY · tamarindus indica</div>
+          <p class="ic-flavour">sweet-sour, molasses depth, slightly funky</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/mangosteen/">
+          <div class="ic-name">Mango<em>steen</em></div>
+          <div class="ic-region">MY · garcinia mangostana</div>
+          <p class="ic-flavour">sweet-tart, floral, lychee-mandarin</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/rambutan/">
+          <div class="ic-name">Rambutan</div>
+          <div class="ic-region">MY · nephelium lappaceum</div>
+          <p class="ic-flavour">sweet, slightly tart, grape-honey</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/longan/">
+          <div class="ic-name">Longan <em>(dragon eye)</em></div>
+          <div class="ic-region">MY · dimocarpus longan</div>
+          <p class="ic-flavour">honey-floral, musk-grape</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/pomelo/">
+          <div class="ic-name">Pomelo <em>(limau bali)</em></div>
+          <div class="ic-region">MY · citrus maxima</div>
+          <p class="ic-flavour">sweet-tart, less acidic than grapefruit</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/galangal/">
+          <div class="ic-name">Galangal <em>(lengkuas)</em></div>
+          <div class="ic-region">MY · alpinia galanga</div>
+          <p class="ic-flavour">aromatic, pine-citrus-camphor</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/dragonfruit/">
+          <div class="ic-name">Dragonfruit <em>(pitaya)</em></div>
+          <div class="ic-region">MY · hylocereus</div>
+          <p class="ic-flavour">mild kiwi-melon, vivid magenta</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/coconut/">
+          <div class="ic-name">Coconut <em>(kelapa)</em></div>
+          <div class="ic-region">MY · cocos nucifera</div>
+          <p class="ic-flavour">water, milk, cream, oil, sugar in one fruit</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/durian/">
+          <div class="ic-name">Durian</div>
+          <div class="ic-region">MY · durio zibethinus · the king of fruits</div>
+          <p class="ic-flavour">custard-almond-onion-vanilla, polarising</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/mango/">
+          <div class="ic-name">Mango <em>(mangga)</em></div>
+          <div class="ic-region">MY · mangifera indica</div>
+          <p class="ic-flavour">sweet-floral ripe, sour-savoury green</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/pineapple/">
+          <div class="ic-name">Pineapple <em>(nanas)</em></div>
+          <div class="ic-region">MY · ananas comosus</div>
+          <p class="ic-flavour">tropical-sweet, foams when shaken</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/soursop/">
+          <div class="ic-name">Soursop <em>(durian belanda)</em></div>
+          <div class="ic-region">MY · annona muricata</div>
+          <p class="ic-flavour">custardy strawberry-pineapple-citrus</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/kelulut-honey/">
+          <div class="ic-name">Kelulut <em>honey</em></div>
+          <div class="ic-region">MY · Sarawak stingless bee</div>
+          <p class="ic-flavour">naturally sour, citrus-floral, runny</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/sarawak-black-pepper/">
+          <div class="ic-name">Sarawak <em>black pepper</em></div>
+          <div class="ic-region">MY · Sarawak terroir · piper nigrum</div>
+          <p class="ic-flavour">citrus-pine top, premium aromatic</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/curry-leaf/">
+          <div class="ic-name">Curry <em>leaf</em></div>
+          <div class="ic-region">MY · IN · murraya koenigii</div>
+          <p class="ic-flavour">citrus-savoury, nutty, toasted depth</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/tuak/">
+          <div class="ic-name">Tuak</div>
+          <div class="ic-region">MY · Sarawakian rice wine</div>
+          <p class="ic-flavour">sweet-rice, yeast-bread, faintly floral</p>
+        </a>
+      </div>
+
+      <h2 class="ingredient-section-h">Global <em>classics</em>.</h2>
+      <p class="ingredient-section-sub">The building blocks every cocktail bar needs.</p>
+
+      <div class="ingredients-grid">
+        <a class="ingredient-card" href="/ingredients/juniper/">
+          <div class="ic-name">Juniper</div>
+          <div class="ic-region">EU · juniperus communis</div>
+          <p class="ic-flavour">pine-resinous, the soul of gin</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/mint/">
+          <div class="ic-name">Mint</div>
+          <div class="ic-region">global · mentha</div>
+          <p class="ic-flavour">cooling, herbaceous, photogenic</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/basil/">
+          <div class="ic-name">Basil</div>
+          <div class="ic-region">global · ocimum basilicum</div>
+          <p class="ic-flavour">peppery-sweet, garden-fresh, savoury</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/rosemary/">
+          <div class="ic-name">Rosemary</div>
+          <div class="ic-region">MED · salvia rosmarinus</div>
+          <p class="ic-flavour">pine-eucalyptus, savoury-herbal, smoky-ready</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/cardamom/">
+          <div class="ic-name">Cardamom</div>
+          <div class="ic-region">IN · elettaria cardamomum</div>
+          <p class="ic-flavour">eucalyptus-floral, warm spice, lifts everything</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/cinnamon/">
+          <div class="ic-name">Cinnamon</div>
+          <div class="ic-region">SEA · cinnamomum verum (true cinnamon)</div>
+          <p class="ic-flavour">sweet-warm, woody, holiday-coded</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/ginger/">
+          <div class="ic-name">Ginger</div>
+          <div class="ic-region">SEA · zingiber officinale</div>
+          <p class="ic-flavour">spicy-hot, fresh-zesty, universal modifier</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/rose/">
+          <div class="ic-name">Rose</div>
+          <div class="ic-region">global · rosa damascena</div>
+          <p class="ic-flavour">floral-luxe, Middle-Eastern coded, romantic</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/lavender/">
+          <div class="ic-name">Lavender</div>
+          <div class="ic-region">MED · lavandula angustifolia</div>
+          <p class="ic-flavour">floral-perfumed, easy to overdo, calming</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/cucumber/">
+          <div class="ic-name">Cucumber</div>
+          <div class="ic-region">global · cucumis sativus</div>
+          <p class="ic-flavour">clean-watery, vegetal, spa-coded</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/thyme/">
+          <div class="ic-name">Thyme</div>
+          <div class="ic-region">MED · thymus vulgaris</div>
+          <p class="ic-flavour">savoury-pine, herbaceous, clove edge</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/saffron/">
+          <div class="ic-name">Saffron</div>
+          <div class="ic-region">IR · ES · crocus sativus</div>
+          <p class="ic-flavour">hay-honey-floral, intense gold</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/vanilla/">
+          <div class="ic-name">Vanilla</div>
+          <div class="ic-region">MG · vanilla planifolia</div>
+          <p class="ic-flavour">sweet, floral, creamy, universal</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/sage/">
+          <div class="ic-name">Sage</div>
+          <div class="ic-region">MED · salvia officinalis</div>
+          <p class="ic-flavour">earthy-savoury, mineral, autumn-coded</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/coriander/">
+          <div class="ic-name">Coriander <em>seed</em></div>
+          <div class="ic-region">global · coriandrum sativum</div>
+          <p class="ic-flavour">citrus-pepper, floral, gin's #2 botanical</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/star-anise/">
+          <div class="ic-name">Star <em>anise</em></div>
+          <div class="ic-region">CN · illicium verum</div>
+          <p class="ic-flavour">intense liquorice-anise, winter-coded</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/elderflower/">
+          <div class="ic-name">Elderflower</div>
+          <div class="ic-region">EU · sambucus nigra</div>
+          <p class="ic-flavour">honey-floral, gentle, "bartender's ketchup"</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/clove/">
+          <div class="ic-name">Clove</div>
+          <div class="ic-region">ID · syzygium aromaticum</div>
+          <p class="ic-flavour">sweet-pungent, intense, slightly numbing</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/allspice/">
+          <div class="ic-name">Allspice <em>(pimento)</em></div>
+          <div class="ic-region">JM · pimenta dioica</div>
+          <p class="ic-flavour">clove-cinnamon-nutmeg, the Tiki spice</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/peach/">
+          <div class="ic-name">Peach</div>
+          <div class="ic-region">global · prunus persica</div>
+          <p class="ic-flavour">sweet-floral, white or yellow</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/apricot/">
+          <div class="ic-name">Apricot</div>
+          <div class="ic-region">global · prunus armeniaca</div>
+          <p class="ic-flavour">honey-tart, faintly almond-pit</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/fennel/">
+          <div class="ic-name">Fennel</div>
+          <div class="ic-region">MED · foeniculum vulgare</div>
+          <p class="ic-flavour">licorice-anise, cooling-vegetal</p>
+        </a>
+        <a class="ingredient-card" href="/ingredients/chamomile/">
+          <div class="ic-name">Chamomile</div>
+          <div class="ic-region">global · matricaria chamomilla</div>
+          <p class="ic-flavour">honey-apple-floral, calming</p>
+        </a>
+      </div>
+
+      <h2>How to use this encyclopedia</h2>
+
+      <p>Each ingredient page covers the same six questions:</p>
+
+      <ol>
+        <li><b>What it is.</b> Botanical or product family. Where it comes from.</li>
+        <li><b>Flavour profile.</b> What it tastes like, how it presents in a drink.</li>
+        <li><b>Where to source it in Malaysia.</b> Wet markets, supermarkets, specialty suppliers. Notes on quality grades.</li>
+        <li><b>How to prep it.</b> Syrup, infusion, fresh juice, garnish, dehydrated, smoked, fat-washed, whatever the standard moves are.</li>
+        <li><b>Best cocktail pairings.</b> Three to six classic uses, linked to recipes in our database.</li>
+        <li><b>Substitutions.</b> What to use if you cannot source the real thing.</li>
+      </ol>
+
+      <h2>Related reading</h2>
+
+      <ul>
+        <li><a href="/cocktails/">Cocktail recipe database</a> (77+ named cocktails)</li>
+        <li><a href="/journal/">The Journal</a> (technique, history, deep dives)</li>
+        <li><a href="/cocktail-glossary/">Cocktail glossary A-Z</a></li>
+        <li><a href="/journal/best-malaysian-cocktails-2026/">Best Malaysian cocktails to try in 2026</a></li>
+        <li><a href="/journal/cocktail-flavor-wheel/">The cocktail flavour wheel</a></li>
+        <li><a href="/#builder">The drink builder</a> (interactive, build your drink from preferences)</li>
+      </ul>
+
+    </div>
+    <aside class="journal-cta">
+      <h3>Have a request? <i>Suggest an ingredient</i>.</h3>
+      <p>We add ingredients as we work through them. If there is something you want covered (a specific Malaysian botanical, a regional spirit), WhatsApp us.</p>
+      <div class="journal-cta-actions">
+        <a class="cta-btn" href="https://wa.me/601140087607?text=Hi%20Dissolved%20Solids!%20Ingredient%20suggestion%3A" target="_blank" rel="noopener">Suggest ingredient →</a>
+        <a class="cta-btn cta-btn-primary" href="/cocktails/">Browse all cocktails →</a>
+      </div>
+    </aside>
+    <footer class="article-foot"><p class="article-up-foot"><a href="/">← Home</a></p></footer>
+  </article>
+</main>
+<script src="/atmosphere.js" defer></script>
+<script src="/appbar.js" defer></script>
+</body>
+</html>

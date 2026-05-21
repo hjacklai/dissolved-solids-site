@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+  <title>Dissolved Solids · The Journal</title>
+  <link>https://dissolvedsolids.co/journal/</link>
+  <atom:link href="https://dissolvedsolids.co/feed.xml" rel="self" type="application/rss+xml" />
+  <description>Cocktail technique, Malaysian-local ingredients, fermentation, coffee, tea, and beverage culture. From Dissolved Solids and Soluble Solids cocktail bars in Petaling Jaya, Malaysia.</description>
+  <language>en-MY</language>
+  <copyright>Copyright Dissolved Solids and Soluble Solids</copyright>
+  <managingEditor>hi@dissolvedsolids.co (Dissolved Solids)</managingEditor>
+  <webMaster>hi@dissolvedsolids.co (Dissolved Solids)</webMaster>
+  <lastBuildDate>Tue, 20 May 2026 00:00:00 +0800</lastBuildDate>
+  <ttl>1440</ttl>
+  <image>
+    <url>https://dissolvedsolids.co/photos/ds-logo.png</url>
+    <title>Dissolved Solids · The Journal</title>
+    <link>https://dissolvedsolids.co/journal/</link>
+  </image>
+
+  <item>
+    <title>The Tesseract philosophy</title>
+    <link>https://dissolvedsolids.co/journal/the-tesseract-philosophy/</link>
+    <guid>https://dissolvedsolids.co/journal/the-tesseract-philosophy/</guid>
+    <pubDate>Tue, 20 May 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>House signature</category>
+    <description>The four-dimensional analogue of a cube, translated into a cocktail. Long-form essay on how we built the Tesseract, our flagship house signature: gin, mezcal, maraschino, Cointreau, saline, citric, and a splash of tonic.</description>
+  </item>
+
+  <item>
+    <title>Best Malaysian cocktails to try in 2026</title>
+    <link>https://dissolvedsolids.co/journal/best-malaysian-cocktails-2026/</link>
+    <guid>https://dissolvedsolids.co/journal/best-malaysian-cocktails-2026/</guid>
+    <pubDate>Mon, 12 May 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Malaysian-local</category>
+    <description>The 10 Malaysian-local cocktails worth tasting through in 2026. Pandan Collins, Gula Melaka Old Fashioned, Calamansi Highball, Kopi Sour, plus seven more.</description>
+  </item>
+
+  <item>
+    <title>Pandan in beverages</title>
+    <link>https://dissolvedsolids.co/journal/pandan-in-beverages/</link>
+    <guid>https://dissolvedsolids.co/journal/pandan-in-beverages/</guid>
+    <pubDate>Sun, 04 May 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Ingredient</category>
+    <description>Pandan as a cocktail ingredient. Flavour chemistry (2-acetyl-1-pyrroline), syrup technique, infusion technique, the Pandan Collins, and pairings.</description>
+  </item>
+
+  <item>
+    <title>Gula melaka and the palm sugar spectrum</title>
+    <link>https://dissolvedsolids.co/journal/gula-melaka-palm-sugar/</link>
+    <guid>https://dissolvedsolids.co/journal/gula-melaka-palm-sugar/</guid>
+    <pubDate>Fri, 25 Apr 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Ingredient</category>
+    <description>Gula melaka vs gula apong vs jaggery vs panela vs piloncillo. The full palm-sugar family explained. Plus how to make gula melaka syrup and the Gula Melaka Old Fashioned.</description>
+  </item>
+
+  <item>
+    <title>Malaysian kopi explained</title>
+    <link>https://dissolvedsolids.co/journal/malaysian-kopi-explained/</link>
+    <guid>https://dissolvedsolids.co/journal/malaysian-kopi-explained/</guid>
+    <pubDate>Tue, 15 Apr 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Coffee</category>
+    <description>The Hainanese-Malaysian dark-roast coffee tradition. The full kopitiam lexicon (kopi-O, kopi-C, kopi peng, kopi gao, kopi siu dai) and how it works in cocktails.</description>
+  </item>
+
+  <item>
+    <title>Calamansi as a bar ingredient</title>
+    <link>https://dissolvedsolids.co/journal/calamansi-bar-ingredient/</link>
+    <guid>https://dissolvedsolids.co/journal/calamansi-bar-ingredient/</guid>
+    <pubDate>Sat, 05 Apr 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Ingredient</category>
+    <description>The Southeast Asian citrus that sits between lime and orange. Profile, sourcing, prep, and the Calamansi Highball.</description>
+  </item>
+
+  <item>
+    <title>Kaffir lime leaf in cocktails</title>
+    <link>https://dissolvedsolids.co/journal/kaffir-lime-leaf-cocktails/</link>
+    <guid>https://dissolvedsolids.co/journal/kaffir-lime-leaf-cocktails/</guid>
+    <pubDate>Sun, 23 Mar 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Ingredient</category>
+    <description>Daun limau purut, the aromatic Southeast Asian citrus leaf. The Scented Negroni (our house signature) and how to clap-not-muddle for cocktails.</description>
+  </item>
+
+  <item>
+    <title>Hibiscus and roselle in cocktails</title>
+    <link>https://dissolvedsolids.co/journal/hibiscus-roselle-cocktails/</link>
+    <guid>https://dissolvedsolids.co/journal/hibiscus-roselle-cocktails/</guid>
+    <pubDate>Mon, 10 Mar 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Ingredient</category>
+    <description>Hibiscus sabdariffa (roselle). The tart-floral deep-red flower that builds the Roselle Spritz. Profile, sourcing, syrup technique.</description>
+  </item>
+
+  <item>
+    <title>Cocktails for beginners</title>
+    <link>https://dissolvedsolids.co/journal/best-cocktails-for-beginners/</link>
+    <guid>https://dissolvedsolids.co/journal/best-cocktails-for-beginners/</guid>
+    <pubDate>Sat, 01 Mar 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Practical</category>
+    <description>15 cocktails to start with if you are new to the category. Approachable, well-known, easy to like, with notes on what they teach about cocktail-making.</description>
+  </item>
+
+  <item>
+    <title>A home bar in Malaysia</title>
+    <link>https://dissolvedsolids.co/journal/home-bar-malaysia/</link>
+    <guid>https://dissolvedsolids.co/journal/home-bar-malaysia/</guid>
+    <pubDate>Fri, 20 Feb 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Practical</category>
+    <description>Stocking a home bar from RM 500 to RM 5,000. What to buy in tiers, what each tier unlocks, where to source spirits in KL/PJ.</description>
+  </item>
+
+  <item>
+    <title>The four cocktail templates: Sour, Sazerac, Spritz, Highball</title>
+    <link>https://dissolvedsolids.co/cheatsheets/four-templates/</link>
+    <guid>https://dissolvedsolids.co/cheatsheets/four-templates/</guid>
+    <pubDate>Sat, 14 Feb 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Cheat sheet</category>
+    <description>Almost every cocktail is a variant of one of four templates. A printable cheat sheet of the four formulas, with worked examples.</description>
+  </item>
+
+  <item>
+    <title>Bitters explained</title>
+    <link>https://dissolvedsolids.co/journal/bitters-explained/</link>
+    <guid>https://dissolvedsolids.co/journal/bitters-explained/</guid>
+    <pubDate>Thu, 05 Feb 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Spirit deep dive</category>
+    <description>Angostura, Peychaud's, orange bitters, and the modern bitters renaissance. How bitters work, how to use them, how to make tinctures at home.</description>
+  </item>
+
+  <item>
+    <title>Mezcal styles explained</title>
+    <link>https://dissolvedsolids.co/journal/mezcal-styles-explained/</link>
+    <guid>https://dissolvedsolids.co/journal/mezcal-styles-explained/</guid>
+    <pubDate>Sat, 24 Jan 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Spirit deep dive</category>
+    <description>Espadín, tobalá, tepeztate, madrecuixe, pechuga. The mezcal varieties and how they show up differently in cocktails.</description>
+  </item>
+
+  <item>
+    <title>Clear ice at home</title>
+    <link>https://dissolvedsolids.co/journal/clear-ice-at-home/</link>
+    <guid>https://dissolvedsolids.co/journal/clear-ice-at-home/</guid>
+    <pubDate>Mon, 13 Jan 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Technique</category>
+    <description>Why ice quality matters more than spirit quality for spirit-forward cocktails. How to make crystal-clear large-format ice at home with a cooler.</description>
+  </item>
+
+  <item>
+    <title>The sour template</title>
+    <link>https://dissolvedsolids.co/journal/sour-template/</link>
+    <guid>https://dissolvedsolids.co/journal/sour-template/</guid>
+    <pubDate>Sun, 05 Jan 2026 09:00:00 +0800</pubDate>
+    <dc:creator>Dissolved Solids</dc:creator>
+    <category>Technique</category>
+    <description>3:1:1 spirit-citrus-sweet is the universal sour template. How to riff on it, what to adjust to your taste, how every classic sour fits the pattern.</description>
+  </item>
+
+</channel>
+</rss>

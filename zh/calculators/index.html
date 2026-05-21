@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-MY" data-state="dissolved">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>鸡尾酒计算器 · ABV、批次缩放、稀释、糖酸平衡 · Dissolved Solids</title>
+<meta name="description" content="四个互动鸡尾酒计算器。算出任意一杯的最终 ABV、把单杯配方放大到 10／20／50 份派对量、估算冰融化带来的稀释，以及为酸款重新平衡糖酸比。" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="鸡尾酒计算器" />
+<meta property="og:description" content="计算 ABV、放大配方、估算稀释、平衡糖酸。四个免费工具，为调酒师与家庭爱好者而设。" />
+<meta property="og:image" content="https://dissolvedsolids.co/photos/banner.jpg" />
+<meta property="og:locale" content="zh_MY" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://dissolvedsolids.co/photos/banner.jpg" />
+<meta name="theme-color" content="#faf3df" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://dissolvedsolids.co/zh/calculators/" />
+<link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/calculators/" />
+<link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/calculators/" />
+<link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/calculators/" />
+<link rel="icon" type="image/png" href="/photos/ds-logo.png" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","inLanguage":"zh-Hans-MY","@type":"WebApplication","name":"鸡尾酒计算器","url":"https://dissolvedsolids.co/zh/calculators/","applicationCategory":"LifestyleApplication","operatingSystem":"Web","description":"四款鸡尾酒计算器：ABV、批次缩放、稀释、糖酸平衡。"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","inLanguage":"zh-Hans-MY","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://dissolvedsolids.co/zh/"},{"@type":"ListItem","position":2,"name":"计算器","item":"https://dissolvedsolids.co/zh/calculators/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<link rel="stylesheet" href="/appbar.css" />
+<script src="/analytics.js" defer></script>
+<style>
+  .calc-wrap { max-width: 980px; margin: 0 auto; padding: 0 var(--gutter); }
+  .calc-tabs {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin: 36px 0 18px;
+  }
+  .calc-tab {
+    padding: 10px 18px; border-radius: 22px;
+    background: transparent; border: 1px solid rgba(255,255,255,.22);
+    color: var(--paper);
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; cursor: pointer;
+    transition: all .18s ease;
+  }
+  .calc-tab:hover { border-color: rgba(255,255,255,.5); }
+  .calc-tab.is-on { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
+  .calc-panel {
+    display: none;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 14px;
+    padding: 28px 26px;
+  }
+  .calc-panel.is-active { display: block; }
+  .calc-h {
+    font-family: var(--serif); font-size: 28px; font-weight: 400;
+    margin: 0 0 6px; color: var(--paper);
+  }
+  .calc-h em { color: var(--accent); font-style: italic; }
+  .calc-sub {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+    margin: 0 0 22px;
+  }
+  .calc-row { display: grid; grid-template-columns: 1fr 100px 100px; gap: 10px; margin-bottom: 8px; align-items: center; }
+  @media (max-width: 600px) { .calc-row { grid-template-columns: 1fr 80px 80px; gap: 6px; } }
+  .calc-row input, .calc-row select {
+    padding: 9px 12px;
+    background: rgba(0,0,0,.35);
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 8px;
+    font-family: var(--mono); font-size: 13px;
+    color: var(--paper);
+    outline: none;
+  }
+  .calc-row input:focus, .calc-row select:focus { border-color: var(--accent); }
+  .calc-row label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .12em;
+    color: rgba(255,255,255,.7); text-transform: uppercase;
+  }
+  .calc-row-h {
+    display: grid; grid-template-columns: 1fr 100px 100px; gap: 10px;
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: .18em;
+    text-transform: uppercase; color: rgba(255,255,255,.45);
+    margin-bottom: 6px;
+  }
+  @media (max-width: 600px) { .calc-row-h { grid-template-columns: 1fr 80px 80px; gap: 6px; } }
+  .calc-btn-row { display: flex; gap: 8px; margin-top: 14px; }
+  .calc-btn {
+    padding: 9px 16px; border-radius: 18px;
+    background: transparent; border: 1px solid rgba(255,255,255,.25);
+    color: var(--paper);
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; cursor: pointer;
+    transition: all .18s ease;
+  }
+  .calc-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .calc-btn.primary { background: var(--accent); border-color: var(--accent); color: #000; }
+  .calc-out {
+    margin-top: 24px;
+    padding: 18px 20px;
+    background: rgba(0,0,0,.35);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 10px;
+  }
+  .calc-out-h {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .22em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+    margin: 0 0 8px;
+  }
+  .calc-out-v {
+    font-family: var(--serif); font-size: 38px; line-height: 1;
+    color: var(--accent); margin: 0 0 6px;
+  }
+  .calc-out-note {
+    font-family: var(--serif); font-style: italic; font-size: 14px;
+    color: rgba(255,255,255,.7); margin: 6px 0 0;
+  }
+  .calc-explain {
+    font-family: var(--serif); font-size: 15px; line-height: 1.55;
+    color: rgba(255,255,255,.7);
+    margin-top: 24px;
+  }
+  .calc-explain h3 {
+    font-family: var(--serif); font-size: 18px; color: var(--paper);
+    margin: 16px 0 6px;
+  }
+  .calc-explain p { margin: 6px 0 12px; }
+</style>
+</head>
+<body class="journal-body">
+<header class="journal-bar"><a class="journal-wordmark" href="/zh/"><span>Dissolved Solids</span><em>计算器</em></a></header>
+<main class="journal-mount article-mount">
+  <article class="article">
+    <header class="article-head">
+      <a class="article-up" href="/zh/">← 首页</a>
+      <span class="article-eyebrow">工具 · 鸡尾酒计算器</span>
+      <h1 class="article-title">鸡尾酒<i>计算器</i>。</h1>
+      <p class="article-dek">四款工具，写给认真的家庭调酒师与现役从业者。算出整杯的最终 ABV、把单杯放大成派对批次、估算冰融化的稀释，以及把酸款调整到你偏好的糖酸比。</p>
+    </header>
+    <div class="calc-wrap">
+
+      <div class="calc-tabs" role="tablist">
+        <button class="calc-tab is-on" data-tab="abv">ABV</button>
+        <button class="calc-tab" data-tab="batch">批次缩放</button>
+        <button class="calc-tab" data-tab="dilution">稀释</button>
+        <button class="calc-tab" data-tab="balance">糖酸平衡</button>
+      </div>
+
+      <!-- ABV CALCULATOR -->
+      <section class="calc-panel is-active" data-panel="abv">
+        <h2 class="calc-h">ABV <em>计算器</em>。</h2>
+        <p class="calc-sub">根据食材清单算出最终酒精百分比。</p>
+        <div class="calc-row-h">
+          <span>食材</span><span>体积（毫升）</span><span>ABV（%）</span>
+        </div>
+        <div id="abvRows">
+          <div class="calc-row">
+            <input type="text" placeholder="金酒" value="金酒" />
+            <input type="number" placeholder="60" value="60" min="0" step="1" />
+            <input type="number" placeholder="42" value="42" min="0" max="96" step="0.1" />
+          </div>
+          <div class="calc-row">
+            <input type="text" placeholder="甜苦艾酒" value="甜苦艾酒" />
+            <input type="number" placeholder="30" value="30" min="0" step="1" />
+            <input type="number" placeholder="17" value="17" min="0" max="96" step="0.1" />
+          </div>
+          <div class="calc-row">
+            <input type="text" placeholder="金巴利" value="金巴利" />
+            <input type="number" placeholder="30" value="30" min="0" step="1" />
+            <input type="number" placeholder="24" value="24" min="0" max="96" step="0.1" />
+          </div>
+        </div>
+        <div class="calc-btn-row">
+          <button type="button" class="calc-btn primary" id="abvAdd">+ 增加食材</button>
+          <button type="button" class="calc-btn" id="abvDilute">加 30% 冰稀释</button>
+          <button type="button" class="calc-btn" id="abvCompute">计算</button>
+        </div>
+        <div class="calc-out">
+          <p class="calc-out-h">最终 ABV</p>
+          <p class="calc-out-v" id="abvResult">28.0%</p>
+          <p class="calc-out-note" id="abvNote">总体积 120 毫升。约一杯标准内格罗尼。</p>
+        </div>
+        <div class="calc-explain">
+          <h3>原理</h3>
+          <p>ABV 是按体积计的酒精百分比。要算出一杯调和饮品的最终 ABV，把每种食材贡献的纯酒精量（体积 × ABV ÷ 100）加总，再除以总体积。</p>
+          <p>冰融化会带来 25 至 35% 的纯水（视摇制或搅拌、冰的质量、摇制时长而定）。「加 30% 稀释」按钮给出的是典型摇制或长时间搅拌的结果。如果是大冰块上现调的饮品，就不要加这步。</p>
+          <p>参考 ABV：金酒 40-47、伏特加 40、苦艾酒 15-19、金巴利 24、艾普罗 11、雪莉酒 15-22、普罗赛克 11、苏打 0、柑橘汁 0。</p>
+        </div>
+      </section>
+
+      <!-- BATCH SCALER -->
+      <section class="calc-panel" data-panel="batch">
+        <h2 class="calc-h">批次<em>缩放器</em>。</h2>
+        <p class="calc-sub">把单杯配方按 10、20 或 50 份放大成派对量。</p>
+        <div class="calc-row-h">
+          <span>食材</span><span>每杯（毫升）</span><span>份数</span>
+        </div>
+        <div id="batchRows">
+          <div class="calc-row">
+            <input type="text" placeholder="金酒" value="金酒" />
+            <input type="number" placeholder="60" value="60" min="0" step="1" />
+            <input type="number" placeholder="10" value="20" min="1" step="1" class="batch-servings" />
+          </div>
+          <div class="calc-row">
+            <input type="text" placeholder="甜苦艾酒" value="甜苦艾酒" />
+            <input type="number" placeholder="30" value="30" min="0" step="1" />
+            <input type="number" placeholder="10" value="20" min="1" step="1" class="batch-servings" />
+          </div>
+          <div class="calc-row">
+            <input type="text" placeholder="金巴利" value="金巴利" />
+            <input type="number" placeholder="30" value="30" min="0" step="1" />
+            <input type="number" placeholder="10" value="20" min="1" step="1" class="batch-servings" />
+          </div>
+        </div>
+        <div class="calc-btn-row">
+          <button type="button" class="calc-btn primary" id="batchAdd">+ 增加食材</button>
+          <button type="button" class="calc-btn" id="batchCompute">计算批次</button>
+        </div>
+        <div class="calc-out">
+          <p class="calc-out-h">批次总量</p>
+          <p class="calc-out-v" id="batchResult">2400 毫升</p>
+          <p class="calc-out-note" id="batchNote">用一个 3 升玻璃壶，或 3 个 1 升瓶。要做成即倒批次的话，预先兑入 720 毫升水。</p>
+        </div>
+        <div class="calc-explain">
+          <h3>怎么把批次做好</h3>
+          <p>把每杯的用量乘以份数。预调批次从壶里倒酒奉客时，要再加 25 至 30% 的水，以补足平时摇制或搅拌带来的稀释。出酒前冷藏 2 小时，让批次以合适温度奉出。</p>
+          <p>含柑橘的批次，把柑橘和糖单独留到上酒前 30 分钟才加入。柑橘汁在 2 小时内会氧化；提前超过 2 小时预调会变味。</p>
+        </div>
+      </section>
+
+      <!-- DILUTION -->
+      <section class="calc-panel" data-panel="dilution">
+        <h2 class="calc-h">稀释<em>估算</em>。</h2>
+        <p class="calc-sub">估算冰融化进饮品的水量。</p>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>调制方式</label>
+          <select id="dilMethod">
+            <option value="0.18">搅拌 25 秒（约 18%）</option>
+            <option value="0.30" selected>强摇 12-15 秒（约 30%）</option>
+            <option value="0.40">超强摇 18-20 秒（约 40%）</option>
+            <option value="0.15">冰上现调（5 分钟约 15%）</option>
+            <option value="0.10">大冰短搅（约 10%）</option>
+          </select>
+        </div>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>稀释前体积（毫升）</label>
+          <input type="number" id="dilVolume" value="90" min="0" step="1" />
+        </div>
+        <div class="calc-btn-row">
+          <button type="button" class="calc-btn primary" id="dilCompute">计算</button>
+        </div>
+        <div class="calc-out">
+          <p class="calc-out-h">冰带入的水量</p>
+          <p class="calc-out-v" id="dilResult">27 毫升</p>
+          <p class="calc-out-note" id="dilNote">最终饮品体积：117 毫升。稀释率：23%。</p>
+        </div>
+        <div class="calc-explain">
+          <h3>稀释为何重要</h3>
+          <p>冰融化不是瑕疵，是设计的一部分。鸡尾酒是按特定的稀释水平校准的。稀释不足会显得烈而粗糙；过度稀释会显得平淡。调酒师按饮品的做法瞄准一个特定的目标区间。</p>
+          <p>搅拌款（古典鸡尾酒、曼哈顿、内格罗尼）目标稀释约 15-25%。摇制款（酸款、黛吉利）目标 25-35%。长饮（高球、莫吉托）靠不断添新冰自我调节。</p>
+          <p>冰块越大融得越慢。古典杯里一颗 5 厘米的冰块 5 分钟内约带入 10% 水；碎冰同时段会加到 30%。</p>
+        </div>
+      </section>
+
+      <!-- SUGAR-ACID BALANCE -->
+      <section class="calc-panel" data-panel="balance">
+        <h2 class="calc-h">糖酸<em>平衡</em>。</h2>
+        <p class="calc-sub">把酸款调整到你偏好的甜度或酸度。</p>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>烈酒（毫升）</label>
+          <input type="number" id="balSpirit" value="60" min="0" step="1" />
+        </div>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>柑橘（毫升）</label>
+          <input type="number" id="balCitrus" value="22" min="0" step="0.5" />
+        </div>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>甜味剂（毫升，1:1 简糖浆或等价物）</label>
+          <input type="number" id="balSugar" value="22" min="0" step="0.5" />
+        </div>
+        <div class="calc-row" style="grid-template-columns:1fr 1fr;">
+          <label>偏好风格</label>
+          <select id="balProfile">
+            <option value="balanced">均衡酸款（经典，柑橘与甜等量）</option>
+            <option value="dry">干口酸款（柑橘多、甜少）</option>
+            <option value="sweet">甜口酸款（柑橘少、甜多）</option>
+            <option value="strong">强酸款（烈酒多，经典比例）</option>
+          </select>
+        </div>
+        <div class="calc-btn-row">
+          <button type="button" class="calc-btn primary" id="balCompute">推算建议比例</button>
+        </div>
+        <div class="calc-out">
+          <p class="calc-out-h">建议调整</p>
+          <p class="calc-out-v" id="balResult">均衡</p>
+          <p class="calc-out-note" id="balNote">你目前的配方接近经典 3:1:1（烈酒：柑橘：甜）。不必调整。</p>
+        </div>
+        <div class="calc-explain">
+          <h3>酸款模板</h3>
+          <p>几乎所有酸款鸡尾酒都是同一模板的变体：3 份烈酒 + 1 份柑橘 + 1 份甜味剂。黛吉利、威士忌酸、玛格丽特、蜂之膝、琴蕾都走这个比例。</p>
+          <p><b>均衡 (3:1:1)：</b>典范的酸款。明亮、整合、没有突出某一味。<br>
+          <b>干口 (3:1.2:0.8)：</b>柑橘多、糖少。给觉得经典太甜的人。<br>
+          <b>甜口 (3:0.8:1.2)：</b>糖多、柑橘少。给偏甜点感的鸡尾酒。<br>
+          <b>强酸 (4:1:1)：</b>烈酒更多，比例不变。烈酒更明显领衔时用。</p>
+        </div>
+      </section>
+
+      <div class="article-body" style="margin-top:60px;">
+        <h2>关于这些计算器</h2>
+        <p>这是给现役调酒师和认真家庭爱好者的快速工具。它们使用业内通用的参考值与多数酒吧仰赖的鸡尾酒模板。如果某个计算结果与你的本店做法不一致，把这些数值当起点，按口味调整。</p>
+
+        <h2>相关</h2>
+        <ul>
+          <li><a href="/zh/what-can-i-make/">「我今晚能调什么？」家庭酒柜工具</a></li>
+          <li><a href="/zh/cocktails/">鸡尾酒配方数据库</a></li>
+          <li><a href="/zh/ingredients/">食材百科</a></li>
+          <li><a href="/zh/cheatsheets/">速查表与可打印 PDF</a></li>
+          <li><a href="/zh/journal/batching-cocktails-parties/">派对预调鸡尾酒（长篇）</a></li>
+          <li><a href="/zh/journal/acid-adjustment-cocktails/">鸡尾酒的酸度调整</a></li>
+        </ul>
+      </div>
+    </div>
+    <footer class="article-foot"><p class="article-up-foot"><a href="/zh/">← 首页</a></p></footer>
+  </article>
+</main>
+
+<script>
+// Tab switching
+document.querySelectorAll(".calc-tab").forEach(function (t) {
+  t.addEventListener("click", function () {
+    var name = t.dataset.tab;
+    document.querySelectorAll(".calc-tab").forEach(function (x) { x.classList.toggle("is-on", x === t); });
+    document.querySelectorAll(".calc-panel").forEach(function (p) { p.classList.toggle("is-active", p.dataset.panel === name); });
+  });
+});
+
+// ABV Calculator
+function getAbvRows() {
+  return Array.from(document.querySelectorAll("#abvRows .calc-row")).map(function (row) {
+    var inputs = row.querySelectorAll("input");
+    return {
+      name: inputs[0].value || "食材",
+      ml: parseFloat(inputs[1].value) || 0,
+      abv: parseFloat(inputs[2].value) || 0
+    };
+  });
+}
+function computeAbv() {
+  var rows = getAbvRows();
+  var totalMl = rows.reduce(function (s, r) { return s + r.ml; }, 0);
+  var totalAlcoholMl = rows.reduce(function (s, r) { return s + (r.ml * r.abv / 100); }, 0);
+  var finalAbv = totalMl > 0 ? (totalAlcoholMl / totalMl * 100) : 0;
+  document.getElementById("abvResult").textContent = finalAbv.toFixed(1) + "%";
+  var note = "总体积 " + totalMl.toFixed(0) + " 毫升。";
+  if (finalAbv < 8) note += "低 ABV；气泡／易饮区间。";
+  else if (finalAbv < 18) note += "中偏低；长饮高球或低 ABV 搅拌款。";
+  else if (finalAbv < 28) note += "中等；气泡、酸款或温和搅拌款。";
+  else if (finalAbv < 38) note += "较强；经典搅拌款或酸款区间（内格罗尼、古典鸡尾酒、酸款）。";
+  else note += "非常强；酒感前突或失衡。多数经典搅拌款落在 28-35% 区间。";
+  document.getElementById("abvNote").textContent = note;
+}
+document.getElementById("abvAdd").addEventListener("click", function () {
+  var row = document.createElement("div"); row.className = "calc-row";
+  row.innerHTML = '<input type="text" placeholder="食材"/><input type="number" placeholder="30" min="0" step="1"/><input type="number" placeholder="40" min="0" max="96" step="0.1"/>';
+  document.getElementById("abvRows").appendChild(row);
+});
+document.getElementById("abvDilute").addEventListener("click", function () {
+  var rows = getAbvRows();
+  var totalMl = rows.reduce(function (s, r) { return s + r.ml; }, 0);
+  var dilution = totalMl * 0.3;
+  var row = document.createElement("div"); row.className = "calc-row";
+  row.innerHTML = '<input type="text" value="冰稀释（30%）"/><input type="number" value="' + dilution.toFixed(0) + '" min="0" step="1"/><input type="number" value="0" min="0" max="96" step="0.1"/>';
+  document.getElementById("abvRows").appendChild(row);
+  computeAbv();
+});
+document.getElementById("abvCompute").addEventListener("click", computeAbv);
+computeAbv();
+
+// Batch Scaler
+function computeBatch() {
+  var rows = Array.from(document.querySelectorAll("#batchRows .calc-row"));
+  var servings = parseInt(rows[0].querySelectorAll(".batch-servings")[0].value) || 1;
+  var totalBatch = 0;
+  rows.forEach(function (row) {
+    var inputs = row.querySelectorAll("input");
+    var per = parseFloat(inputs[1].value) || 0;
+    inputs[2].value = servings;
+    totalBatch += per * servings;
+  });
+  document.getElementById("batchResult").textContent = totalBatch.toFixed(0) + " 毫升";
+  var dilute = totalBatch * 0.3;
+  var note = "如要预调即倒，加 " + dilute.toFixed(0) + " 毫升水来模拟搅拌稀释。容器建议：";
+  if (totalBatch < 750) note += "一个标准 750 毫升瓶。";
+  else if (totalBatch < 1500) note += "一个 1.5 升大瓶，或两瓶葡萄酒瓶。";
+  else if (totalBatch < 3000) note += "一个 3 升玻璃壶。";
+  else note += Math.ceil(totalBatch/3000) + " 个 3 升玻璃壶。";
+  document.getElementById("batchNote").textContent = note;
+}
+document.getElementById("batchAdd").addEventListener("click", function () {
+  var servings = parseInt(document.querySelector(".batch-servings").value) || 20;
+  var row = document.createElement("div"); row.className = "calc-row";
+  row.innerHTML = '<input type="text" placeholder="食材"/><input type="number" placeholder="30" min="0" step="1"/><input type="number" value="' + servings + '" min="1" step="1" class="batch-servings"/>';
+  document.getElementById("batchRows").appendChild(row);
+});
+document.getElementById("batchCompute").addEventListener("click", computeBatch);
+document.querySelectorAll(".batch-servings").forEach(function (i) {
+  i.addEventListener("input", function () {
+    document.querySelectorAll(".batch-servings").forEach(function (x) { x.value = i.value; });
+  });
+});
+computeBatch();
+
+// Dilution
+function computeDil() {
+  var method = parseFloat(document.getElementById("dilMethod").value);
+  var vol = parseFloat(document.getElementById("dilVolume").value) || 0;
+  var water = vol * method;
+  document.getElementById("dilResult").textContent = water.toFixed(0) + " 毫升";
+  var final = vol + water;
+  document.getElementById("dilNote").textContent = "最终饮品体积：" + final.toFixed(0) + " 毫升。稀释率：" + (water / final * 100).toFixed(0) + "%。";
+}
+document.getElementById("dilCompute").addEventListener("click", computeDil);
+document.getElementById("dilMethod").addEventListener("change", computeDil);
+document.getElementById("dilVolume").addEventListener("input", computeDil);
+computeDil();
+
+// Sugar-Acid Balance
+function computeBal() {
+  var spirit = parseFloat(document.getElementById("balSpirit").value) || 0;
+  var citrus = parseFloat(document.getElementById("balCitrus").value) || 0;
+  var sugar = parseFloat(document.getElementById("balSugar").value) || 0;
+  var profile = document.getElementById("balProfile").value;
+  var targets = {
+    balanced: { c: 1/3, s: 1/3 },
+    dry:      { c: 0.40, s: 0.27 },
+    sweet:    { c: 0.27, s: 0.40 },
+    strong:   { c: 0.25, s: 0.25 }
+  };
+  var t = targets[profile];
+  var targetCitrus = spirit * t.c;
+  var targetSugar = spirit * t.s;
+  var msg, label;
+  if (profile === "strong") {
+    label = "强酸款";
+    msg = "强酸款目标比例：" + spirit + " 毫升烈酒 ：" + targetCitrus.toFixed(1) + " 毫升柑橘 ：" + targetSugar.toFixed(1) + " 毫升甜（4:1:1）。从你目前的配方按口味微调。";
+  } else if (profile === "dry") {
+    label = "干口酸款";
+    msg = "目标：把柑橘提到约 " + targetCitrus.toFixed(1) + " 毫升；把甜降到约 " + targetSugar.toFixed(1) + " 毫升。";
+  } else if (profile === "sweet") {
+    label = "甜口酸款";
+    msg = "目标：把柑橘降到约 " + targetCitrus.toFixed(1) + " 毫升；把甜提到约 " + targetSugar.toFixed(1) + " 毫升。";
+  } else {
+    label = "均衡酸款";
+    msg = "目标：" + targetCitrus.toFixed(1) + " 毫升柑橘 + " + targetSugar.toFixed(1) + " 毫升甜（经典 3:1:1）。";
+    var citrusDelta = citrus - targetCitrus;
+    var sugarDelta = sugar - targetSugar;
+    if (Math.abs(citrusDelta) < 2 && Math.abs(sugarDelta) < 2) msg += "你的配方已经均衡。";
+    else msg += "调整方式：" + (citrusDelta > 0 ? "减少 " : "增加 ") + Math.abs(citrusDelta).toFixed(1) + " 毫升柑橘，并 " + (sugarDelta > 0 ? "减少 " : "增加 ") + Math.abs(sugarDelta).toFixed(1) + " 毫升甜。";
+  }
+  document.getElementById("balResult").textContent = label;
+  document.getElementById("balNote").textContent = msg;
+}
+document.getElementById("balCompute").addEventListener("click", computeBal);
+computeBal();
+</script>
+
+<script src="/atmosphere.js" defer></script>
+<script src="/appbar.js" defer></script>
+</body>
+</html>

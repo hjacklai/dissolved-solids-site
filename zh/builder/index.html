@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-MY">
+<head>
+<meta charset="UTF-8" />
+<title>饮品建议工具 · Dissolved Solids 与 Soluble Solids</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://dissolvedsolids.co/zh/#builder" />
+<link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/#builder" />
+<link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/#builder" />
+<link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/#builder" />
+<!-- The drink builder is now embedded on the landing page (#builder).
+     This URL is kept around purely for backwards-compatible shareable
+     links: /zh/builder/#refreshed.gin.citrusy.medium.aperitif still works
+     because the JS below carries the hash over to /zh/#builder. -->
+<meta http-equiv="refresh" content="0; url=/zh/#builder" />
+<style>
+  html, body { margin: 0; padding: 0; background: #0b0b10; color: #f3ecdf; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+  body { min-height: 100dvh; display: flex; align-items: center; justify-content: center; padding: 40px; text-align: center; }
+  a { color: #ff3b81; }
+</style>
+<script src="/analytics.js" defer></script>
+</head>
+<body>
+<script>
+  // Carry the hash across - /zh/builder/#answers becomes /zh/#answers so
+  // shareable result URLs still resolve to the same drink on the
+  // embedded builder on the landing page.
+  (function () {
+    var h = window.location.hash || '#builder';
+    window.location.replace('/zh/' + h);
+  })();
+</script>
+<p>饮品建议工具已整合到<a href="/zh/#builder">首页</a>。正在跳转……</p>
+</body>
+</html>

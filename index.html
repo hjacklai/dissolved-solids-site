@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 
-<title>Cocktail Bars in PJ (Petaling Jaya) · Dissolved Solids & Soluble Solids · Klang Valley, KL</title>
-<meta name="description" content="Two cocktail bars in Petaling Jaya (PJ), Klang Valley, near KL. Dissolved Solids in Damansara Kim and Soluble Solids in SS2. Tatler Asia Top 20 Bars 2025/26. Customise every drink to taste. WhatsApp to reserve, walk-ins welcome." />
+<title>Cocktail Bars in PJ · Dissolved Solids & Soluble Solids</title>
+<meta name="description" content="Two cocktail bars in Petaling Jaya. Dissolved Solids in Damansara Kim, Soluble Solids in SS2. Tatler Asia Top 20 Bars 2025/26. Every drink customised. WhatsApp to reserve." />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Dissolved Solids · Soluble Solids · Cocktail Bars · Petaling Jaya" />
@@ -19,6 +19,10 @@
 <meta name="robots" content="index, follow, max-image-preview:large" />
 
 <link rel="canonical" href="https://dissolvedsolids.co/" />
+<link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/" />
+<link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/" />
+<link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/" />
+<link rel="alternate" type="application/rss+xml" title="Dissolved Solids · The Journal RSS" href="https://dissolvedsolids.co/feed.xml" />
 <link rel="icon" type="image/png" href="/photos/ds-logo.png" />
 
 <script type="application/ld+json">
@@ -971,8 +975,9 @@
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
-  /* push page content above the fixed app bar */
-  body { padding-bottom: 96px; }
+  /* push page content above the fixed app bar. Tightened from 96 to 88
+     to match the appbar's actual rendered height (see appbar.css). */
+  body { padding-bottom: 88px; }
 
   /* ─────────────────────────────────────────────────────────────
      HERO CONTENT
@@ -1695,9 +1700,27 @@
      ───────────────────────────────────────────────────────────── */
   .visit {
     position: relative; z-index: 5;
-    padding: 100px var(--gutter) 100px;
+    /* Last section on the landing. Solid bg + min-height ensures the
+       cocktail bg image cannot bleed through anywhere from where this
+       section starts down to where the appbar starts. */
+    padding: 100px var(--gutter) 0;
+    min-height: calc(100dvh - 88px);
+    background: var(--bg-deep);
     color: var(--paper);
-    transition: color var(--t-bg);
+    transition: color var(--t-bg), background var(--t-bg);
+  }
+  /* Solid backstop: a fixed dark block at the very bottom of the
+     viewport that covers the cocktail bg image in the body padding-
+     bottom area beneath the visit section. Sits BEHIND the appbar
+     (which is z-index 60) and ABOVE the state-layer (z-index 0). */
+  .page-bottom-backstop {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    height: calc(88px + env(safe-area-inset-bottom, 0px));
+    background: var(--bg-deep);
+    z-index: 1;
+    pointer-events: none;
+    transition: background var(--t-bg);
   }
   .visit-head {
     max-width: 1200px; margin: 0 auto 56px;
@@ -1901,7 +1924,7 @@
   .visit-week .hours-grid .closed { opacity: .35; }
   .visit-week .hours-grid .today { color: var(--accent); font-weight: 500; transition: color var(--t-bg); }
   @media (max-width: 900px) {
-    .visit { padding: 60px 20px 80px; }
+    .visit { padding: 60px 20px 0; }
     .visit-grid { grid-template-columns: 1fr; gap: 20px; }
     .visit-card { padding: 22px 20px; gap: 18px; }
     /* Drop the status pill onto a new row on mobile - the previous
@@ -2662,8 +2685,42 @@
   }
 </style>
 <script src="/analytics.js" defer></script>
+<script src="/lang-toggle.js" defer></script>
+<style>
+  /* Language toggle. Inlined here because the landing does not load
+     appbar.css. Tiny fixed-position link, top-left corner, no chrome.
+     Subtle but always readable via text-shadow on varying backgrounds. */
+  .lang-toggle {
+    position: fixed;
+    top: 16px; left: 16px;
+    z-index: 9999;
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    color: rgba(255,255,255,.72);
+    text-decoration: none;
+    padding: 4px 6px;
+    transition: color .2s, background .2s;
+    text-shadow: 0 1px 4px rgba(0,0,0,.6);
+  }
+  .lang-toggle:hover { color: #fff; background: rgba(255,255,255,.08); border-radius: 4px; }
+  @media (max-width: 640px) {
+    .lang-toggle { top: 10px; left: 10px; font-size: 11px; }
+  }
+  @media print { .lang-toggle { display: none; } }
+</style>
 </head>
 <body>
+
+<!-- Static language toggle, hardcoded for max reliability (no JS race,
+     no script-load dependency). Mirrors the same markup the JS would
+     have injected on every other page. -->
+<a class="lang-toggle" href="/zh/" hreflang="zh-Hans-MY" aria-label="切换至中文">中</a>
+
+<!-- Solid backstop strip that sits under the fixed appbar so the
+     cocktail bg image cannot bleed through the body padding-bottom. -->
+<div class="page-bottom-backstop" aria-hidden="true"></div>
 
 <!-- both state-layers (background photos + scrims + patterns) -->
 <div class="state-layer layer-sol">
@@ -3241,6 +3298,132 @@
 </section>
 
 <!-- ─────────────────────────────────────────────────────────────
+     COCKTAIL OF THE DAY - rotates daily based on day-of-year.
+     Pure JS, no backend. Pulls from a curated list of named drinks.
+     ───────────────────────────────────────────────────────────── -->
+<section class="cotd" id="cotd" aria-label="Cocktail of the day">
+  <style>
+    .cotd { padding: 60px var(--gutter) 30px; position: relative; z-index: 5; color: var(--paper); }
+    .cotd-inner {
+      max-width: 760px; margin: 0 auto;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: 28px 30px;
+      display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center;
+    }
+    @media (max-width: 640px) { .cotd-inner { grid-template-columns: 1fr; padding: 22px 20px; } }
+    .cotd-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; transition: color var(--t-bg); }
+    .cotd-name { font-family: var(--serif); font-size: clamp(28px, 4vw, 42px); font-weight: 400; line-height: 1; margin: 0 0 6px; }
+    .cotd-name em { color: var(--accent); font-style: italic; transition: color var(--t-bg); }
+    .cotd-dek { font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.72); margin: 0; }
+    .cotd-cta { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; padding: 12px 20px; border-radius: 22px; background: var(--accent); color: #000; text-decoration: none; white-space: nowrap; transition: all .2s ease; align-self: center; }
+    .cotd-cta:hover { background: var(--paper); color: #000; }
+  </style>
+  <div class="cotd-inner">
+    <div>
+      <p class="cotd-eyebrow">Cocktail of the day</p>
+      <h2 class="cotd-name" id="cotdName">The <em>Negroni</em></h2>
+      <p class="cotd-dek" id="cotdDek">Gin, Campari, sweet vermouth. The most-ordered classic, stirred over a large rock with orange peel.</p>
+    </div>
+    <a class="cotd-cta" id="cotdCta" href="/cocktails/negroni/">Recipe →</a>
+  </div>
+</section>
+<script>
+  (function () {
+    var COTD = [
+      { name: "Negroni", slug: "negroni", dek: "Gin, Campari, sweet vermouth. The most-ordered classic, stirred over a large rock with orange peel." },
+      { name: "Pandan Collins", slug: "pandan-collins", dek: "Malaysian-local. Gin, pandan syrup, fresh lime, soda. Long, grassy-sweet, vegetal." },
+      { name: "Gula Melaka Old Fashioned", slug: "gula-melaka-old-fashioned", dek: "Bourbon stirred over Malaysian palm sugar with aromatic bitters. Caramel-dark." },
+      { name: "Kopi Sour", slug: "kopi-sour", dek: "Whisky, cold kopi-O, gula melaka, lemon, egg white. The Malaysian whisky sour." },
+      { name: "Calamansi Highball", slug: "calamansi-highball", dek: "Vodka or soft gin, fresh calamansi, soda. Made for hot Malaysian nights." },
+      { name: "Scented Negroni", slug: "scented-negroni", dek: "Our house signature. Negroni layered with bruised kaffir lime leaf and dark chocolate shavings." },
+      { name: "The Tesseract", slug: "tesseract", dek: "Our flagship house signature. Gin, mezcal, maraschino, Cointreau, saline and citric drops, tonic finish." },
+      { name: "Junos Sour", slug: "junos-sour", dek: "Yuzu whisky sour. Japanese whisky, fresh yuzu, honey, egg white, aromatic bitters on the foam." },
+      { name: "Pyrus Gimlet", slug: "pyrus-gimlet", dek: "Gin gimlet built around fresh pear with lime and elderflower. The friendliest gin drink on the list." },
+      { name: "Matcha Sakura", slug: "matcha-sakura", dek: "Gin with ceremonial matcha, peach, sakura blossom, lime. Green and pink in the same glass." },
+      { name: "Too Gouda To Be True", slug: "too-gouda-to-be-true", dek: "Espresso martini variant fat-washed with real young gouda cheese. The name is a wink; the drink lands." },
+      { name: "Old Fashioned", slug: "old-fashioned", dek: "Bourbon, sugar, aromatic bitters, large ice cube. The cocktail that started the whole category." },
+      { name: "Daiquiri", slug: "daiquiri", dek: "White rum, fresh lime, sugar. The bartender's test of every other cocktail." },
+      { name: "Whiskey Sour", slug: "whiskey-sour", dek: "Bourbon, lemon, sugar, egg white. The template for almost every other sour." },
+      { name: "Hemingway Daiquiri", slug: "hemingway-daiquiri", dek: "White rum, fresh lime, grapefruit, maraschino. Dry, sharp, the Daiquiri at zero sugar." },
+      { name: "French 75", slug: "french-75", dek: "Gin, lemon, sugar, champagne. The celebratory classic that always works." },
+      { name: "Aviation", slug: "aviation", dek: "Gin, lemon, maraschino, creme de violette. Pale lavender in the glass." },
+      { name: "Bee's Knees", slug: "bees-knees", dek: "Gin, lemon, honey. The Prohibition-era classic, soft and golden." },
+      { name: "Espresso Martini", slug: "espresso-martini", dek: "Vodka, kahlua, fresh espresso, sugar. Shaken hard so the crema lands clean." },
+      { name: "Penicillin", slug: "penicillin", dek: "Blended Scotch, Islay smoky modifier, lemon, honey, ginger. Smoky and warming." },
+      { name: "Hanky Panky", slug: "hanky-panky", dek: "Gin, sweet vermouth, Fernet-Branca. Created by Ada Coleman at the Savoy, around 1925." },
+      { name: "Negroni Sbagliato", slug: "negroni-sbagliato", dek: "Campari, sweet vermouth, prosecco. The Negroni's sparkling sister, lighter and lower in alcohol." },
+      { name: "Manhattan", slug: "manhattan", dek: "Rye whisky, sweet vermouth, aromatic bitters. The most considered classic of all." },
+      { name: "Boulevardier", slug: "boulevardier", dek: "Bourbon, Campari, sweet vermouth. The Negroni's bourbon cousin." },
+      { name: "Eastside", slug: "eastside", dek: "Gin, fresh lime, sugar, cucumber, mint. Modern classic, refreshing and clean." },
+      { name: "Roselle Spritz", slug: "roselle-spritz", dek: "Hibiscus syrup, fresh lime, gin, cava. Our Malaysian spritz. Deep red, long-pour." },
+      { name: "Asam Boi Margarita", slug: "asam-boi-margarita", dek: "Tequila, asam boi syrup, lime, triple sec. The Malaysian-Mexican fusion." },
+      { name: "Pandan Mojito", slug: "pandan-mojito", dek: "Rum, pandan syrup, mint, lime, soda. Our Malaysian Mojito." },
+      { name: "Smoked Old Fashioned", slug: "smoked-old-fashioned", dek: "Bourbon, demerara, bitters, applewood smoke. The viral 2010s upgrade to a 200-year-old recipe." },
+      { name: "Black Manhattan", slug: "black-manhattan", dek: "Rye, Averna amaro, Angostura, orange bitters. The 2005 SF modern classic." },
+      { name: "Sazerac", slug: "sazerac", dek: "Rye, sugar, Peychaud's bitters, absinthe rinse. The New Orleans original." },
+      { name: "Sidecar", slug: "sidecar", dek: "Cognac, Cointreau, fresh lemon. Built clean and dry." },
+      { name: "Mojito", slug: "mojito", dek: "White rum, fresh lime, sugar, mint, soda. The Cuban summer classic." },
+      { name: "Aperol Spritz", slug: "aperol-spritz", dek: "Aperol, prosecco, soda. The 3:2:1 lunch drink." },
+      { name: "Mai Tai", slug: "mai-tai", dek: "Aged rum, lime, orange curacao, orgeat. The 1944 Trader Vic original." },
+      { name: "Paloma", slug: "paloma", dek: "Tequila, fresh grapefruit, lime, soda. Mexico's favourite tequila highball." },
+      { name: "Moscow Mule", slug: "moscow-mule", dek: "Vodka, fresh lime, ginger beer, copper mug. Built tall and cold." },
+      { name: "Dark and Stormy", slug: "dark-and-stormy", dek: "Dark rum, fresh lime, ginger beer. Highball that builds itself." },
+      { name: "Pisco Sour", slug: "pisco-sour", dek: "Pisco, fresh lime, sugar, egg white, Angostura on the foam. Peruvian or Chilean classic." },
+      { name: "Bramble", slug: "bramble", dek: "Gin, lemon, sugar, creme de cassis float. The 1984 Dick Bradsell modern classic." },
+      { name: "Corpse Reviver No. 2", slug: "corpse-reviver-2", dek: "Gin, Cointreau, Lillet Blanc, lemon, dash of absinthe. The morning-after classic." },
+      { name: "Cosmopolitan", slug: "cosmopolitan", dek: "Vodka, Cointreau, cranberry, lime. Popularised in the 1990s; still works." },
+      { name: "Cuba Libre", slug: "cuba-libre", dek: "Aged rum, fresh lime, Mexican Coke. The 1900 Havana classic." },
+      { name: "Caipirinha", slug: "caipirinha", dek: "Cachaca, lime, sugar, crushed ice. Brazil's national drink." },
+      { name: "Singapore Sling", slug: "singapore-sling", dek: "Gin, brandy, cherry liqueur, Cointreau, Benedictine, lime, pineapple, grenadine, Angostura. The Raffles classic." },
+      { name: "Ramos Gin Fizz", slug: "ramos-gin-fizz", dek: "Gin, lemon, lime, cream, egg white, orange flower water, soda. The 1888 New Orleans foam-monster." },
+      { name: "Tommy's Margarita", slug: "tommys-margarita", dek: "Tequila, fresh lime, agave nectar. No triple sec, no salt rim. The bartender's Margarita." },
+      { name: "Last Word", slug: "last-word", dek: "Equal parts gin, green Chartreuse, maraschino, lime. Pre-Prohibition Detroit." },
+      { name: "Pegu Club", slug: "pegu-club", dek: "Gin, orange curacao, lime, Angostura and orange bitters. 1920s Rangoon classic." },
+      { name: "Martini", slug: "martini", dek: "Gin, dry vermouth, lemon twist or olive. The cleanest classic." },
+      { name: "Vesper", slug: "vesper", dek: "Gin, vodka, Lillet Blanc. The Bond cocktail, from Casino Royale 1953." },
+      { name: "Pina Colada", slug: "pina-colada", dek: "White rum, coconut cream, pineapple juice. Puerto Rico, 1954." },
+      { name: "French Connection", slug: "french-connection", dek: "Cognac, amaretto, large ice cube. The 1970s after-dinner classic." },
+      { name: "New York Sour", slug: "new-york-sour", dek: "Bourbon, lemon, sugar, red wine float. The layered classic." },
+      { name: "Blood and Sand", slug: "blood-and-sand", dek: "Scotch, Cherry Heering, sweet vermouth, fresh orange. 1922 Valentino tribute." },
+      { name: "Mary Pickford", slug: "mary-pickford", dek: "White rum, pineapple, grenadine, maraschino. 1920s Havana classic." },
+      { name: "Rusty Nail", slug: "rusty-nail", dek: "Scotch, Drambuie. 1960s Rat Pack favourite, served over a big rock." },
+      { name: "Rob Roy", slug: "rob-roy", dek: "Scotch, sweet vermouth, Angostura. The Manhattan's Scottish cousin." },
+      { name: "Jungle Bird", slug: "jungle-bird", dek: "Dark rum, Campari, pineapple, lime. The 1978 KL Hilton tiki-bitter classic." },
+      { name: "Lemongrass Gimlet", slug: "lemongrass-gimlet", dek: "Gin, lemongrass cordial, lime. Our Southeast Asian Gimlet." },
+      { name: "White Negroni", slug: "white-negroni", dek: "Gin, Suze, Lillet Blanc. The 2001 modern classic; lighter, drier." },
+      { name: "Italian Job", slug: "italian-job", dek: "Campari, Ibarra coffee, white vermouth, espresso liqueur, grapefruit bitters. House coffee bitter." },
+      { name: "Mint To Be", slug: "mint-to-be", dek: "Espresso, dark chocolate, fresh mint, Kahlua. House signature; after-dinner closer." },
+      { name: "Pipe It Up", slug: "pipe-it-up", dek: "Espresso, fresh cold milk, Bailey's. House signature; the end-of-shift cocktail." },
+      { name: "Irish Godfather", slug: "irish-godfather", dek: "Scotch, amaretto, coffee liqueur, espresso. Rich, late-night, after-dinner." },
+      { name: "Floral Bloom", slug: "floral-bloom", dek: "Sake, gin, lavender, fresh yuzu, lime, rose petals. House signature; spring on a stem." },
+      { name: "Stone Juniper", slug: "stone-juniper", dek: "Gin, fresh peach, osmanthus, lime. House signature; stone fruit, floral nose." },
+      { name: "Local Tropic", slug: "local-tropic", dek: "Rum, fresh pandan, pineapple, coconut liqueur, lime. House signature; Malaysian tropical." },
+      { name: "Stronk", slug: "stronk", dek: "Gin, genepi, dry vermouth, absinthe rinse, elderflower, grapefruit bitters. House signature; the Martini with more conversation." },
+      { name: "Bleggnogg", slug: "bleggnogg", dek: "Espresso, whole egg, cane sugar, chilled, nutmeg. House signature, zero alcohol; an eggnog shaped like a coffee." },
+      { name: "Peach Blossom", slug: "peach-blossom", dek: "Espresso, peach, sakura, earl grey. House signature NA; drinks like dessert, weighs like a snack." },
+      { name: "Black Honey", slug: "black-honey", dek: "Espresso, pink grapefruit, smoked herbs, nectarivore honey, mango. House signature NA; smoky-bitter-tropical." },
+      { name: "Floral Mango", slug: "floral-mango", dek: "Espresso, apple flower tea, mango, osmanthus. House signature NA; the soft one." },
+      { name: "Long Island Iced Tea", slug: "long-island-iced-tea", dek: "Five base spirits, sour mix, cola float. The 1970s strong-and-cheap classic." },
+      { name: "Paper Plane", slug: "paper-plane", dek: "Bourbon, Aperol, Nonino amaro, lemon. Equal parts. 2008 modern classic." }
+    ];
+    // Deterministic pick based on day-of-year so it changes daily without backend
+    var d = new Date();
+    var start = new Date(d.getFullYear(), 0, 0);
+    var diff = (d - start) + ((start.getTimezoneOffset() - d.getTimezoneOffset()) * 60 * 1000);
+    var dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var pick = COTD[dayOfYear % COTD.length];
+    var nameEl = document.getElementById("cotdName");
+    var dekEl  = document.getElementById("cotdDek");
+    var ctaEl  = document.getElementById("cotdCta");
+    if (nameEl) nameEl.innerHTML = "The <em>" + pick.name.replace(/^The\s+/i, "") + "</em>";
+    if (dekEl) dekEl.textContent = pick.dek;
+    if (ctaEl) ctaEl.href = "/cocktails/" + pick.slug + "/";
+  })();
+</script>
+
+<!-- ─────────────────────────────────────────────────────────────
      VISIT - short, icon-heavy, two outlet cards
      ───────────────────────────────────────────────────────────── -->
 <section class="visit" id="visit">
@@ -3371,7 +3554,34 @@
     </article>
 
   </div>
+
+  <!-- Small mono footer line. Fills the visual gap between the last
+       visit card and the appbar with intentional brand content, so the
+       page never ends on a stretch of bg photo. -->
+  <p class="visit-mini-footer">
+    <span><b>two states</b> · one chemistry</span>
+    <span aria-hidden="true">·</span>
+    <span>Petaling Jaya, Malaysia</span>
+    <span aria-hidden="true">·</span>
+    <span>One of the Tatler Asia Best Bars Malaysia 2025 (#6) and 2026 (#9)</span>
+  </p>
+
 </section>
+<style>
+  .visit-mini-footer {
+    max-width: 1200px; margin: 24px auto 0; padding: 16px var(--gutter) 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+    font-family: var(--mono);
+    font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap;
+  }
+  .visit-mini-footer b { color: var(--accent); font-weight: 500; transition: color var(--t-bg); }
+  @media (max-width: 720px) {
+    .visit-mini-footer { font-size: 9px; letter-spacing: .1em; gap: 8px; padding: 14px 14px 0; }
+  }
+</style>
 </main>
 
 <!-- ─────────────────────────────────────────────────────────────
