@@ -349,7 +349,7 @@
           + 'font-size:clamp(32px,4.5vw,56px);line-height:1.02;letter-spacing:-.02em;'
           + 'margin:0 0 56px;color:var(--ink,#f0e6cf);max-width:780px;font-weight:400;}'
           + '.site-foot-lede em{color:var(--accent,#d18b3a);font-style:normal;}'
-          + '.site-foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:36px 28px;}'
+          + '.site-foot-grid{display:none;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:36px 28px;}'
           + '.site-foot-col h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;'
           + 'font-weight:600;color:var(--accent,#d18b3a);margin:0 0 14px;'
           + 'font-family:var(--mono,"JetBrains Mono",ui-monospace,monospace);}'
