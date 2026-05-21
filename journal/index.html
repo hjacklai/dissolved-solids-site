@@ -148,19 +148,34 @@
   header.journal-header {
     position: sticky; top: 0; z-index: 50;
     padding: 18px var(--gutter);
-    display: flex; justify-content: center;
+    display: grid; grid-template-columns: 1fr auto 1fr;
     align-items: center; gap: 24px;
     background: linear-gradient(180deg, rgba(26,10,34,.94) 0%, rgba(26,10,34,.55) 70%, transparent 100%);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
   .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--paper); }
+  .brand-left { justify-self: start; }
+  .brand-right { justify-self: end; }
+  .brand-center {
+    justify-self: center;
+    font-family: var(--serif);
+    font-size: 22px;
+    letter-spacing: -.01em;
+    color: var(--paper);
+    text-decoration: none;
+    transition: opacity .2s ease;
+  }
+  .brand-center em { color: var(--accent); font-style: italic; }
+  .brand-center:hover { opacity: .85; }
   .brand .mark {
-    width: 36px; height: 36px;
+    width: 40px; height: 40px;
     object-fit: contain;
     display: block;
     filter: drop-shadow(0 0 8px rgba(240, 230, 207, .14));
+    transition: transform .2s ease, filter .2s ease;
   }
+  .brand:hover .mark { transform: scale(1.06); filter: drop-shadow(0 0 14px rgba(240, 230, 207, .26)); }
   .brand .stack { display: flex; flex-direction: column; gap: 4px; line-height: 1; }
   .brand .wordmark { font-family: var(--serif); font-size: 19px; letter-spacing: -.01em; }
   .brand .wordmark .sep {
@@ -720,13 +735,14 @@
   /* ─────────────────── responsive: small mobile ─────────────────── */
   @media (max-width: 720px) {
     header.journal-header {
-      grid-template-columns: 1fr auto;
-      gap: 14px; padding: 14px 20px;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 12px; padding: 14px 16px;
     }
     .header-right, nav.journal-nav-row { display: none; }
     .brand .tagline { display: none; }
     .brand .wordmark { font-size: 17px; }
-    .brand .mark { width: 30px; height: 30px; font-size: 16px; }
+    .brand .mark { width: 32px; height: 32px; font-size: 16px; }
+    .brand-center { font-size: 17px; }
 
     .hero { padding: 32px 20px 0; }
     .hero .kicker { font-size: 10px; margin-bottom: 14px; }
@@ -796,11 +812,12 @@
 <body class="journal-body" data-layout="radial">
 
 <header class="journal-header">
-  <a class="brand" href="/" aria-label="Dissolved Solids and Soluble Solids - home">
-    <img class="mark" src="/photos/ds-logo.png" alt="" width="34" height="34" />
-    <span class="stack">
-      <span class="tagline">the journal</span>
-    </span>
+  <a class="brand brand-left" href="/dissolvedsolids/" aria-label="Dissolved Solids - Damansara Kim">
+    <img class="mark" src="/photos/ds-logo.png" alt="Dissolved Solids" width="40" height="40" />
+  </a>
+  <a class="brand-center" href="/journal/" aria-label="The Journal home">The <em>Journal</em></a>
+  <a class="brand brand-right" href="/solublesolids/" aria-label="Soluble Solids - SS2 Petaling Jaya">
+    <img class="mark" src="/photos/ss-logo.svg" alt="Soluble Solids" width="40" height="40" />
   </a>
 </header>
 
