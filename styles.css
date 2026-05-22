@@ -791,182 +791,6 @@ a.label:hover { opacity: .8; }
 }
 
 /* ====================================================================
-   Signature feature - The Tesseract card on bar pages
-   ==================================================================== */
-.signature-feature {
-  padding: 56px var(--pad-x) 48px;
-  border-top: 1px solid var(--rule);
-  text-align: center;
-  background: color-mix(in srgb, var(--bg) 88%, var(--fg) 12%);
-  transition: background .35s ease, border-color .35s ease;
-  position: relative;
-  overflow: hidden;
-}
-.signature-feature::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--accent) 12%, transparent) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, color-mix(in srgb, var(--accent) 8%, transparent) 0%, transparent 55%);
-  pointer-events: none;
-  opacity: .8;
-}
-.signature-feature-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 720px;
-  margin: 0 auto;
-}
-.signature-feature-eyebrow {
-  display: inline-block;
-  font-family: var(--mono, 'JetBrains Mono', monospace);
-  font-size: 10px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  opacity: .65;
-  margin-bottom: 14px;
-  color: var(--accent);
-}
-.signature-feature-h {
-  font-family: var(--serif, 'DM Serif Display', serif);
-  font-size: clamp(36px, 5vw, 56px);
-  line-height: 1.04;
-  letter-spacing: -.02em;
-  margin: 0 0 16px;
-}
-.signature-feature-h i { font-style: italic; color: var(--accent); }
-.signature-feature-dek {
-  font-family: var(--serif, 'DM Serif Display', serif);
-  font-size: clamp(16px, 1.7vw, 19px);
-  line-height: 1.6;
-  opacity: .85;
-  margin: 0 auto 22px;
-  max-width: 62ch;
-}
-.signature-feature-meta {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  font-family: var(--mono, 'JetBrains Mono', monospace);
-  font-size: 11px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-.signature-feature-tag {
-  padding: 4px 12px;
-  border: 1px solid color-mix(in srgb, var(--fg) 30%, transparent);
-  border-radius: 999px;
-  opacity: .8;
-}
-.signature-feature-sep { opacity: .35; }
-.signature-feature-quote {
-  font-family: var(--serif, 'DM Serif Display', serif);
-  font-style: italic;
-  font-size: clamp(15px, 1.5vw, 17px);
-  line-height: 1.5;
-  opacity: .7;
-  margin: 0 auto 28px;
-  max-width: 50ch;
-  padding: 0 0 0 16px;
-  border-left: 2px solid color-mix(in srgb, var(--accent) 50%, transparent);
-  text-align: left;
-  display: inline-block;
-}
-.signature-feature-actions {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.signature-feature-btn {
-  display: inline-block;
-  padding: 12px 20px;
-  border: 1px solid color-mix(in srgb, var(--fg) 35%, transparent);
-  border-radius: 2px;
-  font-family: var(--mono, 'JetBrains Mono', monospace);
-  font-size: 12px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--fg);
-  transition: all .18s ease;
-}
-.signature-feature-btn:hover {
-  background: color-mix(in srgb, var(--fg) 8%, transparent);
-  border-color: var(--fg);
-}
-.signature-feature-btn-primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--paper, #fff);
-}
-.signature-feature-btn-primary:hover {
-  opacity: .9;
-  background: var(--accent);
-}
-@media (max-width: 639px) {
-  .signature-feature { padding: 42px var(--pad-x) 36px; }
-  .signature-feature-quote { font-size: 14px; max-width: none; }
-  .signature-feature-actions { flex-direction: column; }
-  .signature-feature-btn { width: 100%; text-align: center; }
-}
-
-/* ====================================================================
-   Press strip - "as featured in" between hero and gallery
-   ==================================================================== */
-.press-strip {
-  padding: 28px var(--pad-x) 32px;
-  border-top: 1px solid var(--rule);
-  text-align: center;
-  background: color-mix(in srgb, var(--bg) 92%, var(--fg) 8%);
-  transition: background .35s ease, border-color .35s ease;
-}
-.press-strip-label {
-  font-family: var(--mono, 'JetBrains Mono', monospace);
-  font-size: 10px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  opacity: .55;
-  margin: 0 0 10px;
-}
-.press-strip-list {
-  margin: 0 auto 8px;
-  font-family: var(--serif, 'DM Serif Display', serif);
-  font-size: 15px;
-  line-height: 1.55;
-  max-width: 920px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px 10px;
-}
-.press-strip-list a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--fg) 25%, transparent);
-  padding-bottom: 1px;
-  transition: border-color .14s ease;
-}
-.press-strip-list a:hover { border-bottom-color: currentColor; }
-.press-strip-list i { font-style: italic; }
-.press-strip-list span { opacity: .35; }
-.press-strip-cta {
-  margin: 12px 0 0;
-  font-family: var(--mono, 'JetBrains Mono', monospace);
-  font-size: 11px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-.press-strip-cta a { color: inherit; opacity: .7; text-decoration: none; }
-.press-strip-cta a:hover { opacity: 1; text-decoration: underline; }
-@media (max-width: 639px) {
-  .press-strip { padding: 22px var(--pad-x) 26px; }
-  .press-strip-list { font-size: 13px; line-height: 1.45; gap: 4px 8px; }
-}
-
-/* ====================================================================
    Gallery section - drink photos
    ==================================================================== */
 .gallery {
@@ -1442,15 +1266,13 @@ a.label:hover { opacity: .8; }
   .journal-body::before { animation: none; }
 }
 
-/* Cohesive top header for every sub-page. The text wordmark has been
-   replaced by a single centred circular home button. Text inside the
-   <a class="journal-wordmark"> is collapsed visually but kept in the
-   DOM for screen readers + crawlers. */
+/* Cohesive top header for every sub-page (matches the centred
+   wordmark approach used on the landing + journal index). */
 .journal-body .journal-bar {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 14px clamp(20px, 4vw, 80px);
+  padding: 20px clamp(20px, 4vw, 80px);
   border-bottom: 1px solid var(--rule);
   background: linear-gradient(180deg, rgba(26,10,34,.94) 0%, rgba(26,10,34,.55) 70%, transparent 100%);
   backdrop-filter: blur(10px);
@@ -1458,71 +1280,28 @@ a.label:hover { opacity: .8; }
   position: sticky; top: 0; z-index: 50;
 }
 .journal-body .journal-wordmark {
-  /* Circular icon-only home button, centred, accent-glowing. */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--accent) 100%, white 14%) 0%, var(--accent) 60%, color-mix(in srgb, var(--accent) 75%, black 25%) 100%);
-  color: #fff;
-  text-decoration: none;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, .08) inset,
-    0 6px 20px color-mix(in srgb, var(--accent) 45%, transparent),
-    0 1px 0 rgba(255, 255, 255, .12) inset;
-  position: relative;
-  transition: transform .18s cubic-bezier(.4,0,.2,1), box-shadow .25s ease, filter .25s ease;
-  isolation: isolate;
+  display: inline-flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 4px;
 }
-.journal-body .journal-wordmark::before {
-  /* House icon, rendered as a masked SVG so it inherits currentColor. */
-  content: '';
-  width: 22px;
-  height: 22px;
-  background: currentColor;
-  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3 11l9-8 9 8'/><path d='M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10'/></svg>") center / contain no-repeat;
-          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3 11l9-8 9 8'/><path d='M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10'/></svg>") center / contain no-repeat;
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,.25));
+.journal-body .journal-wordmark span {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.4vw, 22px);
+  letter-spacing: -.01em;
+  color: var(--fg);
 }
-.journal-body .journal-wordmark::after {
-  /* Soft outer halo, pulses gently on hover. */
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 35%, transparent) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity .25s ease;
-  z-index: -1;
-}
-.journal-body .journal-wordmark:hover {
-  transform: translateY(-2px) scale(1.04);
-  filter: brightness(1.08);
-}
-.journal-body .journal-wordmark:hover::after { opacity: 1; }
-.journal-body .journal-wordmark:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-}
-.journal-body .journal-wordmark:active { transform: translateY(0) scale(.96); }
-/* Collapse the text children. Kept in DOM for SEO + screen readers. */
-.journal-body .journal-wordmark span,
 .journal-body .journal-wordmark em {
-  position: absolute;
-  width: 1px; height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
-/* Defensive: if atmosphere.js was loaded (e.g. by a stale browser
-   cache) hide the floating particles + music toggle on journal. */
-/* Particle dots ENABLED on journal-body now (user wants the
-   animated background vibe on every journal page). z-index 1 keeps
-   them above the body::before aurora layer but below content. */
-.journal-body .atmo-dots { display: block !important; z-index: 1; }
+/* Particle dots HIDDEN on journal-body. The atmosphere.js bubbles
+   were distracting on long-read articles; reverted to off so journal
+   pages stay clean (aurora layer still drifts in the background
+   via body::before). */
+.journal-body .atmo-dots { display: none !important; }
 .journal-eyebrow {
   display: inline-block;
   font-family: var(--mono);
@@ -1535,70 +1314,34 @@ a.label:hover { opacity: .8; }
 
 .journal-bar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 18px var(--pad-x);
+  padding: 22px var(--pad-x);
   border-bottom: 1px solid var(--rule);
   gap: 24px;
   flex-wrap: wrap;
 }
 .journal-wordmark {
-  /* Circular icon-only home button on the journal index too. */
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--accent) 100%, white 14%) 0%, var(--accent) 60%, color-mix(in srgb, var(--accent) 75%, black 25%) 100%);
-  color: #fff;
-  text-decoration: none;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, .08) inset,
-    0 6px 20px color-mix(in srgb, var(--accent) 45%, transparent),
-    0 1px 0 rgba(255, 255, 255, .12) inset;
-  position: relative;
-  transition: transform .18s cubic-bezier(.4,0,.2,1), box-shadow .25s ease, filter .25s ease;
-  isolation: isolate;
+  flex-direction: column;
+  line-height: 1;
+  color: var(--fg);
 }
-.journal-wordmark::before {
-  content: '';
-  width: 22px;
-  height: 22px;
-  background: currentColor;
-  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3 11l9-8 9 8'/><path d='M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10'/></svg>") center / contain no-repeat;
-          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3 11l9-8 9 8'/><path d='M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10'/></svg>") center / contain no-repeat;
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,.25));
+.journal-wordmark span {
+  font-family: var(--serif);
+  font-variation-settings: 'opsz' 36, 'SOFT' 70, 'WONK' 1;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -.01em;
 }
-.journal-wordmark::after {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 35%, transparent) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity .25s ease;
-  z-index: -1;
-}
-.journal-wordmark:hover {
-  transform: translateY(-2px) scale(1.04);
-  filter: brightness(1.08);
-}
-.journal-wordmark:hover::after { opacity: 1; }
-.journal-wordmark:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-}
-.journal-wordmark:active { transform: translateY(0) scale(.96); }
-/* Collapse the text children. Kept in DOM for SEO + screen readers. */
-.journal-wordmark span,
 .journal-wordmark em {
-  position: absolute;
-  width: 1px; height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-style: normal;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 5px;
 }
 
 .journal-nav {

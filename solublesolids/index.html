@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 
-<title>Soluble Solids · Cocktail Parlour in SS2, PJ</title>
-<meta name="description" content="Cocktail parlour in SS2, Petaling Jaya. No fixed list; every drink built to taste from your preferred strength, spirit, and flavour. 12 minutes from KL." />
+<title>Cocktail Bar in SS2 · Soluble Solids · Petaling Jaya, Klang Valley, KL</title>
+<meta name="description" content="Soluble Solids is a cocktail parlour in SS2, Petaling Jaya (PJ), Klang Valley. No fixed list. Every drink built to taste based on your preferred strength, base spirit and flavour profile. Twelve minutes from KL city centre. Sister bar of Dissolved Solids in Damansara Kim. WhatsApp to reserve." />
 
 <meta property="og:type" content="bar" />
 <meta property="og:title" content="Soluble Solids · SS2 · Petaling Jaya" />
@@ -60,14 +60,11 @@
     "addressCountry": "MY"
   },
   "geo": {"@type": "GeoCoordinates", "latitude": 3.1142957, "longitude": 101.6212969},
-  "hasMap": "https://maps.app.goo.gl/s4ErcoEyFyNQ9Nby7",
+  "hasMap": "https://www.google.com/maps?cid=15061360983096038527",
   "openingHoursSpecification": [
     {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "18:00", "closes": "01:00"}
   ],
   "acceptsReservations": true,
-  "award": [
-    "Sister venue to Dissolved Solids, one of the Tatler Asia Best Bars Malaysia 2025 (#6) and 2026 (#9)"
-  ],
   "areaServed": [
     {"@type": "City", "name": "Petaling Jaya"},
     {"@type": "City", "name": "Kuala Lumpur"},
@@ -82,9 +79,10 @@
   ],
   "keywords": "cocktail bar in SS2, cocktail bar in PJ, cocktail bar in Petaling Jaya, cocktail bar in Klang Valley, cocktail bar in KL, cocktail bar in Kuala Lumpur, cocktail bar in Selangor, customised cocktails SS2, SS2 cocktail parlour, infusion bar PJ, best cocktail bar PJ",
   "sameAs": [
+    "https://www.google.com/maps?cid=15061360983096038527",
+    "https://maps.google.com/?cid=15061360983096038527",
     "https://www.instagram.com/solublesolids/",
-    "https://maps.app.goo.gl/s4ErcoEyFyNQ9Nby7",
-    "https://www.google.com/maps/place/Soluble+Solids+Cocktail+Bar/data=!4m2!3m1!1s0x31cc47e96ff0271b:0x4104360352f4284b"
+    "https://maps.app.goo.gl/s4ErcoEyFyNQ9Nby7"
   ],
   "potentialAction": {
     "@type": "ReserveAction",
@@ -197,8 +195,8 @@
   header { padding: 32px var(--gutter); }
   .hero { padding: 180px var(--gutter) 80px; position: relative; }
   .gallery { padding: 160px var(--gutter) 60px; }
-  .builder { padding: 60px var(--gutter) 48px; }
-  .outlets { padding: 120px var(--gutter) 80px; }
+  .builder { padding: 60px var(--gutter) 120px; }
+  .outlets { padding: 160px var(--gutter) 160px; }
 
   /* bump base sizes */
   body { font-size: 16px; }
@@ -555,14 +553,14 @@
   }
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-    padding: 20px var(--gutter) 16px;
-    display: flex; flex-direction: column; align-items: center; gap: 14px;
+    padding: 10px var(--gutter) 8px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
     color: var(--paper);
     transition: color var(--t-bg) cubic-bezier(.7,0,.3,1);
   }
 
   .brand {
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
     color: var(--paper);
     text-align: center;
     /* Brand is now a <button> (click → scroll to top). Reset the
@@ -573,19 +571,19 @@
   .brand:hover { transform: translateY(-2px); }
   .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 4px; }
   .brand-logo {
-    width: 64px; height: 64px;
+    width: 40px; height: 40px;
     object-fit: contain;
-    filter: drop-shadow(0 0 14px rgba(255,255,255,.18));
+    filter: drop-shadow(0 0 10px rgba(255,255,255,.18));
     animation: brandPulse 4s ease-in-out infinite alternate;
   }
   @keyframes brandPulse {
-    from { filter: drop-shadow(0 0 8px rgba(255,255,255,.12)); }
-    to   { filter: drop-shadow(0 0 20px rgba(255,255,255,.30)); }
+    from { filter: drop-shadow(0 0 6px rgba(255,255,255,.12)); }
+    to   { filter: drop-shadow(0 0 14px rgba(255,255,255,.30)); }
   }
-  .brand .stack { display: flex; flex-direction: column; gap: 4px; line-height: 1; align-items: center; }
+  .brand .stack { display: flex; flex-direction: column; gap: 2px; line-height: 1; align-items: center; }
   .brand .wordmark {
     font-family: var(--serif);
-    font-size: 38px;
+    font-size: 26px;
     letter-spacing: -.015em;
     color: var(--paper);
     text-transform: lowercase;
@@ -1597,7 +1595,7 @@
     position: relative; z-index: 5;
     color: var(--paper);
     transition: color var(--t-bg);
-    padding: 60px 40px 48px;
+    padding: 60px 40px 120px;
   }
   .builder-grid {
     position: relative; z-index: 2;
@@ -1609,6 +1607,7 @@
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     overflow: hidden;
+    min-height: 640px;
   }
   .builder-left {
     padding: 60px 36px;
@@ -1836,7 +1835,7 @@
     .t-third { grid-column: span 4; grid-row: span 2; }
     .t-square{ grid-column: span 4; grid-row: span 2; }
     .quote-tile { grid-column: span 8; grid-row: span 2; }
-    .reserve, .outlets { padding: 80px var(--gutter) 56px; }
+    .reserve, .outlets { padding: 100px var(--gutter); }
   }
   @media (max-width: 900px) {
     .hero {      min-height: auto;
@@ -1872,11 +1871,11 @@
     .music-toggle .bars { height: 14px; }
     .music-toggle .bars i { width: 2.5px; }
     .music-toggle .tooltip { display: none; }
-    .reserve { padding: 80px 20px 56px; }
+    .reserve { padding: 80px 20px 110px; }
     .reserve-head h2, .outlets-head h2 { font-size: clamp(40px, 10vw, 72px); }
     .reserve-card { background: rgba(0,0,0,.35); }
     .reserve-left, .reserve-right { padding: 28px 22px; }
-    .outlets { padding: 80px 20px 56px; }
+    .outlets { padding: 80px 20px 120px; }
     .outlet { padding: 36px 22px; }
     .outlet-name { font-size: clamp(40px, 9vw, 60px); }
     .outlet-blurb { font-size: 17px; }
@@ -1885,7 +1884,7 @@
     .hours-grid { grid-template-columns: 44px 1fr; gap: 4px 12px; font-size: 11px; }
     .outlet-cta { gap: 8px; }
     .outlet-cta .b { padding: 12px 16px; font-size: 10.5px; letter-spacing: .18em; }
-    .builder { padding: 40px 20px 40px; }
+    .builder { padding: 40px 20px 100px; }
     .builder-q { font-size: clamp(38px, 8vw, 64px) !important; }
     .chips-row { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
     .chip { padding: 14px 14px !important; min-height: 88px; }
@@ -2032,7 +2031,6 @@
     }
   }
 </style>
-<script src="/analytics.js" defer></script>
 </head>
 <body>
 
@@ -2080,47 +2078,10 @@
       <span class="tagline">Two states <span>·</span> one chemistry</span>
     </div>
   </button>
-  <nav>
-    <a href="/journal/">journal</a>
-    <span class="nav-sep"></span><a href="/visit/">visit</a>
-    <span class="nav-sep"></span>
-    <a href="#reserve">reserve</a>
-    <a class="nav-cta" href="#builder">build a drink →</a>
-  </nav>
-  <div class="panel" id="statePanel" role="button" aria-label="flip state">
-    <div class="panel-header">
-      <span class="hl"><span class="led"></span>chemistry · live readout</span>
-      <div class="panel-wave"><i></i><i></i><i></i><i></i><i></i></div>
-    </div>
-    <div class="panel-award">
-      <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.59 6.91L22 9.27l-5.5 4.73L18.18 22 12 18.27 5.82 22 7.5 14 2 9.27l7.41-.36L12 2z"/></svg>
-      <span>tatler asia · <b>top 20 bars</b> · 25/26</span>
-    </div>
-    <div class="panel-row">
-      <span class="k">state</span>
-      <span class="v"><em><span class="for-sol">soluble</span><span class="for-dis">dissolved</span></em> solids</span>
-    </div>
-    <div class="panel-row">
-      <span class="k">venue</span>
-      <span class="v"><span class="for-sol">02 · ss2 pj</span><span class="for-dis">01 · damansara kim pj</span></span>
-    </div>
-    <div class="panel-row">
-      <span class="k">method</span>
-      <span class="v"><span class="for-sol">infusion</span><span class="for-dis">dissolution</span></span>
-    </div>
-    <div class="panel-row">
-      <span class="k">hours</span>
-      <span class="v"><span class="for-sol">wed to sun · 18:00 to 01:00</span><span class="for-dis">tue to sun · 15:00 to 01:00</span></span>
-    </div>
-    <div class="panel-clock">
-      <span>kuala lumpur</span>
-      <span class="time" id="panelClock">-<span class="colon">:</span>-<span class="colon">:</span>-</span>
-    </div>
-    <div class="panel-toggle">
-      <span><span class="for-sol">→ flip to dissolved</span><span class="for-dis">← flip to soluble</span></span>
-      <span class="switch"></span>
-    </div>
-  </div>
+  <!-- Top-right instrument panel + nav removed to match the homepage
+       layout. The Dis/Sol toggle still lives in the bottom appbar and
+       the rest of the header info (hours, state) is already inside the
+       hero/visit blocks below. -->
 </header>
 
 <!-- tatler seal moved inside hero -->
@@ -2180,46 +2141,6 @@
           <text class="seal-center" text-anchor="middle" y="50">asia 25/26</text>
         </g>
       </svg>
-    </div>
-  </section>
-
-  <section class="press-strip" aria-label="Press and recognition">
-    <p class="press-strip-label">As featured in</p>
-    <p class="press-strip-list">
-      <a href="https://www.tatlerasia.com/dining/drinks/best-20-bars-malaysia-2026" target="_blank" rel="noopener">Tatler Asia <i>Best 20 Bars 2026</i></a>
-      <span aria-hidden="true">·</span>
-      <a href="https://www.tatlerasia.com/dining/drinks/best-20-bars-malaysia-2025" target="_blank" rel="noopener">Tatler Asia <i>Best 20 Bars 2025</i></a>
-      <span aria-hidden="true">·</span>
-      <a href="https://www.optionstheedge.com/topic/food/find-bold-flavour-forward-cocktails-dissolved-solids-damansara-kim" target="_blank" rel="noopener">Options, <i>The Edge Malaysia</i></a>
-      <span aria-hidden="true">·</span>
-      <a href="https://www.eatdrinkkl.com/posts/spotlight/soluble-solids-ss2-petaling-jaya" target="_blank" rel="noopener"><i>Eat Drink KL</i></a>
-      <span aria-hidden="true">·</span>
-      <a href="https://klfoodie.com/12-best-cocktail-bars-you-must-try-in-kl-pj-2025-guide/" target="_blank" rel="noopener"><i>KL Foodie</i></a>
-      <span aria-hidden="true">·</span>
-      <a href="https://monomalaysia.com/best-cocktail-bars-in-the-klang-valley/" target="_blank" rel="noopener"><i>MONO Malaysia</i></a>
-    </p>
-    <p class="press-strip-cta"><a href="/press/">See all press &amp; quotes →</a></p>
-  </section>
-
-  <section class="signature-feature" aria-label="House signature cocktail">
-    <div class="signature-feature-inner">
-      <span class="signature-feature-eyebrow">Our house signature</span>
-      <h2 class="signature-feature-h">The <i>Tesseract</i>.</h2>
-      <p class="signature-feature-dek">Simple presentation, four flavour dimensions: smoky, fruity, savoury, velvet. Gin, mezcal, maraschino, Cointreau, saline and citric drops, a splash of tonic. Stirred long, served in a frozen coupe. Built to evolve as you sip it.</p>
-      <div class="signature-feature-meta">
-        <span class="signature-feature-tag">Smoky</span>
-        <span class="signature-feature-sep" aria-hidden="true">·</span>
-        <span class="signature-feature-tag">Fruity</span>
-        <span class="signature-feature-sep" aria-hidden="true">·</span>
-        <span class="signature-feature-tag">Savoury</span>
-        <span class="signature-feature-sep" aria-hidden="true">·</span>
-        <span class="signature-feature-tag">Velvet</span>
-      </div>
-      <p class="signature-feature-quote">A four-dimensional analogue of a cube. The presentation is simple. The flavour is not.</p>
-      <div class="signature-feature-actions">
-        <a class="signature-feature-btn" href="/cocktails/tesseract/">Read the recipe and notes →</a>
-        <a class="signature-feature-btn signature-feature-btn-primary" href="/journal/the-tesseract-philosophy/">The Tesseract philosophy →</a>
-      </div>
     </div>
   </section>
 
@@ -2376,7 +2297,7 @@
   </div>
 
   <p class="builder-intro">
-    <b>Build your own drink and we'll mix it.</b> Five quick taps on mood, spirit, flavour, strength, and occasion. The builder routes to classics like negroni sbagliato and whiskey smash, plus our local picks: pandan collins, gula melaka old fashioned, calamansi highball, kopi sour. WhatsApp the result to the bar and walk in.
+    <b>Build your own drink and we'll mix it.</b> The builder routes to classics like negroni sbagliato and whiskey smash, plus our local picks: pandan collins, gula melaka old fashioned, calamansi highball, kopi sour. WhatsApp the result to the bar and walk in.
   </p>
 
   <!-- SVG icon sprite - referenced by every chip via <use href="#icon-xxx"> -->
@@ -2419,23 +2340,6 @@
       <symbol id="icon-nutty" viewBox="0 0 24 24"><path d="M12 4 c -4 0 -7 3 -7 8 c 0 5 3 8 7 8 c 4 0 7 -3 7 -8 c 0 -5 -3 -8 -7 -8 Z"/><path d="M12 4 V20"/></symbol>
       <symbol id="icon-brunch" viewBox="0 0 24 24"><circle cx="9" cy="11" r="3"/><path d="M9 11 a1.4 1.4 0 0 0 0 -2.5"/><path d="M14 9 H20 M14 12 H20 M14 15 H20"/></symbol>
       <symbol id="icon-late-night" viewBox="0 0 24 24"><path d="M19 14 a8 8 0 1 1 -9 -10 a6 6 0 0 0 9 10 Z"/><circle cx="6" cy="6" r=".7" fill="currentColor" stroke="none"/><circle cx="18" cy="4" r=".6" fill="currentColor" stroke="none"/><circle cx="20" cy="9" r=".5" fill="currentColor" stroke="none"/></symbol>
-      <!-- Round 17 icons: new chips -->
-      <symbol id="icon-contemplative" viewBox="0 0 24 24"><path d="M5 4 H17 a2 2 0 0 1 2 2 V18 a2 2 0 0 1 -2 2 H5 Z"/><path d="M9 8 H15 M9 12 H15 M9 16 H13"/></symbol>
-      <symbol id="icon-romantic" viewBox="0 0 24 24"><path d="M12 19 c-7 -5 -7 -10 -4 -12 c2 -1 4 0 4 2 c0 -2 2 -3 4 -2 c3 2 3 7 -4 12 Z"/></symbol>
-      <symbol id="icon-social" viewBox="0 0 24 24"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="9" r="2.5"/><path d="M3 19 c1 -3 4 -4 5 -4 c1 0 4 1 5 4"/><path d="M11 19 c1 -3 4 -4 5 -4 c1 0 4 1 5 4"/></symbol>
-      <symbol id="icon-focused" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></symbol>
-      <symbol id="icon-umami" viewBox="0 0 24 24"><path d="M5 12 H19 V14 a4 4 0 0 1 -4 4 H9 a4 4 0 0 1 -4 -4 Z"/><path d="M9 8 q1 -2 0 -4 M12 8 q1 -2 0 -4 M15 8 q1 -2 0 -4"/></symbol>
-      <symbol id="icon-fruity" viewBox="0 0 24 24"><circle cx="10" cy="13" r="2"/><circle cx="14" cy="13" r="2"/><circle cx="12" cy="17" r="2"/><circle cx="8" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/><path d="M12 11 q1 -3 3 -5"/></symbol>
-      <symbol id="icon-earthy" viewBox="0 0 24 24"><path d="M12 4 V20"/><path d="M12 10 q-3 -1 -5 -4 M12 13 q3 -1 5 -4 M12 16 q-3 -1 -5 -3"/><path d="M5 20 H19"/></symbol>
-      <symbol id="icon-salty" viewBox="0 0 24 24"><path d="M8 6 H16 V10 H8 Z"/><path d="M8 10 V19 a2 2 0 0 0 2 2 H14 a2 2 0 0 0 2 -2 V10"/><circle cx="10" cy="8" r=".4" fill="currentColor" stroke="none"/><circle cx="12" cy="8" r=".4" fill="currentColor" stroke="none"/><circle cx="14" cy="8" r=".4" fill="currentColor" stroke="none"/></symbol>
-      <symbol id="icon-sake" viewBox="0 0 24 24"><path d="M9 4 H15 V7 L17 9 V18 a2 2 0 0 1 -2 2 H9 a2 2 0 0 1 -2 -2 V9 L9 7 Z"/><path d="M9 11 H15"/></symbol>
-      <symbol id="icon-champagne" viewBox="0 0 24 24"><path d="M9 4 H15 L14 12 a2 2 0 0 1 -4 0 Z"/><path d="M12 14 V20 M9 20 H15"/><circle cx="11" cy="9" r=".5" fill="currentColor" stroke="none"/><circle cx="13" cy="7" r=".4" fill="currentColor" stroke="none"/></symbol>
-      <symbol id="icon-low-abv" viewBox="0 0 24 24"><path d="M7 5 H17 V14 a5 5 0 0 1 -10 0 Z"/><path d="M7 11 a5 5 0 0 0 10 0"/><path d="M12 14 V20 M9 20 H15"/></symbol>
-      <symbol id="icon-na" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M6 6 L18 18"/><path d="M10 14 q2 -4 2 -6"/></symbol>
-      <symbol id="icon-zero-proof" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><text x="12" y="15" text-anchor="middle" font-size="9" font-family="monospace" font-weight="bold" fill="currentColor" stroke="none">0%</text></symbol>
-      <symbol id="icon-business" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="1"/><path d="M9 8 V5 a1 1 0 0 1 1 -1 H14 a1 1 0 0 1 1 1 V8"/><path d="M4 13 H20"/></symbol>
-      <symbol id="icon-dessert" viewBox="0 0 24 24"><path d="M8 11 Q12 5 16 11 Z"/><path d="M7 11 H17 L15 19 a1 1 0 0 1 -1 1 H10 a1 1 0 0 1 -1 -1 Z"/></symbol>
-      <symbol id="icon-picnic" viewBox="0 0 24 24"><path d="M5 11 H19 L17 18 a1 1 0 0 1 -1 1 H8 a1 1 0 0 1 -1 -1 Z"/><path d="M7 11 q5 -4 10 0"/><path d="M5 11 H19"/></symbol>
     </defs>
   </svg>
 
@@ -2519,30 +2423,6 @@
             <span class="chip-sub">put on a small wink</span>
             <span class="chip-tick" aria-hidden="true">✓</span>
           </button>
-          <button class="builder-chip" data-val="contemplative" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-contemplative"/></svg>
-            <span class="chip-label">Contemplative</span>
-            <span class="chip-sub">long sit, longer thought</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="romantic" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-romantic"/></svg>
-            <span class="chip-label">Romantic</span>
-            <span class="chip-sub">candlelight territory</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="social" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-social"/></svg>
-            <span class="chip-label">Social</span>
-            <span class="chip-sub">we are not drinking alone</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="focused" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-focused"/></svg>
-            <span class="chip-label">Focused</span>
-            <span class="chip-sub">decisive, no fluff</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
         </div>
         <button type="button" class="builder-continue" data-for="mood" hidden>
           Continue <span class="continue-count">1 of 2</span> →
@@ -2593,30 +2473,6 @@
             <svg class="chip-icon" aria-hidden="true"><use href="#icon-brandy"/></svg>
             <span class="chip-label">Brandy</span>
             <span class="chip-sub">the grown-up's grown-up choice</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="sake" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-sake"/></svg>
-            <span class="chip-label">Sake</span>
-            <span class="chip-sub">rice, umami, gentle</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="champagne" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-champagne"/></svg>
-            <span class="chip-label">Sparkling</span>
-            <span class="chip-sub">cava, prosecco, champagne</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="low-abv" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-low-abv"/></svg>
-            <span class="chip-label">Low-ABV</span>
-            <span class="chip-sub">vermouth or amaro led</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="na" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-na"/></svg>
-            <span class="chip-label">Zero-Proof</span>
-            <span class="chip-sub">no alcohol, still a real drink</span>
             <span class="chip-tick" aria-hidden="true">✓</span>
           </button>
           <button class="builder-chip" data-val="surprise" aria-pressed="false">
@@ -2693,30 +2549,6 @@
             <span class="chip-sub">almond, toffee, toasted</span>
             <span class="chip-tick" aria-hidden="true">✓</span>
           </button>
-          <button class="builder-chip" data-val="umami" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-umami"/></svg>
-            <span class="chip-label">Umami</span>
-            <span class="chip-sub">savoury, broth-deep, glutamate</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="fruity" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-fruity"/></svg>
-            <span class="chip-label">Fruity</span>
-            <span class="chip-sub">orchard-forward, juicy</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="earthy" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-earthy"/></svg>
-            <span class="chip-label">Earthy</span>
-            <span class="chip-sub">tamarind, root, mineral</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="salty" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-salty"/></svg>
-            <span class="chip-label">Salty</span>
-            <span class="chip-sub">sea-air, the rim of the glass</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
         </div>
         <button type="button" class="builder-continue" data-for="profile" hidden>
           Continue <span class="continue-count">1 of 2</span> →
@@ -2729,12 +2561,6 @@
         <span class="builder-q-eyebrow">04 / 05 · strength</span>
         <h2 class="builder-q-title">How strong?</h2>
         <div class="builder-chips" data-key="strength">
-          <button class="builder-chip" data-val="zero-proof" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-zero-proof"/></svg>
-            <span class="chip-label">Zero-Proof</span>
-            <span class="chip-sub">no alcohol, full body</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
           <button class="builder-chip" data-val="light" aria-pressed="false">
             <svg class="chip-icon" aria-hidden="true"><use href="#icon-light"/></svg>
             <span class="chip-label">Light</span>
@@ -2808,24 +2634,6 @@
             <svg class="chip-icon" aria-hidden="true"><use href="#icon-late-night"/></svg>
             <span class="chip-label">Late-Night</span>
             <span class="chip-sub">room is empty, room is yours</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="business" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-business"/></svg>
-            <span class="chip-label">Business</span>
-            <span class="chip-sub">deal-closing, one-glass</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="dessert" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-dessert"/></svg>
-            <span class="chip-label">Dessert</span>
-            <span class="chip-sub">replaces the sweet course</span>
-            <span class="chip-tick" aria-hidden="true">✓</span>
-          </button>
-          <button class="builder-chip" data-val="picnic" aria-pressed="false">
-            <svg class="chip-icon" aria-hidden="true"><use href="#icon-picnic"/></svg>
-            <span class="chip-label">Picnic</span>
-            <span class="chip-sub">open-air, blanket-spread</span>
             <span class="chip-tick" aria-hidden="true">✓</span>
           </button>
         </div>
@@ -3269,14 +3077,19 @@
   // State toggle. /solublesolids/ represents the SS outlet - flipping
   // state has to NAVIGATE to /dissolvedsolids/ so the URL always matches
   // what the user sees. (Used to flip data-state in place, which created
-  // a URL/content mismatch.)
+  // a URL/content mismatch.) The instrument panel that used to host the
+  // click target has been removed to match the homepage layout; the
+  // appbar Dis/Sol toggle now drives this behaviour, so the listener
+  // here is optional and only binds if the panel still exists.
   const OTHER_URL = '/dissolvedsolids/';
   const panel = document.getElementById('statePanel');
-  panel.addEventListener('click', () => {
-    playScratch();
-    document.body.classList.add('dissolving');
-    setTimeout(() => { location.href = OTHER_URL; }, 220);
-  });
+  if (panel) {
+    panel.addEventListener('click', () => {
+      playScratch();
+      document.body.classList.add('dissolving');
+      setTimeout(() => { location.href = OTHER_URL; }, 220);
+    });
+  }
 
   // Brand wordmark click → scroll page to top.
   const brandBtn = document.getElementById('brandToTop');

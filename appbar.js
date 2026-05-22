@@ -8,25 +8,29 @@
  *     Dis/Sol segmented state toggle
  *   - Scrolling live-readout ticker (state, venue, method, hours, KL time)
  *   - Synthesised radio-tuning SFX on toggle flip
+ *   - SEO-rich site footer with the full internal-link graph (mounted
+ *     before the appbar; skipped if the page already inlines one). This
+ *     gives every sub-page outbound links to all the location landing
+ *     pages, the bar pages, the journal, and the cocktail index. It is
+ *     the single biggest SEO lever for the whole site, see
+ *     SEO_CHECKLIST.md.
  *
- * The landing page index.html currently has the appbar inlined. This
- * script is for sub-pages so navigation stays consistent across the site.
+ * The landing page index.html currently has the appbar AND footer
+ * inlined. This script is for sub-pages so navigation stays
+ * consistent across the site.
  */
-// ─── Language toggle loader ────────────────────────────────────
-// Loads BEFORE the early-return guard below so it runs on every page,
-// including the landing (which has its own inline appbar). The toggle
-// itself lives in /lang-toggle.js.
-(function loadLangToggle() {
-  if (document.querySelector('script[data-lt-loaded]')) return;
-  var s = document.createElement('script');
-  s.src = '/lang-toggle.js';
-  s.defer = true;
-  s.dataset.ltLoaded = '1';
-  document.head.appendChild(s);
-})();
-
 (function () {
   'use strict';
+
+  // Footer mount runs even when the appbar is inlined (e.g. on the DS/SS
+  // bar pages, which inline their own appbar markup but still want the
+  // SEO footer). The appbar mount itself early-returns if one already exists.
+  mountFooter();
+
+  // Floating animated Home button - top-left of every sub-page.
+  // Skipped on the homepage itself.
+  mountHomeButton();
+
   if (document.querySelector('.appbar')) return; // already there (e.g. landing)
 
   // ─── Markup ────────────────────────────────────────────────────
@@ -215,8 +219,6 @@
     mount();
   }
 
-  // Language toggle is loaded at module top, outside this IIFE.
-
   // Auto-load journal-related.js on article pages. Saves editing every
   // article file just to add a <script> tag. The loaded script self-
   // detects whether it has work to do (looks for main.article-mount).
@@ -230,58 +232,261 @@
     document.head.appendChild(s);
   })();
 
-  // Auto-load cocktail-tools.js on cocktail recipe pages. Self-detects
-  // by looking for a Recipe schema; injects Print + Embed snippet.
-  (function loadCocktailTools() {
-    if (!/^\/cocktails\/[^/]+\/?/.test(location.pathname)) return;
-    if (document.querySelector('script[data-ct-loaded]')) return;
-    const s = document.createElement('script');
-    s.src = '/cocktail-tools.js';
-    s.defer = true;
-    s.dataset.ctLoaded = '1';
-    document.head.appendChild(s);
-  })();
+  // ─── Floating animated Home button ─────────────────────────────
+  // Auto-injected on every sub-page that loads appbar.js. Skips the
+  // homepage so we never duplicate. The breathing scale and pulse
+  // glow are subtle but noticeable enough to invite the tap.
+  function mountHomeButton() {
+    try {
+      if (!document.body) return;
+      if (document.querySelector('.home-fab')) return;
 
-  // ─── Sticky WhatsApp + Reserve floating buttons ────────────────
-  // State-aware. Inject on any sub-page that does not already define
-  // .floats (the landing page does). Mirrors the landing page floats
-  // visually; tracks the current data-state to pick the right bar.
-  (function injectStickyCtas() {
-    if (document.querySelector('.floats')) return; // landing already has them
-    var floats = document.createElement('div');
-    floats.className = 'floats';
-    floats.innerHTML = ''
-      + '<a class="float float-injected" id="injWA" href="https://wa.me/601116828651" target="_blank" rel="noopener" aria-label="WhatsApp the bar">'
-      +   '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>'
-      + '</a>'
-      + '<a class="float float-injected alt" id="injReserve" href="/#reserve" aria-label="Reserve a table">'
-      +   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>'
-      + '</a>';
-    document.body.appendChild(floats);
-    // Inject minimal styles if styles.css's .floats rules are not in scope
-    if (!document.querySelector('style[data-floats-injected]')) {
-      var st = document.createElement('style');
-      st.dataset.floatsInjected = '1';
-      st.textContent = ''
-        + '.floats { position: fixed; right: 18px; bottom: 110px; display: flex; flex-direction: column; gap: 12px; z-index: 50; }'
-        + '@media (max-width: 640px) { .floats { right: 12px; bottom: 100px; gap: 10px; } }'
-        + '.float-injected { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: #25d366; color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.35); transition: transform .18s ease, box-shadow .18s ease; }'
-        + '.float-injected:hover { transform: scale(1.08); box-shadow: 0 10px 26px rgba(0,0,0,.5); }'
-        + '.float-injected.alt { background: #ff3b81; }'
-        + '.float-injected svg { width: 26px; height: 26px; }'
-        + '@media (max-width: 640px) { .float-injected { width: 46px; height: 46px; } .float-injected svg { width: 22px; height: 22px; } }';
-      document.head.appendChild(st);
+      // Don't show on the homepage itself, or on the two bar pages
+      // (DS / SS) which are themselves landing-level pages styled to
+      // match the homepage and have the bottom appbar for navigation.
+      const p = (location.pathname || '/').replace(/\/index\.html?$/i, '/');
+      if (p === '/' || p === '') return;
+      if (p === '/dissolvedsolids/' || p === '/solublesolids/') return;
+
+      if (!document.getElementById('home-fab-styles')) {
+        const css = ''
+          + '.home-fab{position:fixed;top:max(16px,env(safe-area-inset-top,16px));'
+          + 'left:max(16px,env(safe-area-inset-left,16px));z-index:2147483000;'
+          + 'width:54px;height:54px;border-radius:50%;display:flex;'
+          + 'align-items:center;justify-content:center;text-decoration:none;'
+          + 'background:var(--accent,#d18b3a);color:#fff;'
+          + 'box-shadow:0 4px 18px rgba(0,0,0,.28),0 0 0 0 rgba(209,139,58,.55);'
+          + 'animation:home-fab-breathe 2.6s ease-in-out infinite,'
+          +           'home-fab-pulse 2.6s ease-out infinite;'
+          + 'transition:transform 200ms ease,box-shadow 200ms ease;'
+          + 'will-change:transform,box-shadow;}'
+          + '.home-fab svg{width:24px;height:24px;display:block;'
+          + 'transition:transform 200ms ease;}'
+          + '.home-fab:hover,.home-fab:focus-visible{outline:none;'
+          + 'transform:scale(1.12) translateZ(0);'
+          + 'box-shadow:0 8px 28px rgba(0,0,0,.36),0 0 0 8px rgba(209,139,58,.18);}'
+          + '.home-fab:hover svg,.home-fab:focus-visible svg{'
+          + 'transform:translateY(-1px) scale(1.04);}'
+          + '.home-fab:active{transform:scale(.94);}'
+          + '.home-fab-tip{position:absolute;left:64px;top:50%;'
+          + 'transform:translateY(-50%) translateX(-6px);'
+          + 'background:rgba(0,0,0,.78);color:#f0e6cf;'
+          + 'font-family:var(--mono,"JetBrains Mono",ui-monospace,monospace);'
+          + 'font-size:11px;letter-spacing:.22em;text-transform:uppercase;'
+          + 'padding:6px 10px;border-radius:6px;white-space:nowrap;'
+          + 'opacity:0;pointer-events:none;'
+          + 'transition:opacity 180ms ease,transform 180ms ease;}'
+          + '.home-fab:hover .home-fab-tip,'
+          + '.home-fab:focus-visible .home-fab-tip{'
+          + 'opacity:1;transform:translateY(-50%) translateX(0);}'
+          + '@keyframes home-fab-breathe{'
+          + '0%,100%{transform:scale(1) translateZ(0);}'
+          + '50%{transform:scale(1.08) translateZ(0);}}'
+          + '@keyframes home-fab-pulse{'
+          + '0%{box-shadow:0 4px 18px rgba(0,0,0,.28),'
+          +     '0 0 0 0 rgba(209,139,58,.55);}'
+          + '70%{box-shadow:0 4px 18px rgba(0,0,0,.28),'
+          +     '0 0 0 16px rgba(209,139,58,0);}'
+          + '100%{box-shadow:0 4px 18px rgba(0,0,0,.28),'
+          +     '0 0 0 0 rgba(209,139,58,0);}}'
+          + '@media (prefers-reduced-motion: reduce){'
+          + '.home-fab{animation:none;}'
+          + '.home-fab:hover{transform:scale(1.06);}}'
+          // Don't fight the bottom appbar - sit clear of the music toggle
+          // and any inline ← Home article links.
+          + '@media (max-width:520px){.home-fab{width:48px;height:48px;}'
+          + '.home-fab svg{width:22px;height:22px;}'
+          + '.home-fab-tip{display:none;}}';
+        const style = document.createElement('style');
+        style.id = 'home-fab-styles';
+        style.textContent = css;
+        document.head.appendChild(style);
+      }
+
+      const a = document.createElement('a');
+      a.className = 'home-fab';
+      a.href = '/';
+      a.setAttribute('aria-label', 'Back to home');
+      a.setAttribute('title', 'Home');
+      a.innerHTML = ''
+        + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+        +      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '
+        +      'aria-hidden="true">'
+        +   '<path d="M3 11.5 12 4l9 7.5"/>'
+        +   '<path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/>'
+        + '</svg>'
+        + '<span class="home-fab-tip">Home</span>';
+      document.body.appendChild(a);
+    } catch (e) {
+      // Home button is non-critical; never let an injection bug break the page.
     }
-    function syncWaHref() {
-      var sol = 'https://wa.me/601116828651?text=Hi%20Soluble%20Solids!%20I%27d%20like%20to%20visit%20SS2.';
-      var dis = 'https://wa.me/601140087607?text=Hi%20Dissolved%20Solids!%20I%27d%20like%20to%20visit%20Damansara%20Kim.';
-      var state = document.documentElement.dataset.state;
-      var wa = document.getElementById('injWA');
-      if (wa) wa.href = (state === 'dissolved' ? dis : sol);
+  }
+
+  // ─── Site footer (SEO internal-link graph) ─────────────────────
+  // Injects the same comprehensive footer as the homepage onto every
+  // sub-page so PageRank flows from the most-authoritative page down
+  // to all 80+ pages. Skipped if a page already inlines its own
+  // .site-foot (e.g. the homepage).
+  function mountFooter() {
+    try {
+      if (!document.body) return;
+      if (document.querySelector('.site-foot')) return;
+
+      // Self-contained styles. Uses var(--bg-deep) etc when defined
+      // (DS/SS bar pages) and falls back to a dark dock on article and
+      // location pages that don't define those tokens.
+      if (!document.getElementById('site-foot-styles')) {
+        const css = ''
+          + '.site-foot{padding:80px clamp(28px,6.5vw,180px) 160px;'
+          + 'background:var(--bg-deep,#08080a);color:var(--ink,#f0e6cf);'
+          + 'font-family:var(--mono,"JetBrains Mono",ui-monospace,monospace);'
+          + 'border-top:1px solid rgba(240,230,207,0.12);}'
+          + '.site-foot *{box-sizing:border-box;}'
+          + '.site-foot-inner{max-width:var(--maxw,1440px);margin:0 auto;}'
+          + '.site-foot-kicker{font-size:11px;letter-spacing:.26em;'
+          + 'text-transform:uppercase;color:rgba(240,230,207,.6);margin:0 0 8px;}'
+          + '.site-foot-lede{font-family:var(--serif,"DM Serif Display","Times New Roman",serif);'
+          + 'font-size:clamp(32px,4.5vw,56px);line-height:1.02;letter-spacing:-.02em;'
+          + 'margin:0 0 56px;color:var(--ink,#f0e6cf);max-width:780px;font-weight:400;}'
+          + '.site-foot-lede em{color:var(--accent,#d18b3a);font-style:normal;}'
+          + '.site-foot-grid{display:none;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:36px 28px;}'
+          + '.site-foot-col h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;'
+          + 'font-weight:600;color:var(--accent,#d18b3a);margin:0 0 14px;'
+          + 'font-family:var(--mono,"JetBrains Mono",ui-monospace,monospace);}'
+          + '.site-foot-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}'
+          + '.site-foot-col a{color:rgba(240,230,207,.82);text-decoration:none;font-size:14px;'
+          + 'line-height:1.45;border-bottom:1px solid transparent;transition:color 160ms,border-color 160ms;}'
+          + '.site-foot-col a:hover,.site-foot-col a:focus-visible{color:var(--ink,#f0e6cf);'
+          + 'border-bottom-color:rgba(209,139,58,.7);}'
+          + '.site-foot-meta{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:56px;'
+          + 'padding-top:28px;border-top:1px solid rgba(240,230,207,.1);font-size:11px;'
+          + 'letter-spacing:.12em;text-transform:uppercase;color:rgba(240,230,207,.55);}'
+          + '.site-foot-meta a{color:inherit;text-decoration:none;'
+          + 'border-bottom:1px dotted rgba(240,230,207,.3);}'
+          + '.site-foot-meta a:hover{color:var(--ink,#f0e6cf);}';
+        const style = document.createElement('style');
+        style.id = 'site-foot-styles';
+        style.textContent = css;
+        document.head.appendChild(style);
+      }
+
+      // Link clusters. Mirror what the homepage already inlines so AI
+      // crawlers see a consistent internal-link graph.
+      const cols = [
+        ['Our bars', [
+          ['/dissolvedsolids/', 'Dissolved Solids · Damansara Kim'],
+          ['/solublesolids/',   'Soluble Solids · SS2'],
+          ['/coffee/',          'Coffee cocktail bar &amp; cafe'],
+          ['/visit/',           'Visit · hours, parking, transit'],
+          ['/reserve/',         'Reserve a table'],
+          ['/venue-hire/',      'Private venue hire'],
+          ['/snacks/',          'Snacks &amp; bar food'],
+          ['/faq/',             'FAQ']
+        ]],
+        ['Find us in', [
+          ['/find-a-cocktail-bar/',       'All neighbourhoods (hub)'],
+          ['/cocktail-bars-pj/',          'Cocktail bars in PJ'],
+          ['/cocktail-bars-damansara/',   'Damansara'],
+          ['/cocktail-bars-ss2/',         'SS2'],
+          ['/cocktail-bars-ttdi/',        'TTDI'],
+          ['/cocktail-bars-mont-kiara/',  'Mont Kiara'],
+          ['/cocktail-bars-bangsar/',     'Bangsar'],
+          ['/cocktail-bars-subang/',      'Subang Jaya'],
+          ['/cocktail-bars-puchong/',     'Puchong'],
+          ['/cocktail-bars-kl/',          'Kuala Lumpur'],
+          ['/cocktail-bars-klang-valley/', 'Klang Valley (overview)']
+        ]],
+        ['More of Selangor', [
+          ['/cocktail-bars-cheras/',     'Cheras'],
+          ['/cocktail-bars-shah-alam/',  'Shah Alam'],
+          ['/cocktail-bars-cyberjaya/',  'Cyberjaya'],
+          ['/cocktail-bars-putrajaya/',  'Putrajaya'],
+          ['/cocktail-bars-kepong/',     'Kepong'],
+          ['/cocktail-bars-setapak/',    'Setapak'],
+          ['/cocktail-bars-selayang/',   'Selayang'],
+          ['/cocktail-bars-ampang/',     'Ampang']
+        ]],
+        ['Drinks & recipes', [
+          ['/cocktails/',                       'All cocktails'],
+          ['/cocktails/guide/',                 'Complete recipe guide'],
+          ['/cocktail-glossary/',               'Cocktail glossary (A–Z)'],
+          ['/cocktails/pandan-collins/',        'Pandan Collins'],
+          ['/cocktails/gula-melaka-old-fashioned/', 'Gula Melaka Old Fashioned'],
+          ['/cocktails/kopi-sour/',             'Kopi Sour'],
+          ['/cocktails/calamansi-highball/',    'Calamansi Highball'],
+          ['/cocktails/jungle-bird/',           'Jungle Bird'],
+          ['/cocktails/martini/',               'Martini'],
+          ['/cocktails/negroni/',               'Negroni']
+        ]],
+        ['The Journal', [
+          ['/journal/',                                   'Journal index'],
+          ['/journal/cocktail-bars-petaling-jaya/',       'PJ cocktail bars guide'],
+          ['/journal/best-malaysian-cocktails-2026/',     'Best Malaysian cocktails 2026'],
+          ['/journal/home-bar-malaysia/',                 'A home bar in Malaysia'],
+          ['/journal/malaysian-kopi-explained/',          'Malaysian kopi explained'],
+          ['/journal/pandan-in-beverages/',               'Pandan in beverages'],
+          ['/journal/martini-deep-dive/',                 'The Martini deep dive'],
+          ['/journal/how-to-order-cocktail/',             'How to order a cocktail'],
+          ['/journal/non-alcoholic-bars-kl/',             'Non-alcoholic bars in KL']
+        ]],
+        ['By the evening', [
+          ['/journal/date-night-cocktail-bars-pj/',       'Date night in PJ'],
+          ['/journal/cocktail-bar-first-date-pj/',        'First date in PJ'],
+          ['/journal/anniversary-cocktail-bar-pj/',       'Anniversary in PJ'],
+          ['/journal/groups-celebrations-cocktail-bar-pj/', 'Groups & celebrations'],
+          ['/journal/business-dinner-drinks-pj/',         'Business dinner drinks'],
+          ['/journal/cocktail-bar-solo-pj/',              'Drinking alone'],
+          ['/journal/cocktail-bar-non-drinkers/',         'For non-drinkers'],
+          ['/journal/late-night-drinks-damansara-kim/',   'Late-night Damansara Kim'],
+          ['/journal/cocktail-bar-tourists-kl-pj/',       'For tourists'],
+          ['/journal/cocktail-bar-pricing-pj/',           'Cocktail prices in PJ']
+        ]]
+      ];
+
+      function esc(s) {
+        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+      function colHTML(title, links) {
+        let html = '<div class="site-foot-col"><h4>' + esc(title) + '</h4><ul>';
+        for (let i = 0; i < links.length; i++) {
+          html += '<li><a href="' + links[i][0] + '">' + links[i][1] + '</a></li>';
+        }
+        return html + '</ul></div>';
+      }
+
+      let inner = ''
+        + '<div class="site-foot-inner">'
+        +   '<p class="site-foot-kicker">Two states · one chemistry</p>'
+        +   '<p class="site-foot-lede">Cocktail bars in <em>Petaling Jaya</em>. '
+        +     'A library for the rest of the Klang&nbsp;Valley.</p>'
+        +   '<div class="site-foot-grid">';
+      for (let i = 0; i < cols.length; i++) inner += colHTML(cols[i][0], cols[i][1]);
+      inner += '</div>'
+        +   '<div class="site-foot-meta">'
+        +     '<span>Dissolved Solids &amp; Soluble Solids · Petaling Jaya, Malaysia</span>'
+        +     '<span>Tatler Asia Top 20 Bars 2025/26</span>'
+        +     '<a href="/privacy/">Privacy</a>'
+        +     '<a href="/terms/">Terms</a>'
+        +     '<a href="https://instagram.com/dissolvedsolids" target="_blank" rel="noopener">Instagram · DS</a>'
+        +     '<a href="https://instagram.com/solublesolids" target="_blank" rel="noopener">Instagram · SS</a>'
+        +   '</div>'
+        + '</div>';
+
+      const footer = document.createElement('footer');
+      footer.className = 'site-foot';
+      footer.setAttribute('role', 'contentinfo');
+      footer.setAttribute('aria-label', 'Site links');
+      footer.innerHTML = inner;
+
+      // Insert before the appbar if it exists; otherwise append.
+      const appbar = document.querySelector('.appbar');
+      if (appbar && appbar.parentNode) {
+        appbar.parentNode.insertBefore(footer, appbar);
+      } else {
+        document.body.appendChild(footer);
+      }
+    } catch (e) {
+      // Footer is non-critical; never let an injection bug break the page.
     }
-    syncWaHref();
-    new MutationObserver(syncWaHref).observe(
-      document.documentElement, { attributes: true, attributeFilter: ['data-state'] }
-    );
-  })();
+  }
 })();

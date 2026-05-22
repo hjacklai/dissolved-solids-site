@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>The Journal · Beverages, examined · Klang Valley</title>
-<meta name="description" content="A beverage journal from Petaling Jaya. Coffee, tea, kombucha, mocktails, cocktails. Methods, ingredients, and Malaysian beverage culture from Dissolved Solids and Soluble Solids." />
+<meta name="description" content="A beverage journal from the Klang Valley. Coffee, tea, kombucha, mocktails, cocktails. Methods, ingredients, and Malaysian beverage culture, from the people behind Dissolved Solids (Damansara Kim) and Soluble Solids (SS2 Petaling Jaya)." />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="The Journal · Beverages, examined · Klang Valley" />
@@ -18,9 +18,6 @@
 <meta name="robots" content="index, follow, max-image-preview:large" />
 
 <link rel="canonical" href="https://dissolvedsolids.co/journal/" />
-<link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/" />
-<link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/journal/" />
-<link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/journal/" />
 <link rel="icon" type="image/png" href="/photos/ds-logo.png" />
 
 <script type="application/ld+json">
@@ -135,10 +132,11 @@
   }
   /* Bring page content above the aurora layer. */
   body > header, body > main, body > footer, body > section { position: relative; z-index: 1; }
-  /* Re-enable atmosphere particles on the journal (we previously
-     suppressed them with display:none; now they're part of the vibe). */
-  body .atmo-dots { display: block !important; }
-  .atmo-dots { z-index: 1; }
+  /* Atmosphere particles suppressed on the journal index. The
+     aurora gradient layer behind body::before still drifts for
+     atmosphere; the dotted falling particles read as noise on a
+     reading-heavy page. */
+  body .atmo-dots { display: none !important; }
   @media (prefers-reduced-motion: reduce) {
     body::before { animation: none; }
   }
@@ -151,19 +149,32 @@
   header.journal-header {
     position: sticky; top: 0; z-index: 50;
     padding: 18px var(--gutter);
-    display: grid; grid-template-columns: 1fr auto 1fr;
-    align-items: center; gap: 24px;
+    display: flex; justify-content: center;
+    align-items: center; gap: 36px;
     background: linear-gradient(180deg, rgba(26,10,34,.94) 0%, rgba(26,10,34,.55) 70%, transparent 100%);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
   .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--paper); }
+  .brand-center {
+    justify-self: center;
+    font-family: var(--serif);
+    font-size: 22px;
+    letter-spacing: -.01em;
+    color: var(--paper);
+    text-decoration: none;
+    transition: opacity .2s ease;
+  }
+  .brand-center em { color: var(--accent); font-style: italic; }
+  .brand-center:hover { opacity: .85; }
   .brand .mark {
-    width: 36px; height: 36px;
+    width: 40px; height: 40px;
     object-fit: contain;
     display: block;
     filter: drop-shadow(0 0 8px rgba(240, 230, 207, .14));
+    transition: transform .2s ease, filter .2s ease;
   }
+  .brand:hover .mark { transform: scale(1.06); filter: drop-shadow(0 0 14px rgba(240, 230, 207, .26)); }
   .brand .stack { display: flex; flex-direction: column; gap: 4px; line-height: 1; }
   .brand .wordmark { font-family: var(--serif); font-size: 19px; letter-spacing: -.01em; }
   .brand .wordmark .sep {
@@ -419,24 +430,6 @@
     transition: opacity .25s;
   }
   .articles.fading { opacity: 0; }
-  /* Section heads slot into the 2-col grid, spanning both columns. They
-     give long categories ("The Bar", "Ingredients") a scannable sub-index
-     instead of an undifferentiated 30-row scroll. */
-  .article-section-head {
-    grid-column: 1 / -1;
-    display: flex; align-items: center; gap: 14px;
-    margin: 22px 0 6px;
-    font-family: var(--mono); font-size: 10px; letter-spacing: .18em;
-    text-transform: uppercase; color: var(--accent);
-  }
-  .article-section-head:first-child { margin-top: 4px; }
-  .article-section-head .ash-line { flex: 0 0 22px; height: 1px; background: var(--accent); opacity: .5; }
-  .article-section-head .ash-name { flex: 0 0 auto; color: var(--paper); }
-  .article-section-head .ash-count {
-    flex: 0 0 auto; color: var(--accent);
-    border: 1px solid var(--line-2); padding: 1px 7px; border-radius: 999px;
-    font-size: 9px; letter-spacing: .12em;
-  }
   .article {
     display: grid; grid-template-columns: 30px 1fr auto;
     gap: 12px; align-items: center;
@@ -741,13 +734,13 @@
   /* ─────────────────── responsive: small mobile ─────────────────── */
   @media (max-width: 720px) {
     header.journal-header {
-      grid-template-columns: 1fr auto;
-      gap: 14px; padding: 14px 20px;
+      gap: 18px; padding: 14px 16px;
     }
     .header-right, nav.journal-nav-row { display: none; }
     .brand .tagline { display: none; }
     .brand .wordmark { font-size: 17px; }
-    .brand .mark { width: 30px; height: 30px; font-size: 16px; }
+    .brand .mark { width: 32px; height: 32px; font-size: 16px; }
+    .brand-center { font-size: 17px; }
 
     .hero { padding: 32px 20px 0; }
     .hero .kicker { font-size: 10px; margin-bottom: 14px; }
@@ -813,10 +806,18 @@
   /* Drifting particle dots are explicitly enabled above (block) to
      contribute to the journal vibe. Earlier hide rule removed. */
 </style>
-<script src="/analytics.js" defer></script>
 </head>
 <body class="journal-body" data-layout="radial">
 
+<header class="journal-header">
+  <a class="brand brand-left" href="/dissolvedsolids/" aria-label="Dissolved Solids - Damansara Kim">
+    <img class="mark" src="/photos/ds-logo.png" alt="Dissolved Solids" width="40" height="40" />
+  </a>
+  <a class="brand-center" href="/journal/" aria-label="The Journal home">The <em>Journal</em></a>
+  <a class="brand brand-right" href="/solublesolids/" aria-label="Soluble Solids - SS2 Petaling Jaya">
+    <img class="mark" src="/photos/ss-logo.svg" alt="Soluble Solids" width="40" height="40" />
+  </a>
+</header>
 
 <section class="hero">
   <div>
@@ -901,7 +902,7 @@
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════════
-   Dissolved Solids and Soluble Solids · The Journal
+   DSSS · The Journal
    Wheel-of-categories nav with three layouts (radial / carousel auto).
    Content lives in JOURNAL. Article slugs point at /journal/{slug}/ for
    real long-form pieces and /cocktails/{slug}/ for the cocktail entries.
@@ -946,25 +947,6 @@ const JOURNAL = {
         { slug: 'salt-in-cocktails',          href: '/journal/salt-in-cocktails/',            title: { lead: 'Salt ', accent: 'in cocktails', tail: '.' },                              excerpt: 'The most-underused ingredient behind the bar. Why a pinch of salt makes almost every drink measurably better, and how to dose saline properly.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
         { slug: 'clear-ice-at-home',          href: '/journal/clear-ice-at-home/',            title: { lead: 'Clear ice ', accent: 'at home', tail: '.' },                              excerpt: 'Why bar ice is crystal-clear and home freezer ice is cloudy, and the simple insulated-cooler trick that makes gallery-quality ice in any kitchen freezer.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
         { slug: 'tinctures-and-bitters',      href: '/journal/tinctures-and-bitters/',        title: { lead: 'Tinctures ', accent: 'and bitters', tail: '.' },                          excerpt: 'The difference between a tincture and a bitter, the same simple maceration that produces both, and five recipes worth keeping on the back shelf.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 6, featured: true, pill: 'technique' },
-        { slug: 'martini-philosophy',         href: '/journal/martini-philosophy/',           title: { lead: 'How to think about a ', accent: 'Martini', tail: '.' },                  excerpt: 'An essay on how to order a Martini. The ratios, gin vs vodka, dirty vs dry vs perfect, the lemon vs olive debate. How to order one with confidence.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 6, featured: true, pill: 'essay' },
-        { slug: 'spritz-template',            href: '/journal/spritz-template/',              title: { lead: 'The ', accent: 'spritz', tail: ' template.' },                          excerpt: 'The 3-2-1 ratio, the bitter base options (Aperol, Campari, Cynar, Suze), the sparkling lift, and twelve recipes from canonical Aperol to bandung-cava.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 6, featured: true, pill: 'template' },
-        { slug: 'the-tesseract-philosophy',   href: '/journal/the-tesseract-philosophy/',     title: { lead: 'The ', accent: 'Tesseract', tail: ' philosophy.' },                       excerpt: 'How we built our signature cocktail. Four flavour dimensions (smoky, fruity, savoury, velvet) in a simple coupe. Built to evolve as it dilutes. The thinking behind the name and the ratios.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 6, featured: true, pill: 'house signature' },
-        // Classic recipe references (link directly to /cocktails/{slug}/)
-        { slug: 'old-fashioned',              href: '/cocktails/old-fashioned/',              title: { lead: 'Old ', accent: 'Fashioned', tail: '.' }, excerpt: 'Bourbon, sugar, aromatic bitters, orange peel. The drink that defines the cocktail category itself.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 3 },
-        { slug: 'manhattan',                  href: '/cocktails/manhattan/',                  title: { lead: 'Manhattan',         accent: '.',           tail: '' }, excerpt: 'Rye, sweet vermouth, aromatic bitters. The grown-up\'s grown-up choice. Stirred over a large rock.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 3 },
-        { slug: 'negroni',                    href: '/cocktails/negroni/',                    title: { lead: 'Negroni',           accent: '.',           tail: '' }, excerpt: 'Gin, Campari, sweet vermouth. The bitter-classic. The most-modified cocktail of the modern era.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 3 },
-        { slug: 'whiskey-sour',               href: '/cocktails/whiskey-sour/',               title: { lead: 'Whiskey ', accent: 'Sour', tail: '.' }, excerpt: 'Bourbon, lemon, sugar, egg white. The defining template-based cocktail. Three angostura dashes on the foam.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 4 },
-        { slug: 'daiquiri',                   href: '/cocktails/daiquiri/',                   title: { lead: 'Daiquiri',          accent: '.',           tail: '' }, excerpt: 'White rum, lime, sugar. Three ingredients, no margin for error. The cocktail-maker\'s test.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 3 },
-        { slug: 'martini',                    href: '/cocktails/martini/',                    title: { lead: 'Martini',           accent: '.',           tail: '' }, excerpt: 'Gin (or vodka), dry vermouth, stirred over ice. The most-discussed cocktail on Earth.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 3 },
-        { slug: 'mai-tai',                    href: '/cocktails/mai-tai/',                    title: { lead: 'Mai ', accent: 'Tai', tail: '.' }, excerpt: 'Aged rum, lime, orgeat, orange curaçao. The 1944 Trader Vic classic. Tropical without being saccharine.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 4 },
-        { slug: 'mint-julep',                 href: '/cocktails/mint-julep/',                 title: { lead: 'Mint ', accent: 'Julep', tail: '.' }, excerpt: 'Bourbon, mint, sugar, crushed ice. The Kentucky Derby drink. Frosted cup with a thicket of mint on top.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 5 },
-        { slug: 'vieux-carre',                href: '/cocktails/vieux-carre/',                title: { lead: 'Vieux ', accent: 'Carré', tail: '.' }, excerpt: 'Rye, cognac, sweet vermouth, Benedictine, two bitters. Five-spirit elegance from the New Orleans French Quarter.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 4 },
-        { slug: 'mezcal-negroni',             href: '/cocktails/mezcal-negroni/',             title: { lead: 'Mezcal ', accent: 'Negroni', tail: '.' }, excerpt: 'Mezcal, Campari, sweet vermouth. The smoky cousin of the Negroni. Bitter-orange with a campfire on top.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 3 },
-        { slug: 'kopi-negroni',               href: '/cocktails/kopi-negroni/',               title: { lead: 'Kopi ', accent: 'Negroni', tail: ' ★' }, excerpt: 'Negroni built on kopi-O-infused Campari. Bitter-orange meets dark Malaysian coffee.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 4, pill: 'malaysian' },
-        { slug: 'bunga-kantan-gimlet',        href: '/cocktails/bunga-kantan-gimlet/',        title: { lead: 'Bunga Kantan ', accent: 'Gimlet', tail: ' ★' }, excerpt: 'Gin, lime, sugar, torch ginger flower cordial. Malaysian-local floral-tart classic.', author: 'Soluble Solids', date: '2026-05-20', readMinutes: 4, pill: 'malaysian' },
-        { slug: 'teh-tarik-old-fashioned',    href: '/cocktails/teh-tarik-old-fashioned/',    title: { lead: 'Teh Tarik ', accent: 'Old Fashioned', tail: ' ★' }, excerpt: 'Bourbon, teh tarik reduction, aromatic bitters. The pulled-tea Old Fashioned.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 5, pill: 'malaysian' },
-        { slug: 'basil-smash',                href: '/cocktails/basil-smash/',                title: { lead: 'Basil ', accent: 'Smash', tail: '.' }, excerpt: 'Gin, lemon, sugar, basil. Modern classic by Jorg Meyer at Le Lion, Hamburg, 2008.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 4 },
-        { slug: 'sazerac',                    href: '/cocktails/sazerac/',                    title: { lead: 'Sazerac',           accent: '.',            tail: '' }, excerpt: 'Rye, sugar, Peychaud\'s bitters, absinthe rinse. The original New Orleans cocktail.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 4 },
       ],
     },
     {
@@ -984,13 +966,6 @@ const JOURNAL = {
         { slug: 'decaf-coffee-cocktails',      href: '/journal/decaf-coffee-cocktails/',      title: { lead: 'Decaf ', accent: 'coffee', tail: ' cocktails.' },                                      excerpt: 'Why decaf coffee cocktails are an underrated category, how to brew decaf without ruining the flavour, and the late-night drinks where they make sense.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
         { slug: 'single-origin-coffee-cocktails', href: '/journal/single-origin-coffee-cocktails/', title: { lead: 'Single-origin coffee ', accent: 'in cocktails', tail: '.' },                       excerpt: 'When single-origin coffee is worth the premium in a cocktail and when it disappears behind the spirit.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
         { slug: 'history-of-coffee-cocktails', href: '/journal/history-of-coffee-cocktails/', title: { lead: 'A short ', accent: 'history', tail: ' of coffee cocktails.' },                          excerpt: 'From the 1860s Irish Coffee to the 1983 Espresso Martini to the 2020s third-wave era.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'aeropress-cocktails',         href: '/journal/aeropress-cocktails/',         title: { lead: 'The ', accent: 'AeroPress', tail: ' for cocktails.' },                                   excerpt: 'Why the AeroPress is the bartender\'s coffee tool. The inverted method, the 1:8 cocktail ratio, what beans to use, three cocktails it transforms.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 5, featured: true, pill: 'technique' },
-        { slug: 'coffee-tasting-vocabulary',   href: '/journal/coffee-tasting-vocabulary/',   title: { lead: 'Coffee tasting ', accent: 'vocabulary', tail: '.' },                                    excerpt: 'The working coffee tasting vocabulary. Acidity, body, sweetness, balance, finish. How baristas talk and how that maps to cocktail use.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 5 },
-        { slug: 'siphon-coffee-cocktails',     href: '/journal/siphon-coffee-cocktails/',     title: { lead: 'Siphon ', accent: 'coffee', tail: ' in a cocktail bar.' },                              excerpt: 'The siphon (vacuum pot) method, why it works for cocktail bars, the technical setup, three ways we use it on our menu.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 5 },
-        { slug: 'coffee-cocktails-malaysia',   href: '/journal/coffee-cocktails-malaysia/',   title: { lead: 'Coffee cocktails in ', accent: 'Malaysia', tail: '.' }, excerpt: 'Kopi-O at the cocktail bar. The four-cocktail playbook (Kopi Sour, Kopi-O Espresso Martini, Kopi Old Fashioned, Kopi Carajillo) plus the robusta-vs-arabica question.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 7, featured: true, pill: 'long read' },
-        { slug: 'kopi-sour',                   href: '/cocktails/kopi-sour/',                 title: { lead: 'Kopi ', accent: 'Sour', tail: ' (recipe) ★' }, excerpt: 'The Malaysian whisky sour built on cold-brewed kopi-O.', author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 5, pill: 'malaysian' },
-        { slug: 'espresso-martini',            href: '/cocktails/espresso-martini/',          title: { lead: 'Espresso ', accent: 'Martini', tail: ' (recipe).' }, excerpt: 'Vodka, fresh espresso, kahlua, sugar. The 1980s Soho classic, made properly.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 4 },
-        { slug: 'irish-godfather',             href: '/cocktails/irish-godfather/',           title: { lead: 'Irish ', accent: 'Godfather', tail: ' (recipe).' }, excerpt: 'Irish whiskey, amaretto, coffee. Built warm in winter, cold over rocks in summer.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 4 },
       ],
     },
     {
@@ -1010,11 +985,6 @@ const JOURNAL = {
         { slug: 'chamomile-cocktails',         href: '/journal/chamomile-cocktails/',         title: { lead: 'Chamomile ', accent: 'in cocktails', tail: '.' },                                       excerpt: 'The most underused tea in cocktail bars. Honey-floral character perfect for nightcap-format drinks.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
         { slug: 'iced-lemon-tea-cocktails',    href: '/journal/iced-lemon-tea-cocktails/',    title: { lead: 'Iced lemon tea, ', accent: 'deconstructed', tail: '.' },                                excerpt: 'The kopitiam classic, reimagined behind a bar. Three cocktails built on the format.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
         { slug: 'chrysanthemum-tea-cocktails', href: '/journal/chrysanthemum-tea-cocktails/', title: { lead: 'Chrysanthemum ', accent: 'tea', tail: ' in cocktails.' },                              excerpt: 'The most-underused Chinese herbal ingredient in Western-style cocktails. Light, floral, slightly sweet.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 3 },
-        { slug: 'jasmine-tea-cocktails',       href: '/journal/jasmine-tea-cocktails/',       title: { lead: 'Jasmine tea ', accent: 'in cocktails', tail: '.' },                                       excerpt: 'Jasmine tea as a cocktail ingredient. How to choose the grade, how to extract without bitterness, what to pair it with, four working recipes.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 5, featured: true, pill: 'floral' },
-        { slug: 'masala-chai-cocktails',       href: '/journal/masala-chai-cocktails/',       title: { lead: 'Masala chai ', accent: 'in cocktails', tail: '.' },                                       excerpt: 'Masala chai as a cocktail base. The spice ratio, the extraction, what spirits pair with chai. Recipes for hot and cold formats.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 5 },
-        { slug: 'oolong-cocktails',            href: '/journal/oolong-cocktails/',            title: { lead: 'Oolong tea ', accent: 'in cocktails', tail: '.' },                                         excerpt: 'The oxidation spectrum, the four styles to know (Tieguanyin, Taiwanese High Mountain, Dong Ding, Da Hong Pao), what spirits to pair, three recipes.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 5 },
-        { slug: 'matcha-sakura',               href: '/cocktails/matcha-sakura/',             title: { lead: 'Matcha ', accent: 'Sakura', tail: ' (recipe) ★' }, excerpt: 'Gin, matcha syrup, lemon, cherry blossom. Our spring tea-cocktail signature.', author: 'Dissolved Solids', date: '2026-05-15', readMinutes: 5, pill: 'house signature' },
-        { slug: 'too-gouda-to-be-true',        href: '/cocktails/too-gouda-to-be-true/',      title: { lead: 'Too Gouda ', accent: 'to be True', tail: ' (recipe) ★' }, excerpt: 'Gouda-washed bourbon, jasmine tea, honey. Fat-wash tea cocktail experiment.', author: 'Dissolved Solids', date: '2026-05-16', readMinutes: 5, pill: 'house signature' },
       ],
     },
     {
@@ -1038,18 +1008,6 @@ const JOURNAL = {
         { slug: 'rum-types-explained',     href: '/journal/rum-types-explained/',     title: { lead: 'Rum types, ', accent: 'explained', tail: '.' },                              excerpt: 'White, aged, dark, spiced, overproof, Jamaican, rhum agricole, cachaça. Rum is the most-misunderstood spirit category. A working map.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 7 },
         { slug: 'whisky-vs-whiskey',       href: '/journal/whisky-vs-whiskey/',       title: { lead: 'Whisky vs ', accent: 'whiskey', tail: '.' },                                 excerpt: 'The spelling tells you the country. The country tells you the style. The five main world styles in brief, plus how to pick.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
         { slug: 'amaro-explained',         href: '/journal/amaro-explained/',         title: { lead: 'Amaro, ', accent: 'explained', tail: '.' },                                   excerpt: 'Campari is one, Aperol is another. The wider amaro family includes dozens of bitter herbal liqueurs with distinct personalities.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 7 },
-        { slug: 'japanese-whisky-guide',   href: '/journal/japanese-whisky-guide/',   title: { lead: 'Japanese ', accent: 'whisky', tail: ', decoded.' },                          excerpt: 'A working guide to Japanese whisky for Malaysian drinkers. The big distilleries, the style distinctions, the price brackets, and what to actually buy in KL.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 6, featured: true, pill: 'spirit deep dive' },
-        { slug: 'scotch-regions-explained', href: '/journal/scotch-regions-explained/', title: { lead: 'Scotch by ', accent: 'region', tail: '.' },                                  excerpt: 'The five Scotch whisky regions, decoded. Islay, Highlands, Speyside, Lowlands, Campbeltown. What each region tastes like and what to buy in KL.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 6, featured: true, pill: 'spirit deep dive' },
-        { slug: 'rye-whiskey-explained',   href: '/journal/rye-whiskey-explained/',   title: { lead: 'Rye whiskey, ', accent: 'explained', tail: '.' },                            excerpt: 'Rye for cocktail drinkers. What it is, how it differs from bourbon, the classic rye cocktails, and what to actually buy in KL.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'tequila-aging-spectrum',  href: '/journal/tequila-aging-spectrum/',  title: { lead: 'Tequila, by ', accent: 'age class', tail: '.' },                              excerpt: 'Blanco, reposado, añejo, extra añejo, cristalino. What the tequila ageing labels mean, how they taste different, and what to drink when.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'sake-in-cocktails',       href: '/journal/sake-in-cocktails/',       title: { lead: 'Sake in ', accent: 'cocktails', tail: '.' },                                 excerpt: 'A working guide to sake in cocktails. Junmai, ginjo, daiginjo, nigori. Which to use for what, the recipes that work, and what to skip.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'champagne-prosecco-cava', href: '/journal/champagne-prosecco-cava/', title: { lead: 'Champagne, prosecco, ', accent: 'cava', tail: '.' },                          excerpt: 'The three sparkling wine workhorses, decoded. How they differ in production, price, and use. What to buy in KL and what to pour for what.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'bourbon-styles-explained', href: '/journal/bourbon-styles-explained/', title: { lead: 'Bourbon, by ', accent: 'style', tail: '.' },                                  excerpt: 'Bourbon for cocktail drinkers. Wheated, high-rye, four-grain, bottled-in-bond, single barrel, small batch. What the labels mean and what to buy in KL.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 6, featured: true, pill: 'spirit deep dive' },
-        { slug: 'cognac-vs-armagnac',      href: '/journal/cognac-vs-armagnac/',      title: { lead: 'Cognac vs ', accent: 'armagnac', tail: '.' },                                excerpt: 'The two great French brandies, decoded. Geography, distillation, ageing, personality. What to buy in KL and what each is for.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 6 },
-        { slug: 'vodka-styles-explained',  href: '/journal/vodka-styles-explained/',  title: { lead: 'Vodka, by ', accent: 'style', tail: '.' },                                   excerpt: 'Vodka is not as boring as cocktail snobs claim. The base grains, the filtration methods, the country styles, and what to buy in KL for cocktails and for sipping.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 6, featured: true, pill: 'spirit deep dive' },
-        { slug: 'gin-botanicals-deep-dive', href: '/journal/gin-botanicals-deep-dive/', title: { lead: 'Gin ', accent: 'botanicals', tail: ', deep dive.' },                         excerpt: 'Inside the botanicals that define gin. Juniper, coriander, angelica, citrus peels, orris root, and the modern non-traditional additions.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 7, featured: true, pill: 'spirit deep dive' },
-        { slug: 'world-rums-by-country',   href: '/journal/world-rums-by-country/',   title: { lead: 'World rums, by ', accent: 'country', tail: '.' },                              excerpt: 'Rum is the most-regional spirit. The seven main producing countries (Cuba, Jamaica, Barbados, Martinique, Venezuela, Guatemala, Demerara) and what to buy in KL.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 7, featured: true, pill: 'spirit deep dive' },
-        { slug: 'mezcal-styles-explained', href: '/journal/mezcal-styles-explained/', title: { lead: 'Mezcal, by ', accent: 'style', tail: '.' },                                  excerpt: 'Beyond joven vs reposado. The mezcal production categories (ancestral, artesanal, mezcal), the agave species, the regional differences.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 6 },
         { slug: 'bunga-kantan-cocktails',  href: '/journal/bunga-kantan-cocktails/',  title: { lead: 'Bunga kantan ', accent: 'in cocktails', tail: '.' },                         excerpt: 'Torch ginger flower is one of Malaysia\'s most distinctive ingredients. What it tastes like, how we use it in drinks, where to source it.', author: 'Soluble Solids',   date: '2026-05-18', readMinutes: 5, featured: true, pill: 'local pantry' },
         { slug: 'coconut-water-cocktails', href: '/journal/coconut-water-cocktails/', title: { lead: 'Coconut water ', accent: 'in cocktails', tail: '.' },                       excerpt: 'The fresh tropical bartender secret. Three drinks where it is the quiet hero, and what makes Klang Valley coconuts the right tool.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
         { slug: 'sambal-in-cocktails',     href: '/journal/sambal-in-cocktails/',     title: { lead: 'Sambal ', accent: 'in cocktails', tail: '.' },                              excerpt: 'A Malaysian bartender experiment that mostly works. The heat, the umami, the surprise. Three drinks where it lands.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
@@ -1058,25 +1016,6 @@ const JOURNAL = {
         { slug: 'lemongrass-cocktails',    href: '/journal/lemongrass-cocktails/',    title: { lead: 'Lemongrass ', accent: 'in cocktails', tail: '.' },                          excerpt: 'The Southeast Asian bartender\'s quiet workhorse. Three extraction methods that work, what to pair it with, and why it shows up in our gin drinks.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5, featured: true, pill: 'local pantry' },
         { slug: 'kaffir-lime-leaf-cocktails', href: '/journal/kaffir-lime-leaf-cocktails/', title: { lead: 'Kaffir lime leaf ', accent: 'in cocktails', tail: '.' },                  excerpt: 'The most distinctive citrus aromatic in Southeast Asian kitchens. How to use it in drinks, what it pairs with, and the mistakes that flatten it.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
         { slug: 'hibiscus-roselle-cocktails', href: '/journal/hibiscus-roselle-cocktails/', title: { lead: 'Hibiscus and ', accent: 'roselle', tail: '.' },                            excerpt: 'Bunga raya is the national flower of Malaysia. Its cousin roselle is the cocktail-world tool. Where they come from, what they bring to a drink.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'herbs-in-cocktails',     href: '/journal/herbs-in-cocktails/',     title: { lead: 'Herbs in ', accent: 'cocktails', tail: '.' }, excerpt: 'Mint, basil, thyme, rosemary, pandan. Four techniques (muddle, syrup, garnish, infusion) and which works for which herb.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 9, featured: true, pill: 'long read' },
-        { slug: 'spice-and-cocktails',    href: '/journal/spice-and-cocktails/',    title: { lead: 'Spices in ', accent: 'cocktails', tail: '.' }, excerpt: 'Cinnamon, clove, star anise, allspice, cardamom. Plus Sarawak black pepper as the Malaysian-local hero.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 8, pill: 'long read' },
-        { slug: 'ginger-in-cocktails',    href: '/journal/ginger-in-cocktails/',    title: { lead: 'Ginger in ', accent: 'cocktails', tail: '.' }, excerpt: 'Fresh, syrup, liqueur, candied. Penicillin, Moscow Mule, Dark & Stormy as the canon; galangal as the local extension.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 7, pill: 'long read' },
-        // Ingredient encyclopedia entries (direct links to /ingredients/{slug}/)
-        { slug: 'pandan',                  href: '/ingredients/pandan/',                  title: { lead: 'Pandan',           accent: '.',          tail: '' }, excerpt: 'The Malaysian queen of cocktail herbs. Three extraction methods, what it pairs with, how it survives 32°C heat.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 4, pill: 'ingredient' },
-        { slug: 'gula-melaka',             href: '/ingredients/gula-melaka/',             title: { lead: 'Gula ', accent: 'Melaka', tail: '.' }, excerpt: 'Pure coconut palm sugar. The Malaysian sugar substitute that turns Old Fashioneds into something local.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 4, pill: 'ingredient' },
-        { slug: 'calamansi',               href: '/ingredients/calamansi/',               title: { lead: 'Calamansi',        accent: '.',          tail: '' }, excerpt: 'Limau kasturi. The hyper-local citrus that reads as lime, orange, and a faint floral.', author: 'Soluble Solids', date: '2026-05-19', readMinutes: 4, pill: 'ingredient' },
-        { slug: 'kaffir-lime',             href: '/ingredients/kaffir-lime/',             title: { lead: 'Kaffir ', accent: 'lime', tail: '.' }, excerpt: 'The most distinctive citrus aromatic in Southeast Asian kitchens. Leaf and fruit, both useful behind the bar.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 4, pill: 'ingredient' },
-        { slug: 'lemongrass',              href: '/ingredients/lemongrass/',              title: { lead: 'Lemongrass',       accent: '.',          tail: '' }, excerpt: 'The Southeast Asian bartender\'s quiet workhorse. Three extraction methods that actually work.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 4, pill: 'ingredient' },
-        { slug: 'kopi-o',                  href: '/ingredients/kopi-o/',                  title: { lead: 'Kopi-', accent: 'O', tail: '.' }, excerpt: 'Hainanese-Malaysian dark-roast butter-finished robusta. Why it beats espresso for cocktails.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 5, pill: 'ingredient' },
-        { slug: 'sarawak-black-pepper',    href: '/ingredients/sarawak-black-pepper/',    title: { lead: 'Sarawak black ', accent: 'pepper', tail: '.' }, excerpt: 'Malaysia\'s premium peppercorn. Floral, bright, complex; the bartender\'s alternative to the Malabar default.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 4, pill: 'ingredient' },
-        { slug: 'cili-padi',               href: '/ingredients/cili-padi/',               title: { lead: 'Cili ', accent: 'padi', tail: '.' }, excerpt: 'The bird\'s eye chilli. Small, hot, indispensable in Malaysian cooking. Behind the bar, used with restraint.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 4, pill: 'ingredient' },
-        { slug: 'tamarind',                href: '/ingredients/tamarind/',                title: { lead: 'Tamarind',         accent: '.',          tail: '' }, excerpt: 'The sour-fruity-deep ingredient. Turns Margaritas and Old Fashioneds into something Southeast Asian.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 4, pill: 'ingredient' },
-        { slug: 'kelulut-honey',           href: '/ingredients/kelulut-honey/',           title: { lead: 'Kelulut ', accent: 'honey', tail: '.' }, excerpt: 'Malaysian stingless-bee honey. Tart, complex, expensive, worth it.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 4, pill: 'ingredient' },
-        { slug: 'durian',                  href: '/ingredients/durian/',                  title: { lead: 'Durian',           accent: '.',          tail: '' }, excerpt: 'The polarising king of fruits. Used carefully, unforgettable in a cocktail.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 5, pill: 'ingredient' },
-        { slug: 'mangosteen',              href: '/ingredients/mangosteen/',              title: { lead: 'Mangosteen',       accent: '.',          tail: '' }, excerpt: 'The queen of fruits. Delicate, peach-grape character, used in cooling Malaysian cocktails.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 4, pill: 'ingredient' },
-        { slug: 'coconut',                 href: '/ingredients/coconut/',                 title: { lead: 'Coconut',          accent: '.',          tail: '' }, excerpt: 'Water, cream, oil, char. Four ways the Malaysian bar uses coconut.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 5, pill: 'ingredient' },
-        { slug: 'galangal',                href: '/ingredients/galangal/',                title: { lead: 'Galangal',         accent: '.',          tail: '' }, excerpt: 'Ginger\'s cousin. Sharper, more pine-resinous; the Southeast Asian alternative.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 4, pill: 'ingredient' },
-        { slug: 'tuak',                    href: '/ingredients/tuak/',                    title: { lead: 'Tuak',             accent: '.',          tail: '' }, excerpt: 'Sarawak palm wine. Rare in Klang Valley bars; powerful when you can get it.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 4, pill: 'ingredient' },
       ],
     },
     {
@@ -1096,9 +1035,6 @@ const JOURNAL = {
         { slug: 'mead-cocktails',              href: '/journal/mead-cocktails/',              title: { lead: 'Mead ', accent: '(honey wine)', tail: ' in cocktails.' },                                excerpt: 'The oldest fermented drink humans have made, and one of the least-used in modern cocktails. Three drinks.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
         { slug: 'beer-cocktails',              href: '/journal/beer-cocktails/',              title: { lead: 'Beer ', accent: 'in cocktails', tail: '.' },                                            excerpt: 'From Boilermaker to Michelada. Five beer-cocktail formats that work.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
         { slug: 'pickle-brine-cocktails',      href: '/journal/pickle-brine-cocktails/',      title: { lead: 'Pickle brine ', accent: 'in cocktails', tail: '.' },                                    excerpt: 'The most-underused free ingredient behind any bar. Picklebacks, Dirty Martinis, modern brine-forward cocktails.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
-        { slug: 'kombucha-second-fermentation', href: '/journal/kombucha-second-fermentation/', title: { lead: 'Kombucha, ', accent: 'second-fermented', tail: '.' },                                  excerpt: 'How to second-ferment kombucha for cocktail bar use. The flavour additions that work, the carbonation control, how to bottle without exploding. Four house flavours we run.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 6, featured: true, pill: 'F2' },
-        { slug: 'ginger-bug-cordials',         href: '/journal/ginger-bug-cordials/',         title: { lead: 'The ', accent: 'ginger bug', tail: ' cordial.' },                                          excerpt: 'How to make a ginger bug starter and use it to carbonate cordials. A craft alternative to ginger ale, tonic, and commercial mixers.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 6 },
-        { slug: 'water-kefir-cocktails',       href: '/journal/water-kefir-cocktails/',       title: { lead: 'Water kefir ', accent: 'for cocktails', tail: '.' },                                     excerpt: 'Water kefir as a cocktail base. What the grains are, how to brew the working starter, and three cocktails where it outperforms tonic.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 5 },
       ],
     },
     {
@@ -1116,14 +1052,6 @@ const JOURNAL = {
         { slug: 'non-alcoholic-bitterness',    href: '/journal/non-alcoholic-bitterness/',    title: { lead: 'Replicating ', accent: 'bitterness', tail: ' without alcohol.' },                       excerpt: 'The hardest flavour to replicate without alcohol. Five NA bitter sources that actually work.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
         { slug: 'non-alcoholic-malaysian-food-pairing', href: '/journal/non-alcoholic-malaysian-food-pairing/', title: { lead: 'NA pairings ', accent: 'for Malaysian food', tail: '.' },                excerpt: 'What to drink with nasi lemak, satay, char kway teow when you are not drinking alcohol. Five pairings.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
         { slug: 'non-alcoholic-beer-cocktails', href: '/journal/non-alcoholic-beer-cocktails/', title: { lead: 'Non-alcoholic ', accent: 'beer', tail: ' in cocktails.' },                              excerpt: 'NA beer has improved dramatically. The brands worth buying, and how to use them as a cocktail ingredient.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
-        { slug: 'na-spritz-template',          href: '/journal/na-spritz-template/',          title: { lead: 'The NA ', accent: 'spritz', tail: ' template.' },                                excerpt: 'A working template for building zero-proof spritzes that taste like proper drinks. Six recipes that hold up: hibiscus, roselle-calamansi, verjus tonic, pandan coconut, bitters soda, longan cinnamon.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 5, featured: true, pill: 'NA template' },
-        { slug: 'tonic-water-explained',       href: '/journal/tonic-water-explained/',       title: { lead: 'Tonic water, ', accent: 'explained', tail: '.' },                              excerpt: 'Tonic water for cocktail drinkers and non-drinkers. Quinine, Fever-Tree vs Schweppes, Indian vs Mediterranean vs Dry, and what to pair with what gin.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 6 },
-        { slug: 'na-old-fashioned',            href: '/journal/na-old-fashioned/',            title: { lead: 'The non-alcoholic ', accent: 'Old Fashioned', tail: '.' },                       excerpt: 'How to build a zero-proof Old Fashioned that drinks like the real thing. NA whiskies to buy in KL, the gula melaka twist, the working recipe.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 5 },
-        { slug: 'alcohol-free-amaro',          href: '/journal/alcohol-free-amaro/',          title: { lead: 'Alcohol-free ', accent: 'amaro', tail: '.' },                                  excerpt: 'The non-alcoholic bitter aperitif category, decoded. Crodino, Sanbittèr, Lyre\'s, Three Spirit, and the home-made shortcuts that approximate Aperol or Campari.', author: 'Dissolved Solids', date: '2026-05-19', readMinutes: 5 },
-        { slug: 'na-cocktails-malaysia',       href: '/journal/na-cocktails-malaysia/',       title: { lead: 'NA cocktails in ', accent: 'Malaysia', tail: '.' }, excerpt: 'Mocktail vs NA cocktail, halal-friendly drinking culture, the six Malaysian ingredients that carry well, three working NA recipes.', author: 'Dissolved Solids', date: '2026-05-20', readMinutes: 8, featured: true, pill: 'long read' },
-        { slug: 'black-honey',                 href: '/cocktails/black-honey/',               title: { lead: 'Black ', accent: 'Honey', tail: ' (recipe) ★' }, excerpt: 'Pink grapefruit, smoked herbs, honey, mango, espresso. Zero-alcohol, full body, not apologetic.', author: 'Dissolved Solids', date: '2026-05-14', readMinutes: 4, pill: 'house signature' },
-        { slug: 'peach-blossom',               href: '/cocktails/peach-blossom/',             title: { lead: 'Peach ', accent: 'Blossom', tail: ' (recipe) ★' }, excerpt: 'Peach, oolong, lemon, soda. Our delicate-floral NA signature.', author: 'Dissolved Solids', date: '2026-05-14', readMinutes: 4, pill: 'house signature' },
-        { slug: 'floral-mango',                href: '/cocktails/floral-mango/',              title: { lead: 'Floral ', accent: 'Mango', tail: ' (recipe) ★' }, excerpt: 'Mango, jasmine tea, lime, gentle florals. Our tropical NA signature.', author: 'Dissolved Solids', date: '2026-05-14', readMinutes: 4, pill: 'house signature' },
       ],
     },
     {
@@ -1133,53 +1061,42 @@ const JOURNAL = {
       headline: { lead: 'Notes from ', accent: 'inside', tail: '.' },
       icon: `<svg viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M5 6l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/><path d="M9 3h6v3H9z"/></svg>`,
       articles: [
-        { slug: 'why-our-menu-is-short',         section: 'How we work', href: '/journal/why-our-menu-is-short/',         title: { lead: 'Why our menu is ', accent: 'short on purpose', tail: '.' }, excerpt: 'Soluble Solids has no printed list. Dissolved Solids keeps a short one. Why fewer drinks done better is a better experience for everyone in the room.', author: 'Soluble Solids', date: '2026-05-16', readMinutes: 6 },
-        { slug: 'cocktail-bars-petaling-jaya',   section: 'Local guides', href: '/journal/cocktail-bars-petaling-jaya/',   title: { lead: 'Cocktail bars in ', accent: 'Petaling Jaya', tail: '.' },     excerpt: 'A friendly local map of where to drink in PJ, what each neighbourhood is known for, and how the scene compares to KL.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 8, featured: true, pill: 'local guide' },
-        // ─ Local guides ─
-        { slug: 'late-night-drinks-damansara-kim', section: 'Local guides', href: '/journal/late-night-drinks-damansara-kim/', title: { lead: 'Late-night drinks in ', accent: 'Damansara Kim', tail: '.' }, excerpt: 'A short, honest guide to late-night drinks in Damansara Kim. What is open after 10pm, what is open past midnight, and how to order at the end of an evening.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5, featured: true, pill: 'local guide' },
-        { slug: 'cocktail-bar-with-parking-pj',   section: 'Local guides', href: '/journal/cocktail-bar-with-parking-pj/', title: { lead: 'Cocktail bar with ', accent: 'parking in PJ', tail: '.' }, excerpt: 'The unglamorous question that decides where you actually drink. Where to find a cocktail bar in PJ with reliable parking and free after-hours street parking.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'cocktail-bars-near-1utama',      section: 'Local guides', href: '/journal/cocktail-bars-near-1utama/', title: { lead: 'Cocktail bars near ', accent: '1Utama', tail: '.' }, excerpt: 'The closest serious cocktail bar to 1Utama is Dissolved Solids in Damansara Kim, twelve minutes by car. Notes on the wider Bandar Utama drinking options.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'cocktail-bar-near-klcc',         section: 'Local guides', href: '/journal/cocktail-bar-near-klcc/', title: { lead: 'Cocktail bar ', accent: 'near KLCC', tail: ' (the PJ alternative).' }, excerpt: 'KLCC has plenty of bars. A 22-minute drive west trades rooftop crowds and parking nightmares for quieter rooms and better drinks-per-ringgit.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'things-to-do-damansara-kim',     section: 'Local guides', href: '/journal/things-to-do-damansara-kim/', title: { lead: 'Things to do near ', accent: 'Damansara Kim', tail: '.' }, excerpt: 'What to do near Damansara Kim before or after drinks. The wet market, the kopitiams, the parks, the small dining spots.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'things-to-do-ss2',               section: 'Local guides', href: '/journal/things-to-do-ss2/', title: { lead: 'Things to do near ', accent: 'SS2', tail: '.' }, excerpt: 'What to do near SS2 in PJ before or after drinks. The night market, the wet market, the dim sum, the dessert shops, and the small things.', author: 'Soluble Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'whisky-bar-pj',                  section: 'Local guides', href: '/journal/whisky-bar-pj/', title: { lead: 'Whisky bar ', accent: 'in PJ', tail: '.' }, excerpt: 'Where to drink serious whisky in Petaling Jaya. Our whisky-driven cocktail list, the back-shelf bottles, and how to taste whisky at the bar.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'gin-bar-pj',                     section: 'Local guides', href: '/journal/gin-bar-pj/', title: { lead: 'Gin bar ', accent: 'in PJ', tail: '.' }, excerpt: 'Where to drink serious gin in PJ. Our gin selection, the cocktails we pour, and the local Malaysian gin worth seeking out.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-
-        // ─ Practical at the bar ─
-        { slug: 'glassware-explained',            section: 'Practical at the bar', href: '/journal/glassware-explained/', title: { lead: 'Cocktail ', accent: 'glassware', tail: ', explained.' }, excerpt: 'Why a Martini glass is shaped like that, why an Old Fashioned wants a rocks glass, and the six glasses that cover almost every classic.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'cocktail-bar-pricing-pj',        section: 'Practical at the bar', href: '/journal/cocktail-bar-pricing-pj/', title: { lead: 'Cocktail bar ', accent: 'prices', tail: ' in PJ.' }, excerpt: 'What to expect to pay at a cocktail bar in PJ. Drink prices, snack prices, what an evening costs, tax and service charge, and tipping.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
-        { slug: 'what-to-wear-cocktail-bar-pj',   section: 'Practical at the bar', href: '/journal/what-to-wear-cocktail-bar-pj/', title: { lead: 'What to wear to a ', accent: 'cocktail bar', tail: ' in PJ.' }, excerpt: 'KL casual works almost everywhere. Three rules, three combinations that always land, three things to avoid. The honest dress-code answer.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
-        { slug: 'cocktail-bar-etiquette-malaysia',section: 'Practical at the bar', href: '/journal/cocktail-bar-etiquette-malaysia/', title: { lead: 'Cocktail bar ', accent: 'etiquette', tail: ' in Malaysia.' }, excerpt: 'The unwritten rules at a Malaysian cocktail bar. How to order, how to tip, what to expect, what not to do, and the cultural notes most guides skip.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'best-time-cocktail-bar-pj',      section: 'Practical at the bar', href: '/journal/best-time-cocktail-bar-pj/', title: { lead: 'Best ', accent: 'time to visit', tail: ' a cocktail bar in PJ.' }, excerpt: 'When to come for the quietest seats, the best bartender attention, the easiest parking, and the longest possible night. A timing guide.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'cocktail-bar-tourists-kl-pj',    section: 'Practical at the bar', href: '/journal/cocktail-bar-tourists-kl-pj/', title: { lead: 'Cocktail bars in KL and PJ ', accent: 'for tourists', tail: '.' }, excerpt: 'If you are visiting KL as a tourist, where to drink. The local scene, Malaysian-ingredient drinks worth ordering, and the practical notes.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5, featured: true, pill: 'tourist' },
-
-        // ─ How we work ─
-        { slug: 'pairing-cocktails-malaysian-food', section: 'How we work', href: '/journal/pairing-cocktails-malaysian-food/', title: { lead: 'Cocktails with ', accent: 'Malaysian food', tail: '.' }, excerpt: 'What to drink with nasi lemak, satay, char kway teow, laksa, and the dishes you actually eat. Three pairing rules plus specific recommendations.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 7, featured: true, pill: 'pairing' },
-        { slug: 'how-we-batch-infusions',         section: 'How we work', href: '/journal/how-we-batch-infusions/', title: { lead: 'Behind the ', accent: 'back shelf', tail: '.' }, excerpt: 'How we batch infused spirits, syrups, and tinctures at Soluble Solids. The shelf logic, the timing, what we make in-house, what we buy in.', author: 'Soluble Solids', date: '2026-05-18', readMinutes: 6, featured: true, pill: 'behind' },
-        { slug: 'music-at-cocktail-bar',          section: 'How we work', href: '/journal/music-at-cocktail-bar/', title: { lead: 'Music at a ', accent: 'cocktail bar', tail: '.' }, excerpt: 'Why we play what we play, the curve from afternoon to last call, and the playlist logic behind both rooms.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'batching-cocktails-parties',     section: 'How we work', href: '/journal/batching-cocktails-parties/', title: { lead: 'Batching cocktails ', accent: 'for a party', tail: '.' }, excerpt: 'A bartender guide to pre-making twenty drinks at home. The math, what to batch, what to add at service, how to keep things fresh.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 6 },
-        { slug: 'home-bar-malaysia',              section: 'How we work', href: '/journal/home-bar-malaysia/', title: { lead: 'A ', accent: 'home bar', tail: ' in Malaysia.' }, excerpt: 'Ten bottles that will cover most classics, where to actually buy them in the Klang Valley, and what to skip until you are sure.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 8 },
-        { slug: 'cocktail-bar-non-drinkers',      section: 'How we work', href: '/journal/cocktail-bar-non-drinkers/', title: { lead: 'A cocktail bar for ', accent: 'non-drinkers', tail: '.' }, excerpt: 'How to enjoy a cocktail bar if you are not drinking alcohol. The non-alcoholic side of our menus, what to order, why most mocktails fail.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'non-alcoholic-bars-kl',          section: 'How we work', href: '/journal/non-alcoholic-bars-kl/', title: { lead: 'Non-alcoholic ', accent: 'cocktail bars', tail: ' in KL.' }, excerpt: 'Where to go for serious non-alcoholic cocktails in the Klang Valley. What the sober curious scene looks like in Malaysia, and what to order.', author: 'Soluble Solids', date: '2026-05-18', readMinutes: 6 },
-
-        // ─ Occasions ─
-        { slug: 'date-night-cocktail-bars-pj',    section: 'Occasions', href: '/journal/date-night-cocktail-bars-pj/', title: { lead: 'Date night at a ', accent: 'cocktail bar', tail: '.' }, excerpt: 'What makes a cocktail bar work for a date in Petaling Jaya. Pick the room, pick the night, pick the right drink order.', author: 'Soluble Solids', date: '2026-05-18', readMinutes: 6 },
-        { slug: 'cocktail-bar-first-date-pj',     section: 'Occasions', href: '/journal/cocktail-bar-first-date-pj/', title: { lead: 'Cocktail bar for a ', accent: 'first date', tail: ' in PJ.' }, excerpt: 'A practical guide to picking a cocktail bar for a first date in PJ. The room, the timing, the order, the small things that make a first date work.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'anniversary-cocktail-bar-pj',    section: 'Occasions', href: '/journal/anniversary-cocktail-bar-pj/', title: { lead: 'An ', accent: 'anniversary', tail: ' at a cocktail bar in PJ.' }, excerpt: 'How to plan an anniversary night at a cocktail bar in PJ. Pick the room, the timing, the pre-order, and the small details that make it memorable.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5, featured: true, pill: 'celebration' },
-        { slug: 'groups-celebrations-cocktail-bar-pj', section: 'Occasions', href: '/journal/groups-celebrations-cocktail-bar-pj/', title: { lead: 'Birthdays, hen nights, ', accent: 'reunions', tail: '.' }, excerpt: 'What works at a cocktail bar for a group of six, ten, or twenty. How to book, how to order, how to keep the night moving in PJ.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 6, featured: true, pill: 'groups' },
-        { slug: 'business-dinner-drinks-pj',      section: 'Occasions', href: '/journal/business-dinner-drinks-pj/', title: { lead: 'Business dinner ', accent: 'drinks', tail: ' in PJ.' }, excerpt: 'A working guide to taking a client or colleague for drinks in PJ. Which room, which drink, what not to do, and how to read business-drinking in Malaysia.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'cocktail-bar-solo-pj',           section: 'Occasions', href: '/journal/cocktail-bar-solo-pj/', title: { lead: 'Drinking ', accent: 'alone', tail: ' at a cocktail bar in PJ.' }, excerpt: 'A short guide to drinking alone at a cocktail bar. Why it is a small joy, which seat to take, what to order, and the etiquette.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
-
-        // ─ Seasonal ─
-        { slug: 'new-year-eve-cocktails-pj',      section: 'Seasonal', href: '/journal/new-year-eve-cocktails-pj/', title: { lead: "New Year's Eve ", accent: 'cocktails', tail: ' in PJ.' }, excerpt: 'How to plan a NYE cocktail evening in PJ. What to order, how to book, what time to arrive, the small things that make NYE work.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5, featured: true, pill: 'seasonal' },
-        { slug: 'chinese-new-year-cocktails',     section: 'Seasonal', href: '/journal/chinese-new-year-cocktails/', title: { lead: 'Chinese New Year ', accent: 'cocktails', tail: ' in PJ.' }, excerpt: 'What to drink during CNY. Red and gold cocktails, mandarin orange variations, gathering-friendly mocktails, the CNY reunion drink format.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4, featured: true, pill: 'seasonal' },
-        { slug: 'hari-raya-non-alcoholic-drinks', section: 'Seasonal', href: '/journal/hari-raya-non-alcoholic-drinks/', title: { lead: 'Hari Raya ', accent: 'non-alcoholic', tail: ' drinks.' }, excerpt: 'A working guide to non-alcoholic drinks for Hari Raya open houses. Air bandung, sirap selasih, calamansi limeade, tea-based options.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4, featured: true, pill: 'seasonal' },
-        { slug: 'christmas-cocktails-pj',         section: 'Seasonal', href: '/journal/christmas-cocktails-pj/', title: { lead: 'Christmas ', accent: 'cocktails', tail: ' in PJ.' }, excerpt: 'Christmas cocktails adapted for tropical climate. Hot toddies do not work in 32-degree weather. Here is what does, plus Malaysian-local Christmas drinks.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4, featured: true, pill: 'seasonal' },
-
-        // ─ Deep dives ─
-        { slug: 'negroni-family-tree',            section: 'Deep dives', href: '/journal/negroni-family-tree/', title: { lead: 'The Negroni ', accent: 'family tree', tail: '.' }, excerpt: 'The Negroni is not one drink. Twelve variations mapped, with notes on what each one trades and gains.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 6, featured: true, pill: 'family' },
-        { slug: 'daiquiri-deep-dive',             section: 'Deep dives', href: '/journal/daiquiri-deep-dive/', title: { lead: 'Why the Daiquiri is the ', accent: 'cocktail-maker\'s test', tail: '.' }, excerpt: 'Three ingredients, no margin for error. Why bartenders use the Daiquiri as the competence test, and how to make it properly.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
-        { slug: 'best-malaysian-cocktails-2026',  section: 'Deep dives', href: '/journal/best-malaysian-cocktails-2026/', title: { lead: 'The best Malaysian ', accent: 'cocktails', tail: ' to try in 2026.' }, excerpt: 'Ten Malaysian-local cocktails worth drinking. Pandan, gula melaka, calamansi, kopi-O, kaffir lime, bunga kantan, sambal, hibiscus.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 6, featured: true, pill: 'list' },
+        { slug: 'why-our-menu-is-short',         href: '/journal/why-our-menu-is-short/',         title: { lead: 'Why our menu is ', accent: 'short on purpose', tail: '.' }, excerpt: 'Soluble Solids has no printed list. Dissolved Solids keeps a short one. Why fewer drinks done better is a better experience for everyone in the room.', author: 'Soluble Solids', date: '2026-05-16', readMinutes: 6 },
+        { slug: 'cocktail-bars-petaling-jaya',   href: '/journal/cocktail-bars-petaling-jaya/',   title: { lead: 'Cocktail bars in ', accent: 'Petaling Jaya', tail: '.' },     excerpt: 'A friendly local map of where to drink in PJ, what each neighbourhood is known for, and how the scene compares to KL.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 8, featured: true, pill: 'local guide' },
+        { slug: 'home-bar-malaysia',             href: '/journal/home-bar-malaysia/',             title: { lead: 'A ', accent: 'home bar', tail: ' in Malaysia.' },             excerpt: 'Ten bottles that will cover most classics, where to actually buy them in the Klang Valley, and what to skip until you are sure.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 8 },
+        { slug: 'pairing-cocktails-malaysian-food', href: '/journal/pairing-cocktails-malaysian-food/', title: { lead: 'Cocktails with ', accent: 'Malaysian food', tail: '.' },     excerpt: 'What to drink with nasi lemak, satay, char kway teow, laksa, and the dishes you actually eat. Three pairing rules plus specific recommendations.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 7, featured: true, pill: 'pairing' },
+        { slug: 'date-night-cocktail-bars-pj',   href: '/journal/date-night-cocktail-bars-pj/',   title: { lead: 'Date night at a ', accent: 'cocktail bar', tail: '.' },         excerpt: 'What makes a cocktail bar work for a date in Petaling Jaya. Pick the room, pick the night, pick the right drink order.', author: 'Soluble Solids',   date: '2026-05-18', readMinutes: 6 },
+        { slug: 'glassware-explained',           href: '/journal/glassware-explained/',           title: { lead: 'Cocktail ', accent: 'glassware', tail: ', explained.' },          excerpt: 'Why a Martini glass is shaped like that, why an Old Fashioned wants a rocks glass, and the six glasses that cover almost every classic.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'groups-celebrations-cocktail-bar-pj', href: '/journal/groups-celebrations-cocktail-bar-pj/', title: { lead: 'Birthdays, hen nights, ', accent: 'reunions', tail: '.' }, excerpt: 'What works at a cocktail bar for a group of six, ten, or twenty. How to book, how to order, how to keep the night moving in PJ.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 6, featured: true, pill: 'groups' },
+        { slug: 'non-alcoholic-bars-kl',         href: '/journal/non-alcoholic-bars-kl/',         title: { lead: 'Non-alcoholic ', accent: 'cocktail bars', tail: ' in KL.' },       excerpt: 'Where to go for serious non-alcoholic cocktails in the Klang Valley. What the sober curious scene looks like in Malaysia, and what to order.', author: 'Soluble Solids',   date: '2026-05-18', readMinutes: 6 },
+        { slug: 'batching-cocktails-parties',    href: '/journal/batching-cocktails-parties/',    title: { lead: 'Batching cocktails ', accent: 'for a party', tail: '.' },         excerpt: 'A bartender guide to pre-making twenty drinks at home. The math, what to batch, what to add at service, how to keep things fresh.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 6 },
+        { slug: 'late-night-drinks-damansara-kim', href: '/journal/late-night-drinks-damansara-kim/', title: { lead: 'Late-night drinks in ', accent: 'Damansara Kim', tail: '.' }, excerpt: 'A short, honest guide to late-night drinks in Damansara Kim. What is open after 10pm, what is open past midnight, and how to order at the end of an evening.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5, featured: true, pill: 'local guide' },
+        { slug: 'cocktail-bar-with-parking-pj', href: '/journal/cocktail-bar-with-parking-pj/', title: { lead: 'Cocktail bar with ', accent: 'parking in PJ', tail: '.' },              excerpt: 'The unglamorous question that decides where you actually drink. Where to find a cocktail bar in PJ with reliable parking and free after-hours street parking.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'cocktail-bars-near-1utama',    href: '/journal/cocktail-bars-near-1utama/',    title: { lead: 'Cocktail bars near ', accent: '1Utama', tail: '.' },                       excerpt: 'The closest serious cocktail bar to 1Utama is Dissolved Solids in Damansara Kim, twelve minutes by car. Notes on the wider Bandar Utama drinking options.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'best-time-cocktail-bar-pj',    href: '/journal/best-time-cocktail-bar-pj/',    title: { lead: 'Best ', accent: 'time to visit', tail: ' a cocktail bar in PJ.' },          excerpt: 'When to come for the quietest seats, the best bartender attention, the easiest parking, and the longest possible night. A timing guide.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'cocktail-bar-non-drinkers',    href: '/journal/cocktail-bar-non-drinkers/',    title: { lead: 'A cocktail bar for ', accent: 'non-drinkers', tail: '.' },                 excerpt: 'How to enjoy a cocktail bar if you are not drinking alcohol. The non-alcoholic side of our menus, what to order, why most mocktails fail.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'whisky-bar-pj',                href: '/journal/whisky-bar-pj/',                title: { lead: 'Whisky bar ', accent: 'in PJ', tail: '.' },                                  excerpt: 'Where to drink serious whisky in Petaling Jaya. Our whisky-driven cocktail list, the back-shelf bottles, and how to taste whisky at the bar.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'gin-bar-pj',                   href: '/journal/gin-bar-pj/',                   title: { lead: 'Gin bar ', accent: 'in PJ', tail: '.' },                                     excerpt: 'Where to drink serious gin in PJ. Our gin selection, the cocktails we pour, and the local Malaysian gin worth seeking out.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'cocktail-bar-first-date-pj',   href: '/journal/cocktail-bar-first-date-pj/',   title: { lead: 'Cocktail bar for a ', accent: 'first date', tail: ' in PJ.' },               excerpt: 'A practical guide to picking a cocktail bar for a first date in PJ. The room, the timing, the order, the small things that make a first date work.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'cocktail-bar-pricing-pj',      href: '/journal/cocktail-bar-pricing-pj/',      title: { lead: 'Cocktail bar ', accent: 'prices', tail: ' in PJ.' },                          excerpt: 'What to expect to pay at a cocktail bar in PJ. Drink prices, snack prices, what an evening costs, tax and service charge, and tipping.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
+        { slug: 'cocktail-bar-solo-pj',         href: '/journal/cocktail-bar-solo-pj/',         title: { lead: 'Drinking ', accent: 'alone', tail: ' at a cocktail bar in PJ.' },              excerpt: 'A short guide to drinking alone at a cocktail bar. Why it is a small joy, which seat to take, what to order, and the etiquette.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
+        { slug: 'best-malaysian-cocktails-2026', href: '/journal/best-malaysian-cocktails-2026/', title: { lead: 'The best Malaysian ', accent: 'cocktails', tail: ' to try in 2026.' },     excerpt: 'Ten Malaysian-local cocktails worth drinking. Pandan, gula melaka, calamansi, kopi-O, kaffir lime, bunga kantan, sambal, hibiscus.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 6, featured: true, pill: 'list' },
+        { slug: 'negroni-family-tree',     href: '/journal/negroni-family-tree/',     title: { lead: 'The Negroni ', accent: 'family tree', tail: '.' },                          excerpt: 'The Negroni is not one drink. Twelve variations mapped, with notes on what each one trades and gains.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 6, featured: true, pill: 'family' },
+        { slug: 'daiquiri-deep-dive',      href: '/journal/daiquiri-deep-dive/',      title: { lead: 'Why the Daiquiri is the ', accent: 'cocktail-maker\'s test', tail: '.' },     excerpt: 'Three ingredients, no margin for error. Why bartenders use the Daiquiri as the competence test, and how to make it properly.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'what-to-wear-cocktail-bar-pj',  href: '/journal/what-to-wear-cocktail-bar-pj/',  title: { lead: 'What to wear to a ', accent: 'cocktail bar', tail: ' in PJ.' },              excerpt: 'KL casual works almost everywhere. Three rules, three combinations that always land, three things to avoid. The honest dress-code answer.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4 },
+        { slug: 'cocktail-bar-etiquette-malaysia', href: '/journal/cocktail-bar-etiquette-malaysia/', title: { lead: 'Cocktail bar ', accent: 'etiquette', tail: ' in Malaysia.' },                excerpt: 'The unwritten rules at a Malaysian cocktail bar. How to order, how to tip, what to expect, what not to do, and the cultural notes most guides skip.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'cocktail-bar-near-klcc',        href: '/journal/cocktail-bar-near-klcc/',        title: { lead: 'Cocktail bar ', accent: 'near KLCC', tail: ' (the PJ alternative).' },         excerpt: 'KLCC has plenty of bars. A 22-minute drive west trades rooftop crowds and parking nightmares for quieter rooms and better drinks-per-ringgit.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'anniversary-cocktail-bar-pj',   href: '/journal/anniversary-cocktail-bar-pj/',   title: { lead: 'An ', accent: 'anniversary', tail: ' at a cocktail bar in PJ.' },              excerpt: 'How to plan an anniversary night at a cocktail bar in PJ. Pick the room, the timing, the pre-order, and the small details that make it memorable.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5, featured: true, pill: 'celebration' },
+        { slug: 'business-dinner-drinks-pj',     href: '/journal/business-dinner-drinks-pj/',     title: { lead: 'Business dinner ', accent: 'drinks', tail: ' in PJ.' },                          excerpt: 'A working guide to taking a client or colleague for drinks in PJ. Which room, which drink, what not to do, and how to read business-drinking in Malaysia.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'cocktail-bar-tourists-kl-pj',   href: '/journal/cocktail-bar-tourists-kl-pj/',   title: { lead: 'Cocktail bars in KL and PJ ', accent: 'for tourists', tail: '.' },              excerpt: 'If you are visiting KL as a tourist, where to drink. The local scene, Malaysian-ingredient drinks worth ordering, and the practical notes.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5, featured: true, pill: 'tourist' },
+        { slug: 'things-to-do-damansara-kim',    href: '/journal/things-to-do-damansara-kim/',    title: { lead: 'Things to do near ', accent: 'Damansara Kim', tail: '.' },                       excerpt: 'What to do near Damansara Kim before or after drinks. The wet market, the kopitiams, the parks, the small dining spots.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'things-to-do-ss2',              href: '/journal/things-to-do-ss2/',              title: { lead: 'Things to do near ', accent: 'SS2', tail: '.' },                                  excerpt: 'What to do near SS2 in PJ before or after drinks. The night market, the wet market, the dim sum, the dessert shops, and the small things.', author: 'Soluble Solids',   date: '2026-05-18', readMinutes: 5 },
+        { slug: 'how-we-batch-infusions',        href: '/journal/how-we-batch-infusions/',        title: { lead: 'Behind the ', accent: 'back shelf', tail: '.' },                                  excerpt: 'How we batch infused spirits, syrups, and tinctures at Soluble Solids. The shelf logic, the timing, what we make in-house, what we buy in.', author: 'Soluble Solids',   date: '2026-05-18', readMinutes: 6, featured: true, pill: 'behind' },
+        { slug: 'music-at-cocktail-bar',         href: '/journal/music-at-cocktail-bar/',         title: { lead: 'Music at a ', accent: 'cocktail bar', tail: '.' },                                excerpt: 'Why we play what we play, the curve from afternoon to last call, and the playlist logic behind both rooms.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5 },
+        { slug: 'new-year-eve-cocktails-pj',     href: '/journal/new-year-eve-cocktails-pj/',     title: { lead: "New Year's Eve ", accent: 'cocktails', tail: ' in PJ.' },                          excerpt: 'How to plan a NYE cocktail evening in PJ. What to order, how to book, what time to arrive, the small things that make NYE work.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 5, featured: true, pill: 'seasonal' },
+        { slug: 'chinese-new-year-cocktails',    href: '/journal/chinese-new-year-cocktails/',    title: { lead: 'Chinese New Year ', accent: 'cocktails', tail: ' in PJ.' },                         excerpt: 'What to drink during CNY. Red and gold cocktails, mandarin orange variations, gathering-friendly mocktails, the CNY reunion drink format.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4, featured: true, pill: 'seasonal' },
+        { slug: 'hari-raya-non-alcoholic-drinks', href: '/journal/hari-raya-non-alcoholic-drinks/', title: { lead: 'Hari Raya ', accent: 'non-alcoholic', tail: ' drinks.' },                          excerpt: 'A working guide to non-alcoholic drinks for Hari Raya open houses. Air bandung, sirap selasih, calamansi limeade, tea-based options.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4, featured: true, pill: 'seasonal' },
+        { slug: 'christmas-cocktails-pj',        href: '/journal/christmas-cocktails-pj/',        title: { lead: 'Christmas ', accent: 'cocktails', tail: ' in PJ.' },                                excerpt: 'Christmas cocktails adapted for tropical climate. Hot toddies do not work in 32-degree weather. Here is what does, plus Malaysian-local Christmas drinks.', author: 'Dissolved Solids', date: '2026-05-18', readMinutes: 4, featured: true, pill: 'seasonal' },
       ],
     },
   ],
@@ -1428,32 +1345,9 @@ function renderFeatured() {
 }
 
 function renderArticleList(cat) {
-  // Group articles by optional `section` field. When a category has 20+
-  // entries this turns the long flat list into a scannable, sub-organised
-  // index. Articles without a `section` render under a default heading
-  // only if at least one article in the category does have a section.
-  const hasSections = cat.articles.some(a => a.section);
-  if (!hasSections) {
-    return cat.articles.map((a, i) => renderArticleCard(a, i + 1)).join('');
-  }
-  const groups = [];
-  const seen = new Map();
-  cat.articles.forEach((a) => {
-    const k = a.section || 'More';
-    if (!seen.has(k)) { seen.set(k, groups.length); groups.push({ name: k, items: [] }); }
-    groups[seen.get(k)].items.push(a);
-  });
-  let n = 0;
-  return groups.map((g) => `
-    <div class="article-section-head"><span class="ash-line"></span><span class="ash-name">${g.name}</span><span class="ash-count">${g.items.length}</span></div>
-    ${g.items.map((a) => renderArticleCard(a, ++n)).join('')}
-  `).join('');
-}
-
-function renderArticleCard(a, num) {
-  return `
+  return cat.articles.map((a, i) => `
     <a class="article" href="${a.href}">
-      <div class="num">№ <b>${String(num).padStart(2, '0')}</b></div>
+      <div class="num">№ <b>${String(i + 1).padStart(2, '0')}</b></div>
       <div class="body">
         <h3>${tri(a.title)}</h3>
         <p class="dek">${a.excerpt}</p>
@@ -1464,7 +1358,7 @@ function renderArticleCard(a, num) {
       </div>
       <div class="read"><b>${a.readMinutes}</b>min<span class="arrow">→</span></div>
     </a>
-  `;
+  `).join('');
 }
 
 let activeIdx = 0;
