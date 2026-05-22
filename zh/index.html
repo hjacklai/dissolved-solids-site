@@ -1717,9 +1717,9 @@
     z-index: 1; pointer-events: none;
     transition: background var(--t-bg);
   }
-  /* Language toggle pill (top-left, EN | 中, 2-segment). */
+  /* Language toggle pill (top-right, EN | 中, 2-segment). */
   .lang-toggle {
-    position: fixed; top: 14px; left: 14px; z-index: 9999;
+    position: fixed; top: 14px; right: 14px; z-index: 9999;
     display: inline-flex; align-items: stretch; padding: 3px;
     background: rgba(8, 8, 12, .55);
     border: 1px solid rgba(255,255,255,.14);
@@ -1741,7 +1741,7 @@
   }
   .lang-toggle .lang-seg-active:hover { background: #f3ecdf; color: #0b0b10; }
   @media (max-width: 640px) {
-    .lang-toggle { top: 10px; left: 10px; font-size: 10px; }
+    .lang-toggle { top: 10px; right: 10px; font-size: 10px; }
     .lang-toggle .lang-seg { min-width: 26px; padding: 5px 8px; }
   }
   @media print { .lang-toggle { display: none; } }
