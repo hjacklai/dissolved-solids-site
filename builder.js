@@ -1637,14 +1637,21 @@
   const NUMBERS = { dissolved: '601140087607', soluble: '601116828651' };
   const BAR_NAMES = { dissolved: 'Dissolved Solids', soluble: 'Soluble Solids' };
 
-  function buildWhatsAppUrl(bar, ans, recipe) {
+  function buildWhatsAppUrl(bar, ans, recipe, reroll) {
     const plainName = recipe.name.replace(/<\/?i>/g, '');
+    // Deterministic recipe identifier: same answers + same reroll = same id,
+    // so bartenders can confirm two guests asking for the "same drink" really
+    // do mean the same recipe.
+    const hashStr = encodeHash(ans, reroll || 0);
+    const recipeId = (cyrb53(hashStr) >>> 0).toString(36).toUpperCase().slice(0, 6);
+    const shareUrl = `https://dissolvedsolids.co/#${hashStr}`;
     const lines = [
       `*DRINK BUILDER · RESERVATION*`,
       ``,
       `Hi ${BAR_NAMES[bar]}! I used the drink builder and I'd like to book a table to have this made for me.`,
       ``,
       `*Drink: ${plainName}*`,
+      `Recipe ID: ${recipeId}`,
       ``,
       `Ingredients (no quantities, you decide the pour):`,
       ...recipe.ingredients.map(i => `* ${i}`),
@@ -1652,7 +1659,9 @@
       `Method: ${recipe.method}`,
       `Garnish: ${recipe.garnish}`,
       ``,
-      `(Mood: ${fmtAnswer(ans.mood)} · profile: ${fmtAnswer(ans.profile)} · strength: ${ans.strength} · occasion: ${ans.occasion})`,
+      `(Mood: ${fmtAnswer(ans.mood)} · spirit: ${fmtAnswer(ans.spirit)} · profile: ${fmtAnswer(ans.profile)} · strength: ${ans.strength} · occasion: ${ans.occasion})`,
+      ``,
+      `View this exact build: ${shareUrl}`,
       ``,
       `Glass is your call. Substitute anything you don't have. Looking forward to it!`,
       ``,
@@ -1889,6 +1898,18 @@
       $('.result-name').innerHTML = recipe.name;
       $('.result-tagline').textContent = recipe.tagline;
 
+      // Recipe ID badge — short stable identifier from the same hash the
+      // bartender sees in WhatsApp. Helps a guest quote it on arrival.
+      const existingId = root.querySelector('.result-recipe-id');
+      if (existingId) existingId.remove();
+      const idHashStr = encodeHash(state.answers, state.reroll);
+      const recipeId = (cyrb53(idHashStr) >>> 0).toString(36).toUpperCase().slice(0, 6);
+      const idBadge = document.createElement('span');
+      idBadge.className = 'result-recipe-id';
+      idBadge.textContent = 'ID ' + recipeId;
+      idBadge.title = 'Same combination of answers always produces this exact drink and ID.';
+      $('.result-name').insertAdjacentElement('afterend', idBadge);
+
       // Malaysian-local badge
       const existingTag = root.querySelector('.result-tag');
       if (existingTag) existingTag.remove();
@@ -1926,8 +1947,8 @@
         li.style.animationDelay = `${idx * 60}ms`;
         ul.appendChild(li);
       });
-      $('.wa-dissolved').href = buildWhatsAppUrl('dissolved', state.answers, recipe);
-      $('.wa-soluble').href = buildWhatsAppUrl('soluble', state.answers, recipe);
+      $('.wa-dissolved').href = buildWhatsAppUrl('dissolved', state.answers, recipe, state.reroll);
+      $('.wa-soluble').href = buildWhatsAppUrl('soluble', state.answers, recipe, state.reroll);
 
       flowEl.hidden = true;
       if (heroEl) heroEl.hidden = true;

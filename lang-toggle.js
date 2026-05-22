@@ -1,6 +1,7 @@
 /*
- * Standalone language toggle. Tiny fixed link in the top-left corner
- * of every page. Swaps between the EN page and its /zh/ twin.
+ * Standalone language toggle. Pill-shaped two-segment switch in the
+ * top-left corner of every page. Active language is highlighted; the
+ * other is a clickable link to the EN ↔ ZH twin path.
  *
  * Loaded by every page (landing has its own inline <script> tag;
  * sub-pages load it via appbar.js). Idempotent — won't double-inject.
@@ -15,13 +16,18 @@
     var otherPath = inZh
       ? here.replace(/^\/zh\//, '/').replace(/^\/zh$/, '/')
       : '/zh' + (here === '/' ? '/' : here);
-    var a = document.createElement('a');
-    a.className = 'lang-toggle';
-    a.href = otherPath + location.hash;
-    a.setAttribute('aria-label', inZh ? 'Switch to English' : '切换至中文');
-    a.setAttribute('hreflang', inZh ? 'en-MY' : 'zh-Hans-MY');
-    a.textContent = inZh ? 'EN' : '中';
-    document.body.appendChild(a);
+    var hash = location.hash || '';
+
+    var wrap = document.createElement('div');
+    wrap.className = 'lang-toggle';
+    wrap.setAttribute('role', 'group');
+    wrap.setAttribute('aria-label', 'Language');
+    wrap.innerHTML = inZh
+      ? '<a class="lang-seg" href="' + (otherPath + hash) + '" hreflang="en-MY" aria-label="Switch to English">EN</a>'
+        + '<span class="lang-seg lang-seg-active" aria-current="true">中</span>'
+      : '<span class="lang-seg lang-seg-active" aria-current="true">EN</span>'
+        + '<a class="lang-seg" href="' + (otherPath + hash) + '" hreflang="zh-Hans-MY" aria-label="切换至中文">中</a>';
+    document.body.appendChild(wrap);
   }
 
   if (document.readyState === 'loading') {

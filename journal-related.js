@@ -224,21 +224,47 @@
     const picks = pickSix(window.location.pathname);
     if (!picks.length) return;
 
+    // Detect whether we're on a /zh/ page and route the builder link
+    // to the right hub. Builder lives at /#builder (and /zh/#builder).
+    const inZh = window.location.pathname.startsWith('/zh/');
+    const builderHref = inZh ? '/zh/#builder' : '/#builder';
+    const journalAllHref = inZh ? '/zh/journal/' : '/journal/';
+    const builderLabel = inZh
+      ? '试试调酒师 (Drink Builder)'
+      : 'Build your own drink';
+    const builderSub = inZh
+      ? '五个问题。一杯专属于你的酒。可直接 WhatsApp 给吧台。'
+      : 'Five questions. One drink built for you. WhatsApp it straight to the bar.';
+
     const section = document.createElement('aside');
     section.className = 'journal-related';
     section.setAttribute('aria-label', 'More from the journal');
     section.innerHTML = `
       <div class="jr-head">
-        <span class="jr-eyebrow">More from the journal</span>
-        <h3>Keep <i>reading</i>.</h3>
-        <p class="jr-sub">A small handful of unrelated angles. Pick the one that catches your eye.</p>
+        <span class="jr-eyebrow">${inZh ? '更多笔记' : 'More from the journal'}</span>
+        <h3>${inZh ? '继续 <i>读</i>。' : 'Keep <i>reading</i>.'}</h3>
+        <p class="jr-sub">${inZh ? '几个不相关的角度，挑一个感兴趣的看。' : 'A small handful of unrelated angles. Pick the one that catches your eye.'}</p>
       </div>
       <ul class="jr-list">
         ${picks.map((p) => `
           <li><a href="${p.url}"><span class="jr-arrow" aria-hidden="true">→</span><span class="jr-title">${p.title}</span></a></li>
         `).join('')}
       </ul>
-      <p class="jr-all"><a href="/journal/">See all 80+ journal entries →</a></p>
+      <p class="jr-all"><a href="${journalAllHref}">${inZh ? '查看全部笔记 →' : 'See all 80+ journal entries →'}</a></p>
+      <div class="jr-builder-cta">
+        <a href="${builderHref}" class="jr-builder-link">
+          <span class="jr-builder-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 4h14M8 4l4 8 4-8M12 12v8M8 20h8"/>
+            </svg>
+          </span>
+          <span class="jr-builder-text">
+            <span class="jr-builder-label">${builderLabel}</span>
+            <span class="jr-builder-sub">${builderSub}</span>
+          </span>
+          <span class="jr-builder-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
     `;
     mount.insertBefore(section, foot);
   }

@@ -1699,11 +1699,58 @@ a.label:hover { opacity: .8; }
   color: var(--accent, #c8862e);
   border-bottom-color: currentColor;
 }
+/* Drink builder CTA inside the journal-related block. Higher visual
+   weight than the "see all" line so guests notice the interactive tool. */
+.journal-related .jr-builder-cta {
+  margin: 28px 0 0;
+}
+.journal-related .jr-builder-link {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 22px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,59,129,.10) 0%, rgba(255,255,255,.03) 100%);
+  color: var(--paper, #f3ecdf);
+  text-decoration: none;
+  transition: border-color .25s, transform .2s, background .25s;
+}
+.journal-related .jr-builder-link:hover {
+  border-color: var(--accent, #c8862e);
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(255,59,129,.18) 0%, rgba(255,255,255,.05) 100%);
+}
+.journal-related .jr-builder-icon {
+  flex: 0 0 36px; height: 36px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--accent, #c8862e);
+}
+.journal-related .jr-builder-icon svg { width: 22px; height: 22px; }
+.journal-related .jr-builder-text { flex: 1 1 auto; display: flex; flex-direction: column; gap: 4px; }
+.journal-related .jr-builder-label {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--paper, #f3ecdf); font-weight: 500;
+}
+.journal-related .jr-builder-sub {
+  font-family: var(--serif, 'DM Serif Display'); font-size: 14px;
+  font-style: italic; color: rgba(255,255,255,.72); line-height: 1.35;
+}
+.journal-related .jr-builder-arrow {
+  flex: 0 0 auto; font-family: var(--mono); font-size: 18px;
+  color: rgba(255,255,255,.55);
+  transition: color .25s, transform .2s;
+}
+.journal-related .jr-builder-link:hover .jr-builder-arrow {
+  color: var(--accent, #c8862e); transform: translateX(3px);
+}
 @media (max-width: 639px) {
   .journal-related { margin-top: 40px; padding-top: 24px; }
   .journal-related .jr-list { grid-template-columns: 1fr; }
   .journal-related .jr-list li:nth-child(odd) { border-right: 0; }
   .journal-related .jr-list a { font-size: 14.5px; padding: 12px 12px 12px 2px; }
+  .journal-related .jr-builder-link { padding: 14px 16px; gap: 12px; }
+  .journal-related .jr-builder-icon { flex: 0 0 28px; height: 28px; }
+  .journal-related .jr-builder-icon svg { width: 18px; height: 18px; }
+  .journal-related .jr-builder-sub { font-size: 13px; }
 }
 .article-up-foot {
   font-family: var(--mono);

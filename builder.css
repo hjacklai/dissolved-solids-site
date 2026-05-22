@@ -414,6 +414,21 @@
 }
 .builder-mount .result-name i { color: var(--accent); }
 
+/* Recipe ID badge: short deterministic identifier, same combination
+   always produces this exact ID. Bartenders use it for quick lookup. */
+.builder-mount .result-recipe-id {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  border: 1px solid rgba(255,255,255,.18);
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin: 8px 0 4px;
+  cursor: help;
+}
 .builder-mount .result-tag {
   display: inline-block;
   font-family: var(--mono);

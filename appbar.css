@@ -193,3 +193,45 @@ body { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
   .appbar-icon { padding: 5px 5px; }
   .appbar-icon span { font-size: 8px; letter-spacing: .1em; }
 }
+
+/* ─── Language toggle (top-left, pill, 2-segment EN/中) ───────────
+   Active language is highlighted; the other is a clickable link.
+   Subtle until hover so it doesn't compete with the wordmark. */
+.lang-toggle {
+  position: fixed;
+  top: 14px; left: 14px;
+  z-index: 9999;
+  display: inline-flex; align-items: stretch;
+  padding: 3px;
+  background: rgba(8, 8, 12, .55);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  line-height: 1;
+  user-select: none;
+}
+.lang-toggle .lang-seg {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 30px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, .55);
+  text-decoration: none;
+  transition: color .2s, background .2s;
+}
+.lang-toggle .lang-seg:hover { color: #fff; background: rgba(255, 255, 255, .08); }
+.lang-toggle .lang-seg-active {
+  color: #0b0b10;
+  background: #f3ecdf;
+  font-weight: 600;
+}
+.lang-toggle .lang-seg-active:hover { background: #f3ecdf; color: #0b0b10; }
+@media (max-width: 640px) {
+  .lang-toggle { top: 10px; left: 10px; font-size: 10px; }
+  .lang-toggle .lang-seg { min-width: 26px; padding: 5px 8px; }
+}
+@media print { .lang-toggle { display: none; } }
