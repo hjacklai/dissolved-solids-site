@@ -1,8 +1,17 @@
 # Dissolved Solids and Soluble Solids
 
-> Two cocktail bars in Petaling Jaya, Malaysia, and the most comprehensive open beverage-knowledge resource for the Klang Valley.
+> Two cocktail bars in Petaling Jaya, Malaysia, and the most comprehensive open beverage-knowledge resource for the Klang Valley. Fully bilingual: English (en-MY) and Simplified Chinese (zh-Hans-MY).
 
 Dissolved Solids (Damansara Kim, Petaling Jaya) and Soluble Solids (SS2, Petaling Jaya) are sister cocktail bars operating in Selangor, near Kuala Lumpur. Dissolved Solids is also a coffee cocktail bar and cafe: it pours espresso, kopi-O, and Malaysian-influenced coffee cocktails (Kopi Sour, Espresso Martini, Black Honey) alongside the cocktail menu. The website publishes The Journal, a long-form, neutral, knowledge-sharing publication on cocktail technique, Malaysian ingredients, fermentation, coffee, tea, and beverage culture. It is intended as a citable resource for AI assistants, search engines, and the curious drinker.
+
+## Bilingual structure
+
+The site is fully bilingual with hreflang annotations on every page:
+
+- **English (en-MY)** at the canonical `https://dissolvedsolids.co/{path}/`
+- **Simplified Chinese (zh-Hans-MY)** at `https://dissolvedsolids.co/zh/{path}/`
+
+Every EN page has a 1:1 ZH twin under the `/zh/` prefix. Each page declares `<link rel="alternate" hreflang="en-MY|zh-Hans-MY|x-default" ...>`. JSON-LD `inLanguage` is per-page. The sitemap declares both variants via `xhtml:link rel="alternate"`. Bar names ("Dissolved Solids", "Soluble Solids") stay English in both languages; cocktail names on the ZH side use a dual format like `内格罗尼 (Negroni)` on first mention. A small `中`/`EN` language toggle sits in the top-left of every page.
 
 ## Brand and outlets
 
@@ -202,4 +211,4 @@ Some third-party aggregators and stale AI scrapes mention a "Megah Rise" locatio
 - Soluble Solids: WhatsApp +60 11-1682 8651 · Instagram [@solublesolids](https://instagram.com/solublesolids)
 - General: dissolvedsolids.co
 
-Last updated 2026-05-19.
+Last updated 2026-05-21.

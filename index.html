@@ -1696,9 +1696,31 @@
   .visit {
     position: relative; z-index: 5;
     padding: 100px var(--gutter) 40px;
+    /* Fill the rest of viewport + solid bg so the fixed cocktail
+       image cannot bleed through anywhere below the cards. */
+    min-height: calc(100dvh - 96px);
+    background: var(--bg-deep);
     color: var(--paper);
-    transition: color var(--t-bg);
+    transition: color var(--t-bg), background var(--t-bg);
   }
+  .page-bottom-backstop {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    height: calc(96px + env(safe-area-inset-bottom, 0px));
+    background: var(--bg-deep);
+    z-index: 1; pointer-events: none;
+    transition: background var(--t-bg);
+  }
+  .lang-toggle {
+    position: fixed; top: 16px; left: 16px; z-index: 9999;
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    font-size: 12px; font-weight: 500; letter-spacing: .14em;
+    color: rgba(255,255,255,.72); text-decoration: none;
+    padding: 4px 6px; transition: color .2s, background .2s;
+    text-shadow: 0 1px 4px rgba(0,0,0,.6);
+  }
+  .lang-toggle:hover { color: #fff; background: rgba(255,255,255,.08); border-radius: 4px; }
+  @media (max-width: 640px) { .lang-toggle { top: 10px; left: 10px; font-size: 11px; } }
+  @media print { .lang-toggle { display: none; } }
   .visit-head {
     max-width: 1200px; margin: 0 auto 56px;
     text-align: center;
@@ -2663,6 +2685,9 @@
 </style>
 </head>
 <body>
+
+<a class="lang-toggle" href="/zh/" hreflang="zh-Hans-MY" aria-label="切换至中文">中</a>
+<div class="page-bottom-backstop" aria-hidden="true"></div>
 
 <!-- both state-layers (background photos + scrims + patterns) -->
 <div class="state-layer layer-sol">
