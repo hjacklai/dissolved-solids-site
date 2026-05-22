@@ -199,7 +199,10 @@ body { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
    Subtle until hover so it doesn't compete with the wordmark. */
 .lang-toggle {
   position: fixed;
-  top: 14px; left: 14px;
+  /* Default position: top-left. On sub-pages the .home-fab orange
+     circle sits at top-left (54px wide), so when a body contains a
+     home-fab we shift the pill to its right to avoid overlap. */
+  top: 22px; left: 14px;
   z-index: 9999;
   display: inline-flex; align-items: stretch;
   padding: 3px;
@@ -214,6 +217,8 @@ body { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
   line-height: 1;
   user-select: none;
 }
+/* Shift right when the floating Home button is on the page. */
+body:has(.home-fab) .lang-toggle { left: 84px; }
 .lang-toggle .lang-seg {
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 30px;
@@ -231,7 +236,8 @@ body { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
 }
 .lang-toggle .lang-seg-active:hover { background: #f3ecdf; color: #0b0b10; }
 @media (max-width: 640px) {
-  .lang-toggle { top: 10px; left: 10px; font-size: 10px; }
+  .lang-toggle { top: 18px; left: 10px; font-size: 10px; }
   .lang-toggle .lang-seg { min-width: 26px; padding: 5px 8px; }
+  body:has(.home-fab) .lang-toggle { left: 76px; }
 }
 @media print { .lang-toggle { display: none; } }

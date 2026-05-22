@@ -19,6 +19,19 @@
  * inlined. This script is for sub-pages so navigation stays
  * consistent across the site.
  */
+// ─── Language toggle loader ────────────────────────────────────
+// Loads BEFORE the IIFE early-return so it runs on every page,
+// including pages with their own inline appbar. The toggle markup
+// itself lives in /lang-toggle.js (pill, 2-segment EN | 中).
+(function loadLangToggle() {
+  if (document.querySelector('script[data-lt-loaded]')) return;
+  var s = document.createElement('script');
+  s.src = '/lang-toggle.js';
+  s.defer = true;
+  s.dataset.ltLoaded = '1';
+  document.head.appendChild(s);
+})();
+
 (function () {
   'use strict';
 
