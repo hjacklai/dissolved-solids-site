@@ -257,9 +257,15 @@
       // Don't show on the homepage itself, or on the two bar pages
       // (DS / SS) which are themselves landing-level pages styled to
       // match the homepage and have the bottom appbar for navigation.
+      // Same exclusions apply to their /zh/ twins.
       const p = (location.pathname || '/').replace(/\/index\.html?$/i, '/');
       if (p === '/' || p === '') return;
       if (p === '/dissolvedsolids/' || p === '/solublesolids/') return;
+      if (p === '/zh/' || p === '/zh') return;
+      if (p === '/zh/dissolvedsolids/' || p === '/zh/solublesolids/') return;
+      // The home button on ZH pages should point at the ZH landing.
+      const inZh = p.indexOf('/zh/') === 0;
+      const homeHref = inZh ? '/zh/' : '/';
 
       if (!document.getElementById('home-fab-styles')) {
         const css = ''
@@ -318,9 +324,9 @@
 
       const a = document.createElement('a');
       a.className = 'home-fab';
-      a.href = '/';
-      a.setAttribute('aria-label', 'Back to home');
-      a.setAttribute('title', 'Home');
+      a.href = homeHref;
+      a.setAttribute('aria-label', inZh ? '回到首页' : 'Back to home');
+      a.setAttribute('title', inZh ? '首页' : 'Home');
       a.innerHTML = ''
         + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
         +      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '
@@ -328,7 +334,7 @@
         +   '<path d="M3 11.5 12 4l9 7.5"/>'
         +   '<path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/>'
         + '</svg>'
-        + '<span class="home-fab-tip">Home</span>';
+        + '<span class="home-fab-tip">' + (inZh ? '首页' : 'Home') + '</span>';
       document.body.appendChild(a);
     } catch (e) {
       // Home button is non-critical; never let an injection bug break the page.
