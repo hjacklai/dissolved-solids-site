@@ -2893,6 +2893,64 @@
     </div>
   </div>
 </section>
+
+<!-- Local SEO: link out to the three priority neighbourhood guides
+     from the highest-authority page on the site. Boosts inbound link
+     count and PageRank flow to the target landers. -->
+<section class="local-guides" aria-label="Cocktail bars by neighbourhood">
+  <style>
+    .local-guides { padding: 56px var(--gutter) 80px; max-width: 1200px; margin: 0 auto; }
+    .local-guides h2 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(28px, 4vw, 42px); line-height: 1.05;
+      margin: 0 0 8px; color: var(--paper);
+    }
+    .local-guides h2 em { color: var(--accent); font-style: italic; transition: color var(--t-bg); }
+    .local-guides .lg-sub {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .2em;
+      text-transform: uppercase; color: rgba(255,255,255,.55); margin: 0 0 28px;
+    }
+    .local-guides .lg-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .local-guides .lg-card {
+      display: block; padding: 20px 22px;
+      border: 1px solid rgba(255,255,255,.14); border-radius: 12px;
+      color: var(--paper); text-decoration: none;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+    .local-guides .lg-card:hover {
+      border-color: var(--accent); transform: translateY(-2px);
+      background: rgba(255,255,255,.04);
+    }
+    .local-guides .lg-card h3 {
+      font-family: var(--serif); font-size: 22px; font-weight: 400;
+      margin: 0 0 6px; line-height: 1.1;
+    }
+    .local-guides .lg-card h3 em { color: var(--accent); font-style: italic; }
+    .local-guides .lg-card p {
+      font-family: var(--serif); font-size: 14.5px; font-style: italic;
+      color: rgba(255,255,255,.7); line-height: 1.4; margin: 0;
+    }
+  </style>
+  <h2>Cocktail bars <em>in this area</em>.</h2>
+  <p class="lg-sub">Find us by neighbourhood</p>
+  <div class="lg-grid">
+    <a class="lg-card" href="/cocktail-bars-pj/">
+      <h3>Cocktail bars in <em>PJ</em></h3>
+      <p>Soluble Solids in SS2 and Dissolved Solids in Damansara Kim. Both PJ outlets, drive times, signature drinks.</p>
+    </a>
+    <a class="lg-card" href="/cocktail-bars-damansara/">
+      <h3>Cocktail bar in <em>Damansara</em></h3>
+      <p>Dissolved Solids on Jalan SS20/11, Damansara Kim. Driving notes, hours, parking.</p>
+    </a>
+    <a class="lg-card" href="/cocktail-bars-kl/">
+      <h3>Cocktail bars from <em>KL</em></h3>
+      <p>20-30 minutes west from KLCC, Bangsar, Mont Kiara. Drive routes from every KL neighbourhood.</p>
+    </a>
+  </div>
+</section>
 </main>
 
 <!-- BIG BOTTOM SWITCHER - always visible -->
