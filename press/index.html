@@ -47,6 +47,15 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dissolvedsolids.co/"},{"@type":"ListItem","position":2,"name":"Press and recognition","item":"https://dissolvedsolids.co/press/"}]}
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"How do I contact you for press or editorial enquiries?","acceptedAnswer":{"@type":"Answer","text":"WhatsApp either outlet directly. Dissolved Solids in Damansara Kim: +60 11-4008 7607. Soluble Solids in SS2: +60 11-1682 8651. Mention that you are writing or filming and we will route the conversation to the right person. We respond within 24 hours on most days. For longer interviews or scheduled shoots, allow a few days lead time so we can book the right bartender to be on shift."}},
+  {"@type":"Question","name":"Which awards have you won?","acceptedAnswer":{"@type":"Answer","text":"Dissolved Solids is listed in Tatler Asia Best 20 Bars Malaysia in both 2025 (ranked #6) and 2026 (ranked #9). The 2025 list cited The Tesseract as the must-try cocktail; the 2026 list repeated the citation. We are also featured in Options/The Edge Malaysia (2022), Eat Drink KL (2019, 2023), and Tatler Asia's 2020 MCO delivery coverage. Soluble Solids in SS2 is covered separately by Eat Drink KL."}},
+  {"@type":"Question","name":"Are journalists welcome to visit the bars?","acceptedAnswer":{"@type":"Answer","text":"Yes. Walk in any open evening; mention the publication when you arrive and we will look after you. For scheduled tastings, photo shoots, or interviews with the head bartender, WhatsApp a few days in advance so we can plan around prep and service. We do not charge a hosting fee, but we also do not comp drinks beyond a tasting flight relevant to the story; this keeps coverage honest on both sides."}},
+  {"@type":"Question","name":"Can I quote from this site or republish material?","acceptedAnswer":{"@type":"Answer","text":"Short verbatim quotes from the journal or any page are welcome with a credit and link back to dissolvedsolids.co. Photographs may be republished editorially with credit; commercial reuse needs written permission. Tatler, Eat Drink KL, Options, and KL Foodie quotes shown on this page are credited verbatim to those publications; please source from the original rather than from us when republishing third-party copy."}},
+  {"@type":"Question","name":"Is there a press kit available?","acceptedAnswer":{"@type":"Answer","text":"We do not maintain a static press kit, but on request we can send high-resolution photos (bar interiors at both outlets, signature cocktails including The Tesseract and the Scented Negroni, bartender portraits), a one-page bar history, and the current cocktail and infusion menus. WhatsApp either outlet with the publication name, the deadline, and what you need, and we will send within 24 hours."}}
+]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -95,6 +104,13 @@
   .press-directories ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 12px 22px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .03em; opacity: .75; }
   .press-directories a { color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(0,0,0,.3); }
   .press-directories a:hover { border-bottom-style: solid; }
+  .press-faq { margin-top: 32px; }
+  .press-faq details { padding: 16px 0; border-bottom: 1px dashed rgba(0,0,0,.18); }
+  .press-faq summary { font-family: 'DM Serif Display', serif; font-size: 18px; line-height: 1.4; cursor: pointer; list-style: none; padding-right: 24px; position: relative; }
+  .press-faq summary::-webkit-details-marker { display: none; }
+  .press-faq summary::after { content: '+'; position: absolute; right: 0; top: 0; font-family: 'JetBrains Mono', monospace; font-size: 18px; opacity: .55; }
+  .press-faq details[open] summary::after { content: '–'; }
+  .press-faq details p { font-family: 'DM Serif Display', serif; font-size: 16px; line-height: 1.55; margin: 12px 0 0; opacity: .85; }
 </style>
 <script src="/analytics.js" defer></script>
 </head>
@@ -216,6 +232,36 @@
       <li><a href="https://www.instagram.com/solublesolids/" target="_blank" rel="noopener">Instagram (SS)</a></li>
     </ul>
   </div>
+
+  <section class="press-faq" aria-labelledby="faq-heading">
+    <h2 class="press-section-title" id="faq-heading">Frequently asked <i>questions</i>.</h2>
+    <p class="press-section-sub">For press, food writers, and editors</p>
+
+    <details>
+      <summary>How do I contact you for press or editorial enquiries?</summary>
+      <p>WhatsApp either outlet directly. Dissolved Solids in Damansara Kim: <a href="https://wa.me/601140087607" target="_blank" rel="noopener">+60 11-4008 7607</a>. Soluble Solids in SS2: <a href="https://wa.me/601116828651" target="_blank" rel="noopener">+60 11-1682 8651</a>. Mention that you are writing or filming and we will route the conversation to the right person. We respond within 24 hours on most days. For longer interviews or scheduled shoots, allow a few days lead time so we can book the right bartender to be on shift.</p>
+    </details>
+
+    <details>
+      <summary>Which awards have you won?</summary>
+      <p>Dissolved Solids is listed in Tatler Asia Best 20 Bars Malaysia in both 2025 (ranked #6) and 2026 (ranked #9). The 2025 list cited The Tesseract as the must-try cocktail; the 2026 list repeated the citation. We are also featured in Options/The Edge Malaysia (2022), Eat Drink KL (2019, 2023), and Tatler Asia's 2020 MCO delivery coverage. Soluble Solids in SS2 is covered separately by Eat Drink KL.</p>
+    </details>
+
+    <details>
+      <summary>Are journalists welcome to visit the bars?</summary>
+      <p>Yes. Walk in any open evening; mention the publication when you arrive and we will look after you. For scheduled tastings, photo shoots, or interviews with the head bartender, WhatsApp a few days in advance so we can plan around prep and service. We do not charge a hosting fee, but we also do not comp drinks beyond a tasting flight relevant to the story; this keeps coverage honest on both sides.</p>
+    </details>
+
+    <details>
+      <summary>Can I quote from this site or republish material?</summary>
+      <p>Short verbatim quotes from the journal or any page are welcome with a credit and link back to dissolvedsolids.co. Photographs may be republished editorially with credit; commercial reuse needs written permission. Tatler, Eat Drink KL, Options, and KL Foodie quotes shown on this page are credited verbatim to those publications; please source from the original rather than from us when republishing third-party copy.</p>
+    </details>
+
+    <details>
+      <summary>Is there a press kit available?</summary>
+      <p>We do not maintain a static press kit, but on request we can send high-resolution photos (bar interiors at both outlets, signature cocktails including The Tesseract and the Scented Negroni, bartender portraits), a one-page bar history, and the current cocktail and infusion menus. WhatsApp either outlet with the publication name, the deadline, and what you need, and we will send within 24 hours.</p>
+    </details>
+  </section>
 
   <section class="press-cta">
     <h2>Writing about <i>us</i>?</h2>
