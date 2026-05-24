@@ -245,6 +245,21 @@
     document.head.appendChild(s);
   })();
 
+  // Auto-load cocktail-tools.js on cocktail recipe pages. Adds a Print
+  // recipe button, Copy link, and an embed-snippet generator (every
+  // embed includes a dofollow attribution backlink, useful for SEO).
+  // The loaded script self-detects via Recipe schema presence.
+  (function loadCocktailTools() {
+    if (!/\/cocktails\/[^/]+/.test(location.pathname)) return;
+    if (/\/cocktails\/(index\.html?)?$/.test(location.pathname)) return;
+    if (document.querySelector('script[data-ct-loaded]')) return;
+    const s = document.createElement('script');
+    s.src = '/cocktail-tools.js';
+    s.defer = true;
+    s.dataset.ctLoaded = '1';
+    document.head.appendChild(s);
+  })();
+
   // ─── Floating animated Home button ─────────────────────────────
   // Auto-injected on every sub-page that loads appbar.js. Skips the
   // homepage so we never duplicate. The breathing scale and pulse

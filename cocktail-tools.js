@@ -29,6 +29,32 @@
   var recipeName = recipeData.name || 'Cocktail';
   var recipeUrl = recipeData.url || window.location.href;
 
+  // Language detection — ZH on /zh/ pages, EN otherwise
+  var isZh = /^zh(-|$)/i.test(document.documentElement.lang || '');
+  var T = isZh ? {
+    tools: '工具',
+    print: '⎙ 打印配方',
+    copyLink: '🔗 复制链接',
+    copied: '✓ 已复制',
+    embedSummary: '📎 将此配方嵌入你的网站',
+    embedHelp: '复制以下代码段粘贴到你的博客或网站。自动包含返回我们的署名链接。',
+    copySnippet: '📋 复制代码',
+    recipeFrom: '配方由 Dissolved Solids 提供',
+    recipeLabel: '配方',
+    by: '·'
+  } : {
+    tools: 'Tools',
+    print: '⎙ Print recipe',
+    copyLink: '🔗 Copy link',
+    copied: '✓ Copied',
+    embedSummary: '📎 Embed this recipe on your site',
+    embedHelp: 'Copy and paste this snippet into your blog or website. Auto-includes attribution back to us.',
+    copySnippet: '📋 Copy snippet',
+    recipeFrom: 'recipe from Dissolved Solids',
+    recipeLabel: 'Recipe:',
+    by: 'by'
+  };
+
   // Find the article-body to mount inside; fall back to article
   var body = document.querySelector('.article-body') || document.querySelector('article');
   if (!body) return;
@@ -50,16 +76,16 @@
     + '.cocktail-tools .copy-help { font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; color: rgba(255,255,255,.45); margin: 0; text-transform: uppercase; }'
     + '@media print { .cocktail-tools { display: none !important; } }'
     + '</style>'
-    + '<p class="ct-head">Tools</p>'
+    + '<p class="ct-head">' + T.tools + '</p>'
     + '<div class="ct-actions">'
-    +   '<button type="button" class="ct-btn" id="ctPrint">⎙ Print recipe</button>'
-    +   '<a class="ct-btn" id="ctShare" href="#">🔗 Copy link</a>'
+    +   '<button type="button" class="ct-btn" id="ctPrint">' + T.print + '</button>'
+    +   '<a class="ct-btn" id="ctShare" href="#">' + T.copyLink + '</a>'
     + '</div>'
     + '<details>'
-    +   '<summary>📎 Embed this recipe on your site</summary>'
-    +   '<p class="copy-help">Copy and paste this snippet into your blog or website. Auto-includes attribution back to us.</p>'
+    +   '<summary>' + T.embedSummary + '</summary>'
+    +   '<p class="copy-help">' + T.embedHelp + '</p>'
     +   '<textarea class="embed-code" readonly id="ctEmbedCode"></textarea>'
-    +   '<button type="button" class="ct-btn" id="ctCopyEmbed">📋 Copy snippet</button>'
+    +   '<button type="button" class="ct-btn" id="ctCopyEmbed">' + T.copySnippet + '</button>'
     + '</details>';
   // Insert at the END of the article body, before any aside/footer
   body.appendChild(panel);
@@ -77,7 +103,7 @@
       navigator.clipboard.writeText(url).then(function () {
         var btn = e.target;
         var orig = btn.textContent;
-        btn.textContent = '✓ Copied';
+        btn.textContent = T.copied;
         setTimeout(function () { btn.textContent = orig; }, 1800);
       });
     }
@@ -88,10 +114,10 @@
     + 'width="100%" height="640" '
     + 'frameborder="0" '
     + 'style="border:1px solid #e0d8c8;border-radius:10px;max-width:560px;" '
-    + 'title="' + escapeHtml(recipeName) + ' recipe from Dissolved Solids"></iframe>\n'
+    + 'title="' + escapeHtml(recipeName) + ' ' + T.recipeFrom + '"></iframe>\n'
     + '<p style="font-size:11px;color:#888;font-family:sans-serif;margin:6px 0 0;">'
-    + 'Recipe: <a href="' + recipeUrl + '" rel="noopener" target="_blank">'
-    + escapeHtml(recipeName) + '</a> by '
+    + T.recipeLabel + ' <a href="' + recipeUrl + '" rel="noopener" target="_blank">'
+    + escapeHtml(recipeName) + '</a> ' + T.by + ' '
     + '<a href="https://dissolvedsolids.co/" rel="noopener" target="_blank">Dissolved Solids</a></p>';
   document.getElementById('ctEmbedCode').value = embed;
   document.getElementById('ctCopyEmbed').addEventListener('click', function (e) {
@@ -103,7 +129,7 @@
     }
     var btn = e.target;
     var orig = btn.textContent;
-    btn.textContent = '✓ Copied';
+    btn.textContent = T.copied;
     setTimeout(function () { btn.textContent = orig; }, 1800);
   });
 
