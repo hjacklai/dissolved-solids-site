@@ -371,7 +371,7 @@
       // location pages that don't define those tokens.
       if (!document.getElementById('site-foot-styles')) {
         const css = ''
-          + '.site-foot{padding:80px clamp(28px,6.5vw,180px) 160px;'
+          + '.site-foot{padding:28px clamp(28px,6.5vw,180px) 110px;'
           + 'background:var(--bg-deep,#08080a);color:var(--ink,#f0e6cf);'
           + 'font-family:var(--mono,"JetBrains Mono",ui-monospace,monospace);'
           + 'border-top:1px solid rgba(240,230,207,0.12);}'
@@ -379,7 +379,7 @@
           + '.site-foot-inner{max-width:var(--maxw,1440px);margin:0 auto;}'
           + '.site-foot-kicker{font-size:11px;letter-spacing:.26em;'
           + 'text-transform:uppercase;color:rgba(240,230,207,.6);margin:0 0 8px;}'
-          + '.site-foot-lede{font-family:var(--serif,"DM Serif Display","Times New Roman",serif);'
+          + '.site-foot-lede{display:none;font-family:var(--serif,"DM Serif Display","Times New Roman",serif);'
           + 'font-size:clamp(32px,4.5vw,56px);line-height:1.02;letter-spacing:-.02em;'
           + 'margin:0 0 56px;color:var(--ink,#f0e6cf);max-width:780px;font-weight:400;}'
           + '.site-foot-lede em{color:var(--accent,#d18b3a);font-style:normal;}'
@@ -392,8 +392,8 @@
           + 'line-height:1.45;border-bottom:1px solid transparent;transition:color 160ms,border-color 160ms;}'
           + '.site-foot-col a:hover,.site-foot-col a:focus-visible{color:var(--ink,#f0e6cf);'
           + 'border-bottom-color:rgba(209,139,58,.7);}'
-          + '.site-foot-meta{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:56px;'
-          + 'padding-top:28px;border-top:1px solid rgba(240,230,207,.1);font-size:11px;'
+          + '.site-foot-meta{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:18px;'
+          + 'padding-top:0;border-top:none;font-size:11px;'
           + 'letter-spacing:.12em;text-transform:uppercase;color:rgba(240,230,207,.55);}'
           + '.site-foot-meta a{color:inherit;text-decoration:none;'
           + 'border-bottom:1px dotted rgba(240,230,207,.3);}'
