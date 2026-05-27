@@ -268,6 +268,37 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://dissolvedsolids.co/dissolvedsolids/#coffee-cocktail-service",
+  "name": "Dissolved Solids Coffee Cocktail and Cafe Service",
+  "alternateName": ["Coffee cocktail bar service", "Espresso and kopi cocktail service", "All-day cafe bar"],
+  "serviceType": "Coffee cocktail bar and cafe",
+  "description": "Espresso, kopi-O, vermouth, classics, and cocktails that fold coffee into the drink. Five signature coffee cocktails on the menu: Kopi Sour, Espresso Martini, Black Honey, and seasonal variations. Open from afternoon to late night, with customised drinks built on request. Cafe by day, cocktail bar by night.",
+  "provider": {"@id": "https://dissolvedsolids.co/dissolvedsolids/#bar"},
+  "areaServed": [
+    {"@type": "City", "name": "Petaling Jaya"},
+    {"@type": "City", "name": "Kuala Lumpur"},
+    {"@type": "AdministrativeArea", "name": "Klang Valley"},
+    {"@type": "AdministrativeArea", "name": "Selangor"}
+  ],
+  "category": ["Coffee cocktails", "Specialty coffee", "Bespoke beverages"],
+  "audience": {"@type": "Audience", "audienceType": "Coffee drinkers, cocktail enthusiasts, adults of legal drinking age in Malaysia"},
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "MYR",
+    "priceSpecification": {"@type": "PriceSpecification", "minPrice": "17", "maxPrice": "45", "priceCurrency": "MYR"},
+    "availability": "https://schema.org/InStock",
+    "availableAtOrFrom": {"@id": "https://dissolvedsolids.co/dissolvedsolids/#bar"}
+  },
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {"@type": "EntryPoint", "urlTemplate": "https://wa.me/601140087607", "inLanguage": "en-MY"}
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": "https://dissolvedsolids.co/dissolvedsolids/#faq",
   "inLanguage": "en-MY",

@@ -269,6 +269,37 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://dissolvedsolids.co/zh/dissolvedsolids/#coffee-cocktail-service",
+  "name": "Dissolved Solids 咖啡鸡尾酒与咖啡店服务",
+  "alternateName": ["咖啡鸡尾酒吧服务", "意式浓缩与 Kopi 鸡尾酒服务", "全日咖啡店酒吧"],
+  "serviceType": "咖啡鸡尾酒吧兼咖啡店",
+  "description": "意式浓缩、Kopi-O 黑咖啡、苦艾酒、经典款，以及将咖啡融入饮品的鸡尾酒。菜单上的五款招牌咖啡鸡尾酒：Kopi Sour、Espresso Martini、Black Honey 及季节性变化款。从下午营业到深夜，可应要求客制化调制。日间咖啡店，夜间鸡尾酒吧。",
+  "provider": {"@id": "https://dissolvedsolids.co/zh/dissolvedsolids/#bar"},
+  "areaServed": [
+    {"@type": "City", "name": "八打灵再也"},
+    {"@type": "City", "name": "吉隆坡"},
+    {"@type": "AdministrativeArea", "name": "巴生谷"},
+    {"@type": "AdministrativeArea", "name": "雪兰莪"}
+  ],
+  "category": ["咖啡鸡尾酒", "精品咖啡", "客制化饮品"],
+  "audience": {"@type": "Audience", "audienceType": "咖啡爱好者、鸡尾酒爱好者、马来西亚合法饮酒年龄成人"},
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "MYR",
+    "priceSpecification": {"@type": "PriceSpecification", "minPrice": "17", "maxPrice": "45", "priceCurrency": "MYR"},
+    "availability": "https://schema.org/InStock",
+    "availableAtOrFrom": {"@id": "https://dissolvedsolids.co/zh/dissolvedsolids/#bar"}
+  },
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {"@type": "EntryPoint", "urlTemplate": "https://wa.me/601140087607", "inLanguage": "zh-Hans-MY"}
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": "https://dissolvedsolids.co/zh/dissolvedsolids/#faq",
   "inLanguage": "zh-Hans-MY",
