@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://dissolvedsolids.co/</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/" />
+  </url>
+  <url>
     <loc>https://dissolvedsolids.co/after-work-drinks-kl/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -370,7 +379,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/cocktails/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/cocktails/" />
@@ -1233,7 +1242,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/coffee/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/coffee/" />
@@ -1275,7 +1284,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/dissolvedsolids/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/dissolvedsolids/" />
@@ -2163,7 +2172,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/journal/clear-ice-at-home/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/clear-ice-at-home/" />
@@ -2190,7 +2199,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/journal/cocktail-bar-near-klcc/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/cocktail-bar-near-klcc/" />
@@ -2523,7 +2532,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/journal/how-to-order-cocktail/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/how-to-order-cocktail/" />
@@ -2532,7 +2541,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/journal/how-to-shake-cocktail/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/how-to-shake-cocktail/" />
@@ -2541,7 +2550,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/journal/how-to-taste-spirit/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/how-to-taste-spirit/" />
@@ -2847,7 +2856,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/journal/oleo-saccharum/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/oleo-saccharum/" />
@@ -3468,7 +3477,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/reserve/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/reserve/" />
@@ -3504,7 +3513,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/solublesolids/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/solublesolids/" />
@@ -3664,7 +3673,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/" />
@@ -4384,7 +4393,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/cocktails/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/cocktails/" />
@@ -5257,7 +5266,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/dissolvedsolids/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/dissolvedsolids/" />
@@ -6085,7 +6094,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/journal/how-to-shake-cocktail/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/how-to-shake-cocktail/" />
@@ -6238,7 +6247,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/journal/clear-ice-at-home/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/clear-ice-at-home/" />
@@ -6328,7 +6337,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/journal/how-to-order-cocktail/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/how-to-order-cocktail/" />
@@ -6625,7 +6634,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/journal/how-to-taste-spirit/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/how-to-taste-spirit/" />
@@ -6814,7 +6823,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/journal/oleo-saccharum/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/oleo-saccharum/" />
@@ -7174,7 +7183,7 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/solublesolids/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/solublesolids/" />

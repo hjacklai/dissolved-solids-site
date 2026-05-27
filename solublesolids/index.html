@@ -165,6 +165,37 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://dissolvedsolids.co/solublesolids/#bespoke-service",
+  "name": "Soluble Solids Bespoke Cocktail Experience",
+  "alternateName": ["Customised cocktail service", "No-fixed-menu cocktail consultation", "Bespoke drink building"],
+  "serviceType": "Bespoke cocktail consultation and preparation",
+  "description": "Every drink at Soluble Solids is built from a short conversation. The bartender asks three questions (preferred strength, base spirit, flavour profile) and prepares the cocktail in front of the guest from a wall of labelled infusion jars on the back bar. No printed list. Most drinks land between RM 32 and RM 40.",
+  "provider": {"@id": "https://dissolvedsolids.co/solublesolids/#bar"},
+  "areaServed": [
+    {"@type": "City", "name": "Petaling Jaya"},
+    {"@type": "City", "name": "Kuala Lumpur"},
+    {"@type": "AdministrativeArea", "name": "Klang Valley"},
+    {"@type": "AdministrativeArea", "name": "Selangor"}
+  ],
+  "category": "Bespoke beverages",
+  "audience": {"@type": "Audience", "audienceType": "Adults of legal drinking age in Malaysia"},
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "MYR",
+    "priceSpecification": {"@type": "PriceSpecification", "minPrice": "32", "maxPrice": "40", "priceCurrency": "MYR"},
+    "availability": "https://schema.org/InStock",
+    "availableAtOrFrom": {"@id": "https://dissolvedsolids.co/solublesolids/#bar"}
+  },
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {"@type": "EntryPoint", "urlTemplate": "https://wa.me/601116828651", "inLanguage": "en-MY"}
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": "https://dissolvedsolids.co/solublesolids/#faq",
   "inLanguage": "en-MY",

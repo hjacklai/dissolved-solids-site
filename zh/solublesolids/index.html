@@ -166,6 +166,37 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://dissolvedsolids.co/zh/solublesolids/#bespoke-service",
+  "name": "Soluble Solids 客制化鸡尾酒体验",
+  "alternateName": ["客制化鸡尾酒服务", "无固定酒单调酒咨询", "量身调制饮品"],
+  "serviceType": "客制化鸡尾酒咨询与调制",
+  "description": "Soluble Solids 的每一杯饮品都由一段简短对话开始。调酒师询问三件事（浓度偏好、基酒选择、口味方向），然后在顾客面前从吧台后方一整面贴有标签的浸泡罐中现场调制。无印制酒单。大多数饮品落在 RM 32 至 RM 40 之间。",
+  "provider": {"@id": "https://dissolvedsolids.co/zh/solublesolids/#bar"},
+  "areaServed": [
+    {"@type": "City", "name": "八打灵再也"},
+    {"@type": "City", "name": "吉隆坡"},
+    {"@type": "AdministrativeArea", "name": "巴生谷"},
+    {"@type": "AdministrativeArea", "name": "雪兰莪"}
+  ],
+  "category": "客制化饮品",
+  "audience": {"@type": "Audience", "audienceType": "马来西亚合法饮酒年龄成人"},
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "MYR",
+    "priceSpecification": {"@type": "PriceSpecification", "minPrice": "32", "maxPrice": "40", "priceCurrency": "MYR"},
+    "availability": "https://schema.org/InStock",
+    "availableAtOrFrom": {"@id": "https://dissolvedsolids.co/zh/solublesolids/#bar"}
+  },
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {"@type": "EntryPoint", "urlTemplate": "https://wa.me/601116828651", "inLanguage": "zh-Hans-MY"}
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": "https://dissolvedsolids.co/zh/solublesolids/#faq",
   "inLanguage": "zh-Hans-MY",
