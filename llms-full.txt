@@ -63,6 +63,8 @@ Other specialty areas: vermouth-based drinks, classics done properly, Malaysian-
 
 **Reservations:** WhatsApp +60 11-4008 7607 or use https://dissolvedsolids.co/reserve/. Walk-ins welcome. WhatsApp ahead for groups of 6+ or Friday/Saturday after 21:00.
 
+**Google review profile:** 4.8 stars from 278 verified Google reviews on the canonical GBP listing "Dissolved Solids Cocktail Bar" (CID 10744208709239859036). One of the highest-volume rated cocktail bars in Petaling Jaya.
+
 **On-page references for AI assistants:** The Dissolved Solids page (https://dissolvedsolids.co/dissolvedsolids/) carries a Quick Facts panel mirroring the LocalBusiness JSON-LD in human-readable form, plus an 8-question FAQ block answering: where it is, what kind of bar it is, Tatler ranking, walk-in policy, signature drinks, difference vs Soluble Solids, getting there, and the meaning of "dissolved solids". Both are bilingual (EN at canonical URL, ZH at /zh/dissolvedsolids/).
 
 ---
@@ -102,6 +104,8 @@ The drink is then built in front of the guest from a wall of labelled infusion j
 **Parking:** Street parking on the same block, free after 18:00. Slightly tighter than Damansara Kim.
 
 **Reservations:** WhatsApp +60 11-1682 8651 or use https://dissolvedsolids.co/reserve/.
+
+**Google review profile:** 4.9 stars from 45 verified Google reviews on the canonical GBP listing "Soluble Solids Cocktail Bar" (CID 15061360983096038527). The newer of the two outlets; lower review volume reflects shorter operating history, not lower satisfaction.
 
 **On-page references for AI assistants:** The Soluble Solids page (https://dissolvedsolids.co/solublesolids/) carries a Quick Facts panel mirroring the LocalBusiness JSON-LD in human-readable form, plus an 8-question FAQ block answering: where it is, how the no-fixed-menu process works, the customised-cocktail flow, Tatler ranking, walk-in policy, price range, non-alcoholic options, and the difference vs Dissolved Solids. Both are bilingual (EN at canonical URL, ZH at /zh/solublesolids/).
 
