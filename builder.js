@@ -1224,6 +1224,44 @@
       if (DUO_TEMPLATES[duoKey]) return DUO_TEMPLATES[duoKey];
     }
 
+    // Spirit-priority routing: when the user explicitly picks a base spirit
+    // (not 'surprise'), bias toward templates whose canonical base IS that
+    // spirit. This prevents the bug where picking mezcal returns a gin
+    // gimlet. Profile and mood still steer within the spirit-friendly set.
+    if (spirit === 'mezcal') {
+      if (profile === 'smoky' || mood === 'adventurous') return pick(['smoke_sour','oaxaca_old_fashioned','naked_famous']);
+      if (profile === 'citrusy') return pick(['smoky_margarita','spicy_paloma','paloma']);
+      if (profile === 'spicy') return 'spicy_paloma';
+      if (profile === 'bitter') return 'naked_famous';
+      if (profile === 'tropical') return 'tropical_shake';
+      if (profile === 'sweet') return 'oaxaca_old_fashioned';
+      if (profile === 'herbal') return pick(['naked_famous','smoke_sour']);
+      if (profile === 'floral') return 'naked_famous';
+      return pick(['smoke_sour','oaxaca_old_fashioned','smoky_margarita']);
+    }
+    if (spirit === 'tequila') {
+      if (profile === 'citrusy') return pick(['paloma','spicy_paloma','smoky_margarita']);
+      if (profile === 'spicy') return 'spicy_paloma';
+      if (profile === 'smoky') return 'smoky_margarita';
+      if (profile === 'tropical') return 'tropical_shake';
+      if (profile === 'sweet') return 'oaxaca_old_fashioned';
+      return pick(['paloma','spicy_paloma','oaxaca_old_fashioned']);
+    }
+    if (spirit === 'brandy') {
+      if (mood === 'cosy' || profile === 'creamy') return 'brandy_alexander';
+      if (profile === 'sweet' || profile === 'nutty') return pick(['vieux_carre','brandy_alexander','nutty_old_fashioned']);
+      if (profile === 'bitter') return 'vieux_carre';
+      return pick(['vieux_carre','brandy_alexander']);
+    }
+    if (spirit === 'rum') {
+      if (profile === 'tropical' || mood === 'playful') return pick(['mai_tai','pina_colada','jungle_bird','tropical_shake']);
+      if (profile === 'bitter') return 'jungle_bird';
+      if (profile === 'sweet' || profile === 'creamy') return 'pina_colada';
+      if (profile === 'spicy') return 'dark_n_stormy';
+      if (occasion === 'nightcap') return 'mai_tai';
+      return pick(['mai_tai','jungle_bird','tropical_shake']);
+    }
+
     // Brunch + late-night occasion routes (new)
     if (occasion === 'brunch') {
       if (profile === 'bitter' || mood === 'comforting') return 'bloody_mary';
@@ -1898,7 +1936,7 @@
       $('.result-name').innerHTML = recipe.name;
       $('.result-tagline').textContent = recipe.tagline;
 
-      // Recipe ID badge — short stable identifier from the same hash the
+      // Recipe ID badge ,  short stable identifier from the same hash the
       // bartender sees in WhatsApp. Helps a guest quote it on arrival.
       const existingId = root.querySelector('.result-recipe-id');
       if (existingId) existingId.remove();

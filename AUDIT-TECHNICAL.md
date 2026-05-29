@@ -11,7 +11,7 @@ Scope: infrastructure only (sitemap, robots, llms.txt, schema, OG, canonicals, i
 - File: `G:\My Drive\CLAUDE WORKING FILES\ds website\sitemap.xml` (1,196 lines, well-formed XML; `<url>` and `</url>` balanced at 408 each).
 - **Total `<loc>` page URLs: 408 · Unique: 407** (excluding image:loc entries).
 - **1 duplicate** detected:
-  - `https://dissolvedsolids.co/cocktails/tesseract/` appears twice — once at line 194 (older block) and again at line 1056 (Round 19 block with weekly changefreq, priority 1.0). The Round 19 record should be kept; the line-194 record should be deleted.
+  - `https://dissolvedsolids.co/cocktails/tesseract/` appears twice ,  once at line 194 (older block) and again at line 1056 (Round 19 block with weekly changefreq, priority 1.0). The Round 19 record should be kept; the line-194 record should be deleted.
 - **File-system parity:** 406 production `index.html` files exist; 407 unique sitemap URLs. The mismatch of 1 is consistent with the tesseract duplicate plus normal counting (sitemap also includes `https://dissolvedsolids.co/` for the root, which maps to `/index.html`). All sampled directories (cocktails/, journal/, ingredients/, cocktail-bars-*) showed 1:1 file↔URL parity at category level; no obvious 404-in-sitemap entries detected.
 - **Missing from sitemap:** `/builder/index.html` IS in sitemap (line 786). `/menu/` directory contains only a `.zip` archive, correctly excluded.
 
@@ -28,7 +28,7 @@ Scope: infrastructure only (sitemap, robots, llms.txt, schema, OG, canonicals, i
 - File: `G:\My Drive\CLAUDE WORKING FILES\ds website\robots.txt` · 91 lines.
 - Sitemap correctly referenced: `Sitemap: https://dissolvedsolids.co/sitemap.xml`.
 - `Disallow:` rules: only `/tmp/` and `/.git/`. No important paths accidentally blocked.
-- 19 AI-crawler user agents explicitly allowed (ClaudeBot, GPTBot, PerplexityBot, etc.) — strong LLM-discoverability posture.
+- 19 AI-crawler user agents explicitly allowed (ClaudeBot, GPTBot, PerplexityBot, etc.) ,  strong LLM-discoverability posture.
 
 ## 4. Schema markup density (10-page spot check)
 
@@ -48,7 +48,7 @@ Scope: infrastructure only (sitemap, robots, llms.txt, schema, OG, canonicals, i
 | `faq/index.html` | FAQPage |
 | `cocktails/index.html` | ItemList |
 
-- **405/406 production pages carry JSON-LD** (only `/builder/index.html` lacks schema, which is acceptable — interactive tool, not a content page).
+- **405/406 production pages carry JSON-LD** (only `/builder/index.html` lacks schema, which is acceptable ,  interactive tool, not a content page).
 - No schema-type mis-assignments detected. Recipe pages use Recipe, articles use Article, bar landings use BarOrPub array.
 
 ## 5. JSON-LD validity (sample 20)
@@ -57,7 +57,7 @@ Spot-checked 20+ files including the 13 above plus `cocktails/whiskey-sour/`, `c
 
 ## 6. Canonical URL consistency
 
-- **406/406 production pages have `<link rel="canonical">`** — 100% coverage.
+- **406/406 production pages have `<link rel="canonical">`** ,  100% coverage.
 - All sampled top-level pages match the expected `https://dissolvedsolids.co/{path}/` pattern: `/cocktails/`, `/journal/`, `/ingredients/`, `/dissolvedsolids/`, `/solublesolids/`, `/visit/`, `/reserve/`, `/snacks/`, `/faq/`, `/privacy/`, `/terms/`, `/venue-hire/`, `/find-a-cocktail-bar/`. No mismatches.
 
 ## 7. Open Graph completeness
@@ -94,7 +94,7 @@ Coverage across 406 production files:
 
 ## 9. Heading hierarchy
 
-- **405/406 pages have exactly one `<h1>`.** The one without is `/builder/index.html` (no semantic H1 — interactive page). No multi-H1 violations.
+- **405/406 pages have exactly one `<h1>`.** The one without is `/builder/index.html` (no semantic H1 ,  interactive page). No multi-H1 violations.
 
 ## 10. Image alt-text coverage
 
@@ -105,14 +105,14 @@ Coverage across 406 production files:
 
 ## 11. Mobile / responsive meta
 
-- **406/406 production pages have `<meta name="viewport" ...>`** — 100%. No gaps.
+- **406/406 production pages have `<meta name="viewport" ...>`** ,  100%. No gaps.
 
 ## 12. Page-speed / CLS risks
 
 - **Large inline `<style>` blocks:**
-  - `/index.html` carries two `<style>` blocks. The first spans lines 91–2670 (~2,580 lines, est. 80–110 KB). The second spans lines 2672–3534 (~860 lines). Combined inline CSS likely exceeds 100 KB.
+  - `/index.html` carries two `<style>` blocks. The first spans lines 91-2670 (~2,580 lines, est. 80-110 KB). The second spans lines 2672-3534 (~860 lines). Combined inline CSS likely exceeds 100 KB.
   - `/dissolvedsolids/index.html` (177 KB total) and `/solublesolids/index.html` (176 KB total) likely contain similar bulk inline CSS.
-  - These three pages and `journal/index.html` (135 KB) are the main inline-style heavyweights. Most other pages reference `/styles.css` and `/appbar.css` externally — good.
+  - These three pages and `journal/index.html` (135 KB) are the main inline-style heavyweights. Most other pages reference `/styles.css` and `/appbar.css` externally ,  good.
 - **`<img>` width/height (CLS):**
   - Of the 20 `<img>` tags site-wide, **only 1** has explicit `width` and `height` (in `journal/index.html`). The other 19 risk layout shift on slow connections. Most are in `/index.html`, `/dissolvedsolids/`, `/solublesolids/`. Add intrinsic dimensions to suppress CLS.
 - **External resource hosts:**

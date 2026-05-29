@@ -1,4 +1,4 @@
-# Translation glossary — Simplified Chinese (zh-Hans-MY)
+# Translation glossary ,  Simplified Chinese (zh-Hans-MY)
 
 This is the single source of truth for the Mandarin translation of dissolvedsolids.co. Every translation agent must use these terms exactly. The translation target is **Malaysian Chinese (zh-Hans-MY)**, written in Simplified Chinese using terms familiar to Malaysian Chinese readers (not PRC mainland conventions where they diverge).
 
@@ -10,15 +10,15 @@ This is the single source of truth for the Mandarin translation of dissolvedsoli
 - Date formats: keep numeric (2026-05-20) where possible; for prose dates use `2026 年 5 月 20 日`
 - Currency: `RM` stays as `RM`, never `¥` or `元`
 
-## Voice rules (strict — same as English side)
+## Voice rules (strict ,  same as English side)
 
-1. **NO em-dashes (—).** Use 。 ， （） ； or just split the sentence. The em-dash character is forbidden in all body copy and metadata.
+1. **NO em-dashes (, ).** Use 。 ， （） ； or just split the sentence. The em-dash character is forbidden in all body copy and metadata.
 2. **No "best in" / "world-class" / "leading" claims.** The bar is humble; do not write 最好 / 全世界最佳 / 顶级 about the bar itself. The only exception is the Tatler Asia ranking, which can be attributed: "Tatler 亚洲 2025 年 20 大酒吧之一" (one of Tatler Asia Top 20 Bars 2025).
 3. **Never abbreviate to "DSSS"** in any language.
 4. **Don't name competing currently-operating cocktail bars.** Historical bartender figures (Walter Bergeron 沃尔特·伯杰龙, Harry Craddock 哈里·克拉多克, Sasha Petraske 萨沙·彼得拉斯克) are fine.
 5. **Bar names stay English.** "Dissolved Solids" and "Soluble Solids" appear in their original English form in every paragraph. Optionally add 鸡尾酒吧 after the first mention if the sentence needs it ("Dissolved Solids 鸡尾酒吧").
 
-## Brand and outlet names — KEEP IN ENGLISH
+## Brand and outlet names ,  KEEP IN ENGLISH
 
 | English | Chinese (do not translate) |
 |---|---|
@@ -96,7 +96,7 @@ This is the single source of truth for the Mandarin translation of dissolvedsoli
 | champagne | 香槟 |
 | prosecco | 普罗赛克 |
 
-## Classic cocktail names — FORMAT: 中文 (English)
+## Classic cocktail names ,  FORMAT: 中文 (English)
 
 The first mention in any page uses both. Subsequent mentions in the same page can use either. List entries always use the dual format.
 
@@ -143,9 +143,9 @@ The first mention in any page uses both. Subsequent mentions in the same page ca
 | Bunga Kantan Gimlet | 火炬姜花琴蕾 | 火炬姜花琴蕾 (Bunga Kantan Gimlet) |
 | Bandung Cocktail | 玫瑰奶饮 | 玫瑰奶饮 (Bandung Cocktail) |
 
-For any cocktail not listed above: transliterate the name with a sensible 中文 form and keep the English in parens. Be consistent — if you use a transliteration on one page, use the same on every page.
+For any cocktail not listed above: transliterate the name with a sensible 中文 form and keep the English in parens. Be consistent ,  if you use a transliteration on one page, use the same on every page.
 
-## Malaysian-local ingredient names — FORMAT: 中文 (English)
+## Malaysian-local ingredient names ,  FORMAT: 中文 (English)
 
 | English | Chinese | Notes |
 |---|---|---|
@@ -252,27 +252,27 @@ For any cocktail not listed above: transliterate the name with a sensible 中文
 
 These are bespoke house drinks. Keep the English name; add a 中文 in parens on first mention.
 
-- Tesseract — Tesseract (超立方)
-- Stronk — Stronk
-- Stone Juniper — Stone Juniper (石松)
-- Floral Bloom — Floral Bloom (花漾)
-- Local Tropic — Local Tropic (热带本土)
-- Mint to Be — Mint to Be (薄荷之约)
-- Pipe It Up — Pipe It Up
-- Bleggnogg — Bleggnogg
-- Peach Blossom — Peach Blossom (桃花)
-- Black Honey — Black Honey (黑蜜)
-- Floral Mango — Floral Mango (花漾芒果)
-- Scented Negroni — Scented Negroni (香氛内格罗尼)
-- Juno's Sour — Juno's Sour
-- Pyrus Gimlet — Pyrus Gimlet (梨花琴蕾)
-- Lemongrass Gimlet — 香茅琴蕾 (Lemongrass Gimlet)
-- Matcha Sakura — 抹茶樱花 (Matcha Sakura)
-- Too Gouda To Be True — Too Gouda To Be True
-- Pandan Mojito — 班兰莫吉托 (Pandan Mojito)
-- Asam Boi Margarita — 话梅玛格丽特 (Asam Boi Margarita)
-- Smoked Old Fashioned — 烟熏古典 (Smoked Old Fashioned)
-- Roselle Spritz — 洛神气泡 (Roselle Spritz)
+- Tesseract ,  Tesseract (超立方)
+- Stronk ,  Stronk
+- Stone Juniper ,  Stone Juniper (石松)
+- Floral Bloom ,  Floral Bloom (花漾)
+- Local Tropic ,  Local Tropic (热带本土)
+- Mint to Be ,  Mint to Be (薄荷之约)
+- Pipe It Up ,  Pipe It Up
+- Bleggnogg ,  Bleggnogg
+- Peach Blossom ,  Peach Blossom (桃花)
+- Black Honey ,  Black Honey (黑蜜)
+- Floral Mango ,  Floral Mango (花漾芒果)
+- Scented Negroni ,  Scented Negroni (香氛内格罗尼)
+- Juno's Sour ,  Juno's Sour
+- Pyrus Gimlet ,  Pyrus Gimlet (梨花琴蕾)
+- Lemongrass Gimlet ,  香茅琴蕾 (Lemongrass Gimlet)
+- Matcha Sakura ,  抹茶樱花 (Matcha Sakura)
+- Too Gouda To Be True ,  Too Gouda To Be True
+- Pandan Mojito ,  班兰莫吉托 (Pandan Mojito)
+- Asam Boi Margarita ,  话梅玛格丽特 (Asam Boi Margarita)
+- Smoked Old Fashioned ,  烟熏古典 (Smoked Old Fashioned)
+- Roselle Spritz ,  洛神气泡 (Roselle Spritz)
 
 ## URL / file structure
 

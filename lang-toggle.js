@@ -4,7 +4,7 @@
  * other is a clickable link to the EN ↔ ZH twin path.
  *
  * Loaded by every page (landing has its own inline <script> tag;
- * sub-pages load it via appbar.js). Idempotent — won't double-inject.
+ * sub-pages load it via appbar.js). Idempotent ,  won't double-inject.
  */
 (function () {
   'use strict';

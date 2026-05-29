@@ -29,7 +29,7 @@
   var recipeName = recipeData.name || 'Cocktail';
   var recipeUrl = recipeData.url || window.location.href;
 
-  // Language detection — ZH on /zh/ pages, EN otherwise
+  // Language detection ,  ZH on /zh/ pages, EN otherwise
   var isZh = /^zh(-|$)/i.test(document.documentElement.lang || '');
   var T = isZh ? {
     tools: '工具',

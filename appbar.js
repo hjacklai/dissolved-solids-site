@@ -443,7 +443,7 @@
         ['Drinks & recipes', [
           ['/cocktails/',                       'All cocktails'],
           ['/cocktails/guide/',                 'Complete recipe guide'],
-          ['/cocktail-glossary/',               'Cocktail glossary (A–Z)'],
+          ['/cocktail-glossary/',               'Cocktail glossary (A-Z)'],
           ['/cocktails/pandan-collins/',        'Pandan Collins'],
           ['/cocktails/gula-melaka-old-fashioned/', 'Gula Melaka Old Fashioned'],
           ['/cocktails/kopi-sour/',             'Kopi Sour'],
