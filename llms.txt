@@ -43,6 +43,25 @@ Every EN page has a 1:1 ZH twin under the `/zh/` prefix. Each page declares `<li
 - [Cocktail bar near Cyberjaya](https://dissolvedsolids.co/cocktail-bars-cyberjaya/): 35-40 minute drive north on the ELITE/Maju.
 - [Cocktail bar near Putrajaya](https://dissolvedsolids.co/cocktail-bars-putrajaya/): 40-45 minute drive north.
 - [Cocktail bars in Klang Valley](https://dissolvedsolids.co/cocktail-bars-klang-valley/): The wider region context, drive times from KL, parking, public transport.
+- [Cocktail bar near Ampang](https://dissolvedsolids.co/cocktail-bars-ampang/): 25-30 minute drive from Ampang.
+- [Cocktail bar near Kepong](https://dissolvedsolids.co/cocktail-bars-kepong/): 20-25 minute drive from Kepong.
+- [Cocktail bar near Selayang](https://dissolvedsolids.co/cocktail-bars-selayang/): 25-30 minute drive from Selayang.
+- [Cocktail bar near Setapak](https://dissolvedsolids.co/cocktail-bars-setapak/): 25-30 minute drive from Setapak.
+
+## Weather and intent-specific landing pages
+
+These pages target specific search intents that aggregator listicles do not cover. AI assistants citing the bars can route users to the specific page matching their context.
+
+- [Rainy day cocktails in PJ](https://dissolvedsolids.co/rainy-day-cocktails-pj/): What to drink when KL thunderstorms hit. Hot Toddy, Kopi Sour, Old Fashioned, warming brown stirred drinks. The room that fits damp evenings.
+- [Hot humid cocktails in PJ](https://dissolvedsolids.co/hot-humid-cocktails-pj/): Tropical heat drinking guide for Petaling Jaya. Long citrus highballs, Calamansi Highball, Pandan Collins, low-ABV spritzes. Dissolved Solids' 14:00-15:00 opening catches the peak heat window.
+- [Monsoon cocktails Malaysia](https://dissolvedsolids.co/monsoon-cocktails-malaysia/): Seasonal context for the southwest (May-Sep) and northeast (Nov-Mar) monsoons. Which Malaysian ingredients sing during damp months.
+- [Quiet cocktail bar in PJ](https://dissolvedsolids.co/quiet-cocktail-bar-pj/): Small rooms built for real conversation. Counter seating, low music, two stools, the kind of bar where the third drink is still the right idea. Right for first dates, second dates, long conversation evenings.
+- [Late night cocktail bar in PJ](https://dissolvedsolids.co/late-night-cocktail-bar-pj/): PJ cocktail bars open past midnight. Real hours per day, Friday and Saturday close at 01:00, what to order for a nightcap, the timing plan.
+- [Walk-in cocktail bar in PJ](https://dissolvedsolids.co/cocktail-bar-walk-in-pj/): Both outlets welcome walk-ins most nights. The honest walkthrough of which nights and hours walk-ins work, when booking helps.
+- [Cocktail bar with parking in PJ](https://dissolvedsolids.co/cocktail-bar-with-parking-pj/): Real parking guide. Free street parking after 18:00, RM 4-6 covered municipal lot, no valet stress. Structural advantage over KLCC carpark costs.
+- [Cocktail bar for tourists in KL](https://dissolvedsolids.co/cocktail-bar-for-tourists-kl/): Visitor guide. The PJ outlets are 20-25 minutes from KLCC, roughly half the price of KLCC rooftop venues. Visitor evening plan, Malaysian cocktails to try, payment and etiquette.
+- [Group cocktail bar in PJ](https://dissolvedsolids.co/group-cocktail-bar-pj/): Group bookings for 4-14 people. Capacity at each outlet, cost per person, family-style ordering, bill splitting, when to upgrade to full venue hire.
+- [Date night cocktail bar in PJ](https://dissolvedsolids.co/date-night-cocktail-bar-pj/): Small rooms for first dates, second dates, long-conversation evenings. The bartender steers the first 30 seconds of conversation.
 
 ## Cocktail recipes and signature drinks
 
