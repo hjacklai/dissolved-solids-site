@@ -60,6 +60,85 @@
     return asArray(v).join(', ');
   }
 
+  /* ----- Preference enforcement -----
+   * Hard guarantee: every preference the guest selects is reflected in the
+   * final drink. The base spirit is the one bug class that templates broke
+   * (a Paloma is canonically tequila, a Manhattan is rye, an Espresso Martini
+   * is vodka), so when a guest explicitly picks a spirit we override the
+   * template's canonical base with their choice. 'surprise' is the only value
+   * that leaves the template's own spirit in place, because that explicitly
+   * means "bartender, you choose".
+   */
+  function isBaseSpiritIngredient(s) {
+    const t = String(s).toLowerCase();
+    return /\bgin\b/.test(t) || /\bvodka\b/.test(t) || /\brum\b/.test(t)
+      || /\btequila\b/.test(t) || /\bmezcal\b/.test(t) || /whisk/.test(t)
+      || /\bbourbon\b/.test(t) || /\brye\b/.test(t) || /\bscotch\b/.test(t)
+      || /\bbrandy\b/.test(t) || /\bcognac\b/.test(t) || /\bpisco\b/.test(t)
+      || /\bcacha[cç]a\b/.test(t);
+  }
+  function ingredientMatchesSpirit(s, spirit) {
+    const t = String(s).toLowerCase();
+    switch (spirit) {
+      case 'gin': return /\bgin\b/.test(t);
+      case 'vodka': return /\bvodka\b/.test(t);
+      case 'rum': return /\brum\b/.test(t);
+      case 'tequila': return /\btequila\b/.test(t);
+      case 'mezcal': return /\bmezcal\b/.test(t);
+      case 'whiskey': return /whisk/.test(t) || /\bbourbon\b/.test(t) || /\brye\b/.test(t) || /\bscotch\b/.test(t);
+      case 'brandy': return /\bbrandy\b/.test(t) || /\bcognac\b/.test(t);
+      default: return false;
+    }
+  }
+  // Returns true if the recipe's base spirit was changed to honour the choice.
+  function enforceSpirit(recipe, spirit) {
+    if (!recipe || !spirit || spirit === 'surprise' || !SPIRITS[spirit]) return false;
+    const want = SPIRITS[spirit];
+    const ings = recipe.ingredients.slice();
+    let baseIdx = -1;
+    for (let i = 0; i < ings.length; i++) {
+      if (isBaseSpiritIngredient(ings[i])) { baseIdx = i; break; }
+    }
+    if (baseIdx === -1) {
+      // Spiritless template (sbagliato, americano, spritz). Put the guest's
+      // pick in the glass as the base so their choice is genuinely present.
+      ings.unshift(want);
+      recipe.ingredients = ings;
+      recipe.spiritSubstituted = true;
+      return true;
+    }
+    if (ingredientMatchesSpirit(ings[baseIdx], spirit)) {
+      return false; // template base already matches; keep the richer wording
+    }
+    ings[baseIdx] = want;
+    recipe.ingredients = ings;
+    recipe.spiritSubstituted = true;
+    return true;
+  }
+  // Reflect the chosen strength in the serving note. Phrased as bartender
+  // intent so it never contradicts the drink's own method, whether that is a
+  // long mixer drink or a short stirred sip.
+  function applyStrength(recipe, strength) {
+    if (!recipe || !strength) return;
+    const notes = {
+      light: 'Poured on the lighter side: an easy measure of the base, lengthened and gentle.',
+      medium: 'Poured to a balanced, standard strength.',
+      strong: 'Poured strong and spirit-forward: a generous measure of the base, restrained dilution.',
+    };
+    const note = notes[strength];
+    if (note && recipe.method && recipe.method.indexOf(note) === -1) {
+      recipe.method = recipe.method + ' ' + note;
+    }
+  }
+  // Clean tagline used when the spirit was substituted, so the line never
+  // contradicts the glass (e.g. a "Negroni without the gin" that now has rum).
+  function genericTagline(ans) {
+    const profs = asArray(ans.profile);
+    const profile = profs.length ? profs.join(' and ') : 'balanced';
+    const sp = SPIRITS[ans.spirit] || 'house spirit';
+    return `A ${sp}-based ${profile} drink, poured ${ans.strength || 'to taste'}.`;
+  }
+
   // Deterministic 53-bit string hash. Used to derive a stable seed from the
   // encoded answer string so the same URL renders the same drink.
   function cyrb53(str, seed) {
@@ -1619,8 +1698,10 @@
       const key = pickTemplate(ans);
       const fn = templates[key];
       const recipe = fn(ans);
+      const substituted = enforceSpirit(recipe, ans.spirit);
+      applyStrength(recipe, ans.strength);
       recipe.name = generateName(ans);
-      recipe.tagline = generateTagline(ans, key);
+      recipe.tagline = substituted ? genericTagline(ans) : generateTagline(ans, key);
       recipe.templateKey = key;
       return recipe;
     } finally {
@@ -1658,8 +1739,10 @@
         Math.random = mulberry32(seed >>> 0);
         try {
           const recipe = templates[k](cand);
+          const substituted = enforceSpirit(recipe, ans.spirit);
+          applyStrength(recipe, ans.strength);
           recipe.name = generateName(ans);
-          recipe.tagline = generateTagline(ans, k);
+          recipe.tagline = substituted ? genericTagline(ans) : generateTagline(ans, k);
           recipe.templateKey = k;
           return recipe;
         } finally {
@@ -1936,17 +2019,10 @@
       $('.result-name').innerHTML = recipe.name;
       $('.result-tagline').textContent = recipe.tagline;
 
-      // Recipe ID badge ,  short stable identifier from the same hash the
-      // bartender sees in WhatsApp. Helps a guest quote it on arrival.
+      // The short recipe ID is no longer shown on screen (it stays in the
+      // WhatsApp message for the bartender). Remove any stale badge.
       const existingId = root.querySelector('.result-recipe-id');
       if (existingId) existingId.remove();
-      const idHashStr = encodeHash(state.answers, state.reroll);
-      const recipeId = (cyrb53(idHashStr) >>> 0).toString(36).toUpperCase().slice(0, 6);
-      const idBadge = document.createElement('span');
-      idBadge.className = 'result-recipe-id';
-      idBadge.textContent = 'ID ' + recipeId;
-      idBadge.title = 'Same combination of answers always produces this exact drink and ID.';
-      $('.result-name').insertAdjacentElement('afterend', idBadge);
 
       // Malaysian-local badge
       const existingTag = root.querySelector('.result-tag');
@@ -1962,7 +2038,10 @@
       // surface a small link so the user knows they can just order it.
       const existingMenu = root.querySelector('.result-menu-match');
       if (existingMenu) existingMenu.remove();
-      const slug = MENU_SLUGS[recipe.templateKey];
+      // Only surface the "on our menu" link when the drink still matches the
+      // canonical recipe. If we swapped the base spirit to honour the guest's
+      // pick, it is no longer that menu cocktail, so we do not link it.
+      const slug = recipe.spiritSubstituted ? null : MENU_SLUGS[recipe.templateKey];
       if (slug) {
         const menuLink = document.createElement('a');
         menuLink.className = 'result-menu-match';
