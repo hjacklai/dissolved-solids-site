@@ -967,7 +967,7 @@
       signature: 'bitter'
     }),
     trinidad_sour: () => ({
-      ingredients: ['Angostura bitters 45ml (yes - 45ml)', 'Orgeat 30ml', 'Rye whisky 15ml', 'Fresh lemon juice 25ml'],
+      ingredients: ['Angostura bitters (a generous base pour)', 'Orgeat', 'Rye whisky', 'Fresh lemon juice'],
       method: 'Shake hard with ice. Double-strain. The bitters are the base spirit here.',
       garnish: pick(['Lemon coin','Star anise','Dehydrated lemon wheel']),
       signature: 'bitter'
@@ -979,7 +979,7 @@
       signature: 'bitter'
     }),
     aperol_spritz: () => ({
-      ingredients: ['Aperol 60ml', 'Prosecco 90ml', 'Soda water splash'],
+      ingredients: ['Aperol', 'Prosecco', 'Soda water splash'],
       method: 'Build over ice in a large wine glass. Stir once gently.',
       garnish: pick(['Half orange slice','Two olives','Orange wheel and a sprig of thyme']),
       signature: 'spritz'
@@ -1006,7 +1006,7 @@
     /* --- Tropical / tiki --- */
 
     painkiller: () => ({
-      ingredients: ['Dark rum (Pusser\'s if you have it) 60ml', 'Pineapple juice 90ml', 'Orange juice 30ml', 'Coconut cream 30ml'],
+      ingredients: ['Dark rum (Pusser\'s if you have it)', 'Pineapple juice', 'Orange juice', 'Coconut cream'],
       method: 'Shake hard with ice. Pour, unstrained, into a tiki vessel or tall glass.',
       garnish: pick(['Grated nutmeg and pineapple frond','Orange wheel and toasted coconut','Pineapple wedge and a maraschino cherry']),
       signature: 'tropical'
@@ -1033,19 +1033,19 @@
     /* --- Creamy & dessert --- */
 
     brandy_alexander: () => ({
-      ingredients: ['Brandy (or cognac) 30ml', 'Dark crème de cacao 30ml', 'Fresh cream 30ml'],
+      ingredients: ['Brandy (or cognac)', 'Dark crème de cacao', 'Fresh cream'],
       method: 'Shake hard with ice so the cream emulsifies. Double-strain into a chilled coupe.',
       garnish: pick(['Grated nutmeg','Three coffee beans','Light cocoa dusting']),
       signature: 'creamy'
     }),
     grasshopper: () => ({
-      ingredients: ['Green crème de menthe 30ml', 'White crème de cacao 30ml', 'Fresh cream 30ml'],
+      ingredients: ['Green crème de menthe', 'White crème de cacao', 'Fresh cream'],
       method: 'Shake hard with ice. Double-strain into a chilled coupe.',
       garnish: pick(['Mint leaf','Light cocoa dusting','Sugar-coated mint sprig']),
       signature: 'creamy'
     }),
     pink_squirrel: () => ({
-      ingredients: ['Crème de noyaux (or amaretto) 30ml', 'White crème de cacao 30ml', 'Fresh cream 30ml'],
+      ingredients: ['Crème de noyaux (or amaretto)', 'White crème de cacao', 'Fresh cream'],
       method: 'Shake hard with ice. Double-strain.',
       garnish: pick(['Three toasted almonds','Light cocoa dusting','Maraschino cherry']),
       signature: 'creamy'
@@ -1054,13 +1054,13 @@
     /* --- Modern gin classics --- */
 
     gin_basil_smash: () => ({
-      ingredients: ['Gin 50ml', 'Fresh basil leaves (8-10)', 'Fresh lemon juice 25ml', 'Simple syrup 15ml'],
+      ingredients: ['Gin', 'Fresh basil leaves', 'Fresh lemon juice', 'Simple syrup'],
       method: 'Muddle basil with syrup. Add gin and lemon, shake hard with ice. Double-strain over fresh ice.',
       garnish: pick(['Big basil top','Three basil leaves','Lemon coin and a basil sprig']),
       signature: 'herb'
     }),
     lavender_collins: () => ({
-      ingredients: ['Gin 45ml', 'Lavender syrup 20ml', 'Fresh lemon juice 25ml', 'Top with soda'],
+      ingredients: ['Gin', 'Lavender syrup', 'Fresh lemon juice', 'Top with soda'],
       method: 'Shake gin, syrup, and lemon with ice. Strain over fresh ice. Top with soda.',
       garnish: pick(['Sprig of lavender','Lemon wheel and edible flower','Three lemon coins']),
       signature: 'floral'
@@ -1075,19 +1075,19 @@
     /* --- Tequila & mezcal --- */
 
     tommy_margarita: () => ({
-      ingredients: ['Tequila blanco 50ml', 'Fresh lime juice 25ml', 'Agave syrup 15ml'],
+      ingredients: ['Tequila blanco', 'Fresh lime juice', 'Agave syrup'],
       method: 'Shake hard with ice. Strain over fresh ice (rocks) or into a chilled coupe.',
       garnish: pick(['Lime wheel and salted rim','Lime cheek','Dehydrated lime']),
       signature: 'citrus'
     }),
     mexican_mule: () => ({
-      ingredients: ['Tequila 50ml', 'Fresh lime juice 20ml', 'Top with ginger beer'],
+      ingredients: ['Tequila', 'Fresh lime juice', 'Top with ginger beer'],
       method: 'Build over ice in a copper mug. Stir gently.',
       garnish: pick(['Lime wedge','Mint sprig','Candied ginger']),
       signature: 'spicy'
     }),
     mezcal_negroni: () => ({
-      ingredients: ['Mezcal 30ml', 'Campari 30ml', 'Sweet vermouth 30ml'],
+      ingredients: ['Mezcal', 'Campari', 'Sweet vermouth'],
       method: 'Stir over ice until cold. Strain over a large cube.',
       garnish: pick(['Expressed orange peel','Charred orange wheel','Lemon twist and an olive']),
       signature: 'smoke'
@@ -1096,19 +1096,19 @@
     /* --- Whiskey / bourbon --- */
 
     mint_julep: () => ({
-      ingredients: ['Bourbon 60ml', 'Fresh mint (8-10 leaves)', 'Demerara syrup 15ml'],
+      ingredients: ['Bourbon', 'Fresh mint leaves', 'Demerara syrup'],
       method: 'Muddle mint with syrup in a julep cup. Fill with crushed ice, add bourbon, stir until cup frosts.',
       garnish: pick(['Big mint bouquet','Mint sprig and powdered sugar','Three mint tops']),
       signature: 'herb'
     }),
     john_collins: () => ({
-      ingredients: ['Bourbon 50ml', 'Fresh lemon juice 25ml', 'Simple syrup 15ml', 'Top with soda'],
+      ingredients: ['Bourbon', 'Fresh lemon juice', 'Simple syrup', 'Top with soda'],
       method: 'Shake bourbon, lemon, and syrup with ice. Strain over fresh ice in a tall glass. Top.',
       garnish: pick(['Lemon wheel and a cherry','Three lemon coins','Lemon twist']),
       signature: 'citrus'
     }),
     whiskey_sour_classic: () => ({
-      ingredients: ['Bourbon 50ml', 'Fresh lemon juice 25ml', 'Simple syrup 15ml', 'Egg white 15ml', 'Angostura'],
+      ingredients: ['Bourbon', 'Fresh lemon juice', 'Simple syrup', 'Egg white', 'Angostura'],
       method: 'Dry shake. Add ice, shake hard. Double-strain into a chilled coupe. Drop 3 dashes of angostura on the foam.',
       garnish: pick(['Lemon coin','Three angostura dots in a line','Brandied cherry']),
       signature: 'citrus'
@@ -1117,19 +1117,19 @@
     /* --- Spritzes --- */
 
     hugo_spritz: () => ({
-      ingredients: ['Elderflower liqueur (St-Germain) 45ml', 'Prosecco 90ml', 'Soda water splash', '8 fresh mint leaves'],
+      ingredients: ['Elderflower liqueur (St-Germain)', 'Prosecco', 'Soda water splash', '8 fresh mint leaves'],
       method: 'Build in a wine glass over ice with the mint. Stir once gently.',
       garnish: pick(['Mint sprig and lime wheel','Lemon coin and edible flower','Three mint tops']),
       signature: 'spritz'
     }),
     st_germain_spritz: () => ({
-      ingredients: ['St-Germain elderflower 60ml', 'Top with prosecco', 'Splash of soda'],
+      ingredients: ['St-Germain elderflower', 'Top with prosecco', 'Splash of soda'],
       method: 'Build in a wine glass over ice. Stir once.',
       garnish: pick(['Lemon coin','Edible flower','Cucumber ribbon']),
       signature: 'floral'
     }),
     pirlo: () => ({
-      ingredients: ['Aperol 60ml', 'Top with chilled dry white wine', 'Soda splash'],
+      ingredients: ['Aperol', 'Top with chilled dry white wine', 'Soda splash'],
       method: 'Build over ice. Stir once gently.',
       garnish: pick(['Orange wheel','Olive on a pick','Lemon coin']),
       signature: 'spritz'
@@ -1624,7 +1624,7 @@
       // Mega-expansion
       vieux_carre: `Rye, cognac, vermouth, bénédictine, two bitters. A New Orleans nightcap.`,
       paper_plane: `Bourbon, amaro, aperol, lemon. Equal parts. A modern classic.`,
-      trinidad_sour: `45ml of angostura as the base. Yes. Built to surprise.`,
+      trinidad_sour: ` of angostura as the base. Yes. Built to surprise.`,
       hanky_panky: `Gin, vermouth, a touch of fernet. Spirit-forward and bitter.`,
       aperol_spritz: `Aperol, prosecco, soda. Easy in any weather.`,
       americano: `Campari, sweet vermouth, soda. Low-ABV, conversation-friendly.`,
@@ -1665,13 +1665,33 @@
 
   /* ----- Recipe builder (seeded) ----- */
 
+  // Fixed wine / aperitivo recipes that have no base-spirit slot. Injecting a
+  // chosen base into these clashes (e.g. rum + white wine). When the guest
+  // picked a specific spirit, reroute these to a base-integrating template by
+  // profile so the drink is genuinely built on their spirit. They stay
+  // available untouched for the "surprise" pick.
+  const SPIRITLESS_FIXED = new Set(['aperol_spritz','pirlo','bicicletta','americano','hugo_spritz','st_germain_spritz','negroni_sbagliato','mimosa','pimms_cup']);
+  const BASE_BY_PROFILE = {
+    citrusy: 'sour', sweet: 'sour', bitter: 'bitter_stirred', herbal: 'garden_stirred',
+    smoky: 'smoke_sour', floral: 'flora_fizz', spicy: 'highball_spice',
+    tropical: 'tropical_shake', creamy: 'milk_punch', nutty: 'old_fashioned',
+  };
+  function resolveTemplateKey(ans) {
+    let key = pickTemplate(ans);
+    if (ans.spirit && ans.spirit !== 'surprise' && SPIRITLESS_FIXED.has(key)) {
+      const p = asArray(ans.profile)[0];
+      key = BASE_BY_PROFILE[p] || 'sour';
+    }
+    return key;
+  }
+
   function buildRecipe(ans, seed) {
     const originalRandom = Math.random;
     if (typeof seed === 'number') {
       Math.random = mulberry32(seed >>> 0);
     }
     try {
-      const key = pickTemplate(ans);
+      const key = resolveTemplateKey(ans);
       const fn = templates[key];
       const recipe = fn(ans);
       const substituted = enforceSpirit(recipe, ans.spirit);
@@ -1688,7 +1708,7 @@
   function buildAlternateRecipe(ans, seed) {
     const profiles = asArray(ans.profile);
     const moods = asArray(ans.mood);
-    const origKey = pickTemplate(ans);
+    const origKey = resolveTemplateKey(ans);
 
     // Build a list of candidate mutated answer sets that might route to a
     // different template. First viable alt is used.
@@ -1709,7 +1729,7 @@
     }
 
     for (const cand of candidates) {
-      const k = pickTemplate(cand);
+      const k = resolveTemplateKey(cand);
       if (k && k !== origKey && templates[k]) {
         const originalRandom = Math.random;
         Math.random = mulberry32(seed >>> 0);
