@@ -179,8 +179,10 @@
     sour: (ans) => {
       const profile = asArray(ans.profile)[0];
       const base = resolveBase(ans.spirit);
-      const citrus = profile === 'citrusy' ? 'Fresh lime juice' : 'Fresh lemon juice';
-      const sweet = profile === 'sweet' ? cap(pick(['honey syrup','vanilla syrup','demerara syrup'])) : cap(pick(['simple syrup','rich syrup']));
+      const citrus = profile === 'citrusy' ? pick(['Fresh lime juice','Fresh calamansi juice','Fresh lime and a squeeze of yuzu']) : pick(['Fresh lemon juice','Fresh lemon with a touch of lime']);
+      const sweet = profile === 'sweet'
+        ? cap(pick(['honey syrup','vanilla syrup','demerara syrup','gula melaka syrup','maple syrup','brown sugar syrup','salted caramel syrup']))
+        : cap(pick(['simple syrup','rich syrup','cane syrup','agave syrup','raw sugar syrup']));
       const haveEggWhite = pick([true,false,false]);
       return {
         ingredients: [
@@ -197,12 +199,12 @@
     },
     bitter_stirred: (ans) => {
       const base = resolveBase(ans.spirit);
-      const bitter = pick(['Campari','Aperol','Cynar (artichoke amaro)','Amaro Nonino']);
-      const vermouth = cap(pick(['sweet vermouth','vermouth bianco']));
+      const bitter = pick(['Campari','Aperol','Cynar (artichoke amaro)','Amaro Nonino','Amaro Montenegro','Select Aperitivo','a barspoon of Fernet','Suze (gentian)']);
+      const vermouth = cap(pick(['sweet vermouth','vermouth bianco','rosso vermouth','vermouth con vaniglia','a split of dry and sweet vermouth']));
       return {
         ingredients: [base, bitter, vermouth],
         method: 'Stir long and cold over ice. Strain.',
-        garnish: pick(['Orange peel, expressed','Grapefruit peel','Orange wheel and an olive']),
+        garnish: pick(['Orange peel, expressed','Grapefruit peel','Orange wheel and an olive','Flamed orange coin','Lemon twist and a brandied cherry','Dehydrated orange wheel']),
         signature: 'bitter'
       };
     },
@@ -210,21 +212,21 @@
       const base = resolveBase(ans.spirit);
       return {
         ingredients: [
-          base, 'Fresh lime juice',
-          cap(pick(['ginger syrup (or muddled fresh ginger)','chilli-honey syrup','black pepper syrup'])),
-          'Top with chilled ' + pick(['ginger beer','tonic water','soda water']),
+          base, pick(['Fresh lime juice','Fresh calamansi juice','Fresh lemon juice']),
+          cap(pick(['ginger syrup (or muddled fresh ginger)','chilli-honey syrup','black pepper syrup','lemongrass syrup','cili padi honey','cinnamon syrup','kaffir lime syrup'])),
+          'Top with chilled ' + pick(['ginger beer','tonic water','soda water','grapefruit soda','coconut water','sparkling jasmine tea']),
         ],
         method: 'Build over crushed ice. Stir gently.',
-        garnish: pick(['Lime wheel and candied ginger','Slap of mint and a chilli','Cucumber ribbon and a pink peppercorn']),
+        garnish: pick(['Lime wheel and candied ginger','Slap of mint and a chilli','Cucumber ribbon and a pink peppercorn','Lemongrass stalk and a lime coin','Torch ginger bud and a chilli','Kaffir lime leaf and candied ginger']),
         signature: 'ginger'
       };
     },
     garden_stirred: (ans) => {
       const base = resolveBase(ans.spirit);
-      const herbSyrup = cap(pick(['basil oleo-saccharum','rosemary syrup','thyme honey syrup','sage syrup','dill simple']));
-      const herbGarnish = pick(['rosemary sprig','basil leaf clap','thyme sprig','sage leaf','dill frond']);
+      const herbSyrup = cap(pick(['basil oleo-saccharum','rosemary syrup','thyme honey syrup','sage syrup','dill simple','lemongrass syrup','curry leaf syrup','shiso syrup','tarragon syrup','kaffir lime leaf syrup']));
+      const herbGarnish = pick(['rosemary sprig','basil leaf clap','thyme sprig','sage leaf','dill frond','lemongrass stalk','curry leaf sprig','shiso leaf','tarragon top','kaffir lime leaf']);
       return {
-        ingredients: [base, 'Dry vermouth', herbSyrup, cap(pick(['orange bitters','celery bitters','aromatic bitters']))],
+        ingredients: [base, cap(pick(['dry vermouth','vermouth bianco','blanc vermouth'])), herbSyrup, cap(pick(['orange bitters','celery bitters','aromatic bitters','cardamom bitters','a pinch of saline']))],
         method: 'Stir with ice until crystal. Strain.',
         garnish: 'Fresh ' + herbGarnish,
         signature: 'herb'
@@ -242,59 +244,59 @@
     }),
     flora_fizz: (ans) => {
       const base = resolveBase(ans.spirit);
-      const floralSyrup = cap(pick(['lavender syrup','rose syrup','jasmine tea syrup','osmanthus syrup','elderflower cordial','hibiscus syrup']));
-      const topper = ans.occasion === 'celebration' ? 'Top with chilled prosecco' : 'Top with chilled ' + pick(['soda water','tonic water']);
+      const floralSyrup = cap(pick(['lavender syrup','rose syrup','jasmine tea syrup','osmanthus syrup','elderflower cordial','hibiscus syrup','butterfly pea syrup','chrysanthemum syrup','bunga telang cordial','violet syrup']));
+      const topper = ans.occasion === 'celebration' ? 'Top with chilled prosecco' : 'Top with chilled ' + pick(['soda water','tonic water','sparkling jasmine tea','dry sparkling wine']);
       return {
-        ingredients: [base, 'Elderflower liqueur', 'Fresh lemon juice', floralSyrup, topper],
+        ingredients: [base, cap(pick(['elderflower liqueur','St-Germain','elderflower cordial'])), 'Fresh lemon juice', floralSyrup, topper],
         method: 'Shake the base, citrus, and syrups with ice. Strain, then top with the sparkling.',
-        garnish: pick(['An edible flower and an expressed lemon twist','Three rose petals','Sprig of fresh thyme and a lemon coin']),
+        garnish: pick(['An edible flower and an expressed lemon twist','Three rose petals','Sprig of fresh thyme and a lemon coin','A single orchid','Dried butterfly pea flowers','Osmanthus dusting on the foam']),
         signature: 'flower'
       };
     },
     tropical_shake: (ans) => {
       const preferTropical = ['rum','tequila','mezcal'];
       const base = preferTropical.includes(ans.spirit) ? SPIRITS[ans.spirit] : 'Rum';
-      const accent = cap(pick(['orgeat (almond syrup)','falernum','honey syrup','passionfruit puree','coconut cream']));
-      const fruit = cap(pick(['fresh pineapple juice','fresh mango puree','guava nectar']));
+      const accent = cap(pick(['orgeat (almond syrup)','falernum','honey syrup','passionfruit puree','coconut cream','gula melaka syrup','pandan syrup','tamarind syrup']));
+      const fruit = cap(pick(['fresh pineapple juice','fresh mango puree','guava nectar','soursop puree','lychee juice','calamansi and pineapple','dragonfruit puree']));
       return {
-        ingredients: [base, fruit, 'Fresh lime juice', accent, cap(pick(['angostura bitters','tiki bitters','peychaud’s']))],
+        ingredients: [base, fruit, 'Fresh lime juice', accent, cap(pick(['angostura bitters','tiki bitters','aromatic bitters']))],
         method: 'Shake hard with crushed ice. Open-pour, unstrained.',
-        garnish: pick(['Pineapple frond and dehydrated lime','Mint sprig and pineapple wedge','Toasted coconut and an orchid','Speared cherry and pineapple']),
+        garnish: pick(['Pineapple frond and dehydrated lime','Mint sprig and pineapple wedge','Toasted coconut and an orchid','Speared cherry and pineapple','Pandan leaf knot and a lime cheek','Dehydrated pineapple wheel']),
         signature: 'tropical'
       };
     },
     champagne_fizz: (ans) => {
       const base = resolveBase(ans.spirit);
-      const citrus = pick(['Fresh lemon juice','Fresh grapefruit juice']);
-      const sweet = cap(pick(['simple syrup','elderflower cordial','rose syrup']));
+      const citrus = pick(['Fresh lemon juice','Fresh grapefruit juice','Fresh calamansi juice','Fresh lime juice']);
+      const sweet = cap(pick(['simple syrup','elderflower cordial','rose syrup','honey syrup','hibiscus syrup','osmanthus syrup']));
       return {
         ingredients: [base, citrus, sweet, 'Top with chilled prosecco (or champagne)'],
         method: 'Shake the base, citrus, and sweetener with ice. Strain, then top with sparkling.',
-        garnish: pick(['Expressed lemon peel and an edible flower','Single raspberry on a pick','Sugar-coated rim and a lemon twist']),
+        garnish: pick(['Expressed lemon peel and an edible flower','Single raspberry on a pick','Sugar-coated rim and a lemon twist','Long lemon spiral','A few pomegranate seeds','Edible gold leaf for a celebration']),
         signature: 'sparkle'
       };
     },
     old_fashioned: (ans) => {
       const preferred = ['whiskey','rum','brandy'];
       const base = preferred.includes(ans.spirit) ? SPIRITS[ans.spirit] : 'Whisk(e)y';
-      const syrup = cap(pick(['demerara syrup','maple syrup','honey syrup','pandan syrup']));
+      const syrup = cap(pick(['demerara syrup','maple syrup','honey syrup','pandan syrup','gula melaka syrup','brown sugar syrup','toasted-rice syrup','cinnamon syrup']));
       return {
-        ingredients: [base, syrup, 'Angostura bitters', cap(pick(['orange bitters','chocolate bitters','black walnut bitters']))],
+        ingredients: [base, syrup, 'Angostura bitters', cap(pick(['orange bitters','chocolate bitters','black walnut bitters','aromatic bitters','cardamom bitters','mole bitters']))],
         method: 'Stir over a large ice cube until cold and softened.',
-        garnish: pick(['Expressed orange peel (Luxardo cherry if we have one)','Smoked orange peel','Lemon twist and a brandied cherry']),
+        garnish: pick(['Expressed orange peel (Luxardo cherry if we have one)','Smoked orange peel','Lemon twist and a brandied cherry','Flamed orange coin','Orange peel and a single clove','Toasted coconut chip on the rim']),
         signature: 'spirit-forward'
       };
     },
     low_abv_spritz: (ans) => {
       const base = resolveBase(ans.spirit);
-      const modifier = pick(['Aperol','Campari','Sweet vermouth','Vermouth bianco','Amaro Nonino','Cocchi Americano']);
+      const modifier = pick(['Aperol','Campari','Sweet vermouth','Vermouth bianco','Amaro Nonino','Cocchi Americano','Select Aperitivo','Amaro Montenegro','Suze (gentian)','Lillet Blanc']);
       const topper = ans.occasion === 'celebration'
         ? 'Top with chilled prosecco'
-        : 'Top with chilled ' + pick(['prosecco','soda','half prosecco / half soda']);
+        : 'Top with chilled ' + pick(['prosecco','soda','half prosecco / half soda','dry sparkling wine','sparkling jasmine tea']);
       return {
         ingredients: [modifier, base, topper],
         method: 'Build over ice. Stir gently.',
-        garnish: pick(['Orange slice','Olive and an orange wheel','Lemon wheel and a rosemary sprig','Grapefruit peel and a basil leaf']),
+        garnish: pick(['Orange slice','Olive and an orange wheel','Lemon wheel and a rosemary sprig','Grapefruit peel and a basil leaf','Dehydrated orange and a green olive','Cucumber ribbon and mint']),
         signature: 'spritz'
       };
     },
@@ -1303,43 +1305,17 @@
       if (DUO_TEMPLATES[duoKey]) return DUO_TEMPLATES[duoKey];
     }
 
-    // Spirit-priority routing: when the user explicitly picks a base spirit
-    // (not 'surprise'), bias toward templates whose canonical base IS that
-    // spirit. This prevents the bug where picking mezcal returns a gin
-    // gimlet. Profile and mood still steer within the spirit-friendly set.
-    if (spirit === 'mezcal') {
-      if (profile === 'smoky' || mood === 'adventurous') return pick(['smoke_sour','oaxaca_old_fashioned','naked_famous']);
-      if (profile === 'citrusy') return pick(['smoky_margarita','spicy_paloma','paloma']);
-      if (profile === 'spicy') return 'spicy_paloma';
-      if (profile === 'bitter') return 'naked_famous';
-      if (profile === 'tropical') return 'tropical_shake';
-      if (profile === 'sweet') return 'oaxaca_old_fashioned';
-      if (profile === 'herbal') return pick(['naked_famous','smoke_sour']);
-      if (profile === 'floral') return 'naked_famous';
-      return pick(['smoke_sour','oaxaca_old_fashioned','smoky_margarita']);
-    }
-    if (spirit === 'tequila') {
-      if (profile === 'citrusy') return pick(['paloma','spicy_paloma','smoky_margarita']);
-      if (profile === 'spicy') return 'spicy_paloma';
-      if (profile === 'smoky') return 'smoky_margarita';
-      if (profile === 'tropical') return 'tropical_shake';
-      if (profile === 'sweet') return 'oaxaca_old_fashioned';
-      return pick(['paloma','spicy_paloma','oaxaca_old_fashioned']);
-    }
-    if (spirit === 'brandy') {
-      if (mood === 'cosy' || profile === 'creamy') return 'brandy_alexander';
-      if (profile === 'sweet' || profile === 'nutty') return pick(['vieux_carre','brandy_alexander','nutty_old_fashioned']);
-      if (profile === 'bitter') return 'vieux_carre';
-      return pick(['vieux_carre','brandy_alexander']);
-    }
-    if (spirit === 'rum') {
-      if (profile === 'tropical' || mood === 'playful') return pick(['mai_tai','pina_colada','jungle_bird','tropical_shake']);
-      if (profile === 'bitter') return 'jungle_bird';
-      if (profile === 'sweet' || profile === 'creamy') return 'pina_colada';
-      if (profile === 'spicy') return 'dark_n_stormy';
-      if (occasion === 'nightcap') return 'mai_tai';
-      return pick(['mai_tai','jungle_bird','tropical_shake']);
-    }
+    // Spirit-signature routing (light touch): only short-circuit for the
+    // profile that is the spirit's true signature, so an agave + smoky pick
+    // lands on a smoke-led build. Every OTHER profile falls through to the
+    // rich profile/occasion/strength/mood routing below, which produces far
+    // more variety. The base spirit no longer needs protecting here because
+    // enforceSpirit() guarantees the guest's chosen spirit is the base of
+    // whatever template fires. This is what unlocks dozens of distinct drinks
+    // per spirit instead of the same five.
+    if (spirit === 'mezcal' && profile === 'smoky') return pick(['smoke_sour','oaxaca_old_fashioned','naked_famous','mezcal_negroni']);
+    if (spirit === 'tequila' && profile === 'smoky') return pick(['smoky_margarita','oaxaca_old_fashioned']);
+    if (spirit === 'rum' && profile === 'tropical' && mood !== 'adventurous') return pick(['mai_tai','pina_colada','jungle_bird','tropical_shake','painkiller','hurricane']);
 
     // Brunch + late-night occasion routes (new)
     if (occasion === 'brunch') {
