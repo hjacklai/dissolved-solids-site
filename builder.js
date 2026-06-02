@@ -1676,11 +1676,46 @@
     smoky: 'smoke_sour', floral: 'flora_fizz', spicy: 'highball_spice',
     tropical: 'tropical_shake', creamy: 'milk_punch', nutty: 'old_fashioned',
   };
+
+  // Variety engine. Templates within a group share the same structure (the
+  // base spirit is overlaid afterward by enforceSpirit, so any sibling is
+  // correct for the chosen spirit). Letting the seed pick within the group
+  // means similar answer sets and re-rolls produce a wide range of drinks
+  // instead of the same fixed classic every time. House-signature drinks are
+  // excluded so their identity is preserved.
+  const SIBLING_GROUPS = [
+    ['sour','whiskey_smash','gold_rush','bee_knees','clover_club','gimlet_classic','tommy_margarita','whiskey_sour_classic'],
+    ['old_fashioned','manhattan','sazerac','vieux_carre','nutty_old_fashioned','boulevardier'],
+    ['bitter_stirred','mezcal_negroni','hanky_panky'],
+    ['highball_spice','moscow_mule','mexican_mule','dark_n_stormy','tom_collins','john_collins'],
+    ['tropical_shake','mai_tai','jungle_bird','painkiller','hurricane','zombie','doctor_funk','pina_colada'],
+    ['garden_stirred','mojito','southside','gin_basil_smash','mint_julep'],
+    ['flora_fizz','flora_fizz_xl','lavender_collins','champagne_fizz'],
+    ['milk_punch','alexander','brandy_alexander','white_russian','grasshopper','pink_squirrel'],
+  ];
+  const TEMPLATE_SIBLINGS = (function () {
+    const m = {};
+    SIBLING_GROUPS.forEach((g) => g.forEach((k) => { if (!m[k]) m[k] = g; }));
+    return m;
+  })();
+  const SIGNATURE_SOLO = new Set([
+    'kopi_sour','espresso_awake','pandan_collins','gula_melaka_old_fashioned','calamansi_highball',
+    'teh_tarik_old_fashioned','cendol_milk_punch','bandung_spritz','nasi_lemak_old_fashioned',
+    'cili_padi_margarita','kopi_negroni','asam_boi_sour','bunga_kantan_gimlet','sambal_margarita',
+    'pandan_milk_punch','golden_milk_punch','calamansi_mojito',
+  ]);
+
   function resolveTemplateKey(ans) {
     let key = pickTemplate(ans);
     if (ans.spirit && ans.spirit !== 'surprise' && SPIRITLESS_FIXED.has(key)) {
       const p = asArray(ans.profile)[0];
       key = BASE_BY_PROFILE[p] || 'sour';
+    }
+    // Diversify within the structural sibling group (seed-driven, so the same
+    // URL still reproduces the same drink; re-rolls cycle through the group).
+    if (!SIGNATURE_SOLO.has(key) && TEMPLATE_SIBLINGS[key]) {
+      const pool = TEMPLATE_SIBLINGS[key].filter((k) => templates[k]);
+      if (pool.length) key = pick(pool);
     }
     return key;
   }
