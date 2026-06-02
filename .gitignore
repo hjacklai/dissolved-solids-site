@@ -24,3 +24,17 @@ photos/new-SS/
 
 # Private notes (the original detailed README, kept locally only)
 NOTES-local.md
+
+# Working docs and audits: kept in Google Drive only, not needed for the live
+# site. The site runs on HTML/CSS/JS + sitemap.xml, robots.txt, CNAME,
+# llms.txt, llms-full.txt and the photos. Everything below is internal notes.
+README.md
+AUDIT-*.md
+*-AUDIT.md
+SEO_CHECKLIST.md
+TRANSLATION-GLOSSARY.md
+*.notes.md
+NOTES-*.md
+TODO*.md
+plan-*.md
+*-plan.md
