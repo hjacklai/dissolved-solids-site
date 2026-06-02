@@ -3514,10 +3514,11 @@
   </url>
   <url>
     <loc>https://dissolvedsolids.co/speakeasy-pj/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/speakeasy-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/speakeasy-pj/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/speakeasy-pj/" />
   </url>
   <url>
@@ -4301,6 +4302,15 @@
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/cocktail-bars-pj/" />
     <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/cocktail-bars-pj/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/cocktail-bars-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/speakeasy-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/speakeasy-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/speakeasy-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/speakeasy-pj/" />
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/cocktail-bars-puchong/</loc>

@@ -30,6 +30,7 @@ Every EN page has a 1:1 ZH twin under the `/zh/` prefix. Each page declares `<li
 
 - [Find a cocktail bar (hub)](https://dissolvedsolids.co/find-a-cocktail-bar/): The canonical hub that links to every neighbourhood guide.
 - [Cocktail bars in Petaling Jaya (PJ)](https://dissolvedsolids.co/cocktail-bars-pj/): Guide to both outlets, neighbourhood context, what to order.
+- [Speakeasy and hidden cocktail bars in PJ](https://dissolvedsolids.co/speakeasy-pj/): What the speakeasy category means in 2026 PJ, where the hidden craft bars are (Damansara Kim, SS2, Damansara Uptown, Section 14 and 17, Bandar Sunway), and how Dissolved Solids and Soluble Solids fit. Bilingual: also at /zh/speakeasy-pj/.
 - [Cocktail bars in Damansara](https://dissolvedsolids.co/cocktail-bars-damansara/): Specifically the Damansara Kim location and surrounding area.
 - [Cocktail bar in SS2](https://dissolvedsolids.co/cocktail-bars-ss2/): Soluble Solids and the SS2 neighbourhood.
 - [Cocktail bar near TTDI](https://dissolvedsolids.co/cocktail-bars-ttdi/): Closest serious cocktail bar to Taman Tun Dr Ismail.
