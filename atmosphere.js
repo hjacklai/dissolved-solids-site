@@ -228,8 +228,13 @@
       }
     }
     mt.addEventListener('click', function () {
-      if (mt.classList.contains('playing')) stop();
-      else start();
+      if (mt.classList.contains('playing')) {
+        stop();
+        try { localStorage.setItem('ds-music', 'off'); } catch (e) {}
+      } else {
+        start();
+        try { localStorage.setItem('ds-music', 'on'); } catch (e) {}
+      }
     });
     // Autoplay engine + pause-on-tab-hidden. Browsers block audio
     // without a user gesture and the gesture allowance does NOT carry
@@ -243,6 +248,9 @@
     var armed = false;
     var wasPlayingBeforeHide = false;
     var userStopped = false;
+    // Remember an explicit "off" across page loads, so the music does not
+    // restart on every navigation once a visitor has silenced it.
+    try { userStopped = localStorage.getItem('ds-music') === 'off'; } catch (e) {}
     function tryStart() { if (!mt.classList.contains('playing') && !userStopped) start(); }
     function onGesture(e) {
       var onToggle = e.target && e.target.closest && e.target.closest('.atmo-music');
