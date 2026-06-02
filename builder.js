@@ -2231,7 +2231,21 @@
   }
 
   function init() {
-    document.querySelectorAll('.builder-mount').forEach(mountBuilder);
+    document.querySelectorAll('.builder-mount').forEach((root) => {
+      // Pages that inline the full builder markup (homepage, the two outlet
+      // pages) already contain .builder-flow, so they mount synchronously and
+      // are completely unaffected. An empty mount (any other page that just
+      // drops in <main class="builder-mount"></main>) fetches the shared
+      // partial once, injects sprite + UI, then mounts.
+      if (root.querySelector('.builder-flow')) {
+        mountBuilder(root);
+      } else {
+        fetch('/builder-partial.html')
+          .then((r) => r.text())
+          .then((html) => { root.innerHTML = html; mountBuilder(root); })
+          .catch(function () {});
+      }
+    });
   }
 
   if (document.readyState === 'loading') {
