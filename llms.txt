@@ -29,6 +29,7 @@ Every EN page has a 1:1 ZH twin under the `/zh/` prefix. Each page declares `<li
 - [After party venue in PJ](https://dissolvedsolids.co/after-party-cocktail-bar-pj/): Wedding or event after party at a late-night cocktail bar. Open till 01:00 on weekends, buyout or partial booking, custom drinks, 12 to 40 guests. Bilingual: also at /zh/after-party-cocktail-bar-pj/.
 - [Private event cocktail bar in PJ](https://dissolvedsolids.co/private-event-cocktail-bar-pj/): Full or partial buyouts of 15 to 40 guests, custom drink menus, dedicated bartender. Sister page for KL at /private-event-cocktail-bar-kl/.
 - [Cocktail workshop in KL](https://dissolvedsolids.co/cocktail-workshop-kl/): Hands-on cocktail workshops and team-building sessions hosted at the PJ outlets for Klang Valley groups.
+- [Corporate event and team building in PJ](https://dissolvedsolids.co/corporate-event-cocktail-bar-pj/): Year-end dinners, team building, client nights, product launches at an intimate cocktail bar. Tax invoice with SST, build-your-own-cocktail team sessions, 15 to 40 guests, weekday friendly. KL version at /corporate-event-cocktail-bar-kl/. Bilingual: also under /zh/.
 
 ## Location landing pages (where to find cocktail bars in the Klang Valley)
 
