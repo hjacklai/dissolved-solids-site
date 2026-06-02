@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-MY" data-state="dissolved">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>今晚我能调什么？· 家庭酒柜库存鸡尾酒查找器</title>
+<meta name="description" content="勾选你家里有的酒。我们会列出你现有材料能调出的每一杯鸡尾酒，并按齐全程度排序。" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="今晚我能调什么？" />
+<meta property="og:description" content="鸡尾酒库存查找器。勾选你的家庭酒柜，看看你能调出的每一杯。" />
+<meta property="og:image" content="https://dissolvedsolids.co/photos/banner.jpg" />
+<meta property="og:url" content="https://dissolvedsolids.co/zh/what-can-i-make/" />
+<meta property="og:locale" content="zh_MY" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://dissolvedsolids.co/photos/banner.jpg" />
+<meta name="theme-color" content="#faf3df" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://dissolvedsolids.co/zh/what-can-i-make/" />
+<link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/what-can-i-make/" />
+<link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/what-can-i-make/" />
+<link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/what-can-i-make/" />
+<link rel="icon" type="image/png" href="/photos/ds-logo.png" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","inLanguage":"zh-Hans-MY","@type":"WebApplication","name":"今晚我能调什么？鸡尾酒查找器","url":"https://dissolvedsolids.co/zh/what-can-i-make/","applicationCategory":"LifestyleApplication","operatingSystem":"Web","description":"勾选你家庭酒柜里的酒，看看你现有材料能调出的每一杯鸡尾酒。"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","inLanguage":"zh-Hans-MY","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://dissolvedsolids.co/zh/"},{"@type":"ListItem","position":2,"name":"我能调什么","item":"https://dissolvedsolids.co/zh/what-can-i-make/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<link rel="stylesheet" href="/appbar.css" />
+<script src="/analytics.js" defer></script>
+<style>
+  .wci-wrap { max-width: 1100px; margin: 0 auto; padding: 0 var(--gutter); }
+  .wci-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 36px; }
+  @media (max-width: 820px) { .wci-grid { grid-template-columns: 1fr; gap: 28px; } }
+  .wci-panel {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 14px;
+    padding: 24px 22px;
+  }
+  .wci-panel h2 {
+    font-family: var(--serif); font-size: 28px; font-weight: 400;
+    margin: 0 0 14px; color: var(--paper);
+  }
+  .wci-panel h2 em { color: var(--accent); font-style: italic; }
+  .wci-sub {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+    margin: 0 0 18px;
+  }
+  .wci-category-h {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .22em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+    margin: 18px 0 8px;
+  }
+  .wci-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .wci-chip {
+    font-family: var(--mono); font-size: 12px;
+    padding: 6px 12px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 18px;
+    color: rgba(255,255,255,.75);
+    cursor: pointer;
+    transition: all .18s ease;
+    text-transform: lowercase;
+  }
+  .wci-chip:hover { border-color: rgba(255,255,255,.4); }
+  .wci-chip.is-on {
+    background: var(--accent); border-color: var(--accent);
+    color: #000; font-weight: 600;
+  }
+  .wci-actions { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+  .wci-btn {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 10px 18px; border-radius: 22px;
+    border: 1px solid rgba(255,255,255,.25);
+    background: transparent; color: var(--paper);
+    cursor: pointer; transition: all .2s ease;
+  }
+  .wci-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .wci-btn.primary { background: var(--accent); border-color: var(--accent); color: #000; }
+  .wci-btn.primary:hover { color: #000; background: #fff; border-color: #fff; }
+  .wci-status {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .16em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+    margin: 24px 0 12px;
+  }
+  .wci-status b { color: var(--accent); }
+  .wci-result {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 10px;
+    padding: 18px 18px;
+    margin-bottom: 10px;
+    transition: border-color .2s ease;
+  }
+  .wci-result:hover { border-color: var(--accent); }
+  .wci-result .r-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 12px; margin-bottom: 6px;
+  }
+  .wci-result .r-name {
+    font-family: var(--serif); font-size: 22px; line-height: 1.1;
+    color: var(--paper); margin: 0;
+  }
+  .wci-result .r-pct {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    color: var(--accent); white-space: nowrap;
+  }
+  .wci-result .r-ing {
+    font-family: var(--mono); font-size: 12px; line-height: 1.5;
+    color: rgba(255,255,255,.7);
+    margin: 0;
+  }
+  .wci-result .r-have { color: var(--paper); font-weight: 500; }
+  .wci-result .r-missing { color: rgba(255,100,100,.85); }
+  .wci-result .r-link {
+    display: inline-block;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em;
+    color: var(--accent); margin-top: 8px;
+    text-transform: uppercase;
+  }
+  .wci-no-results {
+    background: rgba(255,255,255,.03); border: 1px dashed rgba(255,255,255,.18);
+    border-radius: 10px; padding: 26px;
+    text-align: center; color: rgba(255,255,255,.6);
+    font-family: var(--serif); font-style: italic; font-size: 17px;
+  }
+  .wci-pick-some {
+    background: rgba(255,255,255,.03); border: 1px dashed rgba(255,255,255,.18);
+    border-radius: 10px; padding: 30px 22px;
+    text-align: center; color: rgba(255,255,255,.55);
+    font-family: var(--serif); font-style: italic; font-size: 16px;
+  }
+</style>
+</head>
+<body class="journal-body">
+<header class="journal-bar"><a class="journal-wordmark" href="/zh/"><span>Dissolved Solids</span><em>调酒工具</em></a></header>
+<main class="journal-mount article-mount">
+  <article class="article">
+    <header class="article-head">
+      <a class="article-up" href="/zh/">← 首页</a>
+      <span class="article-eyebrow">工具 · 库存鸡尾酒查找器</span>
+      <h1 class="article-title">今晚我能<i>调什么</i>？</h1>
+      <p class="article-dek">勾选你手上有的酒。我们会按照你拥有的材料数量，把你能用这批库存调出的每一杯鸡尾酒排序列出。把喜欢的收藏起来；等明天买了更多瓶，再回来看看。</p>
+    </header>
+    <div class="wci-wrap">
+      <div class="wci-grid">
+        <section class="wci-panel">
+          <h2>你的<em>家庭酒柜</em>。</h2>
+          <p class="wci-sub">勾选你有的。再点一次即可移除。</p>
+
+          <h3 class="wci-category-h">基酒</h3>
+          <div class="wci-chips" data-cat="spirits">
+            <button class="wci-chip" data-ing="gin">金酒</button>
+            <button class="wci-chip" data-ing="vodka">伏特加</button>
+            <button class="wci-chip" data-ing="white rum">白朗姆</button>
+            <button class="wci-chip" data-ing="dark rum">黑朗姆</button>
+            <button class="wci-chip" data-ing="tequila">龙舌兰</button>
+            <button class="wci-chip" data-ing="mezcal">梅斯卡尔</button>
+            <button class="wci-chip" data-ing="bourbon">波本威士忌</button>
+            <button class="wci-chip" data-ing="rye">黑麦威士忌</button>
+            <button class="wci-chip" data-ing="scotch">苏格兰威士忌</button>
+            <button class="wci-chip" data-ing="japanese whisky">日本威士忌</button>
+            <button class="wci-chip" data-ing="cognac">干邑</button>
+            <button class="wci-chip" data-ing="brandy">白兰地</button>
+            <button class="wci-chip" data-ing="sake">清酒</button>
+          </div>
+
+          <h3 class="wci-category-h">调味酒（味美思、阿马罗、利口酒）</h3>
+          <div class="wci-chips" data-cat="modifiers">
+            <button class="wci-chip" data-ing="sweet vermouth">甜味美思</button>
+            <button class="wci-chip" data-ing="dry vermouth">干味美思</button>
+            <button class="wci-chip" data-ing="campari">金巴利</button>
+            <button class="wci-chip" data-ing="aperol">阿佩罗</button>
+            <button class="wci-chip" data-ing="cointreau">君度／橙皮利口酒</button>
+            <button class="wci-chip" data-ing="maraschino">黑樱桃利口酒</button>
+            <button class="wci-chip" data-ing="kahlua">甘露／咖啡利口酒</button>
+            <button class="wci-chip" data-ing="elderflower liqueur">接骨木花利口酒</button>
+            <button class="wci-chip" data-ing="creme de cassis">黑加仑利口酒</button>
+            <button class="wci-chip" data-ing="creme de violette">紫罗兰利口酒</button>
+            <button class="wci-chip" data-ing="fernet">菲奈特布兰卡</button>
+          </div>
+
+          <h3 class="wci-category-h">柑橘与果汁</h3>
+          <div class="wci-chips" data-cat="citrus">
+            <button class="wci-chip" data-ing="fresh lime">鲜青柠</button>
+            <button class="wci-chip" data-ing="fresh lemon">鲜柠檬</button>
+            <button class="wci-chip" data-ing="calamansi">金桔（酸柑）</button>
+            <button class="wci-chip" data-ing="orange juice">橙汁</button>
+            <button class="wci-chip" data-ing="grapefruit">西柚</button>
+            <button class="wci-chip" data-ing="pineapple juice">菠萝汁</button>
+            <button class="wci-chip" data-ing="cranberry juice">蔓越莓汁</button>
+            <button class="wci-chip" data-ing="tomato juice">番茄汁</button>
+          </div>
+
+          <h3 class="wci-category-h">糖浆、糖、苦精</h3>
+          <div class="wci-chips" data-cat="sweet">
+            <button class="wci-chip" data-ing="simple syrup">简易糖浆（或糖）</button>
+            <button class="wci-chip" data-ing="honey">蜂蜜</button>
+            <button class="wci-chip" data-ing="gula melaka">椰糖（Gula Melaka）</button>
+            <button class="wci-chip" data-ing="grenadine">石榴糖浆</button>
+            <button class="wci-chip" data-ing="orgeat">杏仁糖浆</button>
+            <button class="wci-chip" data-ing="pandan syrup">斑斓糖浆</button>
+            <button class="wci-chip" data-ing="ginger syrup">姜糖浆</button>
+            <button class="wci-chip" data-ing="aromatic bitters">芳香苦精</button>
+            <button class="wci-chip" data-ing="orange bitters">橙味苦精</button>
+          </div>
+
+          <h3 class="wci-category-h">气泡水与鲜料</h3>
+          <div class="wci-chips" data-cat="mixers">
+            <button class="wci-chip" data-ing="soda water">苏打水</button>
+            <button class="wci-chip" data-ing="tonic">汤力水</button>
+            <button class="wci-chip" data-ing="ginger beer">姜汁啤酒</button>
+            <button class="wci-chip" data-ing="champagne">香槟／普罗赛克／卡瓦</button>
+            <button class="wci-chip" data-ing="egg white">蛋白</button>
+            <button class="wci-chip" data-ing="cream">奶油</button>
+            <button class="wci-chip" data-ing="milk">牛奶</button>
+            <button class="wci-chip" data-ing="coconut cream">椰浆</button>
+            <button class="wci-chip" data-ing="mint">薄荷</button>
+            <button class="wci-chip" data-ing="basil">罗勒</button>
+            <button class="wci-chip" data-ing="cucumber">黄瓜</button>
+            <button class="wci-chip" data-ing="espresso">浓缩咖啡／Kopi-O</button>
+            <button class="wci-chip" data-ing="cucumber">黄瓜</button>
+          </div>
+
+          <div class="wci-actions">
+            <button class="wci-btn primary" id="wciClear">全部清除</button>
+            <button class="wci-btn" id="wciStarter">入门家庭酒柜</button>
+            <button class="wci-btn" id="wciFull">全部勾选</button>
+          </div>
+        </section>
+
+        <section class="wci-panel">
+          <h2>你<em>能调出</em>的酒。</h2>
+          <p class="wci-sub">按齐全程度排序。标注「材料齐全」＝现在就能调。</p>
+          <div id="wciStatus" class="wci-status">在左侧勾选几样酒吧。</div>
+          <div id="wciResults">
+            <div class="wci-pick-some">在左侧勾选你的库存。我们会告诉你能倒出哪些酒。</div>
+          </div>
+        </section>
+      </div>
+
+      <div class="article-body" style="margin-top:60px;">
+        <h2>运作原理</h2>
+        <p>这个工具会拿数据库里的每一杯鸡尾酒，跟你勾选的库存逐一比对。如果某杯酒除了装饰物以外的每一样材料都在你的家庭酒柜里，它就属于「材料齐全，可调」。如果只缺一两样材料，它就属于「就差一点」。工具也会匹配相近的替代品（例如「任意朗姆」可顶替「白朗姆」；「任意基酒」可用于随机调配）。</p>
+
+        <h2>入门家庭酒柜</h2>
+        <p>如果你刚开始在家调酒，「入门家庭酒柜」这个快捷按钮会勾选 12 样材料，足以解锁约 40 款有名的经典鸡尾酒。我们建议先以这套配置为目标，之后再按你想调的酒，逐样扩充材料。</p>
+        <p>入门套装：金酒、伏特加、波本威士忌、白朗姆、甜味美思、干味美思、金巴利、君度、鲜青柠、鲜柠檬、简易糖浆、芳香苦精。再加苏打水、汤力水和任意浓缩咖啡。有了这套器材，你就能调出：尼格罗尼、马天尼、曼哈顿、古典鸡尾酒、琴蕾、黛绮丽、威士忌酸酒、汤姆柯林斯、各种玛格丽特、法兰西 75、阿佩罗气泡酒、浓缩咖啡马天尼，以及更多。</p>
+
+        <h2>相关</h2>
+        <ul>
+          <li><a href="/zh/cocktails/">浏览全部鸡尾酒（完整数据库）</a></li>
+          <li><a href="/zh/ingredients/">鸡尾酒材料百科</a></li>
+          <li><a href="/zh/#builder">调酒搭配器（按口味偏好）</a></li>
+          <li><a href="/zh/cheatsheets/">速查表与可打印 PDF</a></li>
+          <li><a href="/zh/calculators/">鸡尾酒计算器</a></li>
+        </ul>
+      </div>
+    </div>
+    <footer class="article-foot"><p class="article-up-foot"><a href="/zh/">← 首页</a></p></footer>
+  </article>
+</main>
+
+<script>
+// Inventory cocktail finder. Self-contained: recipes embedded, matching logic inline.
+// All ingredients normalised to lowercase keywords for substring-style matching.
+
+const RECIPES = [
+  // Classics
+  { name: "Negroni", slug: "negroni", ing: ["gin","sweet vermouth","campari"] },
+  { name: "Martini", slug: "martini", ing: ["gin","dry vermouth"] },
+  { name: "Vodka Martini", slug: "vodka-martini", ing: ["vodka","dry vermouth"] },
+  { name: "Manhattan", slug: "manhattan", ing: ["rye","sweet vermouth","aromatic bitters"] },
+  { name: "Old Fashioned", slug: "old-fashioned", ing: ["bourbon","simple syrup","aromatic bitters"] },
+  { name: "Whisky Sour", slug: "whisky-sour", ing: ["bourbon","fresh lemon","simple syrup","egg white"] },
+  { name: "Daiquiri", slug: "daiquiri", ing: ["white rum","fresh lime","simple syrup"] },
+  { name: "Hemingway Daiquiri", slug: "hemingway-daiquiri", ing: ["white rum","fresh lime","grapefruit","maraschino"] },
+  { name: "Gimlet", slug: "gimlet", ing: ["gin","fresh lime","simple syrup"] },
+  { name: "Margarita", slug: "margarita", ing: ["tequila","fresh lime","cointreau"] },
+  { name: "Mojito", slug: "mojito", ing: ["white rum","fresh lime","simple syrup","mint","soda water"] },
+  { name: "Tom Collins", slug: "tom-collins", ing: ["gin","fresh lemon","simple syrup","soda water"] },
+  { name: "Aperol Spritz", slug: "aperol-spritz", ing: ["aperol","champagne","soda water"] },
+  { name: "French 75", slug: "french-75", ing: ["gin","fresh lemon","simple syrup","champagne"] },
+  { name: "Bee's Knees", slug: "bees-knees", ing: ["gin","fresh lemon","honey"] },
+  { name: "Aviation", slug: "aviation", ing: ["gin","fresh lemon","maraschino","creme de violette"] },
+  { name: "Last Word", slug: "last-word", ing: ["gin","fresh lime","maraschino"] },
+  { name: "Corpse Reviver No. 2", slug: "corpse-reviver-2", ing: ["gin","fresh lemon","cointreau","dry vermouth"] },
+  { name: "Espresso Martini", slug: "espresso-martini", ing: ["vodka","kahlua","espresso","simple syrup"] },
+  { name: "White Russian", slug: "white-russian", ing: ["vodka","kahlua","cream"] },
+  { name: "Black Russian", slug: "black-russian", ing: ["vodka","kahlua"] },
+  { name: "Cosmopolitan", slug: "cosmopolitan", ing: ["vodka","cointreau","cranberry juice","fresh lime"] },
+  { name: "Moscow Mule", slug: "moscow-mule", ing: ["vodka","fresh lime","ginger beer"] },
+  { name: "Dark and Stormy", slug: "dark-and-stormy", ing: ["dark rum","fresh lime","ginger beer"] },
+  { name: "Paloma", slug: "paloma", ing: ["tequila","grapefruit","fresh lime","soda water"] },
+  { name: "Boulevardier", slug: "boulevardier", ing: ["bourbon","sweet vermouth","campari"] },
+  { name: "Sazerac", slug: "sazerac", ing: ["rye","simple syrup","aromatic bitters"] },
+  { name: "Mint Julep", slug: "mint-julep", ing: ["bourbon","mint","simple syrup"] },
+  { name: "Whiskey Smash", slug: "whiskey-smash", ing: ["bourbon","fresh lemon","simple syrup","mint"] },
+  { name: "Penicillin", slug: "penicillin", ing: ["scotch","fresh lemon","honey","ginger syrup"] },
+  { name: "Bramble", slug: "bramble", ing: ["gin","fresh lemon","simple syrup","creme de cassis"] },
+  { name: "Hanky Panky", slug: "hanky-panky", ing: ["gin","sweet vermouth","fernet"] },
+  { name: "Caipirinha", slug: "caipirinha", ing: ["white rum","fresh lime","simple syrup"] },
+  { name: "Cuba Libre", slug: "cuba-libre", ing: ["white rum","fresh lime","soda water"] },
+  { name: "Pina Colada", slug: "pina-colada", ing: ["white rum","coconut cream","pineapple juice"] },
+  { name: "Pisco Sour", slug: "pisco-sour", ing: ["brandy","fresh lime","simple syrup","egg white","aromatic bitters"] },
+  { name: "Sidecar", slug: "sidecar", ing: ["cognac","cointreau","fresh lemon"] },
+  { name: "Brandy Alexander", slug: "brandy-alexander", ing: ["cognac","kahlua","cream"] },
+  { name: "Black Manhattan", slug: "black-manhattan", ing: ["rye","fernet","aromatic bitters"] },
+  { name: "Vesper", slug: "vesper", ing: ["gin","vodka","dry vermouth"] },
+  { name: "Bloody Mary", slug: "bloody-mary", ing: ["vodka","tomato juice","fresh lemon"] },
+  { name: "Negroni Sbagliato", slug: "negroni-sbagliato", ing: ["campari","sweet vermouth","champagne"] },
+  { name: "Americano", slug: "americano", ing: ["campari","sweet vermouth","soda water"] },
+  { name: "Bellini", slug: "bellini", ing: ["champagne"] },
+  { name: "Mimosa", slug: "mimosa", ing: ["champagne","orange juice"] },
+  { name: "Garibaldi", slug: "garibaldi", ing: ["campari","orange juice"] },
+  { name: "Eastside", slug: "eastside", ing: ["gin","fresh lime","simple syrup","cucumber","mint"] },
+  { name: "Italian Job", slug: "italian-job", ing: ["campari","espresso","dry vermouth","kahlua"] },
+  { name: "Blood and Sand", slug: "blood-and-sand", ing: ["scotch","sweet vermouth","cherry","orange juice"] },
+  { name: "Irish Godfather", slug: "irish-godfather", ing: ["scotch","kahlua"] },
+
+  // Malaysian-local
+  { name: "Pandan Collins", slug: "pandan-collins", ing: ["gin","pandan syrup","fresh lime","soda water"] },
+  { name: "Gula Melaka Old Fashioned", slug: "gula-melaka-old-fashioned", ing: ["bourbon","gula melaka","aromatic bitters"] },
+  { name: "Calamansi Highball", slug: "calamansi-highball", ing: ["vodka","calamansi","soda water"] },
+  { name: "Kopi Sour", slug: "kopi-sour", ing: ["bourbon","espresso","gula melaka","fresh lemon","egg white"] },
+  { name: "Roselle Spritz", slug: "roselle-spritz", ing: ["gin","fresh lime","champagne"] },
+  { name: "Asam Boi Margarita", slug: "asam-boi-margarita", ing: ["tequila","fresh lime","cointreau"] },
+
+  // House signatures
+  { name: "The Tesseract", slug: "tesseract", ing: ["gin","mezcal","maraschino","cointreau","tonic"] },
+  { name: "Scented Negroni", slug: "scented-negroni", ing: ["gin","campari","sweet vermouth"] },
+  { name: "Junos Sour", slug: "junos-sour", ing: ["japanese whisky","fresh lemon","honey","egg white","aromatic bitters"] },
+  { name: "Pyrus Gimlet", slug: "pyrus-gimlet", ing: ["gin","fresh lime","elderflower liqueur"] },
+  { name: "Matcha Sakura", slug: "matcha-sakura", ing: ["gin","fresh lime","simple syrup"] },
+  { name: "Too Gouda To Be True", slug: "too-gouda-to-be-true", ing: ["kahlua","espresso","simple syrup"] }
+];
+
+const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+const $ = (sel, ctx=document) => ctx.querySelector(sel);
+
+const inventory = new Set();
+
+function normalize(s) { return (s||"").toString().toLowerCase().trim(); }
+
+function hasIng(ingName) {
+  const n = normalize(ingName);
+  if (inventory.has(n)) return true;
+  // Generic matches
+  if (n === "rye" && inventory.has("bourbon")) return true;
+  if (n === "bourbon" && inventory.has("rye")) return true;
+  if (n === "scotch" && (inventory.has("japanese whisky") || inventory.has("bourbon"))) return true;
+  if (n === "japanese whisky" && (inventory.has("scotch") || inventory.has("bourbon"))) return true;
+  if (n === "white rum" && inventory.has("dark rum")) return true;
+  if (n === "dark rum" && inventory.has("white rum")) return true;
+  if (n === "cognac" && inventory.has("brandy")) return true;
+  if (n === "brandy" && inventory.has("cognac")) return true;
+  if (n === "simple syrup" && (inventory.has("honey") || inventory.has("gula melaka"))) return true;
+  if (n === "soda water" && inventory.has("tonic")) return true;
+  return false;
+}
+
+function rankRecipes() {
+  return RECIPES.map(r => {
+    const total = r.ing.length;
+    const have = r.ing.filter(i => hasIng(i)).length;
+    const missing = r.ing.filter(i => !hasIng(i));
+    return { ...r, total, have, missing, pct: have/total };
+  })
+  .filter(r => r.have > 0 || inventory.size === 0)
+  .sort((a,b) => {
+    if (b.pct !== a.pct) return b.pct - a.pct;
+    if (b.have !== a.have) return b.have - a.have;
+    return a.name.localeCompare(b.name);
+  });
+}
+
+function render() {
+  const status = $("#wciStatus");
+  const out = $("#wciResults");
+  if (inventory.size === 0) {
+    status.innerHTML = "在左侧勾选几样酒吧。";
+    out.innerHTML = '<div class="wci-pick-some">在左侧勾选你的库存。我们会告诉你能倒出哪些酒。</div>';
+    return;
+  }
+  const ranked = rankRecipes();
+  const fullyBuildable = ranked.filter(r => r.pct === 1);
+  const almost = ranked.filter(r => r.pct < 1 && r.pct >= 0.5).slice(0, 12);
+  status.innerHTML = `<b>${fullyBuildable.length}</b> 杯可调 · <b>${almost.length}</b> 杯就差一点（用你现有材料，再加 1-2 样即可）`;
+  let html = "";
+  if (fullyBuildable.length === 0 && almost.length === 0) {
+    html = '<div class="wci-no-results">暂时没有匹配的酒。试着加几样基酒和一种柑橘看看。</div>';
+  }
+  fullyBuildable.forEach(r => { html += renderCard(r, "可调"); });
+  if (almost.length > 0) {
+    html += `<div class="wci-status" style="margin-top:30px;">就差一点（再加 1-2 样材料即可解锁）</div>`;
+    almost.forEach(r => { html += renderCard(r, ""); });
+  }
+  out.innerHTML = html;
+}
+
+function renderCard(r, badge) {
+  const haveList = r.ing.filter(i => hasIng(i)).map(i => `<span class="r-have">${escapeHtml(i)}</span>`).join(", ");
+  const missList = r.missing.map(i => `<span class="r-missing">${escapeHtml(i)}</span>`).join(", ");
+  const ingHtml = [haveList, missList].filter(Boolean).join(", ");
+  const pctText = badge || `${r.total} 样中有 ${r.have} 样`;
+  return `<div class="wci-result">
+    <div class="r-head"><h3 class="r-name">${escapeHtml(r.name)}</h3><div class="r-pct">${pctText}</div></div>
+    <p class="r-ing">${ingHtml}</p>
+    <a class="r-link" href="/zh/cocktails/${r.slug}/">查看配方 →</a>
+  </div>`;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+}
+
+// Wire up chip clicks
+$$(".wci-chip").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const ing = normalize(btn.dataset.ing);
+    if (inventory.has(ing)) {
+      inventory.delete(ing); btn.classList.remove("is-on");
+    } else {
+      inventory.add(ing); btn.classList.add("is-on");
+    }
+    saveInventory();
+    render();
+  });
+});
+
+// Clear / starter / full bar buttons
+$("#wciClear").addEventListener("click", () => {
+  inventory.clear();
+  $$(".wci-chip").forEach(c => c.classList.remove("is-on"));
+  saveInventory();
+  render();
+});
+
+const STARTER = ["gin","vodka","bourbon","white rum","sweet vermouth","dry vermouth","campari","cointreau","fresh lime","fresh lemon","simple syrup","aromatic bitters","soda water","tonic","espresso","mint"];
+$("#wciStarter").addEventListener("click", () => {
+  inventory.clear();
+  STARTER.forEach(i => inventory.add(normalize(i)));
+  $$(".wci-chip").forEach(c => {
+    c.classList.toggle("is-on", inventory.has(normalize(c.dataset.ing)));
+  });
+  saveInventory();
+  render();
+});
+$("#wciFull").addEventListener("click", () => {
+  $$(".wci-chip").forEach(c => {
+    const ing = normalize(c.dataset.ing);
+    inventory.add(ing);
+    c.classList.add("is-on");
+  });
+  saveInventory();
+  render();
+});
+
+// Persistence (localStorage)
+function saveInventory() {
+  try { localStorage.setItem("dsHomeBar", JSON.stringify([...inventory])); } catch(e) {}
+}
+function loadInventory() {
+  try {
+    const raw = localStorage.getItem("dsHomeBar");
+    if (!raw) return;
+    JSON.parse(raw).forEach(i => inventory.add(i));
+    $$(".wci-chip").forEach(c => {
+      if (inventory.has(normalize(c.dataset.ing))) c.classList.add("is-on");
+    });
+  } catch(e) {}
+}
+loadInventory();
+render();
+</script>
+
+<script src="/atmosphere.js" defer></script>
+<script src="/appbar.js" defer></script>
+</body>
+</html>

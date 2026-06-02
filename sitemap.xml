@@ -51,6 +51,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/asia-50-best-bars-malaysia/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/asia-50-best-bars-malaysia/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/asia-50-best-bars-malaysia/" />
   </url>
   <url>
@@ -1238,6 +1239,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/cocktail-workshop-kl/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/cocktail-workshop-kl/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/cocktail-workshop-kl/" />
   </url>
   <url>
@@ -1246,6 +1248,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/coffee/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/coffee/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/coffee/" />
   </url>
   <url>
@@ -1272,6 +1275,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/deepavali-cocktails-kl/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/deepavali-cocktails-kl/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/deepavali-cocktails-kl/" />
   </url>
   <url>
@@ -1369,6 +1373,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/graduation-drinks-kl/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/graduation-drinks-kl/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/graduation-drinks-kl/" />
   </url>
   <url>
@@ -1377,6 +1382,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/graduation-drinks-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/graduation-drinks-pj/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/graduation-drinks-pj/" />
   </url>
   <url>
@@ -3644,6 +3650,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/what-can-i-make/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/what-can-i-make/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/what-can-i-make/" />
   </url>
   <url>
@@ -7344,5 +7351,203 @@
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/no-menu-cocktail-bar-pj/" />
     <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/no-menu-cocktail-bar-pj/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/no-menu-cocktail-bar-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/bridal-shower-cocktail-bar-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/bridal-shower-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/bridal-shower-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/bridal-shower-cocktail-bar-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/after-party-cocktail-bar-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/after-party-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/after-party-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/after-party-cocktail-bar-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/cocktail-workshop-kl/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/cocktail-workshop-kl/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/cocktail-workshop-kl/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/cocktail-workshop-kl/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/cocktail-bar-for-tourists-kl/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/cocktail-bar-for-tourists-kl/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/cocktail-bar-for-tourists-kl/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/cocktail-bar-for-tourists-kl/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/cocktail-bar-walk-in-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/cocktail-bar-walk-in-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/cocktail-bar-walk-in-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/cocktail-bar-walk-in-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/rainy-day-cocktails-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/rainy-day-cocktails-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/rainy-day-cocktails-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/rainy-day-cocktails-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/deepavali-cocktails-kl/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/deepavali-cocktails-kl/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/deepavali-cocktails-kl/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/deepavali-cocktails-kl/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/graduation-drinks-kl/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/graduation-drinks-kl/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/graduation-drinks-kl/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/graduation-drinks-kl/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/graduation-drinks-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/graduation-drinks-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/graduation-drinks-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/graduation-drinks-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/asia-50-best-bars-malaysia/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/asia-50-best-bars-malaysia/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/asia-50-best-bars-malaysia/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/asia-50-best-bars-malaysia/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/bridal-shower-cocktail-bar-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/bridal-shower-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/bridal-shower-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/bridal-shower-cocktail-bar-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/after-party-cocktail-bar-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/after-party-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/after-party-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/after-party-cocktail-bar-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/quiet-cocktail-bar-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/quiet-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/quiet-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/quiet-cocktail-bar-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/late-night-cocktail-bar-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/late-night-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/late-night-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/late-night-cocktail-bar-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/no-menu-cocktail-bar-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/no-menu-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/no-menu-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/no-menu-cocktail-bar-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/hot-humid-cocktails-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/hot-humid-cocktails-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/hot-humid-cocktails-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/hot-humid-cocktails-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/monsoon-cocktails-malaysia/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/monsoon-cocktails-malaysia/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/monsoon-cocktails-malaysia/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/monsoon-cocktails-malaysia/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/cocktail-bar-with-parking-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/cocktail-bar-with-parking-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/cocktail-bar-with-parking-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/cocktail-bar-with-parking-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/coffee/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/coffee/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/coffee/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/coffee/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/coffee-cocktail-bar-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/coffee-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/coffee-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/coffee-cocktail-bar-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/group-cocktail-bar-pj/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/group-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/group-cocktail-bar-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/group-cocktail-bar-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/what-can-i-make/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/what-can-i-make/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/what-can-i-make/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/what-can-i-make/" />
   </url>
 </urlset>
