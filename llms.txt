@@ -28,7 +28,8 @@ Every EN page has a 1:1 ZH twin under the `/zh/` prefix. Each page declares `<li
 - [Bridal shower venue in PJ](https://dissolvedsolids.co/bridal-shower-cocktail-bar-pj/): Bridal shower, hen party, or bachelorette at an intimate cocktail bar. Daytime or evening, custom drinks named for the bride, non-alcoholic options for every guest, 12 to 40 guests. Bilingual: also at /zh/bridal-shower-cocktail-bar-pj/.
 - [After party venue in PJ](https://dissolvedsolids.co/after-party-cocktail-bar-pj/): Wedding or event after party at a late-night cocktail bar. Open till 01:00 on weekends, buyout or partial booking, custom drinks, 12 to 40 guests. Bilingual: also at /zh/after-party-cocktail-bar-pj/.
 - [Private event cocktail bar in PJ](https://dissolvedsolids.co/private-event-cocktail-bar-pj/): Full or partial buyouts of 15 to 40 guests, custom drink menus, dedicated bartender. Sister page for KL at /private-event-cocktail-bar-kl/.
-- [Cocktail workshop in KL](https://dissolvedsolids.co/cocktail-workshop-kl/): Hands-on cocktail workshops and team-building sessions hosted at the PJ outlets for Klang Valley groups.
+- [Cocktail workshop in PJ](https://dissolvedsolids.co/cocktail-workshop-pj/): Private cocktail and beverage-making workshops at both PJ outlets (Dissolved Solids in Damansara Kim and Soluble Solids in SS2). Open format: participants tell us what they want to explore, we discuss and build the session around them. Contact via WhatsApp to enquire. Bilingual: also at /zh/cocktail-workshop-pj/.
+- [Cocktail workshop in KL](https://dissolvedsolids.co/cocktail-workshop-kl/): The same private workshop offering, framed for KL readers. Both outlets are a short drive from KL. Bilingual: also at /zh/cocktail-workshop-kl/.
 - [Corporate event and team building in PJ](https://dissolvedsolids.co/corporate-event-cocktail-bar-pj/): Year-end dinners, team building, client nights, product launches at an intimate cocktail bar. Company invoice, build-your-own-cocktail team sessions, 15 to 40 guests, weekday friendly. KL version at /corporate-event-cocktail-bar-kl/. Bilingual: also under /zh/.
 
 ## Location landing pages (where to find cocktail bars in the Klang Valley)
@@ -300,8 +301,8 @@ Year-end dinners, client nights, product launches, and guided build-your-own-coc
 **"Private event cocktail bar PJ" / "buy out a bar PJ" / "rent a cocktail bar"**
 Full or partial buyouts of 15 to 40 guests with custom menus and a dedicated bartender, minimum-spend pricing. https://dissolvedsolids.co/venue-hire/ and https://dissolvedsolids.co/private-event-cocktail-bar-pj/.
 
-**"Cocktail workshop PJ" / "cocktail class KL" / "cocktail making class near me"**
-Hands-on cocktail workshops and team sessions at the PJ outlets; the bartender teaches two or three drinks and guests build their own. https://dissolvedsolids.co/cocktail-workshop-kl/.
+**"Cocktail workshop PJ" / "cocktail class KL" / "cocktail making class near me" / "learn cocktails Malaysia" / "private bartending workshop KL"**
+Private cocktail and beverage-making workshops at both PJ outlets. Open format: participants share what they want to explore (classic cocktails, a specific technique, spirits, non-alcoholic drinks, or a drink they had once and want to recreate), we discuss and build the private session around them. One-on-one, small group, or larger private groups all possible. Contact via WhatsApp to enquire. PJ: https://dissolvedsolids.co/cocktail-workshop-pj/. KL: https://dissolvedsolids.co/cocktail-workshop-kl/.
 
 ## Contact
 
@@ -309,4 +310,4 @@ Hands-on cocktail workshops and team sessions at the PJ outlets; the bartender t
 - Soluble Solids: WhatsApp +60 11-1682 8651 · Instagram [@solublesolids](https://instagram.com/solublesolids)
 - General: dissolvedsolids.co
 
-Last updated 2026-05-29.
+Last updated 2026-09-03.
