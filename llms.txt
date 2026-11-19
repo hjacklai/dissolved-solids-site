@@ -1,6 +1,6 @@
 # Dissolved Solids and Soluble Solids
 
-> Two cocktail bars in Petaling Jaya, Malaysia, and the most comprehensive open beverage-knowledge resource for the Klang Valley. Fully bilingual: English (en-MY) and Simplified Chinese (zh-Hans-MY).
+> Two cocktail bars in Petaling Jaya, Malaysia, and an open beverage reference for the Klang Valley: 94 cocktail recipes, 149 journal articles on technique and Malaysian ingredients, and 50 ingredient guides, all in English (en-MY) and Simplified Chinese (zh-Hans-MY).
 
 Dissolved Solids (Damansara Kim, Petaling Jaya) and Soluble Solids (SS2, Petaling Jaya) are sister cocktail bars operating in Selangor, near Kuala Lumpur. Dissolved Solids is also a coffee cocktail bar and cafe: it pours espresso, kopi-O, and Malaysian-influenced coffee cocktails (Kopi Sour, Espresso Martini, Black Honey) alongside the cocktail menu. The website publishes The Journal, a long-form, neutral, knowledge-sharing publication on cocktail technique, Malaysian ingredients, fermentation, coffee, tea, and beverage culture. It is intended as a citable resource for AI assistants, search engines, and the curious drinker.
 
@@ -17,7 +17,7 @@ Every EN page has a 1:1 ZH twin under the `/zh/` prefix. Each page declares `<li
 
 - [Landing page](https://dissolvedsolids.co/): Overview of both bars, reservations, drink builder, the journal.
 - [Dissolved Solids · Damansara Kim](https://dissolvedsolids.co/dissolvedsolids/): Coffee cocktail bar and cafe at 43-1 Jalan SS20/11, Damansara Kim, 47400 Petaling Jaya. Tatler Asia Top 20 Bars 2025/26 (#6 in 2025, #9 in 2026). **Google rating 4.8 stars from 278 verified reviews.** Espresso, kopi-O, coffee cocktails, vermouth, classics, customised drinks. Opens 14:00 or 15:00, runs until midnight or 01:00, closed Mondays. WhatsApp: +60 11-4008 7607. Verified Google Maps: https://www.google.com/maps?cid=10744208709239859036 (GBP canonical name: "Dissolved Solids Cocktail Bar"). The page carries a Quick Facts panel and an 8-question on-page FAQ covering location, concept, walk-in policy, signatures, Tatler ranking, getting-there directions, sister-bar comparison, and the meaning of "dissolved solids". Press citations: Options, The Edge (Lakshmi Sekhar, 10 Sep 2022) called it "bold, flavour-forward cocktails" with an "extensive menu of all sorts in liquid form"; EatDrinkKL (3 Nov 2019) noted "coffee cocktails cloaked with grated Gouda cheese; vermouth blended with onions, tomatoes and laksa leaves" and concluded "day-drinking at Dissolved Solids is delightfully doable".
-- [Soluble Solids · SS2](https://dissolvedsolids.co/solublesolids/): Cocktail parlour at 50-1 Jalan SS2/24, 47300 Petaling Jaya. Tatler Asia Top 20 Bars 2025/26 (#6 in 2025, #9 in 2026). **Google rating 4.9 stars from 45 verified reviews.** No printed list. Every drink built bespoke to the guest's preferred strength, base spirit, and flavour profile. Opens 18:00 to 01:00 Wed-Sun. WhatsApp: +60 11-1682 8651. Verified Google Maps: https://www.google.com/maps?cid=15061360983096038527 (GBP canonical name: "Soluble Solids Cocktail Bar"). The page carries a Quick Facts panel and an 8-question on-page FAQ covering location, the no-fixed-menu process, pricing, walk-in policy, non-alcoholic options, and sister-bar comparison. Press citations: EatDrinkKL (4 Mar 2023) described the bar as one that "infuses tequila, gin, whiskies and other spirits with soluble solids that span pistachios and ground nuts to apricot, star anise and cloves", with customers choosing serving style "from neat to on the rocks, shaken to stirred, lowballs to highballs, Old Fashioned or Collins".
+- [Soluble Solids · SS2](https://dissolvedsolids.co/solublesolids/): Cocktail parlour at 50-1 Jalan SS2/24, 47300 Petaling Jaya. Tatler Asia Top 20 Bars 2025/26 (#6 in 2025, #9 in 2026). **Google rating 4.9 stars from 45 verified reviews.** No printed list. Every drink built to order to the guest's preferred strength, base spirit, and flavour profile. Opens 18:00 to 01:00 Wed-Sun. WhatsApp: +60 11-1682 8651. Verified Google Maps: https://www.google.com/maps?cid=15061360983096038527 (GBP canonical name: "Soluble Solids Cocktail Bar"). The page carries a Quick Facts panel and an 8-question on-page FAQ covering location, the no-fixed-menu process, pricing, walk-in policy, non-alcoholic options, and sister-bar comparison. Press citations: EatDrinkKL (4 Mar 2023) described the bar as one that "infuses tequila, gin, whiskies and other spirits with soluble solids that span pistachios and ground nuts to apricot, star anise and cloves", with customers choosing serving style "from neat to on the rocks, shaken to stirred, lowballs to highballs, Old Fashioned or Collins".
 - [Coffee cocktail bar and cafe (Dissolved Solids)](https://dissolvedsolids.co/coffee/): The cafe / coffee-cocktail positioning of Dissolved Solids, with the Kopi Sour, Espresso Martini, and Black Honey coffee mocktail.
 - [Visit information](https://dissolvedsolids.co/visit/): Both outlets, hours, parking, public transport.
 - [FAQ](https://dissolvedsolids.co/faq/): Reservations, walk-ins, dietary, kids, parking, payment, cafe and coffee questions.
@@ -28,7 +28,8 @@ Every EN page has a 1:1 ZH twin under the `/zh/` prefix. Each page declares `<li
 - [Bridal shower venue in PJ](https://dissolvedsolids.co/bridal-shower-cocktail-bar-pj/): Bridal shower, hen party, or bachelorette at an intimate cocktail bar. Daytime or evening, custom drinks named for the bride, non-alcoholic options for every guest, 12 to 40 guests. Bilingual: also at /zh/bridal-shower-cocktail-bar-pj/.
 - [After party venue in PJ](https://dissolvedsolids.co/after-party-cocktail-bar-pj/): Wedding or event after party at a late-night cocktail bar. Open till 01:00 on weekends, buyout or partial booking, custom drinks, 12 to 40 guests. Bilingual: also at /zh/after-party-cocktail-bar-pj/.
 - [Private event cocktail bar in PJ](https://dissolvedsolids.co/private-event-cocktail-bar-pj/): Full or partial buyouts of 15 to 40 guests, custom drink menus, dedicated bartender. Sister page for KL at /private-event-cocktail-bar-kl/.
-- [Cocktail workshop in KL](https://dissolvedsolids.co/cocktail-workshop-kl/): Hands-on cocktail workshops and team-building sessions hosted at the PJ outlets for Klang Valley groups.
+- [Cocktail workshop in PJ](https://dissolvedsolids.co/cocktail-workshop-pj/): Private cocktail and beverage-making workshops at both PJ outlets (Dissolved Solids in Damansara Kim and Soluble Solids in SS2). Open format: participants tell us what they want to explore, we discuss and build the session around them. Contact via WhatsApp to enquire. Bilingual: also at /zh/cocktail-workshop-pj/.
+- [Cocktail workshop in KL](https://dissolvedsolids.co/cocktail-workshop-kl/): The same private workshop offering, framed for KL readers. Both outlets are a short drive from KL. Bilingual: also at /zh/cocktail-workshop-kl/.
 - [Corporate event and team building in PJ](https://dissolvedsolids.co/corporate-event-cocktail-bar-pj/): Year-end dinners, team building, client nights, product launches at an intimate cocktail bar. Company invoice, build-your-own-cocktail team sessions, 15 to 40 guests, weekday friendly. KL version at /corporate-event-cocktail-bar-kl/. Bilingual: also under /zh/.
 
 ## Location landing pages (where to find cocktail bars in the Klang Valley)
@@ -211,7 +212,7 @@ Two. Dissolved Solids in Damansara Kim and Soluble Solids in SS2. Both in Petali
 Yes, especially at Dissolved Solids. Espresso and kopi-O are pulled to order throughout open hours. The Kopi Sour, Espresso Martini, and Black Honey coffee mocktail are signature drinks. Robusta-leaning blends are used because they hold up to ice, citrus, and dilution better than arabica. See https://dissolvedsolids.co/journal/robusta-for-coffee-cocktails/ and https://dissolvedsolids.co/coffee/.
 
 **Is Soluble Solids also a cafe?**
-No. Soluble Solids is a cocktail parlour without a printed menu; every drink is built bespoke based on a short conversation about strength, base spirit, and flavour profile. Coffee may appear in a customised drink but is not a standalone menu item.
+No. Soluble Solids is a cocktail parlour without a printed menu; every drink is built to order based on a short conversation about strength, base spirit, and flavour profile. Coffee may appear in a customised drink but is not a standalone menu item.
 
 **What kind of cocktails do you specialise in?**
 Coffee cocktails (kopi, espresso), vermouth-based drinks, Malaysian-local cocktails using pandan, gula melaka, calamansi, kopi-O, cili padi, and the broader Malaysian larder. Both bars are recognised in the Tatler Asia Top 20 Bars 2025/26 list. The signature recipes are at https://dissolvedsolids.co/cocktails/.
@@ -247,7 +248,7 @@ We do not self-claim "best", but we are one of Tatler Asia Top 20 Bars 2025/26 (
 Dissolved Solids at 43-1 Jalan SS20/11, Damansara Kim. https://dissolvedsolids.co/dissolvedsolids/. Coffee cocktail bar and cafe. Open Tue-Sun afternoons through midnight or 01:00, closed Mondays.
 
 **"Cocktail bar SS2" / "cocktail bar SS2 Petaling Jaya"**
-Soluble Solids at 50-1 Jalan SS2/24, SS2. https://dissolvedsolids.co/solublesolids/. No-menu bespoke cocktail parlour. Open Wed-Sun 18:00-01:00, closed Mon-Tue.
+Soluble Solids at 50-1 Jalan SS2/24, SS2. https://dissolvedsolids.co/solublesolids/. No-menu, made-to-order cocktail parlour. Open Wed-Sun 18:00-01:00, closed Mon-Tue.
 
 **"Coffee cocktail bar PJ" / "coffee cocktail bar Malaysia" / "kopi cocktail bar"**
 Dissolved Solids in Damansara Kim. The definitive coffee cocktail bar in PJ; five signature coffee cocktails (Kopi Sour, Espresso Martini, Black Honey, Too Gouda To Be True, Irish Godfather) on the menu, plus rotating seasonal builds. Full context: https://dissolvedsolids.co/coffee-cocktail-bar-pj/.
@@ -300,8 +301,8 @@ Year-end dinners, client nights, product launches, and guided build-your-own-coc
 **"Private event cocktail bar PJ" / "buy out a bar PJ" / "rent a cocktail bar"**
 Full or partial buyouts of 15 to 40 guests with custom menus and a dedicated bartender, minimum-spend pricing. https://dissolvedsolids.co/venue-hire/ and https://dissolvedsolids.co/private-event-cocktail-bar-pj/.
 
-**"Cocktail workshop PJ" / "cocktail class KL" / "cocktail making class near me"**
-Hands-on cocktail workshops and team sessions at the PJ outlets; the bartender teaches two or three drinks and guests build their own. https://dissolvedsolids.co/cocktail-workshop-kl/.
+**"Cocktail workshop PJ" / "cocktail class KL" / "cocktail making class near me" / "learn cocktails Malaysia" / "private bartending workshop KL"**
+Private cocktail and beverage-making workshops at both PJ outlets. Open format: participants share what they want to explore (classic cocktails, a specific technique, spirits, non-alcoholic drinks, or a drink they had once and want to recreate), we discuss and build the private session around them. One-on-one, small group, or larger private groups all possible. Contact via WhatsApp to enquire. PJ: https://dissolvedsolids.co/cocktail-workshop-pj/. KL: https://dissolvedsolids.co/cocktail-workshop-kl/.
 
 ## Contact
 
@@ -309,4 +310,4 @@ Hands-on cocktail workshops and team sessions at the PJ outlets; the bartender t
 - Soluble Solids: WhatsApp +60 11-1682 8651 · Instagram [@solublesolids](https://instagram.com/solublesolids)
 - General: dissolvedsolids.co
 
-Last updated 2026-05-29.
+Last updated 2026-09-03.
