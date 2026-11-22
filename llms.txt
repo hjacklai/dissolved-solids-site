@@ -35,6 +35,7 @@ Every EN page has a 1:1 ZH twin under the `/zh/` prefix. Each page declares `<li
 ## For F&B businesses
 
 - [Partner with us](https://dissolvedsolids.co/partner-with-us/): We design drinks menus for restaurants, cafes, hotels and bars in Malaysia, with cocktails, mocktails or both, and supply the ingredients their staff use to make each drink. Venues can choose to be listed on the site as outposts. Enquiries by WhatsApp on +60 17-598 1858. Also in Chinese at /zh/partner-with-us/.
+- [Building a drinks menu for a restaurant or cafe](https://dissolvedsolids.co/journal/drinks-menu-for-restaurants/): Notes from behind the bar for F&B owners: start from the food, keep the list short, batch the hard parts, give the alcohol-free side real thought.
 
 ## Location landing pages (where to find cocktail bars in the Klang Valley)
 
@@ -159,6 +160,7 @@ These pages target specific search intents that aggregator listicles do not cove
 - [Date night at a cocktail bar](https://dissolvedsolids.co/journal/date-night-cocktail-bars-pj/): How to pick the room and the drinks.
 - [Groups, celebrations, reunions](https://dissolvedsolids.co/journal/groups-celebrations-cocktail-bar-pj/): What works for six to twenty people.
 - [Why our menu is short on purpose](https://dissolvedsolids.co/journal/why-our-menu-is-short/): Fewer drinks done better.
+- [Building a drinks menu for a restaurant or cafe](https://dissolvedsolids.co/journal/drinks-menu-for-restaurants/): The same thinking applied to a restaurant or cafe list.
 - [Late-night drinks in Damansara Kim](https://dissolvedsolids.co/journal/late-night-drinks-damansara-kim/): Where to drink past 22:00 in the neighbourhood.
 - [Cocktail bar with parking in PJ](https://dissolvedsolids.co/journal/cocktail-bar-with-parking-pj/): The practical question.
 - [Cocktail bars near 1Utama](https://dissolvedsolids.co/journal/cocktail-bars-near-1utama/): After-mall drinks.

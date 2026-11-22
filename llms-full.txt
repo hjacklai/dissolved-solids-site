@@ -215,6 +215,7 @@ A: Yes. See "For F&B businesses" above. Details and the enquiry form: https://di
 **For F&B businesses (menu consulting and ingredient supply):**
 - https://dissolvedsolids.co/partner-with-us/
 - https://dissolvedsolids.co/zh/partner-with-us/ (Chinese)
+- https://dissolvedsolids.co/journal/drinks-menu-for-restaurants/ (how we would build a drinks menu for a restaurant or cafe)
 
 **Cocktails:**
 - https://dissolvedsolids.co/cocktails/ (full menu)

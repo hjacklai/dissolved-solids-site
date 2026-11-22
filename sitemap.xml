@@ -3258,6 +3258,15 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/journal/why-our-menu-is-short/" />
   </url>
   <url>
+    <loc>https://dissolvedsolids.co/journal/drinks-menu-for-restaurants/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/drinks-menu-for-restaurants/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/journal/drinks-menu-for-restaurants/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/journal/drinks-menu-for-restaurants/" />
+  </url>
+  <url>
     <loc>https://dissolvedsolids.co/journal/wild-fermentation-safety/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -6226,6 +6235,15 @@
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/why-our-menu-is-short/" />
     <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/journal/why-our-menu-is-short/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/journal/why-our-menu-is-short/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/journal/drinks-menu-for-restaurants/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/journal/drinks-menu-for-restaurants/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/journal/drinks-menu-for-restaurants/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/journal/drinks-menu-for-restaurants/" />
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/journal/lacto-fermentation-cocktails/</loc>
