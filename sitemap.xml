@@ -7640,4 +7640,22 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/cocktail-workshop-pj/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/cocktail-workshop-pj/" />
   </url>
+  <url>
+    <loc>https://dissolvedsolids.co/partner-with-us/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/partner-with-us/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/partner-with-us/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/partner-with-us/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/partner-with-us/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/partner-with-us/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/partner-with-us/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/partner-with-us/" />
+  </url>
 </urlset>

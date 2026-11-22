@@ -3617,6 +3617,15 @@
     .visit-mini-footer { font-size: 9px; letter-spacing: .1em; gap: 8px; padding: 14px 14px 0; }
   }
 </style>
+
+<section class="partner-cta" aria-label="与我们合作">
+  <style>
+    .partner-cta { max-width: var(--maxw); margin: 0 auto; padding: 64px var(--gutter) 80px; }
+    .partner-cta p { font-family: var(--serif); font-size: clamp(22px, 2.6vw, 32px); line-height: 1.35; margin: 0 0 24px; max-width: 640px; color: var(--ink); }
+  </style>
+  <p>我们为餐厅、咖啡馆和酒吧设计饮品菜单，<span style="white-space: nowrap;">并供应预调液。</span></p>
+  <a class="btn btn-primary" href="/zh/partner-with-us/">与我们合作 →</a>
+</section>
 </main>
 
 <!-- ─────────────────────────────────────────────────────────────
@@ -4364,8 +4373,9 @@
       for (let i = 0; i < rows.length; i += 2) {
         if (+rows[i].dataset.d === today) {
           const t = rows[i+1].textContent.trim();
-          if (t === 'closed') return { open: false };
-          const [s, e] = t.split(' to ').map(x => x.trim());
+          if (t === 'closed' || t === '休息') return { open: false };
+          const [s, e] = t.split(/\s*(?:to|至)\s*/).map(x => x.trim());
+          if (!s || !e) return null;
           return { open: true, s, e };
         }
       }
