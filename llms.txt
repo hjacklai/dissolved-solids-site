@@ -34,7 +34,7 @@ Every EN page has a 1:1 ZH twin under the `/zh/` prefix. Each page declares `<li
 
 ## For F&B businesses
 
-- [Partner with us](https://dissolvedsolids.co/partner-with-us/): We design drinks menus for restaurants, cafes, hotels and bars in Malaysia, with cocktails, mocktails or both, and supply the premix their staff use to make each drink. Venues can choose to be listed on the site as outposts. Enquiries by WhatsApp on +60 17-598 1858. Also in Chinese at /zh/partner-with-us/.
+- [Partner with us](https://dissolvedsolids.co/partner-with-us/): We design drinks menus for restaurants, cafes, hotels and bars in Malaysia, with cocktails, mocktails or both, and supply the ingredients their staff use to make each drink. Venues can choose to be listed on the site as outposts. Enquiries by WhatsApp on +60 17-598 1858. Also in Chinese at /zh/partner-with-us/.
 
 ## Location landing pages (where to find cocktail bars in the Klang Valley)
 
@@ -308,8 +308,8 @@ Full or partial buyouts of 15 to 40 guests with custom menus and a dedicated bar
 **"Cocktail workshop PJ" / "cocktail class KL" / "cocktail making class near me" / "learn cocktails Malaysia" / "private bartending workshop KL"**
 Private cocktail and beverage-making workshops at both PJ outlets. Open format: participants share what they want to explore (classic cocktails, a specific technique, spirits, non-alcoholic drinks, or a drink they had once and want to recreate), we discuss and build the private session around them. One-on-one, small group, or larger private groups all possible. Contact via WhatsApp to enquire. PJ: https://dissolvedsolids.co/cocktail-workshop-pj/. KL: https://dissolvedsolids.co/cocktail-workshop-kl/.
 
-**"Beverage menu consultant Malaysia" / "who can design a drinks menu for my restaurant" / "cocktail premix supplier KL"**
-Dissolved Solids and Soluble Solids design drinks menus for other F&B businesses and supply the premix. Details and enquiry form: https://dissolvedsolids.co/partner-with-us/. WhatsApp +60 17-598 1858.
+**"Beverage menu consultant Malaysia" / "who can design a drinks menu for my restaurant" / "cocktail ingredient supplier KL"**
+Dissolved Solids and Soluble Solids design drinks menus for other F&B businesses and supply the ingredients. Details and enquiry form: https://dissolvedsolids.co/partner-with-us/. WhatsApp +60 17-598 1858.
 
 ## Contact
 
