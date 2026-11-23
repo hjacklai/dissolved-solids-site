@@ -127,15 +127,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/birthday-cocktail-bar-pj/" />
   </url>
   <url>
-    <loc>https://dissolvedsolids.co/builder/</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/builder/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/builder/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/builder/" />
-  </url>
-  <url>
     <loc>https://dissolvedsolids.co/calculators/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -1284,6 +1275,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/deepavali-cocktails-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/deepavali-cocktails-pj/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/deepavali-cocktails-pj/" />
+  </url>
+  <url>
+    <loc>https://dissolvedsolids.co/zh/deepavali-cocktails-pj/</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/deepavali-cocktails-pj/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/deepavali-cocktails-pj/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/deepavali-cocktails-pj/" />
   </url>
   <url>
@@ -4147,15 +4148,6 @@
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/birthday-cocktail-bar-pj/" />
     <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/birthday-cocktail-bar-pj/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/birthday-cocktail-bar-pj/" />
-  </url>
-  <url>
-    <loc>https://dissolvedsolids.co/zh/builder/</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en-MY" href="https://dissolvedsolids.co/builder/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://dissolvedsolids.co/zh/builder/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://dissolvedsolids.co/builder/" />
   </url>
   <url>
     <loc>https://dissolvedsolids.co/zh/calculators/</loc>
