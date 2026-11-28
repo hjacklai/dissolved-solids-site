@@ -53,16 +53,16 @@
   nav.innerHTML = ''
     + '<div class="appbar-top">'
     +   '<div class="appbar-side appbar-side-left">'
-    +     iconLink('/journal/', 'Journal', 'journal', svgBook())
-    +     iconLink('/#builder', 'Build a drink', 'build', svgFlask(), 'appbar-icon-cta')
+    +     iconLink('/journal/', 'Journal', 'Journal', svgBook())
+    +     iconLink('/#builder', 'Build a drink', 'Build', svgFlask(), 'appbar-icon-cta')
     +   '</div>'
     +   '<button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet - switch between Dissolved and Soluble">'
     +     '<span class="seg" data-target="dissolved">Dis</span>'
     +     '<span class="seg" data-target="soluble">Sol</span>'
     +   '</button>'
     +   '<div class="appbar-side appbar-side-right">'
-    +     iconLink('/#visit', 'Visit', 'visit', svgPin())
-    +     iconLink('/#reserve', 'Reserve', 'reserve', svgCal())
+    +     iconLink('/#visit', 'Visit', 'Visit', svgPin())
+    +     iconLink('/#reserve', 'Reserve', 'Reserve', svgCal())
     +   '</div>'
     + '</div>'
     + '<div class="appbar-ticker" aria-hidden="true">'
@@ -113,13 +113,13 @@
     const method  = isSol ? 'Infusion' : 'Dissolution';
     const stateNm = isSol ? 'Soluble Solids' : 'Dissolved Solids';
     return ''
-      + '<span class="ti"><b>two states</b> <i>one chemistry</i></span>'
-      + '<span class="ti"><b>state</b> <i>' + stateNm + '</i></span>'
-      + '<span class="ti"><b>venue</b> <i>' + venue + '</i></span>'
-      + '<span class="ti"><b>method</b> <i>' + method + '</i></span>'
-      + '<span class="ti"><b>hours</b> <i>' + hours + '</i></span>'
-      + '<span class="ti"><b>kuala lumpur</b> <i class="ti-time">' + klTime() + '</i></span>'
-      + '<span class="ti"><b>tatler asia</b> <i>top 20 bars · 25/26</i></span>';
+      + '<span class="ti"><b>Two states</b> <i>one chemistry</i></span>'
+      + '<span class="ti"><b>State</b> <i>' + stateNm + '</i></span>'
+      + '<span class="ti"><b>Venue</b> <i>' + venue + '</i></span>'
+      + '<span class="ti"><b>Method</b> <i>' + method + '</i></span>'
+      + '<span class="ti"><b>Hours</b> <i>' + hours + '</i></span>'
+      + '<span class="ti"><b>Kuala Lumpur</b> <i class="ti-time">' + klTime() + '</i></span>'
+      + '<span class="ti"><b>Tatler Asia</b> <i>Top 20 bars · 25/26</i></span>';
   }
   function renderTicker() {
     const html = tickerHTML();
@@ -305,8 +305,8 @@
           + '.home-fab-tip{position:absolute;left:64px;top:50%;'
           + 'transform:translateY(-50%) translateX(-6px);'
           + 'background:rgba(0,0,0,.78);color:#f0e6cf;'
-          + 'font-family:var(--mono,"JetBrains Mono",ui-monospace,monospace);'
-          + 'font-size:11px;letter-spacing:.22em;text-transform:uppercase;'
+          + 'font-family:var(--mono,"Inter Tight", system-ui, -apple-system, Roboto, sans-serif);'
+          + 'font-size:11px;letter-spacing:.01em;text-transform:none;'
           + 'padding:6px 10px;border-radius:6px;white-space:nowrap;'
           + 'opacity:0;pointer-events:none;'
           + 'transition:opacity 180ms ease,transform 180ms ease;}'
@@ -373,20 +373,20 @@
         const css = ''
           + '.site-foot{padding:28px clamp(28px,6.5vw,180px) 110px;'
           + 'background:var(--bg-deep,#08080a);color:var(--ink,#f0e6cf);'
-          + 'font-family:var(--mono,"JetBrains Mono",ui-monospace,monospace);'
+          + 'font-family:var(--mono,"Inter Tight", system-ui, -apple-system, Roboto, sans-serif);'
           + 'border-top:1px solid rgba(240,230,207,0.12);}'
           + '.site-foot *{box-sizing:border-box;}'
           + '.site-foot-inner{max-width:var(--maxw,1440px);margin:0 auto;}'
-          + '.site-foot-kicker{font-size:11px;letter-spacing:.26em;'
-          + 'text-transform:uppercase;color:rgba(240,230,207,.6);margin:0 0 8px;}'
+          + '.site-foot-kicker{font-size:11px;letter-spacing:.01em;'
+          + 'text-transform:none;color:rgba(240,230,207,.6);margin:0 0 8px;}'
           + '.site-foot-lede{display:none;font-family:var(--serif,"DM Serif Display","Times New Roman",serif);'
           + 'font-size:clamp(32px,4.5vw,56px);line-height:1.02;letter-spacing:-.02em;'
           + 'margin:0 0 56px;color:var(--ink,#f0e6cf);max-width:780px;font-weight:400;}'
           + '.site-foot-lede em{color:var(--accent,#d18b3a);font-style:normal;}'
           + '.site-foot-grid{display:none;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:36px 28px;}'
-          + '.site-foot-col h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;'
+          + '.site-foot-col h4{font-size:11px;letter-spacing:.01em;text-transform:none;'
           + 'font-weight:600;color:var(--accent,#d18b3a);margin:0 0 14px;'
-          + 'font-family:var(--mono,"JetBrains Mono",ui-monospace,monospace);}'
+          + 'font-family:var(--mono,"Inter Tight", system-ui, -apple-system, Roboto, sans-serif);}'
           + '.site-foot-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}'
           + '.site-foot-col a{color:rgba(240,230,207,.82);text-decoration:none;font-size:14px;'
           + 'line-height:1.45;border-bottom:1px solid transparent;transition:color 160ms,border-color 160ms;}'
@@ -394,7 +394,7 @@
           + 'border-bottom-color:rgba(209,139,58,.7);}'
           + '.site-foot-meta{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:18px;'
           + 'padding-top:0;border-top:none;font-size:11px;'
-          + 'letter-spacing:.12em;text-transform:uppercase;color:rgba(240,230,207,.55);}'
+          + 'letter-spacing:.01em;text-transform:none;color:rgba(240,230,207,.55);}'
           + '.site-foot-meta a{color:inherit;text-decoration:none;'
           + 'border-bottom:1px dotted rgba(240,230,207,.3);}'
           + '.site-foot-meta a:hover{color:var(--ink,#f0e6cf);}';

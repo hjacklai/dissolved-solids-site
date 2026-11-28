@@ -22,26 +22,26 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-  :root { --paper: #faf3df; --ink: #18181c; --accent: #d18b3a; --rule: rgba(0,0,0,.18); --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace; --serif: 'DM Serif Display', serif; }
+  :root { --paper: #faf3df; --ink: #18181c; --accent: #d18b3a; --rule: rgba(0,0,0,.18); --mono: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; --serif: 'DM Serif Display', serif; }
   * { box-sizing: border-box; }
   body { margin: 0; background: #2a2a2e; color: var(--ink); font-family: var(--mono); }
-  .toolbar { background: #18181c; color: var(--paper); padding: 14px 24px; display: flex; gap: 14px; align-items: center; justify-content: space-between; font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+  .toolbar { background: #18181c; color: var(--paper); padding: 14px 24px; display: flex; gap: 14px; align-items: center; justify-content: space-between; font-family: var(--mono); font-size: 12px; letter-spacing: .01em; text-transform: none; }
   .toolbar a, .toolbar button { color: var(--paper); text-decoration: none; background: transparent; border: 1px solid rgba(255,255,255,.3); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 11px; letter-spacing: .12em; }
   .toolbar button:hover, .toolbar a:hover { border-color: var(--accent); color: var(--accent); }
   .sheet { max-width: 794px; margin: 24px auto; padding: 40px 44px; background: var(--paper); color: var(--ink); box-shadow: 0 12px 40px rgba(0,0,0,.4); }
   .sheet h1 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1; margin: 0 0 4px; }
   .sheet h1 em { font-style: italic; color: var(--accent); }
-  .sheet .subhead { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: #555; margin: 0 0 22px; }
+  .sheet .subhead { font-size: 10px; letter-spacing: .01em; text-transform: none; color: #555; margin: 0 0 22px; }
   .my-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .my-ing { padding: 12px 14px; border: 1px solid var(--rule); border-radius: 5px; }
   .my-ing h2 { font-family: var(--serif); font-size: 20px; font-weight: 400; margin: 0 0 2px; color: var(--accent); }
-  .my-ing .also { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #555; margin: 0 0 6px; }
+  .my-ing .also { font-family: var(--mono); font-size: 9px; letter-spacing: .01em; text-transform: none; color: #555; margin: 0 0 6px; }
   .my-ing .flavour { font-family: var(--serif); font-style: italic; font-size: 11px; line-height: 1.4; margin: 6px 0; color: #222; }
   .my-ing .uses { font-family: var(--mono); font-size: 9.5px; line-height: 1.5; margin: 6px 0 0; color: #222; }
   .my-ing .uses b { color: #000; font-weight: 600; }
-  .footer-band { margin-top: 18px; padding-top: 10px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #555; }
+  .footer-band { margin-top: 18px; padding-top: 10px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; font-size: 9px; letter-spacing: .01em; text-transform: none; color: #555; }
   @media print { body { background: white; } .toolbar { display: none; } .sheet { box-shadow: none; margin: 0; max-width: none; padding: 12mm 14mm; } @page { size: A4; margin: 0; } }
 </style>
 </head>
@@ -51,7 +51,7 @@
   <span>Sheet 04 · Malaysian-Local</span>
   <button onclick="window.print()">⎙ Print / save as PDF</button>
 </div>
-<div style="background:#0e0e12; color:#faf3df; padding:12px 24px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; text-align:center; border-bottom:1px solid rgba(255,255,255,.08);">
+<div style="background:#0e0e12; color:#faf3df; padding:12px 24px; font-family:'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; font-size:11px; letter-spacing:.01em; text-transform:none; text-align:center; border-bottom:1px solid rgba(255,255,255,.08);">
   <span style="color:rgba(255,255,255,.6);">Like this? Get one new cheat sheet a month →</span>
   <a href="/newsletter/" style="color:#d18b3a; text-decoration:underline; margin-left:8px;">Subscribe to The Dispatch</a>
 </div>

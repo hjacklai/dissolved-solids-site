@@ -49,7 +49,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/styles.css" />
 <link rel="stylesheet" href="/appbar.css" />
 <style>
@@ -57,11 +57,11 @@
   .story-bar { padding: 18px 24px; border-bottom: 1px solid rgba(0,0,0,.08); }
   .story-wordmark { display: flex; flex-direction: column; text-decoration: none; color: inherit; font-family: 'DM Serif Display', serif; gap: 2px; }
   .story-wordmark span { font-size: 20px; letter-spacing: -.01em; }
-  .story-wordmark em { font-family: 'JetBrains Mono', monospace; font-style: normal; font-size: 11px; opacity: .65; letter-spacing: .04em; text-transform: uppercase; }
+  .story-wordmark em { font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; font-style: normal; font-size: 11px; opacity: .65; letter-spacing: .04em; text-transform: none; }
   .story-mount { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; }
-  .story-up { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; opacity: .7; text-decoration: none; color: inherit; margin-bottom: 28px; }
+  .story-up { display: inline-block; font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; font-size: 12px; letter-spacing: .04em; text-transform: none; opacity: .7; text-decoration: none; color: inherit; margin-bottom: 28px; }
   .story-up:hover { opacity: 1; }
-  .story-eyebrow { display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .6; margin-bottom: 14px; }
+  .story-eyebrow { display: block; font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; font-size: 11px; letter-spacing: .01em; text-transform: none; opacity: .6; margin-bottom: 14px; }
   .story-title { font-family: 'DM Serif Display', serif; font-size: clamp(42px, 7vw, 72px); line-height: 1.05; letter-spacing: -.02em; margin: 0 0 14px; }
   .story-title i { font-style: italic; }
   .story-dek { font-family: 'DM Serif Display', serif; font-size: clamp(20px, 2.2vw, 24px); line-height: 1.5; opacity: .8; max-width: 60ch; margin: 0 0 56px; }
@@ -69,9 +69,9 @@
   .story-body-text p.story-lede { font-size: 22px; line-height: 1.55; opacity: .9; }
   .story-body-text h2 { font-family: 'DM Serif Display', serif; font-size: 30px; line-height: 1.15; letter-spacing: -.01em; margin: 56px 0 12px; }
   .story-body-text h2 i { font-style: italic; }
-  .story-body-text h2 + p.story-year { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; opacity: .55; margin: 0 0 18px; }
+  .story-body-text h2 + p.story-year { font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; font-size: 12px; letter-spacing: .01em; text-transform: none; opacity: .55; margin: 0 0 18px; }
   .story-body-text blockquote { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 19px; line-height: 1.55; margin: 28px 0; padding: 14px 0 14px 22px; border-left: 2px solid rgba(0,0,0,.18); opacity: .85; }
-  .story-body-text blockquote cite { display: block; font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .05em; text-transform: uppercase; opacity: .6; margin-top: 8px; }
+  .story-body-text blockquote cite { display: block; font-style: normal; font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; font-size: 11px; letter-spacing: .05em; text-transform: none; opacity: .6; margin-top: 8px; }
   .story-body-text blockquote cite a { color: inherit; }
   .story-body-text a { color: inherit; border-bottom: 1px solid rgba(0,0,0,.25); text-decoration: none; }
   .story-body-text a:hover { border-bottom-color: currentColor; }
@@ -80,19 +80,19 @@
   .story-cta h2 i { font-style: italic; }
   .story-cta p { font-family: 'DM Serif Display', serif; font-size: 17px; opacity: .8; margin: 0 0 18px; max-width: 60ch; }
   .story-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .story-cta-actions .cta-btn { display: inline-block; padding: 12px 18px; border: 1px solid var(--fg, #1f1d1a); border-radius: 2px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: var(--fg, #1f1d1a); transition: all .14s ease; }
+  .story-cta-actions .cta-btn { display: inline-block; padding: 12px 18px; border: 1px solid var(--fg, #1f1d1a); border-radius: 2px; font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; font-size: 12px; letter-spacing: .01em; text-transform: none; text-decoration: none; color: var(--fg, #1f1d1a); transition: all .14s ease; }
   .story-cta-actions .cta-btn:hover { background: var(--fg, #1f1d1a); color: var(--bg, #faf3df); }
   .story-cta-actions .cta-btn-primary { background: var(--fg, #1f1d1a); color: var(--bg, #faf3df); }
   .story-cta-actions .cta-btn-primary:hover { opacity: .85; }
   .story-foot { margin-top: 56px; padding-top: 22px; border-top: 1px solid rgba(0,0,0,.08); }
-  .story-foot a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: inherit; opacity: .7; text-decoration: none; }
+  .story-foot a { font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; font-size: 12px; text-transform: none; letter-spacing: .04em; color: inherit; opacity: .7; text-decoration: none; }
   .story-foot a:hover { opacity: 1; }
   .story-faq { margin-top: 56px; padding-top: 12px; border-top: 1px solid rgba(0,0,0,.08); }
   .story-faq h2 { font-family: 'DM Serif Display', serif; font-size: 30px; line-height: 1.15; letter-spacing: -.01em; margin: 28px 0 22px; }
   .story-faq details { padding: 16px 0; border-bottom: 1px dashed rgba(0,0,0,.18); }
   .story-faq summary { font-family: 'DM Serif Display', serif; font-size: 18px; line-height: 1.4; cursor: pointer; list-style: none; padding-right: 24px; position: relative; }
   .story-faq summary::-webkit-details-marker { display: none; }
-  .story-faq summary::after { content: '+'; position: absolute; right: 0; top: 0; font-family: 'JetBrains Mono', monospace; font-size: 18px; opacity: .55; }
+  .story-faq summary::after { content: '+'; position: absolute; right: 0; top: 0; font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; font-size: 18px; opacity: .55; }
   .story-faq details[open] summary::after { content: '-'; }
   .story-faq details p { font-family: 'DM Serif Display', serif; font-size: 17px; line-height: 1.55; margin: 12px 0 0; opacity: .85; }
 </style>

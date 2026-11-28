@@ -30,7 +30,7 @@
   --muted-paper: rgba(243, 236, 223, .62);
 
   --serif: 'Fraunces', 'Times New Roman', serif;
-  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --mono: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif;
 
   --pad-x: clamp(20px, 4vw, 80px);
   --max-w: 1400px;
@@ -186,7 +186,7 @@ button:focus-visible {
 }
 .ph .cap {
   font-family: var(--mono); font-size: 10px; letter-spacing: .04em;
-  color: var(--muted); text-transform: uppercase;
+  color: var(--muted); text-transform: none;
   padding: 8px 10px;
 }
 
@@ -250,7 +250,7 @@ img[src*="ss-logo"] { transform: scaleX(-1); }
   display: flex; gap: 22px;
   justify-self: end;
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .12em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
 }
 .nav a { transition: opacity .15s; }
 .nav a:hover { opacity: .6; }
@@ -286,7 +286,7 @@ img[src*="ss-logo"] { transform: scaleX(-1); }
   position: relative; z-index: 1;
   padding: 18px 56px;
   font-family: var(--mono); font-size: 15px;
-  letter-spacing: .2em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   min-width: 280px; text-align: center;
   transition: color .3s ease;
   white-space: nowrap;
@@ -307,7 +307,7 @@ a.label:hover { opacity: .8; }
   grid-template-columns: repeat(4, 1fr);
   border-bottom: 1px solid var(--rule);
   font-family: var(--mono); font-size: 10px;
-  letter-spacing: .16em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
   transition: border-color .35s ease, color .35s ease;
 }
@@ -332,7 +332,7 @@ a.label:hover { opacity: .8; }
 .hero-copy { min-width: 0; }
 .eyebrow {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .18em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
   transition: color .35s ease;
 }
@@ -384,7 +384,7 @@ a.label:hover { opacity: .8; }
   display: inline-block;
   margin-top: 12px;
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .12em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
 }
 
@@ -397,8 +397,8 @@ a.label:hover { opacity: .8; }
   border-radius: 999px;
   font-family: var(--mono);
   font-size: 10px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
   transition: border-color .35s ease, color .35s ease;
 }
@@ -411,7 +411,7 @@ a.label:hover { opacity: .8; }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 10px;
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .16em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   padding: 14px 22px;
   background: var(--fg);
   color: var(--btn-fg);
@@ -485,7 +485,7 @@ a.label:hover { opacity: .8; }
 .section-h i { font-style: italic; }
 .menu-stamp {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .16em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
   white-space: nowrap;
 }
@@ -494,7 +494,7 @@ a.label:hover { opacity: .8; }
 }
 .menu-col-head {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .18em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
   padding-bottom: 10px;
   border-bottom: 1px solid var(--fg);
@@ -533,8 +533,8 @@ a.label:hover { opacity: .8; }
 .menu-section-h {
   font-family: var(--mono);
   font-size: 11.5px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent-2);
   margin: 0 0 8px;
   font-weight: 500;
@@ -627,7 +627,7 @@ a.label:hover { opacity: .8; }
 }
 .custom-mark {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .18em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
   transition: color .35s ease;
 }
@@ -660,7 +660,7 @@ a.label:hover { opacity: .8; }
 .custom-step { min-width: 0; }
 .step-k {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .18em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
   padding-bottom: 14px;
   border-bottom: 1px solid var(--rule);
@@ -678,7 +678,7 @@ a.label:hover { opacity: .8; }
 }
 .step-price {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .12em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
 }
 .step-list-compact li {
@@ -727,7 +727,7 @@ a.label:hover { opacity: .8; }
 .btn-accent {
   display: inline-flex; align-items: center;
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .16em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   padding: 14px 22px;
   background: var(--accent);
   color: var(--btn-fg);
@@ -770,7 +770,7 @@ a.label:hover { opacity: .8; }
 .btn-ghost {
   display: inline-flex; align-items: center;
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .16em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   padding: 13px 20px;
   background: transparent;
   color: var(--fg);
@@ -804,7 +804,7 @@ a.label:hover { opacity: .8; }
 }
 .gallery-eyebrow {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .18em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
   transition: color .35s ease;
 }
@@ -823,7 +823,7 @@ a.label:hover { opacity: .8; }
 .gallery-item figcaption {
   margin-top: 12px;
   font-family: var(--mono); font-size: 10px;
-  letter-spacing: .14em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
 }
 
@@ -847,7 +847,7 @@ a.label:hover { opacity: .8; }
 }
 .maps-eyebrow {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .18em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
   transition: color .35s ease;
 }
@@ -867,7 +867,7 @@ a.label:hover { opacity: .8; }
 }
 .map-card-eyebrow {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .18em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--accent);
   transition: color .35s ease;
 }
@@ -881,7 +881,7 @@ a.label:hover { opacity: .8; }
   display: inline-block;
   margin-top: 14px;
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .14em; text-transform: uppercase;
+  letter-spacing: .01em; text-transform: none;
   color: var(--muted);
   text-decoration: none;
   border-bottom: 1px solid transparent;
@@ -933,8 +933,8 @@ a.label:hover { opacity: .8; }
   border-top: 1px solid var(--rule);
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
   line-height: 1.9;
   display: flex;
@@ -960,8 +960,8 @@ a.label:hover { opacity: .8; }
   display: block;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent-2);
   margin-bottom: 10px;
 }
@@ -989,8 +989,8 @@ a.label:hover { opacity: .8; }
   display: inline-block;
   font-family: var(--mono);
   font-size: 9.5px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent);
   margin-top: 8px;
 }
@@ -998,8 +998,8 @@ a.label:hover { opacity: .8; }
   margin-top: 22px;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
 }
 .house-picks-foot a {
@@ -1184,8 +1184,8 @@ a.label:hover { opacity: .8; }
     font-family: var(--mono);
     font-size: 14px;
     font-weight: 500;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-transform: none;
   }
   .sticky-wa-text small {
     font-family: var(--mono);
@@ -1293,8 +1293,8 @@ a.label:hover { opacity: .8; }
   font-family: var(--mono);
   font-size: 10px;
   font-style: normal;
-  letter-spacing: .26em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
 }
 /* Particle dots HIDDEN on journal-body. The atmosphere.js bubbles
@@ -1306,8 +1306,8 @@ a.label:hover { opacity: .8; }
   display: inline-block;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent-2);
   margin-bottom: 24px;
 }
@@ -1338,8 +1338,8 @@ a.label:hover { opacity: .8; }
   font-family: var(--mono);
   font-size: 9.5px;
   font-style: normal;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
   margin-top: 5px;
 }
@@ -1350,8 +1350,8 @@ a.label:hover { opacity: .8; }
   gap: 12px;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
 }
 .journal-nav a {
   color: var(--muted);
@@ -1410,8 +1410,8 @@ a.label:hover { opacity: .8; }
   display: inline-block;
   font-family: var(--mono);
   font-size: 10.5px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent-2);
   margin-bottom: 18px;
 }
@@ -1437,8 +1437,8 @@ a.label:hover { opacity: .8; }
 .card-meta {
   font-family: var(--mono);
   font-size: 10.5px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
   display: inline-flex;
   align-items: center;
@@ -1475,8 +1475,8 @@ a.label:hover { opacity: .8; }
   display: inline-block;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
   margin-bottom: 32px;
   transition: color .2s;
@@ -1487,8 +1487,8 @@ a.label:hover { opacity: .8; }
   display: inline-block;
   font-family: var(--mono);
   font-size: 10.5px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent-2);
   margin-bottom: 22px;
 }
@@ -1518,8 +1518,8 @@ a.label:hover { opacity: .8; }
 .article-meta {
   font-family: var(--mono);
   font-size: 10.5px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
   display: inline-flex;
   align-items: center;
@@ -1613,8 +1613,8 @@ a.label:hover { opacity: .8; }
   display: block;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent, #c8862e);
   margin-bottom: 10px;
 }
@@ -1686,8 +1686,8 @@ a.label:hover { opacity: .8; }
   margin: 20px 0 0;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
 }
 .journal-related .jr-all a {
@@ -1727,8 +1727,8 @@ a.label:hover { opacity: .8; }
 .journal-related .jr-builder-icon svg { width: 22px; height: 22px; }
 .journal-related .jr-builder-text { flex: 1 1 auto; display: flex; flex-direction: column; gap: 4px; }
 .journal-related .jr-builder-label {
-  font-family: var(--mono); font-size: 11px; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--paper, #f3ecdf); font-weight: 500;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .01em;
+  text-transform: none; color: var(--paper, #f3ecdf); font-weight: 500;
 }
 .journal-related .jr-builder-sub {
   font-family: var(--serif, 'DM Serif Display'); font-size: 14px;
@@ -1755,8 +1755,8 @@ a.label:hover { opacity: .8; }
 .article-up-foot {
   font-family: var(--mono);
   font-size: 12px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
   margin: 0;
 }
@@ -1784,8 +1784,8 @@ a.label:hover { opacity: .8; }
   display: block;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent-2);
   margin-bottom: 18px;
 }
@@ -1826,8 +1826,8 @@ a.label:hover { opacity: .8; }
   display: block;
   font-family: var(--mono);
   font-size: 10.5px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent-2);
   margin-bottom: 16px;
 }
@@ -1851,8 +1851,8 @@ a.label:hover { opacity: .8; }
 .fj-card-cta {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent);
   border-bottom: 1px solid var(--accent);
   padding-bottom: 1px;
@@ -1862,8 +1862,8 @@ a.label:hover { opacity: .8; }
   text-align: center;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
 }
 .fj-foot a {
@@ -1916,8 +1916,8 @@ a.label:hover { opacity: .8; }
   display: inline-block;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent-2);
   margin-bottom: 22px;
 }
@@ -1958,8 +1958,8 @@ a.label:hover { opacity: .8; }
 .reserve-field label {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
   padding: 0;
   margin-bottom: 2px;
@@ -2032,8 +2032,8 @@ a.label:hover { opacity: .8; }
 .bar-chip-name {
   font-family: var(--mono);
   font-size: 12px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   font-weight: 500;
 }
 .bar-chip-loc {
@@ -2088,8 +2088,8 @@ a.label:hover { opacity: .8; }
 .cal-header {
   font-family: var(--mono);
   font-size: 10px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
   text-align: center;
   padding: 10px 0 8px;
@@ -2185,8 +2185,8 @@ a.label:hover { opacity: .8; }
   color: #ffffff;
   font-family: var(--mono);
   font-size: 13px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   border: 0;
   cursor: pointer;
   min-height: 56px;
@@ -2255,8 +2255,8 @@ a.label:hover { opacity: .8; }
   background: transparent;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   transition: border-color .2s, color .2s, transform .15s;
 }
 .cta-btn:hover {
@@ -2315,8 +2315,8 @@ a.label:hover { opacity: .8; }
 .spec-block .spec-h {
   font-family: var(--mono);
   font-size: 10.5px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent-2);
   margin: 0 0 14px;
   font-weight: 500;
@@ -2443,8 +2443,8 @@ a.label:hover { opacity: .8; }
   background: var(--bg-2);
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--muted);
   display: flex;
   flex-wrap: wrap;
@@ -2506,8 +2506,8 @@ a.label:hover { opacity: .8; }
   font-family: var(--mono);
   font-weight: 500;
   font-size: 10px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: var(--accent-2);
   margin-bottom: 6px;
 }
@@ -2627,8 +2627,8 @@ a.label:hover { opacity: .8; }
 .atmo-music .tip {
   position: absolute; left: 60px; top: 50%; transform: translateY(-50%);
   white-space: nowrap;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+  font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif;
+  font-size: 10px; letter-spacing: .01em; text-transform: none;
   color: rgba(255, 255, 255, .8);
   background: rgba(0, 0, 0, .8); padding: 8px 12px;
   border-radius: 6px;

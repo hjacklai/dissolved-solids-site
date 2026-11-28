@@ -67,7 +67,7 @@
     mt.setAttribute('aria-label', 'toggle ambient music');
     mt.innerHTML =
       '<span class="bars"><i></i><i></i><i></i><i></i></span>' +
-      '<span class="tip">tap to play · ambient</span>';
+      '<span class="tip">Tap to play · ambient</span>';
     document.body.appendChild(mt);
 
     // WhatsApp + Instagram floats, bottom-right. State-aware: on a
@@ -184,7 +184,7 @@
         await audio.play();
         fadeTo(TARGET, FADE_MS);
         mt.classList.add('playing');
-        if (tip) tip.textContent = currentKey === 'dissolved' ? 'house · tap to stop' : 'lofi · tap to stop';
+        if (tip) tip.textContent = currentKey === 'dissolved' ? 'House · tap to stop' : 'Lofi · tap to stop';
       } catch (e) {
         console.warn('music start failed', e);
         if (tip) tip.textContent = 'audio unavailable';
@@ -211,7 +211,7 @@
           if (wasPlaying) {
             audio.play().then(function () {
               fadeTo(TARGET, FADE_MS);
-              if (tip) tip.textContent = currentKey === 'dissolved' ? 'house · tap to stop' : 'lofi · tap to stop';
+              if (tip) tip.textContent = currentKey === 'dissolved' ? 'House · tap to stop' : 'Lofi · tap to stop';
             }).catch(function (e) { console.warn('track swap failed', e); });
           }
         }, FADE_MS * 0.5 + 50);
@@ -222,7 +222,7 @@
       try {
         fadeTo(0, FADE_MS * 0.6);
         mt.classList.remove('playing');
-        if (tip) tip.textContent = 'tap to play · music';
+        if (tip) tip.textContent = 'Tap to play · music';
       } catch (e) {
         console.warn('music stop failed', e);
       }

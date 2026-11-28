@@ -22,7 +22,7 @@
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   border-top: 1px solid rgba(255, 255, 255, .10);
   color: #f3ecdf;
-  font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif;
   box-shadow: 0 -14px 44px rgba(0, 0, 0, .45);
   /* Lift content above the home-indicator on notched iPhones / Androids */
   padding-bottom: env(safe-area-inset-bottom, 0);
@@ -56,7 +56,7 @@
   border-radius: 10px;
   border: 0;
   transition: color .2s, background .2s, transform .15s;
-  font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif;
   /* Match the toggle pill height so glyph+label sit on the same
      mid-line as the Dis/Sol pill. */
   min-height: 40px;
@@ -64,7 +64,7 @@
 .appbar-icon::after { display: none !important; }
 .appbar-icon svg { width: 20px; height: 20px; flex: 0 0 20px; }
 .appbar-icon span {
-  font-size: 8.5px; letter-spacing: .2em; text-transform: uppercase;
+  font-size: 8.5px; letter-spacing: .01em; text-transform: none;
   line-height: 1;
 }
 .appbar-icon:hover { color: #f3ecdf; background: rgba(255, 255, 255, .07); transform: translateY(-1px); }
@@ -90,7 +90,7 @@
   border: 1px solid rgba(255, 255, 255, .20);
   border-radius: 999px;
   color: #f3ecdf; cursor: pointer;
-  font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif;
   transition: border-color .2s, background .2s;
   min-height: 40px;
   overflow: hidden;
@@ -116,11 +116,11 @@ html[data-state="soluble"]   .appbar-toggle::before { transform: translateX(100%
   display: inline-flex; align-items: center; justify-content: center;
   padding: 0 16px;
   border-radius: 999px;
-  font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: .18em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: rgba(255, 255, 255, .55);
   transition: color .25s ease;
   z-index: 1;
@@ -138,10 +138,10 @@ html[data-state="soluble"]   .appbar-toggle .seg[data-target="soluble"] {
   border-top: 1px solid rgba(255, 255, 255, .08);
   background: rgba(255, 255, 255, .025);
   padding: 7px 0;
-  font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif;
   font-size: 10px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   color: rgba(255, 255, 255, .55);
   position: relative;
 }
@@ -210,9 +210,9 @@ body { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
   border-radius: 999px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif;
   font-size: 11px;
-  letter-spacing: .14em;
+  letter-spacing: .01em;
   line-height: 1;
   user-select: none;
 }

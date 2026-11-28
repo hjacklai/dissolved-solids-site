@@ -22,15 +22,15 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-  :root { --paper: #faf3df; --ink: #18181c; --accent: #d18b3a; --rule: rgba(0,0,0,.18); --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace; --serif: 'DM Serif Display', serif; }
+  :root { --paper: #faf3df; --ink: #18181c; --accent: #d18b3a; --rule: rgba(0,0,0,.18); --mono: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; --serif: 'DM Serif Display', serif; }
   * { box-sizing: border-box; }
   body { margin: 0; background: #2a2a2e; color: var(--ink); font-family: var(--mono); }
   .toolbar {
     background: #18181c; color: var(--paper); padding: 14px 24px;
     display: flex; gap: 14px; align-items: center; justify-content: space-between;
-    font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .01em; text-transform: none;
   }
   .toolbar a, .toolbar button {
     color: var(--paper); text-decoration: none;
@@ -51,12 +51,12 @@
   }
   .sheet h1 em { font-style: italic; color: var(--accent); }
   .sheet .subhead {
-    font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    font-size: 10px; letter-spacing: .01em; text-transform: none;
     color: #555; margin: 0 0 22px;
   }
   .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
   .col h2 {
-    font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    font-family: var(--mono); font-size: 10px; letter-spacing: .01em; text-transform: none;
     margin: 0 0 6px; padding-bottom: 4px; border-bottom: 1px solid var(--rule);
     color: var(--accent);
   }
@@ -69,7 +69,7 @@
   .footer-band {
     margin-top: 18px; padding-top: 10px; border-top: 1px solid var(--rule);
     display: flex; justify-content: space-between; align-items: center;
-    font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #555;
+    font-size: 9px; letter-spacing: .01em; text-transform: none; color: #555;
   }
   @media print {
     body { background: white; }
@@ -85,7 +85,7 @@
   <span>Sheet 01 · 100 Classics</span>
   <button onclick="window.print()">⎙ Print / save as PDF</button>
 </div>
-<div style="background:#0e0e12; color:#faf3df; padding:12px 24px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; text-align:center; border-bottom:1px solid rgba(255,255,255,.08);">
+<div style="background:#0e0e12; color:#faf3df; padding:12px 24px; font-family:'Inter Tight', system-ui, -apple-system, Roboto, sans-serif; font-size:11px; letter-spacing:.01em; text-transform:none; text-align:center; border-bottom:1px solid rgba(255,255,255,.08);">
   <span style="color:rgba(255,255,255,.6);">Like this? Get one new cheat sheet a month →</span>
   <a href="/newsletter/" style="color:#d18b3a; text-decoration:underline; margin-left:8px;">Subscribe to The Dispatch</a>
 </div>

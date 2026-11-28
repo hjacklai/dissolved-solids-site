@@ -249,7 +249,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Allura&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Allura&family=Inter+Tight:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/appbar.css" />
 <style>
   /* ─────────────────────────────────────────────────────────────
@@ -284,7 +284,7 @@
     --serif: 'DM Serif Display', 'Times New Roman', serif;
     --serif-sol: 'DM Serif Display', 'Times New Roman', serif;
     --serif-dis: 'Allura', 'Times New Roman', cursive;
-    --mono:  'JetBrains Mono', ui-monospace, Menlo, monospace;
+    --mono:  'Inter Tight', system-ui, -apple-system, Roboto, sans-serif;
     --mono-dis: 'Space Grotesk', 'Inter', system-ui, sans-serif;
     --t-bg: 700ms;
   }
@@ -335,7 +335,7 @@
   body { font-size: 16px; }
   .body { font-size: 17px !important; line-height: 1.75; max-width: 620px; }
   .hero .tagline { font-size: clamp(34px, 4.2vw, 60px) !important; }
-  .kicker { font-size: 13px !important; letter-spacing: .26em !important; }
+  .kicker { font-size: 13px !important; letter-spacing: .01em !important; }
   nav { font-size: 12px !important; }
   .scroll-hint { font-size: 11px !important; }
   .chip .chip-name { font-size: 24px !important; }
@@ -732,7 +732,7 @@
   }
   .brand .tagline {
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.55);
   }
   .brand .tagline span { color: var(--accent); transition: color var(--t-bg); }
@@ -754,7 +754,7 @@
     display: flex; align-items: center; justify-content: center;
     flex-wrap: wrap; gap: 4px 6px;
     font-family: var(--mono); font-size: 10.5px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     padding: 0;
   }
   nav a {
@@ -811,7 +811,7 @@
     padding: 11px 16px;
     border-bottom: 1px solid rgba(255,255,255,.1);
     font-family: var(--mono); font-size: 9.5px;
-    letter-spacing: .24em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.6);
   }
   .panel-header .hl { display: flex; align-items: center; gap: 10px; }
@@ -852,7 +852,7 @@
   .panel-row:last-child { border-bottom: none; }
   .panel-row .k {
     color: rgba(255,255,255,.45);
-    text-transform: uppercase; letter-spacing: .2em; font-size: 10px;
+    text-transform: none; letter-spacing: .01em; font-size: 10px;
   }
   .panel-row .v { color: var(--paper); }
   .panel-row .v em {
@@ -866,7 +866,7 @@
     padding: 10px 16px;
     display: flex; justify-content: space-between; align-items: center;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.55);
     background: rgba(255,255,255,.03);
     border-top: 1px solid rgba(255,255,255,.08);
@@ -886,7 +886,7 @@
     background: rgba(255,255,255,.03);
     border-bottom: 1px solid rgba(255,255,255,.08);
     font-family: var(--mono); font-size: 9.5px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.7);
   }
   .panel-award .star {
@@ -902,7 +902,7 @@
     border-top: 1px solid rgba(255,255,255,.1);
     background: rgba(255,255,255,.04);
     font-family: var(--mono); font-size: 10.5px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: var(--paper);
     font-weight: 500;
   }
@@ -961,7 +961,7 @@
 
   .kicker {
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: var(--accent);
     margin: 0 0 22px;
     transition: color var(--t-bg);
@@ -1009,7 +1009,7 @@
     display: inline-flex; align-items: center; gap: 10px;
     padding: 16px 22px;
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     text-decoration: none;
     border-radius: 999px;
     transition: all .25s, background var(--t-bg), color var(--t-bg);
@@ -1031,7 +1031,7 @@
   .scroll-hint {
     position: absolute; bottom: 28px; left: 40px;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.5);
     display: flex; align-items: center; gap: 12px;
   }
@@ -1094,7 +1094,7 @@
     padding: 14px 30px;
     font-family: var(--mono); font-size: 12px;
     font-weight: 500;
-    letter-spacing: .28em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.7);
     border-radius: 999px;
     transition: all .35s cubic-bezier(.7,0,.3,1);
@@ -1114,7 +1114,7 @@
   .big-switch .hint {
     padding: 0 18px 0 10px;
     font-family: var(--mono); font-size: 9.5px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.5);
   }
   @media (max-width: 720px) {
@@ -1156,7 +1156,7 @@
     position: absolute; left: 64px; top: 50%; transform: translateY(-50%);
     white-space: nowrap;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .2em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.65);
     background: rgba(0,0,0,.7); padding: 8px 12px;
     border-radius: 6px;
@@ -1187,7 +1187,7 @@
   .reserve-head .meta {
     text-align: right;
     font-family: var(--mono); font-size: 12px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.6); line-height: 2;
   }
   .reserve-head .meta b { color: var(--accent); transition: color var(--t-bg); font-weight: 500; }
@@ -1206,7 +1206,7 @@
   .reserve-left { border-right: 1px solid rgba(255,255,255,.14); }
   .field-label {
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.5);
     margin-bottom: 12px;
   }
@@ -1232,7 +1232,7 @@
      (or state) we're on. Dissolved → Allura (script). Soluble → DM Serif. */
   .bar-pill[data-bar="dissolved"] .nm { font-family: var(--serif-dis); }
   .bar-pill[data-bar="soluble"]   .nm { font-family: var(--serif-sol); font-style: normal; letter-spacing: 0; }
-  .bar-pill .ds { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 4px; }
+  .bar-pill .ds { font-size: 10px; letter-spacing: .01em; text-transform: none; color: rgba(255,255,255,.5); margin-top: 4px; }
   .bar-pill.active {
     border-color: var(--accent);
     background: rgba(255,255,255,.04);
@@ -1267,7 +1267,7 @@
   .cal-dow {
     text-align: center; padding: 6px 0;
     font-family: var(--mono); font-size: 9.5px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.4);
   }
   .cal-day {
@@ -1331,7 +1331,7 @@
   .pax-row .val small {
     display: block;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.45);
     margin-top: -2px;
   }
@@ -1360,7 +1360,7 @@
     grid-column: 1 / -1;
     padding: 24px; text-align: center;
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .18em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.4);
   }
   .send-res {
@@ -1370,7 +1370,7 @@
     background: var(--accent); color: var(--bg);
     border: none; border-radius: 999px;
     font-family: var(--mono); font-size: 13px; font-weight: 500;
-    letter-spacing: .28em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     cursor: pointer;
     transition: all .2s, background var(--t-bg), color var(--t-bg);
     display: flex; align-items: center; justify-content: center; gap: 12px;
@@ -1411,7 +1411,7 @@
   .outlets-head .meta {
     text-align: right;
     font-family: var(--mono); font-size: 12px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.65);
     line-height: 2;
   }
@@ -1460,7 +1460,7 @@
   }
   .outlet-head .lbl {
     font-family: var(--mono); font-size: 10.5px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.55);
     line-height: 1.6;
   }
@@ -1472,7 +1472,7 @@
     background: rgba(255,255,255,.06);
     border: 1px solid rgba(255,255,255,.16);
     font-family: var(--mono); font-size: 10.5px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.78);
   }
   .outlet-live .led {
@@ -1508,7 +1508,7 @@
   }
   .outlet-rows .k {
     color: rgba(255,255,255,.45);
-    text-transform: uppercase; letter-spacing: .22em; font-size: 10.5px;
+    text-transform: none; letter-spacing: .01em; font-size: 10.5px;
     padding-top: 4px;
   }
   .outlet-rows .v a {
@@ -1523,7 +1523,7 @@
     gap: 6px 18px;
     font-size: 12px;
   }
-  .hours-grid .day { color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .14em; }
+  .hours-grid .day { color: rgba(255,255,255,.55); text-transform: none; letter-spacing: .01em; }
   .hours-grid .day.closed, .hours-grid .time.closed { color: rgba(255,255,255,.32); }
   .hours-grid .today {
     color: var(--accent); font-weight: 500;
@@ -1538,7 +1538,7 @@
     padding: 14px 22px; border-radius: 999px;
     font-family: var(--mono); font-size: 11.5px;
     font-weight: 500;
-    letter-spacing: .24em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     text-decoration: none; cursor: pointer; border: none;
     display: inline-flex; align-items: center; gap: 8px;
     transition: transform .2s, background var(--t-bg), color var(--t-bg), border-color .2s;
@@ -1607,7 +1607,7 @@
   .gallery-head .meta {
     text-align: right;
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .2em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.6);
     line-height: 2;
   }
@@ -1637,7 +1637,7 @@
     position: absolute; left: 14px; bottom: 12px; right: 14px;
     display: flex; justify-content: space-between; align-items: flex-end; gap: 12px;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .18em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: var(--paper); z-index: 2;
     text-shadow: 0 1px 8px rgba(0,0,0,.7);
   }
@@ -1669,7 +1669,7 @@
   .quote-tile p span { color: var(--accent); transition: color var(--t-bg); }
   .quote-tile .attr {
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.55);
     margin-top: 18px; font-style: normal;
   }
@@ -1749,7 +1749,7 @@
   }
   .builder-step-no {
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.5);
   }
   .builder-step-no b { color: var(--accent); font-weight: 500; transition: color var(--t-bg); }
@@ -1768,7 +1768,7 @@
   }
   .picks { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: rgba(255,255,255,.7); }
   .picks-head {
-    text-transform: uppercase; letter-spacing: .22em; font-size: 10px;
+    text-transform: none; letter-spacing: .01em; font-size: 10px;
     color: rgba(255,255,255,.45); margin-bottom: 10px;
   }
   .pick-row {
@@ -1776,7 +1776,7 @@
     padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.08); gap: 10px;
   }
   .pick-row.empty .v { color: rgba(255,255,255,.25); }
-  .pick-row .k { color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .18em; font-size: 9.5px; }
+  .pick-row .k { color: rgba(255,255,255,.4); text-transform: none; letter-spacing: .01em; font-size: 9.5px; }
   .pick-row .v em { font-family: var(--serif); font-style: italic; color: var(--accent); transition: color var(--t-bg); }
 
   .builder-right {
@@ -1795,7 +1795,7 @@
   .builder-sub {
     margin: 0 0 36px;
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.55);
   }
   .chips {
@@ -1834,7 +1834,7 @@
     border-radius: 999px;
     cursor: pointer;
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     transition: all .2s;
   }
   .nav-btn:hover { border-color: var(--paper); }
@@ -1848,7 +1848,7 @@
   .dots {
     display: flex; gap: 6px; align-items: center;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.4);
   }
   .dots-track { display: flex; gap: 5px; margin-left: 12px; }
@@ -1882,7 +1882,7 @@
   }
   .result-card .result-kicker {
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: var(--accent); margin-bottom: 18px;
     transition: color var(--t-bg);
   }
@@ -1900,7 +1900,7 @@
     font-family: var(--mono); font-size: 12.5px;
     line-height: 1.7;
   }
-  .result-card .brief .k { color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .18em; font-size: 10px; padding-top: 3px; }
+  .result-card .brief .k { color: rgba(255,255,255,.45); text-transform: none; letter-spacing: .01em; font-size: 10px; padding-top: 3px; }
   .result-card .brief .v { color: var(--paper); }
   .result-card .note {
     margin-top: 28px;
@@ -1945,8 +1945,8 @@
     content: '◷ tap to flip state';
     position: absolute; left: 50%; transform: translateX(-50%);
     bottom: -28px; white-space: nowrap;
-    font-family: var(--mono); font-size: 9px; letter-spacing: .18em;
-    text-transform: uppercase; color: rgba(255,255,255,.5);
+    font-family: var(--mono); font-size: 9px; letter-spacing: .01em;
+    text-transform: none; color: rgba(255,255,255,.5);
     opacity: 0; transition: opacity .3s;
     pointer-events: none;
   }
@@ -2032,7 +2032,7 @@
     .hero-content .body { font-size: 14px !important; line-height: 1.65; }
     .cta-row { gap: 10px; }
     .btn { padding: 14px 18px; font-size: 10.5px; letter-spacing: .18em; }
-    .kicker { font-size: 10px !important; letter-spacing: .22em !important; }
+    .kicker { font-size: 10px !important; letter-spacing: .01em !important; }
     .seal { width: 92px; height: 92px; bottom: 24px; right: 18px; }
     .seal text { font-size: 8.5px; letter-spacing: .14em; }
     .reserve-head h2, .outlets-head h2 { font-size: clamp(36px, 11vw, 60px); }
@@ -2270,8 +2270,8 @@
         </text>
         <g transform="translate(100 100)">
           <polygon class="seal-star" points="0,-22 6,-7 22,-7 9,2 14,17 0,8 -14,17 -9,2 -22,-7 -6,-7"/>
-          <text class="seal-center" text-anchor="middle" y="36">top 20 bars</text>
-          <text class="seal-center" text-anchor="middle" y="50">asia 25/26</text>
+          <text class="seal-center" text-anchor="middle" y="36">Top 20 bars</text>
+          <text class="seal-center" text-anchor="middle" y="50">Asia 25/26</text>
         </g>
       </svg>
     </div>
@@ -2418,10 +2418,10 @@
   <section class="quick-facts" aria-label="Quick facts about Soluble Solids">
     <style>
       .quick-facts { max-width: 1100px; margin: 60px auto; padding: 0 24px; }
-      .quick-facts .qf-head { font-family: var(--mono); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--accent); margin: 0 0 28px; opacity: .85; }
+      .quick-facts .qf-head { font-family: var(--mono); font-size: 11px; letter-spacing: .01em; text-transform: none; color: var(--accent); margin: 0 0 28px; opacity: .85; }
       .quick-facts .qf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px 36px; margin: 0; padding: 28px 30px; border: 1px solid var(--rule, rgba(243,239,231,.16)); border-radius: 12px; background: rgba(255,255,255,.02); }
       .quick-facts .qf-grid > div { margin: 0; }
-      .quick-facts dt { font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted, rgba(243,239,231,.55)); margin: 0 0 6px; }
+      .quick-facts dt { font-family: var(--mono); font-size: 10px; letter-spacing: .01em; text-transform: none; color: var(--muted, rgba(243,239,231,.55)); margin: 0 0 6px; }
       .quick-facts dd { margin: 0; font-family: var(--serif); font-size: 17px; line-height: 1.4; color: var(--paper); }
       .quick-facts dd a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
       .quick-facts dd a:hover { opacity: .75; }
@@ -2449,7 +2449,7 @@
   <section class="bar-faq" aria-label="Questions about Soluble Solids">
     <style>
       .bar-faq { max-width: 1100px; margin: 60px auto; padding: 0 24px; }
-      .bar-faq .bf-head { font-family: var(--mono); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--accent); margin: 0 0 28px; opacity: .85; }
+      .bar-faq .bf-head { font-family: var(--mono); font-size: 11px; letter-spacing: .01em; text-transform: none; color: var(--accent); margin: 0 0 28px; opacity: .85; }
       .bar-faq .bf-list { display: block; margin: 0; padding: 6px 30px; border: 1px solid var(--rule, rgba(243,239,231,.16)); border-radius: 12px; background: rgba(255,255,255,.02); }
       .bar-faq details { padding: 18px 0; border-top: 1px solid var(--rule, rgba(243,239,231,.16)); }
       .bar-faq details:first-child { border-top: 0; }
@@ -2893,7 +2893,7 @@
     <div class="meta">
       <b>04 quick steps</b><br/>
       pick bar · date · time · pax<br/>
-      we whatsapp to confirm · usually within the hour
+      We WhatsApp to confirm · usually within the hour
     </div>
   </div>
 
@@ -2906,14 +2906,14 @@
             <img src="https://dissolvedsolids.co/photos/ds-logo.png" alt="" loading="lazy" decoding="async"/>
             <div>
               <div class="nm">Dissolved</div>
-              <div class="ds">venue 01 · damansara kim · tue-sun</div>
+              <div class="ds">Venue 01 · Damansara Kim · Tue-Sun</div>
             </div>
           </button>
           <button class="bar-pill" type="button" data-bar="soluble">
             <img src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="" loading="lazy" decoding="async"/>
             <div>
               <div class="nm">Soluble</div>
-              <div class="ds">venue 02 · ss2 pj · wed-sun</div>
+              <div class="ds">Venue 02 · SS2 PJ · Wed-Sun</div>
             </div>
           </button>
         </div>
@@ -3014,13 +3014,13 @@
         <div class="k">hours</div>
         <div class="v">
           <div class="hours-grid" data-hours="dissolved">
-            <span class="day closed" data-d="1">mon</span>     <span class="time closed">closed</span>
-            <span class="day"        data-d="2">tue</span>     <span class="time">15:00 to 00:00</span>
-            <span class="day"        data-d="3">wed</span>     <span class="time">15:00 to 00:00</span>
-            <span class="day"        data-d="4">thu</span>     <span class="time">15:00 to 00:00</span>
-            <span class="day"        data-d="5">fri</span>     <span class="time">14:00 to 01:00</span>
-            <span class="day"        data-d="6">sat</span>     <span class="time">14:00 to 01:00</span>
-            <span class="day"        data-d="0">sun</span>     <span class="time">14:00 to 00:00</span>
+            <span class="day closed" data-d="1">Mon</span>     <span class="time closed">Closed</span>
+            <span class="day"        data-d="2">Tue</span>     <span class="time">15:00 to 00:00</span>
+            <span class="day"        data-d="3">Wed</span>     <span class="time">15:00 to 00:00</span>
+            <span class="day"        data-d="4">Thu</span>     <span class="time">15:00 to 00:00</span>
+            <span class="day"        data-d="5">Fri</span>     <span class="time">14:00 to 01:00</span>
+            <span class="day"        data-d="6">Sat</span>     <span class="time">14:00 to 01:00</span>
+            <span class="day"        data-d="0">Sun</span>     <span class="time">14:00 to 00:00</span>
           </div>
         </div>
 
@@ -3060,13 +3060,13 @@
         <div class="k">hours</div>
         <div class="v">
           <div class="hours-grid" data-hours="soluble">
-            <span class="day closed" data-d="1">mon</span>     <span class="time closed">closed</span>
-            <span class="day closed" data-d="2">tue</span>     <span class="time closed">closed</span>
-            <span class="day"        data-d="3">wed</span>     <span class="time">18:00 to 01:00</span>
-            <span class="day"        data-d="4">thu</span>     <span class="time">18:00 to 01:00</span>
-            <span class="day"        data-d="5">fri</span>     <span class="time">18:00 to 01:00</span>
-            <span class="day"        data-d="6">sat</span>     <span class="time">18:00 to 01:00</span>
-            <span class="day"        data-d="0">sun</span>     <span class="time">18:00 to 01:00</span>
+            <span class="day closed" data-d="1">Mon</span>     <span class="time closed">Closed</span>
+            <span class="day closed" data-d="2">Tue</span>     <span class="time closed">Closed</span>
+            <span class="day"        data-d="3">Wed</span>     <span class="time">18:00 to 01:00</span>
+            <span class="day"        data-d="4">Thu</span>     <span class="time">18:00 to 01:00</span>
+            <span class="day"        data-d="5">Fri</span>     <span class="time">18:00 to 01:00</span>
+            <span class="day"        data-d="6">Sat</span>     <span class="time">18:00 to 01:00</span>
+            <span class="day"        data-d="0">Sun</span>     <span class="time">18:00 to 01:00</span>
           </div>
         </div>
 
@@ -3099,8 +3099,8 @@
     }
     .local-guides h2 em { color: var(--accent); font-style: italic; transition: color var(--t-bg); }
     .local-guides .lg-sub {
-      font-family: var(--mono); font-size: 11px; letter-spacing: .2em;
-      text-transform: uppercase; color: rgba(255,255,255,.55); margin: 0 0 28px;
+      font-family: var(--mono); font-size: 11px; letter-spacing: .01em;
+      text-transform: none; color: rgba(255,255,255,.55); margin: 0 0 28px;
     }
     .local-guides .lg-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -3159,7 +3159,7 @@
 <!-- MUSIC TOGGLE - bottom left -->
 <button class="music-toggle" id="musicToggle" type="button" aria-label="toggle music">
   <span class="bars"><i></i><i></i><i></i><i></i></span>
-  <span class="tooltip" id="musicTip">tap to play · ambient</span>
+  <span class="tooltip" id="musicTip">Tap to play · ambient</span>
 </button>
 <audio id="bgMusic" loop preload="none">
   <!-- Claude Code: add a licensed stock track here. See brief for sources. -->
@@ -3400,8 +3400,8 @@
   const pad = n => String(n).padStart(2, '0');
   const ymd = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
   function pretty(d) {
-    const days = ['sun','mon','tue','wed','thu','fri','sat'];
-    const mons = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const mons = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     return `${days[d.getDay()]} · ${d.getDate()} ${mons[d.getMonth()]}`;
   }
   function renderBarPills() {
@@ -3432,7 +3432,7 @@
     const mn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     monthEl.textContent = `${mn[calCur.getMonth()]} ${calCur.getFullYear()}`;
     grid.innerHTML = '';
-    ['mon','tue','wed','thu','fri','sat','sun'].forEach(d => {
+    ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => {
       const el = document.createElement('div');
       el.className = 'cal-dow'; el.textContent = d;
       grid.appendChild(el);
@@ -3550,7 +3550,7 @@
     soluble:   '/photos/audio/lofi-beat.mp3',
     dissolved: '/photos/audio/fashion-house.mp3'
   };
-  const TIP_PLAY = { soluble: 'lofi · tap to stop', dissolved: 'house · tap to stop' };
+  const TIP_PLAY = { soluble: 'Lofi · tap to stop', dissolved: 'House · tap to stop' };
   const audios = { soluble: null, dissolved: null };
   let isPlaying = false;
   let currentKey = null;
@@ -3607,7 +3607,7 @@
     if (audios.soluble)   fadeTo(audios.soluble,   0, FADE_MS * 0.6);
     if (audios.dissolved) fadeTo(audios.dissolved, 0, FADE_MS * 0.6);
     mt.classList.remove('playing');
-    mtTip.textContent = 'tap to play · ambient';
+    mtTip.textContent = 'Tap to play · ambient';
   }
   mt.addEventListener('click', () => {
     if (isPlaying) stopMusic();
@@ -3705,7 +3705,7 @@
   function nowMin() { const d = new Date(); return d.getHours()*60 + d.getMinutes(); }
   function parseT(t) { const [h, m] = t.split(':').map(Number); return h*60 + m; }
   function isOpenNow(s, e) {
-    if (s === 'closed') return false;
+    if (String(s).toLowerCase() === 'closed') return false;
     let o = parseT(s), c = parseT(e);
     if (c <= o) c += 24*60;
     return nowMin() >= o && nowMin() < c;
@@ -3728,7 +3728,7 @@
       for (let i = 0; i < rows.length; i += 2) {
         if (+rows[i].dataset.d === today) {
           const t = rows[i+1].textContent.trim();
-          if (t === 'closed') return { open: false };
+          if (t.toLowerCase() === 'closed') return { open: false };
           const [s, e] = t.split(' to ').map(x => x.trim());
           return { open: true, s, e };
         }
@@ -3736,10 +3736,10 @@
       return null;
     }
     function lbl(w) {
-      if (!w || !w.open) return { txt: 'closed today', live: false };
+      if (!w || !w.open) return { txt: 'Closed today', live: false };
       return isOpenNow(w.s, w.e)
-        ? { txt: `open now · til ${w.e}`, live: true }
-        : { txt: `opens at ${w.s} today`, live: false };
+        ? { txt: `Open now · til ${w.e}`, live: true }
+        : { txt: `Opens at ${w.s} today`, live: false };
     }
     const sol = lbl(todayWindow('soluble'));
     const dis = lbl(todayWindow('dissolved'));

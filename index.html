@@ -117,7 +117,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Allura&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Allura&family=Inter+Tight:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/builder.css" />
 <!-- Hero background preload for LCP. The hero photo is loaded via
      CSS background-image, which doesn't get priority discovery
@@ -175,7 +175,7 @@
     --serif: 'DM Serif Display', 'Times New Roman', serif;
     --serif-sol: 'DM Serif Display', 'Times New Roman', serif;
     --serif-dis: 'Allura', 'Times New Roman', cursive;
-    --mono:  'JetBrains Mono', ui-monospace, Menlo, monospace;
+    --mono:  'Inter Tight', system-ui, -apple-system, Roboto, sans-serif;
     --mono-dis: 'Space Grotesk', 'Inter', system-ui, sans-serif;
     --t-bg: 700ms;
   }
@@ -235,7 +235,7 @@
   body { font-size: 16px; }
   .body { font-size: 17px !important; line-height: 1.75; max-width: 620px; }
   .hero .tagline { font-size: clamp(34px, 4.2vw, 60px) !important; }
-  .kicker { font-size: 13px !important; letter-spacing: .26em !important; }
+  .kicker { font-size: 13px !important; letter-spacing: .01em !important; }
   nav { font-size: 12px !important; }
   .scroll-hint { font-size: 11px !important; }
   .chip .chip-name { font-size: 24px !important; }
@@ -604,8 +604,8 @@
     display: inline-flex; align-items: center; gap: 10px;
     font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: .18em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-transform: none;
     color: rgba(255,255,255,.62);
     flex-wrap: wrap;
     justify-content: flex-end;
@@ -669,7 +669,7 @@
   }
   .brand .tagline {
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.55);
   }
   .brand .tagline span { color: var(--accent); transition: color var(--t-bg); }
@@ -691,7 +691,7 @@
     display: flex; align-items: center; justify-content: center;
     flex-wrap: wrap; gap: 4px 6px;
     font-family: var(--mono); font-size: 10.5px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     padding: 0;
   }
   nav a {
@@ -748,7 +748,7 @@
     padding: 11px 16px;
     border-bottom: 1px solid rgba(255,255,255,.1);
     font-family: var(--mono); font-size: 9.5px;
-    letter-spacing: .24em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.6);
   }
   .panel-header .hl { display: flex; align-items: center; gap: 10px; }
@@ -789,7 +789,7 @@
   .panel-row:last-child { border-bottom: none; }
   .panel-row .k {
     color: rgba(255,255,255,.45);
-    text-transform: uppercase; letter-spacing: .2em; font-size: 10px;
+    text-transform: none; letter-spacing: .01em; font-size: 10px;
   }
   .panel-row .v { color: var(--paper); }
   .panel-row .v em {
@@ -803,7 +803,7 @@
     padding: 10px 16px;
     display: flex; justify-content: space-between; align-items: center;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.55);
     background: rgba(255,255,255,.03);
     border-top: 1px solid rgba(255,255,255,.08);
@@ -823,7 +823,7 @@
     background: rgba(255,255,255,.03);
     border-bottom: 1px solid rgba(255,255,255,.08);
     font-family: var(--mono); font-size: 9.5px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.7);
   }
   .panel-award .star {
@@ -839,7 +839,7 @@
     border-top: 1px solid rgba(255,255,255,.1);
     background: rgba(255,255,255,.04);
     font-family: var(--mono); font-size: 10.5px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: var(--paper);
     font-weight: 500;
   }
@@ -920,7 +920,7 @@
   .appbar-icon::after { display: none !important; }
   .appbar-icon svg { width: 20px; height: 20px; flex: 0 0 20px; }
   .appbar-icon span {
-    font-size: 8.5px; letter-spacing: .2em; text-transform: uppercase;
+    font-size: 8.5px; letter-spacing: .01em; text-transform: none;
     line-height: 1;
   }
   .appbar-icon:hover { color: var(--paper); background: rgba(255,255,255,.07); transform: translateY(-1px); }
@@ -966,8 +966,8 @@
     font-family: var(--mono);
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: .18em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-transform: none;
     color: rgba(255,255,255,.55);
     transition: color .25s ease;
     z-index: 1;
@@ -985,8 +985,8 @@
     padding: 7px 0;
     font-family: var(--mono);
     font-size: 10px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-transform: none;
     color: rgba(255,255,255,.55);
     position: relative;
   }
@@ -1058,7 +1058,7 @@
 
   .kicker {
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: var(--accent);
     margin: 0 0 22px;
     transition: color var(--t-bg);
@@ -1106,7 +1106,7 @@
     display: inline-flex; align-items: center; gap: 10px;
     padding: 16px 22px;
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     text-decoration: none;
     border-radius: 999px;
     transition: all .25s, background var(--t-bg), color var(--t-bg);
@@ -1128,7 +1128,7 @@
   .scroll-hint {
     position: absolute; bottom: 28px; left: 40px;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.5);
     display: flex; align-items: center; gap: 12px;
   }
@@ -1191,7 +1191,7 @@
     padding: 14px 30px;
     font-family: var(--mono); font-size: 12px;
     font-weight: 500;
-    letter-spacing: .28em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.7);
     border-radius: 999px;
     transition: all .35s cubic-bezier(.7,0,.3,1);
@@ -1211,7 +1211,7 @@
   .big-switch .hint {
     padding: 0 18px 0 10px;
     font-family: var(--mono); font-size: 9.5px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.5);
   }
   @media (max-width: 720px) {
@@ -1253,7 +1253,7 @@
     position: absolute; left: 64px; top: 50%; transform: translateY(-50%);
     white-space: nowrap;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .2em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.65);
     background: rgba(0,0,0,.7); padding: 8px 12px;
     border-radius: 6px;
@@ -1284,7 +1284,7 @@
   .reserve-head .meta {
     text-align: right;
     font-family: var(--mono); font-size: 12px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.6); line-height: 2;
   }
   .reserve-head .meta b { color: var(--accent); transition: color var(--t-bg); font-weight: 500; }
@@ -1320,7 +1320,7 @@
   .res-progress span.is-current { background: var(--accent); width: 36px; }
   .res-stepper-count {
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.55);
   }
   .res-stepper-count b { color: var(--paper); font-weight: 500; }
@@ -1341,7 +1341,7 @@
   .res-nav-btn {
     padding: 12px 22px; border-radius: 999px;
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .18em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     border: 1px solid rgba(255,255,255,.22);
     background: transparent; color: var(--paper);
     cursor: pointer; min-height: 44px;
@@ -1368,12 +1368,12 @@
     letter-spacing: .04em; line-height: 1.7;
     color: rgba(255,255,255,.72);
   }
-  .res-summary .k { color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .2em; font-size: 9.5px; }
+  .res-summary .k { color: rgba(255,255,255,.45); text-transform: none; letter-spacing: .01em; font-size: 9.5px; }
   .res-summary .v { color: var(--paper); }
   .res-summary div + div { margin-top: 6px; }
   .field-label {
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.5);
     margin-bottom: 12px;
   }
@@ -1399,7 +1399,7 @@
     font-weight: 400;
     font-size: 22px; color: var(--paper); line-height: 1; letter-spacing: -.01em;
   }
-  .bar-pill .ds { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 4px; }
+  .bar-pill .ds { font-size: 10px; letter-spacing: .01em; text-transform: none; color: rgba(255,255,255,.5); margin-top: 4px; }
   .bar-pill.active {
     border-color: var(--accent);
     background: rgba(255,255,255,.04);
@@ -1439,7 +1439,7 @@
   .cal-dow {
     text-align: center; padding: 6px 0;
     font-family: var(--mono); font-size: 9.5px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.4);
   }
   .cal-day {
@@ -1503,7 +1503,7 @@
   .pax-row .val small {
     display: block;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.45);
     margin-top: -2px;
   }
@@ -1532,7 +1532,7 @@
     grid-column: 1 / -1;
     padding: 24px; text-align: center;
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .18em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.4);
   }
   .send-res {
@@ -1542,7 +1542,7 @@
     background: var(--accent); color: var(--bg);
     border: none; border-radius: 999px;
     font-family: var(--mono); font-size: 13px; font-weight: 500;
-    letter-spacing: .28em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     cursor: pointer;
     transition: all .2s, background var(--t-bg), color var(--t-bg);
     display: flex; align-items: center; justify-content: center; gap: 12px;
@@ -1583,7 +1583,7 @@
   .outlets-head .meta {
     text-align: right;
     font-family: var(--mono); font-size: 12px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.65);
     line-height: 2;
   }
@@ -1632,7 +1632,7 @@
   }
   .outlet-head .lbl {
     font-family: var(--mono); font-size: 10.5px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.55);
     line-height: 1.6;
   }
@@ -1644,7 +1644,7 @@
     background: rgba(255,255,255,.06);
     border: 1px solid rgba(255,255,255,.16);
     font-family: var(--mono); font-size: 10.5px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.78);
   }
   .outlet-live .led {
@@ -1680,7 +1680,7 @@
   }
   .outlet-rows .k {
     color: rgba(255,255,255,.45);
-    text-transform: uppercase; letter-spacing: .22em; font-size: 10.5px;
+    text-transform: none; letter-spacing: .01em; font-size: 10.5px;
     padding-top: 4px;
   }
   .outlet-rows .v a {
@@ -1695,7 +1695,7 @@
     gap: 6px 18px;
     font-size: 12px;
   }
-  .hours-grid .day { color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .14em; }
+  .hours-grid .day { color: rgba(255,255,255,.55); text-transform: none; letter-spacing: .01em; }
   .hours-grid .day.closed, .hours-grid .time.closed { color: rgba(255,255,255,.32); }
   .hours-grid .today {
     color: var(--accent); font-weight: 500;
@@ -1710,7 +1710,7 @@
     padding: 14px 22px; border-radius: 999px;
     font-family: var(--mono); font-size: 11.5px;
     font-weight: 500;
-    letter-spacing: .24em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     text-decoration: none; cursor: pointer; border: none;
     display: inline-flex; align-items: center; gap: 8px;
     transition: transform .2s, background var(--t-bg), color var(--t-bg), border-color .2s;
@@ -1761,8 +1761,8 @@
     border: 1px solid rgba(255,255,255,.14);
     border-radius: 999px;
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
-    font-size: 11px; letter-spacing: .14em; line-height: 1;
+    font-family: 'Inter Tight', system-ui, -apple-system, Roboto, sans-serif;
+    font-size: 11px; letter-spacing: .01em; line-height: 1;
     user-select: none;
   }
   .lang-toggle .lang-seg {
@@ -1798,8 +1798,8 @@
   .visit-sub {
     font-family: var(--mono);
     font-size: 12px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-transform: none;
     color: rgba(255,255,255,.6);
     margin: 0 0 6px;
   }
@@ -1823,8 +1823,8 @@
   .visit-live {
     font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: .18em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-transform: none;
     color: var(--accent);
     margin: 0;
     transition: color var(--t-bg);
@@ -1868,8 +1868,8 @@
   .visit-tag {
     font-family: var(--mono);
     font-size: 9.5px;
-    letter-spacing: .24em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-transform: none;
     color: rgba(255,255,255,.5);
   }
   .visit-name h3 {
@@ -1890,8 +1890,8 @@
     border: 1px solid rgba(255,255,255,.12);
     font-family: var(--mono);
     font-size: 9.5px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-transform: none;
     color: rgba(255,255,255,.75);
     white-space: nowrap;
   }
@@ -1936,8 +1936,8 @@
     text-decoration: none;
     font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-transform: none;
     transition: background .2s, border-color .2s, color .2s, transform .15s;
     flex: 1 1 auto; min-width: 0;
     justify-content: center;
@@ -1956,8 +1956,8 @@
     margin-top: 6px;
     font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-transform: none;
     color: rgba(255,255,255,.55);
   }
   .visit-week summary {
@@ -2058,8 +2058,8 @@
     border-radius: 999px;
     font-family: var(--mono);
     font-size: 11.5px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-transform: none;
     font-weight: 600;
     box-shadow: 0 8px 30px rgba(255, 59, 129, .25);
     animation: builderPulse 2.4s ease-in-out infinite;
@@ -2176,7 +2176,7 @@
   .gallery-head .meta {
     text-align: right;
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .2em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.6);
     line-height: 2;
   }
@@ -2206,7 +2206,7 @@
     position: absolute; left: 14px; bottom: 12px; right: 14px;
     display: flex; justify-content: space-between; align-items: flex-end; gap: 12px;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .18em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: var(--paper); z-index: 2;
     text-shadow: 0 1px 8px rgba(0,0,0,.7);
   }
@@ -2247,7 +2247,7 @@
   .quote-tile p span { color: var(--accent); transition: color var(--t-bg); }
   .quote-tile .attr {
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.55);
     margin-top: 18px; font-style: normal;
   }
@@ -2327,7 +2327,7 @@
   }
   .builder-step-no {
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.5);
   }
   .builder-step-no b { color: var(--accent); font-weight: 500; transition: color var(--t-bg); }
@@ -2346,7 +2346,7 @@
   }
   .picks { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: rgba(255,255,255,.7); }
   .picks-head {
-    text-transform: uppercase; letter-spacing: .22em; font-size: 10px;
+    text-transform: none; letter-spacing: .01em; font-size: 10px;
     color: rgba(255,255,255,.45); margin-bottom: 10px;
   }
   .pick-row {
@@ -2354,7 +2354,7 @@
     padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.08); gap: 10px;
   }
   .pick-row.empty .v { color: rgba(255,255,255,.25); }
-  .pick-row .k { color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .18em; font-size: 9.5px; }
+  .pick-row .k { color: rgba(255,255,255,.4); text-transform: none; letter-spacing: .01em; font-size: 9.5px; }
   .pick-row .v em { font-family: var(--serif); font-style: italic; color: var(--accent); transition: color var(--t-bg); }
 
   .builder-right {
@@ -2373,7 +2373,7 @@
   .builder-sub {
     margin: 0 0 36px;
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.55);
   }
   .chips {
@@ -2412,7 +2412,7 @@
     border-radius: 999px;
     cursor: pointer;
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     transition: all .2s;
   }
   .nav-btn:hover { border-color: var(--paper); }
@@ -2426,7 +2426,7 @@
   .dots {
     display: flex; gap: 6px; align-items: center;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: .22em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: rgba(255,255,255,.4);
   }
   .dots-track { display: flex; gap: 5px; margin-left: 12px; }
@@ -2460,7 +2460,7 @@
   }
   .result-card .result-kicker {
     font-family: var(--mono); font-size: 11px;
-    letter-spacing: .26em; text-transform: uppercase;
+    letter-spacing: .01em; text-transform: none;
     color: var(--accent); margin-bottom: 18px;
     transition: color var(--t-bg);
   }
@@ -2478,7 +2478,7 @@
     font-family: var(--mono); font-size: 12.5px;
     line-height: 1.7;
   }
-  .result-card .brief .k { color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .18em; font-size: 10px; padding-top: 3px; }
+  .result-card .brief .k { color: rgba(255,255,255,.45); text-transform: none; letter-spacing: .01em; font-size: 10px; padding-top: 3px; }
   .result-card .brief .v { color: var(--paper); }
   .result-card .note {
     margin-top: 28px;
@@ -2523,8 +2523,8 @@
     content: '◷ tap to flip state';
     position: absolute; left: 50%; transform: translateX(-50%);
     bottom: -28px; white-space: nowrap;
-    font-family: var(--mono); font-size: 9px; letter-spacing: .18em;
-    text-transform: uppercase; color: rgba(255,255,255,.5);
+    font-family: var(--mono); font-size: 9px; letter-spacing: .01em;
+    text-transform: none; color: rgba(255,255,255,.5);
     opacity: 0; transition: opacity .3s;
     pointer-events: none;
   }
@@ -2635,7 +2635,7 @@
     .hero-content .body { font-size: 14px !important; line-height: 1.65; }
     .cta-row { gap: 10px; }
     .btn { padding: 14px 18px; font-size: 10.5px; letter-spacing: .18em; }
-    .kicker { font-size: 10px !important; letter-spacing: .22em !important; }
+    .kicker { font-size: 10px !important; letter-spacing: .01em !important; }
     .seal { width: 92px; height: 92px; bottom: 24px; right: 18px; }
     .seal text { font-size: 8.5px; letter-spacing: .14em; }
     .reserve-head h2, .outlets-head h2 { font-size: clamp(36px, 11vw, 60px); }
@@ -2852,8 +2852,8 @@
         </text>
         <g transform="translate(100 100)">
           <polygon class="seal-star" points="0,-22 6,-7 22,-7 9,2 14,17 0,8 -14,17 -9,2 -22,-7 -6,-7"/>
-          <text class="seal-center" text-anchor="middle" y="36">top 20 bars</text>
-          <text class="seal-center" text-anchor="middle" y="50">asia 25/26</text>
+          <text class="seal-center" text-anchor="middle" y="36">Top 20 bars</text>
+          <text class="seal-center" text-anchor="middle" y="50">Asia 25/26</text>
         </g>
       </svg>
     </div>
@@ -3198,7 +3198,7 @@
     <div class="meta">
       <b>04 quick steps</b><br/>
       pick bar · date · time · pax<br/>
-      we whatsapp to confirm · usually within the hour
+      We WhatsApp to confirm · usually within the hour
     </div>
   </div>
 
@@ -3225,14 +3225,14 @@
             <img src="https://dissolvedsolids.co/photos/ds-logo.png" alt="" loading="lazy" decoding="async"/>
             <div>
               <div class="nm">Dissolved</div>
-              <div class="ds">venue 01 · damansara kim · tue-sun</div>
+              <div class="ds">Venue 01 · Damansara Kim · Tue-Sun</div>
             </div>
           </button>
           <button class="bar-pill" type="button" data-bar="soluble">
             <img src="https://dissolvedsolids.co/photos/ss-logo.svg" alt="" loading="lazy" decoding="async"/>
             <div>
               <div class="nm">Soluble</div>
-              <div class="ds">venue 02 · ss2 pj · wed-sun</div>
+              <div class="ds">Venue 02 · SS2 PJ · Wed-Sun</div>
             </div>
           </button>
         </div>
@@ -3361,13 +3361,13 @@
       <details class="visit-week">
         <summary>full week →</summary>
         <div class="hours-grid" data-hours="dissolved">
-          <span class="day closed" data-d="1">mon</span>     <span class="time closed">closed</span>
-          <span class="day"        data-d="2">tue</span>     <span class="time">15:00 to 00:00</span>
-          <span class="day"        data-d="3">wed</span>     <span class="time">15:00 to 00:00</span>
-          <span class="day"        data-d="4">thu</span>     <span class="time">15:00 to 00:00</span>
-          <span class="day"        data-d="5">fri</span>     <span class="time">14:00 to 01:00</span>
-          <span class="day"        data-d="6">sat</span>     <span class="time">14:00 to 01:00</span>
-          <span class="day"        data-d="0">sun</span>     <span class="time">14:00 to 00:00</span>
+          <span class="day closed" data-d="1">Mon</span>     <span class="time closed">Closed</span>
+          <span class="day"        data-d="2">Tue</span>     <span class="time">15:00 to 00:00</span>
+          <span class="day"        data-d="3">Wed</span>     <span class="time">15:00 to 00:00</span>
+          <span class="day"        data-d="4">Thu</span>     <span class="time">15:00 to 00:00</span>
+          <span class="day"        data-d="5">Fri</span>     <span class="time">14:00 to 01:00</span>
+          <span class="day"        data-d="6">Sat</span>     <span class="time">14:00 to 01:00</span>
+          <span class="day"        data-d="0">Sun</span>     <span class="time">14:00 to 00:00</span>
         </div>
       </details>
     </article>
@@ -3422,13 +3422,13 @@
       <details class="visit-week">
         <summary>full week →</summary>
         <div class="hours-grid" data-hours="soluble">
-          <span class="day closed" data-d="1">mon</span>     <span class="time closed">closed</span>
-          <span class="day closed" data-d="2">tue</span>     <span class="time closed">closed</span>
-          <span class="day"        data-d="3">wed</span>     <span class="time">18:00 to 01:00</span>
-          <span class="day"        data-d="4">thu</span>     <span class="time">18:00 to 01:00</span>
-          <span class="day"        data-d="5">fri</span>     <span class="time">18:00 to 01:00</span>
-          <span class="day"        data-d="6">sat</span>     <span class="time">18:00 to 01:00</span>
-          <span class="day"        data-d="0">sun</span>     <span class="time">18:00 to 01:00</span>
+          <span class="day closed" data-d="1">Mon</span>     <span class="time closed">Closed</span>
+          <span class="day closed" data-d="2">Tue</span>     <span class="time closed">Closed</span>
+          <span class="day"        data-d="3">Wed</span>     <span class="time">18:00 to 01:00</span>
+          <span class="day"        data-d="4">Thu</span>     <span class="time">18:00 to 01:00</span>
+          <span class="day"        data-d="5">Fri</span>     <span class="time">18:00 to 01:00</span>
+          <span class="day"        data-d="6">Sat</span>     <span class="time">18:00 to 01:00</span>
+          <span class="day"        data-d="0">Sun</span>     <span class="time">18:00 to 01:00</span>
         </div>
       </details>
     </article>
@@ -3471,8 +3471,8 @@
     .site-foot-kicker {
       font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: .26em;
-      text-transform: uppercase;
+      letter-spacing: .01em;
+      text-transform: none;
       color: color-mix(in srgb, var(--ink) 60%, transparent);
       margin: 0 0 8px;
     }
@@ -3497,8 +3497,8 @@
     .site-foot-col h4 {
       font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
+      letter-spacing: .01em;
+      text-transform: none;
       font-weight: 600;
       color: var(--accent);
       margin: 0 0 14px;
@@ -3532,8 +3532,8 @@
       padding-top: 0;
       border-top: none;
       font-size: 11px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+      letter-spacing: .01em;
+      text-transform: none;
       color: color-mix(in srgb, var(--ink) 55%, transparent);
     }
     .site-foot-meta a { color: inherit; text-decoration: none; border-bottom: 1px dotted color-mix(in srgb, var(--ink) 30%, transparent); }
@@ -3662,13 +3662,13 @@
           <path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
           <path d="M9 8h6M9 12h6M9 16h4"/>
         </svg>
-        <span>journal</span>
+        <span>Journal</span>
       </a>
       <a class="appbar-icon appbar-icon-cta" href="#builder" aria-label="Build a drink">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M5 4h14M8 4l4 8 4-8M12 12v8M8 20h8"/>
         </svg>
-        <span>build</span>
+        <span>Build</span>
       </a>
     </div>
     <button class="appbar-toggle" id="appbarToggle" type="button" aria-label="Flip outlet - switch between Dissolved and Soluble">
@@ -3681,14 +3681,14 @@
           <path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/>
           <circle cx="12" cy="9" r="2.5"/>
         </svg>
-        <span>visit</span>
+        <span>Visit</span>
       </a>
       <a class="appbar-icon" href="#reserve" aria-label="Reserve">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="3" y="5" width="18" height="16" rx="2"/>
           <path d="M3 10h18M8 3v4M16 3v4"/>
         </svg>
-        <span>reserve</span>
+        <span>Reserve</span>
       </a>
     </div>
   </div>
@@ -3703,7 +3703,7 @@
 <!-- MUSIC TOGGLE - bottom left -->
 <button class="music-toggle" id="musicToggle" type="button" aria-label="toggle music">
   <span class="bars"><i></i><i></i><i></i><i></i></span>
-  <span class="tooltip" id="musicTip">tap to play · ambient</span>
+  <span class="tooltip" id="musicTip">Tap to play · ambient</span>
 </button>
 <audio id="bgMusic" loop preload="none">
   <!-- Claude Code: add a licensed stock track here. See brief for sources. -->
@@ -3726,13 +3726,13 @@
     const method  = isSol ? 'Infusion' : 'Dissolution';
     const stateNm = isSol ? 'Soluble Solids' : 'Dissolved Solids';
     return ''
-      + `<span class="ti"><b>two states</b> <i>one chemistry</i></span>`
-      + `<span class="ti"><b>state</b> <i>${stateNm}</i></span>`
-      + `<span class="ti"><b>venue</b> <i>${venue}</i></span>`
-      + `<span class="ti"><b>method</b> <i>${method}</i></span>`
-      + `<span class="ti"><b>hours</b> <i>${hours}</i></span>`
-      + `<span class="ti"><b>kuala lumpur</b> <i class="ti-time">${klTime()}</i></span>`
-      + `<span class="ti"><b>tatler asia</b> <i>top 20 bars · 25/26</i></span>`;
+      + `<span class="ti"><b>Two states</b> <i>one chemistry</i></span>`
+      + `<span class="ti"><b>State</b> <i>${stateNm}</i></span>`
+      + `<span class="ti"><b>Venue</b> <i>${venue}</i></span>`
+      + `<span class="ti"><b>Method</b> <i>${method}</i></span>`
+      + `<span class="ti"><b>Hours</b> <i>${hours}</i></span>`
+      + `<span class="ti"><b>Kuala Lumpur</b> <i class="ti-time">${klTime()}</i></span>`
+      + `<span class="ti"><b>Tatler Asia</b> <i>Top 20 bars · 25/26</i></span>`;
   }
   function renderTicker() {
     const html = tickerHTML();
@@ -3994,8 +3994,8 @@
   const pad = n => String(n).padStart(2, '0');
   const ymd = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
   function pretty(d) {
-    const days = ['sun','mon','tue','wed','thu','fri','sat'];
-    const mons = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const mons = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     return `${days[d.getDay()]} · ${d.getDate()} ${mons[d.getMonth()]}`;
   }
   function renderBarPills() {
@@ -4026,7 +4026,7 @@
     const mn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     monthEl.textContent = `${mn[calCur.getMonth()]} ${calCur.getFullYear()}`;
     grid.innerHTML = '';
-    ['mon','tue','wed','thu','fri','sat','sun'].forEach(d => {
+    ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => {
       const el = document.createElement('div');
       el.className = 'cal-dow'; el.textContent = d;
       grid.appendChild(el);
@@ -4138,7 +4138,7 @@
       return true;
     }
     function pretty2(d) {
-      const days = ['sun','mon','tue','wed','thu','fri','sat'];
+      const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
       const mons = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
       return days[d.getDay()] + ' · ' + d.getDate() + ' ' + mons[d.getMonth()];
     }
@@ -4255,8 +4255,8 @@
     return document.documentElement.dataset.state === 'dissolved' ? 'dissolved' : 'soluble';
   }
   function tipFor(key, playing) {
-    if (!playing) return 'tap to play · music';
-    return key === 'dissolved' ? 'house · tap to stop' : 'lofi · tap to stop';
+    if (!playing) return 'Tap to play · music';
+    return key === 'dissolved' ? 'House · tap to stop' : 'Lofi · tap to stop';
   }
   async function startMusic() {
     const key = currentStateKey();
@@ -4405,7 +4405,7 @@
   function nowMin() { const d = new Date(); return d.getHours()*60 + d.getMinutes(); }
   function parseT(t) { const [h, m] = t.split(':').map(Number); return h*60 + m; }
   function isOpenNow(s, e) {
-    if (s === 'closed') return false;
+    if (String(s).toLowerCase() === 'closed') return false;
     let o = parseT(s), c = parseT(e);
     if (c <= o) c += 24*60;
     return nowMin() >= o && nowMin() < c;
@@ -4428,7 +4428,7 @@
       for (let i = 0; i < rows.length; i += 2) {
         if (+rows[i].dataset.d === today) {
           const t = rows[i+1].textContent.trim();
-          if (t === 'closed') return { open: false };
+          if (t.toLowerCase() === 'closed') return { open: false };
           const [s, e] = t.split(' to ').map(x => x.trim());
           return { open: true, s, e };
         }
@@ -4436,10 +4436,10 @@
       return null;
     }
     function lbl(w) {
-      if (!w || !w.open) return { txt: 'closed today', live: false };
+      if (!w || !w.open) return { txt: 'Closed today', live: false };
       return isOpenNow(w.s, w.e)
-        ? { txt: `open now · til ${w.e}`, live: true }
-        : { txt: `opens at ${w.s} today`, live: false };
+        ? { txt: `Open now · til ${w.e}`, live: true }
+        : { txt: `Opens at ${w.s} today`, live: false };
     }
     const sol = lbl(todayWindow('soluble'));
     const dis = lbl(todayWindow('dissolved'));
